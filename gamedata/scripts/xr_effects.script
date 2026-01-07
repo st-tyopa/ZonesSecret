@@ -3165,28 +3165,33 @@ end
 
 --Перемотка времени
 function travel_in_time_9() 
- level.change_game_time(0,9,0)
- level_weathers.get_weather_manager():forced_weather_change()
+	news_manager.send_tip(db.actor, 'xr_effects.travel_in_time_9, change_game_time and force_weather_change')
+	--level.change_game_time(0,9,0)
+	--level_weathers.get_weather_manager():forced_weather_change()
 end
 
 function travel_in_time_7() 
- level.change_game_time(0,7,0)
- level_weathers.get_weather_manager():forced_weather_change()
+	news_manager.send_tip(db.actor, 'xr_effects.travel_in_time_7, change_game_time and force_weather_change')
+	--level.change_game_time(0,7,0)
+	--level_weathers.get_weather_manager():forced_weather_change()
 end
 
 function travel_in_time_2() 
- level.change_game_time(0,2,0)
- level_weathers.get_weather_manager():forced_weather_change()
+	news_manager.send_tip(db.actor, 'xr_effects.travel_in_time_2, change_game_time and force_weather_change')
+	--level.change_game_time(0,2,0)
+	--level_weathers.get_weather_manager():forced_weather_change()
 end
 
 function travel_in_time_1() 
- level.change_game_time(0,1,0)
- level_weathers.get_weather_manager():forced_weather_change()
+	news_manager.send_tip(db.actor, 'xr_effects.travel_in_time_1, change_game_time and force_weather_change')
+	--level.change_game_time(0,1,0)
+	--level_weathers.get_weather_manager():forced_weather_change()
 end
 
 function travel_in_time_6() 
- level.change_game_time(0,6,0)
- level_weathers.get_weather_manager():forced_weather_change()
+	news_manager.send_tip(db.actor, 'xr_effects.travel_in_time_6, change_game_time and force_weather_change')
+	--level.change_game_time(0,6,0)
+	--level_weathers.get_weather_manager():forced_weather_change()
 end
 -------------------------
 
