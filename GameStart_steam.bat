@@ -1,0 +1,1 @@
+start "%CD%" bin_requiem/XR_3DA.exe -steam
