@@ -1,0 +1,43 @@
+[logic]
+active = walker@agr_manik
+on_death = death@agr_manik
+
+[walker@agr_manik]
+path_walk = agr_anom_razr_tele_look
+path_look = agr_anom_razr_tele
+combat_ignore_cond = always
+danger = danger_condition@agr_manik
+on_info = {+agr_anomaly_scien_dialog_2_start} walker@agr_manik_2
+
+[walker@agr_manik_2]
+path_walk = agr_anom_razr_tele_look
+path_look = agr_anom_razr_tele
+combat_ignore_cond = always
+meet = meet@self_doc
+danger = danger_condition@agr_manik
+on_info = {+agr_anomaly_scien_dialog_2_done} walker@agr_manik_3
+
+[walker@agr_manik_3]
+path_walk = agr_scien_way_after_anom
+path_look = agr_scien_look
+on_signal = scien |  %+agr_scien_perehod% remark@agr_scien_perehod
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+danger = danger_condition@agr_manik
+
+[remark@agr_scien_perehod]
+anim = guard
+target = actor
+danger = danger_condition@agr_manik
+
+[death@agr_manik]
+on_info = %+kill_scien_done%
+
+[danger_condition@agr_manik]
+ignore_distance = 0
+
+[meet@self_doc] 
+use_wpn = self
+use = {=dist_to_actor_le(3)} self

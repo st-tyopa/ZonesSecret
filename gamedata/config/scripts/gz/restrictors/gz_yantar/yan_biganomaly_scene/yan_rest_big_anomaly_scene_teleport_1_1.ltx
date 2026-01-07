@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {-yan_biganomaly_scene_end +yan_biganomaly_scene_actor_on_sektor_1} sr_teleport@1
+
+[sr_teleport@1]
+point = yan_rest_big_anomaly_scene_actor_start_sektor_1
+look = yan_rest_big_anomaly_scene_actor_start_sektor_1_look
+timeout = 0
+on_info = {+yan_biganomaly_scene_actor_on_sektor_2} sr_idle@end
+
+[sr_idle@end]

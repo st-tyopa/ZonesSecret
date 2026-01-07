@@ -1,0 +1,54 @@
+[military_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "outfit\military_outfit"
+;$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = equipments\stalker_comander_suit
+actor_visual	= actors\hero\stalker_commander.ogf	
+
+texture_arm = act_arm_spec
+
+ef_equipment_type	= 4
+
+inv_name			= military_outfit_name
+inv_name_short		= military_outfit_name
+description			= military_outfit_description
+inv_weight			= 12.0
+slot				= 6
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 18
+inv_grid_y			= 17
+full_icon_name		= npc_icon_military_outfit
+;;;nightvision_sect	= effector_nightvision_bad
+
+cost				= 40000
+full_scale_icon		= 10,6		;иконка сталкера в костюме в полный рост
+
+immunities_sect			= sect_military_outfit_immunities
+
+; MEDIUM RESISTANCE
+burn_protection 				= 0.6
+strike_protection 				= 0.8
+shock_protection 				= 0.7
+wound_protection				= 0.7
+radiation_protection 			= 0.7
+telepatic_protection 			= 0.0
+chemical_burn_protection 		= 0.5
+explosion_protection 			= 0.7
+fire_wound_protection  			= 0.55
+
+bones_koeff_protection =	armor_helmet_damage
+
+[sect_military_outfit_immunities]
+burn_immunity				= 0.02			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.01
+shock_immunity				= 0.02
+wound_immunity				= 0.01
+radiation_immunity			= 0.00
+telepatic_immunity			= 0.00
+chemical_burn_immunity		= 0.02
+explosion_immunity			= 0.02
+fire_wound_immunity			= 0.005

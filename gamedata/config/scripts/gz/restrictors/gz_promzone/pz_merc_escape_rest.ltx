@@ -1,0 +1,28 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {+pz_rob_merclager_docs_done} %+pz_rob_merclager_escape_done% sr_idle@15
+on_info = {-pz_actor_enemy_merclager +pz_rob_merclager_docs_done +pz_rob_merclager_escape_done} sr_idle@2
+
+[sr_idle@15]
+on_info = {-pz_actor_enemy_merclager +pz_rob_merclager_docs_done +pz_rob_merclager_escape_done} sr_idle@2
+on_actor_inside = {+pz_rob_merclager_docs_done} %+pz_rob_merclager_escape_done%
+
+[sr_idle@2]
+on_timer = 20000|sr_idle@21
+on_actor_inside = {+pz_rob_merclager_docs_done} %+pz_rob_merclager_escape_done%
+
+[sr_idle@21]
+on_info = {-pz_actor_enemy_merclager} %+pz_grif_propaja_sms% sr_idle@22
+on_actor_inside = {+pz_rob_merclager_docs_done} %+pz_rob_merclager_escape_done%
+
+[sr_idle@22]
+on_timer = 9000|sr_idle@23
+on_actor_inside = {+pz_rob_merclager_docs_done} %+pz_rob_merclager_escape_done%
+
+[sr_idle@23]
+on_info = {-pz_actor_enemy_merclager} %+pz_grif_chastota_sms% sr_idle@nil
+on_actor_inside = {+pz_rob_merclager_docs_done} %+pz_rob_merclager_escape_done%
+
+[sr_idle@nil]

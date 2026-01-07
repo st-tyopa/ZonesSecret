@@ -1,0 +1,13 @@
+[logic]
+active = walker@1
+combat_ignore = combat_ignore@pz_isk
+
+[walker@1]
+path_walk = pz_isk_2_stay
+path_look = pz_isk_2_look
+combat_ignore_cond = {=check_fighting(71505)}
+def_state_standing = guard
+meet = no_meet
+
+[combat_ignore@pz_isk]
+combat_ignore_cond = {=check_fighting(71505)}

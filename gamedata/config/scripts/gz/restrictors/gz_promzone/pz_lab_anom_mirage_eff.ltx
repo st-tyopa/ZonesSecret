@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+pz_otis_lab_open_done} sr_particle
+
+[sr_particle]
+name = new_effects\bleak_angel
+path = pz_test_particle
+mode = 2 				
+looped = true            
+on_info = {+pz_lab_electrisity_done} nil

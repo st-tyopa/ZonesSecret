@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+agr_security_chief_pass_have} sr_idle2
+
+[sr_idle2]
+on_actor_inside = %+agr_go_to_dolg_general_done% nil

@@ -1,0 +1,16 @@
+[logic]
+active = walker@1
+
+[walker@1]
+path_walk = dscol_suicidigger_stay
+path_look = dscol_suicidigger_look
+meet = no_meet
+on_info    = {+dscol_cutscene_1_start} remark@ds_suiddigger_suicide
+
+[remark@ds_suiddigger_suicide]
+snd_anim_synс = false
+snd = bar_psycho_goodluck 
+anim = psycho_shoot
+tagret = dscol_suicidigger_look, 0
+meet = no_meet
+on_signal = action_end | nil %=bar_suicide_kill_self =kill%

@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+dv_go_to_svobpb_start -lukash_pogovorili} %=dv_svbp_3_message% sr_idle@2
+
+[sr_idle@2]
+on_timer = 5000 | %+svoboda_war% sr_idle@3
+
+[sr_idle@3]
+on_game_timer = 30| nil %+find_raciya_alt_start%

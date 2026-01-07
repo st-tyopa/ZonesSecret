@@ -1,0 +1,18 @@
+[logic]
+active = walker@dv_torgash_stay
+on_death = death
+
+[spawn]
+quest_guitar
+
+[walker@dv_torgash_stay]
+path_walk = dv_torgash_walk_stay
+path_look = dv_torgash_look_stay
+on_info = {+find_weapons_case_done} walker@dv_torgash
+
+[walker@dv_torgash]
+path_walk = dv_torgash_walk
+path_look = dv_torgash_look
+
+[death]
+on_info = %+dv_torgash_death%

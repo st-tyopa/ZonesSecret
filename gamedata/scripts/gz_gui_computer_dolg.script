@@ -1,0 +1,313 @@
+function gui_start()
+level.start_stop_menu(this.password_start(),true)
+end
+
+class "password_start" (CUIScriptWnd) -- создаем класс начального окна, у нас это будет ввод пароля =)
+function password_start:__init() super()
+    self:Init(0,0,1024,768) -- Так сказать рабочая область окна. Такое разрешение в сталкере весь экран.
+    -- фон окна
+    self.back = CUIStatic()
+    self.back:Init(0,0,1024,768) -- фон и рабочая область в начале не всегда совпадают)
+    self.back:InitTexture("ui\\gz_computer\\start") -- текстура фона
+    self.back:SetOriginalRect(0,0,1024,768) -- координаты самого фона
+	self:AttachChild(self.back)
+	
+	self.avatar = CUIStatic()
+    self.avatar:Init(543,264,124,88)
+    self.avatar:InitTexture("ui\\gz_computer\\avatarki\\avatarki")
+    self.avatar:SetOriginalRect(0,0,123,88)
+	self.back:AttachChild(self.avatar)	
+	
+	self.pass = CUIStatic() -- Надпись
+	self.pass:Init(401,479,112,14)
+    self.pass:SetText("Введите пароль:")
+	self.pass:SetFont(GetFontGraffiti22Russian())
+	self.pass:SetTextColor(255,0,0,0)
+	self.back:AttachChild(self.pass)
+	
+	self.user_name = CUIStatic() -- Надпись
+	self.user_name:Init(350,284,154,15)
+    self.user_name:SetText("Капитан Джек Воробей - ПК")
+	self.user_name:SetFont(GetFontGraffiti22Russian())
+	self.user_name:SetTextColor(255,255,255,255)
+	self.back:AttachChild(self.user_name)
+	
+	self.edit = CUIEditBox() -- поле ввода
+    self.edit:Init(352,329,182,18)
+	self:Register(self.edit,"edit")
+	self.back:AttachChild(self.edit)
+	
+	-- кнопка подтверждения ввода
+    self.btn_ok = CUIButton()
+    self.btn_ok:SetAutoDelete(true)
+    self.btn_ok:Init(492,369,126,25) -- место, при нажатии на которое кнопка нажимается) проще говоря расположение кнопки XD
+	self.btn_ok:InitTexture("ui\\gz_computer\\start") -- текстура кнопки 
+	self.btn_ok:SetOriginalRect(51,773,126,25) -- координаты кнопки в текстуре
+	self.btn_ok:SetStretchTexture(true)
+	self.btn_ok:SetText("Подтвердить")
+	self.btn_ok:SetFont(GetFontGraffiti22Russian())
+	self.btn_ok:SetTextColor(255,255,255,255)
+    self:Register(self.btn_ok,"btn_ok")
+	self.back:AttachChild(self.btn_ok)
+    self:AddCallback("btn_ok",ui_events.BUTTON_DOWN,self.vvod,self) -- отсылка на каллбеки в начале)
+	
+	-- кнопка выключения ПК
+    self.btn_exit = CUIButton()
+    self.btn_exit:SetAutoDelete(true)
+    self.btn_exit:Init(960,690,35,25) -- место, при нажатии на которое кнопка нажимается) проще говоря расположение кнопки XD
+	self.btn_exit:InitTexture("ui\\gz_computer\\start") -- текстура кнопки 
+	self.btn_exit:SetOriginalRect(7,772,35,25) -- координаты кнопки в текстуре
+	self.btn_exit:SetStretchTexture(true)
+    self:Register(self.btn_exit,"btn_exit")
+	self.back:AttachChild(self.btn_exit)
+    self:AddCallback("btn_exit",ui_events.BUTTON_DOWN,self.exit,self) -- отсылка на каллбеки в начале)
+	
+end
+
+
+function password_start:vvod()
+    local edit_box = self:GetEditBox("edit")
+	if edit_box:GetText()=="123456" then -- пароль для входа
+	    level.start_stop_menu(self,true) 
+		level.start_stop_menu(desectop(),true)
+	else
+	    level.start_stop_menu(password_incorrect(),true)
+	end
+end
+
+function password_start:exit()
+ level.start_stop_menu(self,true) 
+end
+
+
+-- окно неправильный пароль
+class "password_incorrect" (CUIScriptWnd) -- создаем класс начального окна, у нас это будет ввод пароля =)
+function password_incorrect:__init() super()
+    self:Init(200,200,675,268) -- Так сказать рабочая область окна. 
+	
+    -- фон окна
+    self.back = CUIStatic()
+    self.back:Init(0,0,675,268) -- фон и рабочая область в начале не всегда совпадают)
+    self.back:InitTexture("ui\\gz_computer\\okno_1") -- текстура фона
+    self.back:SetOriginalRect(0,0,675,268) -- координаты самого фона
+	self:AttachChild(self.back)
+	
+	self.pass = CUIStatic() -- Надпись
+	self.pass:Init(251,1,155,15)
+    self.pass:SetText("Ошибка:")
+	self.pass:SetFont(GetFontGraffiti22Russian())
+	self.pass:SetTextColor(255,255,0,0)
+	self.back:AttachChild(self.pass)
+	
+	self.pass = CUIStatic() -- Надпись
+	self.pass:Init(50,44,222,20)
+    self.pass:SetText("Неправильный пароль!")
+	self.pass:SetFont(GetFontGraffiti22Russian())
+	self.pass:SetTextColor(255,0,250,0)
+	self.back:AttachChild(self.pass)
+	
+	self.pass = CUIStatic() -- Надпись
+	self.pass:Init(50,75,222,20)
+    self.pass:SetText("Проверьте правильность написания пароля.")
+	self.pass:SetFont(GetFontGraffiti22Russian())
+	self.pass:SetTextColor(255,0,250,0)
+	self.back:AttachChild(self.pass)
+		
+	
+	-- красный крестик
+    self.btn_exit = CUIButton()
+    self.btn_exit:SetAutoDelete(true)
+    self.btn_exit:Init(645,2,15,15) -- место, при нажатии на которое кнопка нажимается) проще говоря расположение кнопки XD
+	self.btn_exit:InitTexture("ui\\gz_computer\\okno_1") -- текстура кнопки 
+	self.btn_exit:SetOriginalRect(6,302,15,15) -- координаты кнопки в текстуре
+	self.btn_exit:SetStretchTexture(true)
+    self:Register(self.btn_exit,"btn_exit")
+	self.back:AttachChild(self.btn_exit)
+    self:AddCallback("btn_exit",ui_events.BUTTON_DOWN,self.exit,self) -- отсылка на каллбеки в начале)
+	
+	-- кнопка окей
+    self.btn_ok = CUIButton()
+    self.btn_ok:SetAutoDelete(true)
+    self.btn_ok:Init(265,225,126,25) -- место, при нажатии на которое кнопка нажимается) проще говоря расположение кнопки XD
+	self.btn_ok:InitTexture("ui\\gz_computer\\okno_1") -- текстура кнопки 
+	self.btn_ok:SetOriginalRect(6,275,126,25) -- координаты кнопки в текстуре
+	self.btn_ok:SetStretchTexture(true)
+	self.btn_ok:SetText("ОК")
+	self.btn_ok:SetFont(GetFontGraffiti22Russian())
+	self.btn_ok:SetTextColor(255,255,255,255)
+    self:Register(self.btn_ok,"btn_ok")
+	self.back:AttachChild(self.btn_ok)
+    self:AddCallback("btn_ok",ui_events.BUTTON_DOWN,self.exit,self) -- отсылка на каллбеки в начале)
+		
+end
+
+function password_incorrect:exit()
+ level.start_stop_menu(self,true) 
+end
+
+-- окно рабочий стол пароль
+class "desectop" (CUIScriptWnd) -- создаем класс начального окна, у нас это будет ввод пароля =)
+function desectop:__init() super()
+    self:Init(0,0,1024,768) -- Так сказать рабочая область окна. 
+    -- фон окна
+    self.back = CUIStatic()
+    self.back:Init(0,0,1024,768) -- фон и рабочая область в начале не всегда совпадают)
+    self.back:InitTexture("ui\\gz_computer\\desectop") -- текстура фона
+    self.back:SetOriginalRect(0,0,1024,768) -- координаты самого фона
+	self:AttachChild(self.back)	
+		
+	self.fon = CUIStatic() -- фоновый рисунок
+    self.fon:Init(18,25,990,700)
+    self.fon:InitTexture("ui\\gz_computer\\desectop_images\\0001")
+    self.fon:SetOriginalRect(0,0,990,700)
+	self.back:AttachChild(self.fon)	
+	
+	self.pusk = CUIStatic()
+    self.pusk:Init(0,671,990,28)
+    self.pusk:InitTexture("ui\\gz_computer\\desectop")
+    self.pusk:SetOriginalRect(0,798,990,28)
+	self.fon:AttachChild(self.pusk)
+	
+	-- кнопка меню пуск
+    self.btn_pusk = CUIButton()
+    self.btn_pusk:SetAutoDelete(true)
+    self.btn_pusk:Init(1,1,21,23) -- место, при нажатии на которое кнопка нажимается) проще говоря расположение кнопки XD
+	self.btn_pusk:InitTexture("ui\\gz_computer\\desectop") -- текстура кнопки 
+	self.btn_pusk:SetOriginalRect(6,828,73,80) -- координаты кнопки в текстуре
+	self.btn_pusk:SetStretchTexture(true)
+    self:Register(self.btn_pusk,"btn_pusk")
+	self.pusk:AttachChild(self.btn_pusk)
+    self:AddCallback("btn_pusk",ui_events.BUTTON_DOWN,self.exit,self) -- отсылка на каллбеки в начале)
+	
+	-- кнопка мой компьютер
+    self.my_pc = CUIButton()
+    self.my_pc:SetAutoDelete(true)
+    self.my_pc:Init(5,5,85,81) -- место, при нажатии на которое кнопка нажимается) проще говоря расположение кнопки XD
+	self.my_pc:InitTexture("ui\\gz_computer\\desectop") -- текстура кнопки 
+	self.my_pc:SetOriginalRect(99,832,85,81) -- координаты кнопки в текстуре
+	self.my_pc:SetStretchTexture(true)
+    self:Register(self.my_pc,"my_pc")
+	self.fon:AttachChild(self.my_pc)
+    self:AddCallback("my_pc",ui_events.BUTTON_DOWN,self.MyComputer,self) -- отсылка на каллбеки в начале)
+	
+	
+end
+
+function desectop:exit()
+ level.start_stop_menu(self,true) 
+end
+
+function desectop:MyComputer()
+ level.start_stop_menu(my_comp(),true)
+end
+
+-- окно Мой компьютер
+class "my_comp" (CUIScriptWnd) -- создаем класс начального окна, у нас это будет ввод пароля =)
+function my_comp:__init() super()
+  self:Init(110,110,679,471) -- Так сказать рабочая область окна. 
+    -- фон окна
+    self.back_mc = CUIStatic()
+    self.back_mc:Init(0,0,679,471) -- фон и рабочая область в начале не всегда совпадают)
+    self.back_mc:InitTexture("ui\\gz_computer\\okno_1") -- текстура фона
+    self.back_mc:SetOriginalRect(0,321,679,471) -- координаты самого фона
+	self:AttachChild(self.back_mc)	
+	
+	self.zagol = CUIStatic() -- Надпись
+	self.zagol:Init(36,4,141,11)
+    self.zagol:SetText("Мой Компьюттер")
+	self.zagol:SetFont(GetFontGraffiti22Russian())
+	self.zagol:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.zagol)
+	
+	self.zagol = CUIStatic() -- Надпись
+	self.zagol:Init(36,4,141,11)
+    self.zagol:SetText("Мой Компьюттер")
+	self.zagol:SetFont(GetFontGraffiti22Russian())
+	self.zagol:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.zagol)
+	
+	self.nameu = CUIStatic() -- Надпись
+	self.nameu:Init(92,62,160,14)
+    self.nameu:SetText("Имя пользователя: ")
+	self.nameu:SetFont(GetFontGraffiti22Russian())
+	self.nameu:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.nameu)
+	
+	self.nameus = CUIStatic() -- Надпись
+	self.nameus:Init(276,62,160,14)
+    self.nameus:SetText("Капитан Джек Воробей")
+	self.nameus:SetFont(GetFontGraffiti22Russian())
+	self.nameus:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.nameus)
+	
+	self.poroc = CUIStatic() -- Надпись
+	self.poroc:Init(92,92,160,14)
+    self.poroc:SetText("Процессор: ")
+	self.poroc:SetFont(GetFontGraffiti22Russian())
+	self.poroc:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.poroc)
+	
+	self.procn = CUIStatic() -- Надпись
+	self.procn:Init(276,92,160,14)
+    self.procn:SetText("Intel Core I7")
+	self.procn:SetFont(GetFontGraffiti22Russian())
+	self.procn:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.procn)
+	
+	self.videoname = CUIStatic() -- Надпись
+	self.videoname:Init(92,112,160,14)
+    self.videoname:SetText("Видео карта: ")
+	self.videoname:SetFont(GetFontGraffiti22Russian())
+	self.videoname:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.videoname)
+	
+	self.video = CUIStatic() -- Надпись
+	self.video:Init(276,112,160,14)
+    self.video:SetText("NVIDIA GTX TITAN")
+	self.video:SetFont(GetFontGraffiti22Russian())
+	self.video:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.video)
+	
+	self.operativname = CUIStatic() -- Надпись
+	self.operativname:Init(92,132,160,14)
+    self.operativname:SetText("Оперативная память: ")
+	self.operativname:SetFont(GetFontGraffiti22Russian())
+	self.operativname:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.operativname)
+	
+	self.operativ = CUIStatic() -- Надпись
+	self.operativ:Init(276,132,160,14)
+    self.operativ:SetText("8 GB")
+	self.operativ:SetFont(GetFontGraffiti22Russian())
+	self.operativ:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.operativ)
+	
+	self.hardname = CUIStatic() -- Надпись
+	self.hardname:Init(92,152,160,14)
+    self.hardname:SetText("Свободное место: ")
+	self.hardname:SetFont(GetFontGraffiti22Russian())
+	self.hardname:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.hardname)
+	
+	self.hard = CUIStatic() -- Надпись
+	self.hard:Init(276,152,160,14)
+    self.hard:SetText("46 / 500 GB")
+	self.hard:SetFont(GetFontGraffiti22Russian())
+	self.hard:SetTextColor(255,255,250,255)
+	self.back_mc:AttachChild(self.hard)
+	
+	-- красный крестик
+    self.btn_exit = CUIButton()
+    self.btn_exit:SetAutoDelete(true)
+    self.btn_exit:Init(646,4,15,15) -- место, при нажатии на которое кнопка нажимается) проще говоря расположение кнопки XD
+	self.btn_exit:InitTexture("ui\\gz_computer\\okno_1") -- текстура кнопки 
+	self.btn_exit:SetOriginalRect(6,302,15,15) -- координаты кнопки в текстуре
+	self.btn_exit:SetStretchTexture(true)
+    self:Register(self.btn_exit,"btn_exit")
+	self.back_mc:AttachChild(self.btn_exit)
+    self:AddCallback("btn_exit",ui_events.BUTTON_DOWN,self.exit,self) -- отсылка на каллбеки в начале)
+end
+
+function my_comp:exit()
+ level.start_stop_menu(self,true) 
+end

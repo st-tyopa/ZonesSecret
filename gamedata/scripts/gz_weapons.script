@@ -1,0 +1,95 @@
+-----------------------------------------------------------------------
+--- gz_weapons_hud.script                                       
+--- Скриптовое оружие
+--- Автор: Kondr48                                
+--- Последнее редактирование: 11.07.2016              
+-----------------------------------------------------------------------
+
+local actor = db.actor
+local patronnik = false
+local table_bomb_exploded = {}
+
+function death_callback(victim, who)
+ if #table_bomb_exploded >= 1 then
+  for i = 1, #table_bomb_exploded, 1 do
+	 if table_bomb_exploded[i] == who:id() then
+      xr_statistic.addKillCount(victim)
+      news_manager.send_tip(actor, victim:character_name().." был убит Вашей бомбой с ИД "..table_bomb_exploded[i].." = "..who:id()) 
+	  table_bomb_exploded[i] = nil
+	 end
+  end
+ end
+end
+
+function plant_one_bomb()
+ if actor:active_item() and actor:active_item():section() == 'wpn_c4' then
+  local dir = vector():set(device().cam_dir)
+  dir.y = 0
+  local pos = vector():set(actor:position()):sub(dir:mul(-1))
+  local lvid = actor:level_vertex_id()
+  local gvid = actor:game_vertex_id()
+  obj = alife():create("c4_installed", pos, lvid, gvid)
+  table.insert(table_bomb_installed, obj.id)
+  item = actor:object("wpn_c4")
+  gz_utils.remove_item(item)
+ end
+end
+
+function detonator_blow_by_turns()
+ if actor:active_item() and actor:active_item():section() == 'wpn_detonator' then
+   detonate_explosive(table_bomb_installed[1])
+   table.remove(table_bomb_installed, 1)
+ end
+end
+
+function test()
+ for key, value in pairs(table_bomb_installed) do
+  news_manager.send_tip(actor, "table_bomb_installed = {"..key.." = "..value.."}")
+ end
+end
+
+function test2()
+ table_bomb_installed = {}
+end
+
+function detonator_blow_everything()
+ if actor:active_item() and actor:active_item():section() == 'wpn_detonator' then
+  for i = 1, #table_bomb_installed, 1 do
+   detonate_explosive(table_bomb_installed[i])
+   table_bomb_installed[i] = nil
+  end
+ end
+end
+
+function detonate_explosive(obj_id)
+ if obj_id~=nil and level.object_by_id(obj_id) ~= nil then
+  table.insert(table_bomb_exploded, obj_id)
+  level.object_by_id(obj_id):explode(0)
+ else
+  for i = 1, #table_bomb_installed, 1 do
+   if table_bomb_installed[i] == obj_id then
+     table_bomb_installed[i] = nil
+   end
+  end
+ end
+end
+
+function on_before_save()
+ gz_utils.save_table("table_bomb_installed", table_bomb_installed)
+end
+
+function weapons_restore()
+ table_bomb_installed = gz_utils.load_table("table_bomb_installed", {})
+end
+
+function on_item_take(obj)
+ if obj:section() == 'c4_installed' then
+  gz_utils.remove_item(obj)
+  gz_utils.spawn_item_in_inv("wpn_c4")
+  for i = 1, #table_bomb_installed, 1 do
+   if table_bomb_installed[i] == obj:id() then
+     table_bomb_installed[i] = nil
+   end
+  end
+ end
+end

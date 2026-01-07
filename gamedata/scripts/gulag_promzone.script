@@ -1,0 +1,333 @@
+local t = {}
+
+function load_job(sj, gname, type, squad, groups)
+
+--------------------------------------------------------------------------
+-- База наемников
+--------------------------------------------------------------------------	
+	if type == "pz_merclager" then
+		t = { section = "logic@pz_merclager_leader",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "pz_merclager_leader"
+			end
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@pz_merclager_sniper_1",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "pz_merclager_sniper_1"
+			end
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_sniper_2",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "pz_merclager_sniper_2"
+			end
+		}
+		table.insert(sj, t)		
+		
+		t = { section = "logic@pz_merclager_facecontrol_com_1",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "pz_merclager_facecontrol_com_1"
+			end
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_facecontrol_com_2",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "pz_merclager_facecontrol_com_2"
+			end
+		}
+		table.insert(sj, t)
+		
+		
+		t = { section = "logic@pz_merclager_facecontrol_1_guard_1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_facecontrol_1_guard_2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_facecontrol_2_guard_1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_facecontrol_2_guard_2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@pz_merclager_leader_guard_1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_leader_guard_2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_leader_guard_3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		
+		
+		t = { section = "logic@pz_merclager_guard_patrol_1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@pz_merclager_guard_1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_guard_2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_guard_3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_merclager_guard_4",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+	end
+
+--------------------------------------------------------------------------	
+--------------------------------------------------------------------------
+-- Война группировок
+--------------------------------------------------------------------------	
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+-- Сталкеры
+--------------------------------------------------------------------------	
+	if type == "pz_fraction_war_stalkers" then
+		t = { section = "logic@pz_fraction_war_stalkers_stalker_1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_stalkers_stalker_2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_stalkers_stalker_3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_stalkers_stalker_4",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_stalkers_stalker_5",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_stalkers_stalker_6",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+end
+--------------------------------------------------------------------------
+-- Бандиты
+--------------------------------------------------------------------------	
+	if type == "pz_fraction_war_bandits" then
+		t = { section = "logic@pz_fraction_war_bandits_bandit_1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_bandits_bandit_2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_bandits_bandit_3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_bandits_bandit_4",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_bandits_bandit_5",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_bandits_bandit_6",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+end
+--------------------------------------------------------------------------
+-- Зомбированные сталкеры
+--------------------------------------------------------------------------	
+	if type == "pz_fraction_war_zombiedstalkers" then
+		t = { section = "logic@pz_fraction_war_zombiedstalkers_zs_1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_zombiedstalkers_zs_2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_zombiedstalkers_zs_3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_zombiedstalkers_zs_4",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_zombiedstalkers_zs_5",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+		t = { section = "logic@pz_fraction_war_zombiedstalkers_zs_6",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+		}
+		table.insert(sj, t)
+end
+end
+--------------------------------------------------------------------------
+-- состояния гулагов
+--------------------------------------------------------------------------
+
+function load_states(gname, type)
+	if type == "pz_merclager" or
+	type == "pz_fraction_war_stalkers"	or 	
+	type == "pz_fraction_war_bandits"	or 
+	type == "pz_fraction_war_zombiedstalkers"	then
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+	return nil
+end
+
+--------------------------------------------------------------------------
+-- Dynamic ltx
+--------------------------------------------------------------------------
+function load_ltx(gname, type)
+	return nil
+end
+
+function checkStalker(npc_community, gulag_type, npc_rank, se_obj)
+	if gulag_type == "pz_merclager" then
+		return npc_community == "killer"
+	end
+	
+	if gulag_type == "pz_fraction_war_stalkers" then
+		return npc_community == "stalker"
+	end
+	
+	if gulag_type == "pz_fraction_war_bandits" then
+		return npc_community == "bandit"
+	end
+	
+	if gulag_type == "pz_fraction_war_zombiedstalkers" then
+		return npc_community == "zombied"
+	end
+	return false
+end
+
+function checkMonster(npc_community, gulag_type)
+	return false
+end

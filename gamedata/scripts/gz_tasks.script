@@ -1,0 +1,408 @@
+local actor = db.actor
+
+local table_quest_item_info = {
+["killer_outfit_green"] = "pz_rob_merclager_have_outfit_done",
+["quest_art_kolokol"] = "gar_depo_find_art_have",
+["quest_rf_art"] = "rf_art_have",
+["af_ds_art"] = "af_ds_quest_art_have",
+["af_gar_gubka"] = "ds_art_quest_have",
+["af_zerkalo"] = "yan_find_zerkalo_done",
+["team_diary"] = "find_team_done",
+["quest_key_greh_guard"] = "greh_guard_key_have",
+["quest_weapons_case"] = "find_weapons_case_have",
+["pda_cap_dv"] = "go_to_garneutlager_start",
+["agr_dolgbase_und_key"] = "agr_dolgbase_und_key_have",
+["quest_case_instruments"] = "find_yar_instruments_have",
+["quest_medkit_case_doc"] = "find_doc_medkit_case",
+["quest_guitar"] = "find_guitar_have",
+["pda_torgash"] = "find_pda_torgash",
+["pda_depo_dead_stalker"] = "pda_depo_dead_stalker_have",
+["quest_agr_merc_pda"] = "open_agr_merc_pda_start",
+["shpion_papka"] = "find_tainik_done",
+["quest_raciya_detail_1"] = "find_details_battery_have",
+["quest_raciya_detail_2"] = "find_details_tranzistor_have",
+["quest_raciya_detail_3"] = "find_details_provoloka_have",
+["quest_raciya_detail_4"] = "find_details_plata_have",
+["quest_diary_wounded_digger"] = "quest_diary_wounded_digger_have",
+["quest_diary_dead_digger1"] = "quest_diary_dead_digger1_have",
+["quest_diary_dead_digger2"] = "quest_diary_dead_digger2_have",
+["pz_lab_yell_case"] = "yell_case_have",
+["quest_key_pz_seif"] = "pz_mercs_seif_key_have",
+["dv_fomka_diary"] = "dv_fomka_diary_info",
+["pz_lab_blue_case"] = "pz_lab_case_have",
+["pz_scien_diary"] = "pz_scien_diary_find",
+["quest_diary_suicide_digger"] = "quest_diary_suicide_digger_have",
+["rf_documents"] = "rf_cave_docs_find_done",
+["rf_pismo"] = "have_rf_pismo",
+["pda_maps"] = "find_pda_in_box_done",
+["quest_pda_zombie"] = "quest_pda_zombie_find",
+["pda_gorb"] = "pda_gorb_have",
+["pda_hunt"] = "pda_hunt_have",
+["pda_predat"] = "have_pda_predat",
+["pda_bandit_leshui"] = "pda_bandit_leshui_have",
+["pda_sv_loki"] = "pda_sv_loki_have",
+["bezpamatnii_diary"] = "bezpamatnii_diary_have",
+["pda_sv_cheh"] = "pda_sv_cheh_have",
+["pda_dolg_kuprianov"] = "pda_dolg_kuprianov_have",
+["gz_tainik_case"] = "gz_tainik_case_have",
+["pda_ld_code"] = "ds_find_shved_pda_done",
+["pda_maps_band"] = "pda_maps_band_have",
+["prisoners_flesh"] = "find_prisoners_flesh_have",
+["rf_docs"] = "rf_papers_have", 
+["pda_petro"] = "find_bekas_at_td_start",
+["pda_bekas"] = "find_bekas_box",
+["lab_noyt"] = "find_noyt_in_lab_done",
+["mutant_psevdogigant_big_hand"] = "rf_hunters_have_trophey",
+["storyline_gar_dynamite"] = "gar_find_dynamit_done",
+["quest_talisman"] = "quest_talisman_have",
+["scien_flash"] = "find_lab_flash_done",
+["pz_merclager_documents"] = "pz_rob_merclager_docs_done",
+["ds_geed_diary"] = "ds_geed_diary_have",
+["dv_black_diger_diary"] = "dv_black_digger_diary_have",
+["dv_greh_diary"] = "dv_greh_have",
+["bekas_money"] = "find_bekas_money_done",
+["stroyka_key"] = "lab_stroyka_key_have",
+["diggers_maps"] = "find_tainik_maps_black_digger",
+["tainik_pismo"] = "tainik_pismo_have",
+["racya_b"] = "find_raciya_done",
+["pda_borman"] = "pda_borman_have",
+["pda_messenger"] = "go_to_garneutlager_start",
+["wpn_rg-6"] = "rf_find_cave_gun",
+["rf_mil_pda"] = "rf_mil_pda_cave_have",
+["rf_lab_card"] = "rf_lab_card_have",
+["dscol_af_prelest"] = "dscol_af_prelest_have",
+["pda_cap_dv"] = "pda_cap_dv_have"
+}
+
+local scientific_suit = {
+["scientific_outfit"] = true,
+["dolg_scientific_outfit"] = true,
+["ecolog_outfit"] = true
+}
+
+function check_sci_suit()
+ if actor:item_in_slot(6) and scientific_suit[actor:item_in_slot(6)] == true then
+  return true
+ else 
+  return false
+ end
+end
+
+function item_take(obj)
+ local section = obj:section()
+ if table_quest_item_info[section] then
+  gz_utils.give_info(table_quest_item_info[section])
+ elseif section == 'quest_diary_dead_digger1' then
+   local snd = sound_object([[characters_voice\soz\gz_darkscape\dscol_digger1_diary]]) 
+  snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0)
+  	news_manager.send_tip(db.actor, "%c[255,255,128,128] Воспроизведение записи с найденного ПДА\n%c[default]", 0, "base", 15000)
+elseif section == 'quest_diary_dead_digger2' then
+   local snd = sound_object([[characters_voice\soz\gz_darkscape\dscol_digger2_diary]]) 
+  snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0)
+  	news_manager.send_tip(db.actor, "%c[255,255,128,128] Воспроизведение записи с найденного ПДА\n%c[default]", 0, "base", 15000)
+  elseif section == 'quest_diary_suicide_digger' then
+   local snd = sound_object([[characters_voice\soz\gz_darkscape\dscol_digger3_diary]]) 
+  snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0)
+  	news_manager.send_tip(db.actor, "%c[255,255,128,128] Воспроизведение записи с найденного ПДА\n%c[default]", 0, "base", 15000)
+ elseif section == 'af_whispers' then
+  gz_utils.give_info("und_find_art")
+  local snd = sound_object([[ambient\X-18\9]]) 
+  snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0)
+ elseif section == 'ds_money' then
+  actor:give_money(3500)
+  gz_utils.remove_item(obj)
+ elseif section =="wpn_pm" and has_alife_info("gg_was_in_anomal") and not has_alife_info("lab_stroyka_key_have") then
+  obj:set_condition(0.5)
+  obj:set_ammo_elapsed(1)
+ elseif section == 'quest_pda_otshel' and has_alife_info("rf_lesnik_quest_talk_done") then // ВНИМАНИЕ. Переделать на то чтобы "квест" снимался с ПДА.
+  gz_utils.give_info("yan_find_zerkalo_start")
+  gz_utils.give_info("infa_yan_othsel_pda")
+ end
+end   
+
+function OnInfo(info_id)
+ if info_id == "find_weapons_case_start" then
+  gz_prologue.dv_zapravka_bandit_dead()
+ end
+end
+
+function on_item_drop(obj)
+ if obj and obj:section() == "af_zerkalo" then
+   give_info("art_get_away")	
+ end
+end
+
+function af_whispers_snd(obj)
+ if obj:section() == "af_whispers" then
+  local timer = math.random(30,70)
+  start_real_timer(timer, "gz_tasks.play_snd_af")
+ end
+end
+
+function play_snd_af()
+ local snd = {"10","13","14","22","23","31","32","33","34","52","58","62","63"}
+ local rnd_snd = snd[table.random(snd)]
+ if rnd_snd == "10" then 
+  gz_utils.s_play([[ambient\10]])
+ elseif rnd_snd == "13" then
+  gz_utils.s_play([[ambient\13]])
+ elseif rnd_snd == "14" then
+  gz_utils.s_play([[ambient\14]])
+ elseif rnd_snd == "22" then
+  gz_utils.s_play([[ambient\22]])
+ elseif rnd_snd == "23" then
+  gz_utils.s_play([[ambient\23]])
+ elseif rnd_snd == "31" then
+  gz_utils.s_play([[ambient\31]])
+ elseif rnd_snd == "32" then
+  gz_utils.s_play([[ambient\32]])
+ elseif rnd_snd == "33" then
+  gz_utils.s_play([[ambient\33]])
+ elseif rnd_snd == "34" then
+  gz_utils.s_play([[ambient\34]])
+ elseif rnd_snd == "52" then
+  gz_utils.s_play([[ambient\52]])
+ elseif rnd_snd == "58" then
+  gz_utils.s_play([[ambient\58]])
+ elseif rnd_snd == "62" then
+  gz_utils.s_play([[ambient\62]])
+ elseif rnd_snd == "63" then
+  gz_utils.s_play([[ambient\63]])
+ elseif rnd_snd == "10" then
+  gz_utils.s_play([[ambient\10]])
+ elseif rnd_snd == "10" then
+  gz_utils.s_play([[ambient\10]])
+ elseif rnd_snd == "10" then
+  gz_utils.s_play([[ambient\10]])
+ elseif rnd_snd == "10" then
+  gz_utils.s_play([[ambient\10]]) 
+ end
+ news_manager.send_tip(actor, rnd_snd)   
+ 
+ actor:iterate_belt(check_quest_art, actor)
+end
+
+function check_quest_art(npc, item) 
+ if item:section() == "af_whispers" then
+  local timer = math.random(30,70)
+  start_real_timer(timer, "gz_tasks.play_snd_af")
+ end
+end
+
+function on_actor_weapon_fire()
+ if has_info("bekas_midnight") == true and has_info("bekas_lead_done") == false then
+  local actor = db.actor
+  gobj = gz_tasks.return_bekas_obj()
+   if gobj and gobj ~= false then
+    dist = gobj:position():distance_to(actor:position())
+     if dist <= 40 then
+      give_info("bekas_vrag")
+	  news_manager.send_tip(db.actor,"КОСЯК ЗДЕСЬ")
+     end
+   end	 
+ end
+end
+
+function dv_help_dolg_group_give()
+ gz_gui_interactive_quest.gui_start("dv_help_dolg_group_give")
+end
+
+function greh_key_spawns_in_box()
+ local inv = alife():story_object(11759)
+ alife():create("quest_key_greh_guard", vector(), 0, 0, inv.id)
+end
+
+function killer_suit_update() 
+ if not has_alife_info("pz_actor_enemy_merclager") then
+  local actor = db.actor 
+   if actor:item_in_slot(6) and actor:item_in_slot(6):section() == 'killer_outfit_green' then 
+    gz_utils.give_info("actor_is_killer") 
+   else 
+    gz_utils.del_info("actor_is_killer") 
+    --gz_utils.give_info("pz_actor_enemy_merclager") 
+   end 
+  end
+ end
+
+function bandit_suit_update()
+ local actor = db.actor
+ if actor:item_in_slot(6) and actor:item_in_slot(6):section() == 'bandit_veteran_outfit' then
+  gz_utils.give_info("actor_is_bandit")
+ else
+  gz_utils.del_info("actor_is_bandit")
+ end
+end
+
+function fire_merc_check()
+ if has_alife_info("actor_is_killer") and not has_alife_info("pz_actor_enemy_merclager") then
+  local actor = db.actor
+  local item = actor:active_item():get_weapon()
+  status = tostring(item.silencer_status)
+  test = tostring(item.silencer_name)
+  news_manager.send_tip(actor, status.." Выстрел из "..actor:active_item():section().." Какой глушак может стоять = "..test)
+  --gz_utils.del_info("actor_is_killer")
+  --gz_utils.give_info("pz_actor_enemy_merclager")
+ end
+end
+
+function check_gobj(first_speaker, second_speaker)
+ beakas_obj = second_speaker
+end
+
+function dv_bekas_actor_cover_f()
+ local time_h = level.get_time_hours()
+ local actor = db.actor
+ local gobj = gz_tasks.return_bekas_obj()
+   if gobj and gobj ~= false then
+    dist = gobj:position():distance_to(actor:position())
+   end
+  if has_alife_info("dv_bekas_actor_cover") or dist >= 70 then -- мы в укрытии или, если нет, проверим как далеко мы от Бекаса
+   if time_h > 21 or time_h < 6 then -- время ночь
+    --запустим маленький таймер, чтобы квест резко не засчитывался, если мы приперлись ночью надо переждать хоть чуток
+	timer = 10000
+    timeNow = time_global()
+    level.add_call(CondFunc, snakalsja_done)    
+   end
+  end 
+end
+function CondFunc() -- таймер в реальном времени.
+ if time_global() > timeNow + timer then
+  return true
+ end
+ return false
+end
+function snakalsja_done()
+  gz_utils.give_info("dv_bekas_actor_cover_f")
+end
+function return_bekas_obj()
+  if beakas_obj then
+   return beakas_obj
+  else
+   return false
+   end
+end
+
+function dolg_tainiki(box, item)
+ if has_alife_info("start_find_dolgs_t") and not has_alife_info("dolgs_t_3") then
+  local story_id = box:story_id()
+   if item:section() == 'quest_gps' then
+     if story_id == 14152 then
+      gz_utils.give_info("dolgs_t_1")
+	  news_manager.send_tip(actor, "varyag_tainik_nagrada_one", 0, "varag", 15000)
+     elseif story_id == 14153 then
+      gz_utils.give_info("dolgs_t_2")
+	  gz_utils.save_variable("dolg_tainik", 3)
+	  news_manager.send_tip(actor, "varyag_tainik_nagrada_two", 0, "varag", 15000)
+     elseif story_id == 14154 then
+      gz_utils.give_info("dolgs_t_3")
+	  news_manager.send_tip(actor, "varyag_tainik_nagrada_tri", 0, "varag", 15000)
+	 end
+    end
+ end
+end
+
+function rf_radio()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\ocelot_sos]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Неизвестный:\n%c[default] SOS! Кто-нибудь, помогите! Нас четверо, мы в восточной части леса... Вот уже несколько суток, провизия закончилась. Куда ни идём, всегда выходим к одному и тому же ...", 0, "base", 15000)
+end
+
+function have_water(first_speaker, second_speaker)
+    return first_speaker:object("water") ~= nil
+end
+
+function have_racia(first_speaker, second_speaker)
+    return first_speaker:object("racya_b") ~= nil
+end
+
+function transfer_rf_water(first_speaker, second_speaker)
+		dialogs.relocate_item_section(first_speaker, "water", "out")
+end
+
+function transfer_rf_water_2 (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "water", "in")
+end
+
+function quest_restored()
+ if has_alife_info("open_germodoor_done") then
+  level.add_pp_effector("dead_zone.ppe", 2048, true)
+ end
+end
+
+function give_info_noyt()
+ gz_utils.give_info("yan_find_noyt_done_sms")
+end
+
+--Ограбление на Янтаре.
+function yan_grab_func_1()
+ level.disable_input()
+ level.hide_indicators()
+ timefactor = level.get_time_factor()
+ level.set_time_factor(1000)
+ local dir=device().cam_dir
+ db.actor:set_actor_direction(dir.x,dir.y,0) --'выравниваем направление взгляда, чтобы было падение более реалистичным
+ level.add_cam_effector("camera_effects\\surge_02.anm", 2532, false, "")
+ level.add_pp_effector("surge_fade.ppe", 2011, false)
+ --local snd_obj = xr_sound.get_safe_sound_object([[actor\hit_5]])
+ --snd_obj:play_no_feedback(actor, sound_object.s2d, 0, vector(), 15.0)
+ sim = alife()
+ soBox = sim:story_object(62333)
+ switch_online(soBox.id)
+ start_quick_timer(3, "gz_tasks.yan_grab_func_2")
+end
+
+function yan_grab_func_2()
+ level.add_pp_effector("peace_fade.ppe", 1973, true)
+ gz_utils.spawn_item_in_inv("medkit", 3)
+ gz_utils.spawn_item_in_inv("military_outfit")
+ gz_utils.spawn_item_in_inv("wpn_ak74")
+ gz_utils.spawn_item_in_inv("ammo_5.45x39_fmj", 2)
+ gz_utils.spawn_item_in_inv("water", 3)
+ start_quick_timer(4, "gz_tasks.yan_grab_func_3")
+end
+
+local function transfer_object_item(item)
+    out_object:transfer_item(item, in_object)
+end
+
+function yan_grab_func_3()
+ box_with_loot = level_object_by_sid(62333)
+ out_object = db.actor
+ in_object = box_with_loot
+ db.actor:inventory_for_each(transfer_object_item)
+ level.set_time_factor(timefactor)
+ level.remove_pp_effector(1973)
+ level.enable_input()
+ level.show_indicators()
+ --switch_offline(soBox.id)
+end
+
+function monster_death(victim, who)
+ local sid = victim:story_id()
+ if sid < 4294967296 and sid == 65010 then
+  gz_utils.give_info("kill_fracture")
+ end
+end
+
+--// Особенные диалоги. Какая-то из фрас динамически генерируется скриптом. Пока немного избыточно. Для каждой фразы формируется блок из одной фразы.
+
+--// Ученые, которым мы называем дату и время.
+function date_and_time(phr_tbl, phr_k, dlg, block_name, block_input_key)
+ --game.translate_string(m_s_level)
+ local mounth_table = {"aJanuary", "aFebruary", "aMarch", "aApril", "aMay", "aJune", "aJuly", "aAugust", "aSeptember", "aOctober", "aNovember", "aDecember"}
+ local phrase_text_now, phrase_text_year = game.translate_string("aNow"), game.translate_string("aYear")
+ local year = level.get_time_year()
+ local month = game.translate_string(mounth_table[level.get_time_month()])
+ local day = level.get_time_days()
+ local hours = level.get_time_hours()
+ local minutes = level.get_time_minutes()
+ local time_text = string.format("%s: %d %s %d %s, %02d:%02d", phrase_text_now, day, month, year, phrase_text_year, hours, minutes)
+ local PHR_id = block_name.."p1"
+ local a_tbl, p_tbl = {}, {}
+ assembly_dialogs.assembly_phrase_ex(time_text, phr_tbl, phr_k, dlg, PHR_id, block_input_key, a_tbl, p_tbl)
+ phr_k = phr_k + 1
+ local exit_table = {}
+ exit_table[1] = PHR_id
+ return {phr_k, exit_table}
+end
+

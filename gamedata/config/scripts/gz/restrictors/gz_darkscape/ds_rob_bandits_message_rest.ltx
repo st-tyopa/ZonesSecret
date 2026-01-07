@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-ds_rob_pass_fire} sr_tip
+
+[sr_tip]
+name = gz_ds_bridge_band_rob_mess
+type = tips
+single = true
+on_timer = 7000| {+start_find_team} nil %+ds_goto_bandlider_start%

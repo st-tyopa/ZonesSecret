@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+rf_lesnik_tel} sr_idle1
+
+[sr_idle1]
+on_timer = 5000| %-lesnik_quest_off% sr_idle@nil
+
+[sr_idle@nil]

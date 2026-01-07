@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-antigas_zone} %+antigas_zone% sr_idle2
+
+[sr_idle2]
+on_actor_outside = {+antigas_zone} %-antigas_zone% sr_idle
+
+[sr_idle@nil]

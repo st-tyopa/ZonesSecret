@@ -1,0 +1,7 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+agr_general_sent_to_underground} %+go_to_underground_done% sr_idle@end, {+alt_enter_in_agr_underground_start} %+go_to_underground_done% sr_idle@end
+
+[sr_idle@end]

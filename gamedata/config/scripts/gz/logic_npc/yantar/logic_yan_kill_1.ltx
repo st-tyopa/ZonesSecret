@@ -1,0 +1,20 @@
+[logic]
+active = zoneguard@yan_kill_1
+
+[walker@yan_kill_1]
+path_walk = yan_kill_1_stay
+path_look = yan_scien_1_look
+
+
+[zoneguard@yan_kill_1]
+path_walk = yan_kill_1_stay
+path_look = yan_kobold_look_1
+zone_warn = yan_final_rest
+zone_guard = yan_kill_guard_zone
+team = yan_killers_1
+no_move = true
+no_danger = false
+ignore_friends = false
+on_info = {+kobold_vrag} %=killactor%
+on_info2 = {+yan_kill_kill_1} %=kill%
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+    <dialog id="lab_uchen_start_dialog">
+	<dont_has_info>activate_gener_start</dont_has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>lab_text1</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>lab_text2</text>
+				<next>11</next>
+				<next>12</next>
+			</phrase>
+			<phrase id="11">
+				<text>lab_uchen_text_11</text>
+				<next>2</next>
+			</phrase>
+			<phrase id="12">
+			<precondition>dialogs.actor_have_medkit</precondition>
+				<text>lab_uchen_text_12</text>
+				<action>dialogs.transfer_medkit</action>
+				<next>2</next>
+			</phrase>
+			<phrase id="2">
+				<text>Наёмники, твари! Перестреляли весь наш персонал... но я то знаю, кто за всем этим стоит... Вся информация у меня в диске, он не должен попасть к ним в руки.</text>
+				<next>26</next>
+			</phrase>
+			<phrase id="26">
+				<text>Всё это просто замечательно, но нам надо выбираться отсюда и как можно скорее.</text>
+				<next>25</next>
+			</phrase>
+			<phrase id="25">
+				<text>lab_uchen_text_2</text>
+				<next>3</next>
+			</phrase>
+			<phrase id="3">
+				<text>lab_text3</text>
+				<give_info>activate_gener_start</give_info>
+				<action>gz_laba.key_create</action>
+				<action>dialogs.break_dialog</action>
+			</phrase>
+		</phrase_list>
+	</dialog>
+</game_dialogs>

@@ -1,0 +1,37 @@
+[logic]
+active = sr_idle
+ 
+[sr_idle]
+on_info = %=play_snd_from_obj(19004:nature\new_flies1)% sr_idle1
+on_info2 = {+dscol_mystic_activate} sr_idle3
+
+[sr_idle1]
+on_timer = 5800| sr_idle2
+on_info = {+dscol_mystic_activate} sr_idle3
+
+[sr_idle2]
+on_info = %=play_snd_from_obj(19004:nature\new_flies2)% sr_idle21
+on_info2 = {+dscol_mystic_activate} sr_idle3
+
+[sr_idle21]
+on_timer = 3000| sr_idle
+
+[sr_idle3]
+on_info = %=play_snd_from_obj(19004:soz\characters_voice\scenario\zov1)% sr_idle4
+
+[sr_idle4]
+on_info = %=play_snd_from_obj(19004:nature\new_flies1)% sr_idle5
+
+[sr_idle5]
+on_timer = 5800| sr_idle6
+
+[sr_idle6]
+on_info = %=play_snd_from_obj(19004:nature\new_flies2)% sr_idle7
+
+[sr_idle7]
+on_timer = 3000| sr_idle4
+
+
+
+
+[sr_idle@nil]

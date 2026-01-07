@@ -1,0 +1,314 @@
+[exo_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "outfit\exo_outfit"
+$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = equipments\exoskelet	
+actor_visual	= actors\hero\stalker_exoskeleton.ogf
+
+texture_exo = act_arm_exo
+
+icon_in_repair = ui_inGame2_Armor_11
+icon_in_repair_scale_x = 303
+icon_in_repair_scale_y = 159
+upgrades = exo_upg_one,exo_upg_one_1,exo_upg_one_2,exo_upg_one_3,exo_upg_one_4,exo_upg_two,exo_upg_two_1,exo_upg_two_2,exo_upg_two_3,exo_upg_two_4,exo_upg_three,exo_upg_three_1,exo_upg_three_2,exo_upg_four,exo_upg_four_1,exo_upg_four_2,exo_upg_four_3,exo_upg_four_4,exo_upg_five,exo_upg_five_1,exo_upg_five_2,exo_upg_five_3
+
+
+ef_equipment_type	= 5
+
+inv_name			= exo_outfit_name
+inv_name_short		= exo_outfit_name
+description			= exo_outfit_description
+inv_weight			= 25.0
+slot				= 6
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 14
+inv_grid_y			= 13
+full_icon_name		= npc_icon_exo_outfit
+nightvision_sect	= pnv_instal_bad
+
+cost				= 50000
+full_scale_icon		= 2,11			;иконка сталкера в костюме в полный рост
+artefact_count = 2
+immunities_sect			= sect_exo_outfit_immunities
+
+; MEDIUM RESISTANCE
+burn_protection 				= 0.4
+strike_protection 				= 0.4
+shock_protection 				= 0.4
+wound_protection				= 0.4
+radiation_protection 			= 0.25
+telepatic_protection 			= 0.05
+chemical_burn_protection 		= 0.4
+explosion_protection 			= 0.4
+fire_wound_protection  			= 0.4
+
+;запрещение режима Sprint дл¤ јктера
+sprint_allowed					= false
+bones_koeff_protection			= exo_helmet_damage
+additional_inventory_weight		= 20
+additional_inventory_weight2	= 20 ; 40+
+
+[sect_exo_outfit_immunities]
+burn_immunity				= 0.03			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.01
+shock_immunity				= 0.03
+wound_immunity				= 0.01
+radiation_immunity			= 0.00
+telepatic_immunity			= 0.00
+chemical_burn_immunity		= 0.03
+explosion_immunity			= 0.03
+fire_wound_immunity			= 0.005
+
+[exo_upg_one]
+name                    = st_up_arm_a4_name
+description             = st_up_arm_a4_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_1
+position_x	     		= 0
+position_y		    	= 27
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 1500
+fire_wound_protection	= 0.1
+bones_koeff_protection = exo_helmet_damage_add_1
+
+[exo_upg_one_1]
+name                    = st_up_arm_b7_name
+description             = st_up_arm_b7_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_2
+position_x	     		= 100
+position_y		    	= 0
+precondition_upg        = exo_upg_one
+precondition_ban        = exo_upg_one_2
+cost 		            = 2500
+fire_wound_protection	= 0.2
+
+[exo_upg_one_2]
+name                    = st_up_arm_b5_name
+description             = st_up_arm_b5_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_4
+position_x	     		= 100
+position_y		    	= 54
+precondition_upg        = exo_upg_one
+precondition_ban        = exo_upg_one_1
+cost 		            = 2500
+immunities_count        = 0.15
+
+[exo_upg_one_3]
+name                    = st_up_arm_c12_name
+description             = st_up_arm_c12_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_3
+position_x	     		= 200
+position_y		    	= 0
+precondition_upg        = exo_upg_one_1,exo_upg_one_2
+precondition_ban        = exo_upg_one_4
+cost 		            = 3500
+fire_wound_protection	= 0.3
+
+[exo_upg_one_4]
+name                    = st_up_arm_c8_name
+description             = st_up_arm_c8_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_5
+position_x	     		= 200
+position_y		    	= 54
+precondition_upg        = exo_upg_one_1,exo_upg_one_2
+precondition_ban        = exo_upg_one_3
+cost 		            = 3500
+strike_protection       = 0.3
+explosion_protection    = 0.3
+wound_protection        = 0.3
+
+[exo_upg_two]
+name                    = st_up_kom_a2_name
+description             = st_up_kom_a2_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_6
+position_x	     		= 0
+position_y		    	= 135
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 1200
+strike_protection       = 0.1
+explosion_protection    = 0.1
+wound_protection        = 0.1
+
+[exo_upg_two_1]
+name                    = st_up_kom_b8_name
+description             = st_up_kom_b8_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_7
+position_x	     		= 100
+position_y		    	= 108
+precondition_upg        = exo_upg_two
+precondition_ban        = exo_upg_two_2
+cost 		            = 2000
+shock_protection        = 0.2
+
+[exo_upg_two_2]
+name                    = st_up_kom_b9_name
+description             = st_up_kom_b9_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_9
+position_x	     		= 100
+position_y		    	= 162
+precondition_upg        = exo_upg_two
+precondition_ban        = exo_upg_two_1
+cost 		            = 2000
+burn_protection         = 0.2
+
+[exo_upg_two_3]
+name                    = st_up_kom_c7_name
+description             = st_up_kom_c7_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_8
+position_x	     		 = 200
+position_y		    	 = 108
+precondition_upg         = exo_upg_two_1,exo_upg_two_2
+precondition_ban         = exo_upg_two_4
+cost 		             = 2800
+burn_protection          = 0.3
+chemical_burn_protection = 0.3
+
+[exo_upg_two_4]
+name                     = st_up_kom_c9_name
+description              = st_up_kom_c9_descr
+icon                     = ui_inGame2_upgrade_exo_outfit_10
+position_x	     		 = 200
+position_y		    	 = 162
+precondition_upg         = exo_upg_two_1,exo_upg_two_2
+precondition_ban         = exo_upg_two_3
+cost 		             = 2800
+radiation_protection     = 0.3
+
+[exo_upg_three]
+name                     = st_up_uti_a3_name
+description              = st_up_uti_a3_descr
+icon                     = ui_inGame2_upgrade_exo_outfit_11
+position_x	     		 = 0
+position_y		    	 = 216
+precondition_upg         = no
+precondition_ban         = no
+cost 		             = 1200
+power_restore_speed      = 0.002
+
+[exo_upg_three_1]
+name                     = st_up_uti_b1_name
+description              = st_up_uti_b1_descr
+icon                     = ui_inGame2_upgrade_exo_outfit_14
+position_x	     		 = 100
+position_y		    	 = 216
+precondition_upg         = exo_upg_three
+precondition_ban         = no
+cost 		             = 4800
+artefact_count           = 2
+
+[exo_upg_three_2]
+name                     = st_up_uti_c1_name
+description              = st_up_uti_c1_descr
+icon                     = ui_inGame2_upgrade_exo_outfit_13
+position_x	     		 = 200
+position_y		    	 = 216
+precondition_upg         = exo_upg_three_1
+precondition_ban         = no
+cost 		             = 8000
+artefact_count           = 4
+
+[exo_upg_four]
+name                            = st_up_exo_a1_name
+description                     = st_up_exo_a1_descr
+icon                            = ui_inGame2_upgrade_exo_outfit_15
+position_x	     		        = 0
+position_y		    	        = 297
+precondition_upg                = no
+precondition_ban                = no
+cost 		                    = 1200
+additional_inventory_weight		= 10
+additional_inventory_weight2	= 10
+
+[exo_upg_four_1]
+name                            = st_up_exo_b1_name
+description                     = st_up_exo_b1_descr
+icon                            = ui_inGame2_upgrade_exo_outfit_16
+position_x	     		        = 100
+position_y		    	        = 270
+precondition_upg                = exo_upg_four
+precondition_ban                = exo_upg_four_2
+cost 		                    = 2000
+inv_weight			            = -10.0
+
+[exo_upg_four_2]
+name                            = st_up_exo_b2_name
+description                     = st_up_exo_b2_descr
+icon                            = ui_inGame2_upgrade_exo_outfit_18
+position_x	     		        = 100
+position_y		    	        = 324
+precondition_upg                = exo_upg_four
+precondition_ban                = exo_upg_four_1
+cost 		                    = 2000
+immunities_count                = 0.15
+
+[exo_upg_four_3]
+name                            = st_up_exo_c1_name
+description                     = st_up_exo_c1_descr
+icon                            = ui_inGame2_upgrade_exo_outfit_17
+position_x	     		        = 200
+position_y		    	        = 270
+precondition_upg                = exo_upg_four_1,exo_upg_four_2
+precondition_ban                = exo_upg_four_4
+cost 		                    = 3200
+power_restore_speed				= 0.003
+
+[exo_upg_four_4]
+name                            = st_up_exo_c2_name
+description                     = st_up_exo_c2_descr
+icon                            = ui_inGame2_upgrade_exo_outfit_19
+position_x	     		        = 200
+position_y		    	        = 324
+precondition_upg                = exo_upg_four_1,exo_upg_four_2
+precondition_ban                = exo_upg_four_3
+cost 		                    = 4000
+sprint_allowed					= true
+
+[exo_upg_five]
+name                     = st_up_res_a1_name
+description              = st_up_res_a1_descr
+icon                     = ui_inGame2_upgrade_exo_outfit_20
+position_x	     		 = 0
+position_y		    	 = 405
+precondition_upg         = no
+precondition_ban         = no
+cost 		             = 1200
+chemical_burn_protection = 0.1
+radiation_protection     = 0.1
+
+[exo_upg_five_1]
+name                    = st_up_res_b1_name
+description             = st_up_res_b1_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_21
+position_x	     		= 100
+position_y		    	= 432
+precondition_upg        = exo_upg_five
+precondition_ban        = exo_upg_five_2
+cost 		            = 2000
+telepatic_protection    = 0.2
+
+[exo_upg_five_2]
+name                    = st_up_resp_b1_name
+description             = st_up_resp_b1_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_23
+position_x	     		= 100
+position_y		    	= 378
+precondition_upg        = exo_upg_five
+precondition_ban        = exo_upg_five_1
+cost 		            = 3200
+nightvision_sect	    = pnv_instal_good
+
+[exo_upg_five_3]
+name                    = st_up_res_c4_name
+description             = st_up_res_c4_descr
+icon                    = ui_inGame2_upgrade_exo_outfit_22
+position_x	     		= 200
+position_y		    	= 405
+precondition_upg        = exo_upg_five
+precondition_ban        = exo_upg_five_1
+cost 		            = 3200
+telepatic_protection    = 0.3

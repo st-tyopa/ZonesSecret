@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = sr_idle2 %+pz_iskateli_group_start%
+
+[sr_idle2]
+on_info = {+pz_iskateli_group_start} nil %+pz_lab_case_dialog_done%

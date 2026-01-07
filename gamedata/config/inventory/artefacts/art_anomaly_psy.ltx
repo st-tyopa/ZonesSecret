@@ -1,0 +1,19 @@
+[af_whispers]:af_base   ; Хранитель душ
+$spawn 			        = "artifacts\whispers"
+visual				    = physics\anomaly\sap\bat.ogf  
+description			    = art_soul_box_descr
+inv_name			    = art_soul_box
+inv_weight			    = 0.5
+inv_grid_x			        = 16
+inv_grid_y			        = 4
+cost				    = 5000
+jump_height			    = .5
+particles			          = anomaly2\artefact\artefact_electra
+lights_enabled                = true
+trail_light_color             = 0.5,0.5,0.9
+trail_light_range             = 0.50
+power_restore_speed           = 0.002
+hit_absorbation_sect    = af_whispers_absorbation
+
+[af_whispers_absorbation]:af_base_absorbation
+wound_immunity          = 0.95		

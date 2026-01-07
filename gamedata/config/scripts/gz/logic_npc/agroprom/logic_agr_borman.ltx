@@ -1,0 +1,15 @@
+[logic]
+active = walker@agr_borman
+on_death = death@agr_borman
+
+[walker@agr_borman]
+path_walk = agr_borman_stay
+path_look = agr_borman_look
+on_info = {+borman_enemy} %=killactor%, {+borman_fail} walker@agr_borman_to_end
+
+[walker@agr_borman_to_end]
+path_walk = agr_borman_stay
+on_actor_dist_ge_nvis = 130| %+dell_borman%
+
+[death@agr_borman]
+on_info = %+kill_borman%

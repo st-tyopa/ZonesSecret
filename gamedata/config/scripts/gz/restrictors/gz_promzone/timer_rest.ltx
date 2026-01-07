@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+pz_merclager_bomb_blowup} sr_idle2
+
+[sr_idle2]
+on_game_timer = 5000|nil %+pz_boss_merc_alarm%

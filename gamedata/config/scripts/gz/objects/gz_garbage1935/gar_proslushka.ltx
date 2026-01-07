@@ -1,0 +1,12 @@
+[logic] 
+active = ph_idle 
+
+[ph_idle] 
+on_info = {+proslushka_start} ph_idle2 
+
+[ph_idle2] 
+on_use = ph_idle@nil %+proslushka_done =dell_gar_proslushka% 
+tips = gar_proslushka
+on_info = {+proslushka_done} ph_idle@nil
+
+[ph_idle@nil]

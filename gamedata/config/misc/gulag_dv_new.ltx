@@ -1,0 +1,82 @@
+--------------------------------------------------------------------------
+-- главный лагерь греха,эксклюзивные работы
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+--лидер греха
+--------------------------------------------------------------------------
+
+[logic@dv_grehbase_leader_walk]
+active = walker@dv_grehbase_leader_walk
+
+[walker@dv_grehbase_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+
+--------------------------------------------------------------------------
+--часовые базы
+--------------------------------------------------------------------------
+[logic@dv_grehbase_guard1_walk]
+active = walker@dv_grehbase_guard1_walk
+
+[walker@dv_grehbase_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+
+[logic@dv_grehbase_guard2_walk]
+active = walker@dv_grehbase_guard2_walk
+
+[walker@dv_grehbase_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+
+[logic@dv_grehbase_guard3_walk]
+active = walker@dv_grehbase_guard3_walk
+
+[walker@dv_grehbase_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+
+[logic@dv_grehbase_guard4_walk]
+active = walker@dv_grehbase_guard4_walk
+
+[walker@dv_grehbase_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+--------------------------------------------------------------------------
+--патрули базы
+--------------------------------------------------------------------------
+[logic@dv_grehbase_patrol1_walk]
+active = walker@dv_grehbase_patrol1_walk
+
+[walker@dv_grehbase_patrol1_walk]
+path_walk = patrol1_walk
+path_look = patrol1_look
+
+[logic@dv_grehbase_patrol2_walk]
+active = walker@dv_grehbase_patrol2_walk
+
+[walker@dv_grehbase_patrol2_walk]
+path_walk = patrol2_walk
+path_look = patrol2_look
+
+[logic@dv_grehbase_patrol3_walk]
+active = walker@dv_grehbase_patrol3_walk
+
+[walker@dv_grehbase_patrol3_walk]
+path_walk = patrol3_walk
+path_look = patrol3_look
+--------------------------------------------------------------------------
+-- костер базы
+--------------------------------------------------------------------------
+[logic@dv_grehbase_kamp_work1]
+active = kamp@dv_grehbase_kamp1
+
+[logic@dv_grehbase_kamp_work2]
+active = kamp@dv_grehbase_kamp1
+
+[logic@dv_grehbase_kamp_work3]
+active = kamp@dv_grehbase_kamp1
+
+[kamp@dv_grehbase_kamp1]
+center_point = kamp1
+path_walk = kamp_point1_task

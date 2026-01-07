@@ -1,0 +1,588 @@
+local t = {}
+
+function load_job(sj, gname, type, squad, groups)
+--------------------------------------------------------------------------
+-- База Свободы
+--------------------------------------------------------------------------	
+	if type == "dv_svobbase" then
+--------------------------------------------------------------------------
+-- эксклюзивные работы
+--------------------------------------------------------------------------
+   -- лидер свободы  (утро)
+		t = { section = "logic@dv_svobbase_leader_walk",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_svobbase_lider_cheh"
+			end
+		}
+		table.insert(sj, t)
+    -- торговец  (утро)
+		t = { section = "logic@dv_svobbase_trader_walk",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_svobbase_trader_varyag"
+			end
+		}
+		table.insert(sj, t)
+    -- механик  (утро)
+		t = { section = "logic@dv_svobbase_mehanik_walk",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_svobbase_mehanik_yar"
+			end
+		}
+		table.insert(sj, t)
+		
+    -- Часовой на вышке
+		t = { section = "logic@dv_svobbase_watchtower",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+    -- охранник у чеха
+		t = { section = "logic@dv_svobbase_guard_cheh_walker",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_svobbase_guard_cheh"
+			end
+		}
+		table.insert(sj, t)
+    -- часовой 1
+		t = { section = "logic@dv_svobbase_guard1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 2
+		t = { section = "logic@dv_svobbase_guard2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 3
+		t = { section = "logic@dv_svobbase_guard3_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 4
+		t = { section = "logic@dv_svobbase_guard4_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 5
+		t = { section = "logic@dv_svobbase_guard5_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 6
+		t = { section = "logic@dv_svobbase_guard6_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 1
+		t = { section = "logic@dv_svobbase_kamp_work1",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@dv_svobbase_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@dv_svobbase_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 1
+		t = { section = "logic@dv_svobbase_patrol1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 2
+		t = { section = "logic@dv_svobbase_patrol2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@dv_svobbase_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- свободовцы идущие на грех		
+		t = { section = "logic@dv_sv_attack_grehbase_lider1",
+			idle = 0,
+			prior = 50, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_sv_greshbase_lider_sputnik"
+			end
+		}
+		table.insert(sj, t)
+
+		t = { section = "logic@dv_sv_attack_grehbase_svobod1",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_sv_greshbase_default_1"
+			end
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@dv_sv_attack_grehbase_svobod2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_sv_greshbase_default_2"
+			end
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@dv_sv_attack_grehbase_svobod3",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_sv_greshbase_default_3"
+			end
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@dv_sv_attack_grehbase_svobod4",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_sv_greshbase_default_4"
+			end
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@dv_sv_attack_grehbase_svobod5",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_sv_greshbase_default_5"
+			end
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@dv_sv_attack_grehbase_svobod6",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "", 
+						online = true,
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_sv_greshbase_default_6"
+			end
+		}
+		table.insert(sj, t)
+	
+	end
+--------------------------------------------------------------------------
+-- блокпост свободы
+--------------------------------------------------------------------------	
+	if type == "dark_svob_blokp" then
+--------------------------------------------------------------------------
+-- эксклюзивные работы
+--------------------------------------------------------------------------
+    -- лидер блокпоста  (утро)
+		t = { section = "logic@dark_svob_blokp_leader",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_svobblokpost_commander_lukash"
+			end
+		}
+		table.insert(sj, t)
+    -- часовой 1
+		t = { section = "logic@dark_svob_blokp_guard1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 2
+		t = { section = "logic@dark_svob_blokp_guard2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 3
+		t = { section = "logic@dark_svob_blokp_guard3_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 4
+		t = { section = "logic@dark_svob_blokp_guard4_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 1
+		t = { section = "logic@dark_svob_blokp_kamp_work1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@dark_svob_blokp_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@dark_svob_blokp_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 1
+		t = { section = "logic@dark_svob_blokp_patrol1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 2
+		t = { section = "logic@dark_svob_blokp_patrol2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@dark_svob_blokp_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	end
+
+
+-- главный лагерь греха
+--------------------------------------------------------------------------	
+	if type == "dv_grehbase" then
+--------------------------------------------------------------------------
+-- эксклюзивные работы
+--------------------------------------------------------------------------
+    -- часовой 1
+		t = { section = "logic@dv_grehbase_guard1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 2
+		t = { section = "logic@dv_grehbase_guard2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 3
+		t = { section = "logic@dv_grehbase_guard3_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 4
+		t = { section = "logic@dv_grehbase_guard4_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+    -- часовой 5
+		t = { section = "logic@dv_grehbase_guard5",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+    -- патрульный 1
+		t = { section = "logic@dv_grehbase_patrol1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 2
+		t = { section = "logic@dv_grehbase_patrol2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 3
+		t = { section = "logic@dv_grehbase_patrol3_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+	-- Часовые на вышках
+			t = { section = "logic@dv_grehbase_watchtower1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+			t = { section = "logic@dv_grehbase_watchtower2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+			t = { section = "logic@dv_grehbase_watchtower3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	end
+
+------------------------------------------------
+----------Отряд долга----------------
+-------------------------------------
+	if type == "dv_dolg_group" then
+    -- лидер
+		t = { section = "logic@dv_dolg_group_lider",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "",
+						online = true,
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_dolg_group_lider"
+			end
+		}
+		table.insert(sj, t)
+	--патрульный
+		t = { section = "logic@dv_dolg_group_patrol",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+						online = true,
+		}
+		table.insert(sj, t)
+	--охранник1
+		t = { section = "logic@dv_dolg_group_guard1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+						online = true,
+		}
+		table.insert(sj, t)
+	--охранник2
+		t = { section = "logic@dv_dolg_group_guard2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+						online = true,
+		}
+		table.insert(sj, t)
+	--охранник3
+		t = { section = "logic@dv_dolg_group_guard3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+						online = true,
+		}
+		table.insert(sj, t)
+	end
+	
+------------------------------------------------
+----------Новая база для отряда свободы----------------
+-------------------------------------
+	if type == "dv_svobbase_nb" then
+    -- лидер
+		t = { section = "logic@dv_svobbase_nb_leader",
+			idle = 0,
+			prior = 50, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "dv_sv_greshbase_lider_sputnik"
+			end
+		}
+		table.insert(sj, t)
+	-- позиция 1
+		t = { section = "logic@dv_svobbase_nb_post1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- позиция 2
+		t = { section = "logic@dv_svobbase_nb_post2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- позиция 3
+		t = { section = "logic@dv_svobbase_nb_post3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- позиция 4
+		t = { section = "logic@dv_svobbase_nb_post4",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- позиция 5
+		t = { section = "logic@dv_svobbase_nb_post5",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- позиция 6
+		t = { section = "logic@dv_svobbase_nb_post6",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- позиция 7
+		t = { section = "logic@dv_svobbase_nb_post7",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- позиция 8
+		t = { section = "logic@dv_svobbase_nb_post8",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- позиция 9
+		t = { section = "logic@dv_svobbase_nb_post9",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	-- позиция 10
+		t = { section = "logic@dv_svobbase_nb_post10",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	end
+	
+end
+--------------------------------------------------------------------------
+-- состояния гулагов
+--------------------------------------------------------------------------
+
+function load_states(gname, type)
+	if type == "dv_svobbase" or
+	type == "dv_svobbase_nb" or
+	type == "dark_svob_blokp" or
+	type == "dv_grehbase" or
+	type == "dv_dolg_group"	then 
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+	return nil
+end
+
+--------------------------------------------------------------------------
+-- Dynamic ltx
+--------------------------------------------------------------------------
+function load_ltx(gname, type)
+	return nil
+end
+
+function checkStalker(npc_community, gulag_type, npc_rank, se_obj)
+	if gulag_type == "dv_svobbase" or
+		gulag_type == "dark_svob_blokp" then
+		return npc_community == "freedom"
+	end
+
+	if gulag_type == "dv_grehbase" then
+		return npc_community == "greh"
+	end
+	
+	if gulag_type == "dv_svobbase_nb" then
+		return npc_community == "freedom" or npc_community == "dolg"
+	end
+	
+	if gulag_type == "dv_dolg_group" then
+		return npc_community == "dolg"
+	end
+	return false
+end
+
+function checkMonster(npc_community, gulag_type)
+	return false
+end

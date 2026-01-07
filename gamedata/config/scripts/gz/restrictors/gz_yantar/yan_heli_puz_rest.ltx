@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = %=iskatel_to_world =teleport_actor(yan_heli_puz_tel:yan_heli_puz_look)% sr_idle2
+
+[sr_idle2]
+on_actor_inside = sr_idle
+

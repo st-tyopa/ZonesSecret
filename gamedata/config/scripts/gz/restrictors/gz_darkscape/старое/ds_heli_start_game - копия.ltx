@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = nil 
+;{+soz_intro_video_stop} %+ds_helifire_start =play_snd(soz\characters_voice\scenario\heartbeat_blood)%
+
+[sr_idle1]
+on_timer = 5000|%=run_postprocess(agr_u_fade:01:false)% sr_idle11
+
+[sr_idle11]
+on_timer = 5000|%=run_postprocess(deadcity_wake) =teleport_actor(ds_start_iskateli:ds_start_iskateli_look)% sr_idle2
+
+[sr_idle2]
+on_timer = 5000|%=stop_cam_effector(1001) +ds_start_iscateli_awake% nil

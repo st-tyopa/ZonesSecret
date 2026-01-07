@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+pz_fire_third} sr_particle
+
+[sr_particle]
+name = explosions\campfire_02_hot
+path = pz_flame_barrel
+mode = 2 		
+looped = true            
+on_timer = 2000|%+pz_fire_end% nil

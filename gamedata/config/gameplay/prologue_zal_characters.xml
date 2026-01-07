@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<xml>
+
+	<!--------------------------------------- - Залесье - ---------------------------------------->
+	<!----------------------------------------------------------------------------------------------->
+	<!--------------------------------------- - Лагерь ученых - ---------------------------------------->
+	
+	<specific_character id="zal_scienlager_lider" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>zal_scienlager_lider</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+
+		<visual>actors\neytral\stalker_neytral_hood_9</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_galil \n
+			ammo_5.56x45_ap = 1 \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	
+	<specific_character id="zal_scienlager_default1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>zal_scienlager_default1</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\novice\green_stalker_7</visual>
+		<snd_config>characters_voice\human_01\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_mp5 \n
+			ammo_9x19_pbp \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	<specific_character id="zal_scienlager_default2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>zal_scienlager_default2</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\novice\green_stalker_7</visual>
+		<snd_config>characters_voice\human_01\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_mp5 \n
+			ammo_9x19_pbp \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	<specific_character id="zal_scienlager_default3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>zal_scienlager_default3</class>		
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\novice\green_stalker_7</visual>
+		<snd_config>characters_voice\human_01\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_mp5 \n
+			ammo_9x19_pbp \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	<specific_character id="zal_scienlager_default4" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>zal_scienlager_default4</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\novice\green_stalker_7</visual>
+		<snd_config>characters_voice\human_01\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_mp5 \n
+			ammo_9x19_pbp \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	<specific_character id="zal_scienlager_default5" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>zal_scienlager_default5</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\novice\green_stalker_7</visual>
+		<snd_config>characters_voice\human_01\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_mp5 \n
+			ammo_9x19_pbp \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	<specific_character id="zal_scienlager_wounded" team_default = "1">
+		<name>Кобольд</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>zal_scienlager_wounded</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\novice\green_stalker_7</visual>
+		<snd_config>characters_voice\human_01\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_mp5 \n
+			ammo_9x19_pbp \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+
+					
+		<start_dialog>dialog_zal_prisoner</start_dialog>
+		<actor_dialog>dialog_zal_prisoner2</actor_dialog>
+	</specific_character>
+	
+	<!--------------------------------------- - Наемники- ---------------------------------------->
+	<specific_character id="zal_merc_default_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_head_1</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>zal_merc_default_1</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+			
+		<rank>366</rank>
+		<reputation>-30</reputation>
+
+		<visual>actors\killer\stalker_ki_head_1</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_galil \n
+			ammo_5.56x45_ss190 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="zal_merc_default_2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>zal_merc_default_2</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>398</rank>
+		<reputation>-30</reputation>
+
+		<visual>actors\killer\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_galil \n
+			ammo_5.56x45_ss190 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="zal_merc_default_3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>zal_merc_default_3</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>actors\killer\stalker_ki_antigas</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_galil \n
+			ammo_5.56x45_ss190 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+
+</xml>

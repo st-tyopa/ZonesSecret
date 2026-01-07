@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle@idle
+
+[sr_idle@idle]
+on_actor_inside = {+activate_gener_done} %+lab_scien_trup% sr_idle@idle1
+
+[sr_idle@idle1]
+on_info = {+activate_psy_zone_done} %=aes_kill_actor =play_snd(characters_voice\soz\gz_lab_x13\psy_voices_1)% sr_idle@nil
+
+[sr_idle@nil]
+ 

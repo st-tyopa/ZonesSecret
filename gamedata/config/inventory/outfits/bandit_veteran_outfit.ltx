@@ -1,0 +1,147 @@
+[bandit_veteran_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "outfit\bandit_outfit"
+;$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = equipments\bandit_suit
+actor_visual	= actors\bandit\stalker_bandit_veteran.ogf
+texture_arm = act_arm_bandit
+
+upgrades = upgrade_one,upgrade_one_1,upgrade_one_2,upgrade_two,upgrade_two_1,upgrade_two_2,upgrade_three
+icon_in_repair = ui_inGame2_Armor_3
+icon_in_repair_scale_x = 303
+icon_in_repair_scale_y = 162
+
+ef_equipment_type	= 3
+inv_name			= bandit_veteran_outfit_name
+inv_name_short		= bandit_veteran_outfit_name
+description			= bandit_veteran_outfit_description
+inv_weight			= 3.5
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 12
+inv_grid_y			= 29
+full_icon_name		= npc_icon_bandit_veteran_outfit
+cost				= 3500
+slot				= 6
+full_scale_icon		= 0,11;		= 0,6
+artefact_count                  = 1
+; NO RESISTANCE
+burn_protection 				= 0.15
+strike_protection 				= 0.1
+shock_protection 				= 0.1
+wound_protection				= 0.2
+radiation_protection 			= 0.0
+telepatic_protection 			= 0.0
+chemical_burn_protection 		= 0.1
+explosion_protection 			= 0.1
+fire_wound_protection  			= 0.2
+immunities_sect			= sect_bandit_veteran_outfit_immunities
+
+[sect_bandit_veteran_outfit_immunities]
+burn_immunity				= 0.04
+strike_immunity				= 0.1
+shock_immunity				= 0.04
+wound_immunity				= 0.025
+radiation_immunity			= 0.00
+telepatic_immunity			= 0.00
+chemical_burn_immunity		= 0.04
+explosion_immunity			= 0.04
+fire_wound_immunity			= 0.015
+
+[sect_bandit_veteran_outfit_immunities_add]:sect_bandit_veteran_outfit_immunities
+burn_immunity				= 0.036
+strike_immunity				= 0.009
+shock_immunity				= 0.036
+wound_immunity				= 0.0225
+chemical_burn_immunity		= 0.036
+explosion_immunity			= 0.036
+fire_wound_immunity			= 0.0135
+
+[upgrade_one]
+name                    = st_up_arm_a9_name
+description             = st_up_arm_a9_descr
+icon                    = upgrade_bandit_veteran_outfit_1
+position_x	     		= 0
+position_y		    	= 0
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 200
+
+fire_wound_protection	= 0.3
+
+[upgrade_one_1]
+name                            = st_up_arm_b9_name
+description                     = st_up_arm_b9_descr
+icon                            = upgrade_bandit_veteran_outfit_2
+position_x	     	        	= 100
+position_y		            	= 0
+precondition_upg                = upgrade_one
+precondition_ban                = no
+cost 		                    = 400
+
+strike_protection 				= 0.3
+explosion_protection 			= 0.3
+wound_protection				= 0.4
+
+[upgrade_one_2]
+name                    = st_up_arm_c1_name
+description             = st_up_arm_c1_descr
+icon                    = upgrade_bandit_veteran_outfit_3
+position_x	           	= 200
+position_y		       	= 0
+precondition_upg        = upgrade_one_1
+precondition_ban        = no
+cost            		= 600
+fire_wound_protection  	= 0.6 
+
+[upgrade_two]
+name                          = st_up_kom_a5_name
+description                   = st_up_kom_a5_descr
+icon                          = upgrade_bandit_veteran_outfit_4
+position_x	            	  = 0
+position_y                    = 121
+precondition_upg              = no
+precondition_ban              = no
+cost 	            	      = 200
+
+immunities_sect			      = sect_bandit_veteran_outfit_immunities_add
+
+[upgrade_two_1]
+icon                            = upgrade_bandit_veteran_outfit_5
+name                            = st_up_kom_b1_name
+description                     = st_up_kom_b1_descr
+position_x	            	    = 100
+position_y                      = 94
+precondition_upg                = upgrade_two
+precondition_ban                = upgrade_two_2
+cost 	                    	= 400
+
+chemical_burn_protection  		= 0.3
+shock_protection           		= 0.3
+
+[upgrade_two_2]
+name                            = st_up_kom_b2_name
+description                     = st_up_kom_b2_descr
+icon                            = upgrade_bandit_veteran_outfit_6
+position_x	            	    = 100
+position_y                      = 148
+precondition_upg                = upgrade_two
+precondition_ban                = upgrade_two_1
+cost 		                    = 400
+
+burn_protection    				= 0.35
+
+[upgrade_three]
+name                            = st_up_uti_a4_name
+description                     = st_up_uti_a4_descr
+icon                            = upgrade_bandit_veteran_outfit_7
+position_x	            	    = 0
+position_y                      = 202
+precondition_upg                = no
+precondition_ban                = no
+cost 	                    	= 200
+additional_inventory_weight 	= 5
+additional_inventory_weight2 	= 5

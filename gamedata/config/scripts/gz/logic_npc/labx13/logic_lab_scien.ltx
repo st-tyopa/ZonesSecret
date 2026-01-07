@@ -1,0 +1,17 @@
+[logic]
+active = walker@start
+
+[walker@start]
+path_walk = lab_ucheniy_start_way
+path_look = lab_ucheniy_start_look
+on_info = {+nooo_lab_sms} %=kill%
+wounded = wounded
+
+[wounded]
+hp_state= 30|help_me@help|10|wounded_heavy@help_heavy
+hp_state_see = 30|wounded@help_see|10|wounded_heavy@help_heavy
+hp_victim = 30|actor|10|nil
+hp_cover = 30|true|10|false
+hp_fight = 30|true|10|false
+syndata = wounded@help
+on_info = {+nooo_lab_sms} %=kill%

@@ -1,0 +1,35 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[inv_box]
+GroupControlSection = spawn_group
+class    = O_INVBOX
+cform    = skeleton
+visual     = equipments\item_rukzak
+radius     = 1
+script_binding      = bind_physic_object.init
+
+custom_data = scripts\gz\tainiki\darkvalley\taynik_1.ltx
+
+[inv_t1]
+GroupControlSection = spawn_group
+class    = O_INVBOX
+cform    = skeleton
+visual     = equipments\item_rukzak
+radius     = 1
+script_binding      = bind_physic_object.init
+custom_data = scripts\gz\tainiki\darkvalley\t1.ltx
+
+[inv_t2]:inv_t1
+custom_data = scripts\gz\tainiki\darkvalley\t2.ltx
+
+[inv_t3]:inv_t1
+custom_data = scripts\gz\tainiki\darkvalley\t3.ltx
+
+[tainik_bandits]
+GroupControlSection = spawn_group
+class    = O_INVBOX
+cform    = skeleton
+visual     = equipments\item_box_01
+radius     = 1
+script_binding      = bind_physic_object.init
+
+custom_data = scripts\gz\tainiki\darkvalley\tainik_bandits.ltx

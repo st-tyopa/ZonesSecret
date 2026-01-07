@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle@day
+
+[sr_idle@day]
+on_info = {=is_day} %-pz_night_dell_mercs% sr_idle@night, {+pz_otis_lab_run} nil
+on_info2 = {!is_day} sr_idle@night
+
+[sr_idle@night]
+on_info = {!is_day -pz_mercs_distance} %+pz_night_dell_mercs% sr_idle@day, {+pz_otis_lab_run} nil
+on_info2 = {=is_day} sr_idle@day

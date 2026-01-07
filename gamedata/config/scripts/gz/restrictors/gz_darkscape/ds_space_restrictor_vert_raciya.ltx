@@ -1,0 +1,21 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+ds_expl} sr_particle
+
+[sr_particle]
+name = explosions\explosion_01
+path = ds_heli_expl
+mode = 2 		
+looped = false            
+on_info = {+ds_start_iscateli_awake} sr_idle
+
+[sr_idle]
+on_info = {+find_raciya_in_vertolet_done} sr_tip
+
+[sr_tip]
+name = gz_ds_vertolet_raciya
+type = tips
+single = true
+on_signal = tip_sended| nil

@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-pda_coordinats_start} sr_idle@2 %=dv_greh_sniper_shot =aes_kill_actor%
+
+[sr_idle@2]
+on_timer = 1000| nil %=dv_greh_sniper_laugh%

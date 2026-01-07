@@ -1,0 +1,16 @@
+[logic]
+active = kamp
+on_death = death
+
+[kamp]
+path_walk = pz_hata_kamp_sit_2
+center_point = pz_hata_kamp
+on_info = {+pz_hata_zomb_free_night} walker
+
+[walker]
+path_walk = pz_hata_guard_stay
+path_look = pz_hata_guard_look
+on_info = {-pz_hata_zomb_free_night} kamp
+
+[death]
+on_info = %+pz_hata_stalk_2_dead%

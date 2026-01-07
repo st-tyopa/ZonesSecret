@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {-pz_lab_electrisity_done} %+pz_lab_anom_kill% sr_idle@2
+
+[sr_idle@2]
+on_game_timer = 5|%=play_snd(anomaly\pux_blast) =aes_kill_actor% sr_idle@nil
+
+[sr_idle@nil]

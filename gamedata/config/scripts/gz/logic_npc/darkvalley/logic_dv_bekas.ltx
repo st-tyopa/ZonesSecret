@@ -1,0 +1,104 @@
+[logic]
+active = walker@dv_torgash_stay
+on_death = death
+
+[walker@dv_torgash_stay]
+path_walk = dv_bekas_stay
+path_look = dv_bekas_look
+on_info = {+bekas_vrag} %=killactor%, {+find_bekas_box_fail !is_day} walker@dv_torgash_stay2
+
+[walker@dv_torgash_stay2]
+path_walk = dv_bekas_stay
+path_look = dv_bekas_look
+on_actor_dist_ge_nvis = 50| %+dv_bekas_actor_cover_1%
+on_info = {+dv_bekas_actor_cover} walker@dv_torgash_stay25
+
+[walker@dv_torgash_stay25]
+path_walk = dv_bekas_stay
+path_look = dv_bekas_look
+on_game_timer = 60| walker@dv_bekas_walk_night1
+
+[walker@dv_bekas_walk_night1]
+path_walk = bekas_start
+danger = danger_condition1
+on_actor_dist_le = 30| %=killactor +bekas_vrag%
+on_actor_dist_le_nvis = 30| %=killactor +bekas_vrag%
+on_signal = start| %+bekas_midnight% walker@dv_bekas_walk_night
+
+[walker@dv_bekas_walk_night]
+path_walk = dv_bekas_night_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+def_state_standing = ward
+danger = danger_condition1
+meet = no_meet
+on_actor_dist_le = 20| %=killactor +bekas_vrag%
+on_actor_dist_le_nvis = 30| %=killactor +bekas_vrag%
+on_actor_dist_le_nvis = 90| %+bekas_slow_1%
+on_signal = osmotr| walker@dv_bekas_walk_osmotr
+
+[walker@dv_bekas_walk_osmotr]
+path_walk = bekas_osmotr
+path_look = bekas_osmotr_look
+def_state_standing = hide
+danger = danger_condition1
+meet = no_meet
+on_actor_dist_le = 30| %=killactor +bekas_vrag%
+;on_actor_dist_le_nvis = 30| %=killactor +bekas_vrag%
+on_actor_dist_le_nvis = 90| %+bekas_slow_1%
+on_game_timer = 250| walker@dv_bekas_walk_night15
+
+[walker@dv_bekas_walk_night15]
+path_walk = dv_bekas_night_walk_to_cave
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+def_state_standing = ward
+danger = danger_condition1
+meet = no_meet
+on_actor_dist_le = 20| %=killactor +bekas_vrag%
+on_actor_dist_le_nvis = 30| %=killactor +bekas_vrag%
+on_actor_dist_le_nvis = 90| %+bekas_slow_1%
+on_signal = cave| %+bekas_lead_done +find_bekas_box% walker@dv_bekas_walk_night2
+
+[walker@dv_bekas_walk_night2]
+path_walk = dv_bekas_obisk
+danger = danger_condition1
+on_actor_dist_le = 10| %=killactor +bekas_vrag%
+on_actor_dist_le_nvis = 5| %=killactor +bekas_vrag%
+on_signal = return| remark@dv_bekas_obisk
+
+[remark@dv_bekas_obisk]
+anim = dynamite
+target = actor
+danger = danger_condition1
+on_game_timer = 60| walker@dv_bekas_return 
+
+[walker@dv_bekas_return]
+path_walk = dv_bekas_return
+on_actor_dist_le_nvis = 15| %=killactor +bekas_vrag%
+on_signal = return2| walker@dv_bekas_return2
+
+[walker@dv_bekas_return2]
+path_walk = dv_bekas_return2
+on_actor_dist_ge_nvis = 130| %+dell_bekas +bekas_vrag%
+
+
+
+[death]
+on_info = %+bekas_dead%
+
+[danger_condition]
+ignore_distance = 20
+ignore_distance_corpse = 0
+
+[danger_condition1]
+ignore_distance = 0
+ignore_distance_corpse = 0
+ignore_distance_sound = 50
+
+[meet]
+use = true
+use_wpn = false
+meet_talk_enabled = true

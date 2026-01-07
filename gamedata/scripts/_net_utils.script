@@ -1,0 +1,1836 @@
+--[[ ----------------------------------------------------------------------------------------------
+ File       : _net_utils.script (m_net_utils.script [optional] by SIMBION mod)
+ Description: Функции чтения-записи net-пакетов
+ Copyright  : 2008 © SIMBION mod
+ Author     : Artos (по материалам: bardak, Red75, xStream, Sokol_jack)
+ Last edit  : 30.04.2011 (by Artos)
+--]] ----------------------------------------------------------------------------------------------
+local sModule = "m_net_utils" --/ строковое имя файла-модуля
+local bInit   = false         --/ флаг инициализации модуля
+--/ -----------------------------------------------------------------
+--/ Print-Log (вывод отладочной информации)
+--/ -----------------------------------------------------------------
+local function printf(fmt, ...)
+	if db.log then db.log(string.format("%s:%s",sModule,fmt),...) end
+end
+--/ -----------------------------------------------------------------
+--/ VARIABLEs
+--/ -----------------------------------------------------------------
+local iSSVer    = script_server_object_version() or -1
+local bTestMode = false   --/ false|true - от(в)ключен - флаг режима полного разбора пакетов
+local bDebug    = false   --/ false|true - от(в)ключен - флаг общего режима отладки и вывод в лог доп.собщений
+local bDbgNPC   = false   --/ false|true - от(в)ключен - флаг режима отладки сталкеров и вывод в лог доп.собщений
+local bDbgMob   = false   --/ false|true - от(в)ключен - флаг режима отладки монстров и вывод в лог доп.собщений
+local sPref     = ""      --/ префикс для строки в лог-файле
+local oPsF,oPuF = nil,nil --/ Packet STATE|UPDATE Fixed
+local iSsR,iSuR = nil,nil --/ Sizes STATE|UPDATE Read
+local iSaR      = nil     --/ Sizes STATE Read cse_abstract
+local Func      = nil     --/ текущая вызванная функция
+fake_net_packet = nil     --/ for "actor_binder" (pre-save)
+local i,j,k,v             --/ итераторы
+--/ -----------------------------------------------------------------
+--/ Initialize Module (инициализация, выполняется единожды)
+--/ -----------------------------------------------------------------
+function init()
+--	printf("init:>") --/#~#
+	oPsF = net_packet() --/ 'фиксируем' функцию для дальнейшей работы с STATE_packet
+	oPuF = net_packet() --/ 'фиксируем' функцию для дальнейшей работы с UPDATE_packet
+	fake_net_packet = function() return CFake_NetPacket() end
+	local ini = ini_file("mods\\m_debug.ltx")
+	if ini then
+		bDebug    = utils.cfg_get_bool(ini, "net_packets", "debug",     nil, false, bDebug)
+		bDbgNPC   = utils.cfg_get_bool(ini, "net_packets", "debug_npc", nil, false, bDbgNPC)
+		bDbgMob   = utils.cfg_get_bool(ini, "net_packets", "debug_mob", nil, false, bDbgMob)
+		bTestMode = utils.cfg_get_bool(ini, "net_packets", "test_mode", nil, false, bTestMode)
+	end
+	if db.iSSVer and db.iSSVer >= 6 and db.iSSVer ~= iSSVer then
+		Set_Callback("actor_load", ReSet_SSVersion, nil) --/ only 'SIMBION'
+	end
+	iSsR,iSuR = 0,0
+	bInit = true
+end
+--/ -----------------------------------------------------------------
+--/ ReSet Version - смена версии 'Script-Server' (не штатный режим)
+--/ -----------------------------------------------------------------
+function ReSet_SSVersion()
+--	printf("ReSet_SSVersion:[%s]", ">") --/#~#
+	if not bInit then abort(sModule..":Not_initialised!") end
+	if db.iSSVer and db.iSSVer >= 6 and db.iSSVer ~= iSSVer then
+		iSSVer = db.iSSVer
+	end
+end
+--/ -----------------------------------------------------------------------------------------------
+--/ GET|SET (на входе: [таблица параметров,]серверный объект,функция,строка-маска[,флаг полного пакета])
+--/ -----------------------------------------------------------------------------------------------
+--/ Установка преффикса для строк вывода в лог (for Debug)
+local function Set_Preffix(sFunc,sType,soObj,bFull)
+	if not (soObj and sFunc and sFunc ~= "" and sType and sType ~= "") then
+		abort("%s:Set_Preffix:Obj=[%s],sFunc=[%s],sType=[%s]~NOT_arg!", sModule, soObj and soObj.name and soObj:name(), sFunc, sType)
+	elseif bFull then
+		sPref = string.format("%sFull:%s",sFunc,sType)
+	else
+		sPref = string.format("%s:%s",sFunc,sType)
+	end
+	if bDebug or bDbgNPC or bDbgMob then sPref = string.format("%s=[%s]", sPref, soObj:name()) end
+end
+--/ Чтение/Запись STATE [&UPDATE] нет-пакетов.
+local function Get_Object_Data(soObj,Func,sType,bFull)
+	Set_Preffix("GetData", sType, soObj, bFull)
+	if bDebug then printf(sPref..":>") end --/#~#
+	local tT,oPs,oPu = {},oPsF
+	oPs:w_begin(0)
+	soObj:STATE_Write(oPs)
+	iSsR = oPs:w_tell()
+	oPs:r_seek(2)
+	if bFull then
+		oPu = oPuF
+		oPu:w_begin(0)
+		soObj:UPDATE_Write(oPu)
+		iSuR = oPu:w_tell() --printf(sPref..":sizes=[%s]+[%s]:[%s]", iSsR, iSuR, "i") --/#~#
+		oPu:r_seek(2)
+	end
+	Func(tT,oPs,oPu,iSsR)
+	if bDebug then
+		if bFull then
+			printf(sPref..":sizes=[%s]+[%s],drf=[%s]+[%s],elapsed=[%s]+[%s],#t=[%s]:<%s>",iSsR,iSuR,oPs:w_tell()-iSsR,oPu:w_tell()-iSuR,oPs:r_elapsed(),oPu:r_elapsed(), GetSizeTable(tT),"R") --/#~#
+		else
+			printf(sPref..":sizes=[%s],drf=[%s],elapsed=[%s],#t=[%s]:<%s>", iSsR, oPs:w_tell()-iSsR, oPs:r_elapsed(), GetSizeTable(tT), "R") --/#~#
+		end
+	end
+	return tT --/>
+end
+local function Set_Object_Data(tT,soObj,Func,sType,bFull)
+	Set_Preffix("SetData", sType, soObj, bFull)
+	if bDebug then printf(sPref..":>") end --/#~#
+	local oPs,oPu = oPsF
+	oPs:w_begin(0)
+	if bFull then
+		oPu = oPuF
+		oPu:w_begin(0)
+	end
+	Func(tT,oPs,oPu)
+	local iSsW,iSuW = oPs:w_tell()
+	oPs:r_seek(2)
+	soObj:STATE_Read(oPs,iSsW)
+	if bFull then
+		iSuW = oPu:w_tell() --printf(sPref..":size=[%s]/[%s]+[%s]/[%s]:[%s]", iSsW, iSsR, iSuW, iSuR, "i")
+		oPu:r_seek(2)
+		soObj:UPDATE_Read(oPu) --/#?#,iSuW
+	end
+	if bDebug then
+		if bFull then
+			printf(sPref..":sizes=[%s/%s]+[%s/%s],dwf=[%s]+[%s],#t=[%s]:<%s>", iSsW, iSsR, iSuW, iSuR, oPs:w_tell()-iSsW, oPu:w_tell()-iSuW, GetSizeTable(tT), "W") --/#~#
+		else
+			printf(sPref..":size=[%s/%s],dws=[%s],#t=[%s]:<%s>", iSsW, iSsR, oPs:w_tell()-iSsW, GetSizeTable(tT), "W") --/#~#
+		end
+	end
+	return true --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ HELPERs
+--/ -----------------------------------------------------------------
+local function Has_Left(oPk)
+	return (oPk:r_elapsed() ~= 0) --/>
+end
+
+local function Get_Left(tTbl,oPk,iLength,sType)
+	if not tTbl then tTbl = {} end
+	for i=1, iLength do
+		if sType then
+			local func = oPk["r_"..sType]
+			if type(func) == "function" then
+				tTbl[i] = func(oPk)
+			end
+		else
+			tTbl[i] = oPk:r_u8()
+		end
+	end
+	return tTbl --/>
+end
+
+local function Set_Left(tTbl,oPk,sType)
+	if tTbl and type(tTbl) == "table" then
+		for _,v in ipairs(tTbl) do
+			if sType then
+				local func = oPk["w_"..sType]
+				if type(func) == "function" then
+					func(oPk, v)
+				else
+					oPk:w_u8(v)
+				end
+			else
+				oPk:w_u8(v)
+			end
+		end
+	end
+end
+
+local function Get_Chunk(tLeft,oPk) --/ чтение неопределенного остатка
+	if tLeft and type(tLeft) == "table" then
+		local iLeft = oPk:w_tell() - oPk:r_tell() --/ or: oPk:r_elapsed()
+		if iLeft and iLeft > 0 then
+			tLeft = Get_Left(tLeft,oPk,iLeft)
+		end
+	end
+	return tLeft --/>
+end
+local function Set_Chunk(tLeft,oPk) --/ запись неопределенного остатка
+	if type(tLeft) == "table" then
+		Set_Left(tLeft,oPk)
+	end
+end
+
+--/ -----------------------------------------------------------------------------------------------
+--/ cse_abstract
+--/ -----------------------------------------------------------------------------------------------
+local function Get_Packet_cse_abstract(soObj,oPk)
+	if not oPk then
+		abort("%s:Get_Packet_cse_abstract:Obj=[%s]~NOT_Packet!", sModule, soObj and soObj.name and soObj:name())
+		return {} --/>
+	end
+	local tP = {}
+	local iSize       = oPk:r_tell()
+	oPk:r_seek(0)
+	tP.dummy16        = oPk:r_u16()
+	tP.section_name   = oPk:r_stringZ()
+	tP.name           = oPk:r_stringZ()
+	tP.s_gameid       = oPk:r_u8()
+	tP.s_rp           = oPk:r_u8()
+	tP.position       = oPk:r_vec3() --/'f32v3'
+	tP.direction      = oPk:r_vec3()
+	tP.respawn_time   = oPk:r_u16()
+	tP.unknown_id     = oPk:r_u16()
+	tP.parent_id      = oPk:r_u16()
+	tP.phantom_id     = oPk:r_u16()
+	tP.s_flags        = oPk:r_u16()
+	tP.version        = oPk:r_u16()
+	if iSSVer >= 8 then --/ CS&CoP
+		tP.cse_abstract__unk3_u16 = oPk:r_u16()
+	end
+	tP.script_version = oPk:r_u16()
+	tP.unused         = oPk:r_u16()
+	if tP.unused > 0 then --/ возможно, что иногда это не верно
+		tP.tExt = {}
+		for i=1, tP.unused do
+			tP.tExt[i] = oPk:r_u8()
+		end
+		tP.spawn_id      = oPk:r_u16()
+		tP.extended_size = oPk:r_u16()
+	end
+	if bDebug then
+		printf("Get_Packet_cse_abstract:Obj=[%s],rTell=[%s],Size=[%s/%s]:[%s]", soObj and soObj.name and soObj:name(), iSize, oPk:r_tell(), GetSizeTable(tP), "R") --/#~#
+	end
+	return tP,iSize --/>
+end
+local function Set_Packet_cse_abstract(soObj,tP,oPk,iSize)
+	if not oPk then
+		abort("%s:Set_Packet_cse_abstract:Obj=[%s]~NOT_Packet!", sModule, soObj and soObj.name and soObj:name())
+		return false --/>
+	end
+	oPk:r_seek(0)
+	oPk:w_begin  (tP.dummy16)
+	oPk:w_stringZ(tP.section_name)
+	oPk:w_stringZ(tP.name)
+	oPk:w_u8     (tP.s_gameid)
+	oPk:w_u8     (tP.s_rp)
+	oPk:w_vec3   (tP.position)
+	oPk:w_vec3   (tP.direction)
+	oPk:w_u16    (tP.respawn_time)
+	oPk:w_u16    (tP.unknown_id)
+	oPk:w_u16    (tP.parent_id)
+	oPk:w_u16    (tP.phantom_id)
+	oPk:w_u16    (tP.s_flags)
+	oPk:w_u16    (tP.version)
+	if iSSVer >= 8 then --/ CS&CoP
+		oPk:w_u16(tP.cse_abstract__unk3_u16)
+	end
+	oPk:w_u16    (tP.script_version)
+	oPk:w_u16    (tP.unused)
+	if tP.unused > 0 then
+		if tP.tExt then
+			for i=1, tP.unused do
+				oPk:w_u8 (tP.tExt[i])
+			end
+			oPk:w_u16  (tP.spawn_id)
+			oPk:w_u16  (tP.extended_size)
+		else
+			abort("%s:Set_Packet_cse_abstract:Obj=[%s]~NOT_tExt!", sModule, soObj and soObj.name and soObj:name())
+			return false --/>
+		end
+	end
+	if iSize then
+		oPk:r_seek(iSize)
+	end
+	if bDebug then
+		printf("Set_Packet_cse_abstract:Obj=[%s],rTell=[%s],Size=[%s/%s]:[%s]", soObj and soObj.name and soObj:name(), oPk:r_tell(), oPk:w_tell(), GetSizeTable(tP), "W") --/#~#
+	end
+	return true --/>
+end
+
+function Get_Packet_Abstract(soObj,oPk)
+	return Get_Packet_cse_abstract(soObj,oPk) --/>
+end
+function Set_Packet_Abstract(soObj,tP,oPk,iSize)
+	return Set_Packet_cse_abstract(soObj,tP,oPk,iSize) --/>
+end
+
+--/ -----------------------------------------------------------------------------------------------
+--/
+--/ -----------------------------------------------------------------------------------------------
+--/ cse_alife_object
+local function Parse_Packet_cse_alife_object(tT,oPs)
+	tT.gvid           = oPs:r_u16() --/game_vertex_id
+	tT.distance       = oPs:r_float()
+	tT.direct_control = oPs:r_s32()
+	tT.lvid           = oPs:r_s32() --/level_vertex_id
+	tT.object_flags   = oPs:r_s32()
+	tT.custom_data    = oPs:r_stringZ()
+	tT.story_id       = oPs:r_s32()
+	tT.spawn_story_id = oPs:r_s32()
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_object(tT,oPs)
+    oPs:w_u16    (tT.gvid)
+	oPs:w_float  (tT.distance)
+	oPs:w_s32    (tT.direct_control)
+	oPs:w_s32    (tT.lvid)
+	oPs:w_s32    (tT.object_flags)
+	oPs:w_stringZ(tT.custom_data)
+	oPs:w_s32    (tT.story_id)
+	oPs:w_s32    (tT.spawn_story_id)
+end
+--/ ---------------------------------------------
+--/ cse_visual
+local function Parse_Packet_cse_visual(tT,oPs)
+	tT.visual_name  = oPs:r_stringZ()
+	tT.visual_flags = oPs:r_u8()
+	return tT --/>
+end
+local function Fill_Packet_cse_visual(tT,oPs)
+	oPs:w_stringZ(tT.visual_name)
+	oPs:w_u8     (tT.visual_flags)
+end
+--/ ---------------------------------------------
+--/ cse_motion
+local function Parse_Packet_cse_motion(tT,oPs)
+	tT.motion_name = oPs:r_stringZ()
+	return tT --/>
+end
+local function Fill_Packet_cse_motion(tT,oPs)
+	oPs:w_stringZ(tT.motion_name)
+end
+--/ ---------------------------------------------
+--/ cse_ph_skeleton
+local function Parse_Packet_cse_ph_skeleton(tT,oPs,oPu)
+	tT.skeleton_name  = oPs:r_stringZ()
+	tT.skeleton_flags = oPs:r_u8()
+	tT.source_id      = oPs:r_u16()
+	if oPu then --/#?#
+		tT.updskeleton_flags = oPu:r_u8()
+	end
+	return tT --/>
+end
+local function Fill_Packet_cse_ph_skeleton(tT,oPs,oPu)
+	oPs:w_stringZ(tT.skeleton_name)
+	oPs:w_u8 (tT.skeleton_flags)
+	oPs:w_u16(tT.source_id)
+	if oPu then --/#?#
+		oPu:w_u8(tT.updskeleton_flags)
+	end
+end
+--/ ---------------------------------------------
+--/ cse_alife_dynamic_object
+local function Parse_Packet_cse_alife_dynamic_object(tT,oPs)
+	Parse_Packet_cse_alife_object(tT,oPs)
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_dynamic_object(tT,oPs)
+	Fill_Packet_cse_alife_object(tT,oPs)
+end
+--/ ---------------------------------------------
+--/ cse_alife_dynamic_object_visual
+local function Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Parse_Packet_cse_alife_object(tT,oPs)
+	Parse_Packet_cse_visual(tT,oPs)
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Fill_Packet_cse_alife_object(tT,oPs)
+	Fill_Packet_cse_visual(tT,oPs)
+end
+--/ ---------------------------------------------
+--/ cse_alife_creature_abstract
+local function Parse_Packet_cse_alife_creature_abstract(tT,oPs,oPu)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	tT.team            = oPs:r_u8()        --/ g_team
+	tT.squad           = oPs:r_u8()        --/ g_squad
+	tT.group           = oPs:r_u8()        --/ g_group
+	tT.health          = oPs:r_float()     --/ health
+	tT.dyn_out_restr   = Get_Left({},oPs,oPs:r_s32(),"u16") --/ dynamic_out_restrictions
+	tT.dyn_in_restr    = Get_Left({},oPs,oPs:r_s32(),"u16") --/ dynamic_in_restrictions
+	tT.killerid        = oPs:r_u16()       --/ killer_id
+	tT.game_death_time = Get_Left({},oPs,8) --/ game_death_time
+	if oPu then
+		tT.updhealth   = oPu:r_float() --/ upd:health
+		tT.upds32u1    = oPu:r_s32()   --/ upd:timestamp
+		tT.updu8u2     = oPu:r_u8()    --/ upd:creature_flags
+		tT.updposition = oPu:r_vec3()  --/ upd:position
+		tT.updmodel    = oPu:r_float() --/ upd:o_model
+		tT.updtorso    = oPu:r_vec3()  --/ upd:o_torso
+		tT.updteam     = oPu:r_u8()    --/ upd:g_team
+		tT.updsquad    = oPu:r_u8()    --/ upd:g_squad
+		tT.updgroup    = oPu:r_u8()    --/ upd:g_group
+	end
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_creature_abstract(tT,oPs,oPu)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	oPs:w_u8   (tT.team)
+	oPs:w_u8   (tT.squad)
+	oPs:w_u8   (tT.group)
+	oPs:w_float(tT.health)
+	oPs:w_s32  (#tT.dyn_out_restr)
+	Set_Left   (tT.dyn_out_restr,oPs,"u16")
+	oPs:w_s32  (#tT.dyn_in_restr)
+	Set_Left   (tT.dyn_in_restr, oPs,"u16")
+	oPs:w_u16  (tT.killerid)
+	Set_Left   (tT.game_death_time,oPs,"u8")
+	if oPu then
+		oPu:w_float(tT.updhealth)
+		oPu:w_s32  (tT.upds32u1)
+		oPu:w_u8   (tT.updu8u2)
+		oPu:w_vec3 (tT.updposition)
+		oPu:w_float(tT.updmodel)
+		oPu:w_vec3 (tT.updtorso)
+		oPu:w_u8   (tT.updteam)
+		oPu:w_u8   (tT.updsquad)
+		oPu:w_u8   (tT.updgroup)
+	end
+end
+--/ ---------------------------------------------
+--/ cse_alife_trader_abstract
+local function Parse_Packet_cse_alife_trader_abstract(tT,oPs)
+	tT.money          = oPs:r_s32()
+	tT.spec_character = oPs:r_stringZ() --/ specific_character
+	tT.trader_flags   = oPs:r_s32()
+	tT.char_profile          = oPs:r_stringZ() --/ character_profile
+	tT.community_index    = oPs:r_s32()     --/ community_index
+	tT.rank           = oPs:r_s32()
+	tT.reputation     = oPs:r_s32()
+	tT.charname       = oPs:r_stringZ() --/ checked_characters
+	if iSSVer >= 12 then --/ CoP
+		tT.cse_alife_trader_abstract__unk1 = oPs:r_u8()
+		tT.cse_alife_trader_abstract__unk2 = oPs:r_u8()
+	end
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_trader_abstract(tT,oPs)
+	oPs:w_s32    (tT.money)
+	oPs:w_stringZ(tT.spec_character)
+	oPs:w_s32    (tT.trader_flags)
+	oPs:w_stringZ(tT.char_profile)
+	oPs:w_s32    (tT.community_index)
+	oPs:w_s32    (tT.rank)
+	oPs:w_s32    (tT.reputation)
+	oPs:w_stringZ(tT.charname)
+	if iSSVer >= 12 then --/ CoP
+		oPs:w_u8   (tT.cse_alife_trader_abstract__unk1)
+		oPs:w_u8   (tT.cse_alife_trader_abstract__unk2)
+	end
+end
+--/ ---------------------------------------------
+--/ cse_alife_monster_abstract
+local function Parse_Packet_cse_alife_monster_abstract(tT,oPs,oPu)
+	Parse_Packet_cse_alife_creature_abstract(tT,oPs,oPu)
+	tT.baseoutr       = oPs:r_stringZ() --/ base_out_restrictors
+	tT.baseinr        = oPs:r_stringZ() --/ base_in_restrictors
+	tT.smtrid         = oPs:r_u16()     --/ smart_terrain_id
+	tT.smtrtaskactive = oPs:r_u8()      --/ smart_terrain_task_active
+	if oPu then
+		tT.updnext_game_vertex_id = oPu:r_u16()
+		tT.updprev_game_vertex_id = oPu:r_u16()
+		tT.upddistance_from_point = oPu:r_s32()
+		tT.upddistance_to_point   = oPu:r_s32()
+	end
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_monster_abstract(tT,oPs,oPu)
+	Fill_Packet_cse_alife_creature_abstract(tT,oPs,oPu)
+	oPs:w_stringZ(tT.baseoutr)
+	oPs:w_stringZ(tT.baseinr)
+	oPs:w_u16    (tT.smtrid)
+	oPs:w_u8     (tT.smtrtaskactive)
+	if oPu then
+		oPu:w_u16(tT.updnext_game_vertex_id)
+		oPu:w_u16(tT.updprev_game_vertex_id)
+		oPu:w_s32(tT.upddistance_from_point)
+		oPu:w_s32(tT.upddistance_to_point)
+	end
+end
+--/ ---------------------------------------------
+--/ cse_alife_monster_base
+local function Parse_Packet_cse_alife_monster_base(tT,oPs,oPu)
+	Parse_Packet_cse_alife_monster_abstract(tT,oPs,oPu)
+	Parse_Packet_cse_ph_skeleton(tT,oPs)
+	tT.spec_object_id = oPs:r_u16()
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_monster_base(tT,oPs,oPu)
+	Fill_Packet_cse_alife_monster_abstract(tT,oPs,oPu)
+	Fill_Packet_cse_ph_skeleton(tT,oPs)
+	oPs:w_u16(tT.spec_object_id)
+end
+--/ ---------------------------------------------
+--/ cse_alife_human_abstract
+local function Parse_Packet_cse_alife_human_abstract(tT,oPs,oPu)
+	Parse_Packet_cse_alife_trader_abstract(tT,oPs)
+	Parse_Packet_cse_alife_monster_abstract(tT,oPs,oPu)
+	tT.predicate5 = Get_Left({},oPs,oPs:r_s32())
+	tT.predicate4 = Get_Left({},oPs,oPs:r_s32())
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_human_abstract(tT,oPs,oPu)
+	Fill_Packet_cse_alife_trader_abstract(tT,oPs)
+	Fill_Packet_cse_alife_monster_abstract(tT,oPs,oPu)
+	oPs:w_s32(#tT.predicate5)
+	Set_Left(tT.predicate5,oPs,"u8")
+	oPs:w_s32(#tT.predicate4)
+	Set_Left(tT.predicate4,oPs,"u8")
+end
+--/ ---------------------------------------------
+--/ cse_alife_human_stalker
+local function Parse_Packet_cse_alife_human_stalker(tT,oPs,oPu)
+	Parse_Packet_cse_alife_human_abstract(tT,oPs,oPu)
+	Parse_Packet_cse_ph_skeleton(tT,oPs,oPu)
+	if oPu then
+		tT.updstart_dialog = oPu:r_stringZ()
+	end
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_human_stalker(tT,oPs,oPu)
+	Fill_Packet_cse_alife_human_abstract(tT,oPs,oPu)
+	Fill_Packet_cse_ph_skeleton(tT,oPs,oPu)
+	if oPu then
+		oPu:w_stringZ(tT.updstart_dialog)
+	end
+end
+--/ ---------------------------------------------
+--/ cse_alife_trader
+local function Parse_Packet_cse_alife_trader(tT,oPs)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Parse_Packet_cse_alife_trader_abstract(tT,oPs)
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_trader(tT,oPs)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Fill_Packet_cse_alife_trader_abstract(tT,oPs)
+end
+--/ ---------------------------------------------
+--/ cse_alife_creature_actor
+local function Parse_Packet_cse_alife_creature_actor(tT,oPs,oPu)
+	Parse_Packet_cse_alife_creature_abstract(tT,oPs,oPu)
+	Parse_Packet_cse_alife_trader_abstract(tT,oPs)
+	Parse_Packet_cse_ph_skeleton(tT,oPs)
+	tT.holder_id                  = oPs:r_u16()
+	if oPu then
+		tT.updactor_state           = oPu:r_u16()
+		tT.updactor_accel_header    = oPu:r_u16()
+		tT.updactor_accel_data      = oPu:r_s32()
+		tT.updactor_velocity_header = oPu:r_u16()
+		tT.updactor_velocity_data   = oPu:r_s32()
+		tT.updactor_radiation       = oPu:r_float()
+		tT.updactor_weapon          = oPu:r_u8()
+		tT.updnum_items             = oPu:r_u16()
+	end
+	return tT --/>
+end
+local function Fill_Packet_cse_alife_creature_actor(tT,oPs,oPu)
+	Fill_Packet_cse_alife_creature_abstract(tT,oPs,oPu)
+	Fill_Packet_cse_alife_trader_abstract(tT,oPs)
+	Fill_Packet_cse_ph_skeleton(tT,oPs)
+	oPs:w_u16     (tT.holder_id)
+	if oPu then
+		oPu:w_u16   (tT.updactor_state)
+		oPu:w_u16   (tT.updactor_accel_header)
+		oPu:w_s32   (tT.updactor_accel_data)
+		oPu:w_u16   (tT.updactor_velocity_header)
+		oPu:w_s32   (tT.updactor_velocity_data)
+		oPu:w_float (tT.updactor_radiation)
+		oPu:w_u8    (tT.updactor_weapon)
+		oPu:w_u16   (tT.updnum_items)
+	end
+end
+--/ -----------------------------------------------------------------
+--/ se_stalker
+function Parse_Packet_se_stalker(tT,oPs,oPu)
+	Parse_Packet_cse_alife_human_stalker(tT,oPs,oPu)
+	if not bTestMode then --/ 'игровой' режим
+		tT.tLeft = Get_Chunk({},oPs) --/#!# чтение остатка
+		return tT --/> #!#
+	elseif iSSVer >= 12 then --/CoP
+		tT.old_lvid       = oPs:r_stringZ()
+		tT.active_section = oPs:r_stringZ()
+	else --/SHoC&CS
+		local iJo = oPs:r_u8() --/ job_online, def=>2
+		if     iJo == 2 then
+			tT.job_online = nil
+		elseif iJo == 1 then
+			tT.job_online = false
+		elseif iJo == 0 then
+			tT.job_online = true
+		elseif iJo == 3 then
+			tT.job_online = 3
+			tT.job_online_condlist = oPs:r_stringZ()
+			if bDbgNPC then printf("%s:JoCnd(%s)=[%s]:[%s]", sPref, iJo, tT.job_online_condlist, "i") end --/#~#
+		else --/#!# =>255 (table)
+			tT.job_online = iJo
+			local tLeft = {}
+			table.insert(tLeft,iJo)
+			tT.tLeft = Get_Chunk(tLeft,oPs) --/#!# чтение остатка
+			if bDbgNPC then printf("%s:left(%s)=[%s]:<%s>", sPref, iJo, #tT.tLeft, "Info!") end --/#~#
+			return tT --/> #!#
+		end
+		if iSSVer <= 7 then --/SHoC
+			tT.was_in_smart_terrain = oPs:r_bool() --/ def=>0
+		end
+	end
+	local iFlg = oPs:r_u8()
+	tT.death_dropped = bit_and(iFlg,1) == 1
+	tT.wounded       = bit_and(iFlg,2) == 2 --/#+# читаем 'wounded'
+	tT.state         = bit_and(iFlg,4) == 4 --/#+#
+	tT.death_used    = bit_and(iFlg,8) == 8 --/#+#
+	if iSSVer >= 8 and iSSVer < 12 then --/CS
+		tT.squad_id          = oPs:r_stringZ()
+		tT.sim_forced_online = oPs:r_bool()
+	end
+	local iLeft = oPs:r_elapsed()
+	if iLeft ~= 0 then
+		abort("%s:%s:Parse_Packet_se_stalker:left=[%s]<~%s", sModule, sPref, iLeft, "?")
+		return false --/> error
+	end
+	return tT --/>
+end
+function Fill_Packet_se_stalker_packet(tT,oPs,oPu)
+	Fill_Packet_cse_alife_human_stalker(tT,oPs,oPu)
+	if tT.tLeft then
+		Set_Chunk(tT.tLeft,oPs) --/#!# запись остатка
+		return --/> #!#
+	elseif iSSVer >= 12 then --/CoP
+		oPs:w_stringZ(tT.old_lvid)
+		oPs:w_stringZ(tT.active_section)
+	else --/SHoC&CS
+		if     tT.job_online == nil then
+			oPs:w_u8(2)
+		elseif tT.job_online == false then
+			oPs:w_u8(1)
+		elseif tT.job_online == true then
+			oPs:w_u8(0)
+		elseif type(tT.job_online) == "number" and tT.job_online == 3 then --/ or type(tT.job_online) == "table"
+			oPs:w_u8(3)
+			oPs:w_stringZ(tT.job_online_condlist)
+--			if bDbgNPC then printf("%s:JoCnd(%s)=[%s]:[%s]", sPref, tT.job_online, tT.job_online_condlist, "i") end --/#~#
+		else
+			printf("%s:JoCnd(%s)=[%s]<~?:<%s>", sPref, tT.job_online, tT.job_online_condlist, "Warning!")
+			abort("%s:%s:Fill_Packet_se_stalker:Jo=[%s]<~%s", sModule, sPref, tT.job_online, "?")
+			return --/> error
+		end
+		if iSSVer <= 7 then --/SHoC
+			oPs:w_bool(tT.was_in_smart_terrain or 0)
+		end
+	end
+	--oPs:w_bool(tT.death_dropped or 0) --/#~#(изменено!)
+	local iFlg = 0
+	if tT.death_droped then iFlg = bit_or(iFlg,1) end
+	if tT.wounded      then iFlg = bit_or(iFlg,2) end --/#+# запоминаем 'wounded'
+	if tT.state        then iFlg = bit_or(iFlg,4) end --/#+#
+	if tT.death_used   then iFlg = bit_or(iFlg,8) end --/#+#
+	oPs:w_u8(iFlg)
+	if iSSVer >= 8 and iSSVer < 12 then --/CS
+		oPs:w_stringZ(tT.squad_id)
+		oPs:w_bool   (tT.sim_forced_online)
+	end
+end
+--/ -----------------------------------------------------------------
+--/se_monster
+function Parse_Packet_se_monster(tT,oPs,oPu)
+	Parse_Packet_cse_alife_monster_base(tT,oPs,oPu)
+	local bState = false
+	if not bTestMode then --/ 'игровой' режим
+		tT.tLeft = Get_Chunk({},oPs) --/#!# чтение остатка
+		return tT --/> #!#
+	elseif iSSVer >= 12 then --/CoP
+		tT.old_lvid       = oPs:r_stringZ()
+		tT.active_section = oPs:r_stringZ()
+	else --/SHoC&CS
+		local iJo = oPs:r_u8()
+		--/#+# читаем 'state' из старых сэйвов (TODO: удалить?)
+		local iJs = iJo
+		bState = (iJo >= 4 and iJo <= 7)
+		if bState then
+			iJo = iJo - 4
+		end
+		--/<
+		if     iJo == 2 then
+			tT.job_online = nil
+		elseif iJo == 1 then
+			tT.job_online = false
+		elseif iJo == 0 then
+			tT.job_online = true
+		elseif iJo == 3 then
+			tT.job_online = 3
+			tT.job_online_condlist = oPs:r_stringZ()
+			if bDbgMob then printf("%s:JoCnd(%s)=[%s]:[%s]", sPref, iJo, tT.job_online_condlist, "i") end --/#~#
+		else --/#!# =>255 (table)
+			tT.job_online = iJo
+			local tLeft = {}
+			table.insert(tLeft,iJs)
+			tT.tLeft = Get_Chunk(tLeft,oPs) --/#!# чтение остатка
+			if bDbgMob then printf("%s:left(%s)=[%s]:<%s>", sPref, iJs, #tT.tLeft, "Info!") end --/#~#
+			return tT --/> #!#
+		end
+		if iSSVer <= 7 then --/SHoC
+			--tT.was_in_smart_terrain = oPs:r_bool() --/#~#(изменено!)
+			local iFlg = oPs:r_u8()
+			tT.was_in_smart_terrain = bit_and(iFlg,1) == 1
+			tT.wounded              = bit_and(iFlg,2) == 2 --/#+# (rezerve)
+			tT.state                = (bit_and(iFlg,4) == 4 or bState == true) --/#+# читаем 'state'
+			tT.death_used           = bit_and(iFlg,8) == 8 --/#+#
+		else --/CS
+			tT.squad_id          = oPs:r_stringZ()
+			tT.sim_forced_online = oPs:r_bool()
+		end
+	end
+	local iLeft = oPs:r_elapsed()
+	if iLeft ~= 0 then
+		abort("%s:%s:Parse_Packet_se_monster:left=[%s]<~%s", sModule, sPref, iLeft, "?")
+		return false --/> error
+	end
+	return tT --/>
+end
+function Fill_Packet_se_monster(tT,oPs,oPu)
+	Fill_Packet_cse_alife_monster_base(tT,oPs,oPu)
+	if tT.tLeft then
+		Set_Chunk(tT.tLeft,oPs) --/#!# запись остатка
+		return --/> #!#
+	elseif iSSVer >= 12 then --/CoP
+		oPs:w_stringZ(tT.old_lvid)
+		oPs:w_stringZ(tT.active_section)
+	else --/SHoC&CS
+		if     tT.job_online == nil then
+			oPs:w_u8(2)
+		elseif tT.job_online == false then
+			oPs:w_u8(1)
+		elseif tT.job_online == true then
+			oPs:w_u8(0)
+		elseif type(tT.job_online) == "number" and tT.job_online == 3 then --/ or type(tT.job_online) == "table"
+			oPs:w_u8(3)
+			oPs:w_stringZ(tT.job_online_condlist)
+			if bDbgMob then printf("%s:JoCnd(%s)=[%s]:[%s]", sPref, tT.job_online, tT.job_online_condlist, "i") end --/#~#
+		else
+			printf("%s:se_monster:JoCnd(%s)=[%s]<~?:<%s>", sPref, tT.job_online, tT.job_online_condlist, "Warning!")
+			abort("%s:%s:Fill_Packet_se_monster:Jo=[%s]<~%s", sModule, sPref, tT.job_online, "?")
+			return --/> error
+		end
+		if iSSVer <= 7 then --/SHoC
+			--oPs:w_bool(tT.was_in_smart_terrain) --/#~#(изменено!)
+			local iFlg = 0
+			if tT.was_in_smart_terrain then iFlg = bit_or(iFlg,1) end
+			if tT.wounded              then iFlg = bit_or(iFlg,2) end --/#+# (rezerve)
+			if tT.state                then iFlg = bit_or(iFlg,4) end --/#+# запоминаем 'state'
+			if tT.death_used           then iFlg = bit_or(iFlg,8) end --/#+#
+			oPs:w_u8(iFlg)
+		else --/CS
+			oPs:w_stringZ(tT.squad_id)
+			oPs:w_bool   (tT.sim_forced_online)
+		end
+	end
+end
+
+--/ -----------------------------------------------------------------
+--/ ACTOR (cse_alife_creature_actor)
+--/ -----------------------------------------------------------------
+function Get_Data_Actor(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_creature_actor,"Actor",bFull) --/>
+end
+function Set_Data_Actor(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_creature_actor,"Actor",bFull) --/>
+end
+--/ -----------------------------------------------------------------
+--/ STALKER (se_stalker)
+--/ -----------------------------------------------------------------
+function Get_Data_Stalker(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_se_stalker,"NPC",bFull) --/>
+end
+function Set_Data_Stalker(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_se_stalker_packet,"NPC",bFull) --/>
+end
+--/ -----------------------------------------------------------------
+--/ TRADER (cse_alife_trader)
+--/ -----------------------------------------------------------------
+function Get_Data_Trader(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_trader,"Trader") --/>
+end
+function Set_Data_Trader(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_trader,"Trader") --/>
+end
+--/ -----------------------------------------------------------------
+--/ MONSTER (se_monster)
+--/ -----------------------------------------------------------------
+function Get_Data_Monster(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_se_monster,"Mob",bFull) --/>
+end
+function Set_Data_Monster(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_se_monster,"Mob",bFull) --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ NPC (Stalker|Trader|Monster)
+--/ -----------------------------------------------------------------
+function Get_Data_NPC(soObj,bFull) --/ серверный объект на входе
+	local iCid = soObj:clsid()
+	if bDebug then printf("Get_Data_NPC:soObj=[%s],cid=[%s],f=[%s]:[%s]", soObj:name(), iCid, bFull, ">") end --/#~#
+	if IsMonster(soObj,iCid) then
+		return Get_Data_Monster(soObj,bFull) --/>
+	elseif IsStalker(soObj,iCid) then
+		return Get_Data_Stalker(soObj,bFull) --/>
+	elseif IsTrader(soObj,iCid) then
+		return Get_Data_Trader(soObj,bFull) --/>
+	else
+		printf("Get_Data_NPC:soObj=[%s],cid=[%s],f=[%s]<~not_npc:<%s>", soObj:name(), iCid, bFull, "Warning!")
+		return {} --/> error
+	end
+end
+function Set_Data_NPC(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	local iCid = soObj:clsid()
+	if bDebug then printf("Set_Data_NPC:soObj=[%s],cid=[%s],f=[%s]:[%s]", soObj:name(), iCid, bFull, ">") end --/#~#
+	if IsMonster(soObj,iCid) then
+		return Set_Data_Monster(tT,soObj,bFull) --/>
+	elseif IsStalker(soObj,iCid) then
+		return Set_Data_Stalker(tT,soObj,bFull) --/>
+	elseif IsTrader(soObj,iCid) then
+		return Set_Data_Trader(tT,soObj,bFull) --/>
+	else
+		printf("Set_Data_NPC:soObj=[%s],cid=[%s],f=[%s]<~not_npc:<%s>", soObj:name(), iCid, bFull, "Warning!")
+		return false --/>
+	end
+end
+
+
+--/ -----------------------------------------------------------------
+--/ INVBOX (cse_alife_inventory_box)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_inventory_box(tT,oPs)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	if iSSVer >= 12 then --/CoP
+		tT.cse_alive_invbox__unk1 = oPs:r_u8()
+		tT.cse_alive_invbox__unk2 = oPs:r_u8()
+		tT.tip                    = oPs:r_stringZ()
+	end
+	return tT --/>
+end
+function Fill_Packet_cse_alife_inventory_box(tT,oPs)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	if iSSVer >= 12 then --/CoP
+		oPs:w_u8     (tT.cse_alive_invbox__unk1)
+		oPs:w_u8     (tT.cse_alive_invbox__unk2)
+		oPs:w_stringZ(tT.tip)
+	end
+end
+
+function Get_Data_InvBox(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_inventory_box,"InvBox") --/>
+end
+function Set_Data_InvBox(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_inventory_box,"InvBox") --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ HELICOPTER (cse_alife_helicopter)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_helicopter(tT,oPs)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Parse_Packet_cse_motion(tT,oPs)
+	Parse_Packet_cse_ph_skeleton(tT,oPs)
+	tT.startup_animation = oPs:r_stringZ()
+	tT.engine_sound      = oPs:r_stringZ()
+	return tT --/>
+end
+function Fill_Packet_cse_alife_helicopter(tT,oPs)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Fill_Packet_cse_motion(tT,oPs)
+	Fill_Packet_cse_ph_skeleton(tT,oPs)
+	oPs:w_stringZ(tT.startup_animation)
+	oPs:w_stringZ(tT.engine_sound)
+end
+
+function Get_Data_Helicopter(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_helicopter,"Helicopter") --/>
+end
+function Set_Data_Helicopter(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_helicopter,"Helicopter") --/>
+end
+--/ -----------------------------------------------------------------
+--/ TURRET (se_turret_mgun)
+--/ -----------------------------------------------------------------
+function Parse_Packet_se_turret_mgun(tT,oPs)
+	Parse_Packet_cse_alife_helicopter(tT,oPs)
+	tT.health = oPs:r_float()
+	return tT --/>
+end
+function Fill_Packet_se_turret_mgun(tT,oPs)
+	Fill_Packet_cse_alife_helicopter(tT,oPs)
+	oPs:w_float(tT.health)
+end
+
+function Get_DATA_Turret(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_se_turret_mgun,"Turret") --/>
+end
+function Set_DATA_Turret(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_se_turret_mgun,"Turret") --/>
+end
+--/ -----------------------------------------------------------------
+--/ CAR (cse_alife_car)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_car(tT,oPs)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Parse_Packet_cse_ph_skeleton(tT,oPs)
+	tT.health = oPs:r_float()
+	return tT --/>
+end
+function Fill_Packet_cse_alife_car(tT,oPs)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Fill_Packet_cse_ph_skeleton(tT,oPs)
+	oPs:w_float(tT.health)
+end
+
+function Get_Data_Car(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_car,"Car") --/>
+end
+function Set_Data_Car(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_car,"Car") --/>
+end
+--/ -----------------------------------------------------------------
+
+--/ cse_shape
+function Parse_Packet_cse_shape(tT,oPs)
+	local iCntShapes = oPs:r_u8() --/ кол-во фигур
+	tT.shapes = {}
+	for i=1,iCntShapes do
+		tT.shapes[i] = {}
+		tT.shapes[i].type = oPs:r_u8() --/ тип фигуры: 0=>sphere or 1=>box
+		if tT.shapes[i].type == 0 then --/ sphere
+			tT.shapes[i].center = oPs:r_vec3()
+			tT.shapes[i].radius = oPs:r_float()
+		else --/ box
+			--tT.shapes[i] = oPs:r_matrix() --/#x#
+			tT.shapes[i].v1 = oPs:r_vec3() --/ axis_x
+			tT.shapes[i].v2 = oPs:r_vec3() --/ axis_y
+			tT.shapes[i].v3 = oPs:r_vec3() --/ axis_z
+			tT.shapes[i].offset = oPs:r_vec3()
+		end
+	end
+	return tT --/>
+end
+function Fill_Packet_cse_shape(tT,oPs)
+	local iCntShapes = #tT.shapes
+	if iCntShapes < 1 then iCntShapes = 1 end
+	oPs:w_u8       (iCntShapes) --/ кол-во фигур
+	for i=1,iCntShapes do
+		tT.shapes[i] = type(tT.shapes[i]) == table and tT.shapes[i] or {}
+		tT.shapes[i].type = tT.shapes[i].type or 0
+		oPs:w_u8     (tT.shapes[i].type) --/ тип фигуры: 0=>sphere or 1=>box
+		if tT.shapes[i].type == 0 then --/ sphere
+			oPs:w_vec3 (tT.shapes[i].center or vector():set(0, 0, 0))
+			oPs:w_float(tT.shapes[i].radius or 2)
+		else --/ box
+			--oPs:w_matrix (tT.shapes[i]) --/#x#
+			oPs:w_vec3 (tT.shapes[i].v1 or vector():set(2, 0, 0))
+			oPs:w_vec3 (tT.shapes[i].v2 or vector():set(0, 2, 0))
+			oPs:w_vec3 (tT.shapes[i].v3 or vector():set(0, 0, 2))
+			oPs:w_vec3 (tT.shapes[i].offset or vector():set(0, 0, 0))
+		end
+	end
+end
+
+--/ -----------------------------------------------------------------
+--/ RESTRICTOR (cse_alife_space_restrictor,cse_alife_smart_zone)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_space_restrictor(tT,oPs)
+	Parse_Packet_cse_alife_object(tT,oPs)
+	Parse_Packet_cse_shape(tT,oPs)
+	tT.restrictor_type = oPs:r_u8()
+	return tT --/>
+end
+function Fill_Packet_cse_alife_space_restrictor(tT,oPs)
+	Fill_Packet_cse_alife_object(tT,oPs)
+	Fill_Packet_cse_shape(tT,oPs)
+	oPs:w_u8(tT.restrictor_type)
+end
+
+function Get_Data_Restrictor(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_space_restrictor,"Restrictor") --/>
+end
+function Set_Data_Restrictor(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_space_restrictor,"Restrictor") --/>
+end
+--/ -----------------------------------------------------------------
+--/ SMART TERRAIN (se_smart_terrain) (only for SHoC)
+--/ -----------------------------------------------------------------
+function Parse_Packet_se_smart_terrain(tT,oPs)
+	Parse_Packet_cse_alife_space_restrictor(tT,oPs)
+	tT.duration_end_present = utils.r_CTime(oPs) --/oPs:r_u8()+...
+	tT.idle_end_present     = utils.r_CTime(oPs) --/oPs:r_u8()+...
+	tT.gulag_working        = oPs:r_bool()
+	if tT.gulag_working then
+		--tT.tLeft = Get_Chunk({},oPs) --/#!# чтение остатка
+		tT.gulag = {}
+		tT.gulag.casualities              = oPs:r_u8()
+		tT.gulag.state                    = oPs:r_u8()
+		tT.gulag.stateBegin               = utils.r_CTime(oPs)
+		tT.gulag.population               = oPs:r_u8()
+		tT.gulag.population_comed         = oPs:r_u8()
+		tT.gulag.population_non_exclusive = oPs:r_u8()
+		tT.gulag.jobs = {}
+		local tJob = nil
+		for i=1, oPs:r_u8() do
+			tJob = {}
+			tJob.begin                = oPs:r_u32()
+			tJob.fill_idle            = oPs:r_u32()
+			tJob.idle_after_death_end = oPs:r_u32()
+			table.insert(tT.gulag.jobs, tJob)
+		end
+		tT.npc_info = {}
+		local id = nil
+		for i=1, oPs:r_u8() do
+			id = oPs:r_u16()
+			tT.npc_info[id] = {}
+			tT.npc_info[id].o_group         = oPs:r_u8()
+			tT.npc_info[id].o_squad         = oPs:r_u8()
+			tT.npc_info[id].exclusive       = oPs:r_bool()
+			tT.npc_info[id].stay_end        = utils.r_CTime(oPs)
+			tT.npc_info[id].begin_job       = oPs:r_bool()
+			tT.npc_info[id].didnt_begin_job = oPs:r_bool()
+			tT.npc_info[id].jobN            = oPs:r_u8()
+		end
+		tT.population_locked = oPs:r_bool()
+	end
+	return tT --/>
+end
+function Fill_Packet_se_smart_terrain(tT,oPs)
+	Fill_Packet_cse_alife_space_restrictor(tT,oPs)
+	utils.w_CTime(oPs,tT.duration_end_present) --/ oPs:w_u8+...
+	utils.w_CTime(oPs,tT.idle_end_present) --/ oPs:w_u8+...
+	oPs:w_bool(tT.gulag_working)
+	if tT.gulag_working and tT.gulag then --/tT.tLeft
+		--Set_Chunk(tT.tLeft,oPs) --/#!# запись остатка
+		oPs:w_u8(tT.gulag.casualities)
+		oPs:w_u8(tT.gulag.state)
+		utils.w_CTime(oPs, tT.gulag.stateBegin)
+		oPs:w_u8(tT.gulag.population)
+		oPs:w_u8(tT.gulag.population_comed)
+		oPs:w_u8(tT.gulag.population_non_exclusive)
+		oPs:w_u8(#tT.gulag.jobs)
+		for i,v in ipairs(tT.gulag.jobs) do
+			oPs:w_u32(v.begin or 0)
+			oPs:w_u32(v.fill_idle or 0)
+			oPs:w_u32(v.idle_after_death_end or 0)
+		end
+		oPs:w_u8(#tT.npc_info)
+		for id,v in pairs(tT.npc_info) do
+			oPs:w_u16(id)
+			oPs:w_u8  (v.o_group)
+			oPs:w_u8  (v.o_squad)
+			oPs:w_bool(v.exclusive)
+			utils.w_CTime(oPs, v.stay_end)
+			oPs:w_bool(v.begin_job)
+			oPs:w_bool(v.didnt_begin_job)
+			oPs:w_u8  (v.jobN)
+		end
+		oPs:w_bool(tT.population_locked)
+	end
+end
+
+function Get_Data_SmartTerrain(soObj) --/ серверный объект на входе (only for SHoC)
+	return Get_Object_Data(soObj,Parse_Packet_se_smart_terrain,"SmartTerrain") --/>
+end
+function Set_Data_SmartTerrain(tT,soObj) --/ таблица параметров и серверный объект на входе (only for SHoC)
+	return Set_Object_Data(tT,soObj,Fill_Packet_se_smart_terrain,"SmartTerrain") --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ RESPAWN (se_respawn)
+--/ -----------------------------------------------------------------
+function Parse_Packet_se_respawn(tT,oPs)
+	Parse_Packet_cse_alife_space_restrictor(tT,oPs)
+	tT.spawned_obj_count = oPs:r_u8()
+	if tT.spawned_obj_count ~= 0 and Has_Left(oPs) then
+		tT.spawned_obj_ids   = Get_Left({},oPs,tT.spawned_obj_count,"u16")
+	end
+	return tT --/>
+end
+function Fill_Packet_se_respawn(tT,oPs)
+	Fill_Packet_cse_alife_space_restrictor(tT,oPs)
+	oPs:w_u8(tT.spawned_obj_count)
+	if tT.spawned_obj_count ~= 0 and tT.spawned_obj_ids then
+		Set_Left(tT.spawned_obj_ids,oPs,"u16")
+	end
+end
+
+function Get_Data_Respawn(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_se_respawn,"Respawn") --/>
+end
+function Set_Data_Respawn(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_se_respawn,"Respawn") --/>
+end
+--/ -----------------------------------------------------------------
+
+--/ cse_alife_custom_zone
+function Parse_Packet_cse_alife_custom_zone(tT,oPs)
+	Parse_Packet_cse_alife_space_restrictor(tT,oPs)
+	tT.max_power        = oPs:r_float()
+	tT.owner_id         = oPs:r_s32()
+	tT.enabled_time     = oPs:r_s32()
+	tT.disabled_time    = oPs:r_s32()
+	tT.start_time_shift = oPs:r_s32()
+	return tT --/>
+end
+function Fill_Packet_cse_alife_custom_zone(tT,oPs)
+	Fill_Packet_cse_alife_space_restrictor(tT,oPs)
+	oPs:w_float(tT.max_power)
+	oPs:w_s32  (tT.owner_id)
+	oPs:w_s32  (tT.enabled_time)
+	oPs:w_s32  (tT.disabled_time)
+	oPs:w_s32  (tT.start_time_shift)
+end
+--/ cse_alife_anomalous_zone
+function Parse_Packet_cse_alife_anomalous_zone(tT,oPs)
+	Parse_Packet_cse_alife_custom_zone(tT,oPs)
+	tT.offline_interactive_radius = oPs:r_float()
+	tT.artefact_spawn_count       = oPs:r_u16()
+	tT.artefact_position_offset   = oPs:r_s32()
+	return tT --/>
+end
+function Fill_Packet_cse_alife_anomalous_zone(tT,oPs)
+	Fill_Packet_cse_alife_custom_zone(tT,oPs)
+	oPs:w_float(tT.offline_interactive_radius)
+	oPs:w_u16  (tT.artefact_spawn_count)
+	oPs:w_s32  (tT.artefact_position_offset)
+end
+
+--/ -----------------------------------------------------------------
+--/ ANOMALY
+--/ -----------------------------------------------------------------
+function Get_Data_Anomaly(soObj) --/ серверный объект на входе
+	local iCid = soObj:clsid()
+	--[[if not (iCid and isAnomaly(soObj,iCid)) then
+		printf("Get_Data_Anomaly:Obj=[%s],cid=[%s]~?:<%s>", soObj:name(), iCid, "Warning!")
+		return {} --/> error
+	end]]
+--	if bDebug then printf("Get_Data_Anomaly:Obj=[%s],cid=[%s]:[%s]", soObj:name(), iCid, ">") end --/#~#
+	if iCid == clsid.zone_bfuzz_s or iCid == clsid.zone_bfuzz then
+		return Get_Data_Zone_Visual(soObj) --/>
+	elseif iCid == clsid.torrid_zone then --/ SHOC
+		return Get_Data_Zone_Torrid(soObj) --/>
+	else
+		return Get_Data_Zone_Anom(soObj) --/>
+	end
+end
+function Set_Data_Anomaly(tT,soObj) --/ таблица параметров и серверный объект на входе
+	local iCid = soObj:clsid()
+	--[[if not (iCid and isAnomaly(soObj,iCid)) then
+		printf("Set_Data_Anomaly:Obj=[%s],cid=[%s]~?:<%s>", soObj:name(), iCid, "Warning!")
+		return false --/> error
+	end]]
+--	if bDebug then printf("Set_Data_Anomaly:Obj=[%s],cid=[%s]:[%s]", soObj:name(), iCid, ">") end --/#~#
+	if iCid == clsid.zone_bfuzz_s or iCid == clsid.zone_bfuzz then
+		return Set_Data_Zone_Visual(tT,soObj) --/>
+	elseif iCid == clsid.torrid_zone then --/ SHOC
+		return Set_Data_Zone_Torrid(tT,soObj) --/>
+	else
+		return Set_Data_Zone_Anom(tT,soObj) --/>
+	end
+end
+--/ -----------------------------------------------------------------
+--/ ZONE ANOMALY (se_zone_anom)
+--/ -----------------------------------------------------------------
+function Parse_Packet_se_zone_anom(tT,oPs)
+	Parse_Packet_cse_alife_anomalous_zone(tT,oPs)
+	tT.last_spawn_time_present = oPs:r_u8()
+	--tT.tLeft = Get_Chunk({},oPs) --/#!# чтение остатка
+	if bit_and(tT.last_spawn_time_present,1) == 1 then
+		tT.ctime = utils.r_CTime(oPs)
+	end
+	return tT --/>
+end
+function Fill_Packet_se_zone_anom(tT,oPs)
+	Fill_Packet_cse_alife_anomalous_zone(tT,oPs)
+	oPs:w_u8(tT.last_spawn_time_present)
+	--if tT.tLeft then Set_Chunk(tT.tLeft,oPs) end --/#!# запись остатка
+	if bit_and(tT.last_spawn_time_present,1) == 1 then
+		utils.w_CTime(oPs, tT.ctime)
+	end
+end
+
+function Get_Data_Zone_Anom(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_se_zone_anom,"ZoneAnom") --/>
+end
+function Set_Data_Zone_Anom(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_se_zone_anom,"ZoneAnom") --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ ZONE VISUAL (se_zone_visual)
+--/ -----------------------------------------------------------------
+function Parse_Packet_se_zone_visual(tT,oPs)
+	Parse_Packet_cse_alife_anomalous_zone(tT,oPs)
+	Parse_Packet_cse_visual(tT,oPs)
+	--/cse_alife_zone_visual
+	tT.idle_animation          = oPs:r_stringZ()
+	tT.attack_animation        = oPs:r_stringZ()
+	--/se_zone_visual
+	tT.last_spawn_time_present = oPs:r_u8()
+	if bit_and(tT.last_spawn_time_present,1) == 1 then
+		tT.ctime = utils.r_CTime(oPs)
+	end
+	return tT --/>
+end
+function Fill_Packet_se_zone_visual(tT,oPs)
+	Fill_Packet_cse_alife_anomalous_zone(tT,oPs)
+	Fill_Packet_cse_visual(tT,oPs)
+	--/cse_alife_zone_visual
+	oPs:w_stringZ(tT.idle_animation)
+	oPs:w_stringZ(tT.attack_animation)
+	--/se_zone_visual
+	oPs:w_u8     (tT.last_spawn_time_present)
+	if bit_and(tT.last_spawn_time_present,1) == 1 then
+		utils.w_CTime(oPs, tT.ctime)
+	end
+end
+
+function Get_Data_Zone_Visual(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_se_zone_visual,"ZoneVisual") --/>
+end
+function Set_Data_Zone_Visual(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_se_zone_visual,"ZoneVisual") --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ ZONE TORRID (cse_alife_torrid_zone)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_torrid_zone(tT,oPs)
+	Parse_Packet_cse_alife_custom_zone(tT,oPs)
+	Parse_Packet_cse_motion(tT,oPs)
+	if iSSVer >= 12 then --/CoP
+		tT.last_spawn_time_present = oPs:r_u8()
+		if bit_and(tT.last_spawn_time_present,1) == 1 then
+			tT.ctime = utils.r_CTime(oPs)
+		end
+	end
+	return tT --/>
+end
+function Fill_Packet_cse_alife_torrid_zone(tT,oPs)
+	Fill_Packet_cse_alife_custom_zone(tT,oPs)
+	Fill_Packet_cse_motion(tT,oPs)
+	if iSSVer >= 12 then --/CoP
+		oPs:w_u8(tT.last_spawn_time_present)
+		if bit_and(tT.last_spawn_time_present,1) == 1 then
+			utils.w_CTime(oPs, tT.ctime)
+		end
+	end
+end
+
+function Get_Data_Zone_Torrid(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_torrid_zone,"ZoneTorrid") --/>
+end
+function Set_Data_Zone_Torrid(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_torrid_zone,"ZoneTorrid") --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ LEVEL_CHANGER (cse_alife_level_changer,se_level_changer)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_level_changer(tT,oPs)
+	Parse_Packet_cse_alife_space_restrictor(tT,oPs)
+	tT.dest_game_vertex_id  = oPs:r_u16()
+	tT.dest_level_vertex_id = oPs:r_s32()
+	tT.dest_position        = oPs:r_vec3()
+	tT.dest_direction       = oPs:r_vec3()
+	tT.dest_level_name      = oPs:r_stringZ()
+	tT.dest_graph_point     = oPs:r_stringZ()
+	tT.silent_mode          = oPs:r_u8()
+	return tT --/>
+end
+function Fill_Packet_cse_alife_level_changer(tT,oPs)
+	Fill_Packet_cse_alife_space_restrictor(tT,oPs)
+	oPs:w_u16    (tT.dest_game_vertex_id)
+	oPs:w_s32    (tT.dest_level_vertex_id)
+	oPs:w_vec3   (tT.dest_position)
+	oPs:w_vec3   (tT.dest_direction)
+	oPs:w_stringZ(tT.dest_level_name)
+	oPs:w_stringZ(tT.dest_graph_point)
+	oPs:w_u8     (tT.silent_mode)
+end
+--/ se_level_changer
+function Parse_Packet_se_level_changer(tT,oPs)
+	Parse_Packet_cse_alife_level_changer(tT,oPs)
+	if iSSVer >= 8 then --/CS&CoP
+		tT.enabled = oPs:r_u8()
+		tT.hint    = oPs:r_stringZ()
+		if iSSVer < 12 then --/CS
+			tT.se_level_changer__marker = oPs:r_u16()
+		end
+	end
+	return tT --/>
+end
+function Fill_Packet_se_level_changer(tT,oPs)
+	Fill_Packet_cse_alife_level_changer(tT,oPs)
+	if iSSVer >= 8 then --/CS&CoP
+		oPs:w_u8     (tT.enabled)
+		oPs:w_stringZ(tT.hint)
+		if iSSVer < 12 then --/CS
+			oPs:w_u16  (tT.se_level_changer__marker)
+		end
+	end
+end
+
+function Get_Data_LvChanger(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_se_level_changer,"LvChanger") --/>
+end
+function Set_Data_LvChanger(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_se_level_changer,"LvChanger") --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ OBJECT PHYSIC / DESTROYABLE (cse_alife_object_physic)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_object_physic(tT,oPs,oPu)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Parse_Packet_cse_ph_skeleton(tT,oPs)
+	tT.physic_type = oPs:r_s32()
+	tT.mass        = oPs:r_float()
+	tT.fixed_bones = oPs:r_stringZ()
+	if oPu and iSSVer >= 8 then --/CS&CoP
+		tT.updnum_items      = oPu:r_u8()
+		tT.updph_force       = Get_Left({},oPu,3,"s32")
+		tT.updph_torque      = Get_Left({},oPu,3,"s32")
+		tT.updph_position    = Get_Left({},oPu,3,"s32")
+		tT.updph_rotation    = Get_Left({},oPu,4,"s32")
+		tT.updph_angular_vel = Get_Left({},oPu,3,"s32")
+		tT.updph_linear_vel  = Get_Left({},oPu,3,"s32")
+		tT.updph_unknown     = oPu:r_u8()
+	end
+	return tT --/>
+end
+function Fill_Packet_cse_alife_object_physic(tT,oPs,oPu)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Fill_Packet_cse_ph_skeleton(tT,oPs)
+	oPs:w_s32    (tT.physic_type)
+	oPs:w_float  (tT.mass)
+	oPs:w_stringZ(tT.fixed_bones)
+	if oPu and iSSVer >= 8 then --/CS&CoP
+		oPu:w_u8 (tT.updnum_items)
+		Set_Left (tT.updph_force,       oPu, "s32")
+		Set_Left (tT.updph_torque,      oPu, "s32")
+		Set_Left (tT.updph_position,    oPu, "s32")
+		Set_Left (tT.updph_rotation,    oPu, "s32")
+		Set_Left (tT.updph_angular_vel, oPu, "s32")
+		Set_Left (tT.updph_linear_vel,  oPu, "s32")
+		oPu:w_u8 (tT.updph_unknown)
+	end
+end
+
+function Get_Data_ObjPhysic(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_object_physic,"Physic",bFull) --/>
+end
+function Set_Data_ObjPhysic(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_object_physic,"Physic",bFull) --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ OBJECT HANGING LAMP (cse_alife_object_hanging_lamp)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_object_hanging_lamp(tT,oPs)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Parse_Packet_cse_ph_skeleton(tT,oPs)
+	tT.main_color          = oPs:r_s32()
+	tT.main_brightness     = oPs:r_float()
+	tT.main_color_animator = oPs:r_stringZ()
+	tT.main_range          = oPs:r_float()
+	tT.light_flags         = oPs:r_u16()
+	tT.lamp_editor         = oPs:r_stringZ()
+	tT.lamp_fixed_bones    = oPs:r_stringZ()
+	tT.health              = oPs:r_float()
+	tT.main_virtual_size   = oPs:r_float()
+	tT.ambient_radius      = oPs:r_float()
+	tT.ambient_power       = oPs:r_float()
+	tT.ambient_texture     = oPs:r_stringZ()
+	tT.main_texture        = oPs:r_stringZ()
+	tT.main_bone           = oPs:r_stringZ()
+	tT.main_cone_angle     = oPs:r_float()
+	tT.glow_texture        = oPs:r_stringZ()
+	tT.glow_radius         = oPs:r_float()
+	tT.ambient_bone        = oPs:r_stringZ()
+	if iSSVer >= 8 then --/CS&CoP
+		tT.cse_alife_object_hanging_lamp__unk1_f32 = oPs:r_float()
+		tT.cse_alife_object_hanging_lamp__unk2_f32 = oPs:r_float()
+		tT.cse_alife_object_hanging_lamp__unk3_f32 = oPs:r_float()
+	end
+	return tT --/>
+end
+function Fill_Packet_cse_alife_object_hanging_lamp(tT,oPs)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	Fill_Packet_cse_ph_skeleton(tT,oPs)
+	oPs:w_s32    (tT.main_color)
+	oPs:w_float  (tT.main_brightness)
+	oPs:w_stringZ(tT.main_color_animator)
+	oPs:w_float  (tT.main_range)
+	oPs:w_u16    (tT.light_flags)
+	oPs:w_stringZ(tT.lamp_editor)
+	oPs:w_stringZ(tT.lamp_fixed_bones)
+	oPs:w_float  (tT.health)
+	oPs:w_float  (tT.main_virtual_size)
+	oPs:w_float  (tT.ambient_radius)
+	oPs:w_float  (tT.ambient_power)
+	oPs:w_stringZ(tT.ambient_texture)
+	oPs:w_stringZ(tT.main_bone)
+	oPs:w_stringZ(tT.main_bone)
+	oPs:w_float  (tT.main_cone_angle)
+	oPs:w_stringZ(tT.glow_texture)
+	oPs:w_float  (tT.glow_radius)
+	oPs:w_stringZ(tT.ambient_bone)
+	if iSSVer >= 8 then --/CS&CoP
+		oPs:w_float(tT.cse_alife_object_hanging_lamp__unk1_f32)
+		oPs:w_float(tT.cse_alife_object_hanging_lamp__unk2_f32)
+		oPs:w_float(tT.cse_alife_object_hanging_lamp__unk3_f32)
+	end
+end
+
+function Get_Data_HLamp(soObj) --/ серверный объект на входе
+--	printf("Get_Data_HLamp:Obj=[%s],cid=[%s]:[%s]", soObj:name(), soObj:clsid(), ">") --/#~#
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_object_hanging_lamp,"HLamp") --/>
+end
+function Set_Data_HLamp(tT,soObj) --/ таблица параметров и серверный объект на входе
+--	printf("Set_Data_HLamp:Obj=[%s],cid=[%s]:[%s]", soObj:name(), soObj:clsid(), ">") --/#~#
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_object_hanging_lamp,"HLamp") --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ BREAKABLE (cse_alife_object_breakable)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_object_breakable(tT,oPs)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	tT.health = oPs:r_float()
+	return tT --/>
+end
+function Fill_Packet_cse_alife_object_breakable(tT,oPs)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	oPs:w_float(tT.health)
+end
+
+function Get_Data_Breakable(soObj) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_object_breakable,"Breakable") --/>
+end
+function Set_Data_Breakable(tT,soObj) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_object_breakable,"Breakable") --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ ITEM (cse_alife_item)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_item(tT,oPs,oPu)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	tT.condition = oPs:r_float()
+	if iSSVer >= 8 then --/CS&Cop
+		tT.upgrade_count = oPs:r_s32()
+		if tT.upgrade_count ~= 0 and Has_Left(oPs) then
+			tT.upgrades = Get_Left({},oPs,tT.upgrade_count,"stringZ")
+		end
+	end
+	if oPu then
+		tT.updnum_items        = oPu:r_u8()
+		if iSSVer <= 7 then --/SHoC
+			tT.updph_position    = oPu:r_vec3()
+			tT.updph_rotation    = Get_Left({},oPu,4,"u8")
+			tT.updph_angular_vel = Get_Left({},oPu,3,"u8")
+			tT.updph_linear_vel  = Get_Left({},oPu,3,"u8")
+		else --/CS&CoP
+			if iSSVer >=12 then --/CoP
+				tT.updph_force     = Get_Left({},oPu,3,"s32")
+				tT.updph_torque    = Get_Left({},oPu,3,"s32")
+				tT.updph_position  = oPu:r_vec3()
+			else --/CS
+				tT.updph_position  = oPu:r_vec3()
+				tT.upditem__unk1   = oPu:r_vec3()
+				tT.upditem__unk2   = oPu:r_vec3()
+			end
+			tT.updph_rotation = {}
+			tT.updph_rotation.a  = oPu:r_float()
+			tT.updph_rotation.b  = oPu:r_float()
+			tT.updph_rotation.c  = oPu:r_float()
+			tT.updph_rotation.d  = oPu:r_float()
+			tT.updph_angular_vel = oPu:r_vec3()
+			tT.updph_linear_vel  = oPu:r_vec3()
+			tT.updph_unknown     = oPu:r_u8()
+		end
+	end
+	return tT --/>
+end
+function Fill_Packet_cse_alife_item(tT,oPs,oPu)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	oPs:w_float(tT.condition)
+	if iSSVer >= 8 then --/CS&Cop
+		oPs:w_s32(tT.upgrade_count)
+		if tT.upgrade_count ~= 0 and tT.upgrades then
+			Set_Left(tT.upgrades,oPs,"stringZ")
+		end
+	end
+	if oPu then
+		oPu:w_u8  (tT.updnum_items)
+		if iSSVer <= 7 then --/SHoC
+			oPu:w_vec3(tT.updpos)
+			Set_Left  (tT.updph_rotation,   oPu,"u8")
+			Set_Left  (tT.updph_angular_vel,oPu,"u8")
+			Set_Left  (tT.updph_linear_vel, oPu,"u8")
+		else --/CS&CoP
+			if iSSVer >=12 then --/CoP
+				Set_Left  (tT.updph_force, oPu,"s32")
+				Set_Left  (tT.updph_torque,oPu,"s32")
+				oPu:w_vec3(tT.ph_position)
+			else --/CS
+				oPu:w_vec3 (ret.updph_position)
+				oPu:w_vec3 (ret.upditem__unk1)
+				oPu:w_vec3 (ret.upditem__unk2)
+			end
+			oPu:w_float(tT.updph_rotation.a)
+			oPu:w_float(tT.updph_rotation.b)
+			oPu:w_float(tT.updph_rotation.c)
+			oPu:w_float(tT.updph_rotation.d)
+			oPu:w_vec3 (tT.updph_angular_vel)
+			oPu:w_vec3 (tT.updph_linear_vel)
+			oPu:w_u8   (tT.updph_unknown)
+		end
+	end
+end
+
+function Get_Data_Item(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_item,"Item",bFull) --/>
+end
+function Set_Data_Item(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_item,"Item",bFull) --/>
+end
+
+--/ -----------------------------------------------------------------
+--/ PDA (cse_alife_item_pda)
+--/ -----------------------------------------------------------------
+function Parse_Packet_cse_alife_item_pda(tT,oPs,oPu)
+	Parse_Packet_cse_alife_item(tT,oPs,oPu)
+	tT.original_owner     = oPs:r_u16()
+	tT.specific_character = oPs:r_stringZ()
+	tT.info_portion       = oPs:r_stringZ()
+	return tT --/>
+end
+function Fill_Packet_cse_alife_item_pda(tT,oPs,oPu)
+	Fill_Packet_cse_alife_item(tT,oPs,oPu)
+	oPs:w_u16    (tT.original_owner)
+	oPs:w_stringZ(tT.specific_character)
+	oPs:w_stringZ(tT.info_portion)
+end
+
+function Get_Data_ItemPDA(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_item_pda,"Pda",bFull) --/>
+end
+function Set_Data_ItemPDA(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_item_pda,"Pda",bFull) --/>
+end
+
+--/ -----------------------------------------------------------------------------------------------
+--/ AMMO (cse_alife_item_ammo)
+--/ -----------------------------------------------------------------------------------------------
+function Parse_Packet_cse_alife_item_ammo(tT,oPs,oPu)
+	Parse_Packet_cse_alife_item(tT,oPs,oPu)
+	tT.ammo_left = oPs:r_u16()
+	if oPu then
+		tT.updammo_left = oPu:r_u16()
+	end
+	return tT --/>
+end
+function Fill_Packet_cse_alife_item_ammo(tT,oPs,oPu)
+	Fill_Packet_cse_alife_item(tT,oPs,oPu)
+	oPs:w_u16(tT.ammo_left)
+	if oPu then
+		oPu:w_u16(tT.updammo_left)
+	end
+end
+
+function Get_Data_Ammo(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_item_ammo,"Ammo",bFull) --/>
+end
+function Set_Data_Ammo(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_item_ammo,"Ammo",bFull) --/>
+end
+
+--/ -----------------------------------------------------------------------------------------------
+--/ WEAPONs
+--/ -----------------------------------------------------------------------------------------------
+--/ cse_alife_item_weapon (в игре не встречается)
+function Parse_Packet_cse_alife_item_weapon(tT,oPs,oPu)
+	Parse_Packet_cse_alife_item(tT,oPs,oPu)
+	tT.ammo_current = oPs:r_u16()
+	tT.ammo_elapsed = oPs:r_u16()
+	tT.weapon_state = oPs:r_u8()
+	tT.addon_flags  = oPs:r_u8() --/ default=>0 (0x1a8)
+	tT.ammo_type    = oPs:r_u8()
+	if iSSVer >= 8 then --/CS&CoP
+		tT.item_weapon__unk1 = oPs:r_u8()
+	end
+	if oPu then
+		tT.updcondition         = oPu:r_u8()
+		tT.updweapon_flags      = oPu:r_u8()
+		tT.updammo_elapsed      = oPu:r_u16()
+		tT.updaddon_flags       = oPu:r_u8()
+		tT.updammo_type         = oPu:r_u8()
+		tT.updweapon_state      = oPu:r_u8()
+		tT.updweapon_zoom       = oPu:r_u8()
+	end
+	return tT --/>
+end
+function Fill_Packet_cse_alife_item_weapon(tT,oPs,oPu)
+	Fill_Packet_cse_alife_item(tT,oPs,oPu)
+	oPs:w_u16(tT.ammo_current)
+	oPs:w_u16(tT.ammo_elapsed)
+	oPs:w_u8 (tT.weapon_state)
+	oPs:w_u8 (tT.addon_flags)
+	oPs:w_u8 (tT.ammo_type)
+	if iSSVer >= 8 then --/CS&CoP
+		oPs:w_u8(tT.item_weapon__unk1)
+	end
+	if oPu then
+		oPu:w_u8 (tT.updcondition)
+		oPu:w_u8 (tT.updweapon_flags)
+		oPu:w_u16(tT.updammo_elapsed)
+		oPu:w_u8 (tT.updaddon_flags)
+		oPu:w_u8 (tT.updammo_type)
+		oPu:w_u8 (tT.updweapon_state)
+		oPu:w_u8 (tT.updweapon_zoom)
+	end
+end
+--/ cse_alife_item_weapon_magazined
+function Parse_Packet_cse_alife_item_weapon_magazined(tT,oPs,oPu)
+	Parse_Packet_cse_alife_item_weapon(tT,oPs,oPu)
+	if oPu then
+		tT.updcurrent_fire_mode = oPu:r_u8()
+	end
+end
+function Fill_Packet_cse_alife_item_weapon_magazined(tT,oPs,oPu)
+	Fill_Packet_cse_alife_item_weapon(tT,oPs,oPu)
+	if oPu then
+		oPu:w_u8 (tT.updcurrent_fire_mode)
+	end
+end
+--/ cse_alife_item_weapon_magazined_w_gl - TODO: оптимизировать!
+function Parse_Packet_cse_alife_item_weapon_w_gl(tT,oPs,oPu)
+	Parse_Packet_cse_alife_item(tT,oPs,oPu)
+	tT.ammo_current = oPs:r_u16()
+	tT.ammo_elapsed = oPs:r_u16()
+	tT.weapon_state = oPs:r_u8()
+	tT.addon_flags  = oPs:r_u8()
+	tT.ammo_type    = oPs:r_u8()
+	if iSSVer >= 8 then --/CS&Cop
+		tT.item_weapon__unk1 = oPs:r_u8()
+	end
+	if oPu then
+		tT.updgrenade_mode      = oPu:r_u8() --/#+#
+		tT.updcondition         = oPu:r_u8()
+		tT.updweapon_flags      = oPu:r_u8()
+		tT.updammo_elapsed      = oPu:r_u16()
+		tT.updaddon_flags       = oPu:r_u8()
+		tT.updammo_type         = oPu:r_u8()
+		tT.updweapon_state      = oPu:r_u8()
+		tT.updweapon_zoom       = oPu:r_u8()
+		tT.updcurrent_fire_mode = oPu:r_u8()
+	end
+	return tT --/>
+end
+function Fill_Packet_cse_alife_item_weapon_w_gl(tT,oPs,oPu)
+	Fill_Packet_cse_alife_item(tT,oPs,oPu)
+	oPs:w_u16(tT.ammo_current)
+	oPs:w_u16(tT.ammo_elapsed)
+	oPs:w_u8 (tT.weapon_state)
+	oPs:w_u8 (tT.addon_flags)
+	oPs:w_u8 (tT.ammo_type)
+	if iSSVer >= 8 then --/CS&Cop
+		oPs:w_u8(tT.item_weapon__unk1)
+	end
+	if oPu then
+		oPu:w_u8 (tT.updgrenade_mode) --/#+#
+		oPu:w_u8 (tT.updcondition)
+		oPu:w_u8 (tT.updweapon_flags)
+		oPu:w_u16(tT.updammo_elapsed)
+		oPu:w_u8 (tT.updaddon_flags)
+		oPu:w_u8 (tT.updammo_type)
+		oPu:w_u8 (tT.updweapon_state)
+		oPu:w_u8 (tT.updweapon_zoom)
+		oPu:w_u8 (tT.updcurrent_fire_mode)
+	end
+end
+
+--/ cse_alife_item_weapon_shotgun
+function Parse_Packet_cse_alife_item_weapon_shotgun(tT,oPs,oPu)
+	Parse_Packet_cse_alife_item_weapon_magazined(tT,oPs,oPu)
+	if oPu then
+		local iAm = oPu:r_u8()
+		if iAm == 0 then
+			tT.updammo_ids = nil
+		else
+			tT.updammo_ids = iAm
+		end
+	end
+end
+function Fill_Packet_cse_alife_item_weapon_shotgun(tT,oPs,oPu)
+	Fill_Packet_cse_alife_item_weapon_magazined(tT,oPs,oPu)
+	if oPu then
+		if not (tT.updammo_ids and tT.updammo_ids > 0) then
+			oPu:w_u8(0)
+		else
+			oPu:w_u8(tT.updammo_ids)
+		end
+	end
+end
+
+--/ cse_alife_mounted_weapon - TODO: доработать
+function Parse_Packet_cse_alife_mounted_weapon(tT,oPs,oPu)
+	Parse_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	if oPu then --/ if section == 'stationary_mgun'
+		tT.working              = oPu:r_u8()
+		tT.dest_enemy_direction = oPu:r_vec3() --/'f32v3'
+	end
+end
+function Fill_Packet_cse_alife_mounted_weapon(tT,oPs,oPu)
+	Fill_Packet_cse_alife_dynamic_object_visual(tT,oPs)
+	if oPu then --/ if section == 'stationary_mgun'
+		oPu:w_u8  (tT.working)
+		oPu:w_vec3(tT.dest_enemy_direction)
+	end
+end
+
+--/ ---------------------------------------------
+function Get_Data_Weapon(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_item_weapon,"Weapon",bFull) --/>
+end
+function Set_Data_Weapon(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_item_weapon,"Weapon",bFull) --/>
+end
+
+function Get_Data_WeaponMagazined(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_item_weapon_magazined,"WpnMgz",bFull) --/>
+end
+function Set_Data_WeaponMagazined(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_item_weapon_magazined,"WpnMgz",bFull) --/>
+end
+
+function Get_Data_WeaponGL(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_item_weapon_w_gl,"WpnMgzGL",bFull) --/>
+end
+function Set_Data_WeaponGL(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_item_weapon_w_gl,"WpnMgzGL",bFull) --/>
+end
+
+function Get_Data_WeaponShotgun(soObj,bFull) --/ серверный объект на входе
+	return Get_Object_Data(soObj,Parse_Packet_cse_alife_item_weapon_shotgun,"WpnShg",bFull) --/>
+end
+function Set_Data_WeaponShotgun(tT,soObj,bFull) --/ таблица параметров и серверный объект на входе
+	return Set_Object_Data(tT,soObj,Fill_Packet_cse_alife_item_weapon_shotgun,"WpnShg",bFull) --/>
+end
+
+
+--/ -----------------------------------------------------------------------------------------------
+class "CFake_NetPacket"
+--/ -----------------------------------------------------------------------------------------------
+function CFake_NetPacket:__init()
+	self.size = 2
+end
+
+function CFake_NetPacket:w_tell()
+	return self.size --/>
+end
+function CFake_NetPacket:w_bool()
+	self.size = self.size+1
+end
+function CFake_NetPacket:w_u8()
+	self.size = self.size+1
+end
+function CFake_NetPacket:w_u16()
+	self.size = self.size+2
+end
+function CFake_NetPacket:w_u24()
+	self.size = self.size+3
+end
+function CFake_NetPacket:w_u32()
+	self.size = self.size+4
+end
+function CFake_NetPacket:w_u64()
+	self.size = self.size+8
+end
+function CFake_NetPacket:w_s16()
+	self.size = self.size+2
+end
+function CFake_NetPacket:w_s32()
+	self.size = self.size+4
+end
+function CFake_NetPacket:w_s64()
+	self.size = self.size+8
+end
+function CFake_NetPacket:w_angle8()
+	self.size = self.size+1
+end
+function CFake_NetPacket:w_angle16()
+	self.size = self.size+2
+end
+function CFake_NetPacket:w_float()
+	self.size = self.size+4
+end
+function CFake_NetPacket:w_stringZ(str)
+	self.size = self.size + string.len(str)+1
+end
+function CFake_NetPacket:w_vec3()
+	self.size = self.size+12
+end
+
+function CFake_NetPacket:w_begin()
+	abort("%s:w_begin unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_chunk_open8()
+	abort("%s:w_chunk_open8 unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_chunk_close8()
+	abort("%s:w_chunk_close8 unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_chunk_open16()
+	abort("%s:w_chunk_open16 unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_chunk_close16()
+	abort("%s:w_chunk_close16 unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_float_q8()
+	abort("%s:w_float_q8 unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_float_q16()
+	abort("%s:w_float_q16 unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_matrix()
+	abort("%s:w_matrix unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_dir()
+	abort("%s:w_dir unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_sdir()
+	abort("%s:w_sdir unsupported in CFake_NetPacket",sModule)
+end
+function CFake_NetPacket:w_clientID()
+	abort("%s:w_clientID unsupported in CFake_NetPacket",sModule)
+end
+
+--/ -----------------------------------------------------------------------------------------------
+if not bInit then init() end --/ инициализация модуля (для сторонних модов)
+--/ -----------------------------------------------------------------------------------------------

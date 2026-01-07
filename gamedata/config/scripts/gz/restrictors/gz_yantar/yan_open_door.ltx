@@ -1,0 +1,7 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+find_noyt_in_old_lab_start +yan_scien_on_pos -kill_fracture} %+open_door%, {+kill_fracture} %+close_door%  sr_idle@nil
+
+[sr_idle@nil]

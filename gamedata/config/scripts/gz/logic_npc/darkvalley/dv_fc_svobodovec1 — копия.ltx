@@ -1,0 +1,42 @@
+[logic]
+active = walker@stay
+
+[walker@stay]
+path_walk = dv_fc_sv1_stay
+path_look = dv_fc_sv1_stay_look
+on_info = {+dv_fc_start} walker@move %=disable_ui%
+
+[walker@move]
+path_walk = dv_fc_sv1_move
+meet = no_meet
+on_signal = endmove|remark@threat1
+
+[remark@threat1]
+anim = threat
+target = actor
+snd = cit_jail_guard_sneer
+on_signal = sound_end | walker@stay2 %=enable_ui%
+meet = no_meet
+
+[walker@stay2]
+path_walk = dv_fc_sv1_stay
+path_look = dv_fc_sv1_stay_look
+meet = meet@dv_fc_sv1
+on_info = {+dv_fc_actor_punch} remark@punch
+
+[meet@dv_fc_sv1]
+meet_state = 5 | threat
+meet_state_wpn = 5 | threat
+victim = 5 | actor
+victim_wpn = 5 | actor
+use = {=dist_to_actor_le(3)} self
+use_wpn = {=dist_to_actor_le(3)} self
+meet_dialog = dv_fc_sv1_dialog
+
+[remark@punch]
+anim = punch
+snd = cit_jail_guard_sneer
+meet = no_meet
+target = actor
+on_signal = sound_end|%=run_cam_effector(fatigue)%
+on_info = {+dv_fc_sv_remark} %=run_postprocess(deadcity_wake:1777:false)%

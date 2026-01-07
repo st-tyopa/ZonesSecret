@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+rf_lesnik_tel} %=run_postprocess(agr_u_fade:01:false) =disable_ui =travel_in_time_2% sr_idle1
+
+[sr_idle1]
+on_timer = 5000|%=teleport_actor(rf_ld_tel:rf_ld_tel_look) =enable_ui +ld_rf_tel_done% sr_idle@nil
+
+[sr_idle@nil]

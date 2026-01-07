@@ -1,0 +1,15 @@
+[logic]
+active = walker
+on_death = death
+on_hit = hit
+
+[walker]
+path_walk = pz_hata_kamp_sit_2
+path_look = pz_hata_kamp
+def_state_standing = sit_ass
+
+[hit]
+on_info = nil %=kill_phantoms%
+
+[death]
+on_info = nil %=kill_phantoms%

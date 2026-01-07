@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+x15_switcher_on} %=x15_psi_power_on% sr_timer
+
+[sr_timer]
+type = dec
+start_value = 600000
+on_value = 0| nil %=aes_kill_actor%
+on_info = {+x15_escape_from_lab_done} nil
+string = x15_evacuation_timer

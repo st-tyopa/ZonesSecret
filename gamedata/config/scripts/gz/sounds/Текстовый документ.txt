@@ -1,0 +1,12 @@
+Вариант 1:
+[logic]
+cfg = scripts\gz\sounds\ds_neutbase_rupor.ltx
+
+
+
+Вариант 2:
+[logic]
+cfg = scripts\gz\sounds\ds_neutbase_rupor.ltx
+
+[collide]
+ignore_static

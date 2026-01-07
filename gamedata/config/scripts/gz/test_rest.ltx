@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = sr_idle@2 %+start_find_kep +find_raciya_start%
+
+[sr_idle@2]
+on_timer = 400| sr_idle@3 %+find_raciya_in_svobbase_done +gar_hornets_nest_start%
+
+[sr_idle@3]

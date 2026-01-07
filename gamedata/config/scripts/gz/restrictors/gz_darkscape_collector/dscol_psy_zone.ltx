@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+dscol_mystic_activate} sr_idle2
+
+[sr_idle2]
+on_actor_inside = sr_psy_antenna
+
+[sr_psy_antenna]
+eff_intensity = -10
+hit_intensity = 0
+postprocess = psy_antenna_indoor.ppe
+phantom_prob = 30

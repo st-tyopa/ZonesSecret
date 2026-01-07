@@ -1,0 +1,15 @@
+[logic]
+active = walker@rf_puzir_ocelot_tank
+
+[walker@rf_puzir_ocelot_tank]
+path_walk = rf_puzir_2_stay
+path_look = rf_puzir_look
+def_state_standing = wounded_zombie
+on_info = {+rf_ocelot_talk_done} walker@rf_puzir_ocelot_tank_2
+
+[walker@rf_puzir_ocelot_tank_2]
+path_walk = rf_ocelot_walk_to_tank
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet

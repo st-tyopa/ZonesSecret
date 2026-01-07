@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle@day
+
+[sr_idle@day]
+on_info = {!is_day +find_rf_art_start -spawn_art_test} %=spawn_obj_in_zone(quest_rf_art:rf_spawn_art) +spawn_art_test -dell_art_test% sr_idle@night
+on_info2 = {+rf_art_have} nil
+
+[sr_idle@night]
+on_info =  {=is_day +find_rf_art_start +spawn_art_test} %=rf_art_del +dell_art_test -spawn_art_test% sr_idle@day
+on_info2 = {+rf_art_have} nil

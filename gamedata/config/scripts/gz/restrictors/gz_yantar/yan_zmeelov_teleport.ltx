@@ -1,0 +1,31 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+yan_zmeelov_dialog_done} %=disable_ui =run_postprocess(agr_u_fade:01:false)% sr_idle111
+
+[sr_idle111]
+on_timer = 5000|%=travel_in_time_2 =teleport_actor(yan_zmeelov_tel:yan_zmeelov_tel_look) =enable_ui% sr_idle11
+
+[sr_idle11]
+on_info = {+ocelot_rob_start} sr_idle22, {+yan_ocelot_rob_done} sr_idle6, {+yan_zmeelov_rob_dead +yan_zmeelov_rob_guard1_dead +yan_zmeelov_rob_guard2_dead +yan_rob_ocelot_shot} sr_idle6
+
+[sr_idle22]
+on_game_timer = 16|%+yan_rob_hands_up2% sr_idle3, {+yan_ocelot_rob_done} sr_idle6, {+yan_zmeelov_rob_dead +yan_zmeelov_rob_guard1_dead +yan_zmeelov_rob_guard2_dead +yan_rob_ocelot_shot} sr_idle6
+
+[sr_idle3]
+on_info = {+yan_zmeelov_rob1_on_pos +yan_zmeelov_rob2_on_pos +yan_zmeelov_rob_on_pos +yan_rob_ocelot_shot} sr_idle4
+
+[sr_idle4]
+on_game_timer = 13|%+yan_ocelot_guard_hit =hit_obj(65002:bip01_r_hand:0.5:0) =hit_obj(65003:bip01_r_hand:0.5:0)% sr_idle61
+
+[sr_idle61]
+on_info = {+yan_ocelot_rob_done_pre} sr_idle6
+
+[sr_idle6]
+on_game_timer = 30|%=disable_ui =run_postprocess(agr_u_fade:01:false)% sr_idle611
+
+[sr_idle611]
+on_timer = 5000|%=travel_in_time_2 =teleport_actor(yan_zmeelov_tel_base:yan_zmeelov_tel_base_look) =enable_ui +yan_ocelot_rob_done% nil
+
+[sr_idle@nil]

@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle
+ 
+[sr_idle]
+on_actor_inside = {+dscol_mystic_activate} sr_idle2
+
+[sr_idle2]
+on_timer = 1000|  %=play_snd_from_obj(19005:soz\characters_voice\scenario\zov2)% nil
+

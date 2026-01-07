@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+yan_find_zerkalo_done} sr_idle2 
+
+[sr_idle2]
+on_game_timer = 10|%=iskatel_to_world =teleport_actor(yan_art_tel:yan_art_tel_look)% sr_idle3
+
+[sr_idle3]
+on_game_timer = 400|%+lesnik_quest_off% sr_idle@nil
+
+[sr_idle@nil]

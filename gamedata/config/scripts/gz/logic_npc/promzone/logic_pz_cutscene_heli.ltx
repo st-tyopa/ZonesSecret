@@ -1,0 +1,59 @@
+[logic]
+active = heli_move@wait
+
+[heli_move@wait]
+path_move           = pz_cutscene_heli_wait_move
+engine_sound        = false
+;on_info             = {+pz_heli_cutscene_start} heli_move@fly
+on_info             = {+start_pz_spawn_test_vert} heli_move@fly
+
+[heli_move@fly]
+path_move           = pz_cutscene_heli_fly_move
+engine_sound        = true
+;on_info             = {+pz_heli_cutscene_end} heli_move@idle
+on_signal = helistay|heli_move@stay
+
+[heli_move@stay]
+path_move           = pz_cutscene_heli_stay_move
+path_look           = pz_cutscene_heli_stay_look
+;on_signal = soldspawn|%+pz_soldiers_spawn%
+
+[heli_move@idle]
+path_move           = pz_cutscene_heli_idle_move
+engine_sound        = false
+
+
+
+
+
+
+;[heli_move@idle]
+;path_move = pz_cutscene_heli_move_idle_walk
+;path_look = pz_cutscene_heli_move_idle_look
+;engine_sound = false
+;invulnerable = true
+;on_game_timer = 1000|heli_move@raid
+
+;[heli_move@raid]
+;path_move = pz_heli_move_raid_walk
+;invulnerable = true
+;mute = true
+;default_velocity = 35
+
+
+
+;[heli_move@patrol]
+;path_move = gar_vertolet_patrol
+;invulnerable = true
+;default_velocity = 35
+;invulnerable = true
+;on_hit = heli_move@patrol2
+
+;[heli_move@patrol2]
+;path_move = gar_vertolet_patrol
+;invulnerable = true
+;default_velocity = 35
+;combat_enemy = actor
+;combat_velocity = 25
+;combat_safe_altitude = -10
+;combat_use_rocket = false

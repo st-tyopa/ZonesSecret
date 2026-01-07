@@ -1,0 +1,29 @@
+[logic]
+active = remark@stay
+on_death = death
+
+[death]
+on_info = %+ds_kamaz_stalker_dead%
+
+[remark@stay]
+anim = wait
+target = actor
+snd = ds_slepoi_thanks
+danger = danger_condition@svobodovec
+on_signal = sound_end|walker@go
+
+[walker@go]
+path_walk = ds_slepoi_down
+path_look = ds_slepoi_down_look
+danger = danger_condition@svobodovec
+on_info = {+ds_stalker_save_thanks} walker@sit
+
+[walker@sit]
+path_walk = ds_slepoi_down
+path_look = ds_slepoi_down_look
+danger = danger_condition@svobodovec
+on_actor_dist_ge_nvis = 130| %+dell_ds_slepoi%
+
+
+[danger_condition@svobodovec]
+ignore_distance = 0

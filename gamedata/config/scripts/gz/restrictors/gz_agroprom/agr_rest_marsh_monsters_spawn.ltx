@@ -1,0 +1,25 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+agr_marsh_monsters_sniperka_complete !is_day} sr_idle@2 %+agr_marsh_monsters_position_complete%
+
+[sr_idle@2]
+on_game_timer  = 100| sr_idle@3 %+agr_marsh_monsters_wait_complete%
+
+[sr_idle@3]
+on_game_timer = 5| sr_idle@6 %+agr_marsh_monsters_contr_spawn%
+
+[sr_idle@6]
+on_info = {+agr_swamp_zomb_dead +agr_swamp_zomb2_dead +agr_swamp_zomb3_dead +agr_swamp_zomb4_dead +agr_swamp_zomb5_dead +agr_swamp_zomb6_dead +agr_swamp_zomb7_dead +agr_swamp_zomb8_dead +agr_swamp_zomb9_dead +agr_swamp_zomb10_dead -agr_dolg_kom_dead} %+agr_marsh_monsters_all_dead% sr_idle@7
+
+[sr_idle@7]
+on_info = {+agr_marsh_monsters_contr_dead} sr_idle@8
+
+[sr_idle@8]
+on_game_timer = 5| sr_idle@75
+
+[sr_idle@75]
+on_info = {-agr_dolg_kom_dead -agr_dolg_hunt_1_dead -agr_dolg_hunt_1_dead} %+agr_swamp_sms_done_1 +agr_swamp_hunt_done% sr_idle@nil, {+agr_dolg_kom_dead -agr_dolg_hunt_1_dead -agr_dolg_hunt_1_dead} %+agr_swamp_sms_done_2 +agr_swamp_hunt_done% sr_idle@nil, {-agr_dolg_kom_dead +agr_dolg_hunt_1_dead -agr_dolg_hunt_1_dead} %+agr_swamp_sms_done_3 +agr_swamp_hunt_done% sr_idle@nil, {-agr_dolg_kom_dead -agr_dolg_hunt_1_dead +agr_dolg_hunt_1_dead} %+agr_swamp_sms_done_3 +agr_swamp_hunt_done% sr_idle@nil, {+agr_dolg_kom_dead +agr_dolg_hunt_1_dead +agr_dolg_hunt_1_dead} %+agr_swamp_hunt_done% sr_idle@nil
+
+[sr_idle@nil]

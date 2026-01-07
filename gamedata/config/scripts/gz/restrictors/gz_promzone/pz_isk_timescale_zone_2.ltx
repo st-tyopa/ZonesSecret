@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+pz_info_time_scale2} %=start_time_scale2 =run_postprocess(agr_u_fade)% sr_idle2
+
+[sr_idle2]
+on_info1 = %=actor_eat% sr_idle2
+on_info2 = {=need_current_time(19, 0)} nil %=stop_time_scale%

@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+yan_zmeelov_dialog_rob_done +actor_is_bandit} %+yan_rob_on_position% sr_idle2
+on_info = {+ocelot_rob_start} sr_idle3
+
+[sr_idle2]
+on_actor_outside = {-ocelot_rob_start -ocelot_group_enemy -yan_rob_ocelot_shot -yan_rob_ocelot_dead} %+yan_rob_on_position_return% sr_idle
+on_info = {+ocelot_rob_start} sr_idle3
+
+[sr_idle3]
+on_info = {+yan_ocelot_rob_done} %-yan_zmeelov_rob_zombi_off +yan_zmeelov_rob_dell_npc% sr_idle@nil
+
+[sr_idle@nil]

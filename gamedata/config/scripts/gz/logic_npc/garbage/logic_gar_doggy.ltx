@@ -1,0 +1,71 @@
+[logic]
+active = mob_camp@1
+
+[mob_camp@1]
+path_home = gar_doggy_sit
+path_look = gar_doggy_look
+home_min_radius = 0
+home_max_radius = 0
+friendly = true
+on_actor_dist_le_nvis = 3 | %+gar_doggy_start% mob_walker@2
+
+[mob_walker@2]
+path_walk = gar_doggy_way_1
+path_look = gar_doggy_way_1_look
+home_min_radius = 0
+home_max_radius = 0
+braindead = true
+friendly = true
+on_game_timer = 300| %+gar_doggy_1 % mob_walker@25
+
+[mob_walker@25]
+path_home = gar_doggy_sit_2
+path_look = gar_doggy_look_2
+home_min_radius = 0
+home_max_radius = 0
+friendly = true
+on_info = {+gar_doggy_1_run} %=play_snd_from_obj(84130:monsters\dog1\bdog_idle_1)% mob_walker@3
+
+[mob_walker@3]
+path_walk = gar_doggy_way_2
+path_look = gar_doggy_way_2_look
+home_min_radius = 0
+home_max_radius = 0
+braindead = true
+friendly = true
+on_game_timer = 300| %+gar_doggy_2% mob_walker@35
+
+[mob_walker@35]
+path_home = gar_doggy_sit_3
+path_look = gar_doggy_look_3
+home_min_radius = 0
+home_max_radius = 0
+braindead = true
+friendly = true
+on_info = {+gar_doggy_2_run} %=play_snd_from_obj(84130:monsters\dog\bdog_groan_1)% mob_walker@4
+
+[mob_walker@4]
+path_walk = gar_doggy_way_3
+path_look = gar_doggy_way_3_look
+home_min_radius = 0
+home_max_radius = 0
+braindead = true
+friendly = true
+on_game_timer = 300| %+gar_doggy_3% mob_walker@45
+
+[mob_walker@45]
+path_home = gar_doggy_sit_4
+path_look = gar_doggy_look_4
+home_min_radius = 0
+home_max_radius = 0
+braindead = true
+friendly = true
+on_info = {+gar_doggy_3_run} %=play_snd_from_obj(84130:monsters\dog1\bdog_attack_2)% 
+
+
+[mob_remark@bark]
+anim = stand_idle_threaten_0
+;snd = dog_bark
+target = actor
+no_move = true
+on_actor_dist_ge_nvis = 3 | mob_camp@1

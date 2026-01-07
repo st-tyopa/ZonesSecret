@@ -1,0 +1,19 @@
+[logic]
+active = walker@idle
+on_hit = hit
+on_death = death
+combat_ignore = combat_ignore@pz_isk
+
+[walker@idle]
+path_walk = und_phant_stay_1
+path_look = und_phant_look_1
+combat_ignore_cond = {=check_fighting(32000)}
+
+[combat_ignore@pz_isk]
+combat_ignore_cond = {=check_fighting(32000)}
+
+[hit]
+on_info = nil %=kill_phantoms%
+
+[death]
+on_info = nil %=kill_phantoms%

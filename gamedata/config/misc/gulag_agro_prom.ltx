@@ -1,0 +1,847 @@
+--------------------------------------------------------------------------
+-- главный лагерь долга,эксклюзивные работы
+--------------------------------------------------------------------------
+[combat_ignore@dolg_zoo]
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+--------------------------------------------------------------------------
+--лидер долга
+--------------------------------------------------------------------------
+
+[logic@agr_dolgbase_leader_walk]
+active = walker@agr_dolgbase_leader_walk
+on_hit = hit@dolgbase_dolgs
+on_death = death@dolg_general
+
+[death@dolg_general]
+on_info = {=killed_by_actor} %=set_gulag_enemy_actor(agr_dolgbase)%
+
+
+[walker@agr_dolgbase_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+--------------------------------------------------------------------------
+--торговец (бармен)
+--------------------------------------------------------------------------
+
+[logic@agr_dolgbase_trader]
+active = walker@agr_dolgbase_trader_walk1
+on_hit = hit@dolgbase_dolgs
+trade = misc\soz_traders\trade_kalash_trader.ltx
+inv_max_weight = 10000
+
+
+[walker@agr_dolgbase_trader_walk1]
+path_walk = trader_walk1
+path_look = trader_look1
+on_game_timer = 10| remark@agr_dolgbase_trader_1
+on_info = {=actor_in_zone(agr_dolgbase_trader_tradezone)} remark@agr_dolgbase_trader_1
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[remark@agr_dolgbase_trader_1]
+anim = hello
+on_signal = anim_end | walker@agr_dolgbase_trader_walk2
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_trader_walk2]
+path_walk = trader_walk2
+on_signal = dolgtradestop | walker@agr_dolgbase_trader_walk1
+on_info = {=actor_in_zone(agr_dolgbase_trader_tradezone)} walker@agr_dolgbase_trader_walk3
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[remark@agr_dolgbase_trader_2]
+anim = hello
+on_signal = anim_end | walker@agr_dolgbase_trader_walk1
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_trader_walk3]
+path_walk = trader_trade_walk
+target = actor
+on_info = {=actor_out_zone(agr_dolgbase_trader_tradezone)} walker@agr_dolgbase_trader_walk2
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+--------------------------------------------------------------------------
+--торговец оружием
+--------------------------------------------------------------------------
+[logic@agr_dolgbase_weapontrader_walk]
+active = walker@agr_dolgbase_weapontrader_walker1
+on_hit = hit@dolgbase_dolgs
+trade = misc\soz_traders\trade_kalash_trader.ltx
+inv_max_weight = 10000
+
+
+[walker@agr_dolgbase_weapontrader_walker1]
+path_walk = weapontrader_walk1
+path_look = weapontrader_look1
+meet = meet@agr_dolgbase_weapontrader
+on_info = {=actor_in_zone(agr_dogbase_weapontrader_restrictor1)} walker@agr_dolgbase_weapontrader_walker_trade
+on_timer = 10000 | walker@agr_dolgbase_weapontrader_walker2
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_weapontrader_walker_trade]
+path_walk = weapontrader_walk1
+path_look = weapontrader_look1
+on_info = {=actor_out_zone(agr_dogbase_weapontrader_restrictor1)} walker@agr_dolgbase_weapontrader_walker1, {+agr_kalash_message_to_guards_commander} remark@agr_dolgbase_weapontrader_message_raciya
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_weapontrader_walker_trade2]
+path_walk = weapontrader_walk1
+path_look = weapontrader_look1
+on_info = {=actor_out_zone(agr_dogbase_weapontrader_restrictor1)} walker@agr_dolgbase_weapontrader_walker1
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_weapontrader_walker2]
+path_walk = weapontrader_walk2
+path_look = weapontrader_look2
+on_info = {=actor_in_zone(agr_dogbase_weapontrader_restrictor1)} walker@agr_dolgbase_weapontrader_walker_trade
+on_timer = 10000 | walker@agr_dolgbase_weapontrader_walker3
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_weapontrader_walker3]
+path_walk = weapontrader_walk3
+path_look = weapontrader_look3
+on_info = {=actor_in_zone(agr_dogbase_weapontrader_restrictor1)} walker@agr_dolgbase_weapontrader_walker_trade
+on_timer = 10000 | walker@agr_dolgbase_weapontrader_walker1
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[remark@agr_dolgbase_weapontrader_message_raciya]
+anim = guard_rac
+snd = esc_wolf_radio
+target = actor
+on_signal = sound_end| remark@agr_dolgbase_weapontrader_message_raciya2 %=play_snd_from_kalash_raciya%
+on_info = {+agr_kalash_raciya_end} walker@agr_dolgbase_weapontrader_walker_trade2
+meet = no_meet
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[remark@agr_dolgbase_weapontrader_message_raciya2]
+anim = guard_rac
+target = actor
+on_timer = 5000 | walker@agr_dolgbase_weapontrader_walker_trade2 %+agr_kalash_raciya_end +agr_security_chief_pass_have%
+on_info = {+agr_kalash_raciya_end} walker@agr_dolgbase_weapontrader_walker_trade2
+meet = no_meet
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[meet@agr_dolgbase_weapontrader]
+meet_state = 2| wait@{=actor_friend}talk_hello_friend,talk_hello
+
+--------------------------------------------------------------------------
+--механик
+--------------------------------------------------------------------------
+
+[logic@agr_dolgbase_mehanik_walk]
+active = walker@agr_dolgbase_mehanik_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgbase_mehanik_walk]
+path_walk = mehanik_walk
+path_look = mehanik_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+--ОХРАНА БАЗЫ
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+--Охрана лидера Долга
+--------------------------------------------------------------------------
+
+--Охранник у 1й лестницы
+[logic@agr_dolgbase_guard_krylov1]
+active = walker@agr_dolgbase_guard_krylov1_walker1
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgbase_guard_krylov1_walker1]
+path_walk = guard_krylov1_walker1_walk
+path_look = guard_krylov1_walker1_look
+def_state_standing = guard
+on_info = {+agr_krylov_wait} walker@agr_dolgbase_guard_krylov1_walker3
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+meet = meet@agr_dolgbase_general_guards_1
+
+[meet@agr_dolgbase_general_guards_1]
+zone = agr_rest_general_guard1_meet_zone|ward@bar_guard_stop
+use = true
+use_wpn = false
+
+[walker@agr_dolgbase_guard_krylov1_walker2]
+path_walk = guard_krylov1_walker1_walk
+path_look = guard_krylov1_walker1_look
+meet = no_meet
+on_info = {=actor_in_zone(agr_guard_krylov_restrictor1)} walker@agr_dolgbase_guard_krylov1_walker3
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_guard_krylov1_walker3]
+path_walk = guard_krylov1_walker3_walk
+path_look = guard_krylov1_walker3_look
+meet = no_meet
+on_info = {=actor_out_zone(agr_guard_krylov_restrictor1)} walker@agr_dolgbase_guard_krylov1_walker2
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+
+--Охранник у 2й лестницы
+[logic@agr_dolgbase_guard_krylov2]
+active = walker@agr_dolgbase_guard_krylov2_walker1
+
+
+[walker@agr_dolgbase_guard_krylov2_walker1]
+path_walk = guard_krylov2_walker1_walk
+path_look = guard_krylov2_walker1_look
+def_state_standing = guard
+on_info = {+agr_krylov_wait} walker@agr_dolgbase_guard_krylov2_walker3
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+meet = meet@agr_dolgbase_general_guards_2
+
+[meet@agr_dolgbase_general_guards_2]
+zone = agr_rest_general_guard2_meet_zone|ward@bar_guard_stop
+use = true
+use_wpn = false
+
+[walker@agr_dolgbase_guard_krylov2_walker2]
+path_walk = guard_krylov2_walker1_walk
+path_look = guard_krylov2_walker1_look
+meet = no_meet
+on_info = {=actor_in_zone(agr_guard_krylov_restrictor2)} walker@agr_dolgbase_guard_krylov2_walker3
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_guard_krylov2_walker3]
+path_walk = guard_krylov2_walker3_walk
+path_look = guard_krylov2_walker3_look
+meet = no_meet
+on_info = {=actor_out_zone(agr_guard_krylov_restrictor2)} walker@agr_dolgbase_guard_krylov2_walker2
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+
+--Охранник у входа к Крылову
+[logic@agr_dolgbase_guard_krylov3]
+active = walker@agr_dolgbase_guard_krylov3_walker1
+
+
+[walker@agr_dolgbase_guard_krylov3_walker1]
+path_walk = guard_krylov3_walker1_walk
+path_look = guard_krylov3_walker1_look
+on_info = {+agr_krylov_wait} walker@agr_dolgbase_guard_krylov3_walker2
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_guard_krylov3_walker2]
+path_walk = guard_krylov3_walker1_walk
+path_look = guard_krylov3_walker1_look
+meet = no_meet
+on_info = {=actor_in_zone(agr_guard_krylov_restrictor3)} walker@agr_dolgbase_guard_krylov3_walker3
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@agr_dolgbase_guard_krylov3_walker3]
+path_walk = guard_krylov3_walker3_walk
+path_look = guard_krylov3_walker3_look
+meet = no_meet
+on_info = {=actor_out_zone(agr_guard_krylov_restrictor3)} walker@agr_dolgbase_guard_krylov3_walker2
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+
+--------------------------------------------------------------------------
+--Блокпосты на входах на базу
+--------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+--Южный блокпост (Блокпост №1)
+--------------------------------------------------------------------------
+[logic@agr_dolgbase_blokp1_commander]
+active = walker@agr_dolgbase_blokp1_commander
+actor_dialogs = actor_dialogs
+
+[walker@agr_dolgbase_blokp1_commander]
+path_walk = blokp1_commander_walk1
+path_look = blokp1_commander_look1
+meet = meet@agr_dolgbase_blokp1
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+soundgroup = bar_dolg_base_guard1
+
+[meet@agr_dolgbase_blokp1]
+use = true
+use_wpn = true
+victim 			= 15| actor
+victim_wpn 		= 15| actor
+zone = agr_dolgbase_blokpost1_warn_zone|{+agr_pass_to_dolgbase_have}guard,threat@{+agr_pass_to_dolgbase_have}talk_hello,bar_dolg_guard_stop
+precond			= visibility
+
+[meet@agr_dolgbase_blokp1_2]
+use = true
+use_wpn = true
+victim 			= 15| actor
+victim_wpn 		= 15| actor
+zone = agr_dolgbase_blokpost1_warn_zone|{+agr_pass_to_dolgbase_have}guard,threat@{+agr_pass_to_dolgbase_have}
+precond			= visibility
+
+
+[logic@agr_dolgbase_blokp1_guard1]
+active = walker@agr_dolgbase_blokp1_guard1
+actor_dialogs = actor_dialogs
+
+[walker@agr_dolgbase_blokp1_guard1]
+path_walk = blokp1_guard1_walk1
+path_look = blokp1_guard1_look1
+meet = meet@agr_dolgbase_blokp1_2
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+soundgroup = bar_dolg_base_guard1
+
+
+
+[logic@agr_dolgbase_blokp1_guard2]
+active = walker@agr_dolgbase_blokp1_guard2
+actor_dialogs = actor_dialogs
+
+[walker@agr_dolgbase_blokp1_guard2]
+path_walk = blokp1_guard2_walk1
+path_look = blokp1_guard2_look1
+meet = meet@agr_dolgbase_blokp1_2
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+soundgroup = bar_dolg_base_guard1
+--------------------------------------------------------------------------
+--Северный блокпост (Блокпост №2)
+--------------------------------------------------------------------------
+[logic@agr_dolgbase_blokp2_commander]
+active = zoneguard@agr_dolgbase_blokp2_commander
+on_hit = hit@dolgbase_dolgs
+
+
+[zoneguard@agr_dolgbase_blokp2_commander]
+path_walk = blokp2_commander_walk1
+path_look = blokp2_commander_look1
+zone_warn = blokpost1_warn_zone
+zone_guard = blokpost1_guard_zone
+no_move = true
+team = agr_dolgbase_blokp2
+snd_greet = esc_bridge_soldiers
+no_danger = true
+ignore_friends = true
+ignore_cond = {+agr_pass_to_dolgbase_have}
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgbase_blokp2_guard1]
+active = zoneguard@agr_dolgbase_blokp2_guard1
+on_hit = hit@dolgbase_dolgs
+
+
+[zoneguard@agr_dolgbase_blokp2_guard1]
+path_walk = blokp2_guard1_walk1
+path_look = blokp2_guard1_look1
+zone_warn = blokpost1_warn_zone
+zone_guard = blokpost1_guard_zone
+no_move = true
+team = agr_dolgbase_blokp2
+no_danger = false
+ignore_friends = true
+ignore_cond = {+agr_pass_to_dolgbase_have}
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+
+[logic@agr_dolgbase_blokp2_guard2]
+active = zoneguard@agr_dolgbase_blokp2_guard2
+on_hit = hit@dolgbase_dolgs
+
+
+[zoneguard@agr_dolgbase_blokp2_guard2]
+path_walk = blokp2_guard2_walk1
+path_look = blokp2_guard2_look1
+zone_warn = blokpost1_warn_zone
+zone_guard = blokpost1_guard_zone
+no_move = true
+team = agr_dolgbase_blokp2
+no_danger = false
+ignore_friends = true
+ignore_cond = {+agr_pass_to_dolgbase_have}
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[hit@dolgbase_dolgs]
+on_info = %+actor_enemy_dolgbase%
+
+--------------------------------------------------------------------------
+--часовые базы на вышках
+--------------------------------------------------------------------------
+[logic@agr_dolgbase_watchtower1]
+active = camper@agr_dolgbase_watchtower1_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[camper@agr_dolgbase_watchtower1_walk]
+sniper = true
+def_state_campering = threat_na
+radius = 80
+no_move = true
+show_spot = false
+path_walk = watchtower1_walk
+path_look = watchtower1_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgbase_watchtower2]
+active = camper@agr_dolgbase_watchtower2_walk
+on_hit = hit@dolgbase_dolgs
+
+[camper@agr_dolgbase_watchtower2_walk]
+sniper = true
+def_state_campering = threat_na
+radius = 80
+no_move = true
+show_spot = false
+path_walk = watchtower2_walk
+path_look = watchtower2_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgbase_watchtower3]
+active = camper@agr_dolgbase_watchtower3_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[camper@agr_dolgbase_watchtower3_walk]
+sniper = true
+def_state_campering = threat_na
+radius = 80
+no_move = true
+show_spot = false
+path_walk = watchtower3_walk
+path_look = watchtower3_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgbase_watchtower4]
+active = camper@agr_dolgbase_watchtower4_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[camper@agr_dolgbase_watchtower4_walk]
+sniper = true
+def_state_campering = threat_na
+radius = 80
+no_move = true
+show_spot = false
+path_walk = watchtower4_walk
+path_look = watchtower4_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+--------------------------------------------------------------------------
+--часовые базы
+--------------------------------------------------------------------------
+[logic@agr_dolgbase_guard1_walk]
+active = walker@agr_dolgbase_guard1_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgbase_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgbase_guard2_walk]
+active = walker@agr_dolgbase_guard2_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgbase_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgbase_guard3_walk]
+active = walker@agr_dolgbase_guard3_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgbase_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgbase_guard4_walk]
+active = walker@agr_dolgbase_guard4_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgbase_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+--------------------------------------------------------------------------
+--патрули базы
+--------------------------------------------------------------------------
+[logic@agr_dolgbase_patrol1_walk]
+active = walker@agr_dolgbase_patrol1_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgbase_patrol1_walk]
+path_walk = patrol1_walk
+path_look = patrol1_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgbase_patrol2_walk]
+active = walker@agr_dolgbase_patrol2_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgbase_patrol2_walk]
+path_walk = patrol2_walk
+path_look = patrol2_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+--------------------------------------------------------------------------
+-- костер базы
+--------------------------------------------------------------------------
+[logic@agr_dolgbase_kamp_work1]
+active = kamp@agr_dolgbase_kamp1
+
+[logic@agr_dolgbase_kamp_work2]
+active = kamp@agr_dolgbase_kamp1
+
+[logic@agr_dolgbase_kamp_work3]
+active = kamp@agr_dolgbase_kamp1
+
+[kamp@agr_dolgbase_kamp1]
+center_point = kamp1
+path_walk = kamp_point1_task
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+--------------------------------------------------------------------------
+--блокпост долга лидер блокпоста
+--------------------------------------------------------------------------
+
+[logic@agr_dolgblokpost_leader_walk]
+active = walker@agr_dolgblokpost_leader_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgblokpost_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+--------------------------------------------------------------------------
+--часовые блокпоста
+--------------------------------------------------------------------------
+[logic@agr_dolgblokpost_guard1_walk]
+active = walker@agr_dolgblokpost_guard1_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgblokpost_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgblokpost_guard2_walk]
+active = walker@agr_dolgblokpost_guard2_walk
+on_hit = hit@dolgbase_dolgs
+
+[walker@agr_dolgblokpost_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgblokpost_guard3_walk]
+active = walker@agr_dolgblokpost_guard3_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgblokpost_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgblokpost_guard4_walk]
+active = walker@agr_dolgblokpost_guard4_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgblokpost_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+--------------------------------------------------------------------------
+--патрули блокпоста
+--------------------------------------------------------------------------
+[logic@agr_dolgblokpost_patrol1_walk]
+active = walker@agr_dolgblokpost_patrol1_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgblokpost_patrol1_walk]
+path_walk = patrol1_walk
+path_look = patrol1_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[logic@agr_dolgblokpost_patrol2_walk]
+active = walker@agr_dolgblokpost_patrol2_walk
+on_hit = hit@dolgbase_dolgs
+
+
+[walker@agr_dolgblokpost_patrol2_walk]
+path_walk = patrol2_walk
+path_look = patrol2_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+--------------------------------------------------------------------------
+-- костер блокпоста
+--------------------------------------------------------------------------
+[logic@agr_dolgblokpost_kamp_work1]
+active = kamp@agr_dolgblokpost_kamp1
+
+[logic@agr_dolgblokpost_kamp_work2]
+active = kamp@agr_dolgblokpost_kamp1
+
+[logic@agr_dolgblokpost_kamp_work3]
+active = kamp@agr_dolgblokpost_kamp1
+
+[kamp@agr_dolgblokpost_kamp1]
+center_point = kamp1
+path_walk = kamp_point1_task
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+
+
+-------------------------
+-- Ловец
+-------------------------
+[logic@agr_dolgbase_lovets]
+active = walker@agr_dolgbase_lovets_walk1
+on_hit = hit@dolgbase_dolgs
+combat_ignore = combat_ignore
+
+[walker@agr_dolgbase_lovets_walk1]
+path_walk = lovets_walk1
+path_look = lovets_look1
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+def_state_standing = ward
+
+---------------------------
+-- Начальник охраны
+---------------------------
+[logic@agr_dolgbase_nachalnik]
+active = walker@agr_dolgbase_nachalnik_walk
+on_hit = hit@dolgbase_dolgs
+
+[walker@agr_dolgbase_nachalnik_walk]
+path_walk = nachalnik_walk
+path_look = nachalnik_look
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------
+-- главный лагерь наемников,эксклюзивные работы
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+--часовые базы
+--------------------------------------------------------------------------
+[logic@agr_mercbase_guard1_walk]
+active = walker@agr_mercbase_guard1_walk
+on_death = death@agr_naim_1
+
+[death@agr_naim_1]
+on_info = %+agr_merc_1_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+
+[logic@agr_mercbase_guard2_walk]
+active = walker@agr_mercbase_guard2_walk
+on_death = death@agr_naim_2
+
+[death@agr_naim_2]
+on_info = %+agr_merc_2_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+
+[logic@agr_mercbase_guard6_walk]
+active = walker@agr_mercbase_guard6_walk
+on_death = death@agr_naim_3
+
+[death@agr_naim_3]
+on_info = %+agr_merc_3_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_guard6_walk]
+path_walk = guard6_walk
+path_look = guard6_look
+
+[logic@agr_mercbase_guard7_walk]
+active = walker@agr_mercbase_guard7_walk
+on_death = death@agr_naim_4
+
+[death@agr_naim_4]
+on_info = %+agr_merc_4_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_guard7_walk]
+path_walk = guard7_walk
+path_look = guard7_look
+--------------------------------------------------------------------------
+--патрули базы
+--------------------------------------------------------------------------
+[logic@agr_mercbase_guard3_patrol]
+active = walker@agr_mercbase_guard3_patrol
+on_death = death@agr_naim_5
+
+[death@agr_naim_5]
+on_info = %+agr_merc_5_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_guard3_patrol]
+path_walk = guard3_patrol_walk
+
+[logic@agr_mercbase_guard4_patrol]
+active = walker@agr_mercbase_guard4_patrol
+on_death = death@agr_naim_6
+
+[death@agr_naim_6]
+on_info = %+agr_merc_6_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_guard4_patrol]
+path_walk = guard4_patrol_walk
+
+[logic@agr_mercbase_guard5_patrol]
+active = walker@agr_mercbase_guard5_patrol
+on_death = death@agr_naim_7
+
+[death@agr_naim_7]
+on_info = %+agr_merc_7_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_guard5_patrol]
+path_walk = guard5_patrol_walk
+
+------------------------------------------
+-- snipers
+------------------------------------------
+[logic@agr_mercbase_sniper1]
+active = walker@agr_mercbase_sniper1
+on_death = death@agr_naim_8
+
+[death@agr_naim_8]
+on_info = %+agr_merc_8_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_sniper1]
+path_walk = roof_sniper_1_walk
+path_look = roof_sniper_1_look
+def_state_standing = threat_na
+show_spot = false
+
+
+[logic@agr_mercbase_sniper2]
+active = walker@agr_mercbase_sniper2
+on_death = death@agr_naim_9
+
+[death@agr_naim_9]
+on_info = %+agr_merc_9_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_sniper2]
+path_walk = roof_sniper_2_walk
+path_look = roof_sniper_2_look
+def_state_standing = threat_na
+show_spot = false
+
+
+[logic@agr_mercbase_sniper3]
+active = walker@agr_mercbase_sniper3
+on_death = death@agr_naim_10
+
+[death@agr_naim_10]
+on_info = %+agr_merc_10_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_sniper3]
+path_walk = roof_sniper_3_walk
+path_look = roof_sniper_3_look
+def_state_standing = threat_na
+show_spot = false
+
+
+[logic@agr_mercbase_sniper4]
+active = walker@agr_mercbase_sniper4
+on_death = death@agr_naim_11
+
+[death@agr_naim_11]
+on_info = %+agr_merc_11_dead =agr_mercs_all_dead%
+
+[walker@agr_mercbase_sniper4]
+path_walk = roof_sniper_4_walk
+path_look = roof_sniper_4_look
+def_state_standing = threat_na
+show_spot = false
+
+
+--------------------------------------------------------------------------
+--блокпост наемников
+--------------------------------------------------------------------------
+
+[logic@agr_mercblokpost_guard1_walk]
+active = walker@agr_mercblokpost_guard1_walk
+on_death = death@agr_naim_12
+
+[death@agr_naim_12]
+on_info = %+agr_merc_12_dead =agr_mercs_all_dead%
+
+[walker@agr_mercblokpost_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+
+[logic@agr_mercblokpost_guard2_walk]
+active = walker@agr_mercblokpost_guard2_walk
+on_death = death@agr_naim_13
+
+[death@agr_naim_13]
+on_info = %+agr_merc_13_dead =agr_mercs_all_dead%
+
+[walker@agr_mercblokpost_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+
+[logic@agr_mercblokpost_guard3_walk]
+active = walker@agr_mercblokpost_guard3_walk
+on_death = death@agr_naim_14
+
+[death@agr_naim_14]
+on_info = %+agr_merc_14_dead =agr_mercs_all_dead%
+
+[walker@agr_mercblokpost_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+
+[logic@agr_mercblokpost_guard4_walk]
+active = walker@agr_mercblokpost_guard4_walk
+on_death = death@agr_naim_15
+
+[death@agr_naim_15]
+on_info = %+agr_merc_15_dead =agr_mercs_all_dead%
+
+[walker@agr_mercblokpost_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+
+[logic@agr_mercblokpost_patrol1_walk]
+active = walker@agr_mercblokpost_patrol1_walk
+on_death = death@agr_naim_16
+
+[death@agr_naim_16]
+on_info = %+agr_merc_16_dead =agr_mercs_all_dead%
+
+[walker@agr_mercblokpost_patrol1_walk]
+path_walk = patrol1_walk
+path_look = patrol1_look
+
+[logic@agr_mercblokpost_patrol2_walk]
+active = walker@agr_mercblokpost_patrol2_walk
+on_death = death@agr_naim_17
+
+[death@agr_naim_17]
+on_info = %+agr_merc_17_dead =agr_mercs_all_dead%
+
+[walker@agr_mercblokpost_patrol2_walk]
+path_walk = patrol2_walk
+path_look = patrol2_look

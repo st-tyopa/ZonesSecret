@@ -1,0 +1,24 @@
+[logic]
+active = patrol@1
+
+[patrol@1]
+path_walk = ds_bandits_to_vert_walk
+commander = false
+formation = back
+move_type = assault
+on_signal = bandonvert| walker@1
+
+[walker@1]
+path_walk = ds_bandits_vert_way1_walk
+path_look = ds_bandits_vert_way1_look
+on_timer = 15000| patrol@2
+
+[patrol@2]
+path_walk = ds_bandits_to_ost_walk
+formation = back
+move_type = assault
+on_signal = banonost| kamp
+
+[kamp]
+center_point = ds_ostanovka_lager_kamp
+path_walk = ds_ostanovka_lager_kamp_2

@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+gz_tainik_1_spawn} %=spawn_obj_in_zone(gz_mine_physic:gz_tainik_1_mine_spawn) =spawn_item_in_box(90000:killer_outfit_green:wpn_galil:ammo_5.56x45_ss190:ammo_5.56x45_ss190)% sr_idle2 
+
+[sr_idle2]
+on_info = {+gz_tainik1_mine_stop} %=del_gz_mine%

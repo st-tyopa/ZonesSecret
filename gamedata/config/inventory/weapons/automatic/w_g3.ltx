@@ -1,0 +1,271 @@
+[wpn_g3]:identity_immunities
+GroupControlSection			= spawn_group
+discovery_dependency 			= 
+$spawn                   		= "weapons\g3"
+$npc			 		= on
+$prefetch 		 		= 8
+scheduled                		= off  
+cform                    		= skeleton
+class                   		= WP_LR300
+min_radius               		= 0
+max_radius               		= 10
+description				= enc_weapons1_wpn-g3sg1
+
+chamber_status          = true
+ef_main_weapon_type			= 2
+ef_weapon_type				= 6
+
+zoom_dof             = 0.5, 1.0, 180
+reload_dof           = 0.0, 0.5, 5, 1.7
+
+;-----------------------------------------------------------------------------------
+holder_range_modifier			= 2.15
+holder_fov_modifier			= 0.7
+;-----------------------------------------------------------------------------------
+
+
+cost					= 23500
+weapon_class				= assault_rifle
+
+ammo_limit		 		= 210
+ammo_current		 		= 20
+ammo_elapsed		 		= 20
+
+ammo_mag_size		 		= 20
+ammo_class		 		= ammo_7.62x51_fmj, ammo_7.62x51_ap
+grenade_class				= ammo_m209
+fire_modes				= 1, -1
+launch_speed 				= 0
+
+hand_dependence		 		= 1
+single_handed				= 0
+
+inv_name	        		= wpn-g3sg1
+inv_name_short				= wpn-g3sg1
+inv_weight				= 4.4
+
+inv_grid_width     			= 5
+inv_grid_height    			= 2
+inv_grid_x         			= 10
+inv_grid_y         			= 6
+
+kill_msg_x				= 175
+kill_msg_y				= 0
+kill_msg_width				= 82
+kill_msg_height				= 28
+
+slot 			 		= 1,2		
+animation_slot				= 2		
+
+;-----------------------------------------------------------------------------------
+fire_dispersion_base			= 0.1 		;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor			= 1.25f
+
+;отдача
+cam_relax_speed         		= 4.25		;скорость возврата в исходное положение
+cam_dispersion          		= 0.4		;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc			= 0.3		;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac			= 0.8		;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle				= 10.0	    	;максимальный угол отдачи
+cam_max_angle_horz			= 20.0		;(degree) maximum shot horizontal degree 
+cam_step_angle_horz			= 1.0;1		;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor 	= 5		;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 			= 0.003 	;вероятность осечки при максимальном износе
+misfire_condition_k			= 0.05 
+condition_shot_dec 			= 0.0001 	;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+direction                		= 0, 0, 1
+
+fire_point             			=  0,0.137,0.649
+
+flame_particles		    		= weapons\generic_weapon05
+smoke_particles				= amik\weapons\smoke_particles\smoke_particles_01
+shell_particles	 			= amik\weapons\7.62x51_shells_r
+grenade_flame_particles			= weapons\generic_weapon01
+
+shell_point		 		= 0.0, 0.188, 0.082
+shell_dir		 		= 0.0, 1.0, 0.0
+
+rpm_empty_click 	 		= 200
+
+PDM_disp_base 				= 1.0
+PDM_disp_vel_factor 			= 1.2
+PDM_disp_accel_factor 			= 1.2
+PDM_crouch	 			= 1.0
+PDM_crouch_no_acc 			= 1.0
+
+
+; ttc
+hit_power        			= 0.85
+hit_impulse		 		= 150
+hit_type 				= fire_wound
+
+fire_distance            		= 550
+bullet_speed				= 500
+rpm                      		= 550
+; end ttc	
+
+silencer_hit_power       		= 0.67
+silencer_hit_impulse	 		= 120
+silencer_fire_distance   		= 450
+silencer_bullet_speed	 		= 400
+
+use_aim_bullet				= true
+time_to_aim				= 1.0	
+
+hud                      		= wpn_g3_hud
+normal                   		= 0, 1, 0
+position         	    		= -0.026, -0.1, 0.0
+orientation             		= 0, 0, 0
+
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+strap_position         			= -0.16,-0.36,0.15
+strap_orientation      			= -10,-5,10
+strap_bone0				= bip01_spine2
+strap_bone1				= bip01_spine1
+
+
+startup_ammo             		= 1000
+visual                   		= weapons\g3\wpn_g3.ogf
+
+light_color		 		= 0.6,0.5,0.3
+light_range		 		= 5
+light_var_color		 		= 0.05
+light_var_range		 		= 0.1
+light_time 		 		= 0.2
+
+ph_mass			 		= 5
+
+;addons
+scope_status				= 2
+silencer_status				= 2
+grenade_launcher_status			= 0
+
+zoom_enabled				= true
+scope_zoom_factor	    		= 70
+scope_texture				= wpn\wpn_crosshair_zf3
+scope_name 				= wpn_addon_scope_susat
+
+silencer_name  				= wpn_sil_762_ar
+
+grenade_launcher_name 			= wpn_addon_grenade_launcher_m203
+
+
+scope_x                     		= 46
+scope_y                     		= -4
+silencer_x                  		= 220
+silencer_y                  		= 9
+grenade_launcher_x          		= 137
+grenade_launcher_y          		= 26
+
+;звуки
+snd_draw				= weapons\g3\g3_draw
+snd_holster				= weapons\g3\g3_holster
+snd_shoot				= weapons\g3\g3_shoot
+snd_shoot1				= weapons\g3\g3_shoot1
+snd_shoot2				= weapons\g3\g3_shoot2
+snd_shoot3				= weapons\g3\g3_shoot3
+snd_shoot4				= weapons\g3\g3_shoot4
+snd_shoot5				= weapons\g3\g3_shoot5
+snd_empty				= weapons\g3\g3_empty, 0.5
+snd_reload				= weapons\g3\g3_reload
+snd_switch				= weapons\g3\hk79_switch
+snd_silncer_shot			= weapons\g3\g3_shot_sil
+snd_shoot_grenade			= weapons\g3\hk79_shot
+snd_reload_grenade			= weapons\g3\hk79_reload
+
+
+
+
+
+;silencer_flame_particles 		= weapons\generic_weapon01
+silencer_smoke_particles 		= amik\weapons\smoke_particles\p_smoke_particles_02
+
+
+silencer_light_color			= 0.58
+silencer_light_range			= 0.01
+silencer_light_var_color		= 0.05
+silencer_light_var_range		= 0.5
+silencer_light_time 			= 0.2
+
+
+
+[wpn_g3_hud]
+shell_point          			= 0,0,-0.89
+shell_dir				= 0.0, 0.0, 0.0
+
+fire_point               		= 0,0,-0.55
+fire_bone                		= muzzle
+
+orientation              		= 0, 0, 0
+position                		= -0.06,-0.19,0.15
+
+visual                   		= weapons\g3\wpn_g3_hud.ogf
+
+anim_idle				= idle
+anim_idle_aim				= idle_aim
+anim_reload				= reload
+anim_draw				= draw
+anim_holster				= holster
+anim_shoot				= shoot
+anim_idle_sprint			= idle_sprint
+anim_idle_moving			= idle_move
+
+zoom_hide_crosshair			= true
+zoom_rotate_time			= 0.25
+
+zoom_offset				= -0.092200,0.038000,-0.062000
+zoom_rotate_x				= -0.004500
+zoom_rotate_y				= -0.000800
+
+
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+[wpn_g3sg1]:wpn_g3			;Sniper
+$spawn              			= "weapons\uniq\wpn_g3sg1"	
+description				= enc_weapons1_wpn-g3sg1
+
+inv_name	        		= wpn-g3sg1
+inv_name_short				= wpn-g3sg1
+inv_weight				= 4.8
+
+inv_grid_x         			= 6
+inv_grid_y         			= 2
+
+fire_dispersion_base			= 0.05
+
+fire_point             			=  0,0.236,0.661
+shell_point		 		= 0,-0.40,0.089
+
+position         	    		= -0.026, -0.125, -0.03
+
+hud 					= wpn_g3sg1_hud
+visual                  		= weapons\g3\wpn_g3sg1.ogf
+
+scope_x                     		= 45
+scope_y                     		= -4
+silencer_x                  		= 215
+silencer_y                  		= 10
+scope_texture					= wpn\wpn_crosshair_zf3
+scope_status				= 1
+scope_dynamic_zoom          = true
+scope_zoom_factor	    			= 15
+
+
+[wpn_g3sg1_hud]:wpn_g3_hud
+shell_point          			= 0,0,-0.92
+
+fire_point               		= 0,0,-0.7
+
+position                		= -0.03,-0.19,0.2
+
+visual                   		= weapons\g3\wpn_g3sg1_hud.ogf
+
+zoom_offset				= -0.121600,0.040000,-0.119000
+zoom_rotate_x				= -0.003000
+zoom_rotate_y				= -0.001500

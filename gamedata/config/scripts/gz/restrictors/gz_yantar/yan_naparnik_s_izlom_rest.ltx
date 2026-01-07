@@ -1,0 +1,32 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+yan_scien_lead_to_lager_start} %=disable_ui =run_postprocess(agr_u_fade:01:false)% sr_idle111
+
+[sr_idle111]
+on_timer = 5000|%=travel_in_time_2 =teleport_actor(yan_scien_teleport:yan_scien_teleport_look) =enable_ui% sr_idle2
+
+[sr_idle2]
+on_info = {+yan_bunker_door_blocked_open} sr_idle21
+
+[sr_idle21]
+on_timer = 2000|%+yan_scien_lead_stay_outdoor% sr_idle22
+
+[sr_idle22]
+on_info = {+yan_semenov_zamena} sr_idle3
+
+[sr_idle3]
+on_timer = 500|%+yan_kill_semenov =play_snd(monsters\bloodsucker\bloodsucker_script_attack_1)% sr_idle31
+
+[sr_idle31]
+on_timer = 1000|%+yan_hit_bunker_door =play_snd_from_obj(65009:soz\characters_voice\scenario\rnd_horror39)% sr_idle32
+
+[sr_idle32]
+on_timer = 1500|%+yan_hit_bunker_door2% sr_idle33
+
+[sr_idle33]
+on_timer = 3000|%+yan_hit_bunker_door3% sr_idle4
+
+[sr_idle4]
+on_timer = 1500|%+yan_bunker_escape_sms +spawn_scien_assist% nil

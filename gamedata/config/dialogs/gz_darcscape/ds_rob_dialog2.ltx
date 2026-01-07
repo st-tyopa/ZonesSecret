@@ -1,0 +1,53 @@
+[ds_rob_dialog]
+params_sequence = npc
+
+x0 = ds_rob_dialog_00
+link0 = 1 
+
+x1 = ds_rob_dialog_01
+link1 = 2, 3
+
+x2 = ds_rob_dialog_02
+link2 = 211, 221
+
+x211 = ds_rob_dialog_211
+d211 = ds_bandlider_need_money_start
+link211 = 212
+
+x212 = ds_rob_dialog_212
+gi212 = ds_goto_bandlider_done, ds_bandlider_need_money_start
+link212 = 213
+
+x213 = ds_rob_dialog_042
+a213 = dialogs.break_dialog
+
+
+x221 = ds_rob_dialog_221
+p221 = gz_prologue.rob_have_money
+a221 = gz_prologue.give_bandits_money
+gi221 = ds_rob_buying
+link221 = 222
+
+x222 = ds_rob_dialog_222
+link222 = 223
+
+x223 = ds_rob_dialog_042
+a223 = dialogs.break_dialog
+
+
+
+
+x3 = ds_rob_dialog_03
+h3 = ds_bandlider_need_money_start
+link3 = 311, 321
+
+x311 = ds_rob_dialog_311
+h311 = ds_bandlider_need_money_start
+a311 = dialogs.break_dialog
+
+x321 = ds_rob_dialog_221
+h321 = ds_bandlider_need_money_start
+p321 = gz_prologue.rob_have_money
+a321 = gz_prologue.give_bandits_money
+gi221 = ds_bandlider_need_money_done
+link321 = 222

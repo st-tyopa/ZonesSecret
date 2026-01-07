@@ -1,0 +1,22 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+fuck_racia_lab_start} sr_idle1
+
+[sr_idle1]
+on_timer = 7000|%+fuck_racia_lab_sms% sr_idle@idle
+
+[sr_idle@idle]
+on_actor_inside = {+activate_gener_start} %+the_last_diary% sr_idle@idle1
+
+[sr_idle@idle1]
+on_info = {+open_germodoor_done} %=run_postprocess(dead_zone:01:true) =play_snd(characters_voice\soz\gz_lab_x13\rad_hat_1)% sr_timer@1
+
+[sr_timer@1]
+type = dec
+start_value = 120000
+on_value = 0 | %=play_snd(soz\characters_voice\scenario\agr_psy_effect) =aes_kill_actor% sr_idle@nil
+string = lab_psi_on
+
+[sr_idle@nil]

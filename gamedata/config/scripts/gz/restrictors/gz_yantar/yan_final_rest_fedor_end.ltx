@@ -1,0 +1,44 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+yan_endgame_spawn_predately} %+yan_final_weapon_off% sr_idle1
+
+[sr_idle1]
+on_actor_inside = {+yan_endgame_spawn_predately -yan_fin_dalog_end} %+on_talk_kobold% sr_idle2
+
+[sr_idle2]
+on_actor_inside = {+yan_fin_dalog_end} sr_idle31
+on_actor_outside = {+yan_endgame_spawn_predately} %+kobold_vrag% nil
+
+[sr_idle31]
+on_game_timer = 16|%+yan_kill_kobold =play_snd(weapons\svd\svd_shoot)% sr_idle3
+
+[sr_idle3]
+on_info = {+yan_end_1_scene} sr_idle41
+
+[sr_idle41]
+on_timer  = 100|%=play_snd(soz\characters_voice\scenario\gunfire_1)% sr_idle42
+
+[sr_idle42]
+on_timer  = 2500|%=play_snd(weapons\svd\svd_shoot) +yan_kill_kill_1 =run_postprocess(deadcity_wake)% sr_idle43
+
+[sr_idle43]
+on_timer  = 3500|%=play_snd(weapons\svd\svd_shoot) +yan_kill_kill_2 =yan_fin_cam_effect % sr_idle44
+
+[sr_idle44]
+on_timer  = 5000|%+start_true_ending% nil
+
+;[sr_idle44]
+;on_timer  = 5000|%+spawn_yan_ghost% sr_idle4
+
+;[sr_idle4]
+;on_timer  = 5000|%=stop_cam_effector(1001)% sr_idle5
+
+;[sr_idle5]
+;on_info = {+yan_ghost_talk_sms} sr_idle6
+
+;[sr_idle6]
+;on_timer = 2500|%+yan_ghost_talk_strelok_sms% nil
+
+[sr_idle@nil]

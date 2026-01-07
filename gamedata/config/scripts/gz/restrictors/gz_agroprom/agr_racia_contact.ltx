@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+go_to_evacuation_zone_start_1} %+agr_rac_gg_1% sr_idle2
+
+[sr_idle2]
+on_timer = 5000|%+agr_base_racia_1% sr_idle3
+
+[sr_idle3]
+on_timer = 4000|%+agr_rac_gg_2% sr_idle4
+
+[sr_idle4]
+on_timer = 11000|%+agr_base_racia_2% sr_idle5
+
+[sr_idle5]
+on_timer = 9000|%+agr_rac_gg_3 +go_to_evacuation_zone_start% nil

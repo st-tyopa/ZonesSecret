@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+find_raciya_start} sr_idle2
+
+[sr_idle2]
+on_use = %+find_raciya_in_vertolet_done%
+tips = ds_vert_rac
+on_info = {+find_raciya_in_vertolet_done} sr_idle@nil
+
+[sr_idle@nil]

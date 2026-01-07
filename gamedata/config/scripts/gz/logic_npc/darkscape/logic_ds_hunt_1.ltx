@@ -1,0 +1,62 @@
+[logic]
+active = walker@idle
+on_death = death
+
+[death]
+on_info = %+hunt_1_dead%
+
+[walker@idle]
+def_state_standing = hello
+path_walk = ds_hunt_1_stay
+path_look = ds_hunt_1_look
+on_info = {+ds_hunt_dialog_start} walker@idle2
+
+[walker@idle2]
+path_walk = ds_hunt_1_stay
+path_look = ds_hunt_1_look
+on_info = {+ds_hunt_dialog_1_done} walker@ds_hunt_walk, {+ds_hunt_start_alone} walker@ds_hunt_start
+
+[walker@ds_hunt_walk]
+path_walk = ds_hunt1_walk
+on_signal = bino |  %+ds_hunt_bino% remark@ds_hunt_bino_zapravka
+meet = no_meet
+danger = danger_condition@scout
+
+[remark@ds_hunt_bino_zapravka]
+anim = binocular
+target = ds_mob_home_krovo, 0
+meet = no_meet
+on_timer = 12000| %+ds_hunt_dialog_2% walker@ds_hunt_wait
+
+[walker@ds_hunt_wait]
+path_walk = ds_hunt_1_bino_stay
+path_look = ds_hunt_1_bino_look
+def_state_standing = guard
+on_info = {+ds_hunt_dialog_2_done} walker@ds_hunt_start
+
+[walker@ds_hunt_start]
+path_walk = ds_hunt1_start
+on_actor_dist_ge_nvis = 100| %+ds_hunt_krovo_fail%
+danger = danger_condition@scout_2
+on_signal = dskrovspawn| %+ds_spawn_krovos%
+on_info = {+kill_ds_krovo_1} walker@ds_hunts
+
+[walker@ds_hunts]
+path_walk = ds_hunt_nagrada_stay
+path_look = ds_hunt_nagrada_look
+on_info = {+ds_hunt_krovo_done} remark@ds_hunt_2
+
+[remark@ds_hunt_2]
+anim = guard
+target = actor
+on_timer = 17000| kamp@ds_hunts
+
+[kamp@ds_hunts]
+path_walk = ds_hunt_1_kamp
+center_point = ds_hunt_kamp_center
+
+[danger_condition@scout]
+ignore_distance       = 1
+
+[danger_condition@scout_2]
+ignore_distance       = 15

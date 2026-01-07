@@ -1,0 +1,25 @@
+[logic]
+active = ph_door@horror_knock
+
+[ph_door@horror_knock]
+locked = true
+closed = true
+on_info = {~50 =actor_in_zone(lab_door_hit)} %=play_snd(device\door_stop) =hit_npc(lab_door_knock:door:0:1500)% ph_door@horror_knock_2
+on_info2 = %=play_snd(device\door_stop) =hit_npc(lab_door_knock:door:0:1500)% ph_door@horror_knock_3
+tip_open =  
+tip_close = 
+
+[ph_door@horror_knock_2]
+locked = true
+closed = true
+on_game_timer = 10|ph_door@horror_knock
+tip_open =  
+tip_close = 
+
+
+[ph_door@horror_knock_3]
+locked = true
+closed = true
+on_game_timer = 15|ph_door@horror_knock
+tip_open =  
+tip_close = 

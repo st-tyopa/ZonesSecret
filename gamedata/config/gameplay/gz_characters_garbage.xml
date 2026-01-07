@@ -1,0 +1,1181 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<xml>
+
+<!--------------------------------------- Garbage ------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+<!--------------------------------------- Лагерь нейтралов ------------------------------------------------------------------------------------------------>
+	<specific_character id="gar_neutbase_lider" team_default = "1">
+		<name>gar_seryi_name</name>
+		<icon>ui_npc_u_stalker_neytral_hood_4</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>gar_seryi_bio</bio>
+
+		<class>gar_neutbase_lider</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>511</rank>
+		<reputation>-18</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>gz\npc\neutral\grey</visual>
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+		</supplies>
+		<start_dialog>dialog_gar_seriy1</start_dialog>
+		<actor_dialog>dialog_serui_about_agro</actor_dialog>
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	
+	</specific_character>
+	
+	<specific_character id="gar_neutbase_guard1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_neutbase_guard1</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\neutral_1</visual>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj = 1 \n
+			wpn_mp5 \n
+			ammo_9x19_fmj = 1 \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="gar_neutbase_guard2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_neutbase_guard2</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>447</rank>
+		<reputation>-15</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		
+		<visual>gz\npc\neutral\neutral_2</visual>
+		
+		<supplies>
+			[spawn] \n
+			wpn_colt1911 \n
+			ammo_11.43x23_fmj \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+<specific_character id="gar_neutbase_guard3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_general_bio</bio>
+
+		<class>gar_neutbase_guard3</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>482</rank>
+		<reputation>18</reputation>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<visual>gz\npc\neutral\neutral_3</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_pmm \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+			device_torch \n
+#include "gameplay\character_drugs.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_items.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+</specific_character>
+	
+	<specific_character id="gar_neutbase_guard4" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_general_bio</bio>
+
+		<class>gar_neutbase_guard4</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>447</rank>
+		<reputation>33</reputation>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<visual>gz\npc\neutral\neutral_4</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_beretta \n
+			ammo_9x19_fmj \n
+			wpn_mp153 \n
+			ammo_12x76_dart \n
+			device_torch \n
+#include "gameplay\character_drugs.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_items.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+
+
+<!--------------- - Блокпост дезертиров - ----------->
+
+	<specific_character id="gar_blokpost_dezertir_default_1" team_default = "1">
+		<name>Капитан Домашов</name>
+<icon>ui_npc_u_stalker_neytral_balon_4</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_dolg_novice_bio</bio>
+		
+		<class>gar_blokpost_dezertir_default_1</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<visual>actors\soldier\soldier_beret</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"
+		<actor_dialog>dialog_gar_gate</actor_dialog>						
+	</specific_character>
+
+	
+	<specific_character id="gar_blokpost_dezertir_default_2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+<icon>ui_npc_u_stalker_neytral_balon_4</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_dolg_novice_bio</bio>
+		
+		<class>gar_blokpost_dezertir_default_2</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<visual>actors\soldier\soldier_spetsnaz</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74 = 1 \n
+			ammo_5.45x39_fmj = 1 \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+	<specific_character id="gar_blokpost_dezertir_default_3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+<icon>ui_npc_u_stalker_neytral_balon_4</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_dolg_novice_bio</bio>
+		
+		<class>gar_blokpost_dezertir_default_3</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<visual>actors\soldier\soldier_spetsnaz</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74 = 1 \n
+			ammo_5.45x39_fmj = 1 \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+	<specific_character id="gar_blokpost_dezertir_default_4" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+<icon>ui_npc_u_stalker_neytral_balon_4</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_dolg_novice_bio</bio>
+		
+		<class>gar_blokpost_dezertir_default_4</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<visual>actors\soldier\soldier_spetsnaz</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74 = 1 \n
+			ammo_5.45x39_fmj = 1 \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+	<specific_character id="gar_blokpost_dezertir_default_5" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+<icon>ui_npc_u_stalker_neytral_balon_4</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_dolg_novice_bio</bio>
+		
+		<class>gar_blokpost_dezertir_default_5</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<visual>actors\soldier\soldier_spetsnaz</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74 = 1 \n
+			ammo_5.45x39_fmj = 1 \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+	<specific_character id="gar_blokpost_dezertir_default_6" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+<icon>ui_npc_u_stalker_neytral_balon_4</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_dolg_novice_bio</bio>
+		
+		<class>gar_blokpost_dezertir_default_6</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<visual>actors\soldier\soldier_spetsnaz</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74 = 1 \n
+			ammo_5.45x39_fmj = 1 \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+<!--------------------------------------- Диггер ------------------------------------------------------------------------------------------------>
+	<specific_character id="gar_digger" team_default = "1">
+		<name>Отелло</name>
+		<icon>ui_npc_u_stalker_neytral_hood_4</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>gar_seryi_bio</bio>
+
+		<class>gar_digger</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>420</rank>
+		<reputation>-18</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>gz\npc\neutral\neutral_6</visual>
+		<supplies>
+			[spawn] \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+		</supplies>
+		
+		<actor_dialog>dialog_dig_find_dynamite</actor_dialog>
+                <actor_dialog>dialog_dig_find_digger_tainik</actor_dialog>
+                <actor_dialog>gar_black_digger_diary</actor_dialog>
+		<start_dialog>dialog_dig_have_dynamite</start_dialog>
+		
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	
+	</specific_character>
+	
+	
+<!--- Лидер отряда сталкеров в депо ---->
+	<specific_character id="gar_depo_dead_stalker" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_depo_dead_stalker</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\neutral_7</visual>
+
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+			pda_depo_dead_stalker \n
+                        detector_simple \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+<!--------------------------------------- Бандиты-зомби ------------------------------------------------------------------------------------------------>
+	<specific_character id="gar_mil_contr_bandit_zomb_leshiy" team_default = "1">
+		<name>Сухой</name>
+		<icon>ui_npc_u_stalker_zombie5</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>sim_zombied_veteran_bio</bio>
+
+		<class>gar_mil_contr_bandit_zomb_leshiy</class>
+		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+	
+		<rank>100</rank>
+		<reputation>20</reputation>
+
+		<visual>actors\stalker_zombi\stalker_zombie5</visual>
+		<snd_config>characters_voice\human_02\zombied\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+			device_torch \n
+			pda_bandit_leshui \n
+		</supplies>
+
+#include "gameplay\character_criticals_1.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="gar_mil_contr_bandit_zomb_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_zombie5</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>sim_zombied_veteran_bio</bio>
+
+		<class>gar_mil_contr_bandit_zomb</class>
+		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+	
+		<rank>100</rank>
+		<reputation>20</reputation>
+
+		<visual>actors\stalker_zombi\stalker_zombie5</visual>
+		<snd_config>characters_voice\human_02\zombied\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+                        wpn_mp133 \n
+                        ammo_12x70_buck \n
+			device_torch \n
+		</supplies>
+
+#include "gameplay\character_criticals_1.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="gar_mil_contr_bandit_zomb_2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_zombie7</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>sim_zombied_veteran_bio</bio>
+
+		<class>gar_mil_contr_bandit_zomb</class>
+		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+	
+		<rank>100</rank>
+		<reputation>20</reputation>
+
+		<visual>actors\stalker_zombi\stalker_zombie7</visual>
+		<snd_config>characters_voice\human_02\zombied\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_toz34 \n
+			ammo_12x76_zhekan \n
+			device_torch \n
+		</supplies>
+
+#include "gameplay\character_criticals_1.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="gar_mil_contr_bandit_zomb_3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_zombie8</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>sim_zombied_veteran_bio</bio>
+
+		<class>gar_mil_contr_bandit_zomb</class>
+		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+	
+		<rank>100</rank>
+		<reputation>20</reputation>
+
+		<visual>actors\stalker_zombi\stalker_zombie8</visual>
+		<snd_config>characters_voice\human_02\zombied\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g3 \n
+			ammo_7.62x51_fmj \n
+			device_torch \n
+		</supplies>
+
+#include "gameplay\character_criticals_1.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+                	<specific_character id="gar_sv_garbage_com" team_default = "1">
+		<name>Локи</name>
+		<icon>ui_npc_dv_loki</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>mil_Svoboda_blockpost_leader_bio</bio>
+		
+		<class>gar_sv_garbage_com</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<rank>916</rank>
+		<reputation>149</reputation>
+
+        <snd_config>characters_voice\human_02\freedom\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>gz\npc\svoboda\loki</visual>
+		<supplies>
+			[spawn] \n
+			wpn_beretta \n
+			ammo_9x19_fmj \n
+                        wpn_g3 \n
+			ammo_7.62x51_fmj \n
+                        pda_sv_loki \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"	
+#include "gameplay\character_criticals_3.xml"
+		</supplies>
+                <money min="600" max="2000" infinitive="0" />
+
+		<start_dialog>dialog_prisoner_quest_gar_sv</start_dialog>
+		<actor_dialog>dialog_lukash_prison_nagr</actor_dialog>
+		
+		
+					
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+        <specific_character id="gar_sv_garbage_guard" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_hood_9</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>mil_Svoboda_blockpost_leader_bio</bio>
+		
+		<class>gar_sv_garbage_guard</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<rank>916</rank>
+		<reputation>149</reputation>
+
+        <snd_config>characters_voice\human_02\freedom\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>gz\npc\svoboda\freedom_kask</visual>
+		<supplies>
+			[spawn] \n
+			wpn_beretta \n
+			ammo_9x19_fmj \n
+                        wpn_galil \n
+			ammo_7.62x51_fmj \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"	
+#include "gameplay\character_criticals_3.xml"
+		</supplies>
+
+		
+		<money min="600" max="2000" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+        	<specific_character id="gar_zombied_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_zombie8</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>sim_zombied_veteran_bio</bio>
+
+		<class>gar_zombied_1</class>
+		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+	
+		<rank>100</rank>
+		<reputation>20</reputation>
+
+		<visual>actors\stalker_zombi\stalker_zombie8</visual>
+		<snd_config>characters_voice\human_02\zombied\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_bm16 \n
+			ammo_12x70_buck = 1 \n
+			wpn_pm \n
+			ammo_9x18_fmj = 1 \n
+			device_torch \n
+		</supplies>
+
+#include "gameplay\character_criticals_1.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+ 
+        	<specific_character id="gar_zombied_2" team_default = "1">
+		<name>Леший</name>
+		<icon>ui_npc_gar_lesh</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>sim_zombied_veteran_bio</bio>
+
+		<class>gar_zombied_2</class>
+		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+	
+		<rank>100</rank>
+		<reputation>20</reputation>
+
+		<visual>actors\stalker_zombi\stalker_zombie5</visual>
+		<snd_config>characters_voice\human_02\zombied\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj = 1 \n
+			wpn_pm \n
+			ammo_9x18_fmj = 1 \n
+			device_torch \n
+		</supplies>
+
+#include "gameplay\character_criticals_1.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+	
+<specific_character id="bar_barman" no_random = "1">
+		<name>Цезарь</name>
+		<icon>ui_npc_gar_cezar</icon>
+		<map_icon x="1" y="4"></map_icon>
+		<bio>bar_barmen_bio</bio>
+
+		<class>bar_barman</class>
+		<community>trader</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="100000" max="110000" infinitive="1"></money>
+		
+		<rank>700</rank>
+		<reputation>50</reputation>
+		<visual>actors\barman\barman</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		
+		<supplies>
+			[spawn] \n
+		</supplies>
+     
+                <actor_dialog>dialog_cezar_quest</actor_dialog>
+                <start_dialog>dialog_cezar_proslishka_detected</start_dialog>
+                <actor_dialog>rf_repair_dialog</actor_dialog>
+                <actor_dialog>dialog_cezar_borman_noyt</actor_dialog>
+               <actor_dialog>dialog_gar_loki_case_open</actor_dialog>
+
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+					
+	</specific_character>
+   
+        	<specific_character id="bar_stalker_guard" team_default = "1">
+		<name>bar_bar_guard_name</name>
+		<icon>ui_npc_gar_garik</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>bar_bar_guard_bio</bio>
+
+		<class>bar_stalker_guard</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>247</rank>
+		<reputation>0</reputation>
+ 
+		<visual>gz\npc\neutral\neutral_8</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+        <specific_character id="gar_osvedomel" team_default = "1">
+		<name>bar_informer_name</name>
+		<icon>ui_npc_u_stalker_bandit_master</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>bar_bar_guard_bio</bio>
+
+		<class>gar_osvedomel</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>247</rank>
+		<reputation>0</reputation>
+ 
+		<visual>actors\bandit\stalker_bandit_master</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			ammo_5.56x45_ss190 \n
+			wpn_addon_grenade_launcher \n
+                        wpn_pm \n
+			ammo_9x18_fmj = 1 \n
+		</supplies>
+               
+                <actor_dialog>dialog_osvedomel_start</actor_dialog>
+                <actor_dialog>dialog_osvedomel_kap_info</actor_dialog>
+                <actor_dialog>dialog_gubka_osvedom</actor_dialog>
+                <actor_dialog>dialog_osvedomel_infa_oper</actor_dialog>
+                <actor_dialog>dialog_osvedomel_yellcont</actor_dialog>
+                <actor_dialog>dialog_osvedomel_infa_mercs</actor_dialog>
+                <actor_dialog>dialog_rf_osvedomel</actor_dialog>
+                <actor_dialog>dialog_osvedomel_digger_tainik_quest</actor_dialog>
+	
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	
+                
+
+	</specific_character>
+
+                <specific_character id="gar_petro" team_default = "1">
+		<name>Петро</name>
+		<icon>ui_npc_u_stalker_bandit_master</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>bar_bar_guard_bio</bio>
+
+		<class>gar_petro</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>515</rank>
+		<reputation>0</reputation>
+ 
+		<visual>gz\npc\neutral\neutral_9</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+                        pda_petro \n
+		</supplies>
+            
+                <start_dialog>dialog_petro_about_bekas</start_dialog>
+	
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	
+                
+
+	</specific_character>
+        	<specific_character id="gar_guard_1" team_default = "1">
+		<name>Гарик</name>
+		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_guard_1</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\neutral_10</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+        	<specific_character id="gar_guard_2" team_default = "1">
+		<name>Матёрый</name>
+		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_guard_2</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\neutral_11</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+        	<specific_character id="gar_player" team_default = "1">
+		<name>Игрок</name>
+		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_player</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>actors\neytral\stalker_neytral_balon_5</visual>
+
+		<supplies>
+			[spawn] \n
+			wpn_glock \n
+			ammo_9x19_fmj \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+        	<specific_character id="gar_bedolaga" team_default = "1">
+		<name>Боря</name>
+		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_bedolaga</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\neutral_10</visual>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+                <start_dialog>dialog_bedolaga</start_dialog>
+                <actor_dialog>dialog_gubka_back</actor_dialog>
+                <actor_dialog>dialog_gubka_nehoch</actor_dialog>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+ <specific_character id="gar_hacker" team_default = "1">
+  <name>Хакер</name>
+  <icon>ui_npc_u_stalker_neytral_hood_2</icon>
+  <map_icon x="1" y="0"></map_icon>
+  <bio>gar_stalker_regular_bio</bio>
+  <class>gar_hacker</class>
+  <community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+  <rank>515</rank>
+  <reputation>14</reputation>
+  <money min="600" max="2000" infinitive="0"/>	
+  <snd_config>characters_voice\human_01\stalker\</snd_config>
+  <crouch_type>-1</crouch_type>
+  <visual>gz\npc\neutral\haker</visual>
+  <supplies>
+   [spawn] \n
+   device_torch \n
+   #include "gameplay\character_items.xml" \n
+   #include "gameplay\character_drugs.xml" \n
+   #include "gameplay\character_food.xml"
+  </supplies>
+  <start_dialog>dialog_hacker_start</start_dialog>
+  <!-----------<actor_dialog>dialog_hacker_merc_pda</actor_dialog>-->
+  <!------<actor_dialog>dialog_hacker_caches</actor_dialog>-->
+  <!------<actor_dialog>dialog_hacker_loki_flesh</actor_dialog>-->
+  <!------<actor_dialog>dialog_hacker_mercs_noyt_done</actor_dialog>-->
+  <!------<actor_dialog>dialog_hacker_loki_flesh_done</actor_dialog>-->
+  <actor_dialog>dialog_gz_hacker</actor_dialog>
+  <actor_dialog>dialog_gz_hacker_otkaz</actor_dialog>
+  
+   #include "gameplay\character_criticals_4.xml"
+   #include "gameplay\character_dialogs.xml"
+ </specific_character>
+
+
+	<specific_character id="gar_gorb" team_default = "1">
+		<name>Горбатый</name>
+		<icon>ui_npc_u_stalker_bandit_master</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>gar_bandit_leader_bio</bio>
+		
+		<class>gar_gorb</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>199</rank>
+		<reputation>-145</reputation>
+		
+		<snd_config>characters_voice\human_01\bandit\</snd_config>
+		<crouch_type>1</crouch_type>
+
+		<visual>gz\npc\neutral\neutral_11</visual>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+                        pda_gorb \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+        	<specific_character id="gar_hacker_guard" team_default = "1">
+		<name>Бард</name>
+		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_hacker_guard</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\neutral_4</visual>
+
+		<supplies>
+			[spawn] \n
+			wpn_colt1911 \n
+			ammo_11.43x23_fmj \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+        	<specific_character id="gar_messenger" team_default = "1">
+		<name>Весельчак Джек</name>
+		<icon>ui_npc_u_stalker_do_balon_8</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_messenger</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\neutral_5</visual>
+		<snd_config>characters_voice\human_01\dolg\</snd_config>
+
+		<supplies>
+			[spawn] \n
+			wpn_colt1911 \n
+			ammo_11.43x23_fmj \n
+			wpn_sks \n
+			ammo_7.62x39_fmj \n
+			device_torch \n
+                        pda_messenger \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+        	<specific_character id="gar_sniper_1" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_sniper_1</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\sniper</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+
+		<supplies>
+			[spawn] \n
+			wpn_beretta \n
+			ammo_9x19_fmj \n
+			wpn_g3sg1 \n
+			ammo_7.62x51_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+  <start_dialog>gar_sniper_wounded</start_dialog>
+	</specific_character>
+
+        	<specific_character id="gar_sniper_2" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>gar_sniper_2</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\sniper</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+
+		<supplies>
+			[spawn] \n
+			wpn_glock \n
+			ammo_9x19_fmj \n
+			wpn_g3sg1 \n
+			ammo_7.62x51_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="gar_crazy_bandit" team_default = "1">
+		<name>GENERATE_NAME_bandit</name>
+		<icon>ui_npc_u_stalker_zombie8</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_bandit_novice_bio</bio>
+		
+		<class>gar_crazy_bandit</class>
+		<community>gbf</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<visual>gz\npc\stalker_zomb</visual>
+		<snd_config>characters_voice\human_02\zombied\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+
+                <start_dialog>gar_crazy_bandit</start_dialog>
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+
+
+</xml>

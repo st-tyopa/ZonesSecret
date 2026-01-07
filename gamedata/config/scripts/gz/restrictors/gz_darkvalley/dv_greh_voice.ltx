@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+pda_coordinats_start} nil
+on_actor_inside = {~50-pda_coordinats_start} %=play_snd(characters_voice\soz\gz_darkvalley\zat_b42_controller_warning_1)% sr_idle@2, {~50-pda_coordinats_start} %=play_snd(characters_voice\soz\gz_promzone\zat_b42_controller_warning_2)% sr_idle@2
+
+[sr_idle@2]
+on_game_timer = 500|sr_idle@1
+on_info = {+pda_coordinats_start} nil

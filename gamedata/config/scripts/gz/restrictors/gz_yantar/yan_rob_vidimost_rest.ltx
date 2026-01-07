@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+yan_zmeelov_dialog_rob_done -ocelot_rob_start} %+ocelot_group_enemy +yan_rob_rano% sr_idle@nil
+on_info = {+yan_rob_rano} sr_idle@nil, {+ocelot_rob_start} sr_idle@nil, {+yan_rob_ocelot_shot} sr_idle@nil, {+yan_rob_ocelot_dead} sr_idle@nil
+
+[sr_idle@nil]

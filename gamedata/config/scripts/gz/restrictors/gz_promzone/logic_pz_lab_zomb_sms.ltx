@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+pz_lab_scien_dialog_done} %+pz_lab_sms_zomb_attack% sr_idle2
+
+[sr_idle2]
+on_actor_inside = {-pz_otis_lab_death} sr_idle@5, {+pz_otis_lab_death} sr_idle@6
+
+[sr_idle@5]
+on_game_timer = 70| %+pz_otis_lab_sms_zomb_attack_sms% sr_idle@6
+
+[sr_idle@6]
+on_info = {=gulag_empty(yan_smart_terrain_lair_zombies)} %+pz_lab_all_zombies_dead% sr_idle@nil
+
+[sr_idle@nil]

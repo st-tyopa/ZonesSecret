@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+
+ <dialog id="dialog_prisoner_quest">
+  <dont_has_info>dialog_prisoner_quest_done</dont_has_info>
+  <init_func>dialogs_new_system.dv_prisoner_quest</init_func>
+ </dialog>
+
+ <dialog id="dialog_varag_prisoner_flesh_nagr">
+  <dont_has_info>dialog_varag_prisoner_flesh_nagr_done</dont_has_info>
+  <has_info>dv_mikluh_sms_to_varag</has_info>
+  <init_func>dialogs_new_system.dv_varag_prisoner_flesh_nagr</init_func>      
+ </dialog>
+
+ <dialog id="dialog_miklih_prisoner">
+  <dont_has_info>dialog_miklih_prisoner_done</dont_has_info>
+  <dont_has_info>dialog_cezar_quest_done</dont_has_info>
+  <dont_has_info>find_prisoners_flesh_have</dont_has_info>
+  <dont_has_info>gar_sv_dialog_done</dont_has_info>
+  <has_info>prisoner_quest_start</has_info>
+  <init_func>dialogs_new_system.dv_miklih_prisoner</init_func>    
+ </dialog>
+ 
+ <dialog id="dialog_dv_petro">
+  <dont_has_info>find_bekas_box_done</dont_has_info>
+  <dont_has_info>find_bekas_box_fail_new</dont_has_info>
+  <has_info>find_bekas_money_done</has_info>
+  <init_func>dialogs_new_system.dv_petro</init_func> 
+ </dialog>
+ 
+ <dialog id="dv_putnik_dialog">
+  <dont_has_info>find_bekas_box_done</dont_has_info>
+  <dont_has_info>find_bakas_done</dont_has_info>
+  <dont_has_info>find_bekas_in_vagon</dont_has_info>
+  <has_info>find_bekas_at_td_start</has_info>
+  <init_func>dialogs_new_system.dv_putnik_dialog</init_func> 
+ </dialog>
+
+ <dialog id="dialog_sv_borman_noyt">
+  <has_info>kill_borman</has_info>
+		<dont_has_info>kill_borman_done</dont_has_info>
+  <has_info>pda_borman_have</has_info>
+  <dont_has_info>kill_borman_done_other</dont_has_info>
+  <dont_has_info>iron_give_noyt</dont_has_info>
+  <init_func>dialogs_new_system.sv_borman_noyt</init_func> 
+ </dialog>
+
+ <dialog id="dialog_anom_stalk">
+  <dont_has_info>dv_kill_traitor</dont_has_info>
+  <init_func>dialogs_new_system.dv_anom_stalk</init_func> 
+ </dialog>
+
+ <dialog id="dialog_anom_bad_stalk">
+  <dont_has_info>dv_kill_traitor_dialog</dont_has_info>
+  <dont_has_info>dv_kill_traitor_dialog_1</dont_has_info>
+  <init_func>dialogs_new_system.dv_anom_bad_stalk</init_func>       
+ </dialog>
+ 
+ <dialog id="dialog_dolg_shpion">
+  <dont_has_info>dv_shpion_atack</dont_has_info>
+  <init_func>dialogs_new_system.dv_dolg_shpion</init_func>        
+ </dialog>
+
+ <dialog id="dialog_dolg_shpion_2">
+  <has_info>dv_sh_greh_dead</has_info>
+  <dont_has_info>dv_shpion_talk2</dont_has_info>
+  <init_func>dialogs_new_system.dv_dolg_shpion_2</init_func>      
+ </dialog>
+ 
+ <dialog id="dv_dolg_rush_to_greh">
+  <has_info>contact_with_base_start</has_info>
+  <has_info>pda_coordinats_start</has_info>
+  <dont_has_info>dv_dolg_group_sbor</dont_has_info>
+  <dont_has_info>help_dv_dolg_failed</dont_has_info>
+  <dont_has_info>greh_shturm_alone</dont_has_info>
+  <dont_has_info>return_night_start</dont_has_info>
+  <init_func>dialogs_new_system.dv_rush_to_greh</init_func>
+ </dialog>
+
+ <dialog id="dv_dolg_rush_to_greh_2">
+  <has_info>return_night_start</has_info>
+  <dont_has_info>dv_dolg_group_sbor</dont_has_info>
+  <dont_has_info>help_dv_dolg_failed</dont_has_info>
+  <dont_has_info>greh_shturm_alone</dont_has_info>
+  <has_info>return_night_start</has_info>
+  <precondition>gz_prologue.precond_time_2</precondition>
+  <init_func>dialogs_new_system.dv_rush_to_greh_2</init_func>	
+ </dialog>
+
+<dialog id="dv_dolg_raciya_apt">
+  <dont_has_info>find_ten_medkit_done</dont_has_info>
+  <has_info>find_ten_medkit_start</has_info>
+  <init_func>dialogs_new_system.dv_dolg_raciya_apt</init_func>    
+ </dialog>
+
+ <dialog id="dv_dolg_raciya_apt_army">
+  <dont_has_info>find_ten_medkit_done</dont_has_info>
+  <has_info>find_ten_medkit_start</has_info>
+  <init_func>dialogs_new_system.dv_dolg_raciya_apt_army</init_func>    
+ </dialog>
+
+ <dialog id="dv_dolg_raciya_apt_scientic">
+  <dont_has_info>find_ten_medkit_done</dont_has_info>
+  <has_info>find_ten_medkit_start</has_info>
+  <init_func>dialogs_new_system.dv_dolg_raciya_apt_scientic</init_func>    
+ </dialog>
+
+ <dialog id="dv_dolg_raciya_2">
+  <has_info>find_ten_medkit_done</has_info>
+  <dont_has_info>oka_dialog1_start</dont_has_info>
+  <dont_has_info>talk_with_chehov_done</dont_has_info>
+  <dont_has_info>contact_with_base_start</dont_has_info>
+  <dont_has_info>find_tainik_quest</dont_has_info>
+  <dont_has_info>racia_dolg_fail</dont_has_info>
+  <init_func>dialogs_new_system.dv_dolg_raciya_s_2</init_func>	
+ </dialog>
+ 
+ <dialog id="dv_dolg_raciya_3">
+  <has_info>find_tainik_done</has_info>
+  <dont_has_info>contact_with_base_start</dont_has_info>
+  <init_func>dialogs_new_system.dv_dolg_raciya_s_3</init_func>	
+ </dialog>
+
+ <dialog id="dialog_dv_dolg_rush_done_old">
+  <has_info>dv_dolg_grehbase_rush_done</has_info>
+  <dont_has_info>dialog_dv_dolg_rush_done</dont_has_info>
+  <init_func>dialogs_new_system.dv_dolg_rush_done_old</init_func>			
+ </dialog>
+
+ <dialog id="dialog_dv_dolg_rush_done">
+  <has_info>dv_dolg_grehbase_rush_done</has_info>
+  <dont_has_info>dialog_dv_dolg_rush_done</dont_has_info>
+  <init_func>dialogs_new_system.dv_dolg_rush_done</init_func>		
+ </dialog>
+	
+ <dialog id="dialog_max">
+  <dont_has_info>find_weapons_case_dialog</dont_has_info>
+  <has_info>find_weapons_case_start_2</has_info>
+  <init_func>dialogs_new_system.dv_max</init_func>	      
+ </dialog>
+	
+ <dialog id="dialog_max_2">
+  <has_info>find_weapons_case_dialog_2</has_info>
+  <dont_has_info>find_weapons_case_done</dont_has_info>
+  <init_func>dialogs_new_system.dv_max_2</init_func>	           
+ </dialog>
+
+ <dialog id="dialog_max_3">
+  <has_info>dv_bandit_1_death</has_info>
+  <has_info>dv_bandit_2_death</has_info>
+  <has_info>dv_bandit_3_death</has_info>
+  <has_info>dv_bandit_4_death</has_info>
+  <has_info>dv_bandit_5_death</has_info>
+  <dont_has_info>find_weapons_case_dialog_3</dont_has_info>
+  <init_func>dialogs_new_system.dv_max_3</init_func>      
+ </dialog>
+
+ <dialog id="dialog_max_4">
+  <has_info>find_weapons_case_done</has_info>
+  <dont_has_info>dv_max_buh_done</dont_has_info>
+  <precondition>gz_prologue.precond_vodka_2</precondition>
+  <init_func>dialogs_new_system.dv_max_4</init_func>
+ </dialog>
+	
+ <dialog id="dialog_dolgs_t">
+  <dont_has_info>start_find_dolgs_t</dont_has_info>
+  <dont_has_info>dialog_dolgs_2</dont_has_info>
+  <init_func>dialogs_new_system.dv_dolgs_t</init_func>
+ </dialog>
+	
+ <dialog id="dialog_dolgs_2">
+  <dont_has_info>start_find_dolgs_t</dont_has_info>
+  <has_info>dialog_dolgs_2</has_info>
+  <init_func>dialogs_new_system.dv_dolgs_2</init_func>    
+ </dialog>
+  
+ <dialog id="dialog_gps_money_1">
+  <dont_has_info>dolgs_t_1_have</dont_has_info>
+  <has_info>dolgs_t_1</has_info>
+  <init_func>dialogs_new_system.dv_gps_money_1</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_gps_money_2">
+  <dont_has_info>dolgs_t_2_have</dont_has_info>
+  <has_info>dolgs_t_2</has_info>
+  <init_func>dialogs_new_system.dv_gps_money_2</init_func>     
+ </dialog>
+
+ <dialog id="dialog_gps_money_3">
+  <dont_has_info>dolgs_t_3_have</dont_has_info>
+  <has_info>dolgs_t_3</has_info>
+  <init_func>dialogs_new_system.dv_gps_money_3</init_func>        
+ </dialog>
+		 
+ <dialog id="dialog_attack_greh_done_2">
+  <dont_has_info>dialog_sv_attack_greh_done_2</dont_has_info>
+  <dont_has_info>cheh_dead</dont_has_info>
+  <has_info>dialog_sv_attack_greh_done</has_info>
+  <init_func>dialogs_new_system.dv_attack_greh_done_2</init_func>             
+ </dialog>
+
+ <dialog id="dialog_attack_greh_done_2_alt">
+  <dont_has_info>dialog_sv_attack_greh_done_2_alt</dont_has_info>
+  <has_info>cheh_dead</has_info>
+  <has_info>varag_sms</has_info>
+  <init_func>dialogs_new_system.dv_attack_greh_done_2_alt</init_func>     
+ </dialog>
+
+ <dialog id="dialog_sv_about_dv">
+  <dont_has_info>dialog_sv_about_dv_done</dont_has_info>
+  <init_func>dialogs_new_system.dv_sv_about</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_about_pda">
+  <has_info>pda_coordinats_start</has_info>
+  <dont_has_info>go_to_garneutlager_start</dont_has_info>
+  <init_func>dialogs_new_system.dv_about_pda</init_func>      
+ </dialog>
+
+ <dialog id="dialog_about_pda_2">
+  <has_info>pda_coordinats_start</has_info>
+  <dont_has_info>go_to_garneutlager_start</dont_has_info>
+  <init_func>dialogs_new_system.dv_about_pda_2</init_func>    
+ </dialog>
+	
+ <dialog id="dv_dolg_raciya">
+  <dont_has_info>find_ten_medkit_done</dont_has_info>
+  <dont_has_info>find_ten_medkit_start</dont_has_info>
+  <init_func>dialogs_new_system.dv_dolg_raciya_s</init_func>    
+ </dialog>
+ 
+ <dialog id="dv_dolg_rush_to_greh_old">
+  <has_info>find_ten_medkit_done</has_info>
+  <has_info>pda_coordinats_start</has_info>
+  <dont_has_info>dv_dolg_group_sbor</dont_has_info>
+  <dont_has_info>help_dv_dolg_failed</dont_has_info>
+  <dont_has_info>greh_shturm_alone</dont_has_info>
+  <init_func>dialogs_new_system.dv_dolg_rush_to_greh_old_s</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_about_raciya_chehov">
+  <has_info>go_to_lager_dv_done</has_info>
+  <dont_has_info>find_raciya_done</dont_has_info>
+  <init_func>dialogs_new_system.dv_about_raciya_chehov</init_func>      
+ </dialog>
+ 
+ <dialog id="chehov_dialog_about_cap">
+  <dont_has_info>talk_with_baseleader_done</dont_has_info>
+  <init_func>dialogs_new_system.dv_dialog_about_cap</init_func>     
+ </dialog>
+	
+ <dialog id="dialog_find_weapons_case">
+  <!--has_info>find_raciya_done</has_info-->
+  <dont_has_info>dv_sv_sturm_otkaz</dont_has_info>
+  <dont_has_info>greh_shturm_alone</dont_has_info>
+  <dont_has_info>return_night_start</dont_has_info>
+  <dont_has_info>dv_dolg_group_sbor</dont_has_info>
+  <dont_has_info>find_weapons_case_start_2</dont_has_info>
+  <dont_has_info>dv_mikl_think_about_rush</dont_has_info>
+  <has_info>yar_est_raciya</has_info>
+  <init_func>dialogs_new_system.dv_find_weapons_case</init_func>      
+ </dialog>
+
+ <dialog id="dialog_find_weapons_case_2">
+  <!--has_info>find_raciya_done</has_info-->
+  <dont_has_info>dv_sv_sturm_otkaz</dont_has_info>
+  <dont_has_info>greh_shturm_alone</dont_has_info>
+  <dont_has_info>return_night_start</dont_has_info>
+  <dont_has_info>dv_dolg_group_sbor</dont_has_info>
+  <dont_has_info>find_weapons_case_start_2</dont_has_info>
+  <has_info>pda_coordinats_start</has_info>
+  <has_info>dv_mikl_think_about_rush</has_info>
+  <init_func>dialogs_new_system.dv_find_weapons_case_2</init_func>      
+ </dialog>
+	
+ <dialog id="chehov_dialog_weapons_case_give">
+  <has_info>find_weapons_case_have</has_info>
+  <has_info>find_weapons_case_dialog_3</has_info>
+  <dont_has_info>dv_sv_greshbase_rush_start</dont_has_info>
+  <init_func>dialogs_new_system.dv_chehov_dialog_weapons_case_give</init_func>      
+ </dialog>
+
+ <dialog id="chehov_dialog_weapons_case_give_2">
+  <has_info>find_weapons_case_have</has_info>
+  <has_info>max_dead</has_info>
+  <dont_has_info>dv_sv_greshbase_rush_start</dont_has_info>
+  <init_func>dialogs_new_system.dv_chehov_dialog_weapons_case_give_2</init_func>     
+ </dialog>
+	
+ <dialog id="dialog_lukash_proverka">
+  <dont_has_info>lukash_pogovorili</dont_has_info>
+  <init_func>dialogs_new_system.dv_lukash_proverka</init_func>      
+ </dialog>
+
+        <dialog id="dialog_lukash_quest">
+        <dont_has_info>lukash_pogovorili_2</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Мне сейчас деньги нужны, может найдётся для меня какая-нибудь работёнка?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Хм, работёнка думаю найдётся.</text>
+                <next>2</next>
+            </phrase>
+			<phrase id="2">
+                <text>А что от меня требуется?</text>
+                <next>3</next>
+            </phrase>
+			<phrase id="3">
+                <text>dialog_about_maps_5</text>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+			<phrase id="4">
+                <text>Согласен, сколько платишь?</text>
+                <next>6</next>
+				</phrase>
+			<phrase id="5">
+                <text>Такое не интересует.</text>
+                <give_info>lukash_pogovorili_2</give_info>
+				</phrase>
+			<phrase id="6">
+                <text>Три тысячи, или уникальный ствол, на твой выбор.</text>
+                <next>7</next>
+                <next>8</next>
+				</phrase>
+                <phrase id="8">
+                <text>Всего хорошего, нашел идиота.</text>
+                <give_info>lukash_pogovorili_2</give_info>
+				</phrase>
+			<phrase id="7">
+                <text>По рукам.</text>
+				<give_info>lukash_pogovorili_2</give_info>
+                                 <give_info>find_guitar_start</give_info>
+				<action>dialogs.break_dialog</action>
+				</phrase>
+	</phrase_list>
+    </dialog>
+	
+
+        <dialog id="dialog_lukash_quest_2">
+        <dont_has_info>find_guitar_done</dont_has_info>
+        <has_info>find_guitar_have</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вот, достал карты, пришлось повозиться конечно. А сталкер твой уже трупом был.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Кто ж его так?</text>
+                <action>gz_prologue.transfer_guitar</action>
+		<give_info>find_guitar_done</give_info>
+                <next>2</next>
+            </phrase>
+			<phrase id="2">
+                <text>Бандиты, в их ПДА упоминалось прозвище Леший. Зачем им карты, ума не приложу.</text>
+                <next>3</next>
+            </phrase>
+			<phrase id="3">
+                <text>Леший... Хитрый хрен, и тут он свою морду всунул. Ну ладно, это уже не наши заботы, давай сюда карты и забирай награду.</text>
+              <action>gz_prologue.transfer_money_luk</action>
+                <action>gz_prologue.transfer_guitar</action>
+		<give_info>find_guitar_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+    <dialog id="dialog_lukash_raciya">
+        <dont_has_info>lukash_pogovorili2</dont_has_info>
+        <has_info>talk_with_baseleader_done</has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Есть разговор.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Разговор? Ну говори, зеленый.</text>
+                <next>2</next>
+                <next>7</next>
+                <next>14</next>
+            </phrase>
+            <phrase id="2">
+        <dont_has_info>find_guitar_start</dont_has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+                <text>Мне нужна рация.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Рация? Конечно, зеленый, для тебя что угодно. Я тебе ее подарю. Тока тебе, зеленый, надо будет подарить кое-что мне.</text>
+                <next>4</next>
+            </phrase>
+			<phrase id="4">
+                <text>Выкладывай.</text>
+                <next>5</next>
+            </phrase>
+			<phrase id="5">
+                <text>dialog_about_maps_5</text>
+                <next>61</next>
+            </phrase>
+			<phrase id="61">
+                <text>Договорились.</text>
+                <next>611</next>
+            </phrase>
+			<phrase id="611">
+                <text>Ну вот и ладно.</text>
+				<give_info>find_guitar_start</give_info>
+				<action>dialogs.break_dialog</action>
+				</phrase>
+			<phrase id="62">
+                <text>Зачем тебе это нужно?</text>
+                <next>621</next>
+				</phrase>
+			<phrase id="621">
+                <text>Видишь ли в чем дело, зеленый. Трудно жить в Зоне без музыки.</text>
+                <next>622</next>
+				</phrase>
+			<phrase id="622">
+                <text>Всего хорошего. Нашел идиота.</text>
+                <next>623</next>
+				</phrase>
+			<phrase id="623">
+                <text>Ну дело твое, зеленый!</text>
+				<action>dialogs.break_dialog</action>
+				</phrase>
+			<phrase id="7">
+        <has_info>find_guitar_have</has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+                <text>Вот твои карты. А сталкер твой уже трупом был.</text>
+                <next>81</next>
+				</phrase>
+                   <phrase id="81">
+                <text>А что случилось, ты шлёпнул его?</text>
+                <next>82</next>
+           </phrase>
+                    <phrase id="82">
+                <text>Нет, кровосос похозяйствовал, я сам ели ноги унёс.</text>
+                <next>8</next>
+           </phrase>
+			<phrase id="8">
+                <text>Знаешь, зеленый, ты не такой зеленый, каким хочешь казаться.</text>
+				<action>gz_prologue.transfer_guitar</action>
+				<give_info>find_guitar_done</give_info>
+                <next>9</next>
+				</phrase>
+			<phrase id="9">
+                <text>Моя рация.</text>
+				<next>10</next>
+            </phrase>
+			<phrase id="10">
+                <text>Да, верно, рация. Дело в том, зеленый, что тебе нужно сделать кое-что еще, если ты хочешь ее получить.</text>
+                <next>11</next>
+           </phrase>
+		   <phrase id="11">
+                <text>Знаешь, Лукаш, я тут подумал, а давай я тебе в голову выстрелю, и мы вместе посмотрим, что из этого будет.</text>
+                <next>12</next>
+           </phrase>
+		   <phrase id="12">
+                <text>Это глупо, зеленый. Хорошие люди в Зоне очень много потеряют без меня, и они могут очень сильно обидеться. Понимаешь о чем я? Поэтому, пока я добрый, держи свою рацию и вали, зеленый, вали. </text>
+				<action>gz_prologue.transfer_raciya</action>
+				<give_info>find_raciya_done</give_info>
+				<give_info>lukash_pogovorili2</give_info>
+                <next>13</next>
+           </phrase>
+		   <phrase id="13">
+                <text>Как скажешь.</text>
+				<action>dialogs.break_dialog</action>
+           </phrase>
+			<phrase id="14">
+        <dont_has_info>find_raciya_done</dont_has_info>
+                <text>Да так, просто зашел.</text>
+				<action>dialogs.break_dialog</action>
+				</phrase>
+	</phrase_list>
+    </dialog>
+	
+	 <dialog id="dialog_attack_greh">
+        <has_info>dv_talk_with_chehov_start</has_info>
+        <dont_has_info>dv_sv_grehbase_group_ready_to_go</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здорова. Я от Миклухи.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>dv_sv_about_shturm_greh</text>
+                <next>2</next>
+                <next>25</next>
+            </phrase>
+            <phrase id="2">
+                <text>Всегда готов.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="25">
+                <text>Нет ещё, подождите немного.</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="3">
+                <text>Молодцом. Готовься тогда.</text>
+		<give_info>dv_sv_greshbase_lider_talk_done</give_info>
+		<give_info>dv_sv_greshbase_assault</give_info>
+                <next>4</next>
+            </phrase>
+			<phrase id="4">
+			<give_info>dv_sv_grehbase_group_ready_to_go</give_info>
+                <text>Ага.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_attack_greh_done">
+        <has_info>dv_sv_greshbase_rush_done</has_info>
+        <dont_has_info>dialog_sv_attack_greh_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Всех гадёнышей положили?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>dialog_attack_greh_done_1</text>
+            <give_info>dialog_sv_attack_greh_done</give_info>
+                <next>2</next>
+            </phrase>	
+           <phrase id="2">
+                <text>Вам известно откуда пришли люди Греха и как они пополняли свои ряды?</text>
+                <next>3</next>
+            </phrase>
+           <phrase id="3">
+                <text>dv_sv_about_greh</text>
+                <next>4</next>
+            </phrase>	
+           <phrase id="4">
+                <text>Одни лишь слухи и догадки.</text>
+            </phrase>	
+	</phrase_list>
+    </dialog>
+	
+	<dialog id="yar_repair_dialog">
+         <has_info>find_yar_instruments_done</has_info>
+	    <phrase_list>
+            <phrase id="0">
+                <text>Мне нужно кое-что отремонтировать.</text>
+				<action>dialogs.break_dialog</action>
+				<action>repair_mod_functions.used_test_item</action>
+            </phrase>		    
+		</phrase_list>
+	</dialog>
+
+    <dialog id="quest_rabota">
+          <dont_has_info>find_details_for_yar_cancel</dont_has_info>
+          <dont_has_info>find_details_for_yar_alt_start</dont_has_info>
+           <dont_has_info>yar_no_job</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здравствуй. Нет работы для меня?</text>
+                <next>1</next>
+                <next>30</next>
+                <next>9</next>
+                <next>40</next>
+            </phrase>
+            <phrase id="40">
+                <has_info>find_yar_instruments_done</has_info>
+                <has_info>find_details_for_yar_start</has_info>
+                <text>Да нет, пока что...</text>
+                <give_info>yar_no_job</give_info>
+            </phrase>
+            <phrase id="1">
+                <dont_has_info>start_find_yar_instruments</dont_has_info>
+                <text>Работы? Думаю найдется.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Выкладывай.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Ты же знаешь, что механик без инструментов, как без рук?</text>
+                <next>4</next>
+            </phrase>
+			<phrase id="4">
+                <text>Само собой.</text>
+                <next>5</next>
+            </phrase>
+			<phrase id="5">
+                <text>Так вот, найди мне инструменты и я смогу ремонтировать твою экипировку. Где конкретно искать, не знаю. Но на территории Тёмной долины, где-то должны быть, тут много чего интересного осталось со времён СССР.</text>
+                <next>81</next>
+                <next>82</next>
+            </phrase>
+			<phrase id="81">
+                <text>Хорошо, будут тебе инструменты.</text>
+				<give_info>start_find_yar_instruments</give_info>
+            </phrase>
+			<phrase id="82">
+                <text>Извини, в другой раз...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+
+			<phrase id="9">
+                <has_info>start_find_yar_instruments</has_info>
+                <dont_has_info>find_yar_instruments_done</dont_has_info>
+                <text>А ты принес инструменты?</text>
+                <next>10</next>
+                <next>20</next>
+			</phrase>
+			<phrase id="10">
+                <text>Нет еще.</text>
+                <next>11</next>
+            </phrase>
+			<phrase id="11">
+                <text>Принеси инструменты для начала, тогда и поговорим.</text>
+				<action>dialogs.break_dialog</action>
+			</phrase>
+			<phrase id="20">
+				<precondition>gz_prologue.have_instruments</precondition>
+				<has_info>find_yar_instruments_have</has_info>
+                <text>Да, вот они.</text>
+				<next>21</next>
+            </phrase>
+			<phrase id="21">
+                <text>Спасибо, вот держи награду. Если еще будет работа - сообщу.</text>
+				<action>gz_prologue.transfer_instruments</action>
+				<action>gz_prologue.transfer_deneg</action>
+				<give_info>find_yar_instruments_done</give_info>
+				<next>22</next>
+            </phrase>
+			<phrase id="22">
+                <text>Хорошо.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+             <phrase id="30">
+                <dont_has_info>find_details_for_yar_start</dont_has_info>
+                <has_info>find_raciya_done</has_info>
+                <has_info>find_yar_instruments_done</has_info>
+                <text>dialog_about_detali_yar</text>
+                <next>31</next>
+                <next>32</next>
+            </phrase>
+            <phrase id="31">
+                <text>Постараюсь, что-нибудь найти, но не обещаю.</text>
+                <next>33</next>
+            </phrase>
+            <phrase id="33">
+                <text>Спасибо, выручил дружище. Координаты скинул, список необходимого тоже. Как найдёшь, сразу тащи сюда.</text>
+                <give_info>find_details_for_yar_alt_start</give_info>
+            </phrase>
+            <phrase id="32">
+                <text>Подай, принеси, а сами вы что-нибудь умеете?! Не буду я вам ничего искать.</text>
+                <give_info>find_details_for_yar_cancel</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+
+<dialog id="quest_rabota_2">
+        <has_info>find_all_details_have</has_info>
+        <has_info>find_details_for_yar_alt_start</has_info>
+		<dont_has_info>yar_all_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Вот, я нашел всё из списка, что ты просил.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Давай-ка всё это барахло сюда.</text>
+                <next>2</next>
+            </phrase>
+	         <phrase id="2">
+                <text>Держи.</text>
+				<give_info>find_details_for_yar_done_alt</give_info>
+                <next>3</next>
+            </phrase>
+	         <phrase id="3">
+                <text>dialog_rabota_yar_nagrada</text>
+                 <action>gz_prologue.transfer_raciya_details</action>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+	         <phrase id="4">
+                <text>Ствол в Зоне по важнее.</text>
+                <next>45</next>
+            </phrase>
+               <phrase id="45">
+                <text>Вот, правильно, так мыслит опытный сталкер. Держи свою игрушку, заслужил.</text>
+        <give_info>yar_all_done</give_info>
+               <action>gz_prologue.transfer_bizon</action>
+            </phrase>
+                   <phrase id="5">
+                <text>Деньги сейчас нужнее.</text>
+                <next>55</next>
+            </phrase>
+               <phrase id="55">
+                <text>Я тоже всегда говорил: "Денег много не бывает".</text>
+       <give_info>yar_all_done</give_info>
+                 <action>gz_prologue.transfer_money_yar</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+<dialog id="dialog_about_raciya_yar">
+        <has_info>talk_with_baseleader_done</has_info>
+		<dont_has_info>find_details_for_yar_start</dont_has_info>
+                <dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Мне нужна рация, говорят у тебя можно ее взять?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Много чего говорят, не верь слухам.</text>
+                <next>2</next>
+            </phrase>
+	         <phrase id="2">
+                <text>А если это говорит Миклуха.</text>
+                <next>3</next>
+            </phrase>
+	         <phrase id="3">
+                <text>Миклуха? Ну, ему можно верить. У меня есть одна рация, но в ней сломались некоторые детали, принесёшь мне их, и будет тебе рабочая рация.</text>
+                <next>4</next>
+            </phrase>
+	         <phrase id="4">
+                <text>Выбора нет. Куда топать и что нужно?</text>
+                <next>5</next>
+            </phrase>
+	         <phrase id="5">
+                <text>Эти детали стоит поискать в заброшенном НИИ или что там было я не знаю. Но что нам нужно там есть, в этом я уверен. Координаты я тебе скинул и список необходимого тоже.</text>
+                <next>6</next>
+            </phrase>
+	         <phrase id="6">
+                <text>Хорошо, скоро буду.</text>
+				<give_info>find_details_for_yar_start</give_info>
+                <give_info>find_raciya_in_svobbase_done</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+<dialog id="dialog_about_raciya_yar2">
+        <has_info>find_all_details_have</has_info>
+		<dont_has_info>yar_idi_pogulyai</dont_has_info>
+                <dont_has_info>find_raciya_done</dont_has_info>
+                <dont_has_info>contact_with_base_start</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Вот, я нашел, что ты просил.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Давай сюда.</text>
+                <next>2</next>
+            </phrase>
+	         <phrase id="2">
+                <text>Держи.</text>
+				<give_info>find_details_for_yar_done</give_info>
+                <next>3</next>
+            </phrase>
+	         <phrase id="3">
+                <text>Теперь иди погуляй часика два. А я пока поработаю над твоей рацией.</text>
+                <action>gz_prologue.transfer_raciya_details</action>
+                <next>4</next>
+            </phrase>
+	         <phrase id="4">
+                <text>Хорошо.</text>
+				<give_info>yar_idi_pogulyai</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_about_raciya_yar_alt">
+        <has_info>find_all_details_have</has_info>
+		<dont_has_info>yar_idi_pogulyai</dont_has_info>
+                <has_info>contact_with_base_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Я нашёл детали, но рацию уже заполучил. Я могу продать тебе найденные запчасти или обменять на что-нибудь.</text>
+                <next>1</next>
+            </phrase>
+          <phrase id="1">
+                <text>dialog_rabota_yar_nagrada</text>
+                 <action>gz_prologue.transfer_raciya_details</action>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+	         <phrase id="4">
+                <text>Ствол в Зоне важнее.</text>
+                <next>45</next>
+            </phrase>
+               <phrase id="45">
+                <text>Вот, правильно, так мыслит опытный сталкер. Держи свою игрушку, заслужил.</text>
+        <give_info>yar_all_done</give_info>
+               <action>gz_prologue.transfer_bizon</action>
+            </phrase>
+                   <phrase id="5">
+                <text>Деньги сейчас нужнее.</text>
+                <next>55</next>
+            </phrase>
+               <phrase id="55">
+                <text>Я тоже всегда говорил: "Денег много не бывает".</text>
+       <give_info>yar_all_done</give_info>
+                 <action>gz_prologue.transfer_money_yar</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+<dialog id="dialog_about_raciya_yar3">
+		<has_info>yar_idi_pogulyai</has_info>
+		<dont_has_info>yar_est_raciya</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Ну что, готово?</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="11">
+		<dont_has_info>make_raciya_done</dont_has_info>
+                <text>Нет еще. Иди отсюда, мешаешь!</text>
+                <next>111</next>
+            </phrase>
+	         <phrase id="12">
+		<has_info>make_raciya_done</has_info>
+                <text>Да, вот твоя рация, держи.</text>
+				<give_info>find_raciya_done</give_info>
+				<action>gz_prologue.transfer_raciya</action>
+                <next>121</next>
+            </phrase>
+	         <phrase id="111">
+                <text>Ладно-ладно, не шуми.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	         <phrase id="121">
+                <text>О, спасибо большое, я твой должник!</text>
+                <next>21</next>
+            </phrase>
+	         <phrase id="21">
+                <text>Кстати, заскочи к Миклухе, он хотел тебя видеть.</text>
+				<give_info>yar_est_raciya</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_dv_loki_case_open">
+		<dont_has_info>loki_case_open_done</dont_has_info>
+                <precondition>gz_prologue.have_gz_tainik_case</precondition>
+        <phrase_list>
+            <phrase id="0">
+	        <text>Привет, а сможешь мне открыть защитный контейнер с кодовым замком? Не за бесплатно естественно.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Почему бы и нет, могу. Я и не с таким справлялся. Это обойдётся тебе в 3000 рублей.</text>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <precondition>gz_prologue.has_money_loki_case</precondition>
+                <text>Хорошо, вот, держи деньги.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="3">
+                <text>У меня пока нет таких денег.</text>
+                <next>35</next>
+            </phrase>
+            <phrase id="35">
+                <text>Ну что ж, приходи как появятся.</text>
+            </phrase>
+          <phrase id="4">
+                <text>Так, давай свой контейнер сюда. Подожди немного... Готово, и что же тут у нас? Хм, какая-то флешка. Ну что ж, вот держи.</text>
+           				<action>gz_prologue.transfer_gz_tainik_case</action>
+           				<action>gz_prologue.transfer_loki_case_flesh</action>
+           				<action>gz_prologue.give_loki_case_money</action>
+            <give_info>loki_case_open_done</give_info>
+                <next>5</next>
+            </phrase>
+          <phrase id="5">
+                <text>Спасибо.</text>
+                <next>6</next>
+            </phrase>
+          <phrase id="6">
+                <text>Всегда пожалуйста, обращайся.</text>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+ <dialog id="dv_dolg_about_help">
+ 			<dont_has_info>dv_dolggroup_find_five_medkit_start</dont_has_info>
+       <phrase_list>
+            <phrase id="0">
+                <text>Я словил ваш сигнал SOS, вам нужна была помощь?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Спасибо, что откликнулся. На нас напал отряд фанатиков Греха, но мы всё же смогли отбиться. Рисковано было конечно просить помощи в общем канале и расскрывать свои координаты, но Греховцы словно безумные. Расстреливают всех, почти не укрываясь от пуль. А их ещё фиг завалишь... Итог: у нас три двухсотых и почти нет медикаментов, чтобы вылечить раненых. Не мог бы ты помочь? Принесёшь 5 любых аптечек, а я... А я в долгу не останусь.</text>
+                <give_info>dv_sos_talk_with_dolg_done</give_info>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Хорошо, помогу.</text>
+                <give_info>dv_dolggroup_find_five_medkit_start</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+			</phrase_list>
+ </dialog>
+ 
+ <dialog id="dv_dolg_about_medkits">
+  			<has_info>dv_dolggroup_find_five_medkit_start</has_info>
+ 			<dont_has_info>dv_dolggroup_find_five_medkit_done</dont_has_info>
+       <phrase_list>
+            <phrase id="0">
+                <text>Здравия желаю!</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Ну что, нашел медикаменты?</text>
+                <next>2</next>
+                <next>3</next>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+            <phrase id="2">
+				<precondition>gz_prologue.precond_medkit_1</precondition>
+				<text>Да, вот держи, у меня есть 5 аптечек.</text>
+                <next>61</next>
+            </phrase>
+            <phrase id="3">
+				<precondition>gz_prologue.precond_medkit_army</precondition>
+				<text>Да, вот держи, у меня есть 5 армейских аптечек.</text>
+                <next>62</next>
+            </phrase>
+            <phrase id="4">
+				<precondition>gz_prologue.precond_medkit_scientic</precondition>
+				<text>Да, вот держи, у меня есть 5 научных аптечек.</text>
+                <next>63</next>
+            </phrase>
+                        <phrase id="61">
+				<text>Ну спасибо, выручил нас! Вот тебе в награду.</text>
+                                <action>gz_prologue.transfer_medkit</action>
+                                <action>gz_prologue.transfer_art</action>
+                                <give_info>dv_dolggroup_find_five_medkit_done</give_info>
+			</phrase>
+                        <phrase id="62">
+				<text>Ну спасибо, выручил нас! Вот тебе в награду.</text>
+                                <action>gz_prologue.transfer_medkit_army</action>
+                                <action>gz_prologue.transfer_art</action>
+                                <give_info>dv_dolggroup_find_five_medkit_done</give_info>
+			</phrase>
+                         <phrase id="63">
+				<text>Ну спасибо, выручил нас! Вот тебе в награду.</text>
+                                <action>gz_prologue.transfer_medkit_scientic</action>
+                                <action>gz_prologue.transfer_art</action>
+                                <give_info>dv_dolggroup_find_five_medkit_done</give_info>
+			</phrase>
+			<phrase id="5">
+				<text>Извини, ещё не нашёл.</text>
+				<action>dialogs.break_dialog</action>
+			</phrase>
+			</phrase_list>
+ </dialog>
+ 
+ 
+  <dialog id="dv_dolg_about_raciya">
+ 			<dont_has_info>find_tainik_quest</dont_has_info>
+ 			<has_info>dv_dolggroup_find_five_medkit_done</has_info>
+       <phrase_list>
+            <phrase id="0">
+                <text>Может у тебя найдётся лишняя рация?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Хм рация? Ну есть, но как понимаешь она мне самому нужна.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>А одолжить не можешь? Мне надо выйти надо выйти на связь с одним человеком, и потом сразу верну.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Хм, хотя знаешь, могу хоть на всё время отдать, но за это тебе надо будет выполнить ещё одну мою просьбу.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Что ж, я уже начинаю привыкать... Что надо сделать?</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Нам необходимо встретиться с нашим информатором, чтобы он передал добытые сведения. Для нас сейчас очень рискованно перемещаться по Тёмной Долине, из-за большой активности фанатиков Греха. Ты должен будешь встретиться с нашим информатором, взять у него собранную информацию, и вернуться ко мне. Делаешь это - отдадим тебе одну из раций нашей группы. Ну, что берёшься?</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Да выбора то особо нет. Куда топать надо?</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Наше обговоренное место встречи, это жёлтый домик на северо-западе отсюда, координаты я тебе скину.</text>
+                <next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Хорошо, выполню я твоё поручение.</text>
+ 			<give_info>find_tainik_quest</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+			</phrase_list>
+ </dialog>
+ 
+  <dialog id="dv_dolg_about_shpion">
+ 			<dont_has_info>contact_with_base_start</dont_has_info>
+ 			<has_info>dv_shpion_atack</has_info>
+       <phrase_list>
+            <phrase id="0">
+                <text>Вот, папка с информацией от Кривого.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <give_info>find_tainik_done_have</give_info>
+                <text>Хорошая работа, "Долг" не забудет оказанной тобой услуги.</text>
+                <next>21</next>
+                <next>22</next>
+            </phrase>
+            <phrase id="21">
+ 			<has_info>dv_shpion_dead</has_info>
+                <text>При передаче информации на нас напали три адепта Греха и ... Кривого убили, я не смог ничего сделать.</text>
+                <next>31</next>
+            </phrase>
+            <phrase id="22">
+ 			<dont_has_info>dv_shpion_dead</dont_has_info>
+                <text>При передаче информации нас напали три фанатика греха, мы с Кривым еле отбились.</text>
+                <next>32</next>
+            </phrase>
+            <phrase id="31">
+                <text>Чёртовы фанатики! Теряем одного человека за другим. Они ещё ответят Долгу, за всех погибших ребят... Ладно, что там у тебя, рация нужна?</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="32">
+                <text>Чёртовы фанатики, всё-таки выследили его. Мы недооценивали нашего врага. Ладно, что там у тебя, рация нужна?</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Да.</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Так, где она у меня завалялась... Вот, держи. Кстати, есть предложение: мы собираемся атаковать базу фанатиков Греха и помощь нам не помешала бы. Не желаешь помочь Долгу в борьбе с порождениями Зоны? Хорошую награду гарантирую.</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Я подумаю.</text>
+ 			<give_info>contact_with_base_start</give_info>
+ 			<give_info>find_raciya_alt_done</give_info>
+			<action>gz_prologue.transfer_raciya</action>
+            </phrase>
+			</phrase_list>
+ </dialog>
+	
+</game_dialogs>

@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = %=play_snd(soz\characters_voice\scenario\agr_psy_effect) =aes_kill_actor%
+on_info = {+agr_anomaly_scien_dialog_done} sr_idle2
+on_info2 = {+agr_anomaly_razradka_end} nil
+
+[sr_idle2]
+on_timer = 6000|%+agr_anomaly_razradka_start%
+on_info = {+agr_anomaly_razradka_end} nil

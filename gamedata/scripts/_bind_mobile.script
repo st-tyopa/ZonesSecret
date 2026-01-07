@@ -1,0 +1,370 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Биндер мобильника.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 03.07.2011
+--]]
+local open_menu = nil
+local key_save_version = "key_save_v1.2"
+---------------------------------------------------------------------------------------------
+-- Функция для бинда
+---------------------------------------------------------------------------------------------
+
+function bind( obj )
+	_utils.Init()
+    obj:bind_object( mobile_binder( obj ) )
+end
+
+---------------------------------------------------------------------------------------------
+-- Биндер мобилы
+---------------------------------------------------------------------------------------------
+class "mobile_binder" ( object_binder )
+
+--//---------------------------------------
+--// конструктор
+--//---------------------------------------
+--/summary/>> метод инициализации мобильника
+function mobile_binder:__init( obj ) super( obj )
+    self.object      = obj
+	self.m_id        = obj:id()
+	self.initialized = false
+	self.initfast    = false
+	self.valid       = false
+	
+	--'slot manager
+	self.back_item_id = nil          --'ай-ди предыдущего предмета, находившегося в первом слоте (для защиты от активации интерфейса, при установке мобильника в слот)
+	self.back_active_slot = -1       --'предыдущий, активный слот (для отслеживания момента активации слота с мобильником)
+	self.save_back_active_slot = -1  --'предыдущий, активный слот (для возврата к нему, после закрытия интерфейса мобильника)
+	
+	--'teleport manager (saves)
+	self.rotation = 10
+	self.change_id = 0
+	
+	--'coord (saves)
+	self.checkeds_info = {}
+	self.show_coord = false
+	
+	--'fps
+	self.show_fps = false --(saves)
+	self.fps = 0
+	self.ffps = 0
+	self.tim_fps = 0
+	self.fast = false
+	
+	--'infop (saves)
+	self.show_infop = false
+	self.infops = {}
+	
+	--'properties spawn objects
+	self.props = {}
+	
+	--'message error
+	self.message_box_error = CUIMessageBoxEx()
+	self.message_box_error:Init("message_box_error")
+	
+	--'save_params_menu (saves)
+	self.index_menu = 0
+	self.tab_type_index = 0
+	self.tab_where_index = 0
+	self.tab_pov_geo_index = 0
+	self.tab_inv_obj_index = 0
+	self.edit_dist = 5
+	self.spawn_point = ""
+	self.edit_sid = 0
+	self.edit_jump = 5
+end
+
+--//---------------------------------------
+--// оверрайды (виртуальные функции)
+--//---------------------------------------
+
+--/summary/>> метод апдейта мобильника
+function mobile_binder:update( delta )
+	object_binder.update( self, delta )
+	
+	--'управление открытием интерфейса меню мобильника
+	self:OpenMenuManager()
+	
+	--'инициализация
+	if (self.initialized) then
+		_fp_manager.update()
+		self:CreateSpawnProperties()
+	else
+	    self:DelChangerTeleport()
+	    self.initialized = true
+	end
+	
+	--'создание ускоренного апдейта
+	if (not self.initfast) then
+		self.object:set_fastcall(self.FastcallUpdate, self)
+		self.initfast = true
+	end
+end
+
+--/summary/>> метод сохранения данных мобильника
+function mobile_binder:save( packet )
+	object_binder.save( self, packet )
+	
+	packet:w_stringZ(key_save_version)
+	
+	packet:w_u8(self.index_menu)
+	packet:w_u8(self.tab_type_index)
+	packet:w_u8(self.tab_where_index)
+	packet:w_u8(self.tab_pov_geo_index)
+	packet:w_u8(self.tab_inv_obj_index)
+	packet:w_u16(self.edit_dist)
+	packet:w_stringZ(self.spawn_point)
+	packet:w_u16(self.edit_sid)
+	packet:w_u16(self.edit_jump)
+	
+	packet:w_float(self.rotation)
+	packet:w_u16(self.change_id)
+	
+	packet:w_bool(self.show_coord)	
+	local count = 0
+	for k,v in pairs(self.checkeds_info) do
+	    count = count + 1
+	end
+	packet:w_u8(count)
+	for k,v in pairs(self.checkeds_info) do
+	    packet:w_stringZ(k)
+		packet:w_bool(v)
+	end
+	
+	packet:w_bool(self.show_fps)
+	packet:w_bool(self.show_infop)
+	
+	packet:w_u8(#self.infops)
+	for _,name in ipairs(self.infops) do
+	    packet:w_stringZ(name)
+	end
+end
+
+--/summary/>> метод загрузки данных мобильника
+function mobile_binder:load( packet )
+	object_binder.load( self, packet )
+	
+	if packet:r_stringZ() == key_save_version then
+	    self.index_menu = packet:r_u8()
+		self.tab_type_index = packet:r_u8()
+		self.tab_where_index = packet:r_u8()
+		self.tab_pov_geo_index = packet:r_u8()
+		self.tab_inv_obj_index = packet:r_u8()
+		self.edit_dist = packet:r_u16()
+		self.spawn_point = packet:r_stringZ()
+		self.edit_sid = packet:r_u16()
+		self.edit_jump = packet:r_u16()
+		
+	    self.rotation = packet:r_float()
+		self.change_id = packet:r_u16()
+		
+		self.show_coord = packet:r_bool()
+	    local count = packet:r_u8()
+	    for i=0, count - 1 do
+	        local key = packet:r_stringZ()
+		    local value = packet:r_bool()
+	        self.checkeds_info[key] = value
+	    end
+		self.show_fps = packet:r_bool()
+		self.show_infop = packet:r_bool()
+		count = packet:r_u8()
+		for i=0, count - 1 do
+		    table.insert(self.infops, packet:r_stringZ())
+		end
+	end
+end
+
+--//---------------------------------------
+--// методы завязанные на оверрайды
+--//---------------------------------------
+--/summary/>> метод ускоренного апдейта
+function mobile_binder:FastcallUpdate()
+	if self.valid then
+		self:UpdateFps()
+		if open_menu then
+			open_menu:UpdateFastCall()
+		end
+	end
+	self:ShowHudParams(self.valid)
+end
+
+--/summary/>> метод управления открытием интерфейса, меню мобильника.
+function mobile_binder:OpenMenuManager()
+	local active = db.actor:active_slot()                   --'текущий активный слот
+	local now_item = db.actor:item_in_slot(1)               --'имеется ли предмет в первом слоте
+	local now_item_id = (now_item and now_item:id()) or nil --'ай-ди предмета, находящегося в первом слоте.
+	self.valid = (now_item_id == self.m_id)                 --'ключ нахождения мобильника в первом слоте.
+	
+
+	if (self.initialized) then
+	    if (self.valid) then                                                  --'находтся ли мобильник в первом слоте?!
+	        if (self.back_item_id == self.m_id) then                          --'находится ли больник в первом слоте, уже давно?!
+			    if ((self.back_active_slot ~= active) and (active == 1)) then --'отслеживаем момент активации слота с мобильником 
+					open_menu = _mobile.Mobile(self)
+	                level.start_stop_menu(open_menu,true)                     --' открываем интерфейс, меню мобильника
+				    self.save_back_active_slot = self.back_active_slot        --' запоминаем предыдущий слот, для возврата к нему, при закрытии меню мобильника.
+			    end
+	        else
+				--'защита от активации мобильника, при установке его в слот.
+				self:DeactivateMobileSlot(self.back_active_slot)
+		    end
+		end
+	end
+	
+	self.back_active_slot = active   --'запоминаем активный слот, как предыдущий
+	self.back_item_id = now_item_id  --'запоминаем ай-ди предмета находящегося в первом слоте
+end
+
+--/summary/>> метод деактивации первого слота
+function mobile_binder:DeactivateMobileSlot(bas)
+	db.actor:activate_slot(((math.diap(bas, 0, 12) and bas ~= 1) and bas) or -1)
+end
+
+--/summary/>> метод удаления чейнджера, после завершения телепортации на другую локацию.
+function mobile_binder:DelChangerTeleport()
+	if self.change_id ~= 0 then
+	    local sobj = alife():object( self.change_id )
+		if sobj then
+		    alife():release(sobj, true)
+			get_console():execute("ok_del_changer")
+			if (self.rotation < 10) then
+			    db.actor:set_actor_direction(self.rotation)
+				self.rotation = 10
+			end
+		end
+		self.change_id = 0
+	end
+end
+
+--/summary/>> метод обновлений результатов fps
+function mobile_binder:UpdateFps()
+	if not self.show_fps then return end
+    if time_global() >= self.tim_fps then
+		self.fps = self.ffps
+		self.tim_fps = time_global() + 1000
+		self.ffps = 0
+	else
+		self.ffps = self.ffps + 1
+	end
+end
+
+--/summary/>> метод вывода данных на монитор
+function mobile_binder:ShowHudParams(valid)
+    local actor = db.actor
+    local hud = get_hud()
+	local cs = hud:GetCustomStatic("cs_debug")
+	local fps = hud:GetCustomStatic("fps_debug")
+	local prs = hud:GetCustomStatic("prs_debug")
+	
+	--'show coordinates
+    if (self.show_coord and valid) then
+	    if not cs then
+		    hud:AddCustomStatic("cs_debug", true)
+		    cs = hud:GetCustomStatic("cs_debug" )
+	    end	
+		
+	    local msg = ""
+		if (self.checkeds_info.position) then
+		    local pos = actor:position()
+		    msg = msg .. string.format("pos: %1.3f,%1.3f,%1.3f\\n", pos.x, pos.y, pos.z)
+		end
+		if (self.checkeds_info.direction) then
+		    local dir = device().cam_dir
+		    msg = msg .. string.format("dir: %1.3f,%1.3f,%1.3f\\n", dir.x, dir.y, dir.z)
+		end
+		if (self.checkeds_info.rotation) then
+		    local rot = -(device().cam_dir):getH()
+		    msg = msg .. string.format("rot: %1.3f\\n", rot)
+		end
+		if (self.checkeds_info.lvid) then
+		    local lvid = actor:level_vertex_id()
+		    msg = msg .. string.format("lvid:  %d\\n", lvid)
+		end
+		if (self.checkeds_info.gvid) then
+		    local gvid = actor:game_vertex_id()
+			msg = msg .. string.format("gvid: %d\\n", gvid)                                  
+		end
+		if (self.checkeds_info.valid_vertex) then
+		    local pos2 = level.vertex_position(actor:level_vertex_id())
+	        local valid_vertex = pos2:distance_to(actor:position()) <= 0.7
+			msg = msg .. string.format("valid: %s\\n", tostring(valid_vertex))  
+		end
+		
+	    cs:wnd():SetText(msg)
+	else
+		if cs then hud:RemoveCustomStatic("cs_debug") end
+	end
+	
+	--'show fps
+	if (self.show_fps and valid) then
+	    if not fps then
+		    hud:AddCustomStatic("fps_debug", true)
+		    fps = hud:GetCustomStatic("fps_debug" )
+	    end
+		
+		fps:wnd():SetText("fps: "..tostring(self.fps))
+	else
+	    if fps then hud:RemoveCustomStatic("fps_debug") end
+	end
+	
+	--'show infoportions
+	if (self.show_infop and valid) then
+	    if prs == nil then
+		    hud:AddCustomStatic("prs_debug", true)
+		    prs = hud:GetCustomStatic("prs_debug" )
+	    end	
+		
+		local msg = ""
+	    for _,name in ipairs(self.infops) do
+		    local val = has_alife_info(name)
+			msg = msg .. string.format("%s = %s\\n", name, tostring(val))
+		end
+		
+		prs:wnd():SetText(msg)
+	else
+	    hud:RemoveCustomStatic("prs_debug")
+	end
+end
+
+--/summary/>> метод установки онлайновых свойств заспавненным объектам
+function mobile_binder:CreateSpawnProperties()	
+	for id, props in pairs(self.props) do
+	    local obj = level.object_by_id(id)
+		if obj then
+		    for prop, value in pairs(props) do
+		        local func = _getset_properties["online_set_"..prop]
+				if func then
+				    func(obj, value)
+				end
+				self.props[id][prop] = nil
+		    end
+		end
+		if _utils.table_empty(self.props[id]) then
+		    self.props[id] = nil
+		end
+	end
+end
+
+--//---------------------------------------
+--// внешне-вызываемые методы
+--//---------------------------------------
+--/summary/>> метод вызываемай при закрытии меню мобилы
+function mobile_binder:close_menu()
+	open_menu = nil
+	self:DeactivateMobileSlot(self.save_back_active_slot)
+	self.save_back_active_slot = -1
+end
+
+--/summary/>> метод вызываемый при клике телепортации.
+function mobile_binder:InitDataTeleport(pos, rot, lvl)
+	if (level.name() == lvl) then
+	    db.actor:set_actor_position(pos)
+		db.actor:set_actor_direction(rot)
+	else
+	    local sobj_id = _utils.teleport(pos, lvl)
+		if sobj_id then
+			self.rotation = rot
+			self.change_id = sobj_id
+		end
+	end
+end

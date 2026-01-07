@@ -1,0 +1,11 @@
+[logic]
+active = ph_code@close
+
+[ph_code@close]
+code = 1472
+on_code = ph_idle@enable
+
+[ph_idle@enable]
+nonscript_usable = true
+tips = st_search_treasure
+on_use = {-pz_leader_wtf_sms_3} %+pz_actor_enemy_merclager% nil

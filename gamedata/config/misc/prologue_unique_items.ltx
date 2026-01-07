@@ -1,0 +1,29 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SoZ. Prologue
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ”никальные квестовые предметы
+
+; ящик с инструментами
+[quest_case_instruments]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_case_instruments"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\box_toolkit_2.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+
+description         = quest_case_instruments
+
+inv_name			= quest_case_instruments_name
+inv_name_short		= quest_case_instruments_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 12
+inv_grid_y			= 27
+cost				= 250
+

@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+dv_contrgreh_spawn_controller_start} sr_particle
+
+[sr_particle]
+name = anomaly\smog_00
+path = dv_contrgreh_smog
+mode = 2 		
+looped = true            
+on_info = {+dv_contergreh_dead} nil

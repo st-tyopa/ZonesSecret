@@ -1,0 +1,44 @@
+[logic]
+active = camper@yan_prison
+combat_ignore = combat_ignore
+
+[camper@yan_prison]
+path_walk = yan_prison_prisoner_walk1
+path_look = yan_prison_prisoner_look1
+combat_ignore_cond = always
+on_info = {+prisoner_yan_spawn} walker@yan_prisoner_walk
+
+[walker@yan_prisoner_walk]
+path_walk = yan_prison_prisoner_walk1
+path_look = yan_prison_prisoner_look1
+on_info = {+yan_start_go_to_scienlager} remark@yan_prisoner_ready
+danger = danger_condition@prisoner_walk_yan
+
+[remark@yan_prisoner_ready]
+anim = threat_fire
+meet = no_meet
+combat_ignore_cond = always
+danger = danger_condition@prisoner_walk_yan
+on_timer = 10000| walker@yan_prisoner_walk2
+
+[walker@yan_prisoner_walk2]
+path_walk = yan_prison_prisoner_walk2
+path_look = yan_prison_prisoner_look2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_info = {+prisoner_yan_remark} remark@yan_prisoner_lager
+meet = no_meet
+danger = danger_condition@prisoner_walk_yan
+
+[remark@yan_prisoner_lager]
+anim = guard
+combat_ignore_cond = always
+danger = danger_condition@prisoner_walk_yan
+
+[danger_condition@prisoner_walk_yan]
+ignore_distance       = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse  = 0
+ignore_distance_danger_hit     = 0
+ignore_distance_sound   = 0 

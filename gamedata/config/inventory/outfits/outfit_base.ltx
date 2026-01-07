@@ -1,0 +1,64 @@
+[outfit_base]
+GroupControlSection	            = spawn_group
+discovery_dependency            = 
+;$prefetch 		                = 32
+class			                = E_STLK
+cform                           = skeleton
+ef_equipment_type	            = 3
+texture_exo                     = clear
+texture_arm                     = clear
+additional_inventory_weight		= 0
+additional_inventory_weight2	= 0	
+slot				            = 6
+full_scale_icon		            = 0,11
+artefact_count                  = 0
+health_restore_speed            = 0
+radiation_restore_speed         = 0
+satiety_restore_speed           = 0
+power_restore_speed             = 0
+bleeding_restore_speed          = 0
+full_icon_name					= npc_icon_without_outfit
+burn_protection 				= 0.0
+strike_protection 				= 0.0
+shock_protection 				= 0.0
+wound_protection				= 0.0
+radiation_protection 			= 0.0
+telepatic_protection 			= 0.0
+chemical_burn_protection 		= 0.0
+explosion_protection 			= 0.0
+fire_wound_protection  			= 0.0
+
+[without_outfit]:outfit_base
+;базовый костюм сталкера - костюм новичка. ќбычна€ одежда туриста - штормовка+сапоги
+full_scale_icon		= 6,6
+texture_arm = act_arm_0
+texture_exo = clear
+
+;Встроенные ПНВ
+[pnv_instal_bad]
+ppe = nightvision_bad
+light_amp = 1
+batt_life = 72
+
+[pnv_instal_good]
+ppe = nightvision_good
+light_amp = 3
+batt_life = 48
+
+#include "bandit_outfit.ltx"
+#include "bandit_veteran_outfit.ltx"
+#include "dolg_outfit.ltx"
+#include "dolg_scientific_outfit.ltx"
+#include "ecolog_outfit.ltx"
+#include "exo_outfit.ltx"
+#include "killer_outfit.ltx"
+#include "military_outfit.ltx"
+#include "novice_outfit.ltx"
+#include "protection_outfit.ltx"
+#include "scientific_outfit.ltx"
+#include "specops_outfit.ltx"
+#include "stalker_outfit.ltx"
+#include "svoboda_heavy_outfit.ltx"
+#include "svoboda_light_outfit.ltx"
+
+#include "deletes_outfits.ltx"

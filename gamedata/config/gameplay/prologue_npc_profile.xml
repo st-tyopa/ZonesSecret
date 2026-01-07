@@ -1,0 +1,1368 @@
+﻿<?xml version='1.0' encoding="UTF-8"?>
+
+<xml>
+	<!-- - BEGIN - S.T.A.L.K.E.R Prologue - BEGIN - -->
+	
+	<!-- - Даркскейп - -->
+	<!-- - Военные - -->
+	<character id="ds_vertolet_deadman1">
+		<class>ds_vertolet_deadman1</class>
+	</character>
+	<character id="ds_vertolet_deadman2">
+		<class>ds_vertolet_deadman2</class>
+	</character>
+	<character id="ds_vertolet_deadman3">
+		<class>ds_vertolet_deadman3</class>
+	</character>
+        <character id="ds_zapravka_deadman1">
+		<class>ds_zapravka_deadman1</class>
+	</character>
+        <character id="ds_zapravka_deadman2">
+		<class>ds_zapravka_deadman2</class>
+	</character>
+	<!-- - Бандиты - -->
+	<character id="ds_bandbase_bandit_default">
+		<class>ds_bandbase_bandit_default</class>
+	</character>
+	<character id="ds_bandbase_bandit_lider">
+		<class>ds_bandbase_bandit_lider</class>
+	</character>
+	<!-- - Нейтралы - -->
+	<character id="ds_bridge_stalker_default">
+		<class>ds_bridge_stalker_default</class>
+	</character>
+	<character id="ds_bridge_stalker_lider">
+		<class>ds_bridge_stalker_lider</class>
+	</character>
+	<!-- - Лагерь нейтралов - -->
+	<character id="ds_neutlager_default1">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_default2">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_default3">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_default4">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_default5">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_default6">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_default7">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_default8">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_default9">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_default10">
+		<class>ds_neutlager_default</class>
+	</character>
+	<character id="ds_neutlager_trader">
+		<class>ds_neutlager_trader</class>
+	</character>
+	<character id="ds_neutlager_barmen">
+		<class>ds_neutlager_barmen</class>
+	</character>
+	<character id="ds_neutlager_mehanic">
+		<class>ds_neutlager_mehanic</class>
+	</character>
+	<character id="ds_neutlager_doctor">
+		<class>ds_neutlager_doctor</class>
+	</character>
+	<character id="ds_neutlager_woundeddigger">
+		<class>ds_neutlager_woundeddigger</class>
+	</character>
+	<character id="ds_neutlager_hunt_1">
+		<class>ds_neutlager_hunt_1</class>
+	</character>
+        <character id="ds_neutlager_hunt_2">
+		<class>ds_neutlager_hunt_2</class>
+	</character>
+                <character id="ds_dead_hunt">
+		<class>ds_dead_hunt</class>
+	</character>
+	<character id="ds_deaddigger1">
+		<class>ds_deaddigger1</class>
+	</character>
+	<character id="ds_deaddigger2">
+		<class>ds_deaddigger2</class>
+	</character>
+	<character id="ds_suicidedigger">
+		<class>ds_suicidedigger</class>
+	</character>
+	<!-- - Сталкер у капища - -->
+	<character id="ds_kap_stalker">
+		<class>ds_kap_stalker</class>
+	</character>
+	<!-- - Искатели - -->
+	<character id="ds_iskateli_default1">
+		<class>ds_iskateli_default</class>
+	</character>
+	<character id="ds_iskateli_lider">
+		<class>ds_iskateli_lider</class>
+	</character>
+	<character id="ds_iskateli_trader">
+		<class>ds_iskateli_trader</class>
+	</character>
+	<character id="ds_iskateli_commander">
+		<class>ds_iskateli_commander</class>
+	</character>
+	<character id="ds_iskateli_provodnik">
+		<class>ds_iskateli_provodnik</class>
+	</character>
+	<character id="ds_iskateli_doctor">
+		<class>ds_iskateli_doctor</class>
+	</character>
+	<!-- - Последний день - -->
+	<character id="ds_ld_blokp_default1">
+		<class>ds_ld_blokp_default</class>
+	</character>
+	<character id="ds_ld_blokp_leader">
+		<class>ds_ld_blokp_leader</class>
+	</character>
+	
+	
+	<character id="ds_kamaz_stalker">
+		<class>ds_kamaz_stalker</class>
+	</character>
+
+	
+	
+	<!-- - Темная Долина - -->
+	<!-- - Блокпост - -->
+	<character id="dv_svobblokpost_commander_lukash">
+		<class>dv_svobblokpost_commander_lukash</class>
+	</character>
+	<character id="dv_svobblokpost_svobodovec_default">
+		<class>dv_svobblokpost_svobodovec_default</class>
+	</character>
+	
+	<!-- - База - -->
+	<character id="dv_svobbase_lider_cheh">
+		<class>dv_svobbase_lider_cheh</class>
+		<specific_character>dv_svobbase_lider_cheh</specific_character>
+	</character>
+	<character id="dv_svobbase_mehanik_yar">
+		<class>dv_svobbase_mehanik_yar</class>
+		<specific_character>dv_svobbase_mehanik_yar</specific_character>
+	</character>
+	<character id="dv_svobbase_trader_varyag">
+		<class>dv_svobbase_trader_varyag</class>
+		<specific_character>dv_svobbase_trader_varyag</specific_character>
+	</character>
+	<character id="dv_svobbase_guard_cheh">
+		<class>dv_svobbase_guard_cheh</class>
+		<specific_character>dv_svobbase_guard_cheh</specific_character>
+	</character>
+	<character id="dv_svobbase_guard1">
+		<class>dv_svobbase_guard1</class>
+		<specific_character>dv_svobbase_guard1</specific_character>
+	</character>
+	<character id="dv_svobbase_guard2">
+		<class>dv_svobbase_guard2</class>
+		<specific_character>dv_svobbase_guard2</specific_character>
+	</character>
+	<character id="dv_svobbase_guard3">
+		<class>dv_svobbase_guard3</class>
+		<specific_character>dv_svobbase_guard3</specific_character>
+	</character>
+	<character id="dv_svobbase_guard4">
+		<class>dv_svobbase_guard4</class>
+		<specific_character>dv_svobbase_guard4</specific_character>
+	</character>
+	<character id="dv_svobbase_guard5">
+		<class>dv_svobbase_guard5</class>
+		<specific_character>dv_svobbase_guard5</specific_character>
+	</character>
+	<character id="dv_svobbase_guard6">
+		<class>dv_svobbase_guard6</class>
+		<specific_character>dv_svobbase_guard6</specific_character>
+	</character>
+        <character id="dv_svobbase_guard7">
+		<class>dv_svobbase_guard7</class>
+		<specific_character>dv_svobbase_guard7</specific_character>
+	</character>
+        <character id="dv_svobbase_prisoner">
+		<class>dv_svobbase_prisoner</class>
+		<specific_character>dv_svobbase_prisoner</specific_character>
+	</character>
+	
+	<!-----бандиты на заправке---->
+	
+	<character id="dv_zapravka_bandit_1">
+		<class>dv_zapravka_bandit_1</class>
+	</character>
+	<character id="dv_zapravka_bandit_2">
+		<class>dv_zapravka_bandit_2</class>
+	</character>
+	<character id="dv_zapravka_bandit_3">
+		<class>dv_zapravka_bandit_3</class>
+	</character>
+	<character id="dv_zapravka_bandit_4">
+		<class>dv_zapravka_bandit_4</class>
+	</character>
+	<character id="dv_zapravka_bandit_5">
+		<class>dv_zapravka_bandit_5</class>
+	</character>
+	<character id="dv_zapravka_bandit_6">
+		<class>dv_zapravka_bandit_6</class>
+	</character>
+
+        <character id="dv_torgash">
+		<class>dv_torgash</class>
+	</character>
+	
+        <character id="dv_maps_bandit">
+		<class>dv_maps_bandit</class>
+	</character>
+        
+         <character id="dv_bekas">
+		<class>dv_bekas</class>
+	</character>
+        
+	<!-------Группа атаки на базу греха------>
+		<character id="dv_sv_greshbase_lider_sputnik">
+		<class>dv_sv_greshbase_lider_sputnik</class>
+	</character>
+	
+	<character id="dv_sv_greshbase_default_1">
+		<class>dv_sv_grehbase_svobodovec_default</class>
+	</character>
+	
+	<character id="dv_sv_greshbase_default_2">
+		<class>dv_sv_grehbase_svobodovec_default</class>
+	</character>
+	
+	<character id="dv_sv_greshbase_default_3">
+		<class>dv_sv_grehbase_svobodovec_default</class>
+	</character>
+	
+	<character id="dv_sv_greshbase_default_4">
+		<class>dv_sv_grehbase_svobodovec_default</class>
+	</character>
+	
+	<character id="dv_sv_greshbase_default_5">
+		<class>dv_sv_grehbase_svobodovec_default</class>
+	</character>
+	
+	<character id="dv_sv_greshbase_default_6">
+		<class>dv_sv_grehbase_svobodovec_default</class>
+	</character>
+	
+	<!-- - Раненный сталкер - -->
+	<character id="dv_wounded_stalker">
+		<class>dv_wounded_stalker</class>
+	</character>
+
+        <character id="dv_kamaz_stalker_2">
+		<class>dv_kamaz_stalker_2</class>
+	</character>
+	
+        <!-- - Петро - -->
+        <character id="dv_petro">
+		<class>dv_petro</class>
+	</character>
+
+	<!-- - Грех - -->
+	<!-- - Блокпост Греха - -->
+	<character id="dv_grehblokpost_lider">
+		<class>dv_grehblokpost_lider</class>
+	</character>
+	<character id="dv_grehblokpost_default1">
+		<class>dv_grehblokpost_default1</class>
+	</character>
+	<character id="dv_grehblokpost_default2">
+		<class>dv_grehblokpost_default2</class>
+	</character>
+	<character id="dv_grehblokpost_default3">
+		<class>dv_grehblokpost_default3</class>
+	</character>
+	<!-- - База Греха - -->
+	<character id="dv_grehbase_lider">
+		<class>dv_grehbase_lider</class>
+	</character>
+	<character id="dv_grehbase_default1">
+		<class>dv_grehbase_default1</class>
+	</character>
+	<character id="dv_grehbase_default2">
+		<class>dv_grehbase_default2</class>
+	</character>
+	<character id="dv_grehbase_default3">
+		<class>dv_grehbase_default3</class>
+	</character>
+	<character id="dv_grehbase_default4">
+		<class>dv_grehbase_default4</class>
+	</character>
+	<character id="dv_grehbase_default5">
+		<class>dv_grehbase_default5</class>
+	</character>
+	
+	<character id="dv_greh_guard_woun_st">
+		<class>dv_greh_guard_woun_st</class>
+	</character>
+	
+	<!-- - ДОЛГ - -->
+	<!-- - Отряд долга - -->
+	<character id="dv_dolg_group_lider">
+		<class>dv_dolg_group_lider</class>
+		<specific_character>dv_dolg_group_lider</specific_character>
+	</character>
+	<character id="dv_dolg_group_default">
+		<class>dv_dolg_group_default</class>
+	</character>
+	<!-- - Фантомы - -->
+	<character id="dv_fantom">
+		<class>dv_fantom</class>
+	</character>
+
+          <!-- - Свалка - -->
+	<!-- - Свободовцы - -->
+        <character id="gar_sv_garbage_com">
+		<class>gar_sv_garbage_com</class>
+	</character>
+        <character id="gar_sv_garbage_guard">
+		<class>gar_sv_garbage_guard</class>
+	</character>
+        <!-- - Зомби Бандиты - -->
+        <character id="gar_zombied_1">
+		<class>gar_zombied_1</class>
+	</character>
+        <character id="gar_zombied_2">
+		<class>gar_zombied_2</class>
+	</character>
+
+	<!-- - НИИ Агропром - -->
+	<!-- - База Долга - -->
+	<character id="agr_dolgbase_lider_krylov">
+		<class>agr_dolgbase_lider_krylov</class>
+		<specific_character>agr_dolgbase_lider_krylov</specific_character>
+	</character>
+	<character id="agr_dolgbase_mehanik_gromov">
+		<class>agr_dolgbase_mehanik_gromov</class>
+		<specific_character>agr_dolgbase_mehanik_gromov</specific_character>
+	</character>
+	<character id="agr_dolgbase_trader_mityai">
+		<class>agr_dolgbase_trader_mityai</class>
+		<specific_character>agr_dolgbase_trader_mityai</specific_character>
+	</character>
+	<character id="agr_dolgbase_guard1">
+		<class>agr_dolgbase_guard1</class>
+		<specific_character>agr_dolgbase_guard1</specific_character>
+	</character>
+	<character id="agr_dolgbase_guard2">
+		<class>agr_dolgbase_guard2</class>
+		<specific_character>agr_dolgbase_guard2</specific_character>
+	</character>
+	<character id="agr_dolgbase_guard3">
+		<class>agr_dolgbase_guard3</class>
+		<specific_character>agr_dolgbase_guard3</specific_character>
+	</character>
+	<character id="agr_dolgbase_guard4">
+		<class>agr_dolgbase_guard4</class>
+		<specific_character>agr_dolgbase_guard4</specific_character>
+	</character>
+	<character id="agr_dolgbase_guard5">
+		<class>agr_dolgbase_guard5</class>
+		<specific_character>agr_dolgbase_guard5</specific_character>
+	</character>
+	
+	
+	<character id="agr_dolgbase_watchtower1">
+		<class>agr_dolgbase_watchtower</class>
+	</character>
+	<character id="agr_dolgbase_watchtower2">
+		<class>agr_dolgbase_watchtower</class>
+	</character>
+	<character id="agr_dolgbase_watchtower3">
+		<class>agr_dolgbase_watchtower</class>
+	</character>
+	<character id="agr_dolgbase_watchtower4">
+		<class>agr_dolgbase_watchtower</class>
+	</character>
+	
+	<!-- - Торговец оружием - -->
+	<character id="agr_dolgbase_weapontrader">
+		<class>agr_dolgbase_weapontrader</class>
+		<specific_character>agr_dolgbase_weapontrader</specific_character>
+	</character>
+	<!-- - Ловец - -->
+	<character id="agr_dolgbase_lovets">
+		<class>agr_dolgbase_lovets</class>
+	</character>
+	<!-- - Начальник охраны - -->
+	<character id="agr_dolgbase_nachalnik">
+		<class>agr_dolgbase_nachalnik</class>
+	</character>
+	
+	<!-- - Охранники Крылова - -->
+	<character id="agr_dolgbase_guard_krylov1">
+		<class>agr_dolgbase_guard_krylov</class>
+		<specific_character>agr_dolgbase_guard_krylov1</specific_character>
+	</character>
+	<character id="agr_dolgbase_guard_krylov2">
+		<class>agr_dolgbase_guard_krylov</class>
+		<specific_character>agr_dolgbase_guard_krylov2</specific_character>
+	</character>
+	<character id="agr_dolgbase_guard_krylov3">
+		<class>agr_dolgbase_guard_krylov</class>
+		<specific_character>agr_dolgbase_guard_krylov3</specific_character>
+	</character>
+	
+	<!-- - Блокпост 1 - -->
+	<character id="agr_dolgbase_blokp1_commander">
+		<class>agr_dolgbase_blokp1_commander</class>
+		<specific_character>agr_dolgbase_blokp1_commander</specific_character>
+	</character>
+	<character id="agr_dolgbase_blokp1_guard1">
+		<class>agr_dolgbase_blokp1_guard1</class>
+		<specific_character>agr_dolgbase_blokp1_guard1</specific_character>
+	</character>
+	<character id="agr_dolgbase_blokp1_guard2">
+		<class>agr_dolgbase_blokp1_guard2</class>
+		<specific_character>agr_dolgbase_blokp1_guard2</specific_character>
+	</character>
+	
+	<!-- - Блокпост 2- -->
+	<character id="agr_dolgbase_blokp2_commander">
+		<class>agr_dolgbase_blokp2_commander</class>
+		<specific_character>agr_dolgbase_blokp2_commander</specific_character>
+	</character>
+	
+	<!-- - Бар на базе Долга - -->
+	<character id="agr_dolgbbar_visitor1">
+		<class>agr_dolgbbar_visitor1</class>
+		<specific_character>agr_dolgbbar_visitor1</specific_character>
+	</character>
+	<character id="agr_dolgbbar_visitor2">
+		<class>agr_dolgbbar_visitor2</class>
+		<specific_character>agr_dolgbbar_visitor1</specific_character>
+	</character>
+	<character id="agr_dolgbbar_visitor3">
+		<class>agr_dolgbbar_visitor3</class>
+		<specific_character>agr_dolgbbar_visitor1</specific_character>
+	</character>
+	
+	<!-- - Блокпост Долга - -->
+	<character id="agr_dolgblokpost_commander_krivtsov">
+		<class>agr_dolgblokpost_commander_krivtsov</class>
+		<specific_character>agr_dolgblokpost_commander_krivtsov</specific_character>
+	</character>
+	
+	<!-- - База Наемников - -->
+	<character id="agr_mercbase_sniper_1">
+		<class>agr_mercbase_snipers</class>
+	</character>
+	<character id="agr_mercbase_sniper_2">
+		<class>agr_mercbase_snipers</class>
+	</character>
+	<character id="agr_mercbase_sniper_3">
+		<class>agr_mercbase_snipers</class>
+	</character>
+	<character id="agr_mercbase_sniper_4">
+		<class>agr_mercbase_snipers</class>
+	</character>
+	
+	<character id="agr_mercbase_guard1">
+		<class>agr_mercbase_guard1</class>
+		<specific_character>agr_mercbase_guard1</specific_character>
+	</character>
+	<character id="agr_mercbase_guard2">
+		<class>agr_mercbase_guard2</class>
+		<specific_character>agr_mercbase_guard2</specific_character>
+	</character>
+	<character id="agr_mercbase_guard3">
+		<class>agr_mercbase_guard3</class>
+		<specific_character>agr_mercbase_guard3</specific_character>
+	</character>
+	<character id="agr_mercbase_kap">
+		<class>agr_mercbase_kap</class>
+                <specific_character>agr_mercbase_kap</specific_character>
+	</character>
+	
+	<!-- - Блокпост Наемников - -->
+	<character id="agr_mercblokpost_guard1">
+		<class>agr_mercblokpost_guard1</class>
+		<specific_character>agr_mercblokpost_guard1</specific_character>
+	</character>
+	<character id="agr_mercblokpost_guard2">
+		<class>agr_mercblokpost_guard2</class>
+		<specific_character>agr_mercblokpost_guard2</specific_character>
+	</character>
+	<character id="agr_mercblokpost_guard3">
+		<class>agr_mercblokpost_guard3</class>
+		<specific_character>agr_mercblokpost_guard3</specific_character>
+	</character>
+	
+	<!-- - Подземелье - -->
+	<character id="agr_military_commander_cap">
+		<class>agr_military_commander_cap</class>
+		<specific_character>agr_military_commander_cap</specific_character>
+	</character>
+	
+	<!-- - Ученый - -->
+	<character id="agr_scien_manik">
+		<class>agr_scien_manik</class>
+		<specific_character>agr_scien_manik</specific_character>
+	</character>
+	
+	<!-- - Диггер - -->
+	<character id="agr_ds_neutlager_woundeddigger">
+		<class>agr_ds_neutlager_woundeddigger</class>
+		<specific_character>agr_ds_neutlager_woundeddigger</specific_character>
+	</character>
+	
+	<!-- - Свалка - -->
+	<!-- - Нейтралы - -->
+	<character id="gar_neutbase_lider">
+		<class>gar_neutbase_lider</class>
+	</character>
+	<character id="gar_neutbase_guard1">
+		<class>gar_neutbase_guard1</class>
+	</character>
+	<character id="gar_neutbase_guard2">
+		<class>gar_neutbase_guard2</class>
+	</character>
+	<character id="gar_neutbase_guard3">
+		<class>gar_neutbase_guard3</class>
+	</character>
+	<character id="gar_neutbase_guard4">
+		<class>gar_neutbase_guard4</class>
+	</character>
+        <character id="gar_osvedomel">
+		<class>gar_osvedomel</class>
+	</character>
+        <character id="gar_guard_1">
+		<class>gar_guard_1</class>
+	</character>
+        <character id="gar_guard_2">
+		<class>gar_guard_2</class>
+	</character>
+      <character id="gar_player">
+		<class>gar_player</class>
+	</character>
+
+	
+	<!-- - Бандиты-зомби - -->
+	<character id="gar_mil_contr_bandit_zomb_leshiy">
+		<class>gar_mil_contr_bandit_zomb_leshiy</class>
+	</character>
+	<character id="gar_mil_contr_bandit_zomb_1">
+		<class>gar_mil_contr_bandit_zomb</class>
+	</character>
+	<character id="gar_mil_contr_bandit_zomb_2">
+		<class>gar_mil_contr_bandit_zomb</class>
+	</character>
+	<character id="gar_mil_contr_bandit_zomb_3">
+		<class>gar_mil_contr_bandit_zomb</class>
+	</character>
+	
+	<!-- - Мертвый сталкер в депо - -->
+	<character id="gar_depo_dead_stalker">
+		<class>gar_depo_dead_stalker</class>
+	</character>
+	
+	<!-- - Диггер - -->
+	<character id="gar_digger">
+		<class>gar_digger</class>
+	</character>
+
+        <character id="gar_petro">
+		<class>gar_petro</class>
+	</character>
+	
+	<!----- - Блокпост дезертиров - ---->
+	
+	<character id="gar_blokpost_dezertir_default_1">
+		<class>gar_blokpost_dezertir_default_1</class>
+	</character>
+	<character id="gar_blokpost_dezertir_default_2">
+		<class>gar_blokpost_dezertir_default_2</class>
+	</character>
+	<character id="gar_blokpost_dezertir_default_3">
+		<class>gar_blokpost_dezertir_default_3</class>
+	</character>
+	<character id="gar_blokpost_dezertir_default_4">
+		<class>gar_blokpost_dezertir_default_4</class>
+	</character>
+	<character id="gar_blokpost_dezertir_default_5">
+		<class>gar_blokpost_dezertir_default_5</class>
+	</character>
+	<character id="gar_blokpost_dezertir_default_6">
+		<class>gar_blokpost_dezertir_default_6</class>
+	</character>
+	
+	
+	<!-- - Янтарь - -->
+	<!-- - Лагерь ученых - -->
+	<character id="yan_scienlager_lider">
+		<class>yan_scienlager_lider</class>
+	</character>
+	<character id="yan_scienlager_lider2">
+		<class>yan_scienlager_lider2</class>
+	</character>
+	<character id="yan_scienlager_default1">
+		<class>yan_scienlager_default1</class>
+	</character>
+	<character id="yan_scienlager_default2">
+		<class>yan_scienlager_default2</class>
+	</character>
+	<character id="yan_scienlager_default3">
+		<class>yan_scienlager_default3</class>
+	</character>
+	<character id="yan_scienlager_default4">
+		<class>yan_scienlager_default4</class>
+	</character>
+	<character id="yan_scienlager_default5">
+		<class>yan_scienlager_default5</class>
+	</character>
+        <character id="yan_assist">
+		<class>yan_assist</class>
+	</character>
+        <character id="yan_scien_guard">
+		<class>yan_scien_guard</class>
+	</character>
+        <character id="yan_scien_guard_bones">
+		<class>yan_scien_guard_bones</class>
+	</character>
+        <character id="yan_scien_1">
+		<class>yan_scien_1</class>
+	</character>
+        <character id="yan_scien_2">
+		<class>yan_scien_2</class>
+	</character>
+	<!-- - Заброшенный лагерь ученых - -->
+         <character id="yan_scien_zombie">
+		<class>yan_scien_zombie</class>
+	</character>
+        <character id="yan_army_zombie">
+		<class>yan_army_zombie</class>
+	</character>
+	<!-- - Группа ГБФ - -->
+	<character id="yan_gbf_kamp_stalker1">
+		<class>yan_gbf_kamp_stalker1</class>
+	</character>
+	<character id="yan_gbf_kamp_stalker2">
+		<class>yan_gbf_kamp_stalker2</class>
+	</character>
+	<character id="yan_gbf_kamp_stalker3">
+		<class>yan_gbf_kamp_stalker3</class>
+	</character>
+	<character id="yan_gbf_kamp_stalker4">
+		<class>yan_gbf_kamp_stalker4</class>
+	</character>
+	        	<!-- -Братки - -->
+	<character id="yan_sos_bandit">
+		<class>yan_sos_bandit</class>
+	</character>
+        <character id="yan_bandit_glav">
+		<class>yan_bandit_glav</class>
+	</character>
+	<character id="yan_bandit_guard">
+		<class>yan_bandit_guard</class>
+	</character>
+	<!-- - Бандиты - -->
+	<character id="yan_band_robbers_default">
+		<class>yan_band_robbers_default</class>
+	</character>
+	<character id="yan_band_robbers_leader">
+		<class>yan_band_robbers_leader</class>
+	</character>
+                      <!-- -Зомби - -->
+        <character id="yan_zombi_trup">
+		<class>yan_zombi_trup</class>
+	</character>
+	<!----- - Блокпост дезертиров - ---->
+	
+	<character id="yan_blokpost_dezertir_lider">
+		<class>yan_blokpost_dezertir_lider</class>
+	</character>
+	<character id="yan_blokpost_dezertir_default_1">
+		<class>yan_blokpost_dezertir_default_1</class>
+	</character>
+	<character id="yan_blokpost_dezertir_default_2">
+		<class>yan_blokpost_dezertir_default_2</class>
+	</character>
+	<character id="yan_blokpost_dezertir_default_3">
+		<class>yan_blokpost_dezertir_default_3</class>
+	</character>
+	<character id="yan_blokpost_dezertir_default_4">
+		<class>yan_blokpost_dezertir_default_4</class>
+	</character>
+	<character id="yan_blokpost_dezertir_default_5">
+		<class>yan_blokpost_dezertir_default_5</class>
+	</character>
+	<character id="yan_blokpost_dezertir_default_6">
+		<class>yan_blokpost_dezertir_default_6</class>
+	</character>
+	<character id="yan_scienlager_wounded">
+		<class>yan_scienlager_wounded</class>
+	</character>
+	
+	<!----- - Рыжий лес - ---->
+	
+	<character id="rf_military_commander">
+		<class>rf_military_commander</class>
+	</character>
+	<character id="rf_military_default">
+		<class>rf_military_default</class>
+	</character>
+	<character id="rf_military_default_1">
+		<class>rf_military_default_1</class>
+	</character>
+	<character id="rf_military_default_2">
+		<class>rf_military_default_2</class>
+	</character>
+	<!-- - Последний день - -->
+	<character id="redfor_bridge_ld_leader">
+		<class>redfor_bridge_ld_leader</class>
+	</character>
+	<character id="redfor_bridge_ld_bridge_guard">
+		<class>redfor_bridge_ld_bridge_guard</class>
+	</character>
+	<character id="redfor_bridge_ld_default1">
+		<class>redfor_bridge_ld_default</class>
+	</character>
+	<!-- - Охотники - -->
+	<character id="redfor_hunters_leader">
+		<class>redfor_hunters_leader</class>
+	</character>
+	<character id="redfor_hunters_hunter1">
+		<class>redfor_hunters_hunter1</class>
+	</character>
+	<character id="redfor_hunters_hunter2">
+		<class>redfor_hunters_hunter2</class>
+	</character>
+	<character id="redfor_hunters_hunter3">
+		<class>redfor_hunters_hunter3</class>
+	</character>
+	<!-- - Лесник - -->
+	<character id="redfor_lesnik">
+		<class>redfor_lesnik</class>
+	</character>
+	<character id="redfor_beglec">
+		<class>redfor_beglec</class>
+	</character>
+	        <character id="yan_scienlager_kobold">
+		<class>yan_scienlager_kobold</class>
+	</character>
+	<!-- - Залесье - -->
+	<!-- - Лагерь ученых - -->
+	<character id="zal_scienlager_lider">
+		<class>zal_scienlager_lider</class>
+	</character>
+	<character id="zal_scienlager_default1">
+		<class>zal_scienlager_default1</class>
+	</character>
+	<character id="zal_scienlager_default2">
+		<class>zal_scienlager_default2</class>
+	</character>
+	<character id="zal_scienlager_default3">
+		<class>zal_scienlager_default3</class>
+	</character>
+	<character id="zal_scienlager_default4">
+		<class>zal_scienlager_default4</class>
+	</character>
+	<character id="zal_scienlager_default5">
+		<class>zal_scienlager_default5</class>
+	</character>
+	<character id="zal_scienlager_wounded">
+		<class>zal_scienlager_wounded</class>
+	</character>
+
+	<!-- - Наемники - -->
+	<character id="zal_merc_default_1">
+		<class>zal_merc_default_1</class>
+	</character>
+	<character id="zal_merc_default_2">
+		<class>zal_merc_default_2</class>
+	</character>
+	<character id="zal_merc_default_3">
+		<class>zal_merc_default_3</class>
+	</character>
+	
+	
+	
+	<!-- - Лаба Х-13 - -->	
+	<character id="lab_ucheniy">
+		<class>lab_ucheniy</class>
+	</character>
+	
+	<character id="lab_killer_main">
+		<class>lab_killer_main</class>
+	</character>
+
+	<character id="lab_killer_default">
+		<class>lab_killer_default</class>
+	</character>
+
+	<character id="lab_militari_default">
+		<class>lab_militari_default</class>
+	</character>
+	
+	<character id="lab_gg_suecid1">
+		<class>lab_gg_suecid1</class>
+	</character>
+	
+	<!-- - Лаба Х-15 - -->	
+	<!-- - Наемники - -->
+	<character id="labx15_mercgroup_merc1">
+		<class>labx15_mercgroup_merc</class>
+	</character>
+	
+	<character id="labx15_mercgroup_merc2">
+		<class>labx15_mercgroup_merc</class>
+	</character>
+	
+	<character id="labx15_mercgroup_merc3">
+		<class>labx15_mercgroup_merc</class>
+	</character>
+	
+	<character id="labx15_mercgroup_merc4">
+		<class>labx15_mercgroup_merc</class>
+	</character>
+	
+	<character id="labx15_mercgroup_merc5">
+		<class>labx15_mercgroup_merc</class>
+	</character>
+	
+	<character id="labx15_scien_professor">
+		<class>labx15_scien_professor</class>
+	</character>
+	
+	<!-- - END - S.T.A.L.K.E.R Prologue - END - -->
+	
+	<!-- - Филин - -->
+	<character id="agr_filin">
+		<class>agr_filin</class>
+	</character>
+	
+
+<!-- - Промзона - -->
+	<character id="pz_iskatgroup_leader">
+		<class>pz_iskatgroup_leader</class>
+	</character>
+	<character id="pz_iskatgroup_iskatel_1">
+		<class>pz_iskatgroup_iskatel_1</class>
+	</character>
+	<character id="pz_iskatgroup_iskatel_2">
+		<class>pz_iskatgroup_iskatel_2</class>
+	</character>
+	
+	<character id="pz_iskatgroup_merc_prisoner">
+		<class>pz_iskatgroup_merc_prisoner</class>
+	</character>
+	
+	<character id="pz_isk_rpg">
+		<class>pz_isk_rpg</class>
+	</character>
+	
+	
+	
+	<character id="pz_merclager_leader">
+		<class>pz_merclager_leader</class>
+	</character>
+	
+	<character id="pz_merclager_sniper_1">
+		<class>pz_merclager_snipers</class>
+	</character>
+	<character id="pz_merclager_sniper_2">
+		<class>pz_merclager_snipers</class>
+	</character>
+	<character id="pz_merclager_sniper_3">
+		<class>pz_merclager_snipers</class>
+	</character>
+	<character id="pz_merclager_sniper_4">
+		<class>pz_merclager_snipers</class>
+	</character>
+	<character id="pz_merclager_sniper_5">
+		<class>pz_merclager_snipers</class>
+	</character>
+	<character id="pz_merclager_sniper_6">
+		<class>pz_merclager_snipers</class>
+	</character>
+	
+	<character id="pz_merclager_default_1">
+		<class>pz_merclager_default</class>
+	</character>
+	<character id="pz_merclager_default_2">
+		<class>pz_merclager_default</class>
+	</character>
+	<character id="pz_merclager_default_3">
+		<class>pz_merclager_default</class>
+	</character>
+	<character id="pz_merclager_default_4">
+		<class>pz_merclager_default</class>
+	</character>
+	<character id="pz_merclager_default_5">
+		<class>pz_merclager_default</class>
+	</character>
+	<character id="pz_merclager_default_6">
+		<class>pz_merclager_default</class>
+	</character>
+	
+	<character id="pz_merclager_facecontrol_com_1">
+		<class>pz_merclager_default</class>
+	</character>
+	<character id="pz_merclager_facecontrol_com_2">
+		<class>pz_merclager_default</class>
+	</character>
+
+
+	<character id="lab_killer_exo">
+		<class>lab_killer_exo</class>
+	</character>
+		<character id="lab_killer_pnv">
+		<class>lab_killer_pnv</class>
+	</character>
+
+       <character id="yan_assist_2">
+		<class>yan_assist_2</class>
+	</character>
+
+	        <character id="yan_scien_guard_1">
+		<class>yan_scien_guard_1</class>
+	</character>
+
+	        <character id="yan_scien_guard_2">
+		<class>yan_scien_guard_2</class>
+	</character>
+
+	        <character id="yan_scien_guard_3">
+		<class>yan_scien_guard_3</class>
+	</character>
+
+	        <character id="yan_scien_guard_4">
+		<class>yan_scien_guard_4</class>
+	</character>
+
+	        <character id="yan_scien_guard_5">
+		<class>yan_scien_guard_5</class>
+	</character>
+	        <character id="yan_scien_guard_6">
+		<class>yan_scien_guard_6</class>
+	</character>
+
+       <character id="lab_zombi_tonel">
+		<class>lab_zombi_tonel</class>
+	</character>
+       <character id="lab_zombi_tonel_2">
+		<class>lab_zombi_tonel_2</class>
+	</character>
+       <character id="dv_greh_empty">
+		<class>dv_greh_empty</class>
+	</character>
+
+       <character id="dv_dolg_empty">
+		<class>dv_dolg_empty</class>
+	</character>
+
+       <character id="yan_zombie_quest">
+		<class>yan_zombie_quest</class>
+	</character>
+
+       <character id="yan_kobold">
+		<class>yan_kobold</class>
+	</character>
+
+      <character id="yan_ghost_fin">
+		<class>yan_ghost_fin</class>
+	</character>
+	
+      <character id="yan_fake_ghost">
+		<class>yan_fake_ghost</class>
+	</character>
+	
+      <character id="yan_fake_guns">
+		<class>yan_fake_guns</class>
+	</character>
+
+
+<character id="yan_otshel">
+		<class>yan_otshel</class>
+	</character>
+
+ <character id="rf_lesnik_tank">
+		<class>rf_lesnik_tank</class>
+	</character>
+
+ <character id="rf_ld_puzir_1">
+		<class>rf_ld_puzir_1</class>
+	</character>
+
+ <character id="rf_ld_puzir_2">
+		<class>rf_ld_puzir_2</class>
+	</character>
+
+ <character id="rf_ld_puzir_3">
+		<class>rf_ld_puzir_3</class>
+	</character>
+
+ <character id="rf_ld_ocelot">
+		<class>rf_ld_ocelot</class>
+	</character>
+
+ <character id="yan_dead_hunt_1">
+		<class>yan_dead_hunt_1</class>
+	</character>
+
+ <character id="yan_dead_hunt_2">
+		<class>yan_dead_hunt_2</class>
+	</character>
+
+ <character id="yan_dead_hunt_3">
+		<class>yan_dead_hunt_3</class>
+	</character>
+
+ <character id="rf_scien_ld">
+		<class>rf_scien_ld</class>
+	</character>
+
+ <character id="ds_geed">
+		<class>ds_geed</class>
+	</character>
+
+ <character id="ds_tourist_1">
+		<class>ds_tourist_1</class>
+	</character>
+
+ <character id="ds_tourist_2">
+		<class>ds_tourist_2</class>
+	</character>
+
+ <character id="dv_greh_diary">
+		<class>dv_greh_diary</class>
+	</character>
+
+ <character id="agr_kuprian">
+		<class>agr_kuprian</class>
+	</character>
+
+ <character id="gar_bedolaga">
+		<class>gar_bedolaga</class>
+	</character>
+
+ <character id="dv_black_diger">
+		<class>dv_black_diger</class>
+	</character>
+
+
+ <character id="und_fantom">
+		<class>und_fantom</class>
+	</character>
+ <character id="und_fantom_2">
+		<class>und_fantom_2</class>
+	</character>
+ <character id="und_fantom_3">
+		<class>und_fantom_3</class>
+	</character>
+ <character id="und_fantom_4">
+		<class>und_fantom_4</class>
+	</character>
+ <character id="und_fantom_5">
+		<class>und_fantom_5</class>
+	</character>
+
+ <character id="dv_scien_zombie">
+		<class>dv_scien_zombie</class>
+	</character>
+
+ <character id="dv_anomaly_stalk">
+		<class>dv_anomaly_stalk</class>
+	</character>
+
+ <character id="dv_anomaly_stalk_bad">
+		<class>dv_anomaly_stalk_bad</class>
+	</character>
+
+
+ <character id="gar_hacker">
+		<class>gar_hacker</class>
+	</character>
+
+ <character id="gar_hacker_guard">
+		<class>gar_hacker_guard</class>
+	</character>
+
+ <character id="pz_zombie_lab">
+		<class>pz_zombie_lab</class>
+	</character>
+
+ <character id="rf_gz_tan_1">
+		<class>rf_gz_tan_1</class>
+	</character>
+
+ <character id="rf_gz_tan_2">
+		<class>rf_gz_tan_2</class>
+	</character>
+
+ <character id="gar_gorb">
+		<class>gar_gorb</class>
+	</character>
+
+ <character id="dv_greh_plen">
+		<class>dv_greh_plen</class>
+	</character>
+
+
+ <character id="pz_shihka">
+		<class>pz_shihka</class>
+	</character>
+
+ <character id="pz_sh_guard1">
+		<class>pz_sh_guard1</class>
+	</character>
+
+ <character id="pz_sh_guard2">
+		<class>pz_sh_guard2</class>
+	</character>
+
+ <character id="pz_tepa">
+		<class>pz_tepa</class>
+	</character>
+
+ <character id="dv_shpion">
+		<class>dv_shpion</class>
+	</character>
+
+ <character id="pz_hata_zomb">
+		<class>pz_hata_zomb</class>
+	</character>
+
+ <character id="pz_hata_stalk_1">
+		<class>pz_hata_stalk_1</class>
+	</character>
+
+ <character id="pz_hata_stalk_2">
+		<class>pz_hata_stalk_2</class>
+	</character>
+
+ <character id="pz_hata_stalk_3">
+		<class>pz_hata_stalk_3</class>
+	</character>
+
+
+ <character id="pz_lab_scien1">
+		<class>pz_lab_scien1</class>
+	</character>
+ <character id="pz_lab_scien2">
+		<class>pz_lab_scien2</class>
+	</character>
+
+ <character id="agr_dolg_hunt_kom">
+		<class>agr_dolg_hunt_kom</class>
+	</character>
+ <character id="agr_dolg_hunt_1">
+		<class>agr_dolg_hunt_1</class>
+	</character>
+ <character id="agr_dolg_hunt_2">
+		<class>agr_dolg_hunt_2</class>
+	</character>
+
+ <character id="yan_zmeelov">
+		<class>yan_zmeelov</class>
+	</character>
+
+ <character id="yan_zmeelov_group1">
+		<class>yan_zmeelov_group1</class>
+	</character>
+
+ <character id="yan_zmeelov_group2">
+		<class>yan_zmeelov_group2</class>
+	</character>
+
+ <character id="yan_zmeelov_rob">
+		<class>yan_zmeelov_rob</class>
+	</character>
+
+ <character id="yan_zmeelov_rob_group1">
+		<class>yan_zmeelov_rob_group1</class>
+	</character>
+
+ <character id="yan_zmeelov_rob_group2">
+		<class>yan_zmeelov_rob_group2</class>
+	</character>
+
+ <character id="yan_ocelot_base">
+		<class>yan_ocelot_base</class>
+	</character>
+
+ <character id="pz_otis">
+		<class>pz_otis</class>
+	</character>
+
+ <character id="pz_otis_lab">
+		<class>pz_otis_lab</class>
+	</character>
+
+ <character id="pz_lab_scien_1">
+		<class>pz_lab_scien_1</class>
+	</character>
+ <character id="pz_lab_scien_2">
+		<class>pz_lab_scien_2</class>
+	</character>
+ <character id="pz_lab_scien_3">
+		<class>pz_lab_scien_3</class>
+	</character>
+
+ <character id="rf_osvedomel">
+		<class>rf_osvedomel</class>
+	</character>
+
+ <character id="pz_borman">
+		<class>pz_borman</class>
+	</character>
+
+ <character id="pz_killer_vrag">
+		<class>pz_killer_vrag</class>
+	</character>
+
+ <character id="pz_killer_volkodav">
+		<class>pz_killer_volkodav</class>
+	</character>
+
+ <character id="yan_slepoi">
+		<class>yan_slepoi</class>
+	</character>
+
+ <character id="pz_killer_volkodav_build">
+		<class>pz_killer_volkodav_build</class>
+	</character>
+
+ <character id="yan_kill_1">
+		<class>yan_kill_1</class>
+	</character>
+
+ <character id="yan_kill_2">
+		<class>yan_kill_2</class>
+	</character>
+
+ <character id="ds_locman">
+		<class>ds_locman</class>
+	</character>
+
+ <character id="rf_guard">
+		<class>rf_guard</class>
+	</character>
+
+ <character id="dv_svob_1">
+		<class>dv_svob_1</class>
+	</character>
+
+ <character id="dv_svob_2">
+		<class>dv_svob_2</class>
+	</character>
+
+ <character id="dv_svob_3">
+		<class>dv_svob_3</class>
+	</character>
+
+ <character id="dv_svob_4">
+		<class>dv_svob_4</class>
+	</character>
+
+ <character id="dv_dolg_group_default_1">
+		<class>dv_dolg_group_default_1</class>
+	</character>
+
+ <character id="yan_sos_bandit_house">
+		<class>yan_sos_bandit_house</class>
+	</character>
+
+ <character id="yan_sos_bandit_house_1">
+		<class>yan_sos_bandit_house_1</class>
+	</character>
+
+	<character id="yan_sos_bandit_1">
+		<class>yan_sos_bandit_1</class>
+	</character>
+
+	<character id="ds_ld_blokp_vitalua">
+		<class>ds_ld_blokp_vitalua</class>
+	</character>
+
+	<character id="ds_ld_blokp_semen">
+		<class>ds_ld_blokp_semen</class>
+	</character>
+
+	<character id="pz_merc_guard">
+		<class>pz_merc_guard</class>
+	</character>
+
+	<character id="ds_dead_ld">
+		<class>ds_dead_ld</class>
+	</character>
+
+	<character id="dv_putnik">
+		<class>dv_putnik</class>
+	</character>
+
+        <character id="agr_dolg_lab_guard">
+		<class>agr_dolg_lab_guard</class>
+	</character>
+
+       <character id="agr_manic_2">
+		<class>agr_manic_2</class>
+	</character>
+
+       <character id="gar_messenger">
+		<class>gar_messenger</class>
+	</character>
+
+       <character id="gar_sniper_1">
+		<class>gar_sniper_1</class>
+	</character>
+
+       <character id="gar_sniper_2">
+		<class>gar_sniper_2</class>
+	</character>
+
+
+       <character id="rf_military_commander_2">
+		<class>rf_military_commander_2</class>
+	</character>
+
+       <character id="gar_crazy_bandit">
+		<class>gar_crazy_bandit</class>
+	</character>
+
+       <character id="agr_dolg_sport_1">
+		<class>agr_dolg_sport_1</class>
+	</character>
+
+      <character id="agr_dolg_sport_2">
+		<class>agr_dolg_sport_2</class>
+	</character>
+
+      <character id="rf_blockp_guard_com">
+		<class>rf_blockp_guard_com</class>
+	</character>
+
+      <character id="agr_scien_manik_2">
+		<class>agr_scien_manik_2</class>
+	</character>
+
+      <character id="rf_ld_back_guard">
+		<class>rf_ld_back_guard</class>
+	</character>
+
+      <character id="rf_manik_ld">
+		<class>rf_manik_ld</class>
+	</character>
+
+      <character id="und_exo">
+		<class>und_exo</class>
+	</character>
+
+      <character id="dscol_ghost">
+		<class>dscol_ghost</class>
+	</character>
+
+</xml>

@@ -1,0 +1,243 @@
+[stalker_outfit]:outfit_base
+
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "outfit\stalker_outfit"
+;$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = equipments\stalker_suit
+actor_visual	= actors\hero\stalker_hood.ogf
+
+texture_arm = act_arm_neitral
+
+upgrades = stalker_outfit_one, stalker_outfit_one_1,stalker_outfit_one_2,stalker_outfit_one_3,stalker_outfit_two,stalker_outfit_two_1,stalker_outfit_two_2,stalker_outfit_two_3,stalker_outfit_two_4,stalker_outfit_three,stalker_outfit_three_1,stalker_outfit_three_2,stalker_outfit_three_3 
+
+icon_in_repair = ui_inGame2_Armor_2
+icon_in_repair_scale_x = 302
+icon_in_repair_scale_y = 130
+
+ef_equipment_type	= 3
+
+inv_name			= stalker_outfit_name
+inv_name_short		= stalker_outfit_name
+description			= stalker_outfit_description
+inv_weight			= 5.0
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 6
+inv_grid_y			= 15
+full_icon_name		= npc_icon_stalker_outfit
+
+cost				= 15000
+slot				= 6
+full_scale_icon		= 14,11			;иконка сталкера в костюме в полный рост
+;;;nightvision_sect				= effector_nightvision_bad
+artefact_count = 4
+immunities_sect			= sect_stalker_outfit_immunities
+
+
+; LOW RESISTANCE
+burn_protection 				= 0.5
+strike_protection 				= 0.5
+shock_protection 				= 0.5
+wound_protection				= 0.4
+radiation_protection 			= 0.5
+telepatic_protection 			= 0.0
+chemical_burn_protection 		= 0.5
+explosion_protection 			= 0.3
+fire_wound_protection  			= 0.3
+
+power_loss = 0.87
+bones_koeff_protection = gilet_antigas_damage
+
+[sect_stalker_outfit_immunities]
+burn_immunity				= 0.03			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.01
+shock_immunity				= 0.03
+wound_immunity				= 0.015
+radiation_immunity			= 0.00
+telepatic_immunity			= 0.00
+chemical_burn_immunity		= 0.03
+explosion_immunity			= 0.03
+fire_wound_immunity			= 0.01
+
+[sect_stalker_outfit_immunities_add]:sect_stalker_outfit_immunities
+burn_immunity				= 0.0255			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.0085
+shock_immunity				= 0.0255
+wound_immunity				= 0.01275
+chemical_burn_immunity		= 0.0255
+explosion_immunity			= 0.0255
+fire_wound_immunity			= 0.0085
+
+[stalker_gods]:stalker_outfit
+inv_name = "Джойказина нахуй!"
+burn_protection 				= 1.0
+strike_protection 				= 1.0
+shock_protection 				= 1.0
+wound_protection				= 1.0
+radiation_protection 			= 1.0
+telepatic_protection 			= 1.0
+chemical_burn_protection 		= 1.0
+explosion_protection 			= 1.0
+fire_wound_protection  			= 1.0
+health_restore_speed	 = 999999999999999999
+
+immunities_sect			= sect_stalker_outfit_god
+[sect_stalker_outfit_god]:sect_stalker_outfit_immunities
+burn_immunity				= 0			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0
+shock_immunity				= 0
+wound_immunity				= 0
+chemical_burn_immunity		= 0
+explosion_immunity			= 0
+fire_wound_immunity			= 0
+
+[stalker_outfit_one]
+name                    = st_up_arm_a7_name
+description             = st_up_arm_a7_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_1
+position_x	     		= 0
+position_y		    	= 27
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 350
+fire_wound_protection	= 0.1
+
+[stalker_outfit_one_1]
+name                    = st_up_arm_b9_name
+description             = st_up_arm_b9_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_2
+position_x	     		= 100
+position_y		    	= 0
+precondition_upg        = stalker_outfit_one
+precondition_ban        = stalker_outfit_one_2
+cost 		            = 700
+strike_protection 				= 0.2
+explosion_protection 			= 0.2
+wound_protection				= 0.2
+
+[stalker_outfit_one_2]
+name                    = st_up_arm_b2_name
+description             = st_up_arm_b2_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_4
+position_x	     		= 100
+position_y		    	= 54
+precondition_upg        = stalker_outfit_one
+precondition_ban        = stalker_outfit_one_1
+cost 		            = 700
+immunities_sect			= sect_stalker_outfit_immunities_add
+
+[stalker_outfit_one_3]
+name                    = st_up_arm_c2_name
+description             = st_up_arm_c2_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_3
+position_x	     		= 200
+position_y		    	= 27
+precondition_upg        = stalker_outfit_one_1,stalker_outfit_one_2
+precondition_ban        = no
+cost 		            = 1050
+fire_wound_protection	= 0.3
+
+[stalker_outfit_two]
+name                    = st_up_kom_a3_name
+description             = st_up_kom_a3_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_5
+position_x	     		= 0
+position_y		    	= 135
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 350
+inv_weight	    		= -3.5
+
+[stalker_outfit_two_1]
+name                    = st_up_kom_b3_name
+description             = st_up_kom_b3_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_6
+position_x	     		= 100
+position_y		    	= 108
+precondition_upg        = stalker_outfit_two
+precondition_ban        = stalker_outfit_two_2
+cost 		            = 700
+burn_protection         = 0.2
+
+[stalker_outfit_two_2]
+name                    = st_up_kom_b4_name
+description             = st_up_kom_b4_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_8
+position_x	     		= 100
+position_y		    	= 162
+precondition_upg        = stalker_outfit_two
+precondition_ban        = stalker_outfit_two_1
+cost 		            = 700
+chemical_burn_protection = 0.2
+shock_protection = 0.2
+
+[stalker_outfit_two_3]
+name                    = st_up_kom_c1_name
+description             = st_up_kom_c1_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_7
+position_x	     		 = 200
+position_y		    	 = 108
+precondition_upg         = stalker_outfit_two_1
+precondition_ban         = stalker_outfit_two_2,stalker_outfit_two_4
+cost 		             = 1050
+chemical_burn_protection = 0.3
+
+[stalker_outfit_two_4]
+name                    = st_up_kom_c2_name
+description             = st_up_kom_c2_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_9
+position_x	     		 = 200
+position_y		    	 = 162
+precondition_upg         = stalker_outfit_two_2
+precondition_ban         = stalker_outfit_two_1,stalker_outfit_two_3
+cost 		             = 1050
+radiation_protection = 0.3
+
+[stalker_outfit_three]
+name                    = st_up_uti_a5_name
+description             = st_up_uti_a5_descr
+icon                    = ui_inGame2_upgrade_stalker_outfit_10
+position_x	     		 = 0
+position_y		    	 = 243
+precondition_upg         = no
+precondition_ban         = no
+cost 		             = 1400
+chemical_burn_protection = 0.1
+radiation_protection     = 0.1
+
+[stalker_outfit_three_1]
+name                     = st_up_uti_b4_name
+description              = st_up_uti_b4_descr
+icon                     = ui_inGame2_upgrade_stalker_outfit_11
+position_x	     		 = 100
+position_y		    	 = 216
+precondition_upg         = stalker_outfit_three
+precondition_ban         = stalker_outfit_three_2
+cost 		             = 2000
+health_restore_speed     = 0.0003
+
+[stalker_outfit_three_2]
+name                            = st_up_uti_b2_name
+description                     = st_up_uti_b2_descr
+icon                            = ui_inGame2_upgrade_stalker_outfit_13
+position_x	     		        = 100
+position_y		    	        = 270
+precondition_upg                = stalker_outfit_three
+precondition_ban                = stalker_outfit_three_1
+cost 		                    = 2000
+additional_inventory_weight 	= 10
+additional_inventory_weight2 	= 10
+
+[stalker_outfit_three_3]
+name                     = st_up_uti_c1_name
+description              = st_up_uti_c1_descr
+icon                     = ui_inGame2_upgrade_stalker_outfit_12
+position_x	     		 = 200
+position_y		    	 = 243
+precondition_upg         = stalker_outfit_three_1,stalker_outfit_three_2
+precondition_ban         = no
+cost 		             = 4000
+artefact_count           = 4

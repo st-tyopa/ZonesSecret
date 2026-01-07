@@ -1,0 +1,744 @@
+function rf_mil_com_find_sms()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\karavaev_3_rac]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Майор Караваев:\n%c[default] Обыскать тоннели, нам нужна любая документация насчёт пути в Припять.", 0, "karavai", 15000)
+end
+
+function rf_mil_hor_cap_sms()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\karavaev_2_rac]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128]  Майор Караваев:\n%c[default] Сохраняем спокойствие.", 0, "karavai", 15000)
+end
+
+function rf_mil_com_docs_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Майор Караваев:\n%c[default] Отлично, боец, возвращайся к нам.", 0, "karavai", 15000)
+end
+
+function rf_karavaev_rac_1()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\karavaev_1_rac]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	--news_manager.send_tip(db.actor, "%c[255,255,128,128] Майор Караваев:\n%c[default] Бойцы, проверяем оружие и выдвигаемся, действуем строго по плану.", 0, "karavai", 15000)
+end
+
+function rf_karavaev_rac_2()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\karavaev_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128]  Майор Караваев:\n%c[default] Сохраняем спокойствие.", 0, "karavai", 15000)
+end
+
+function rf_karavaev_rac_3()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\karavaev_3]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Майор Караваев:\n%c[default] Обыскать тоннели, нам нужна любая документация насчёт пути в Припять.", 0, "karavai", 15000)
+end
+
+function rf_mil_hor_sold_sms()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\mil_2_01]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128]  Военный:\n%c[default] Ну и жуткое местечко.", 0, "mil", 15000)
+end
+
+function rf_mil_find_docs_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Майор, я нашёл документы.", 0, "yan_sos", 15000)
+end
+
+function dv_gg_about_contact_base_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Тут слишком много посторонних ушей, стоит поискать более отдалённое от сталкеров место, чтобы выйти на контакт с базой.", 0, "yan_sos", 15000)
+end
+
+function agr_sms_sv_seryi()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Серый:\n%c[default] Зорин, совсем забыл сказать, твои Клим всё распрашивал про подземелья Агропрома. Если что, думаю стоит искать его там.", 0, "seryi", 15000)
+end
+
+function agr_sms_sv_osved()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Осведомитель:\n%c[default] Зорин, совсем забыл сказать, твои Клим всё распрашивал про подземелья Агропрома. Если что, думаю стоит искать его там.", 0, "osved", 15000)
+end
+
+function rf_mil_com_dead_sms()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\mil_1_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Военный:\n%c[default] Уничтожить предателя!", 0, "mil", 15000)
+end
+
+function red_for_mil_kontakt_sms()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\mil_2_02]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Военный:\n%c[default] Контакт на двенадцать часов!", 0, "mil", 15000)
+end
+
+function red_for_mil_kontakt_yes_sms()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\mil_1_1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Военный:\n%c[default] Принято!", 0, "mil", 15000)
+end
+
+function rf_mil_com_dead_sms_gg()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\gg_wtf]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Какого хрена?!", 0, "yan_sos", 15000)
+end
+
+function rf_mil_com_start_dung()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Майор Караваев:\n%c[default] Бойцы, проверяем оружие и выдвигаемся, действуем строго по плану.", 0, "karavai", 15000)
+end
+
+function yan_ghost_talk_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Призрак:\n%c[default] Надо же, живой, в рубашке родился. Держись, сейчас отнесём тебя к Болотному доктору... Как хоть звать то тебя?", 0, "yan_sos", 15000)
+end
+
+function yan_ghost_talk_strelok_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Меня... меня зовут Стрелок.", 0, "default", 15000)
+end
+
+function dv_mikluha_hello()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\dv_mikl_base]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Миклуха:\n%c[default] Эй, мужик! Ты на территории базы свободы, шалить здесь никак не разрешается. Давай ко мне, если вопросы какие мучают.", 0, "default", 15000)
+end
+
+function rf_osvedomel_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Осведомитель:\n%c[default] Зорин, приветствую, тут появилась новая информация по твоему вопросу. Если интересно, встретимся на остановке в Рыжем лесу, я некоторое время буду там.", 0, "osved", 15000)
+end
+
+function lab_sms_zomb_attack()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Откуда эти зомби повылазили?!", 0, "default", 15000)
+end
+
+function rf_cave_gun_sms()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\gg_about_crazy]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] А этот безумец оказался не так уж и прост... Теперь будете плясать под эту дудку!", 0, "default", 15000)
+end
+
+function rf_cave_zasada_sms_1()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\rf_cave_zas_1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Рация:\n%c[default] Мы на позиции.", 0, "base", 15000)
+end
+
+function rf_cave_zasada_sms_2()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\rf_cave_zas_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Рация:\n%c[default] Принято! Ждём пока цель выйдет, без приказа огонь не открывать.", 0, "base", 15000)
+end
+
+function gg_talk_about_leader_away()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\gg_grif_away]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Думаю, лучше подождать пока Гриф скроется из виду.", 0, "default", 15000)
+end
+
+function agr_dolg_guards_stop()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\agr_anohin_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Капитан Анохин:\n%c[default] Стоять! Проход на базу долга тебе закрыт. Наш развед-отряд  видел, как ты боевикам свободы помогал штурмовать базу Греха. Со Свободой у нас напряжённые отношения и помощь противнику мы не поощряем!", 0, "anohin", 15000)
+end
+
+function agr_digger_ds_sms()
+	--local snd = sound_object([[characters_voice\soz\gz_agroprom\agr_anohin_2]]) 
+--snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Угрюмый:\n%c[default] Здарова! Надо же, знакомые люди, помнишь меня? Пересекались как-то в лагере в Тёмной Лощине. Подходи ко мне, поговорим. ", 0, "anohin", 15000)
+end
+
+function have_some_time_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\gg_explosion_place]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Теперь у меня есть немного времени, пока они не прибежали к месту взрыва.", 0, "default", 15000)
+end
+
+function otis_lab_scream_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\otis_09_radio]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отис:\n%c[default] Не к добру это, пора сматываться отсюда! ", 0, "default", 15000)
+end
+
+function otis_lab_sms_electr()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\otis_08_radio]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отис:\n%c[default] Да, у нас получилось! Дуй сюда. ", 0, "default", 15000)
+end
+
+function otis_lab_sms_zomb_attack()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\otis_07_radio]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отис:\n%c[default] Чёрт, да их тут толпа целая...  Судя по всему, когда ты перезапустил генератор, все двери разблокировались, и подопытные вышли наружу.", 0, "default", 15000)
+end
+
+function otis_lab_sms_zomb2()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\otis_06_radio]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отис:\n%c[default] Тут мы вряд ли найдём, то что ищем. ", 0, "default", 15000)
+end
+
+function otis_lab_sms_zomb()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\otis_05_radio]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отис:\n%c[default] Жуткое местечко... Похоже, что тут находятся подопытные, над которыми проводили эксперименты. Хорошо, что они заперты, и не представляют для нас угрозы. ", 0, "default", 15000)
+end
+
+function otis_lab_anom2()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\otis_04_radio]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отис:\n%c[default] Не подходи к ней близко, мы не знаем на что она способна.", 0, "default", 15000)
+end
+
+function otis_lab_anom()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\otis_03_radio]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отис:\n%c[default] Твою ж... Что с ними случилось, что это за аномалия такая?", 0, "default", 15000)
+end
+
+function otis_lab_open_done()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отис:\n%c[default] Вот и всё, путь свободен.", 0, "default", 15000)
+end
+
+function otis_lab_open_start()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отис:\n%c[default] Так-с, посмотрим что тут у нас.", 0, "default", 15000)
+end
+
+function yan_ocelot_rob_talk()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Оцелот:\n%c[default] Что вам надо? У нас нет ничего ценного.", 0, "default", 15000)
+end
+
+function ocelot_rob_start()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Змеелов:\n%c[default] Я повторять два раза не буду, руки вверх, мрази!", 0, "default", 15000)
+end
+
+function yan_rob_return()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\zmeelov_return_on_pos]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0)
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Змеелов:\n%c[default] Вернись на позицию, ты провалишь всю операцию!", 0, "default", 15000)
+end
+
+function yan_rob_start()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Змеелов:\n%c[default] Стоять, сталкерня! Руки вверх и чтобы я их видел, вы окружены!", 0, "default", 15000)
+end
+
+function yan_rob_rano_sms()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\zmeelov_kill_them]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0)
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Змеелов:\n%c[default] Ну чё ж ты натворил, вся операция провалилась... Ладно, валим их!", 0, "default", 15000)
+end
+
+function agr_swamp_sms_done_4()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\agr_dolg_luti_5]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Лютый:\n%c[default] Чёртова Зона, забрала моих ребят... Что ж, ты нам очень помог, сталкер, возвращайся на базу, комендант выдаст тебе награду.", 0, "default", 15000)
+end
+
+function agr_swamp_sms_done_3()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\agr_dolg_luti_4]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Лютый:\n%c[default] Чёртова Зона, забрала одного моих ребят... Что ж, ты нам очень помог, сталкер, возвращайся на базу, комендант выдаст тебе награду.", 0, "default", 15000)
+end
+
+function agr_swamp_sms_done_2()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\agr_dolg]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Долговец:\n%c[default] Чёртова Зона! Забирает лучших из нас, Лютого больше нет... Ты нам очень помог, сталкер. Возвращайся на базу, комендант выдаст тебе награду.", 0, "default", 15000)
+end
+
+function rf_ld_blockp_ph1()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Сайн:\n%c[default] Стоять! Кто идёт?", 0, "default", 15000)
+end
+
+function rf_ld_blockp_ph2_actor()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\gg_dont_shot]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Не стреляйте! Я сталкер, по кличке Зорин, со мной профессор Маниковский. Мы хотим поговорить с вашим главным.", 0, "default", 15000)
+end
+
+function rf_ld_blockp_ph3()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Сайн:\n%c[default] Профессор?! Вы живы? Проходите конечно.", 0, "default", 15000)
+end
+
+function rf_ld_blockp_ph4_racia()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Сайн:\n%c[default] Отбой, это свои.", 0, "default", 15000)
+end
+
+function agr_swamp_sms_done_1()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\agr_dolg_luti_3]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Лютый:\n%c[default] Хорошая работа сталкер! Возвращайся на базу, Комендант выдаст тебе награду.", 0, "default", 15000)
+end
+
+function agr_swamp_zomsie_sms2()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\agr_dolg_luti_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Лютый:\n%c[default] Марионетки убиты, но где-то должен быть и сам кукловод.", 0, "default", 15000)
+end
+
+function agr_komendant_zombie_done_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Комендант:\n%c[default] Зорин, можешь проходить к генаралу, я предупредил охрану, чтобы тебя пропустили. Винтовку оставь себе, считай это моим подарком.", 0, "default", 15000)
+end
+
+function agr_swamp_zomsie_sms()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\agr_dolg_luti_1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Лютый:\n%c[default] Уже лезут! Ну сейчас поохотимся, на мертвячину.", 0, "default", 15000)
+end
+
+function dv_dolg_vibor_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Капитан Куприянов:\n%c[default] Приветстсвую, Зорин. Это Капитан Куприянов, нам нужны люди готовые помочь со штурмом базы Греха. Вознаграждение от группировки гарантируем!", 0, "kuprian", 15000)
+end
+
+function dv_rac_gg_1()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\racia\gg_racia_1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] База, это младший лейтенант Зорин, из группы Эхо-1. Как слышно?", 0, "default", 15000)
+end
+
+function dv_rac_gg_2()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\racia\gg_racia_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] База. Наш вертолет на пути следования к цели потерпел аварию. Все погибли. Командира среди погибших не обнаружено. Каковы приказы? Прием.", 0, "default", 15000)
+end
+
+function dv_rac_gg_3()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\racia\gg_racia_3]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] База. Наш вертолет на пути следования к цели потерпел аварию. Три двухсотых. Командира и ещё двух бойцов среди погибших не обнаружено. Каковы приказы? Прием.", 0, "default", 15000)
+end
+
+function dv_base_racia_1()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\racia\base_racia_1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] База:\n%c[default] Младший лейтенант Зорин, это База. Вас слышим. Доложите ситуацию. Прием.", 0, "base", 15000)
+end
+
+function dv_base_racia_2()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\racia\base_racia_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] База:\n%c[default] Младший лейтенант, это База. Последний раз сигнал Капитана Клименко поступал из квадрата 065. Направляйтесь в данный квадрат, найдите командира группы и продолжайте операцию. Как поняли? Прием.", 0, "base", 15000)
+end
+
+function agr_rac_gg_1()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\racia\gg_agr_racia_1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] База, это младший лейтенант Зорин, из группы Эхо-1. Приём.", 0, "default", 15000)
+end
+
+function agr_rac_gg_2()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\racia\gg_agr_racia_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Задание выполнено: профессор Маниковский ликвидирован. При выполнении боевой задачи Капитан Клименко… погиб.  Прием.", 0, "default", 15000)
+end
+
+function agr_rac_gg_3()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\racia\gg_agr_racia_3]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] База, вас понял, конец связи.", 0, "default", 15000)
+end
+
+function agr_base_racia_1()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\racia\base_agr_racia_1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] База:\n%c[default] Младший лейтенант Зорин, это База.", 0, "base", 15000)
+end
+
+function agr_base_racia_2()
+	local snd = sound_object([[characters_voice\soz\gz_agroprom\racia\base_agr_racia_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] База:\n%c[default] Принято. Направляйтесь в точку 701, там вас будет ждать группа эвакуации. Как поняли? Приём.", 0, "base", 15000)
+end
+
+function dv_rac_gg_4()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\racia\gg_racia_4]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Вас понял, выполняю. Конец связи.", 0, "default", 15000)
+end
+
+function dv_sv_vibor_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Миклуха:\n%c[default] Здарова, Зорин, это Миклуха. Нам требуются добровольцы для штурма базы Греха, за вознаграждение. Надо покончить с этими мразями раз и на всегда! Ты с нами?", 0, "dv_mikluha", 15000)
+end
+
+function dv_mikluh_pris_flesh()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Миклуха:\n%c[default] Здарова, Зорин, это Миклуха. Мои ребята нашли флешку, зайди к Варягу за наградой.", 0, "dv_mikluha", 15000)
+end
+
+function gar_mikluh()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Миклуха:\n%c[default] Здарова, Зорин, это Миклуха. Мои ребята нашли флешку. Можешь заскочить к Локи за наградой, он сейчас на свалке, координаты скинул.", 0, "dv_mikluha", 15000)
+end
+
+function dv_shpion_ahtung2()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Кривой:\n%c[default] Может и показалось конечно, но надо осторожно проверить ту комнату. Давай за мной.", 0, "default", 15000)
+end
+
+function pz_pilot_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\pilot_racia]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Пилот:\n%c[default] Вижу вас! Захожу на посадку.", 0, "default", 15000)
+end
+
+function gar_hack_loki_slesh_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Хакер:\n%c[default] Твоя флешка готова, как будет время, забери.", 0, "default", 15000)
+end
+
+function gar_hack_mercs_noyt_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Хакер:\n%c[default] Ноутбук взломан, как сможешь, забери.", 0, "default", 15000)
+end
+
+function pz_leader_wtf_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\grif_02]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Гриф:\n%c[default] Какого хрена у вас там творится?!", 0, "base", 15000)
+end
+
+function pz_grif_propaja_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\grif_06]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Гриф:\n%c[default] У нас похитили контейнер?! Найдите мне этого урода!", 0, "base", 15000)
+end
+
+function pz_gates_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\grif_04]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Гриф:\n%c[default] Перекрыть все входы и выходы с базы! Никого не выпускать!", 0, "base", 15000)
+end
+
+function pz_grif_chastota_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\grif_07]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Гриф:\n%c[default] Нас прослушивают, меняем частоту.", 0, "base", 15000)
+end
+
+function pz_leader_wtf_sms_2()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\merc_racia]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Наёмник:\n%c[default] Тут похоже остатки взрывного устройства.", 0, "base", 15000)
+end
+
+function pz_mercs_first_btr_lost_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\merc5_03]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Наёмник:\n%c[default] Противник уничтожил первый БТР!", 0, "base", 15000)
+end
+
+function pz_mercs_second_btr_lost_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\merc5_04]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Наёмник:\n%c[default] Потерян второй БТР!", 0, "base", 15000)
+end
+
+function pz_merc_blowup_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\merc5_01]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Наёмник:\n%c[default] Взрыв возле контейнеров!", 0, "base", 15000)
+end
+
+function pz_merc_fire_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\merc5_02]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Наёмник:\n%c[default] Контакт с противником!", 0, "base", 15000)
+end
+
+function pz_leader_wtf_sms_3()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\grif_03]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Гриф:\n%c[default] Не трогайте там ничего, сейчас сам посмотрю.", 0, "base", 15000)
+end
+
+function pz_leader_wtf_sms_4()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\grif_02_1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Гриф:\n%c[default] Вашу ж... проверьте что там!", 0, "base", 15000)
+end
+
+function dv_shpion_govor5()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Кривой:\n%c[default] Смотри по сторонам.", 0, "default", 15000)
+end
+
+function dv_shpion_govor4()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\dv_greh_sh_dead]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Фух, вроде отстрелялись.", 0, "default", 15000)
+end
+
+function dv_shpion_govor3()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Кривой:\n%c[default] А, это ты? Ну проходи.", 0, "default", 15000)
+end
+
+function dv_shpion_govor2()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\dv_posilka_dolg]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Я посыльный от капитана Куприянова, он должен был предупредить обо мне.", 0, "default", 15000)
+end
+
+function dv_shpion_govor()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Кривой:\n%c[default] Стой на месте! Ты кто такой?!", 0, "default", 15000)
+end
+
+function dv_shpion_ahtung()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Кривой:\n%c[default] Слышал? Тут кто-то есть!", 0, "default", 15000)
+end
+
+function dv_semenov_stay()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\scien_stay_out]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Семёнов:\n%c[default] Я постою снаружи.", 0, "semenov", 15000)
+end
+
+function yan_otshel_rac_1()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\otshel_1_rac]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отшельник:\n%c[default] Господи, что это? Ты слышал?", 0, "default", 15000)
+end
+
+function yan_otshel_rac_2()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\otshel_2_rac]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отшельник:\n%c[default] Ладно, идём осторожно, будем надеяться, что эта тварь нас не почует.", 0, "default", 15000)
+end
+
+function yan_otshel_rac_3()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\otshel_3_rac]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Отшельник:\n%c[default] Похоже, Зона решила первой сделать свой ход.", 0, "default", 15000)
+end
+
+function bekas_cover_right()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\dv_bekas_hide3]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Всё, думаю тут хорошее место, чтобы спрятаться и проследить за Бекасом.", 0, "default", 15000)
+end
+
+function bekas_cover_night()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\dv_bekas_hide2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Надо бы дождаться ночи. А потом спрятаться метров за 50-70 от этого места и проследить за Бекасом до тайника.", 0, "default", 15000)
+end
+
+function bekas_cover_now()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\dv_bekas_hide1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Надо бы отойти метров за 50-70, спрятаться и проследить за Бекасом до тайника.", 0, "default", 15000)
+end
+
+function job_is_done()
+	local snd = sound_object([[characters_voice\soz\gz_darkscape\gg_complete]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Работа выполнена, можно уходить.", 0, "default", 15000)
+end
+
+function yan_grab_bandit_talk()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\yan_grab_sms]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Сволочи! Обобрали до нитки, помог братьям сталкерам называется. Ладно, надо выбираться отсюда и искать свои вещи. Нутром чую, их база где-то на янтаре.", 0, "default", 15000)
+end
+
+function bekas_slow_1()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\dv_miss_bekas]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Чёрт, нельзя его упустить!", 0, "default", 15000)
+end
+
+function pz_blowup_sms()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\skif]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Скиф:\n%c[default] Отлично, ты отвлёк их внимание. Теперь у тебя есть пара минут чтобы выкрасть контейнер, поторопись.", 0, "default", 15000)
+end
+
+function pz_scien_sos()
+	local snd = sound_object([[characters_voice\soz\gz_promzone\scien_sos]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Рация:\n%c[default] SOS! Помогите кто-нибудь! На наш лагерь на Янтаре напали наёмники!", 0, "base", 15000)
+end
+
+function dv_zasada_sms()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\max_01_racia]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+news_manager.send_tip(db.actor, "%c[255,255,128,128] Макс\n%c[default] Твою ж за ногу, это засада!", 0, "max", 15000)
+end
+
+function fuck_racia_lab_sms()
+	local snd = sound_object([[characters_voice\soz\gz_lab_x13\racia_bad]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Твою ж мать... Надеюсь, что это просто рация барахлит.", 0, "default", 25000)
+end
+
+function nooo_lab_sms()
+	local snd = sound_object([[characters_voice\soz\gz_lab_x13\gg_lost_bag]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+		news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Неет, только этого сейчас и не хватало!", 0, "default", 25000)
+end
+
+function dv_need_key_sms()
+		news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Нужен ключ. Хм, может он спрятан где-то поблизости?", 0, "default", 25000)
+end
+
+function agr_use_box()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Вот падла, Борман, обманул! Нету тут никакого ствола.", 0, "default", 15000)
+ local sim = alife()
+ local obj = sim:story_object(31600)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+
+function yan_sos_bandits_sms()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\yan_sos]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Гивара:\n%c[default] SOS! Моих ребят зажали в деревне зомби, помогите кто-нибудь! Я жду помощи возле деревни, с восточной стороны, с восточной стороны!", 0, "yan_sos", 15000)
+end
+
+function agr_pass_to_dolgbase_message()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Суровый:\n%c[default] Сталкер! Ты направляешься в сторону базы группировки Долг. Чтобы пройти дальше тебе нужно поговорить со мной!",  nil, nil, 15000)
+end
+
+function lab_end_door_sms()
+	local snd = sound_object([[characters_voice\soz\gz_lab_x13\computer]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Система:\n%c[default] Подождите, идёт разгерметизация двери.", 0, "default", 15000)
+end
+
+function rf_hunt_sms()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\go_to_me_stalker_rac]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Сверчок:\n%c[default] Эй, сталкер, подойди ко мне, хочу кое-что предложить.", 0, "default", 15000)
+end
+
+function rf_hunt_sms_2()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Сверчок:\n%c[default] Внимание! Всем занять свои позиции и ждать объект, скоро он будет.", 0, "default", 15000)
+end
+
+function rf_hunt_sms_3()
+	local snd = sound_object([[characters_voice\soz\gz_red_forest\wait_monster_kep_2_rac]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Сверчок:\n%c[default] Сталкер, сходи до этой туши и притащи его лапу в качестве трофея, и я с тобой расчитаюсь.", 0, "default", 15000)
+end
+
+
+function yan_block_door_shpil_1()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\shpilevskiy_07]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Ассистент Шпилевский:\n%c[default] Готово.", 0, "shpil", 15000)
+end
+
+function yan_block_door_shpil()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\shpilevskiy_06]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Ассистент Шпилевский:\n%c[default] Пытаюсь получить доступ.", 0, "shpil", 15000)
+end
+
+function yan_block_door_me()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\gg_yan_block]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Дверь заблокирована...", 0, "default", 15000)
+end
+
+function agr_dolg_sms_about_anom()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Сталкеры! Группировка Долг предупреждает: на территории Агропрома, вокруг Цементного завода появилась новая аномалия. Будьте осторожны!", 0, "dolg", 15000)
+end
+
+function yan_kill_fracture_sms()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\shpilevskiy_05]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Ассистент Шпилевский:\n%c[default] Дверь открыта.", 0, "shpil", 15000)
+end
+
+function yan_fuck_the_doors_sms()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\shpilevskiy_04]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Ассистент Шпилевский:\n%c[default] Извините, я не могу открыть дверь пока монстр жив, постарайтесь найти другой выход с базы.", 0, "shpil", 15000)
+end
+
+function yan_find_noyt_done_sms()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\shpilevskiy_03]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Ассистент Шпилевский:\n%c[default] Покиньте лагерь как можно скорей!", 0, "shpil", 15000)
+end
+
+function yan_find_noyt_sms()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\shpilevskiy_02]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Ассистент Шпилевский:\n%c[default] Отлично, документы должны быть где-то внутри.", 0, "shpil", 15000)
+end
+
+function yan_open_door_sms()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\shpilevskiy_01]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Ассистент Шпилевский:\n%c[default] Вижу вас, начинаю разблокировку двери.", 0, "shpil", 15000)
+end
+
+function yan_open_door_done_sms()
+	local snd = sound_object([[characters_voice\soz\gz_yantar\shpilevskiy_05]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Ассистент Шпилевский:\n%c[default] Дверь открыта.", 0, "shpil", 15000)
+end
+
+function dv_wtf_greh_contr()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\gg_wtf_contr]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Что...что со мной... происходит?!", 0, "default", 15000)
+end
+
+function yan_sos_in_house_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Гивара:\n%c[default] Давай за мной!", 0, "shpil", 15000)
+end
+
+function yan_sos_in_house_popal_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Барин:\n%c[default] Ну всё, влип ты паря!", 0, "shpil", 15000)
+end
+
+function pz_alt_mercs_sms1()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Скиф, тут появился вариант получше, но это займёт некоторое время.", 0, "yan_sos", 15000)
+end
+
+function pz_alt_mercs_sms2()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Скиф:\n%c[default] Зорин, какого хрена?! Что ты творишь, мы же всё спланировали... Хотя, делай как знаешь, главное чтобы ты достал контейнер.", 0, "yan_sos", 15000)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

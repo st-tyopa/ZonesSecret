@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = %+agr_dolg_sport_start% sr_idle1
+
+[sr_idle1]
+on_actor_inside = {-agr_sport_actor_in_zone} %+agr_sport_actor_in_zone% sr_idle2
+on_info = {+agr_sport_end} nil
+
+[sr_idle2]
+on_actor_outside = {+agr_sport_actor_in_zone} %-agr_sport_actor_in_zone% sr_idle1
+on_info = {+agr_sport_end} nil

@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+yan_find_zerkalo_done} sr_idle2
+
+[sr_idle2]
+on_game_timer = 45|%+lesnik_sms% sr_idle@nil
+
+[sr_idle@nil]

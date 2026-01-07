@@ -1,0 +1,12 @@
+[logic] 
+active = ph_idle 
+
+[ph_idle] 
+on_info = {+gar_self_destroy_the_wall +gar_find_dynamit_done} ph_idle2 
+
+[ph_idle2] 
+on_use = ph_idle@nil %+dynamit_timer_start% 
+tips = pz_merclager_bomb_install
+on_info = {+dynamit_timer_start} ph_idle@nil
+
+[ph_idle@nil]

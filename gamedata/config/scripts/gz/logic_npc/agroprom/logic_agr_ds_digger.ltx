@@ -1,0 +1,38 @@
+[logic]
+active = walker@walk1
+
+[walker@walk1]
+path_walk = agr_ds_digger_walk1
+path_look = agr_ds_digger_look1
+def_state_standing = binocular
+on_actor_dist_le = 10| remark@hello
+
+[remark@hello]
+anim = hello
+target = actor
+on_actor_dist_le = 2| walker@walk1_2
+
+[walker@walk1_2]
+path_walk = agr_ds_digger_walk1
+path_look = agr_ds_digger_look1
+def_state_standing = guard
+on_info = {+agr_talk_with_ds_digger_done} walker@walk2
+
+[walker@walk2]
+path_walk = agr_ds_digger_walk2
+meet = no_meet
+on_signal = agrdigwalk3| walker@walk3
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[walker@walk3]
+path_walk = agr_ds_digger_walk3
+path_look = agr_ds_digger_look3
+def_state_standing = bar_fas
+meet = meet
+combat_ignore_cond = {=check_fighting(31504:31505:31506:31507:31508:31509:31510:31511:31512:31513:31514)}
+
+[meet]
+use = true
+use_wpn = true
+meet_talk_enabled = true
+meet_state = ward

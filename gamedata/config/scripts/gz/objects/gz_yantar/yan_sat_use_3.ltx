@@ -1,0 +1,12 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+on_info = {+setup_dat_start} ph_idle2
+
+[ph_idle2]
+on_use = %+setup_dat_3_done%
+tips = yan_det_install
+on_info = {+setup_dat_3_done} ph_idle@nil
+
+[ph_idle@nil]

@@ -1,0 +1,76 @@
+[logic]
+active = walker
+on_death = death
+
+[death]
+on_info = %+pz_otis_lab_death%
+
+[walker]
+path_walk = pz_lab_tel_look
+path_look = pz_lab_tel
+on_info = {+pz_otis_lab_go_to_zomb} walker2
+
+[walker2]
+path_walk = pz_lab_walk_to_zomb
+meet = no_meet
+on_signal = otissit|%+pz_otis_lab_zomb_sms% walker3
+
+[walker3]
+path_walk = pz_lab_otis_zomb_sit
+path_look = pz_lab_otis_zomb_look
+def_state_standing = caution
+meet = no_meet
+on_game_timer = 150|%+pz_otis_lab_zomb_sms2% walker4
+
+[walker4]
+path_walk = pz_otis_zomb_return
+meet = no_meet
+on_signal = otisan | %+pz_otis_lab_anom%  walker5
+
+[walker5]
+path_walk = pz_otis_lab_bino
+path_look = pz_otis_lab_bino_look
+def_state_standing = binocular
+meet = no_meet
+on_timer = 15000| remark
+
+[remark]
+anim = guard
+target = actor
+on_info = {+pz_lab_electrisity_done} walker6
+
+[walker6]
+path_walk = pz_lab_otis_sit
+path_look = pz_lab_otis_sit_look
+on_info = {+pz_lab_scien_dialog_done} walker7
+
+[walker75]
+path_walk = pz_lab_tel
+path_look = pz_lab_tel_look
+danger = danger_condition@scout
+on_info = {+pz_lab_all_zombies_dead} walker7
+
+[walker7]
+path_walk = pz_lab_tel
+path_look = pz_lab_tel_look
+combat_ignore = combat_ignore
+danger = danger_condition@scout2
+on_signal = pos4 | %+pz_lab_return_otis_on_pos% walker8
+
+[walker8]
+path_walk = pz_lab_tel
+path_look = pz_lab_tel_look
+danger = danger_condition@scout2
+combat_ignore = combat_ignore
+
+[kamp]
+path_walk = pz_otis_kamp
+center_point = pz_otis_kamp_look
+danger = danger_condition@scout2
+combat_ignore_cond = {=check_fighting(71505)}
+
+[danger_condition@scout]
+ignore_distance       = 10
+
+[danger_condition@scout2]
+ignore_distance       = 0

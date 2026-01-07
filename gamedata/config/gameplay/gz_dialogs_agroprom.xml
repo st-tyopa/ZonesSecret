@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+ 
+ <dialog id="dialog_agr_scien_1">
+  <dont_has_info>lead_agr_scien_start</dont_has_info>
+  <init_func>dialogs_new_system.ag_agr_scien_1</init_func>
+ </dialog>	
+ 
+ <dialog id="dialog_scien_perehod">
+  <dont_has_info>agr_scien_perehod_done</dont_has_info>
+  <has_info>agr_scien_perehod</has_info>
+  <init_func>dialogs_new_system.ag_scien_perehod</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_ld_borman_old">
+  <dont_has_info>borman_fail</dont_has_info>
+  <has_info>start_quest_borman</has_info>
+  <init_func>dialogs_new_system.ag_ld_borman_old</init_func>      
+ </dialog>
+
+ <dialog id="dialog_ld_borman">
+  <dont_has_info>borman_fail</dont_has_info>
+  <has_info>start_quest_borman</has_info> 
+  <init_func>dialogs_new_system.ag_ld_borman</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_dolg_borman_noyt">
+  <has_info>kill_borman</has_info>
+  <has_info>pda_borman_have</has_info>
+  <dont_has_info>kill_borman_done_other</dont_has_info>
+		<dont_has_info>kill_borman_done</dont_has_info>
+  <dont_has_info>iron_give_noyt</dont_has_info>
+  <init_func>dialogs_new_system.ag_dolg_borman_noyt</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_dolg_night_hunt">
+  <has_info>agr_marsh_monsters_start</has_info>
+  <dont_has_info>agr_marsh_monsters_sniperka_complete</dont_has_info>
+  <init_func>dialogs_new_system.ag_dolg_night_hunt</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_agr_kuprian">
+  <has_info>kuprian_alive</has_info>
+  <dont_has_info>kuprian_agr_dialog_done</dont_has_info>
+  <init_func>dialogs_new_system.ag_agr_kuprian</init_func>      
+ </dialog> 
+ 
+ <dialog id="dialog_dolg_zoo">
+  <dont_has_info>setup_agr_dat_start</dont_has_info>
+  <dont_has_info>setup_agr_dat_otkaz</dont_has_info>
+  <init_func>dialogs_new_system.ag_dolg_zoo</init_func>   
+ </dialog>
+ 
+ <dialog id="dialog_dolg_zoo_done">
+  <dont_has_info>setup_agr_dat_dialog_done</dont_has_info>
+  <has_info>setup_agr_dat_1_done</has_info>
+  <has_info>setup_agr_dat_2_done</has_info>
+  <has_info>setup_agr_dat_3_done</has_info>
+  <init_func>dialogs_new_system.ag_dolg_zoo_done</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_cap_about_scien">
+  <init_func>dialogs_new_system.ag_cap_about_scien</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_agr_com_blokp_neut_reputation">
+  <dont_has_info>agr_kill_flock_of_mutants_start</dont_has_info>
+  <dont_has_info>dv_sv_greshbase_rush_done</dont_has_info>
+  <dont_has_info>dv_dolg_grehbase_rush_done</dont_has_info>
+  <dont_has_info>agr_pass_to_dolgbase_have</dont_has_info>
+  <dont_has_info>dialog_dv_dolg_rush_done</dont_has_info>
+  <has_info>go_to_agroprom_start</has_info>
+  <init_func>dialogs_new_system.ag_agr_com_blokp_neut_reputation</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_agr_com_blokp_neut_reputation_2">
+  <dont_has_info>agr_pass_to_dolgbase_have</dont_has_info>
+  <has_info>agr_kill_flock_of_mutants_done</has_info>
+  <init_func>dialogs_new_system.ag_com_blokp_neut_reputation_2</init_func>				
+ </dialog>
+ 
+ <dialog id="dialog_agr_com_blokp_good_reputation_1">
+  <dont_has_info>agr_pass_to_dolgbase_have</dont_has_info>
+  <dont_has_info>dv_sv_greshbase_rush_done</dont_has_info>
+  <dont_has_info>kalash_sms</dont_has_info>
+  <has_info>go_to_agroprom_start</has_info>
+  <has_info>dialog_dv_dolg_rush_done</has_info>
+  <init_func>dialogs_new_system.ag_com_blokp_good_reputation_1</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_agr_com_blokp_good_reputation_2">
+  <dont_has_info>agr_pass_to_dolgbase_have</dont_has_info>
+  <dont_has_info>dv_sv_greshbase_rush_done</dont_has_info>
+  <has_info>go_to_agroprom_start</has_info>
+  <dont_has_info>dv_dolg_grehbase_rush_done</dont_has_info>
+  <has_info>kalash_sms</has_info>
+  <init_func>dialogs_new_system.ag_com_blokp_good_reputation_2</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_agr_com_blokp_cat_hunt">
+  <dont_has_info>agr_cat_hunt_quest_start</dont_has_info>
+  <has_info>agr_conversation_with_dolg_general_start</has_info>
+  <init_func>dialogs_new_system.ag_com_blokp_cat_hunt</init_func>       
+ </dialog>
+ 
+ <dialog id="dialog_agr_commendant_marsh_monsters_first">
+  <dont_has_info>dv_sv_greshbase_rush_done</dont_has_info>
+  <dont_has_info>dv_dolg_grehbase_rush_done</dont_has_info>
+  <dont_has_info>dolg_commendant_quest_otkaz</dont_has_info>
+  <dont_has_info>agr_marsh_monsters_start</dont_has_info>
+  <dont_has_info>agr_krylov_wait</dont_has_info>
+  <has_info>go_to_agroprom_start</has_info>
+  <init_func>dialogs_new_system.ag_commendant_marsh_monsters_first</init_func>
+ </dialog>
+
+ <dialog id="dialog_agr_commendant_marsh_monsters_second">
+  <dont_has_info>dv_sv_greshbase_rush_done</dont_has_info>
+  <dont_has_info>dolg_commendant_quest_otkaz</dont_has_info>
+  <dont_has_info>agr_marsh_monsters_start</dont_has_info>
+  <has_info>dv_dolg_grehbase_rush_done</has_info>
+  <has_info>agr_conversation_with_dolg_general_done</has_info>
+  <init_func>dialogs_new_system.ag_commendant_marsh_monsters_second</init_func>
+ </dialog>
+
+ <dialog id="dialog_agr_commendant_marsh_monsters_third">
+  <dont_has_info>dv_sv_greshbase_rush_done</dont_has_info>
+  <dont_has_info>dolg_commendant_quest_otkaz</dont_has_info>
+  <has_info>dv_dolg_grehbase_rush_done</has_info>
+  <has_info>agr_conversation_with_dolg_general_done</has_info>
+  <has_info>agr_marsh_monsters_start</has_info>
+  <has_info>agr_marsh_monsters_contr_dead</has_info>
+  <init_func>dialogs_new_system.ag_commendant_marsh_monsters_third</init_func>
+ </dialog>
+
+ 
+ <dialog id="dialog_agr_ds_digger_about_dolg_1">
+  <dont_has_info>gar_digger_meet_start</dont_has_info>
+  <has_info>actor_enemy_dolgbase</has_info>
+  <init_func>dialogs_new_system.ag_ds_digger_about_dolg_1</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_agr_ds_digger_about_dolg_2">
+  <dont_has_info>gar_digger_meet_start</dont_has_info>
+  <has_info>agr_pass_to_dolgbase_fail</has_info>
+  <init_func>dialogs_new_system.ag_ds_digger_about_dolg_2</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_agr_filin_meet">
+  <dont_has_info>agr_quest_guide_start</dont_has_info>
+  <init_func>dialogs_new_system.ag_filin_meet</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_agr_filin_thanks">
+  <has_info>agr_quest_guide_complete</has_info>
+  <dont_has_info>dialog_agr_filin_thanks_done</dont_has_info>
+  <init_func>dialogs_new_system.ag_filin_thanks</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_agr_filin_about_him">
+  <has_info>dialog_agr_filin_thanks_done</has_info>
+  <init_func>dialogs_new_system.ag_filin_about_him</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_krylov_about_cap">
+  <dont_has_info>agr_general_sent_to_underground</dont_has_info>
+  <dont_has_info>dv_dolg_grehbase_rush_done</dont_has_info>
+  <dont_has_info>dv_dolg_group_rush_start</dont_has_info>
+  <init_func>dialogs_new_system.ag_krylov_about_cap</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_krylov_about_cap_dolg">
+  <dont_has_info>agr_general_sent_to_underground</dont_has_info>
+  <has_info>dv_dolg_grehbase_rush_done</has_info>
+  <init_func>dialogs_new_system.ag_krylov_about_cap_dolg</init_func>      
+ </dialog>
+
+ <dialog id="ag_dolg_lab_guard">
+  <dont_has_info>agr_lab_guard_propusk</dont_has_info>
+  <has_info>agr_general_sent_to_underground</has_info>
+  <init_func>dialogs_new_system.ag_dolg_lab_guard</init_func>      
+ </dialog>
+ 
+ <dialog id="dialog_agr_kalash_about_general_1">
+  <dont_has_info>agr_kalash_dialog_about_general_end</dont_has_info>
+  <dont_has_info>agr_krylov_wait</dont_has_info>
+  <dont_has_info>agr_security_chief_pass_have</dont_has_info>
+  <dont_has_info>dialog_dv_dolg_rush_done</dont_has_info>
+  <dont_has_info>agr_kalash_general_propusk_dialog_done</dont_has_info>
+  <init_func>dialogs_new_system.ag_kalash_about_general_1</init_func>
+ </dialog>
+
+ <dialog id="dialog_agr_kalash_about_general_2">
+                 <has_info>agr_kalash_dialog_about_general_end</has_info>
+                 <dont_has_info>agr_krylov_wait</dont_has_info>
+                 <dont_has_info>agr_security_chief_pass_have</dont_has_info>
+  <init_func>dialogs_new_system.ag_kalash_about_general_2</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_agr_kalash_about_present_1">
+  <dont_has_info>agr_krylov_wait</dont_has_info>
+  <has_info>dialog_dv_dolg_rush_done</has_info>
+  <dont_has_info>kalash_sms</dont_has_info>
+  <init_func>dialogs_new_system.ag_kalash_about_present_1</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_agr_kalash_about_present_2">
+  <has_info>dv_dolg_grehbase_rush_done</has_info>
+  <dont_has_info>agr_krylov_wait</dont_has_info>
+  <has_info>kalash_sms</has_info>
+  <dont_has_info>dialog_dv_dolg_rush_done</dont_has_info>
+  <init_func>dialogs_new_system.ag_kalash_about_present_2</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_agr_kalash_about_sniperka">
+  <has_info>agr_marsh_monsters_start</has_info>
+  <dont_has_info>agr_marsh_monsters_sniperka_complete</dont_has_info>
+  <init_func>dialogs_new_system.ag_kalash_about_sniperka</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_agr_loki_case_open">
+  <dont_has_info>loki_case_open_done</dont_has_info>
+  <precondition>gz_prologue.have_gz_tainik_case</precondition>
+  <init_func>dialogs_new_system.ag_loki_case_open</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_about_enter_to_krylov">
+  <dont_has_info>agr_krylov_wait</dont_has_info>
+  <dont_has_info>dialog_dv_dolg_rush_done</dont_has_info>
+  <init_func>dialogs_new_system.ag_about_enter_to_krylov</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_about_enter_to_krylov2">
+  <dont_has_info>agr_krylov_wait</dont_has_info>
+  <dont_has_info>dialog_dv_dolg_rush_done</dont_has_info>
+  <init_func>dialogs_new_system.ag_about_enter_to_krylov2</init_func>
+ </dialog>
+
+ <dialog id="dialog_anom_scien_1">
+  <dont_has_info>agr_anomaly_scien_dialog_done</dont_has_info>
+  <has_info>agr_anomaly_talk_with_scien</has_info>
+  <init_func>dialogs_new_system.ag_dialog_anom_scien_1</init_func>
+ </dialog>
+
+ <dialog id="dialog_anom_scien_2">
+  <dont_has_info>agr_anomaly_scien_dialog_2_done</dont_has_info>
+  <has_info>agr_anomaly_razradka_end</has_info>
+  <init_func>dialogs_new_system.ag_dialog_anom_scien_2</init_func>
+ </dialog>
+ 
+</game_dialogs>

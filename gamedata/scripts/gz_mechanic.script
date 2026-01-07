@@ -1,0 +1,626 @@
+--Модуль Механика
+
+local actor = db.actor
+local ini = system_ini()
+local xml = CScriptXmlInit()
+local upgrades_string
+local upgrade_initialized = {}
+local table_installed_upg = {}
+local upgrade_all_list = {}
+local mechanic_info = {}
+
+local table_news_r_float = {
+"burn_protection", 
+"strike_protection", 
+"shock_protection", 
+"wound_protection", 
+"radiation_protection", 
+"telepatic_protection", 
+"chemical_burn_protection", 
+"explosion_protection", 
+"fire_wound_protection",
+"inv_weight", 
+"health_restore_speed",
+"radiation_restore_speed",
+"satiety_restore_speed",
+"power_restore_speed",
+"bleeding_restore_speed"
+}
+
+local table_news_r_bool = {
+"sprint_allowed"
+}
+
+local table_news_r_string = {
+"nightvision_sect",
+"bones_koeff_protection"
+}
+
+local table_news_r_s32 = {
+"additional_inventory_weight",
+"additional_inventory_weight2",
+"cost",
+"artefact_count"
+}
+
+local table_news_immunitets = {
+"burn_immunity",
+"strike_immunity",
+"shock_immunity",
+"wound_immunity",
+"radiation_immunity",
+"telepatic_immunity",
+"chemical_burn_immunity",
+"explosion_immunity",
+"fire_wound_immunity"
+}
+
+function on_item_take(obj)
+ local install_list = upgrade_all_list[obj:section().."_"..obj:id()]
+ if install_list then
+  if obj:is_outfit() then
+   obj_to_upg = obj:get_outfit()
+    if obj_to_upg["immunities_count"] then
+     for i=1, #table_news_immunitets, 1 do 
+      obj_to_upg.immunities[table_news_immunitets[i]] = table_news_immunitets[i] * (1.0 - obj_to_upg["immunities_count"])
+     end
+    end
+  elseif obj:is_weapon() == true then
+   obj_to_upg = obj:get_weapon()
+  end
+  for k,v in pairs(install_list) do
+   if k == "immunities_count" then 
+    obj_to_upg.immunities[table_news_immunitets[i]] = (ini:r_float(obj:section(),table_news_immunitets[i])) * (1.0 - obj_to_upg["immunities_count"])
+	obj_to_upg[k] = v
+   else
+    obj_to_upg[k] = v
+   end
+  end
+ end
+end
+
+function gui_start(first_speaker, second_speaker)
+ mechanic_info["npc_name"] = first_speaker:character_name()
+ mechanic_info["npc_icon"] = ini:r_string(first_speaker:profile_name().."_cfg","texture")
+ level.start_stop_menu(this.gui_mechanic_wnd(),true)
+end
+
+class "gui_mechanic_wnd" (CUIScriptWnd)
+function gui_mechanic_wnd:__init() super()
+	self:InitControls()
+	self:InitCallBacks()
+	self:FillList()
+end
+
+function gui_mechanic_wnd:__finalize() end
+
+function gui_mechanic_wnd:InitControls()
+    self:Init(0,0,1024,768)
+    self.back = CUIStatic()
+    self.back:Init(179,0,666,768)
+    self.back:InitTexture("ui\\gz_gui\\ui_gz_guiupgrade")
+    self.back:SetOriginalRect(0,0,666,768)
+	self:AttachChild(self.back)
+	self.mechanic_window = CUIStatic()
+    self.mechanic_window:Init(341,146,310,608)
+    self.back:AttachChild(self.mechanic_window)
+	 
+	self.mec_name = CUIStatic()
+	self.mec_name:Init(340,35,190,34)
+    self.mec_name:SetText(mechanic_info["npc_name"])
+	self.mec_name:SetFont(GetFontLetterica25())
+	self.mec_name:SetTextColor(255,255,255,255)
+	self.back:AttachChild(self.mec_name)
+	
+	self.icon_mec = CUIStatic()
+    self.icon_mec:Init(533,10,120,85)
+    self.icon_mec:InitTexture(mechanic_info["npc_icon"]) 
+	self.icon_mec:SetStretchTexture(true)
+	self.back:AttachChild(self.icon_mec)
+	
+	xml:ParseFile("gz_upgrade_icon.xml")
+	
+	ctrl = xml:InitList("list", self)
+	ctrl:ShowSelectedItem(true)
+	self:Register(ctrl, "list_window")
+	
+    self.repair_button = xml:Init3tButton("repair_button", self.back)
+    self.repair_button:Init(561,109,87,30)
+    self:Register(self.repair_button, "repair_button")
+    self.repair_button:Enable(false)
+	self:AddCallback("repair_button", ui_events.BUTTON_CLICKED, self.ClickRepairButton, self)
+end
+
+function gui_mechanic_wnd:FillList()	
+	item_table = 0
+	item_table = {}
+	item_table_index = 0
+	db.actor:iterate_inventory(item_for_repair, db.actor)
+	local i = 1
+	while (item_table[i]) do
+		local s_item = item_table[i]
+		local s_item_section = s_item:section()
+		local s_item_section = get_inv_name(s_item_section) 
+		local s_item_condition = math.floor(s_item:condition()*100+0.5).." %"
+		local _item_num = i..".    "
+		self:AddItemToList(_item_num, s_item_section, s_item_condition)
+		i = i+1
+	end
+end
+
+function gui_mechanic_wnd:AddItemToList(_item_num, s_item_section, s_item_condition)
+	local _itm = select_repair_items()
+	_itm.itmnum:SetText (_item_num)
+	_itm.itmn:SetText (s_item_section)
+	_itm.itmcndcn:SetText (s_item_condition)
+	local list_box = self:GetListWnd("list_window")
+	--list_box:RemoveItem()
+	list_box:AddItem (_itm)
+end
+
+function item_for_repair(npc, item) 
+	if item:is_outfit() or item:is_weapon() then
+	    item_table_index = item_table_index + 1
+		item_table[item_table_index] = item
+	end
+end
+
+function gui_mechanic_wnd:InitCallBacks()
+	
+	self:AddCallback("list_window", ui_events.LIST_ITEM_CLICKED, 		      self.OnListItemClicked,		self)
+	self:AddCallback("list_window", ui_events.WINDOW_LBUTTON_DB_CLICK,		  self.ClickRepairButton,		self)
+end
+
+function gui_mechanic_wnd:OnListItemClicked()
+  if not self.icon_destr_item then
+   self:SchowDescr()
+  else
+   self:HideDescr()
+   self:SchowDescr()
+  end
+  self.repair_button:Enable(true)
+end
+
+function gui_mechanic_wnd:SchowDescr()
+ list_box = self:GetListWnd("list_window")
+ if list_box:GetSize() == 0 then
+  return
+ end
+ itm_index = list_box:GetSelectedItem()
+ item = list_box:GetItem(itm_index)
+  if item == nil then
+   return 
+  end
+ destr_item_index = tonumber(item.itmnum:GetText()) 
+ destr_item = item_table[destr_item_index]
+  
+  if ini:line_exist(destr_item:section(), "upgrades") then
+    upgrades_string = ini:r_string(destr_item:section(), "upgrades")
+    tab_u = string.split(upgrades_string, 1, ",")
+    self.icon_destr_item = CUIStatic()
+	local icon_in_repair = ini:r_string(destr_item:section(), "icon_in_repair")
+	local iirs_x = ini:r_s32(destr_item:section(), "icon_in_repair_scale_x")
+	iirs_y = ini:r_s32(destr_item:section(), "icon_in_repair_scale_y")
+	local ix  = (310-iirs_x)/2
+    self.icon_destr_item:Init(ix,0,iirs_x,iirs_y)
+    self.icon_destr_item:InitTexture(icon_in_repair)
+	self.mechanic_window:AttachChild(self.icon_destr_item)
+    
+  for i = 1, #tab_u, 1 do   
+   local icon = ini:r_string(tab_u[i], "icon")
+   position_x = 10 + (ini:r_s32(tab_u[i], "position_x"))
+   position_y = 10 + iirs_y + (ini:r_s32(tab_u[i], "position_y"))
+   upgrade_status, prichina = check_upg_status(tab_u[i])
+   self["btn_upg_"..i] = xml:Init3tButton(icon, self.mechanic_window)
+   self["btn_upg_"..i]:Init(position_x,position_y,90,44)
+   if upgrade_status == "yellow" then
+     self["btn_upg_"..i]:Enable(true)
+    else 
+     self["btn_upg_"..i]:Enable(false)
+    end
+   self:Register(self["btn_upg_"..i], icon)
+   if upgrade_status == "red" then
+    self["icon_color_upg_"..i] = CUIStatic()
+    self["icon_color_upg_"..i]:Init(3,3,5,38)
+    self["icon_color_upg_"..i]:InitTexture("ui_inGame2_upgrade_on_icon_lamp_red_disabled")  
+    self["btn_upg_"..i]:AttachChild(self["icon_color_upg_"..i])
+	table.insert(upgrade_initialized, "icon_color_upg_"..i)
+   elseif  upgrade_status == "green" then
+    self["icon_color_upg_"..i] = CUIStatic()
+    self["icon_color_upg_"..i]:Init(3,3,5,38)
+    self["icon_color_upg_"..i]:InitTexture("ui_inGame2_upgrade_on_icon_lamp_green_upgraded")  
+    self["btn_upg_"..i]:AttachChild(self["icon_color_upg_"..i])
+	table.insert(upgrade_initialized, "icon_color_upg_"..i)
+   end
+   self:AddCallback(icon, ui_events.BUTTON_CLICKED, function() self:ClickToUpgrade(destr_item, tab_u[i]) end)
+   self:AddCallback(icon, ui_events.STATIC_FOCUS_LOST, function() self:FocusLostToUpgrade() end)
+   self:AddCallback(icon, ui_events.STATIC_FOCUS_RECEIVED, function() self:FocusToUpgrade(tab_u[i]) end)
+   table.insert(upgrade_initialized, "btn_upg_"..i)
+  end
+ end
+end
+
+function gui_mechanic_wnd:HideDescr()
+for i = 1, #upgrade_initialized, 1 do   
+     if self[upgrade_initialized[i]] then
+      self[upgrade_initialized[i]]:Show(false)
+     end
+end
+ if self.icon_destr_item then
+  self.icon_destr_item:Show(false)
+ end
+ if self.highlighted then
+  self.highlighted:Show(false)
+ end
+ if self.upg_descr then
+  self.upg_descr:Show(false)
+ end
+ if self.name then
+  self.name:Show(false)
+ end
+end
+
+function gui_mechanic_wnd:FocusLostToUpgrade()
+ if self.highlighted then
+  self.highlighted:Show(false)
+ end
+ if self.upg_descr then
+  self.upg_descr:Show(false)
+ end
+ if self.name then
+  self.name:Show(false)
+ end
+end
+
+
+function gui_mechanic_wnd:FocusToUpgrade(upgrade_name)
+ self:FocusLostToUpgrade()
+ if self.window_dialog and self.window_dialog:IsShown() then return end
+ position_x = 10 + (ini:r_s32(upgrade_name, "position_x"))
+ position_y = 10 + iirs_y + (ini:r_s32(upgrade_name, "position_y"))
+ local status, prichina = check_upg_status(upgrade_name)
+  if status == "yellow" then
+   self.highlighted = CUIStatic()
+   self.highlighted:Init(position_x+3,position_y+3,5,38)
+   self.highlighted:InitTexture("ui_inGame2_upgrade_on_icon_lamp_yellow_highlighted")  
+   self.mechanic_window:AttachChild(self.highlighted)
+  end	
+ local cost_t = ini:r_string(upgrade_name, "cost")
+ local name_t = game.translate_string(ini:r_string(upgrade_name, "name"))
+ local description_t = game.translate_string(ini:r_string(upgrade_name, "description"))
+ self.name = CUIStatic()
+ self.name:Init(11,3,309,43)
+ self.name:SetTextComplexMode(true)
+ self.name:SetText(name_t)
+ self.name:SetTextAlign(CGameFont.alCenter)
+ self.name:SetFont(GetFontLetterica25())
+ self.name:SetTextColor(255,255,255,255)
+ self.back:AttachChild(self.name)
+ self.upg_descr = CUIStatic()
+ self.upg_descr:Init(13,65,310,259)
+ self.upg_descr:SetTextComplexMode(true)
+ self.upg_descr:SetText("Стоимость установки модификации: "..cost_t.." рублей.\\n"..prichina.."\\n%c[255,150,150,150]\\n"..description_t)
+ self.upg_descr:SetFont(GetFontGraffiti22Russian())
+ self.upg_descr:SetTextColor(255,255,255,255)
+ self.back:AttachChild(self.upg_descr)
+end
+
+function gui_mechanic_wnd:ClickRepairButton()
+ local cost_repair = ini:r_s32(destr_item:section(), "cost")
+ local cost_repair = cost_repair-cost_repair*destr_item:condition()
+ local cost_repair = math.floor(cost_repair+0.5)
+ if actor:money() >= cost_repair and destr_item:condition() < 0.98 then
+  self:dialog_interactiv("Цена ремонта: "..cost_repair.." рублей.\\nОтремонтировать выбранный предмет?", "repair_item", true)
+ elseif actor:money() >= cost_repair then
+  self:dialog_interactiv("Предмет не нуждается в ремонте.", false, false)
+ else
+  self:dialog_interactiv("Цена ремонта: "..cost_repair.." рублей.\\nНедостаточно денег для ремонта.", false, false)  
+ end
+end
+
+function gui_mechanic_wnd:repair_item()
+ local cost_repair = ini:r_s32(destr_item:section(), "cost")
+ local cost_repair = cost_repair-cost_repair*destr_item:condition()
+ local cost_repair = math.floor(cost_repair+0.5)
+ actor:give_money(-cost_repair)
+ destr_item:set_condition(1)
+ self:play_repair_sound()
+ list_box = self:GetListWnd("list_window")
+ list_box:RemoveAll()
+ self:FillList()
+end
+
+function gui_mechanic_wnd:upgrade_item()
+ local upgrade_name = gz_utils.load_variable("upgrade_name", nil)
+ gz_utils.del_variable("upgrade_name")
+ if upgrade_name == nil then return end
+  
+ local install_list = upgrade_all_list[destr_item:section().."_"..destr_item:id()]
+ if install_list == nil then install_list = {} end
+ 
+ local cost_t = ini:r_string(upgrade_name, "cost")
+ local name_t = game.translate_string(ini:r_string(upgrade_name, "name"))
+ if destr_item:is_outfit() then
+	  destr_item_to_upg = destr_item:get_outfit()
+ elseif destr_item:is_weapon() == true then
+	  destr_item_to_upg = destr_item:get_weapon()
+ end
+ 
+ --if destr_item_to_upg["immunities_count"] then
+  --for i=1, #table_news_immunitets, 1 do 
+   --destr_item_to_upg.immunities[table_news_immunitets[i]] = (ini:r_float(upgrade_name, "immunities_count")) * (1.0 - destr_item_to_upg["immunities_count"])
+  --end
+ --end
+ --if actor:item_in_slot(6):immunities() then
+ -- news_manager.send_tip(actor, "Работает БЛЯДЬ!")
+ --end
+ for i=1, #table_news_r_float, 1 do
+  if ini:line_exist(upgrade_name, table_news_r_float[i]) then
+	if destr_item_to_upg[table_news_r_float[i]] == nil then destr_item_to_upg[table_news_r_float[i]] = 0 end
+	local new_value = 0
+	new_value = (ini:r_float(upgrade_name, table_news_r_float[i])) + destr_item_to_upg[table_news_r_float[i]]
+	destr_item_to_upg[table_news_r_float[i]] = new_value
+	install_list[table_news_r_float[i]] = new_value
+  end
+ end
+ 
+ for i=1, #table_news_r_string, 1 do 
+  if ini:line_exist(upgrade_name, table_news_r_string[i]) then
+   local new_value = ini:r_string(upgrade_name, table_news_r_string[i])
+   destr_item_to_upg[table_news_r_string[i]] = new_value
+   install_list[table_news_r_string[i]] = new_value
+  end
+ end 
+
+ for i=1, #table_news_r_bool, 1 do 
+  if ini:line_exist(upgrade_name, table_news_r_bool[i]) then
+   local new_value = ini:r_bool(upgrade_name, table_news_r_bool[i])
+   destr_item_to_upg[table_news_r_bool[i]] = new_value
+   install_list[table_news_r_bool[i]] = new_value
+  end
+ end
+ 
+ for i=1, #table_news_r_s32, 1 do
+  if ini:line_exist(upgrade_name, table_news_r_s32[i]) then
+	if destr_item_to_upg[table_news_r_s32[i]] == nil then destr_item_to_upg[table_news_r_s32[i]] = 0 end
+	local new_value = ini:r_s32(upgrade_name, table_news_r_s32[i]) + destr_item_to_upg[table_news_r_s32[i]]
+	destr_item_to_upg[table_news_r_s32[i]] = new_value
+	install_list[table_news_r_s32[i]] = new_value
+  end
+ end
+ 
+  table_installed_upg[upgrade_name] = true
+  install_list["table_installed_upg"] = table_installed_upg
+  upgrade_all_list[destr_item:section().."_"..destr_item:id()] = install_list
+  actor:give_money(-cost_t)
+  self:play_repair_sound()
+  self:OnListItemClicked()
+end
+
+function gui_mechanic_wnd:ClickToUpgrade(destr_item, upgrade_name)
+ gz_utils.save_variable("upgrade_name", upgrade_name)
+ local cost_t = ini:r_s32(upgrade_name, "cost")
+ local name_t = game.translate_string(ini:r_string(upgrade_name, "name"))
+ if actor:money() >= cost_t then
+  self:dialog_interactiv("Вы действительно хотите установить: "..name_t.."?", "upgrade_item", true, upgrade_name)
+ else
+  self:dialog_interactiv("Недостаточно денег, чтобы устновить: "..name_t..".", false, false)  
+ end
+end
+
+function gui_mechanic_wnd:play_repair_sound()
+ local rnd = math.random(1, 7)
+ if rnd == 1 then 
+	gz_utils.s_play_no_feedback([[scripts\remkit\ui_repairweapon_01]])
+ elseif rnd == 2 then 
+	gz_utils.s_play_no_feedback([[scripts\remkit\ui_repairweapon_02]])
+ elseif rnd == 3 then 
+	gz_utils.s_play_no_feedback([[scripts\remkit\ui_repairweapon_03]])
+ elseif rnd == 4 then 
+	gz_utils.s_play_no_feedback([[scripts\remkit\ui_repairweapon_04]])
+ elseif rnd == 5 then 
+	gz_utils.s_play_no_feedback([[scripts\remkit\ui_repairweapon_05]])
+ elseif rnd == 6 then 
+	gz_utils.s_play_no_feedback([[scripts\remkit\ui_repairweapon_06]])
+ elseif rnd == 7 then 
+	gz_utils.s_play_no_feedback([[scripts\remkit\ui_repairweapon_07]])
+ end
+end
+
+class "select_repair_items" (CUIListItemEx)
+function select_repair_items:__init() super()
+	self.item_name		= "itemname"
+	self:SetWndRect		(0,0,315,22)
+	local ca = 220
+	local cr = 220
+	local cg = 220
+	local cb = 220
+	self.itmnum				= CUIStatic	()
+	self.itmnum:SetAutoDelete	(true)
+	self:AttachChild		(self.itmnum)
+	self.itmnum:SetWndRect	(0,0,10,22)
+	self.itmnum:SetText		("itemnum")
+	self.itmnum:SetFont		(GetFontGraffiti22Russian())
+	self.itmnum:SetTextColor	(ca,cr,cg,cb)
+	self.itmn					= CUIStatic	()
+	self.itmn:SetAutoDelete	(true)
+	self:AttachChild		(self.itmn)
+	self.itmn:SetWndRect		(12,0,150,22)
+	self.itmn:SetText			("itemname")
+	self.itmn:SetFont			(GetFontGraffiti22Russian())
+	self.itmn:SetTextColor	(ca,cr,cg,cb)
+	self.itmcndcn				= CUIStatic	()
+	self.itmcndcn:SetAutoDelete	(true)
+	self:AttachChild		(self.itmcndcn)
+	self.itmcndcn:SetWndRect	(280,0,25,22)
+	self.itmcndcn:SetText		("itemcndn")
+	self.itmcndcn:SetTextAlign  (CGameFont.alRight)
+	self.itmcndcn:SetFont		(GetFontGraffiti22Russian())
+	self.itmcndcn:SetTextColor	(ca,cr,cg,cb)
+
+end
+
+function gui_mechanic_wnd:dialog_interactiv(upgrade_vopros, upgrade_func, upgrade_keys)
+    self.window_dialog = CUIStatic()
+    self.window_dialog:Init(225,257,550,266)
+    self.window_dialog:InitTexture("ui\\ui_gz_gui")
+    self.window_dialog:SetOriginalRect(0,0,675,266)
+	self.window_dialog:SetStretchTexture(true)
+	self:AttachChild(self.window_dialog)
+	self.text_in_dialog = CUIStatic()
+	self.text_in_dialog:Init(10,100,540,20)
+    self.text_in_dialog:SetText(upgrade_vopros)
+	self.text_in_dialog:SetTextComplexMode(true)
+	self.text_in_dialog:SetFont(GetFontGraffiti22Russian())
+	self.text_in_dialog:SetTextAlign(CGameFont.alCenter)
+	self.text_in_dialog:SetTextColor(255,255,255,255)
+	self.window_dialog:AttachChild(self.text_in_dialog)
+    if upgrade_keys == true then
+     self.break_key = CUIButton()
+     self.break_key:SetAutoDelete(true)
+     self.break_key:Init(300,225,100,30)
+     self.break_key:InitTexture("ui\\ui_gz_gui")
+     self.break_key:SetOriginalRect(6,296,133,25)
+     self.break_key:SetStretchTexture(true)
+	 self.break_key:SetText("Нет")
+	 self.break_key:SetFont(GetFontGraffiti22Russian())
+	 self.break_key:SetTextColor(255,255,255,255)
+     self:Register(self.break_key,"break_key")
+	 self.window_dialog:AttachChild(self.break_key)
+     self:AddCallback("break_key",ui_events.BUTTON_DOWN, function() self:ClickExit() end)
+	 self.repair_key = CUIButton()
+     self.repair_key:SetAutoDelete(true)
+     self.repair_key:Init(150,225,100,30)
+	 self.repair_key:InitTexture("ui\\ui_gz_gui")
+	 self.repair_key:SetOriginalRect(6,296,133,25)
+	 self.repair_key:SetStretchTexture(true)
+	 self.repair_key:SetText("Да")
+	 self.repair_key:SetFont(GetFontGraffiti22Russian())
+	 self.repair_key:SetTextColor(255,255,255,255)
+     if upgrade_func == false then
+      self:AddCallback("repair_key",ui_events.BUTTON_DOWN, function() self:ClickExit() end)
+	 else
+	  self:AddCallback("repair_key",ui_events.BUTTON_DOWN, function() self:ClickYes(upgrade_func) end)
+	 end
+	 self:Register(self.repair_key,"repair_key")
+	 self.window_dialog:AttachChild(self.repair_key)
+    else
+     self.exit = CUIButton()
+	 self.exit:Init(225,225,100,30)
+	 self.exit:InitTexture("ui\\ui_gz_gui")
+	 self.exit:SetOriginalRect(6,296,133,25)
+	 self.exit:SetStretchTexture(true)
+	 self.exit:SetText("Выход")
+	 self.exit:SetFont(GetFontGraffiti22Russian())
+	 self.exit:SetTextColor(255,255,255,255)
+     self:Register(self.exit,"exit")
+	 self.window_dialog:AttachChild(self.exit)
+     self:AddCallback("exit",ui_events.BUTTON_DOWN, function() self:ClickExit() end)
+	end
+end
+
+function gui_mechanic_wnd:ClickExit()
+ if self.window_dialog then
+  self.window_dialog:Show(false)
+ end
+ if self.text_in_dialog then
+  self.text_in_dialog:Show(false)
+ end
+ if self.break_key then
+  self.break_key:Show(false)
+ end
+ if self.repair_key then
+  self.repair_key:Show(false)
+ end
+ if self.exit then
+  self.exit:Show(false)
+ end
+ if self.window_dialog then
+  self.window_dialog:Show(false)
+ end    
+end
+
+function gui_mechanic_wnd:ClickYes(upgrade_func)
+ self:ClickExit()
+ if upgrade_func == "repair_item" then
+  self:repair_item()
+ elseif upgrade_func == "upgrade_item" then
+  self:upgrade_item()
+ end
+end
+
+function test()
+ for k,v in pairs(upgrade_all_list) do
+  log1("Таблица: upgrade_all_list")
+  if type(v) == 'table' then
+   for kE,vA in pairs(v) do
+    if type(vA) == 'table' then
+	 for kEy,vAl in pairs(vA) do
+	  log1("В таблице: "..tostring(k)..", таблица: "..tostring(kE).."{"..tostring(kEy).." = "..tostring(vAl).."}")
+	 end
+	else
+	 log1("--Таблица: "..tostring(k).."{"..tostring(kE).." = "..tostring(vA).."}")
+	end
+   end
+  else
+   log1("-"..tostring(k).." = "..tostring(v))
+  end
+ end
+end
+
+function precondition_or_ban_check(upgrade_name, line)
+ local t = string.split(ini:r_string(upgrade_name, line), 1, ",")
+ local verdict_y
+ for i = 1, #t, 1 do
+  if (t[i] == "no" or table_installed_upg[t[i]]) and line == "precondition_upg" then
+   verdict_y = "yes"
+  end
+  if table_installed_upg[t[i]] and line == "precondition_ban" then
+   verdict_y = "yes"
+  end
+ end
+ if verdict_y and verdict_y == "yes" then 
+  return true 
+ else
+  return false
+ end
+end
+
+
+function check_upg_status(upgrade_name)
+ 
+ local install_list = upgrade_all_list[destr_item:section().."_"..destr_item:id()]
+ if install_list == nil then 
+  table_installed_upg = {} 
+ else
+  table_installed_upg = install_list["table_installed_upg"]
+ end
+ 
+ if precondition_or_ban_check(upgrade_name, "precondition_ban") == true then
+  status = "red"
+  prichina = "%c[255,255,0,0]Невозможно установить:\\n - эта часть уже модифицирована."
+ elseif table_installed_upg[upgrade_name] then
+  prichina = "%c[255,0,255,0]Модификация установлена."
+  status = "green"
+ elseif precondition_or_ban_check(upgrade_name, "precondition_upg") == true then
+  status = "yellow"
+  prichina = ""
+ else
+  status = "hide"
+  prichina = "%c[255,255,0,0]Невозможно установить:\\n - необходимы предшествующие модификации."
+ end
+ return status, prichina
+end
+
+function on_before_save()
+ gz_utils.save_table("upgrade_all_list", upgrade_all_list)
+ test()
+end
+function get_inv_name(section) 
+	name = ini:r_string(section,"inv_name")
+	name = game.translate_string(name)
+	return name
+end
+function upg_restored()
+ upgrade_all_list = gz_utils.load_table("upgrade_all_list", {})
+end

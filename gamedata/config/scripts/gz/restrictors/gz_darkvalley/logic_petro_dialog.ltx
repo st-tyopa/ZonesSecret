@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+find_bekas_money_done} %+petro_on_rest% sr_idle2
+
+[sr_idle2]
+on_actor_inside = {+find_bekas_box_fail_new}  nil
+on_actor_outside = {+petro_on_rest} %+kill_petro% nil
+

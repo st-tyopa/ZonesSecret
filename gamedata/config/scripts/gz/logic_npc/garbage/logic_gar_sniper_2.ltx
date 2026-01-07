@@ -1,0 +1,16 @@
+[logic]
+active = camper
+on_death = death
+
+[camper]
+path_walk = gar_sniper_2_stay
+path_look = promz_bandit_smart_kran_kamp_1
+radius = 50
+no_retreat = true
+def_state_moving = assault
+def_state_campering = hide_na
+shoot = always
+on_info = %=killactor%
+
+[death]
+on_info = %+gar_sniper_2_dead%

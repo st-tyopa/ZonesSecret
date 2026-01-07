@@ -1,0 +1,5 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+go_to_agroprom_start +dv_sv_greshbase_rush_done} %+agr_dolg_guards_stop +agr_pass_to_dolgbase_fail +alt_enter_in_agr_underground_start% nil, {+go_to_agroprom_start -dv_sv_greshbase_rush_start} %+agr_pass_to_dolgbase_start +agr_pass_to_dolgbase_message% nil

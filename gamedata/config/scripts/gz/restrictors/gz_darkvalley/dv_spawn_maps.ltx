@@ -1,0 +1,7 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+find_pda_in_box_done} %=spawn_item_in_box(11701:quest_guitar)% sr_idle@nil
+
+[sr_idle@nil]

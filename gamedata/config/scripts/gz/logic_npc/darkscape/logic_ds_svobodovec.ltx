@@ -1,0 +1,43 @@
+[logic]
+active = walker@idle
+on_combat = combat
+on_death = death
+
+[death]
+on_info = %+ds_kamaz_stalker_dead%
+
+[walker@idle]
+path_walk = ds_sm_svobodovec_walk1
+path_look = ds_sm_svobodovec_look1
+meet = no_meet
+combat_type = camper
+on_info = {+ds_kamaz_pseudodogs_all_dead} remark@stay
+
+[remark@stay]
+anim = wait
+target = actor
+meet = no_meet
+snd = ds_slepoi_thanks
+on_signal = sound_end|walker@go
+
+[walker@go]
+path_walk = ds_sm_svobodovec_walk2
+path_look = ds_sm_svobodovec_look1
+meet = no_meet
+on_signal = stgo3| walker@stay
+
+[walker@stay]
+path_walk = ds_sm_svobodovec_walk3
+path_look = ds_sm_svobodovec_look3
+on_info = {+ds_stalker_save_thanks} walker@sit
+
+[walker@sit]
+path_walk = ds_sm_svobodovec_walk3
+path_look = ds_sm_svobodovec_look3
+on_actor_dist_ge_nvis = 130| %+dell_ds_slepoi%
+
+[combat]
+combat_type = camper
+
+[danger_condition@svobodovec]
+ignore_distance = 0

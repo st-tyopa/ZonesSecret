@@ -1,0 +1,261 @@
+[wpn_svd]:identity_immunities
+GroupControlSection				= spawn_group
+discovery_dependency 				= 
+$spawn                  			= "weapons\svd"		
+$npc			 			= on				
+$prefetch 		 			= 8
+scheduled               			= off              	
+cform                   			= skeleton
+class                   			= WP_SVD
+min_radius              			= 0
+max_radius              			= 50
+description					= enc_weapons1_wpn-svd
+
+
+chamber_status          = true ;патронник
+
+ef_main_weapon_type		 		= 3
+ef_weapon_type			 		= 8
+
+reload_dof				= 0.0, 0.5, 5, 1.7
+
+;--- scope weapons -----------------------------------------------------------------
+holder_range_modifier				= 2.15               
+holder_fov_modifier				= 0.3             
+;-----------------------------------------------------------------------------------
+
+cost						= 15000
+weapon_class					= sniper_rifle
+
+ammo_limit					= 60
+ammo_current					= 10
+ammo_elapsed					= 0
+
+ammo_mag_size					= 10
+ammo_class					= ammo_7.62x54_7h1, ammo_7.62x54_7h14, ammo_7.62x54_ap 
+
+sprint_allowed					= true
+;-----------------------------------------------------------------------------------
+fire_dispersion_base				= 0.02	;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor				= 2.2f
+	
+;отдача
+cam_relax_speed         	= 4.5	;скорость возврата в исходное положение
+cam_dispersion          	= 2.0	;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc		= 0.5	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac		= 1.0	;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle			= 15.0	;максимальный угол отдачи
+cam_max_angle_horz		= 3.0	;(degree) maximum shot horizontal degree 
+cam_step_angle_horz		= 0.25	;(degree) size of step camera moved in horizontal position while shooting
+
+
+fire_dispersion_condition_factor 		= 5	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 				= 0.001 ;вероятность осечки при максимальном износе 
+misfire_condition_k				= 0.05
+condition_shot_dec 				= 0.00001 ;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+hand_dependence 				= 1
+single_handed					= 0
+
+slot 						= 1,2		
+animation_slot					= 2		
+
+
+inv_name					= wpn-svd
+inv_name_short					= wpn-svd
+inv_weight					= 4.9
+
+inv_grid_width     				= 6
+inv_grid_height    				= 2
+inv_grid_x					= 0
+inv_grid_y         				= 0
+
+kill_msg_x					= 0
+kill_msg_y					= 0
+kill_msg_width					= 98
+kill_msg_height					= 23
+
+direction               			= 0, 0, 1
+
+fire_point              			= 0.0, 0.129, 0.942
+
+flame_particles		    			= weapons\generic_weapon06
+smoke_particles		   			= amik\weapons\smoke_particles\smoke_particles_01
+rpm_empty_click 				= 200
+
+shell_point		 			= 0.0, 0.129, 0.192	
+shell_dir		 			= 0.0, 0.0, 0.4
+shell_particles	 				= amik\weapons\7.62x54_shells_r
+
+PDM_disp_base 					= 4.0
+PDM_disp_vel_factor 				= 0.8
+PDM_disp_accel_factor 				= 1.0
+PDM_crouch	 				= 1.0
+PDM_crouch_no_acc 				= 1.0
+
+; ttc
+hit_power           = 0.85, 0.90, 1.00, 1.10
+hit_impulse		 	= 190
+hit_type 					= fire_wound
+
+fire_distance           			= 1000
+bullet_speed		 			= 850	
+rpm                     			= 120
+; end ttc
+
+use_aim_bullet					= true		
+time_to_aim					= 1.0
+
+silencer_hit_power       			= 2
+silencer_hit_impulse	 			= 50
+silencer_fire_distance   			= 1200
+silencer_bullet_speed	 			= 800	
+
+hud                     			= wpn_svd_hud
+normal                  			= 0, 1, 0
+position                			= -0.026, -0.077, 0.00
+orientation             			= 0, 0, 0
+
+fire_point 					= 0.0, 0.129, 0.942
+fire_point2					= 0.0, 0.129, 0.942
+
+strap_position         				= -0.15,-0.15,0.45
+strap_orientation      				= -25,-189,65
+strap_bone0					= bip01_spine2
+strap_bone1					= bip01_spine1
+
+startup_ammo            			= 10
+visual                  			= weapons\svd\wpn_svd.ogf
+
+light_color		 			= 0.6,0.5,0.3
+light_range		 			= 4.0
+light_var_color		 			= 0.05
+light_var_range		 			= 0.5
+light_time 		 			= 0.2
+
+ph_mass			 			= 5
+;cost			 			= 900
+
+;addons
+scope_status					= 1
+silencer_status					= 0
+grenade_launcher_status				= 0
+zoom_enabled					= true
+
+
+scope_name 					= wpn_addon_scope
+silencer_name  					= wpn_addon_silencer
+scope_x                     			= 33
+scope_y                     			= -2
+silencer_x                  			= 264
+silencer_y                  			= 15
+zoom_enabled					= true
+scope_zoom_factor	    			= 15
+
+scope_texture					= wpn\wpn_crosshair_vss
+
+;звуки
+snd_draw					= weapons\svd\svd_draw
+snd_holster					= weapons\svd\svd_holster
+snd_shoot					= weapons\svd\svd_shoot
+snd_shoot1					= weapons\svd\svd_shoot1
+snd_empty					= weapons\svd\svd_empty, 0.7
+snd_reload					= weapons\svd\svd_reload
+snd_silncer_shot				= weapons\svd\svd_shot_sil
+ 
+
+silencer_smoke_particles 			= amik\weapons\smoke_particles\p_smoke_particles_02
+
+silencer_light_color				= 1.0, 0.1, 0.0
+silencer_light_range				= 0.01
+silencer_light_var_color			= 0.05
+silencer_light_var_range			= 0.5
+silencer_light_time 				= 0.2
+
+
+[wpn_svd_hud]
+
+shell_point     	   	 		= 0.1,0,-0.95 
+shell_dir			     		= 0.0, 1.0, 0.0
+
+fire_point					= 0,0,-0.65
+fire_point2              			= 0,-0.09,-0.5
+
+fire_bone               			= muzzle
+
+position					= 0.05,-0.01,0.25
+orientation					= 0,0,0
+
+visual                  			= weapons\svd\wpn_svd_hud.ogf
+
+collide_hud 					= false
+
+anim_holster					= holster
+anim_idle					= idle
+anim_idle_aim					= aim
+anim_reload					= reload
+anim_draw					= draw
+anim_shoot					= shoot
+anim_idle_sprint 				= sprint
+anim_idle_moving				= moving
+
+zoom_offset					= -0.1,0.0,-0.05
+zoom_rotate_x					= 0
+zoom_rotate_y					= 0
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+
+[wpn_svd_m1]:wpn_svd
+$spawn             				= "weapons\uniq\wpn_svd_m1"	
+description					= enc_weapons1_wpn-svd_m1
+
+cost						= 17500
+
+inv_name					= wpn-svd_m1
+inv_name_short					= wpn-svd_m1
+
+cam_dispersion					= 0.9
+cam_step_angle_horz				= 0.1
+
+hit_power           = 1.10
+hit_impulse		 	= 190
+
+scope_status					= 1
+fire_dispersion_base				= 0.01
+
+inv_grid_width     				= 6
+inv_grid_height    				= 2
+inv_grid_x         				= 24
+inv_grid_y         				= 0
+
+
+flame_particles					=
+light_disabled					= true
+
+hud 						= wpn_svd_m1_hud
+visual                  			= weapons\svd\wpn_svd_m1.ogf
+
+snd_shoot					= weapons\akm\ak_silencer_type2_00
+snd_shoot1					= weapons\akm\ak_silencer_type2_01
+snd_shoot2					= weapons\akm\ak_silencer_type2_02
+snd_shoot3					= weapons\akm\ak_silencer_type2_03
+snd_shoot4					= weapons\akm\ak_silencer_type2_04
+snd_shoot5					= weapons\akm\ak_silencer_type2_05
+snd_shoot6					= weapons\akm\ak_silencer_type2_06
+snd_shoot7					= weapons\akm\ak_silencer_type2_07
+snd_shoot8					= weapons\akm\ak_silencer_type2_08
+snd_shoot9					= weapons\akm\ak_silencer_type2_09
+snd_shoot10					= weapons\akm\ak_silencer_type2_10
+snd_reload					= weapons\svd\svd_m1_reload
+
+scope_zoom_factor	    			= 7
+scope_texture					= wpn\wpn_crosshair
+
+silencer_status					= 1
+
+
+[wpn_svd_m1_hud]:wpn_svd_hud
+visual                  			= weapons\svd\wpn_svd_m1_hud.ogf

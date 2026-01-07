@@ -1,0 +1,34 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+dialog_sos_bandit_done} %=run_postprocess(agr_u_fade:01:false)% sr_idle1
+
+[sr_idle1]
+on_timer = 1000|%=disable_ui =run_cam_effector(hit_back_left:999:false) =play_snd(actor\pain_4)%  sr_idle2
+
+[sr_idle2]
+on_timer = 500|%=run_postprocess(deadcity_wake) =play_snd(soz\characters_voice\scenario\heartbeat_blood)% sr_idle3
+
+[sr_idle35]
+on_timer = 500|%=play_snd(material\actor\step\new_wood1)% sr_idle36
+
+[sr_idle36]
+on_timer = 500|%=play_snd(material\actor\step\new_wood2)% sr_idle37
+
+[sr_idle37]
+on_timer = 500|%=play_snd(material\actor\step\new_wood3)% sr_idle38
+
+[sr_idle38]
+on_timer = 500|%=play_snd(material\actor\step\new_wood4)% sr_idle3
+
+[sr_idle3]
+on_timer = 3000|%=play_snd(characters_voice\soz\gz_yantar\gar_bandit_ambush_talk_4) +yan_grab_bandit =yan_grab =travel_in_time_9% sr_idle31
+
+[sr_idle31]
+on_timer = 7000|%=stop_cam_effector(1001)% sr_idle5
+
+[sr_idle5]
+on_timer = 3000|%+find_your_loot_sms =enable_ui% sr_idle@nil
+
+[sr_idle@nil]

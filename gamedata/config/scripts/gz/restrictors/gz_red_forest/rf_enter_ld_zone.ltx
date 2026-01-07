@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+;on_actor_inside = {-rf_ld_guards1_enter -rf_ld_guards_back_enter} %+gz_test_2 =last_day_war%
+on_info = {+kill_scien_done} %+gz_test_1% sr_idle1, {+lead_agr_scien_start} nil
+
+[sr_idle1]
+on_actor_inside = {-rf_ld_guards1_enter -rf_ld_guards_back_enter} %+gz_test_2 =last_day_war%
+on_info = {+rf_ld_guards1_enter} nil, {+rf_ld_guards_back_enter} nil
+

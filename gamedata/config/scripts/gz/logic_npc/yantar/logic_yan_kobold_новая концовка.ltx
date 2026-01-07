@@ -1,0 +1,54 @@
+[logic]
+active = walker@yan_kob
+
+[walker@yan_kob]
+def_state_standing = threat
+path_walk = yan_kobold_walk
+path_look = yan_kobold_look
+meet = no_meet
+combat_ignore = always
+on_timer = 20000| walker@yan_kob_to_guns
+
+[walker@yan_kob_to_guns]
+path_walk = yan_kobold_to_guns_walk
+path_look = yan_kobold_look
+meet = no_meet
+combat_ignore = always
+on_signal = toguns| walker@yan_kob_stay
+
+[walker@yan_kob_stay]
+path_walk = yan_kobold_stay_walk
+path_look = yan_kobold_stay_look
+on_timer = 2| remark@yan_kob_sit
+
+[remark@yan_kob_sit]
+anim = doctor_wakeup
+target = 65014
+meet = no_meet
+on_signal = anim_end|walker@yan_kob_from_guns
+
+[walker@yan_kob_from_guns]
+path_walk = yan_kobold_from_guns_walk
+meet = no_meet
+combat_ignore = always
+on_signal = fromguns| walker@threat
+
+[walker@threat]
+def_state_standing = threat
+path_walk = yan_kobold_walk
+path_look = yan_kobold_look
+on_timer = 500| %=change_community(65014:bandit)%
+danger = danger_condition
+
+[danger_condition]
+ignore_distance = 1
+ignore_distance_grenade = 1
+ignore_distance_corpse = 1
+ignore_distance_hit = 1
+ignore_distance_sound = 1
+danger_inertion_time_grenade = 10
+danger_inertion_time_corpse = 10
+danger_inertion_time_hit = 10
+danger_inertion_time_sound = 10
+danger_inertion_time_ricochet = 10
+danger_expiration_time = 10

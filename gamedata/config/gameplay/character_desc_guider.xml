@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<xml>	  
+		  
+       <specific_character id="guider" team_default ="1">
+                <name>Проводник</name>
+                <icon>ui_npc_u_stalker_sv_balon_10</icon>
+                <bio>esc_ckryacker</bio>
+ 
+                 <class>guider</class> 
+                 <community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+                  
+                 <rank>773</rank>
+                 <reputation>5</reputation>
+                 <money min="600" max="5000" infinitive="0"/>
+                 
+                 <snd_config>characters_voice\human_01\stalker\</snd_config>
+                 <crouch_type>-1</crouch_type>
+
+                 <visual>actors\neytral\stalker_neytral_rukzak_3</visual>
+                 <supplies>
+                         [spawn] \n 
+                         wpn_glock \n
+						 wpn_spas12 \n
+						 ammo_12x70_buck \n
+                 </supplies>
+	            <start_dialog>dialog_guider_2</start_dialog>			 
+#include "gameplay\character_criticals_4.xml"
+             
+          </specific_character>	
+		  
+		  
+</xml>

@@ -1,0 +1,43 @@
+[logic]
+active = walker@wounded_dv_stalker
+on_death = death
+help_wounded_enabled = false
+
+[walker@wounded_dv_stalker]
+path_walk = wounded_dv_stalker_walk1
+path_look = wounded_dv_stalker_look1
+wounded = wounded@wounded_dv_stalker
+meet = no_meet
+combat_ignore = always
+
+[wounded@wounded_dv_stalker]
+hp_state = 99|wounded_heavy@help_heavy
+hp_state_see = 99|wounded_heavy@help_heavy
+hp_victim = 60|nil
+hp_cover = 60|false
+hp_fight = 60|false
+help_dialog = dialog_about_pda
+not_for_help = true
+on_info = {+go_to_garneutlager_start +dv_sv_greshbase_assault} walker@wounded_dv_stalker_21, {+go_to_garneutlager_start +dv_dolg_group_rush_start} walker@wounded_dv_stalker_21, {+go_to_garneutlager_start -dv_dolg_group_rush_start -dv_sv_greshbase_assault} walker@wounded_dv_stalker_2
+
+[walker@wounded_dv_stalker_21]
+path_walk = wounded_dv_stalker_walk1
+path_look = wounded_dv_stalker_look1
+def_state_standing = sit_ass
+combat_ignore = always
+on_info = {+dv_contrgreh_spawn_controller_start} walker@wounded_dv_stalker_2
+
+[walker@wounded_dv_stalker_2]
+path_walk = wounded_dv_stalker_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = dvwst2| walker@wounded_dv_stalker_3
+
+[walker@wounded_dv_stalker_3]
+path_walk = wounded_dv_stalker_walk3
+path_look = wounded_dv_stalker_look3
+
+[death]
+on_info = %+ds_kamaz_stalker_dead%

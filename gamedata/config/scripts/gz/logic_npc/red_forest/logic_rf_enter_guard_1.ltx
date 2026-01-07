@@ -1,0 +1,20 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = rf_enter_guard_1_stay
+path_look = rf_enter_guard_com_look
+on_actor_dist_le = 20| remark
+;on_info = {+rf_ld_blockp_threat} remark
+meet = no_meet
+
+[remark]
+anim = threat
+target = actor
+meet = no_meet
+on_info = {+rf_ld_blockp_ph3_end} walker2
+
+[walker2]
+path_walk = rf_enter_guard_1_stay
+path_look = rf_enter_guard_com_look
+meet = no_meet

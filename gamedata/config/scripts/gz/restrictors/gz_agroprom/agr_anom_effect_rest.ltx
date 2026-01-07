@@ -1,0 +1,16 @@
+[logic]
+active = sr_particle
+
+[sr_particle]
+name = kalmah\psi1
+path = agr_anom_effect
+mode = 2 		
+looped = true        
+on_info = {+agr_anomaly_razradka_start} sr_particle2
+
+[sr_particle2]  
+name = anomaly2\generatory
+path = agr_anom_effect
+mode = 2 		
+looped = true 
+on_info = {+agr_anomaly_razradka_end} nil

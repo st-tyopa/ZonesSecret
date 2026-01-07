@@ -1,0 +1,2181 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<xml>
+<!--------------------------------------- - Темная Долина - ----------------------------------------------------->
+	<!--------------------------------------- - Блокпост свободы - ---------------------------------------->
+	<specific_character id="dv_svobblokpost_commander_lukash" team_default = "1">
+		<name>Лукаш</name>
+		<icon>ui_npc_u_stalker_sv_leader</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>mil_Svoboda_blockpost_leader_bio</bio>
+		
+		<class>dv_svobblokpost_commander_lukash</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<rank>916</rank>
+		<reputation>149</reputation>
+
+        <snd_config>characters_voice\human_02\freedom\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>gz\npc\svoboda\freedom_hat</visual>
+		<supplies>
+			[spawn] \n
+			wpn_pm  \n
+			ammo_9x18_fmj \n
+			wpn_g3 \n
+			ammo_7.62x51_fmj \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"	
+#include "gameplay\character_criticals_3.xml"
+		</supplies>
+
+		<start_dialog>dialog_lukash_proverka</start_dialog>
+                <actor_dialog>dialog_lukash_quest_2</actor_dialog>
+		
+		<money min="600" max="2000" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+	<specific_character id="dv_svobblokpost_svobodovec_default" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1_1</icon>
+		<bio>mil_Svoboda_regular_bio</bio>
+
+		<class>dv_svobblokpost_svobodovec_default</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_mask</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+			wpn_fort  \n
+			ammo_9x18_fmj \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+		device_torch \n		
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_1</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_6</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+	<!--------------------------------------- - *ЛАГЕРЬ СТАЛКЕРОВ В ТД* - ----------------------------------------------------->
+
+<!--------------------------------------- - !УНИКАЛЬНЫЕ НПС! - ----------------------------------------------------->
+	<!---------------------------MAX----------------------->
+	<specific_character id="mil_Svoboda_master_Max" team_default = "1">
+		<name>mil_Svoboda_master_Max_name</name>
+		<icon>ui_npc_u_stalker_sv_max</icon>
+		<map_icon x="5" y="0"></map_icon>
+		<bio>mil_Svoboda_master_Max_bio</bio>
+
+		<team>Svoboda_master</team>
+
+        <snd_config>characters_voice\human_02\freedom\</snd_config>
+		<crouch_type>0</crouch_type>
+		
+		<class>mil_Svoboda_master_Max</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		
+		<rank>912</rank>
+		<reputation>145</reputation>
+
+		<visual>gz\npc\svoboda\maks</visual>
+		<supplies>
+			[spawn] \n
+			wpn_glock  \n
+			ammo_9x19_fmj \n
+			wpn_ak74u_m1 \n
+			ammo_5.45x39_fmj \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"			
+		</supplies>
+
+#include "gameplay\character_criticals_5.xml"
+
+		<start_dialog>hello_dialog</start_dialog>
+                <actor_dialog>dialog_max</actor_dialog>
+                <actor_dialog>dialog_max_2</actor_dialog>
+                <actor_dialog>dialog_max_3</actor_dialog>
+#include "gameplay\character_dialogs.xml"		
+	</specific_character>
+	
+	<!--------------------------------------- - *ЛАГЕРЬ СТАЛКЕРОВ В ТД* - ----------------------------------------------------->
+
+<!--------------------------------------- - !УНИКАЛЬНЫЕ НПС! - ----------------------------------------------------->
+<!--------------------------------------- - Миклуха(раньше был Чехом) - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_lider_cheh" team_default = "1">
+		<name>Миклуха</name>
+		<icon>ui_npc_u_dv_freedom_mikluha</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_lider_cheh</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\milkuha</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>630</rank>
+		<reputation>423</reputation>
+		<money min="3500" max="9500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+			wpn_glock  \n
+			ammo_9x19_fmj \n
+	device_torch \n	
+            racya_b \n	
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+		<actor_dialog>chehov_dialog_about_cap</actor_dialog>
+		<start_dialog>dialog_find_weapons_case</start_dialog>
+		<actor_dialog>dialog_find_weapons_case_2</actor_dialog>
+		<actor_dialog>dialog_miklih_prisoner</actor_dialog>
+                <actor_dialog>chehov_dialog_weapons_case_give</actor_dialog>
+                <actor_dialog>chehov_dialog_weapons_case_give_2</actor_dialog>
+		
+#include "gameplay\character_criticals_3.xml"
+
+
+			
+		
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+<!--------------------------------------- - ДЯДЬКА ЯР - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_mehanik_yar" team_default = "1">
+		<name>Дядька Яр</name>
+		<icon>ui_npc_u_dv_yar</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_mehanik_yar</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\yar</visual>
+        <snd_config>characters_voice\human_01\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>465</rank>
+		<reputation>450</reputation>
+		<money min="100000" max="100000" infinitive="1"/>  
+		<supplies>
+			[spawn] \n
+            wpn_fort \n
+            ammo_9x18_fmj \n
+	device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_raciya_yar</actor_dialog>
+		<actor_dialog>dialog_about_raciya_yar2</actor_dialog>
+		<actor_dialog>dialog_about_raciya_yar3</actor_dialog>
+		<actor_dialog>quest_rabota</actor_dialog>
+	<actor_dialog>yar_repair_dialog</actor_dialog>
+	<actor_dialog>dialog_about_raciya_yar_alt</actor_dialog>
+	<actor_dialog>dialog_dv_loki_case_open</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - Варяг - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_trader_varyag" team_default = "1">
+		<name>Варяг</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_trader_varyag</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\varag</visual>
+        <snd_config>characters_voice\human_01\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>350</rank>
+		<reputation>298</reputation>
+		<money min="100000" max="100000" infinitive="1"/> 
+		<supplies>
+			[spawn] \n
+           wpn_fort \n
+            ammo_9x18_fmj \n
+	device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+                <start_dialog>dialog_dolgs_t</start_dialog>
+                <actor_dialog>dialog_dolgs_2</actor_dialog>
+                <actor_dialog>dialog_gps_money_1</actor_dialog>
+                <actor_dialog>dialog_gps_money_2</actor_dialog>
+                <actor_dialog>dialog_gps_money_3</actor_dialog>
+                <actor_dialog>dialog_varag_prisoner_flesh_nagr</actor_dialog>
+                <actor_dialog>dialog_attack_greh_done_2</actor_dialog>
+                <actor_dialog>dialog_attack_greh_done_2_alt</actor_dialog>
+                <actor_dialog>dialog_sv_borman_noyt</actor_dialog>
+                <actor_dialog>dialog_sv_about_dv</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - !ОХРАНА ЛАГЕРЯ! - ----------------------------------------------------->
+
+<!--------------------------------------- - QUARD CHEHOV'S - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_guard_cheh" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1_1</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_guard_cheh</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_kask</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_fort \n
+            ammo_9x18_fmj \n
+            wpn_mp133 \n
+            ammo_12x70_buck \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>dialog_about_enter_to_cheh</start_dialog>
+
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+<!--------------------------------------- - QUARD 1 - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_guard1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_3</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_guard1</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_panama</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_pm \n
+            ammo_9x18_fmj \n
+			wpn_galil \n
+			ammo_7.62x51_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_2</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_2</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - QUARD 2 - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_guard2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_3_1</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_guard2</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_hood</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>120</rank>
+		<reputation>26</reputation>
+		<money min="1000" max="5000" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_pm \n
+            ammo_9x18_fmj \n
+			wpn_g3 \n
+			ammo_7.62x51_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_1</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_3</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - QUARD 3 - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_guard3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_guard3</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_mask</visual>
+        <snd_config>characters_voice\human_01\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>150</rank>
+		<reputation>50</reputation>
+		<money min="1000" max="4000" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_tt33 \n
+            ammo_7.62x25_p \n
+            wpn_akm \n
+            ammo_7.62x39_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_2</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_5</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - QUARD 4 - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_guard4" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_balon_10</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_guard4</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_kask</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>115</rank>
+		<reputation>35</reputation>
+		<money min="3000" max="5000" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_glock \n
+            ammo_9x19_fmj \n
+            wpn_mp133 \n
+            ammo_12x70_buck \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_2</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_7</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - QUARD 5 - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_guard5" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_4</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_guard5</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_mask</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>29</reputation>
+		<money min="2000" max="6000" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_beretta \n
+            ammo_9x19_fmj \n
+            wpn_akm \n
+            ammo_7.62x39_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_1</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_8</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - QUARD 6 - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_guard6" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+				<icon>ui_npc_u_stalker_sv_rukzak_3_1</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_guard6</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_panama</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>123</rank>
+		<reputation>233</reputation>
+		<money min="100" max="3000" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_tt33 \n
+            ammo_7.62x25_p \n
+			wpn_galil \n
+			ammo_7.62x51_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_1</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_9</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - QUARD 7 - ----------------------------------------------------->
+	<specific_character id="dv_svobbase_guard7" team_default = "1">
+		<name>Волк</name>
+		<icon>ui_npc_u_stalker_neytral_balon_1</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svobbase_guard7</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_hood</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>423</rank>
+		<reputation>233</reputation>
+		<money min="100" max="3000" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_pm \n
+            ammo_9x18_pbp \n
+            wpn_toz34 \n
+            ammo_12x70_buck \n
+		device_torch \n		
+		</supplies>
+			
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_2</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_10</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="dv_svob_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_3</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svob_1</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_kask</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_pm \n
+            ammo_9x18_fmj \n
+            wpn_ak74u \n
+            ammo_5.45x39_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_2</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_2</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="dv_svob_2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_3</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svob_2</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_antigas</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_beretta \n
+            ammo_9x19_fmj \n
+			wpn_g3 \n
+			ammo_7.62x51_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_2</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_2</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="dv_svob_3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_3</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svob_3</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_hat</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_pm \n
+            ammo_9x18_fmj \n
+            wpn_akm \n
+            ammo_7.62x39_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_2</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_2</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+
+	<specific_character id="dv_svob_4" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_3</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_svob_4</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_mask</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_pm \n
+            ammo_9x18_fmj \n
+            wpn_galil \n
+            ammo_7.62x51_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_about_cap_def_2</actor_dialog>
+		<actor_dialog>dialog_about_raciya_def_2</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - РАЗВЕДЧИКИ - ----------------------------------------------------->
+
+	
+	<specific_character id="dv_attgroup_default1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_3_1</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_attgroup_default1</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_hood</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_pm \n
+            ammo_9x18_fmj \n
+			wpn_g3 \n
+			ammo_7.62x51_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="dv_attgroup_default2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_balon_10</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_attgroup_default2</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_hat</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_pm \n
+            ammo_9x18_fmj \n
+			wpn_mp133 \n
+			ammo_12x70_buck \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!--------------------------------------- - РАНЕННЫЙ ПЛЕННИК - ----------------------------------------------------->
+	<specific_character id="dv_wounded_stalker" team_default = "1">
+		<name>Валенок</name>
+		<icon>ui_npc_u_stalker_sv_balon_10</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_wounded_stalker</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+
+		<visual>gz\npc\neutral\new_novice\novice_3</visual>
+        <snd_config>characters_voice\human_02\newbie\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+		device_torch \n		
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>dialog_about_pda</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+	<specific_character id="dv_greh_guard_woun_st" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_greh_guard_woun_st</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_1_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+			quest_key_greh_guard \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<!--------------------------------------- - Блокпост греха - ---------------------------------------->
+	<specific_character id="dv_grehblokpost_lider">
+		<name>Командир блокпоста</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Командир блокпоста</bio>
+
+		<class>dv_grehblokpost_lider</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>95</rank>
+		<reputation>-100</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_2_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+		</supplies>
+ 					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	<specific_character id="dv_grehblokpost_default1" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_grehblokpost_default1</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_3_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_glock \n
+			ammo_9x19_fmj \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	<specific_character id="dv_grehblokpost_default2" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_grehblokpost_default2</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_2_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	<specific_character id="dv_grehblokpost_default3" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_grehblokpost_default3</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_3_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--------------------------------------- - База греха - ---------------------------------------->
+	<specific_character id="dv_grehbase_lider">
+		<name>Лидер группировки "Грех"</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Лидер группировки "Грех".</bio>
+
+		<class>dv_grehbase_lider</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>95</rank>
+		<reputation>-100</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_2_soc</visual>
+		<supplies>
+			[spawn] \n
+		</supplies>
+ 					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	<specific_character id="dv_grehbase_default1" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_grehbase_default1</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_1_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	<specific_character id="dv_grehbase_default2" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_grehbase_default2</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_2_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_beretta \n
+			ammo_9x19_fmj \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	<specific_character id="dv_grehbase_default3" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_grehbase_default3</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_3_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	<specific_character id="dv_grehbase_default4" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_grehbase_default4</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_1_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_sks \n
+			ammo_7.62x39_fmj \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	
+	<specific_character id="dv_grehbase_default5" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_grehbase_default5</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_3_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_pps \n
+			ammo_7.62x25_p \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+<!---------------бандиты на заправке----------->
+
+	<specific_character id="dv_zapravka_bandit_1" team_default = "1">
+		<name>GENERATE_NAME_bandit</name>
+		<icon>ui_npc_u_dv_zapravka_bandit</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_bandit_novice_bio</bio>
+		
+		<class>dv_zapravka_bandit_1</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<snd_config>characters_voice\human_01\bandit\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<visual>gz\npc\neutral\new_novice\novice_2</visual>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+
+	
+	<specific_character id="dv_zapravka_bandit_2" team_default = "1"> 
+		<name>GENERATE_NAME_bandit</name>
+		<icon>ui_npc_u_dv_zapravka_bandit</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_bandit_novice_bio</bio>
+		
+		<class>dv_zapravka_bandit_2</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<snd_config>characters_voice\human_01\bandit\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<visual>gz\npc\neutral\new_novice\novice_3</visual>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_pps \n
+			ammo_7.62x25_p \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+	<specific_character id="dv_zapravka_bandit_3" team_default = "1">
+		<name>GENERATE_NAME_bandit</name>
+		<icon>ui_npc_u_dv_zapravka_bandit</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_bandit_novice_bio</bio>
+		
+		<class>dv_zapravka_bandit_3</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<snd_config>characters_voice\human_01\bandit\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<visual>gz\npc\bandit\new_bandit_3</visual>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_toz34 \n
+			ammo_12x70_buck \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+	<specific_character id="dv_zapravka_bandit_4" team_default = "1">
+		<name>GENERATE_NAME_bandit</name>
+		<icon>ui_npc_u_green_stalker_10</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_bandit_novice_bio</bio>
+		
+		<class>dv_zapravka_bandit_4</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<snd_config>characters_voice\human_01\bandit\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<visual>gz\npc\bandit\new_bandit_4</visual>
+		<supplies>
+			[spawn] \n
+			wpn_beretta \n
+			ammo_9x19_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+	<specific_character id="dv_zapravka_bandit_5" team_default = "1">
+		<name>GENERATE_NAME_bandit</name>
+		<icon>ui_npc_u_green_stalker_10</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_bandit_novice_bio</bio>
+		
+		<class>dv_zapravka_bandit_5</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>120</rank>
+		<reputation>-99</reputation>
+		
+		<snd_config>characters_voice\human_01\bandit\</snd_config>
+		<crouch_type>0</crouch_type>
+
+		<visual>gz\npc\bandit\new_bandit_2</visual>
+		<supplies>
+			[spawn] \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!--------------------группа атаки на базу греха-------------------------->
+	<specific_character id="dv_sv_greshbase_lider_sputnik" team_default = "1">
+		<name>Чехов</name>
+		<icon>ui_npc_u_dv_freedom_chehov</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_sv_greshbase_lider_sputnik</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\cheh</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+                        wpn_pm \n
+                        ammo_9x18_fmj \n
+			wpn_g3 \n
+			ammo_7.62x51_fmj \n
+			pda_sv_cheh\n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_attack_greh</actor_dialog>
+                 <actor_dialog>dialog_attack_greh_done</actor_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+<!-------------------lider----------------->
+
+<!-------------------default npc--------------->
+<specific_character id="dv_sv_greshbase_default_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1_1</icon>
+		<bio>mil_Svoboda_regular_bio</bio>
+
+		<class>dv_sv_grehbase_svobodovec_default</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_hat</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+			 wpn_fort \n
+            ammo_9x18_fmj \n
+            wpn_mp133 \n
+            ammo_12x70_buck \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+
+<specific_character id="dv_sv_greshbase_default_2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1_1</icon>
+		<bio>mil_Svoboda_regular_bio</bio>
+
+		<class>dv_sv_grehbase_svobodovec_default</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_hood</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+			 wpn_fort \n
+            ammo_9x18_fmj \n
+			wpn_galil \n
+			ammo_7.62x51_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+<specific_character id="dv_sv_greshbase_default_3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1_1</icon>
+		<bio>mil_Svoboda_regular_bio</bio>
+
+		<class>dv_sv_grehbase_svobodovec_default</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_kask</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+			 wpn_fort \n
+            ammo_9x18_fmj \n
+			wpn_g3 \n
+			ammo_7.62x51_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+<specific_character id="dv_sv_greshbase_default_4" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1_1</icon>
+		<bio>mil_Svoboda_regular_bio</bio>
+
+		<class>dv_sv_grehbase_svobodovec_default</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_mask</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+			wpn_glock \n
+                        ammo_9x19_fmj \n
+  			wpn_akm \n
+			ammo_7.62x39_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+<specific_character id="dv_sv_greshbase_default_5" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1_1</icon>
+		<bio>mil_Svoboda_regular_bio</bio>
+
+		<class>dv_sv_grehbase_svobodovec_default</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_hat</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+			 wpn_fort \n
+            ammo_9x18_fmj \n
+			wpn_g3 \n
+			ammo_7.62x51_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+<specific_character id="dv_sv_greshbase_default_6" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_sv_rukzak_1_1</icon>
+		<bio>mil_Svoboda_regular_bio</bio>
+
+		<class>dv_sv_grehbase_svobodovec_default</class>
+		<community>freedom</community> <terrain_sect>stalker_freedom_terrain</terrain_sect>
+
+		<visual>gz\npc\svoboda\freedom_panama</visual>
+        <snd_config>characters_voice\human_03\freedom\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>130</rank>
+		<reputation>23</reputation>
+		<money min="1500" max="4500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+			 wpn_fort \n
+            ammo_9x18_fmj \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+		device_torch \n		
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>hello_dialog</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!------------Лидер отряда долга---------------------->
+	<specific_character id="dv_dolg_group_lider" team_default = "1">
+		<name>Капитан Куприянов</name>
+		<icon>ui_npc_u_dv_dolg_cap</icon>
+		<map_icon x="4" y="0"></map_icon>
+		<bio>sim_dolg_regular_bio</bio>
+		
+		<class>dv_dolg_group_lider</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+		
+		<rank>560</rank>
+		<reputation>40</reputation>
+
+		<visual>gz\npc\dolg\kuprian</visual>
+		<snd_config>characters_voice\human_01\dolg\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+			device_torch \n
+			pda_dolg_kuprianov \n
+                        racya_b \n	
+#include "gameplay\character_items.xml" \n			
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_6.xml"
+		
+       <!--<actor_dialog>dv_dolg_raciya</actor_dialog> <!-- Про аптечки---переделал-->
+		<!--<actor_dialog>dv_dolg_raciya_2</actor_dialog> <!--Просит рацию---переделал--->
+		<!--<actor_dialog>dv_dolg_raciya_3</actor_dialog> <!--После квеста со шпионом,отдает доки и просит рацию---переделал--->
+		<!--<actor_dialog>dv_dolg_raciya_apt</actor_dialog> <!--Про наличие аптечек-->
+		<!--<actor_dialog>dv_dolg_raciya_apt_army</actor_dialog> <!--Про наличие аптечек-->
+		<!--<actor_dialog>dv_dolg_raciya_apt_scientic</actor_dialog> <!--Про наличие аптечек-->
+		<actor_dialog>dv_dolg_about_help</actor_dialog>
+		<actor_dialog>dv_dolg_about_medkits</actor_dialog>
+		<actor_dialog>dv_dolg_about_raciya</actor_dialog>
+		<actor_dialog>dv_dolg_about_shpion</actor_dialog>
+		<actor_dialog>dv_dolg_rush_to_greh</actor_dialog>
+		<actor_dialog>dv_dolg_rush_to_greh_2</actor_dialog>
+		<actor_dialog>dialog_dv_dolg_rush_done</actor_dialog>
+		
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+	
+<!---------------бойцы отряда долга----------------->
+	<specific_character id="dv_dolg_group_default" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_mask_1</icon>
+		<map_icon x="4" y="0"></map_icon>
+		<bio>sim_dolg_regular_bio</bio>
+		
+		<class>dv_dolg_group_default</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+		
+		<rank>340</rank>
+		<reputation>20</reputation>
+
+		<visual>gz\npc\dolg\stalker_do_mask_1</visual>
+		<snd_config>characters_voice\human_01\dolg\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n			
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_6.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+	<specific_character id="dv_dolg_group_default_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_mask_1</icon>
+		<map_icon x="4" y="0"></map_icon>
+		<bio>sim_dolg_regular_bio</bio>
+		
+		<class>dv_dolg_group_default_1</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+		
+		<rank>340</rank>
+		<reputation>20</reputation>
+
+		<visual>gz\npc\dolg\stalker_do_mask_1</visual>
+		<snd_config>characters_voice\human_01\dolg\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n			
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_6.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+<!---------------Труп----------------->
+		<specific_character id="trup_npc" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_2</icon>
+		<bio>esc_tolik_bio</bio>
+
+		<class>trup_npc</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>196</rank>
+		<reputation>6</reputation>
+		<money min="200" max="600" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_02\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>gz\npc\neutral\new_novice\novice_1</visual>
+		<supplies>
+                [spawn] \n
+                 </supplies>
+
+#include "gameplay\character_criticals_5.xml"
+			
+	</specific_character>
+	<specific_character id="dv_torgash" team_default = "1">
+		<name>Торгаш</name>
+		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>gar_seryi_bio</bio>
+
+		<class>dv_torgash</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>511</rank>
+		<reputation>-18</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_02\bandit\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>gz\npc\neutral\new_novice\novice_2</visual>
+		<supplies>
+			[spawn] \n
+                wpn_beretta \n
+		ammo_9x19_fmj \n
+                pda_torgash \n
+		</supplies>
+		
+#include "gameplay\character_criticals_4.xml"
+		
+		<start_dialog>dm_hello_dialog</start_dialog>	
+	</specific_character>	
+        
+                	<specific_character id="dv_kamaz_stalker_2" team_default = "1">
+		<name>Слепой</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<bio>esc_stalker_novice_bio</bio>
+
+		<class>dv_kamaz_stalker_2</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>58</rank>
+		<reputation>-2</reputation>
+		<money min="200" max="600" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		
+		<visual>gz\npc\neutral\blind</visual>
+		<supplies>
+			[spawn] \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>dialog_about_pda_2</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+		<specific_character id="dv_maps_bandit" team_default = "1">
+		<name>Гной</name>
+		<icon>ui_npc_u_stalker_bandit_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>esc_bandit_novice_bio</bio>
+	
+		<class>dv_maps_bandit</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>167</rank>
+		<reputation>-65</reputation>
+		
+		<snd_config>characters_voice\human_01\bandit\</snd_config>
+		<crouch_type>1</crouch_type>
+
+		<visual>gz\npc\neutral\new_novice\novice_5</visual>
+		<supplies>
+			[spawn] \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"			
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+
+	<specific_character id="dv_svobbase_prisoner" team_default="1">
+		<name>Гаврила</name>
+		<icon>ui_npc_dv_pris</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>dv_svobbase_prisoner</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_3</visual>
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+               <start_dialog>dialog_prisoner_quest</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>	
+
+        <specific_character id="dv_bekas" team_default = "1">
+		<name>Бекас</name>
+		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>gar_seryi_bio</bio>
+
+		<class>dv_bekas</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>511</rank>
+		<reputation>-18</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_02\bandit\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>gz\npc\neutral\bekas</visual>
+		<supplies>
+			[spawn] \n
+                        wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_akm \n
+			ammo_7.62x39_fmj \n
+                        pda_bekas \n
+		</supplies>
+		
+#include "gameplay\character_criticals_4.xml"
+		
+		<start_dialog>dialog_bekas_vrag</start_dialog>	
+	</specific_character>	
+
+               <specific_character id="dv_petro" team_default = "1">
+		<name>Петро</name>
+		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>gar_seryi_bio</bio>
+
+		<class>dv_petro</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>511</rank>
+		<reputation>-18</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_02\bandit\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>gz\npc\neutral\neutral_9</visual>
+		<supplies>
+			[spawn] \n
+                wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_mp133 \n
+			ammo_12x70_buck \n
+		</supplies>
+		
+#include "gameplay\character_criticals_4.xml"
+		
+		<start_dialog>dialog_dv_petro</start_dialog>	
+	</specific_character>
+
+               <specific_character id="dv_fantom" team_default = "1">
+		<name>Фантом</name>
+		<icon>ui_npc_u_stalker_neytral_balon_8</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>gar_seryi_bio</bio>
+
+		<class>dv_fantom</class>
+		<community>greh</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>511</rank>
+		<reputation>-18</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+        <snd_config>characters_voice\human_01\monolith\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+				<visual>gz\npc\greh\stalker_grehnik_1_soc</visual>
+		<supplies>
+			[spawn] \n
+                wpn_pm \n
+		ammo_9x18_fmj \n
+                wpn_val \n
+		ammo_9x39_sp5 \n
+		</supplies>
+		
+#include "gameplay\character_criticals_4.xml"
+		
+		<start_dialog>dm_hello_dialog</start_dialog>	
+	</specific_character>
+	<specific_character id="dv_dolg_empty" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_do_mask_1</icon>
+		<map_icon x="4" y="0"></map_icon>
+		<bio>sim_dolg_regular_bio</bio>
+		
+		<class>dv_dolg_empty</class>
+		<community>dolg</community> <terrain_sect>stalker_dolg_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+		
+		<rank>340</rank>
+		<reputation>20</reputation>
+
+		<visual>gz\npc\dolg\dolg_gas</visual>
+		<snd_config>characters_voice\human_01\dolg\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+#include "gameplay\character_items.xml" \n			
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_6.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+	<specific_character id="dv_greh_empty" team_default = "1">
+		<name>Сталкер группировки "Грех"</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_greh_empty</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_2_soc</visual>
+		<supplies>
+			[spawn] \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+
+
+	<specific_character id="dv_greh_diary" team_default = "1">
+		<name>Сталкер группировки "Грех"</name>
+		<icon>ui_npc_u_dv_greh_default1</icon>
+		<bio>Сталкер группировки "Грех". Детальная информация отсутствует.</bio>
+
+		<class>dv_greh_diary</class>
+		<community>greh</community> <terrain_sect>stalker_greh_terrain</terrain_sect>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\greh\stalker_grehnik_3_soc</visual>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_pps \n
+			ammo_7.62x25_p \n
+                        dv_greh_diary \n
+		</supplies>
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+
+	<specific_character id="dv_black_diger" team_default = "1">
+		<name>Чёрный Копатель</name>
+		<icon>ui_npc_u_dv_freedom_mikluha</icon>
+		<bio>escape_trader_bio</bio>
+
+		<class>dv_black_diger</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+
+		<visual>actors\bandit\stalker_bandit_master</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+  		<crouch_type>0</crouch_type>
+				
+		<rank>630</rank>
+		<reputation>423</reputation>
+		<money min="3500" max="9500" infinitive="0"/> 
+		<supplies>
+			[spawn] \n
+            wpn_desert_eagle \n
+            ammo_11.43x23_fmj \n
+            wpn_akm \n
+            ammo_7.62x54_7h1 \n
+	device_torch \n	
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+		
+#include "gameplay\character_criticals_3.xml"
+
+
+			
+		
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+	<specific_character id="dv_anomaly_stalk" team_default = "1">
+		<name>Рафик</name>
+		<icon>ui_npc_u_stalker_neytral_hood_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>dv_anomaly_stalk</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>14</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<visual>gz\npc\neutral\neutral_10</visual>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+
+		<start_dialog>dialog_anom_stalk</start_dialog>	
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="dv_anomaly_stalk_bad" team_default = "1">
+		<name>Орех</name>
+		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_general_bio</bio>
+
+		<class>dv_anomaly_stalk_bad</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>447</rank>
+		<reputation>33</reputation>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<visual>gz\npc\neutral\new_novice\novice_5</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_pps \n
+			ammo_7.62x25_p \n
+			device_torch \n
+                        af_soul \n
+#include "gameplay\character_drugs.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_items.xml"
+		</supplies>
+
+		<actor_dialog>dialog_anom_bad_stalk</actor_dialog>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<specific_character id="dv_scien_zombie" team_default = "1">
+		<name>Фомка</name>
+		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
+		<map_icon x="7" y="0"></map_icon>
+		<bio>sim_zombied_veteran_bio</bio>
+		
+		<class>dv_scien_zombie</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>100</rank>
+		<reputation>20</reputation>
+
+
+		<visual>actors\stalker_zombi\stalker_zombie3</visual>
+		<snd_config>characters_voice\human_01\zombied\</snd_config>
+		<crouch_type>0</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_ak74u \n
+			ammo_5.45x39_ap = 1 \n
+			wpn_pm \n
+			ammo_9x18_fmj = 1 \n
+			device_torch \n
+                        dv_fomka_diary \n
+		</supplies>
+			
+#include "gameplay\character_criticals_1.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="dv_greh_plen" team_default = "1">
+		<name>Гамлет</name>
+		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_general_bio</bio>
+
+		<class>dv_greh_plen</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>447</rank>
+		<reputation>33</reputation>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<visual>gz\npc\neutral\neutral_3</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			device_torch \n
+#include "gameplay\character_drugs.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_items.xml"
+		</supplies>
+
+		<actor_dialog>dialog_anom_bad_stalk</actor_dialog>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="dv_shpion" team_default = "1">
+		<name>Кривой</name>
+		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_general_bio</bio>
+
+		<class>dv_shpion</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>447</rank>
+		<reputation>33</reputation>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<visual>gz\npc\neutral\neutral_4</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_galil \n
+			ammo_7.62x51_fmj \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			device_torch \n
+#include "gameplay\character_drugs.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_items.xml"
+		</supplies>
+
+		<start_dialog>dialog_dolg_shpion</start_dialog>
+		<actor_dialog>dialog_dolg_shpion_2</actor_dialog>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="dv_putnik" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_neytral_rukzak_2</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_general_bio</bio>
+
+		<class>dv_putnik</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>447</rank>
+		<reputation>33</reputation>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<visual>gz\npc\neutral\neutral_5</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_mp133 \n
+			ammo_12x70_buck \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			device_torch \n
+#include "gameplay\character_drugs.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_items.xml"
+		</supplies>
+
+		<actor_dialog>dv_putnik_dialog</actor_dialog>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+</xml>

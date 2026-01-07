@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+gz_yan_ambush_mine_spawn} %+gz_yan_ambush_mine2_activate% sr_idle@nil
+on_info = {+gz_yan_ambush_mine2_stop} %+gz_yan_ambush_mine2_dell% sr_idle@nil
+
+[sr_idle@nil]

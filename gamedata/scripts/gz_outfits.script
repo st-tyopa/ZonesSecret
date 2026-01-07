@@ -1,0 +1,47 @@
+-----------------------------------------------------------------------------------------------------------------------------------
+-- Модуль брони
+-- Автор: Kondr48.
+-- Последнее редактирование: 24.07.2016 23:52
+-- За метод замены текстуры спасибо Alpet'у
+-----------------------------------------------------------------------------------------------------------------------------------
+
+local ini = system_ini()
+local actor = db.actor
+
+
+function outfit_reload() -- Вызывается в случае смены костюма 
+  if last_outfit == nil then last_outfit = "hello" end
+  if actor:item_in_slot(6) == nil then
+   outfit = "without_outfit"
+   af_count = 0
+  else
+   outfit = actor:item_in_slot(6):section()
+   af_count = actor:item_in_slot(6):get_outfit()["artefact_count"] 
+  end
+   if last_outfit ~= outfit then
+	-- Смена текстуры перчатки:
+	local perchatka = ini:r_string(outfit,"texture_arm")
+    local exo = ini:r_string(outfit,"texture_exo")
+	local t = texture_find("hands\\act_arm_0")
+    if t then
+     t:set_name("hands\\"..perchatka)
+     t:reload()
+    end
+    local t_b = texture_find("hands\\act_arm_0_bump")
+    if t_b then
+     t_b:set_name("hands\\"..perchatka.."_bump")
+     t_b:reload()
+    end
+    local te = texture_find("hands\\act_arm_exo")
+    if te then
+     te:set_name("hands\\"..exo)
+     te:reload()
+    end
+    local te_b = texture_find("hands\\act_arm_exo_bump")
+     if te_b then
+     te_b:set_name("hands\\"..exo.."_bump")
+     te_b:reload()
+    end
+	last_outfit = outfit
+end   
+end

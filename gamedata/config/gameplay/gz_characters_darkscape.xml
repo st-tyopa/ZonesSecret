@@ -1,0 +1,1574 @@
+<?xml version='1.0' encoding="windows-1251"?>
+<xml>
+<!--------------------------------------- - BEGIN - S.T.A.L.K.E.R Prologue - BEGIN - ----------------------------------------------------->
+<!--------------------------------------- Darkscape ------------------------------------------------------------------------------------------------>
+
+<!--------------------------------------- Военные сталкеры ------------------------------------------------------------------------------------------------>
+	<specific_character id="ds_vertolet_deadman1" team_default = "1">
+		<name>GENERATE_NAME_sergeant</name>
+		<icon>ui_npc_u_soldier_spetsnaz</icon>
+		<bio>esc_fox_bio</bio>
+
+		<class>ds_vertolet_deadman1</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<rank>338</rank>
+		<reputation>-3</reputation>
+		
+		<visual>gz\npc\army\mil_kask_alt</visual>	
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<panic_treshold>0</panic_treshold>
+
+		<supplies>
+			[spawn] \n
+			device_torch \n
+		</supplies>
+		
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+
+	<specific_character id="ds_vertolet_deadman2" team_default = "1">
+		<name>GENERATE_NAME_sergeant</name>
+		<icon>ui_npc_u_soldier_spetsnaz</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>ds_vertolet_deadman2</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<rank>423</rank>
+		<reputation>20</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<visual>gz\npc\army\mil_gas_alt</visual>	
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>-1</crouch_type>
+		
+		<supplies>
+			[spawn] \n
+			device_torch \n
+		</supplies>
+		
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+	
+	<specific_character id="ds_vertolet_deadman3" team_default = "1">
+		<name>GENERATE_NAME_sergeant</name>
+		<icon>ui_npc_u_soldier_spetsnaz</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>ds_vertolet_deadman3</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<rank>354</rank>
+		<reputation>-11</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<visual>gz\npc\army\mil_mask_alt</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>-1</crouch_type>
+		
+		<supplies>
+			[spawn] \n
+			device_torch \n
+		</supplies>
+		
+		<start_dialog>hello_dialog</start_dialog>		
+	</specific_character>
+
+       	<specific_character id="ds_zapravka_deadman1" team_default = "1">
+		<name>zahar</name>
+		<icon>ui_npc_u_soldier_spetsnaz</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>ds_zapravka_deadman1</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<rank>354</rank>
+		<reputation>-11</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<visual>gz\npc\army\mil_gas_alt</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>-1</crouch_type>
+		
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			device_torch \n
+		</supplies>
+		
+		<start_dialog>hello_dialog</start_dialog>		
+	</specific_character>
+
+                	<specific_character id="ds_zapravka_deadman2" team_default = "1">
+		<name>sobol</name>
+		<icon>ui_npc_u_soldier_spetsnaz</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>gar_stalker_regular_bio</bio>
+
+		<class>ds_zapravka_deadman2</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<rank>354</rank>
+		<reputation>-11</reputation>
+		<money min="600" max="2000" infinitive="0"/>
+		
+		<visual>gz\npc\army\mil_kask_alt</visual>		
+		<snd_config>characters_voice\human_01\military\</snd_config>
+		<crouch_type>-1</crouch_type>
+		
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			device_torch \n
+		</supplies>
+		
+		<start_dialog>hello_dialog</start_dialog>		
+	</specific_character>
+	
+<!--------------------------------------- Бандиты ------------------------------------------------------------------------------------------------>
+	<specific_character id="ds_bandbase_bandit_default" team_default = "1">
+		<name>GENERATE_NAME_bandit</name>
+		<icon>ui_npc_u_stalker_bandit_5</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>esc_bandit_novice_bio</bio>
+		
+		<class>ds_bandbase_bandit_default</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>119</rank>
+		<reputation>-89</reputation>
+		
+		<snd_config>characters_voice\human_01\bandit\</snd_config>
+		<crouch_type>1</crouch_type>
+
+		<visual>gz\npc\bandit\new_bandit_3</visual>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_bm16 \n
+			ammo_12x70_buck \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+
+#include "gameplay\character_criticals_3.xml"
+#include "gameplay\character_dialogs.xml"						
+	</specific_character>
+	
+
+	<specific_character id="ds_bandbase_bandit_lider" team_default="1">
+		<name>byk</name>
+		<icon>ui_npc_u_stalker_bandit_master</icon>
+		<map_icon x="3" y="2"></map_icon>
+		<bio>val_bandit_veteran_bio</bio>
+		
+		<class>ds_bandbase_bandit_lider</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>808</rank>
+		<reputation>-132</reputation>
+
+
+		<visual>gz\npc\neutral\new_novice\novice_2</visual>	
+		<snd_config>characters_voice\human_02\bandit\</snd_config>
+		<crouch_type>1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_4.xml"
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+		
+
+<!--------------------------------------- - Бандиты на мосту (Бывшие нейтралы. Названия частично сохранены)  - ----------------------------------------------------->
+	<specific_character id="ds_bridge_stalker_lider" team_default="1">
+		<name>GENERATE_NAME_bandit</name>
+		<icon>ui_npc_u_stalker_bandit_master</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_general_bio</bio>
+
+		<class>ds_bridge_stalker_lider</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>6</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_5</visual>
+		<snd_config>characters_voice\human_02\bandit\</snd_config>
+		<crouch_type>1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="600" max="2000" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+	<specific_character id="ds_bridge_stalker_default" team_default="1">
+		<name>GENERATE_NAME_bandit</name>
+		<icon>ui_npc_u_stalker_bandit_5</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_bridge_stalker_default</class>
+		<community>bandit</community> <terrain_sect>stalker_bandit_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<snd_config>characters_voice\human_01\bandit\</snd_config>
+		<crouch_type>1</crouch_type>
+
+		<visual>gz\npc\bandit\new_bandit_3</visual>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_bizon \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+		
+
+<!--------------------------------------- - Искатели - ----------------------------------------------------->
+	
+<!---------------------------trader---------------------->
+	<specific_character id="ds_iskateli_trader" team_default = "1">
+		<name>ignat</name>
+		<icon>ui_npc_u_iskateli_makar</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_general_bio</bio>
+
+		<class>ds_iskateli_trader</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="50000" max="100000" infinitive="1"></money>
+		
+		<rank>720</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\neutral\grey</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			device_torch \n
+#include "gameplay\character_items.xml"\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		<start_dialog>dialog_iskateli_trader_1</start_dialog>
+				
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+	
+	
+<!---------------------------doctor---------------------->
+	<specific_character id="ds_iskateli_doctor" team_default = "1">
+		<name>makar</name>
+		<icon>ui_npc_u_iskateli_ignat</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_veteran_bio</bio>
+
+		<class>ds_iskateli_doctor</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="50000" max="100000" infinitive="1"></money>
+	
+		<rank>507</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\iskateli\isk_doc</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+#include "gameplay\character_items.xml"\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		<start_dialog>dialog_isk_doc_dialog1</start_dialog>
+		<actor_dialog>dialog_ds_isk_about_isk</actor_dialog>
+		<actor_dialog>dialog_gz_hacker_otkaz</actor_dialog>
+		
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+<!---------------------------provodnik---------------------->
+	<specific_character id="ds_iskateli_provodnik" team_default="1">
+		<name>tyopa</name>
+		<icon>ui_npc_u_iskateli_tepa</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_iskateli_provodnik</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\neutral_2</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+			wpn_mp5 \n
+			ammo_9x19_fmj\n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		<actor_dialog>dialog_isk_provodnik2</actor_dialog>
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>	
+	
+	
+<!---------------------------default---------------------->
+	<specific_character id="ds_iskateli_default1" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_iskateli_default</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\neutral_1</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+	
+<!--------------------------------------- - Последний день - ----------------------------------------------------->
+	<specific_character id="ds_ld_blokp_leader" team_default="1">
+		<name>Оцелот</name>
+		<icon>ui_npc_u_ds_lastday_mask</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_general_bio</bio>
+
+		<class>ds_ld_blokp_leader</class>
+		<community>last_day</community> <terrain_sect>stalker_last_day_terrain</terrain_sect>
+		
+		<rank>515</rank>
+		<reputation>6</reputation>
+
+		<visual>gz\npc\lastday\ocelot</visual>
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+		<actor_dialog>dialog_ds_ld_sumka_ocelot</actor_dialog>
+		<actor_dialog>dialog_ds_ld_racia</actor_dialog>
+		<actor_dialog>dialog_ocelot_return_shved</actor_dialog>
+		<actor_dialog>dialog_ds_ld_ocelot_group</actor_dialog>
+		
+#include "gameplay\character_criticals_3.xml"
+
+		<money min="600" max="2000" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+	<specific_character id="ds_ld_blokp_default1" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_ds_lastday_mask</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_ld_blokp_default</class>
+		<community>last_day</community> <terrain_sect>stalker_last_day_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\lastday\ld_gas</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj\n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="ds_dead_ld" team_default="1">
+		<name>Швед</name>
+		<icon>ui_npc_u_ds_lastday_mask</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_dead_ld</class>
+		<community>last_day</community> <terrain_sect>stalker_last_day_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\lastday\ld_gas</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj\n
+			device_torch \n
+                        pda_ld_code \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="ds_ld_blokp_semen" team_default="1">
+		<name>Семён</name>
+		<icon>ui_npc_u_ds_lastday_mask</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_ld_blokp_semen</class>
+		<community>last_day</community> <terrain_sect>stalker_last_day_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\lastday\ld_gas</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<specific_character id="ds_ld_blokp_vitalua" team_default="1">
+		<name>Виталик</name>
+		<icon>ui_npc_u_ds_lastday_mask</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_ld_blokp_vitalua</class>
+		<community>last_day</community> <terrain_sect>stalker_last_day_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\lastday\ld_gas</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_toz34 \n
+			ammo_12x70_buck \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+<!--------------------------------------- - Лагерь нейтралов - ----------------------------------------------------->
+<!---------------------------механик---------------------->
+	<specific_character id="ds_neutlager_mehanic" team_default="1">
+		<name>azrael</name>
+		<icon>ui_npc_u_ds_stalkers_mehanik</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_general_bio</bio>
+
+		<class>ds_neutlager_mehanic</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="50000" max="100000" infinitive="1"></money>
+		
+		<rank>515</rank>
+		<reputation>6</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_5</visual>
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+             <actor_dialog>dialog_ds_neut_mehanik_about_rac</actor_dialog>
+             <actor_dialog>tm_ds_neutlager_mehanic_dialog</actor_dialog>
+             <actor_dialog>tm_ds_neutlager_mehanic_reward</actor_dialog>
+             <actor_dialog>dialog_meh</actor_dialog>
+             <actor_dialog>dialog_gz_mechanic</actor_dialog>
+		
+#include "gameplay\character_dialogs.xml"
+
+		
+		<money min="600" max="2000" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+<!---------------------------trader---------------------->
+	<specific_character id="ds_neutlager_trader" team_default = "1">
+		<name>puma</name>
+		<icon>ui_npc_u_ds_stalkers_trader</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_general_bio</bio>
+
+		<class>ds_neutlager_trader</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="50000" max="100000" infinitive="1"></money>
+		
+		<rank>720</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_6</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			device_torch \n
+#include "gameplay\character_items.xml"\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+		<actor_dialog>dialog_ds_neut_trader_about_rac</actor_dialog>
+             <actor_dialog>tm_ds_neutlager_trader_dialog</actor_dialog>
+             <actor_dialog>tm_ds_neutlager_trader_reward</actor_dialog>
+             <actor_dialog>dialog_torg_about_shved</actor_dialog>
+				
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+	
+<!---------------------------barmen---------------------->
+	<specific_character id="ds_neutlager_barmen" team_default = "1">
+		<name>scarab</name>
+		<icon>ui_npc_u_ds_stalkers_barmen</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_veteran_bio</bio>
+
+		<class>ds_neutlager_barmen</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="50000" max="100000" infinitive="1"></money>
+	
+		<rank>507</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\neutral\ds_trader</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			device_torch \n
+#include "gameplay\character_items.xml"\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+             <start_dialog>hello_dialog</start_dialog> 
+             <actor_dialog>dialog_ds_intresting</actor_dialog>
+             <actor_dialog>dialog_ds_cap</actor_dialog>
+             <actor_dialog>dialog_ds_cap_after_sumka</actor_dialog>
+             <actor_dialog>tm_ds_neutlager_barmen_dialog</actor_dialog>
+             <actor_dialog>tm_ds_neutlager_barmen_reward</actor_dialog>
+             <actor_dialog>dialog_about_dv</actor_dialog>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+	
+<!---------------------------doctor---------------------->
+	<specific_character id="ds_neutlager_doctor" team_default = "1">
+		<name>doc</name>
+		<icon>ui_npc_u_ds_stalkers_barmen</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_veteran_bio</bio>
+
+		<class>ds_neutlager_doctor</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="50000" max="100000" infinitive="1"></money>
+	
+		<rank>507</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_1</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			device_torch \n
+#include "gameplay\character_items.xml"\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		<actor_dialog>dialog_ds_neut_doctor_about_rac</actor_dialog>
+        <actor_dialog>dialog_doc_medkit_case</actor_dialog>
+        <actor_dialog>dialog_doc_medkit_case_2</actor_dialog>
+        <actor_dialog>dialog_doc_medkit_case_3</actor_dialog>
+        <actor_dialog>tm_ds_neutlager_doctor_dialog</actor_dialog>
+        <actor_dialog>tm_ds_neutlager_doctor_reward</actor_dialog>
+        <actor_dialog>dialog_doc_about_shved</actor_dialog>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+	
+<!---------------------------wounded digger---------------------->
+	<specific_character id="ds_neutlager_woundeddigger" team_default = "1">
+		<name>ugrum</name>
+		<icon>ui_npc_ds_ugr</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_veteran_bio</bio>
+
+		<class>ds_neutlager_woundeddigger</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+	
+		<rank>507</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\neutral\ugr_1</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			device_torch \n
+#include "gameplay\character_items.xml"\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+	
+<!---------------------------dead digger 1---------------------->
+	<specific_character id="ds_deaddigger1" team_default = "1">
+		<name>sutulij</name>
+		<icon>ui_npc_u_ds_stalkers_barmen</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_veteran_bio</bio>
+
+		<class>ds_deaddigger1</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+	
+		<rank>507</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_6</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_bm16_full \n
+			ammo_12x70_buck \n
+                        filter = 2 \n
+                        quest_diary_dead_digger1 \n
+			device_torch \n
+#include "gameplay\character_items.xml"\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+             <start_dialog>hello_dialog</start_dialog> 
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+	
+<!---------------------------dead digger 2---------------------->
+	<specific_character id="ds_deaddigger2" team_default = "1">
+		<name>gimli</name>
+		<icon>ui_npc_u_ds_stalkers_barmen</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_veteran_bio</bio>
+
+		<class>ds_deaddigger2</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+	
+		<rank>507</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\neutral\neutral_3</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_bizon \n
+                        filter \n
+                        quest_diary_dead_digger2 \n
+			device_torch \n
+#include "gameplay\character_items.xml"\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+             <start_dialog>hello_dialog</start_dialog> 
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+	
+<!---------------------------suicide digger---------------------->
+	<specific_character id="ds_suicidedigger" team_default = "1">
+		<name>grek</name>
+		<icon>ui_npc_u_ds_stalkers_barmen</icon>
+		<map_icon x="1" y="0"></map_icon>
+		<bio>sim_stalker_veteran_bio</bio>
+
+		<class>ds_suicidedigger</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+	
+		<rank>507</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\neutral\neutral_3</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+			dscol_af_prelest \n
+                        quest_diary_suicide_digger \n
+#include "gameplay\character_items.xml"\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+             <start_dialog>hello_dialog</start_dialog> 
+
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+
+<!-- Сталкер у капища -->	
+	<specific_character id="ds_kap_stalker" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_kap_stalker</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\bandit\new_bandit_5</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+			wpn_bm16 \n
+			ammo_12x76_dart \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+		
+		<start_dialog>dialog_ds_kap_stalker_meet</start_dialog>
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<!---------------------------default---------------------->
+	<specific_character id="ds_neutlager_default2" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_2</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\bandit\new_bandit_5</visual>
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+			wpn_bm16_full \n
+			ammo_12x76_dart \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>	
+	
+
+	<specific_character id="ds_neutlager_default1" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_2</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_bizon \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="ds_neutlager_default3" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+				<visual>gz\npc\neutral\new_novice\novice_3</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_pps \n
+			ammo_7.62x25_p \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="ds_neutlager_default4" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_3</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_toz34 \n
+                        ammo_12x70_buck \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="ds_neutlager_default5" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_4</visual>
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj = 1 \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="ds_neutlager_default6" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_4</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_5</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_bm16_full \n
+			ammo_12x70_buck \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="ds_neutlager_default7" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_5</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_6</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_ak74u \n
+			ammo_5.45x39_fmj = 1 \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="ds_neutlager_default8" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+				<visual>gz\npc\neutral\new_novice\novice_7</visual>
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_pps \n
+			ammo_7.62x25_p \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="ds_neutlager_default9" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_4</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_tt33 \n
+			ammo_7.62x25_p \n
+			wpn_bm16 \n
+			ammo_12x76_dart \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+	<specific_character id="ds_neutlager_default10" team_default="1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_default</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_5</visual>
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_bizon \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	
+	
+
+<!-------------------------------------Сталкер у Камаза----------------------------------------------------->
+	<specific_character id="ds_kamaz_stalker" team_default = "1">
+		<name>slepoj</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<bio>esc_stalker_novice_bio</bio>
+
+		<class>ds_kamaz_stalker</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>58</rank>
+		<reputation>-2</reputation>
+		<money min="200" max="600" infinitive="0"/>
+		
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		
+		<visual>gz\npc\neutral\blind</visual>
+		<supplies>
+			[spawn] \n
+			wpn_bm16_full \n
+			ammo_12x70_buck\n	
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+			
+		<start_dialog>dialog_ds_kamaz_stalker_meet_1</start_dialog>
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="ds_neutlager_hunt_1" team_default="1">
+		<name>Калугин</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_hunt_1</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\bandit\new_bandit_5</visual>
+		
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+                        wpn_binoc \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+
+		<start_dialog>dialog_ds_hunt</start_dialog>
+		<actor_dialog>dialog_ds_hunt_2</actor_dialog>		
+		<actor_dialog>dialog_ds_hunt_3</actor_dialog>	
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="ds_neutlager_hunt_2" team_default="1">
+		<name>Гонта</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_neutlager_hunt_2</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_6</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_bm16_full \n
+			ammo_12x70_buck = 1 \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<actor_dialog>dialog_ds_hunt_alt</actor_dialog>
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+<specific_character id="ds_dead_hunt" team_default="1">
+		<name>Мазай</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_dead_hunt</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_2</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_fort \n
+			ammo_9x18_fmj \n
+			wpn_bm16_full \n
+			ammo_12x70_buck \n
+			device_torch \n
+                        pda_hunt \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+	<specific_character id="ds_geed" team_default="1">
+		<name>Гид</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_geed</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_6</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_toz34 \n
+			ammo_12x70_buck \n
+                        ds_geed_diary \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="ds_tourist_1" team_default="1">
+		<name>Сэм Уэйк</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_tourist_1</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_5</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="ds_tourist_2" team_default="1">
+		<name>Алекс Лайхо</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_tourist_2</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_4</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="ds_locman" team_default="1">
+		<name>Лоцман</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>ds_locman</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\neutral\new_novice\novice_7</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj \n
+			wpn_mp5 \n
+			ammo_9x19_fmj \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+	<specific_character id="dscol_ghost" team_default="1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>dscol_ghost</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\greh\stalker_greh_1</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+
+
+	
+<!--------------------------------------- - END - S.T.A.L.K.E.R Prologue - END - ----------------------------------------------------->
+
+</xml>

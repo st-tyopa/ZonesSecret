@@ -1,0 +1,249 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Сталкеры
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[stalker_prop]
+visual_name       = actors\neytral\stalker_neytral_hood_9
+community_index   = 3
+spec_character    = stalker_general_default
+char_profile      = $character_profile$
+custom_data       = $custom_data$
+money             = $money$
+rank              = 400
+reputation        = 0
+health            = 1.0
+wounded           = false
+death             = false
+relation          = 1
+net_funcs         = stalker_net
+
+
+[stalker_sakharov_prop]:stalker_prop 
+visual_name       = actors\ucheniy\ucheniy_2
+community_index   = 7
+
+[m_osoznanie_prop]:stalker_sakharov_prop
+visual_name       = actors\ucheniy\ucheniy_1_strong
+
+[stalker_net]
+get = Get_Data_Stalker
+set = Set_Data_Stalker
+upd = true
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Монстры
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[monsters_prop]
+visual_name = $visual$
+health      = 1.0
+g_team      = 0
+net_funcs   = monster_net
+
+[boar_weak_prop]:monsters_prop
+[boar_normal_prop]:monsters_prop
+[boar_strong_prop]:monsters_prop
+[m_cat_e_prop]:monsters_prop
+[m_controller_normal_prop]:monsters_prop
+[m_controller_old_prop]:monsters_prop
+[controller_tubeman_prop]:monsters_prop
+[dog_weak_prop]:monsters_prop
+[dog_normal_prop]:monsters_prop
+[dog_strong_prop]:monsters_prop
+[flesh_weak_prop]:monsters_prop
+[flesh_normal_prop]:monsters_prop
+[flesh_strong_prop]:monsters_prop
+[m_fracture_e_prop]:monsters_prop
+[m_poltergeist_normal_prop]:monsters_prop
+[m_poltergeist_normal_tele_prop]:monsters_prop
+[m_poltergeist_tele_outdoor_prop]:monsters_prop
+[m_poltergeist_normal_flame_prop]:monsters_prop
+[m_poltergeist_strong_flame_prop]:monsters_prop
+[zombie_weak_prop]:monsters_prop
+[zombie_normal_prop]:monsters_prop
+[zombie_strong_prop]:monsters_prop
+[zombie_immortal_prop]:monsters_prop
+[bloodsucker_weak_prop]:monsters_prop
+[bloodsucker_normal_prop]:monsters_prop
+[bloodsucker_strong_prop]:monsters_prop
+[bloodsucker_arena_prop]:monsters_prop
+[bloodsucker_mil_prop]:monsters_prop
+[burer_arena_prop]:monsters_prop
+[m_burer_normal_prop]:monsters_prop
+[m_burer_normal_black_prop]:monsters_prop
+[m_chimera_e_prop]:monsters_prop
+[m_crow_prop]:monsters_prop
+[m_gigant_normal_prop]:monsters_prop
+[gigant_normal_prop]:monsters_prop
+[gigant_strong_prop]:monsters_prop
+[pseudodog_weak_prop]:monsters_prop
+[pseudodog_normal_prop]:monsters_prop
+[pseudodog_strong_prop]:monsters_prop
+[pseudodog_arena_prop]:monsters_prop
+[psy_dog_prop]:monsters_prop
+[psy_dog_radar_prop]:monsters_prop
+[snork_weak_prop]:monsters_prop
+[snork_normal_prop]:monsters_prop
+[snork_strong_prop]:monsters_prop
+[aes_snork_prop]:monsters_prop
+[snork_arena_prop]:monsters_prop
+[snork_jumper_prop]:monsters_prop
+[m_tushkano_normal_prop]:monsters_prop
+[tushkano_normal_prop]:monsters_prop
+
+[monster_net]
+get = Get_Data_Monster
+set = Set_Data_Monster
+upd = true
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Объекты
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[helicopter_prop]
+visual_name       = $visual$
+motion_name       = helicopter\aaa.anm
+skeleton_name     = idle
+startup_animation = idle
+engine_sound      = alexmx\helicopter
+net_funcs         = helicopter_net
+custom_data       = ;$custom_data$
+
+[helicopter_net]
+get = Get_Data_Helicopter
+set = Set_Data_Helicopter
+
+[m_car_prop]
+visual_name       = physics\vehicles\btr\veh_btr_u_01
+net_funcs         = car_net
+custom_data       = ;$custom_data$
+
+[car_net]
+get = Get_Data_Car
+set = Set_Data_Car
+
+[lights_hanging_lamp_prop]
+visual_name         = physics\light\lampa_01_on
+main_color          = 4294621191
+main_brightness     = 0.4
+main_color_animator = light 40 hz
+main_range          = 6
+lamp_fixed_bones    = 
+health              = 100
+main_virtual_size   = 0.1
+ambient_radius      = 2
+ambient_power       = 0.4
+ambient_texture     = lights\lights_duolight02grey
+main_texture        = 
+main_bone           = bone_lamp
+main_cone_angle     = 2.1
+glow_texture        = glow\glow_orange
+glow_radius         = 0.7
+ambient_bone        = bone_lamp
+net_funcs           = lights_hanging_lamp_net
+
+[lights_hanging_lamp_net]
+get = Get_Data_HLamp
+set = Set_Data_HLamp
+
+[physic_object_prop]
+visual_name   = physics\box\box_1a.ogf
+skeleton_name = idle
+fixed_bones   = 
+net_funcs     = physic_object_net
+
+
+[physic_object_net]
+get = Get_Data_ObjPhysic
+set = Set_Data_ObjPhysic
+
+[explosive_barrel_prop]
+visual_name = physics\balon\bochka_fuel
+net_funcs           = data_item_net
+
+[data_item_net]
+get = Get_Data_Item
+set = Set_Data_Item
+
+[explosive_barrel_low_prop]:explosive_barrel_prop
+
+[explosive_mobiltank_prop]:explosive_barrel_prop
+visual_name = physics\balon\kanistra
+
+[physic_destroyable_object_prop]:physic_object_prop
+visual_name = physics\box\box_wood_01
+
+[breakable_object]
+visual_name = meshes\brkbl#1
+health      = 1
+net_funcs   = breakable_object_net
+
+[breakable_object_net]
+get = Get_Data_Breakable
+set = Set_Data_Breakable
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Зоны, Аномалии
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[anom_base]
+net_funcs           = data_anom_net
+
+[data_anom_net]
+get = Get_Data_Anomaly
+set = Set_Data_Anomaly
+
+[zone_campfire_mp_nolight_prop]:anom_base
+[zone_campfire_grill_prop]:anom_base
+[zone_flame_prop]:anom_base
+[zone_flame_small_prop]:anom_base
+[zone_zhar_prop]:anom_base
+[zone_emi_prop]:anom_base
+[zone_witches_galantine_prop]:anom_base
+[zone_gravi_zone_prop]:anom_base
+[zone_mincer_prop]:anom_base
+[zone_mosquito_bald_prop]:anom_base
+[zone_burning_fuzz_prop]:anom_base
+[zone_burning_fuzz1_prop]:anom_base
+[zone_buzz_prop]:anom_base
+[zone_radioactive_prop]:anom_base
+[torrid_zone_prop]:anom_base
+[fireball_zone_prop]:anom_base
+[zone_zharka_static_prop]:anom_base
+[zone_mine_field_prop]:anom_base
+[zone_death_prop]:anom_base
+[zone_teleport_prop]:anom_base
+[zone_teleport_out_prop]:anom_base
+[zone_teleport_monolith_prop]:anom_base
+[zone_no_gravity_prop]:anom_base
+[zone_monolith_prop]:anom_base
+[zone_ameba_prop]:anom_base
+[zone_ameba1_prop]:anom_base
+[zone_rusty_hair_prop]:anom_base
+
+[smart_terrain_prop]
+net_funcs           = data_smart_net
+
+[data_smart_net]
+get = Get_Data_SmartTerrain
+set = Set_Data_SmartTerrain
+
+[space_restrictor_prop]
+net_funcs           = data_restrictor_net
+
+[data_restrictor_net]
+get = Get_Data_Restrictor
+set = Set_Data_Restrictor
+
+
+[level_changer]
+net_funcs           = data_changer_net
+
+[data_changer_net]
+get = Get_Data_LvChanger
+set = Set_Data_LvChanger
+
+
+[respawn]
+net_funcs           = data_respawn_net
+
+[data_respawn_net]
+get = Get_Data_Respawn
+set = Set_Data_Respawn

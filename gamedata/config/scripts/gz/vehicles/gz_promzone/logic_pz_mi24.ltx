@@ -1,0 +1,33 @@
+[logic]
+active = heli_move@idle
+
+[heli_move@idle]
+path_move = pz_heli_move_idle_walk
+path_look = pz_heli_move_idle_look
+engine_sound = false
+invulnerable = true
+on_game_timer = 1000|heli_move@raid
+
+[heli_move@raid]
+path_move = pz_heli_move_raid_walk
+invulnerable = true
+mute = true
+default_velocity = 35
+
+
+
+[heli_move@patrol]
+path_move = gar_vertolet_patrol
+invulnerable = true
+default_velocity = 35
+invulnerable = true
+on_hit = heli_move@patrol2
+
+[heli_move@patrol2]
+path_move = gar_vertolet_patrol
+invulnerable = true
+default_velocity = 35
+combat_enemy = actor
+combat_velocity = 25
+combat_safe_altitude = -10
+combat_use_rocket = false

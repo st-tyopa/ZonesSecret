@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<xml>
+	<specific_character id="lab_ucheniy" team_default = "1">
+		<name>Кайзановский</name>
+		<icon>ui_npc_u_stalker_sv_leader</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>Умный учёный</bio>
+		
+		<class>lab_ucheniy</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+
+		<rank>916</rank>
+		<reputation>149</reputation>
+
+        <snd_config>characters_voice\human_02\ecolog\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+				<visual>gz\npc\scientists\kain</visual>
+		<supplies>
+			[spawn] \n
+			wpn_python  \n
+			ammo_11.43x23_hydro = 1 \n
+			wpn_g36 \n
+			ammo_5.56x45_ap = 1 \n
+                        scien_flash \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"	
+#include "gameplay\character_criticals_3.xml"
+		</supplies>
+	
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>lab_uchen_start_dialog</actor_dialog>
+		
+		<money min="600" max="2000" infinitive="0" />
+					
+	</specific_character>
+	
+	<specific_character id="lab_killer_main" team_default = "1">
+		<name>Главный убийца</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>Маньяк каких свет не видовал</bio>
+		
+		<class>lab_killer_main</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+
+		<rank>916</rank>
+		<reputation>149</reputation>
+
+        <snd_config>characters_voice\human_02\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>actors\killer\stalker_ki_informator</visual>
+		<supplies>
+			[spawn] \n
+			wpn_python  \n
+			ammo_11.43x23_hydro = 1 \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj = 1 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"	
+#include "gameplay\character_criticals_3.xml"
+		</supplies>
+
+		<start_dialog>hello_dialog</start_dialog>
+		
+		<money min="600" max="2000" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+	
+	<specific_character id="lab_killer_default" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>mil_Killer_specnaz_bio</bio>
+		
+		<class>lab_killer_default</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+
+        <snd_config>characters_voice\human_03\killer\</snd_config>
+  		<crouch_type>-1</crouch_type>
+		<rank>740</rank>
+		<reputation>-86</reputation>
+
+		<visual>actors\killer\stalker_ki_antigas</visual>
+		<supplies>
+			[spawn] \n
+			wpn_mp153 \n
+			ammo_9x19_pbp \n
+			wpn_galil \n
+			ammo_5.56x45_ss190 = 1 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+		
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"					
+	</specific_character>
+	
+	<specific_character id="lab_militari_default" team_default = "1">
+		<name>GENERATE_NAME_private</name>
+		<icon>ui_npc_u_soldier_obichniy</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>esc_soldier_regular_bio</bio>
+		
+		<class>lab_militari_default</class>
+		<community>military</community> <terrain_sect>stalker_military_terrain</terrain_sect>
+
+        <snd_config>characters_voice\human_03\militari\</snd_config>
+  		<crouch_type>-1</crouch_type>
+		<rank>740</rank>
+		<reputation>-86</reputation>
+
+		<visual>gz\npc\army\mil_gas_alt</visual>
+		<supplies>
+			[spawn] \n
+			wpn_mp153 \n
+			ammo_9x19_pbp \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj = 1 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"	
+		</supplies>
+		
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"					
+	</specific_character>
+	
+	
+	<specific_character id="lab_gg_suecid1" team_default = "1">
+		<name>Главный убийца</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>Маньяк каких свет не видовал</bio>
+		
+		<class>lab_gg_suecid1</class>
+		<community>stalker</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+
+		<rank>916</rank>
+		<reputation>149</reputation>
+
+        <snd_config>characters_voice\human_02\zombied\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<visual>actors\stalker_zombi\stalker_zombie3</visual>
+		<supplies>
+			[spawn] \n
+			wpn_python  \n
+			ammo_11.43x23_hydro = 1 \n
+#include "gameplay\character_items.xml" \n
+#include "gameplay\character_drugs.xml" \n
+#include "gameplay\character_food.xml"	
+#include "gameplay\character_criticals_3.xml"
+		</supplies>
+
+		<start_dialog>hello_dialog</start_dialog>
+		
+		<money min="600" max="2000" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+
+	</specific_character>
+</xml>

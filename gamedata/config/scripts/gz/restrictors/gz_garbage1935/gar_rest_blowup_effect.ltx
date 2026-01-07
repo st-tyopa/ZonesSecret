@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+dynamit_timer_start} sr_timer@1
+
+[sr_timer@1]
+type = dec
+start_value = 9000
+on_value = 0 | %+dynamit_blowup =play_explosion_particle_2% sr_idle
+string = pz_merclager_bomb_timer
+
+[sr_idle11]
+on_timer = 7000|%+dynamit_blowup =play_explosion_particle_2% sr_idle
+
+[sr_idle]       
+on_timer = 100|%+gar_dell_wall% nil

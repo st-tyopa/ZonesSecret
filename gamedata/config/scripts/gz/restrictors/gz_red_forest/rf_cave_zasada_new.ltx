@@ -1,0 +1,20 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1] 
+on_info = {+rf_papers_have +rf_lab_card_have} %+rf_docs_have% sr_idle
+
+[sr_idle] 
+on_actor_inside = {+rf_docs_have} %=disable_ui% sr_idle3
+
+[sr_idle3] 
+on_info = %=play_snd(characters_voice\soz\gz_red_forest\radio_turn_on_1)% sr_idle4
+
+[sr_idle4]
+on_timer = 2000|%+rf_cave_zasada_sms_1% sr_idle5
+
+[sr_idle5] 
+on_timer = 2000|%+rf_cave_zasada_sms_2_sms% sr_idle6
+
+[sr_idle6] 
+on_timer = 5000|%+rf_cave_zasada_sms_2 =enable_ui% nil

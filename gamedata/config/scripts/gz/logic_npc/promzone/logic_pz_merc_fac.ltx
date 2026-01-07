@@ -1,0 +1,42 @@
+[logic]
+active = walker@pz_merclager_facecontrol_com_1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_facecontrol_com_1]
+path_walk = facecontrol_com_1_walk_1
+path_look = facecontrol_com_1_look_1
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+actor_is_killer +pz_rob_merclager_docs_start} walker@pz_merclager_facecontrol_com_1_2
+
+
+[walker@pz_merclager_facecontrol_com_1_2]
+path_walk = facecontrol_com_1_walk_1
+path_look = facecontrol_com_1_look_1
+meet = meet@pz_merclager_fc_1
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_rob_merclager_on_base_done} walker@pz_merclager_facecontrol_com_1_walk2
+
+[walker@pz_merclager_facecontrol_com_1_walk2]
+path_walk = facecontrol_com_1_walk_1
+path_look = facecontrol_com_1_look_1
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[meet@pz_merclager_fc_1]
+meet_dialog     = dialog_pz_merclager_fc_1_dialog_1
+meet_state      = 30|wait
+meet_state_wpn  = 30|wait
+victim          = 30|actor
+victim_wpn      = 30|actor
+use = {=dist_to_actor_le(3)} self
+use_wpn         = {=dist_to_actor_le(3)} self
+
+[combat_ignore@pz_merc]
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[hit@pz_merc]
+on_info = {=hit_by_actor} %-actor_is_killer +pz_actor_enemy_merclager%
+
+[death@pz_merc]
+on_info = {=killed_by_actor} %-actor_is_killer +pz_actor_enemy_merclager%

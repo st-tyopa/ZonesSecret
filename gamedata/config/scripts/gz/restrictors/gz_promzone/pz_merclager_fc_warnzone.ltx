@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {-pz_rob_merclager_on_base_done} %+pz_actor_enemy_merclager -actor_is_killer% sr_idle@nil
+on_info = {+pz_rob_merclager_on_base_done} sr_idle@12
+
+[sr_idle@12]
+on_info = {+pz_rob_merclager_on_base_done -actor_is_killer} %+pz_actor_enemy_merclager% sr_idle@nil
+
+[sr_idle@nil]

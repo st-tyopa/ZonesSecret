@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+predatel_commander_dead -have_pda_predat -rf_predat_scene_start -kill_predateli_complete} %+predatelstvo_sms%  sr_idle1
+on_info2 = {+rf_predat_scene_start} sr_idle11
+
+[sr_idle11]
+on_timer = 4000|%+predatelstvo_sms% sr_idle1
+
+[sr_idle1]
+on_info = {+have_pda_predat} %+go_to_scien_assist_start +rf_predat_scene_second +escape_zone_start% sr_idle@nil
+
+[sr_idle@nil]

@@ -1,0 +1,41 @@
+[objects_path_visuales]
+AI_STL_S = actors\
+SM_BLOOD = monsters\krovosos\
+SM_BOARW = monsters\mutant_boar\
+SM_BURER = monsters\burer\
+SM_CAT_S = monsters\cat\
+SM_CHIMS = monsters\chimera\
+SM_CONTR = monsters\kontroler\
+SM_DOG_S = monsters\dog\
+SM_FLESH = monsters\flesh\
+SM_IZLOM = monsters\izlom\
+SM_GIANT = monsters\psevdogigant\
+SM_POLTR = monsters\poltergeist\
+SM_DOG_P = monsters\pseudodog\
+SM_DOG_F = monsters\pseudodog\
+SM_P_DOG = monsters\pseudodog\
+SM_SNORK = monsters\snork\
+SM_TUSHK = monsters\tushkano\
+SM_ZOMBI = monsters\zombi\
+O_PHYS_S = physics\
+P_DSTRBL = physics\
+SCRPTCAR = physics\vehicles\
+C_HLCP_S = physics\vehicles\mi24\
+O_HLAMP  = physics\light\
+
+;исключения
+[physic_object]
+lampa01_alarm                ;анимированый light-объект. Спавнить только классом O_HLAMP
+light_koster                 ;анимированый light-объект. Спавнить только классом O_HLAMP
+light_alarm_1                ;анимированый light-объект. Спавнить только классом O_HLAMP
+light_galogen_rtut_1_glass   ;анимированый light-объект. Спавнить только классом O_HLAMP
+
+[m_car]
+mi24\               ;спавнить только классом C_HLCP_S
+moskvich\           ;не настроены параметры объектов
+include_test_niva   ;не настроены параметры объекта
+part\               ;набор обломков объекта
+
+[helicopter]
+veh_mi24_u_01_fire
+part\               ;набор обломков объекта

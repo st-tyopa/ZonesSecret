@@ -1,0 +1,52 @@
+[ds_rob_dialog]
+params_sequence = npc
+
+x0 = ds_rob_dialog_00
+link0 = 1, 10, 13
+
+x1 = ds_rob_dialog_01
+d1 = ds_bandlider_need_money_start
+link1 = 3
+
+x3 = ds_rob_dialog_03
+gi3 = ds_goto_bandlider_done
+link3 = 4,7
+
+x4 = ds_rob_dialog_04
+p4 = gz_prologue.rob_have_not_money
+link4 = 5
+
+x5 = ds_rob_dialog_05
+gi5 = ds_bandlider_need_money_start
+link5 = 6
+
+x6 = ds_rob_dialog_06
+a6 = dialogs.break_dialog 
+
+x7 = ds_rob_dialog_07
+p7 = gz_prologue.rob_have_money
+link7 = 8
+
+x8 = ds_rob_dialog_08
+link8 = 9
+
+x9 = ds_rob_dialog_09
+gi9 = ds_rob_buying
+a9 = gz_prologue.give_bandits_money, dialogs.break_dialog
+
+x10 = ds_rob_dialog_10
+h10 = ds_bandlider_need_money_start
+p10 = gz_prologue.rob_have_money
+link10 = 11
+
+x11 = ds_rob_dialog_08
+link11 = 12
+
+x12 = ds_rob_dialog_09
+gi12 = ds_rob_buying, ds_bandlider_need_money_done
+a12 = gz_prologue.give_bandits_money, dialogs.break_dialog
+
+x13 = ds_rob_dialog_13
+h13 = ds_bandlider_need_money_start
+p13 = gz_prologue.rob_have_not_money
+a13 = dialogs.break_dialog 

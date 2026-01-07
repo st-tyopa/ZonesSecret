@@ -1,0 +1,29 @@
+[logic]
+active = zoneguard@gz_tan2
+
+[walker]
+path_walk = gz_tan_2_stay
+path_look = gz_tan_2_look
+
+[zoneguard@gz_tan2]
+path_walk = gz_tan_2_stay
+path_look = gz_tan_2_look
+zone_warn = rf_gz_talk
+zone_guard = rf_zoneguard_fake
+team = rf_tainik
+no_move = true
+no_danger = false
+ignore_friends = true
+on_info = {+rf_gz_tan_talk_done} walker2, {+rf_gz_tan_talk_kill} %=killactor% 
+
+[walker2]
+path_walk = gz_rf_tan2_back
+on_game_timer = 80|kamp
+
+[kamp]
+path_walk = gz_rf_kamp2
+center_point = gz_rf_kamp
+
+
+
+

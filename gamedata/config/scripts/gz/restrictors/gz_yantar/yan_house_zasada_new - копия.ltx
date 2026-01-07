@@ -1,0 +1,22 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+dialog_sos_bandit_done} %=run_postprocess(agr_u_fade:01:false)% sr_idle1
+
+[sr_idle1]
+on_timer = 1000|%=disable_ui =run_cam_effector(hit_back_left:999:false) =play_snd(actor\pain_4)%  sr_idle2
+
+[sr_idle2]
+on_timer = 500|%=run_postprocess(deadcity_wake) =play_snd(soz\characters_voice\scenario\heartbeat_blood)% sr_idle3
+
+[sr_idle3]
+on_timer = 3000|%=play_snd(characters_voice\soz\gz_yantar\gar_bandit_ambush_talk_4) +yan_grab_bandit% sr_idle31
+
+[sr_idle31]
+on_timer = 7000|%=stop_cam_effector(1001)% sr_idle5
+
+[sr_idle5]
+on_timer = 3000|%=enable_ui +find_your_loot_sms% sr_idle@nil
+
+[sr_idle@nil]

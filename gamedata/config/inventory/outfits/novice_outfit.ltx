@@ -1,0 +1,38 @@
+;---------------------------------------------------------------------------------------------
+;		 КУРТКА НОВИЧКА
+;---------------------------------------------------------------------------------------------
+[novice_outfit]:outfit_base
+$spawn 			                = "outfit\novice_outfit"
+visual                          = equipments\novice_suit
+actor_visual	                = actors\hero\stalker_novice.ogf
+inv_name			            = outfit_soldier_name
+inv_name_short		            = outfit_soldier_name
+description			            = outfit_soldier_description
+inv_weight			            = 3.0
+inv_grid_width		            = 2
+inv_grid_height		            = 2
+inv_grid_x			            = 0
+inv_grid_y			            = 18
+texture_arm                     = act_arm_newbie
+night_vision_device	            = device_nightvision_bad
+cost				            = 1000
+immunities_sect		            = sect_novice_outfit_immunities
+bones_koeff_protection  		= kurtka_antigas_damage
+burn_protection 				= 0.1
+strike_protection 				= 0.1
+shock_protection 				= 0.1
+wound_protection				= 0.1
+chemical_burn_protection 		= 0.1
+explosion_protection 			= 0.1
+fire_wound_protection  			= 0.1
+
+[sect_novice_outfit_immunities]
+burn_immunity				    = 0.0
+strike_immunity				    = 0.01
+shock_immunity				    = 0.04
+wound_immunity				    = 0.025
+radiation_immunity			    = 0.00
+telepatic_immunity			    = 0.00
+chemical_burn_immunity		    = 0.04
+explosion_immunity			    = 0.04
+fire_wound_immunity			    = 0.015

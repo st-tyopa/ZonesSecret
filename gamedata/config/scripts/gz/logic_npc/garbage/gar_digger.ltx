@@ -1,0 +1,36 @@
+[logic]
+active = walker@gar_digger_stay
+
+[walker@gar_digger_stay]
+path_walk = gar_digger_stay_walk
+path_look = gar_digger_stay_look
+on_info = {+gar_transfer_dynamit_done} walker@gar_digger_to_bomb
+
+[walker@gar_digger_to_bomb]
+path_walk = gar_digger_tobomb_walk
+meet = no_meet
+on_signal = diggerdynamit | remark@gar_digger_ustanovka
+
+[remark@gar_digger_ustanovka]
+anim = dynamite
+tagret = gar_digger_ust, 0
+meet = no_meet
+on_signal = anim_end | walker@gar_digger_from_bomb %+dynamit_timer_start%
+
+[walker@gar_digger_from_bomb]
+path_walk = gar_digger_frombomb_walk
+meet = no_meet
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+danger = danger_condition@digger
+on_signal = diggerhide | walker@gar_digger_stay2 %+dynamit_blowup%
+
+[walker@gar_digger_stay2]
+path_walk = gar_digger_stay_walk
+path_look = gar_digger_stay_look
+danger = danger_condition@digger
+
+
+[danger_condition@digger]
+ignore_distance = 0

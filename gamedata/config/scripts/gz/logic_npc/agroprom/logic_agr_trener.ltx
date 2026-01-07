@@ -1,0 +1,57 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = agr_dolg_trener_stay
+path_look = agr_dolg_sport2_look
+on_info = {+agr_dolg_sport_start} walker2
+meet = no_meet
+
+[walker2]
+path_walk = agr_dolg_trener_stay
+path_look = agr_dolg_sport2_look
+on_timer = 4000|remark
+meet = no_meet
+
+[remark]
+anim = guard
+target = agr_dolg_sport2_look,0
+snd = dolg_trener_1
+on_signal = sound_end|remark2
+meet = no_meet
+
+[remark2]
+anim = guard
+target = agr_dolg_sport2_look,0
+on_actor_dist_ge_nvis = 50| %+agr_sport_end%
+on_timer = 2000|remark3
+meet = no_meet
+
+[remark3]
+anim = guard
+target = agr_dolg_sport2_look,0
+snd = dolg_trener_2
+on_actor_dist_ge_nvis = 50| %+agr_sport_end%
+on_signal = sound_end|remark4
+meet = no_meet
+
+[remark4]
+anim = guard
+target = agr_dolg_sport2_look,0
+on_actor_dist_ge_nvis = 50| %+agr_sport_end%
+on_info = {+agr_sport_actor_in_zone} remark5
+meet = no_meet
+
+[remark5]
+anim = guard
+target = actor
+snd = dolg_trener_3
+on_actor_dist_ge_nvis = 50| %+agr_sport_end%
+on_signal = sound_end|walker3
+meet = no_meet
+
+[walker3]
+path_walk = agr_dolg_trener_stay
+path_look = agr_dolg_sport2_look
+on_actor_dist_ge_nvis = 50| %+agr_sport_end%
+meet = no_meet

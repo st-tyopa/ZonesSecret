@@ -1,0 +1,11 @@
+[logic]
+active = walker@stay
+on_death = death
+
+[walker@stay]
+path_walk = x15_mercgroup3_merc2_walk
+path_look = x15_mercgroup3_merc2_look
+combat_ignore_cond = {=check_fighting(95009)}
+
+[death]
+on_info = %+x15_merc3_dead2 =x15_kill_merc3_done%

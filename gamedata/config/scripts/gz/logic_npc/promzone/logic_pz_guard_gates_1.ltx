@@ -1,0 +1,33 @@
+[logic]
+active = walker@pz_guard_stay_0
+combat_ignore = combat_ignore@pz_merc
+
+[combat_ignore@pz_merc]
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_guard_stay_0]
+path_walk = pz_guard_gates_1_stay_0
+path_look = pz_guard_gates_1_look_0
+on_info = {+pz_boss_merc_alarm} walker@pz_guard_run
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_guard_stay_1]
+path_walk = pz_guard_gates_1_stay_0
+path_look = pz_guard_gates_1_look_0
+on_game_timer = 10000|walker@pz_guard_run 
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_guard_run]
+path_walk = pz_merclager_guards_gates_way
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = gates |  %+pz_mrec_gates_defence% walker@pz_guard_gates
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_guard_gates]
+path_walk = pz_guards_gates_1_stay
+path_look = pz_guards_gates_1_look
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+

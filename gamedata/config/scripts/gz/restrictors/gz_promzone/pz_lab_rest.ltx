@@ -1,0 +1,44 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+pz_otis_lab_open_done} %=play_snd(device\door_servomotor)% sr_idle@1
+
+[sr_idle@1]
+on_info = {+pz_otis_lab_teleport} %=run_postprocess(agr_u_fade:01:false) =disable_ui% sr_idle@21
+
+[sr_idle@21]
+on_timer = 5000| %=teleport_actor(pz_lab_tel:pz_lab_tel_look) +pz_del_old_otis =enable_ui% sr_idle@2
+
+[sr_idle@2]
+on_info = {+pz_otis_lab_anom} sr_idle@3
+
+[sr_idle@3]
+on_timer = 8000| %+pz_otis_lab_anom2% sr_idle@45
+
+[sr_idle@45]
+on_info = {+pz_lab_electrisity_done} sr_idle@55
+
+[sr_idle@55]
+on_game_timer = 25| %+pz_lab_electrisity_sms% sr_idle@41
+
+[sr_idle@41]
+on_info = {+pz_lab_scien_dialog_done1} %=play_snd(soz\characters_voice\scenario\rnd_horror2)% sr_idle@51
+
+[sr_idle@51]
+on_game_timer = 50| %+pz_otis_lab_scream_sms% sr_idle@52
+
+[sr_idle@52]
+on_game_timer = 17| %+pz_lab_scien_dialog_done% sr_idle@4
+
+[sr_idle@4]
+on_info = {-pz_otis_lab_death} sr_idle@5, {+pz_otis_lab_death} sr_idle@6
+
+[sr_idle@5]
+on_timer = 17000| %+pz_otis_lab_sms_zomb_attack_sms% sr_idle@nil
+
+[sr_idle@6]
+on_info = {=gulag_empty(yan_smart_terrain_lair_zombies)} %+pz_lab_all_zombies_dead% sr_idle@nil
+
+
+[sr_idle@nil]

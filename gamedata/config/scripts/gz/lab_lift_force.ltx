@@ -1,0 +1,12 @@
+[logic]
+active = ph_idle
+ 
+[ph_idle]
+on_info = {+lift_door_force} ph_force 
+ 
+[ph_force]
+force = 5000
+time = 1000
+delay = 0
+point = lab_lift_way
+point_index = 0

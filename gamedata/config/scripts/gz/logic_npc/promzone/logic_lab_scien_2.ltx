@@ -1,0 +1,44 @@
+[logic]
+active = walker
+on_death = death
+
+[death]
+on_info = %+pz_scien2_lab_death%
+
+[walker]
+path_walk = pz_lab_scien_2_stay
+path_look = pz_lab_scien_2_look
+meet = no_meet
+on_info = {+pz_lab_scien_dialog_done} walker25
+
+[walker25]
+path_walk = pz_lab_scien2_stay
+path_look = pz_lab_scien2_look
+danger = danger_condition@scout
+meet = no_meet
+on_info = {+pz_lab_all_zombies_dead} walker2
+
+[walker2]
+path_walk = pz_lab_scien2_stay
+path_look = pz_lab_scien2_look
+combat_ignore = combat_ignore
+danger = danger_condition@scout2
+on_signal = pos2 | %+pz_lab_return_scien2_on_pos% walker3
+
+[walker3]
+path_walk = pz_lab_scien2_stay
+path_look = pz_lab_scien2_look
+def_state_standing = hide
+combat_ignore = combat_ignore
+danger = danger_condition@scout2
+
+[kamp]
+path_walk = pz_lager_scien_sit2
+center_point = pz_lager_scien_kamp_center
+combat_ignore_cond = {=check_fighting(71505)}
+
+[danger_condition@scout]
+ignore_distance       = 10
+
+[danger_condition@scout2]
+ignore_distance       = 0

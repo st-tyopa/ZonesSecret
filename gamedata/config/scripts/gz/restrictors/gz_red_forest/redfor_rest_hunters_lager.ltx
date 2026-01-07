@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+rf_hunters_actor_ready_to_help} sr_idle2
+
+[sr_idle2]
+on_actor_inside = %+rf_go_to_hunters_done% nil

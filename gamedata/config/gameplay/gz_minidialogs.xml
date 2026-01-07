@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+    <dialog id="dialog_about_cap_def_1">
+        <dont_has_info>find_commander_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Не видел сталкера? Здоровый, небритый, шрам на роже, с оружием.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Тут куда не плюнь все такие. Тебе какого из них?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Шутник епт!</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_cap_def_2">
+        <dont_has_info>find_commander_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Не видел сталкера? Здоровый, небритый, шрам на роже, с оружием.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Нет, не видел такого.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Ладно тогда...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_cap_def_3">
+        <dont_has_info>find_commander_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Не видел сталкера? Здоровый, небритый, шрам на роже, с оружием.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Старший не велел трепаться. Иди с ним говори.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Понял...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_cap_def_4">
+        <dont_has_info>find_commander_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Не видел сталкера? Здоровый, небритый, шрам на роже, с оружием.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Иди у старшего спроси.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Понял...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+	
+	
+	
+	
+    <dialog id="dialog_about_raciya_def_1">
+        <has_info>find_raciya_start</has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Слушай, не знаешь у кого можно взять рацию?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Рацию? Спроси у Варяга, торговца нашего, у него-то наверно есть.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Понял...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_raciya_def_2">
+        <has_info>find_raciya_start</has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Слушай, не знаешь у кого можно взять рацию?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>У Лукаша есть, только он вряд ли тебе ее даст.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Ну, это мы еще посмотрим!</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_raciya_def_3">
+        <has_info>find_raciya_start</has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Слушай, не знаешь у кого можно взять рацию?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>У Дядьки Яра может быть завалялась где-то.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Окей, схожу, спрошу.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_raciya_def_4">
+        <has_info>find_raciya_start</has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Слушай, не знаешь у кого можно взять рацию?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Нет, не знаю.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Понял...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_raciya_def_5">
+        <has_info>find_raciya_start</has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Слушай, не знаешь у кого можно взять рацию?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Деньги есть? Тогда к торговцу сходи, думаю договоритесь.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Понял...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_raciya_def_6">
+        <has_info>find_raciya_start</has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Слушай, не знаешь у кого можно взять рацию?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Яр, может, смастерит тебе за отдельную плату.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Ясно.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_raciya_def_7">
+        <has_info>find_raciya_start</has_info>
+        <dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Слушай, не знаешь у кого можно взять рацию?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Нет.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Ясно...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_raciya_def_8">
+        <has_info>find_raciya_start</has_info>
+		<dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Слушай, тут такое дело, рация нужна, где можно достать?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>К Кулибину нашему сходи, за пузырь сделает тебе... Хе-хе...</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Понял...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_raciya_def_9">
+        <has_info>find_raciya_start</has_info>
+		<dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здорова. Мне рация нужна, где можно достать?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>С Лукашом, командиром блокпоста поговори, я у него видел.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Понял...</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_raciya_def_10">
+        <has_info>find_raciya_start</has_info>
+		<dont_has_info>find_raciya_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здорова. Не знаешь, где можно достать рацию?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>У Чехова спрашивал?</text>
+                <next>21</next>
+                <next>22</next>
+            </phrase>
+            <phrase id="21">
+		<dont_has_info>chehov_dialog_raciya_done</dont_has_info>
+                <text>Нет.</text>
+                <next>211</next>
+            </phrase>
+            <phrase id="211">
+                <text>Так иди у него спроси.</text>
+                <next>2111</next>
+            </phrase>
+            <phrase id="2111">
+                <text>Хорошо.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+           <phrase id="22">
+		<has_info>chehov_dialog_raciya_done</has_info>
+                <text>Да. Сказал у механика.</text>
+                <next>221</next>
+            </phrase>
+           <phrase id="221">
+                <text>Так иди к Яру. Еще можешь у Лукаша спросить...</text>
+                <next>2211</next>
+            </phrase>
+            <phrase id="2211">
+                <text>Хорошо.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_yan_gate">
+        <phrase_list>
+            <phrase id="0">
+                <text>Мне нужно пройти.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Всем нужно. Только не все проходят.</text>
+                <next>21</next>
+                <next>22</next>
+            </phrase>
+            <phrase id="21">
+                <text>Так может договоримся?</text>
+                <next>211</next>
+            </phrase>
+            <phrase id="211">
+                <text>Сейчас ты с моим автоматом будешь договариваться!</text>
+                <next>2111</next>
+            </phrase>
+            <phrase id="2111">
+                <text>Ладно ладно, не горячись. Пошутил.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+           <phrase id="22">
+                <text>У меня тут кое-что есть для вас. </text>
+                <next>221</next>
+            </phrase>
+           <phrase id="221">
+                <text>Ну, так бы сразу и сказал, что ты от ученых. Проходи.</text>
+				<give_info>yan_blokp_gate_open</give_info>
+                <next>2211</next>
+            </phrase>
+            <phrase id="2211">
+                <text>Спасибо.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_gar_gate">
+        <phrase_list>
+            <phrase id="0">
+                <text>Мне нужно пройти.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Всем нужно. Только не все проходят.</text>
+                <next>21</next>
+                <next>22</next>
+            </phrase>
+            <phrase id="21">
+                <text>Так может договоримся?</text>
+                <next>211</next>
+            </phrase>
+            <phrase id="211">
+                <text>Сейчас ты с моим автоматом будешь договариваться!</text>
+                <next>2111</next>
+            </phrase>
+            <phrase id="2111">
+                <text>Ладно ладно, не горячись. Пошутил.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+           <phrase id="22">
+                <text>У меня тут кое-что есть для вас. </text>
+                <next>221</next>
+            </phrase>
+           <phrase id="221">
+                <text>Ну, так бы сразу и сказал, что ты от ученых. Проходи.</text>
+				<give_info>yan_blokp_gate_open</give_info>
+                <next>2211</next>
+            </phrase>
+            <phrase id="2211">
+                <text>Спасибо.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_cheh_quard">
+        <phrase_list>
+            <phrase id="0">
+                <text>Мне нужно к Чехову.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Посторонним вход воспрещен.</text>
+                <next>21</next>
+                <next>22</next>
+            </phrase>
+            <phrase id="21">
+                <text>Понятно</text>
+                <next>211</next>
+            </phrase>
+            <phrase id="211">
+                <text>Сейчас ты с моим автоматом будешь договариваться!</text>
+                <next>2111</next>
+            </phrase>
+            <phrase id="2111">
+                <text>Ладно ладно, не горячись. Пошутил.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+           <phrase id="22">
+                <text>Меня он ждет</text>
+                <next>221</next>
+            </phrase>
+           <phrase id="221">
+                <text>Ну, так бы сразу и сказал, что ты от ученых. Проходи.</text>
+				<give_info>yan_blokp_gate_open</give_info>
+                <next>2211</next>
+            </phrase>
+            <phrase id="2211">
+                <text>Спасибо.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_about_enter_to_cheh">
+        <dont_has_info>dv_cheh_wait</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Стой! Тебе нельзя, посторонним вход воспрещен!</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="11">
+        <has_info>go_to_lager_dv_done</has_info>
+        <give_info>dv_cheh_wait</give_info>
+                <text>Мне можно,меня ждут.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="12">
+                <text>Понял, не дурак.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+ 
+
+    <dialog id="dialog_about_enter_to_dolgbase">
+        <dont_has_info>enter_to_dolgbase_is_open</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Стой! Кто такой?</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+          <phrase id="11">
+        <give_info>enter_to_dolgbase_is_open</give_info>
+                <text>*Взятка* Мне нужно к вам на базу. Вот держи конфетки.</text>
+                <next>111</next>
+            </phrase>
+            <phrase id="111">
+        <give_info>go_to_agroprom_done</give_info>
+                <text>Давай проходи, только не бузи там, а то быстро вынесем ногами вперед.</text>
+                <next>13</next>
+            </phrase>
+            <phrase id="12">
+                <text>Да так, никто, мимо шел.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+           <phrase id="13">
+                <text>Лады.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+</game_dialogs>

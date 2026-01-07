@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {-pz_actor_messaged} sr_tip@1
+
+[sr_tip@1]
+name = gz_pz_merclager_snipers_message
+type = tips
+single = true
+on_signal = tip_sended| %+pz_actor_messaged% sr_idle@end
+
+[sr_idle@end]

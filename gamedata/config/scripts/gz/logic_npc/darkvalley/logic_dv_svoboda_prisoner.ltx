@@ -1,0 +1,18 @@
+[logic]
+active = walker@dv_svoboda_prisoner_stay
+
+[walker@dv_svoboda_prisoner_stay]
+path_walk = dv_svobbase_prisoner_walk
+path_look = dv_svobbase_prisoner_look
+on_actor_dist_le = 2| remark
+
+[remark]
+target = dv_svobbase_prisoner_look, 0
+snd = dv_sv_prisoner
+meet = no_meet
+on_signal = sound_end| walker@dv_svoboda_prisoner_stay2
+
+[walker@dv_svoboda_prisoner_stay2]
+path_walk = dv_svobbase_prisoner_walk
+path_look = dv_svobbase_prisoner_look
+def_state_standing = ward

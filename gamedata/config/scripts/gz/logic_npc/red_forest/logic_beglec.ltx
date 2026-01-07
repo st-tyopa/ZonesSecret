@@ -1,0 +1,18 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = beglec_stay
+path_look = beglec_look
+on_actor_dist_le_nvis = 30|walker2
+
+[walker2]
+path_walk = beglec_stay
+path_look = beglec_look
+def_state_standing = caution
+on_info = {+dialog_rf_beglec_done} walker3
+
+[walker3]
+path_walk = beglec_stay
+path_look = beglec_look
+def_state_standing = sit_ass

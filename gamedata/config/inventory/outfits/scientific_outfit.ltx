@@ -1,0 +1,300 @@
+[scientific_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "outfit\scientific_outfit"
+$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = equipments\stalker_scient_suit	
+actor_visual	= actors\hero\stalker_scien.ogf
+
+ef_equipment_type	= 2
+
+texture_arm = act_arm_spec
+
+icon_in_repair = ui_inGame2_Armor_6
+icon_in_repair_scale_x = 285
+icon_in_repair_scale_y = 159
+upgrades = seva_upg_one,seva_upg_one_1,seva_upg_one_2,seva_upg_one_3,seva_upg_one_4,seva_upg_two,seva_upg_two_1,seva_upg_two_2,seva_upg_two_3,seva_upg_two_4,seva_upg_three,seva_upg_three_1,seva_upg_three_2,seva_upg_three_3,seva_upg_four,seva_upg_four_1,seva_upg_four_2,seva_upg_five,seva_upg_five_1,seva_upg_five_2,seva_upg_five_3
+
+inv_name			= scientific_outfit_name
+inv_name_short		= scientific_outfit_name
+description			= scientific_outfit_description
+inv_weight			= 9
+slot				= 6
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 16
+inv_grid_y			= 13
+full_icon_name		= npc_icon_scientific_outfit
+;;;nightvision_sect	= effector_nightvision_good
+
+cost					= 30000
+full_scale_icon			= 12,11	; иконка сталкера в костюме в полный рост
+immunities_sect			= sect_scientific_outfit_immunities
+artefact_count			= 4
+helmet_avaliable		= false ; нельзя носить шлем
+nightvision_avaliable	= false ; нельзя носить ПНВ
+
+; MEDIUM RESISTANCE
+burn_protection 				= 0.8
+strike_protection 				= 0.5
+shock_protection 				= 0.9
+wound_protection				= 0.5
+radiation_protection 			= 0.9
+telepatic_protection 			= 0.0
+chemical_burn_protection 		= 0.7
+explosion_protection 			= 0.5
+fire_wound_protection  			= 0.40
+
+bones_koeff_protection = kombez_kupol_damage
+
+[sect_scientific_outfit_immunities]
+burn_immunity				= 0.03			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.01
+shock_immunity				= 0.03
+wound_immunity				= 0.015
+radiation_immunity			= 0.00
+telepatic_immunity			= 0.00
+chemical_burn_immunity		= 0.03
+explosion_immunity			= 0.03
+fire_wound_immunity			= 0.01
+
+[seva_upg_one]
+name                    = st_up_arm_a8_name
+description             = st_up_arm_a8_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_1
+position_x	     		= 0
+position_y		    	= 27
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 600
+fire_wound_protection	= 0.1
+
+[seva_upg_one_1]
+name                    = st_up_arm_b9_name
+description             = st_up_arm_b9_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_2
+position_x	     		= 100
+position_y		    	= 0
+precondition_upg        = seva_upg_one
+precondition_ban        = seva_upg_one_2
+cost 		            = 1200
+strike_protection       = 0.2
+explosion_protection    = 0.2
+wound_protection        = 0.2
+
+[seva_upg_one_2]
+name                    = st_up_arm_b6_name
+description             = st_up_arm_b6_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_4
+position_x	     		= 100
+position_y		    	= 54
+precondition_upg        = seva_upg_one
+precondition_ban        = seva_upg_one_1
+cost 		            = 1200
+;прочность на 15%
+
+[seva_upg_one_3]
+name                    = st_up_arm_c10_name
+description             = st_up_arm_c10_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_3
+position_x	     		= 200
+position_y		    	= 0
+precondition_upg        = seva_upg_one_1,seva_upg_one_2
+precondition_ban        = seva_upg_one_4
+cost 		            = 1800
+fire_wound_protection	= 0.3
+
+[seva_upg_one_4]
+name                    = st_up_arm_c11_name
+description             = st_up_arm_c11_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_5
+position_x	     		= 200
+position_y		    	= 54
+precondition_upg        = seva_upg_one_1,seva_upg_one_2
+precondition_ban        = seva_upg_one_3
+cost 		            = 1800
+inv_weight              = -5.0
+
+[seva_upg_two]
+name                    = st_up_kom_a8_name
+description             = st_up_kom_a8_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_6
+position_x	     		= 0
+position_y		    	= 135
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 600
+;прочность на 10%
+
+[seva_upg_two_1]
+name                    = st_up_kom_b8_name
+description             = st_up_kom_b8_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_7
+position_x	     		= 100
+position_y		    	= 108
+precondition_upg        = seva_upg_two
+precondition_ban        = seva_upg_two_2
+cost 		            = 1200
+shock_protection        = 0.2
+
+[seva_upg_two_2]
+name                    = st_up_kom_b9_name
+description             = st_up_kom_b9_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_9
+position_x	     		= 100
+position_y		    	= 162
+precondition_upg        = seva_upg_two
+precondition_ban        = seva_upg_two_1
+cost 		            = 1200
+burn_protection         = 0.2
+
+[seva_upg_two_3]
+name                     = st_up_kom_c7_name
+description              = st_up_kom_c7_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_8
+position_x	     		 = 200
+position_y		    	 = 108
+precondition_upg         = seva_upg_two_1,seva_upg_two_2
+precondition_ban         = seva_upg_two_4
+cost 		             = 1800
+burn_protection          = 0.3
+chemical_burn_protection = 0.3
+
+[seva_upg_two_4]
+name                     = st_up_kom_c8_name
+description              = st_up_kom_c8_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_10
+position_x	     		 = 200
+position_y		    	 = 162
+precondition_upg         = seva_upg_two_1,seva_upg_two_2
+precondition_ban         = seva_upg_two_3
+cost 		             = 1800
+radiation_protection     = 0.3
+shock_protection         = 0.3
+
+[seva_upg_three]
+name                     = st_up_uti_a3_name
+description              = st_up_uti_a3_1_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_11
+position_x	     		 = 0
+position_y		    	 = 243
+precondition_upg         = no
+precondition_ban         = no
+cost 		             = 800
+power_restore_speed      = 0.001
+
+[seva_upg_three_1]
+name                            = st_up_uti_b3_name
+description                     = st_up_uti_b3_descr
+icon                            = ui_inGame2_upgrade_scientific_outfit_12
+position_x	     		        = 100
+position_y		    	        = 216
+precondition_upg                = seva_upg_three
+precondition_ban                = seva_upg_three_2
+cost 		                    = 1200
+additional_inventory_weight		= 10
+additional_inventory_weight2	= 10
+
+[seva_upg_three_2]
+name                    = st_up_uti_b1_name
+description             = st_up_uti_b1_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_13
+position_x              = 100
+position_y              = 270
+precondition_upg        = seva_upg_three
+precondition_ban        = seva_upg_three_1
+cost 		            = 4000
+artefact_count          = 2
+
+[seva_upg_three_3]
+name                    = st_up_uti_c1_name
+description             = st_up_uti_c1_descr
+icon                    = ui_inGame2_upgrade_scientific_outfit_14
+position_x              = 200
+position_y              = 243
+precondition_upg        = seva_upg_three_1,seva_upg_three_2
+precondition_ban        = no
+cost 		            = 6400
+artefact_count          = 4
+
+[seva_upg_four]
+name                     = st_up_tch_a4_name
+description              = st_up_tch_a4_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_15
+position_x               = 0
+position_y               = 324
+precondition_upg         = no
+precondition_ban         = no
+cost 		             = 600
+radiation_protection     = 0.1
+chemical_burn_protection = 0.1  
+
+[seva_upg_four_1]
+name                     = st_up_tch_b4_name
+description              = st_up_tch_b4_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_16
+position_x               = 100
+position_y               = 324
+precondition_upg         = seva_upg_four
+precondition_ban         = no
+cost 		             = 1600
+telepatic_immunity       = 0.2  
+
+[seva_upg_four_2]
+name                     = st_up_tch_c2_name
+description              = st_up_tch_c2_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_17
+position_x               = 200
+position_y               = 324
+precondition_upg         = seva_upg_four_1
+precondition_ban         = no
+cost 		             = 2500
+bleeding_restore_speed   = 0.004
+health_restore_speed     = 0.002
+
+[seva_upg_five]
+name                     = st_up_res_a1_name
+description              = st_up_res_a1_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_18
+position_x               = 0
+position_y               = 405
+precondition_upg         = no
+precondition_ban         = no
+cost 		             = 600
+radiation_protection     = 0.1
+chemical_burn_protection = 0.1
+
+[seva_upg_five_1]
+name                     = st_up_res_b1_name
+description              = st_up_res_b1_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_19
+position_x               = 100
+position_y               = 405
+precondition_upg         = seva_upg_five
+precondition_ban         = no
+cost 		             = 1600
+telepatic_protection     = 0.2
+
+[seva_upg_five_2]
+name                     = st_up_res_c4_name
+description              = st_up_res_c4_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_20
+position_x               = 200
+position_y               = 378
+precondition_upg         = seva_upg_five_1
+precondition_ban         = seva_upg_five_3
+cost 		             = 2400
+telepatic_protection     = 0.3
+
+[seva_upg_five_3]
+name                     = st_up_resp_c2_name
+description              = st_up_resp_c2_descr
+icon                     = ui_inGame2_upgrade_scientific_outfit_21
+position_x               = 200
+position_y               = 432
+precondition_upg         = seva_upg_five_1
+precondition_ban         = seva_upg_five_2
+cost 		             = 2800
+power_restore_speed      = 0.003

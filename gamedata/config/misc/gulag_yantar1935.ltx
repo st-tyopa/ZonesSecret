@@ -1,0 +1,193 @@
+[logic@yan_scienlager_leader_walk]
+active = walker@yan_scienlager_leader_walk
+
+[walker@yan_scienlager_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+on_info = {+phone_kain_call_start} remark@yan_scienlager_leader1 %=disable_ui%
+
+[remark@yan_scienlager_leader1]
+anim = guard_rac
+snd = yan_kainozovskiy_peregovor_po_telefonu
+target = actor
+meet = no_meet
+snd_anim_synс = true
+on_signal = sound_end| remark@yan_scienlager_2 %=enable_ui%
+
+[remark@yan_scienlager_2]
+anim = wait
+target = actor
+on_info = {+talk_scien_assist_done} walker@yan_scienlager_leader_walk2
+
+[walker@yan_scienlager_leader_walk2]
+path_walk = leader_walk
+path_look = leader_look
+
+
+[logic@yan_scienlager_guard_0_walk]
+active = walker@yan_scienlager_guard_0_walk
+
+[walker@yan_scienlager_guard_0_walk]
+path_walk = guard_0_walk
+path_look = guard_0_look
+
+[logic@yan_scienlager_guard_1_walk]
+active = walker@yan_scienlager_guard_1_walk
+
+[walker@yan_scienlager_guard_1_walk]
+path_walk = guard_1_walk
+path_look = guard_1_look
+
+[logic@yan_scienlager_guard_2_walk]
+active = walker@yan_scienlager_guard_2_walk
+
+[walker@yan_scienlager_guard_2_walk]
+path_walk = guard_2_walk
+path_look = guard_2_look
+
+[logic@yan_scienlager_guard_3_walk]
+active = walker@yan_scienlager_guard_3_walk
+
+[walker@yan_scienlager_guard_3_walk]
+path_walk = guard_3_walk
+path_look = guard_3_look
+
+[logic@yan_scienlager_patrol_1_walk]
+active = walker@yan_scienlager_patrol_1_walk
+
+[walker@yan_scienlager_patrol_1_walk]
+path_walk = patrol_1_walk
+
+[logic@yan_scienlager_patrol_2_walk]
+active = walker@yan_scienlager_patrol_2_walk
+
+[walker@yan_scienlager_patrol_2_walk]
+path_walk = patrol_2_walk
+
+;--- Кобольд
+[logic@yan_scienlager_kobold]
+active = walker@yan_scienlager_kobold_stay
+
+[walker@yan_scienlager_kobold_stay]
+path_walk = kobold_stay_walk
+path_look = kobold_stay_look
+
+
+;--------------------------------------------------------------------------
+;--СОС Бандит
+;--------------------------------------------------------------------------
+[logic@yan_sos_bandit]
+active = walker@yan_sos_bandit_stay_1
+
+[walker@yan_sos_bandit_stay_1]
+path_walk = stay_1
+path_look = look_1
+on_info = {+sos_bandit_lead} walker@yan_sos_bandit_walk
+
+[walker@yan_sos_bandit_walk]
+path_walk = walk_to_village
+on_signal = sos |  %+talk_with_sos_bandit% walker@yan_sos_bandit_stay_2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+danger = danger_condition@scout
+
+[remark@yan_punch_in_face]
+anim = punch
+target = actor
+on_timer = 1500| %=run_cam_effector(fusker:999:false) =teleport_actor(yan_actor_teleport:yan_actor_teleport_look)%
+
+[walker@yan_sos_bandit_stay_2]
+path_walk = stay_2
+path_look = look_2
+on_info = {+punch_in_face} %=disable_ui% remark@yan_punch_in_face
+
+[danger_condition@scout]
+ignore_distance       = 0
+
+;--------------------------------------------------------------------------
+;--группа ГБФ
+;--------------------------------------------------------------------------
+
+[logic@yan_gbf_kamp_stalker1]
+active = kamp@yan_gbf_kamp_1
+
+[logic@yan_gbf_kamp_stalker2]
+active = kamp@yan_gbf_kamp_2
+
+[logic@yan_gbf_kamp_stalker3]
+active = kamp@yan_gbf_kamp_3
+
+[logic@yan_gbf_kamp_stalker4]
+active = kamp@yan_gbf_kamp_4
+
+;--Костры
+[kamp@yan_gbf_kamp_1]
+center_point = kamp_center
+path_walk = kamp_center_task
+radius = 1.5
+
+[kamp@yan_gbf_kamp_2]
+center_point = kamp_center
+path_walk = kamp_center_task
+radius = 1.5
+
+[kamp@yan_gbf_kamp_3]
+center_point = kamp_center
+path_walk = kamp_center_task
+radius = 1.5
+
+[kamp@yan_gbf_kamp_4]
+center_point = kamp_center
+path_walk = kamp_center_task
+radius = 1.5
+
+
+
+-------------------------------------------
+-- Бандиты-грабители
+-------------------------------------------
+
+[logic@yan_band_robbers_leader]
+active = walker@yan_band_robbers_leader
+
+[walker@yan_band_robbers_leader]
+path_walk = leader_walk
+path_look = leader_look
+
+
+
+[logic@yan_band_robbers_bandit_1]
+active = walker@yan_band_robbers_bandit_1
+
+[walker@yan_band_robbers_bandit_1]
+path_walk = post1_walk
+path_look = post1_look
+
+
+[logic@yan_band_robbers_bandit_2]
+active = walker@yan_band_robbers_bandit_2
+
+[walker@yan_band_robbers_bandit_2]
+path_walk = post2_walk
+path_look = post2_look
+
+
+[logic@yan_band_robbers_bandit_3]
+active = kamp@yan_band_robbers
+
+[logic@yan_band_robbers_bandit_4]
+active = kamp@yan_band_robbers
+
+[logic@yan_band_robbers_bandit_5]
+active = kamp@yan_band_robbers
+
+[logic@yan_band_robbers_bandit_6]
+active = kamp@yan_band_robbers
+
+
+[kamp@yan_band_robbers]
+center_point = kamp
+path_walk = kamp_task
+soundgroup = esc_bandits_factory

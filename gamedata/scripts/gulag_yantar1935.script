@@ -1,0 +1,163 @@
+local t = {}
+
+function load_job(sj, gname, type, squad, groups)
+	
+--------------------------------------------------------------------------
+-- бандит СОС
+-------------------------------------------------------------------------- 
+ if type == "yan_sos_bandit" then
+  t = { section = "logic@yan_sos_bandit",
+   idle = 0,
+   prior = 30, state = {0},
+   in_rest = "", out_rest = "", 
+   predicate = function(obj_info)
+          return obj_info.profile_name == "yan_sos_bandit"
+   end
+  }
+  table.insert(sj, t)
+end	
+
+--------------------------------------------------------------------------
+-- бадниты-грабители
+--------------------------------------------------------------------------	
+	if type == "yan_band_robbers" then
+		t = { section = "logic@yan_band_robbers_leader",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "yan_band_robbers_leader"
+			end
+		}
+		table.insert(sj, t)
+		t = { section = "logic@yan_band_robbers_bandit_1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@yan_band_robbers_bandit_2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@yan_band_robbers_bandit_3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@yan_band_robbers_bandit_4",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@yan_band_robbers_bandit_5",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@yan_band_robbers_bandit_6",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+	end
+	
+--------------------------------------------------------------------------
+-- группа ГБФ
+--------------------------------------------------------------------------	
+	if type == "yan_gbf_kamp" then
+		t = { section = "logic@yan_gbf_kamp_stalker1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@yan_gbf_kamp_stalker2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@yan_gbf_kamp_stalker3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@yan_gbf_kamp_stalker4",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+	end
+end
+--------------------------------------------------------------------------
+-- состояния гулагов
+--------------------------------------------------------------------------
+
+function load_states(gname, type)
+if type == "yan_gbf_kamp" then 
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end	
+	if type == "yan_band_robbers" then        
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+	if type == "yan_sos_bandit" then        
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+	return nil
+end
+
+--------------------------------------------------------------------------
+-- Dynamic ltx
+--------------------------------------------------------------------------
+function load_ltx(gname, type)
+	return nil
+end
+
+function checkStalker(npc_community, gulag_type, npc_rank, se_obj)
+
+	if gulag_type == "yan_gbf_kamp" then
+		return npc_community == "gbf"
+	end	
+	if gulag_type == "yan_band_robbers" then
+		return npc_community == "bandit"
+	end	
+	if gulag_type == "yan_sos_bandit" then
+		return npc_community == "stalker"
+	end	
+	return false
+end
+
+function checkMonster(npc_community, gulag_type)
+	return false
+end
+

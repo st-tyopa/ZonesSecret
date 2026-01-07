@@ -1,0 +1,57 @@
+[logic]
+active = walker@idle
+on_death = death
+
+[death]
+on_info = %+hunt_1_dead%
+
+[walker@idle]
+path_walk = ds_hunt_1_stay
+path_look = ds_hunt_1_look
+on_info = {+ds_hunt_dialog_1_done} walker@ds_hunt_walk, {+ds_hunt_start_alone} walker@ds_hunt_start
+
+[walker@ds_hunt_walk]
+path_walk = ds_hunts_walk
+on_signal = hunt |  %+ds_hunt_bino% walker@ds_hunt_bino
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+danger = danger_condition@scout
+
+[walker@ds_hunt_bino]
+path_walk = ds_hunt_1_bino_stay
+path_look = ds_hunt_1_bino_look
+def_state_standing = binocular
+on_timer = 17000| %+ds_hunt_dialog_2% remark@ds_hunt_zapravka
+
+[remark@ds_hunt_zapravka]
+anim = guard
+target = actor
+on_info = {+ds_hunt_dialog_2_done} walker@ds_hunt_start
+
+[walker@ds_hunt_start]
+path_walk = ds_hunt_start
+def_state_standing = hide
+danger = danger_condition@scout_2
+on_info = {+kill_ds_krovo_1} walker@ds_hunts
+
+[walker@ds_hunts]
+path_walk = ds_hunt_nagrada_stay
+path_look = ds_hunt_nagrada_look
+on_info = {+ds_hunt_krovo_done} remark@ds_hunt_2
+
+[remark@ds_hunt_2]
+anim = guard
+target = actor
+on_timer = 17000| kamp@ds_hunts
+
+[kamp@ds_hunts]
+path_walk = ds_hunt_1_kamp
+center_point = ds_hunt_kamp_center
+
+[danger_condition@scout]
+ignore_distance       = 1
+
+[danger_condition@scout_2]
+ignore_distance       = 15

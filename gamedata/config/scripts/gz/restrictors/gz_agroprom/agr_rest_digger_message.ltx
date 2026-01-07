@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+agr_pass_to_dolgbase_fail} sr_idle2
+
+[sr_idle2]
+on_timer = 12000| %+agr_ds_digger_hello% nil
+
+[sr_sound_act]
+snd = characters_voice\scenario\agr\agr_mess_about_digger
+stereo = false
+on_signal = sound_end | %+agr_talk_with_ds_digger_start% sr_idle@nil
+
+[sr_idle@nil]

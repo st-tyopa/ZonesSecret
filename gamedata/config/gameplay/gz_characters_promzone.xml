@@ -1,0 +1,1290 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<xml>
+	<!--------------------------------------- - Промзона - ---------------------------------------->
+	<!----------------------------------------------------------------------------------------------->
+	<!--------------------------------------- - Группа искателей - ---------------------------------------->
+	
+	<specific_character id="pz_iskatgroup_leader" team_default = "1">
+		<name>Скиф</name>
+		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>pz_iskatgroup_leader</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+
+				<visual>actors\neytral\stalker_neytral_balon_3</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_colt1911 \n
+			ammo_11.43x23_fmj = 2 \n
+			hand_radio \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+					
+		<start_dialog>dialog_pz_isk_leader_dialog1</start_dialog>
+		<actor_dialog>dialog_pz_isk_leader_dialog2</actor_dialog>
+		<actor_dialog>dialog_pz_isk_leader_hitman_dialog</actor_dialog>
+		<actor_dialog>dialog_pz_isk_leader_dialog3</actor_dialog>
+		<actor_dialog>dialog_pz_isk_after_lab_dialog</actor_dialog>
+	</specific_character>
+	
+	
+	
+	<specific_character id="pz_iskatgroup_iskatel_1" team_default="1">
+		<name>Ворон</name>
+		<icon>ui_npc_u_iskateli_tepa</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>pz_iskatgroup_iskatel_1</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>actors\neytral\stalker_neytral_hood_8</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_val \n
+			ammo_9x39_sp5 = 3 \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+
+		<start_dialog>hello_dialog</start_dialog>
+
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="pz_iskatgroup_iskatel_2" team_default="1">
+		<name>Панда</name>
+		<icon>ui_npc_u_iskateli_tepa</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>pz_iskatgroup_iskatel_2</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>actors\neytral\stalker_neytral_rukzak_2</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_val \n
+			ammo_9x39_sp5 = 3 \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+
+		<start_dialog>hello_dialog</start_dialog>
+
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<specific_character id="pz_isk_rpg" team_default="1">
+		<name>Панда</name>
+		<icon>ui_npc_u_iskateli_tepa</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>val_stalker_novice_bio</bio>
+
+		<class>pz_isk_rpg</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		
+		<rank>290</rank>
+		<reputation>3</reputation>
+
+		<visual>gz\npc\iskateli\stalker_iskateli_hood_9</visual>
+		<snd_config>characters_voice\human_01\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_val \n
+			ammo_9x39_sp5 = 3 \n
+			device_torch \n
+#include "gameplay\character_items.xml"
+#include "gameplay\character_food.xml"
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+
+		<start_dialog>hello_dialog</start_dialog>
+
+		
+		<money min="200" max="600" infinitive="0" />
+					
+#include "gameplay\character_dialogs.xml"
+	</specific_character>
+	
+	<!--------------------------------------- - Наемники- ---------------------------------------->
+	<!--------------------------------------- - Пленный наемник - ---------------------------------------->
+	<specific_character id="pz_iskatgroup_merc_prisoner" team_default = "1">
+		<name>Фрост</name>
+		<icon>ui_npc_u_stalker_ki_head_1</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_iskatgroup_merc_prisoner</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+			
+		<rank>366</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+                        wpn_knife \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+		<start_dialog>dialog_alt_mrcs</start_dialog>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	
+	<!--------------------------------------- - База наемников - ---------------------------------------->
+	
+	<!--------------------------------------- - Главный - ---------------------------------------->
+	<specific_character id="pz_merclager_leader" team_default = "1">
+		<name>Гриф</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_leader</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_head_1</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g36 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+		<start_dialog>dialog_alt_mrcs</start_dialog>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<!--------------------------------------- - Снайпера - ---------------------------------------->
+	<specific_character id="pz_merclager_sniper_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_snipers</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>398</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_antigas</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_svd \n
+			ammo_7.62x54_7h1 = 2 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	
+	<specific_character id="pz_merclager_sniper_2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_snipers</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>398</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_svu \n
+			ammo_7.62x54_7h1 = 2 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="pz_merclager_sniper_3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_snipers</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>398</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\killer_elite</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_svu \n
+			ammo_7.62x54_7h1 = 2 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="pz_merclager_sniper_4" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_snipers</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>398</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_svu \n
+			ammo_7.62x54_7h1 = 2 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="pz_merclager_sniper_5" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_snipers</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>398</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_antigas</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_svu \n
+			ammo_7.62x54_7h1 = 2 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="pz_merclager_sniper_6" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_snipers</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>398</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\killer_elite</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_svu \n
+			ammo_7.62x54_7h1 = 2 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<!--------------------------------------- - Дефолтные - ---------------------------------------->
+	<specific_character id="pz_merclager_default_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_default</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g36 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	
+	<specific_character id="pz_merclager_default_2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_default</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_antigas</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="pz_merclager_default_3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_default</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\killer_elite</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416_m1 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="pz_merclager_default_4" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_default</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_antigas</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416_m2 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="pz_merclager_default_5" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_default</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\killer_elite</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g36 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+	<specific_character id="pz_merc_guard" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merc_guard</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\killer_elite</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+        
+		<start_dialog>hello_dialog</start_dialog>
+		<actor_dialog>dialog_merc_leader_guard</actor_dialog>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="pz_merclager_default_6" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_default</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\killer_elite</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_spas12 \n
+			ammo_12x76_zhekan = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<!--------------------------------------- - Фейcконтроль 1 - ---------------------------------------->
+	<specific_character id="pz_merclager_facecontrol_com_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_default</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_antigas</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_spas12 \n
+			ammo_12x76_zhekan = 2 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+		<start_dialog>dialog_pz_merclager_fc_1_dialog_1</start_dialog>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<!--------------------------------------- - Фейcконтроль 2 - ---------------------------------------->
+	<specific_character id="pz_merclager_facecontrol_com_2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_merclager_default</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g36 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		
+		<start_dialog>dialog_pz_merclager_fc_2_dialog_1</start_dialog>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+
+	<specific_character id="pz_zombie_lab" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_stalker_zombie1</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_zombie_lab</class>
+		<community>zombied</community> <terrain_sect>stalker_zombied_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\actor_stalker_zombie</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+ 
+		</supplies>
+		
+		<start_dialog>dialog_pz_merclager_fc_2_dialog_1</start_dialog>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+	<specific_character id="pz_tepa" team_default = "1">
+		<name>Тёпа</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_tepa</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\iskateli\stalker_neytral_gilet</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416 \n
+			ammo_5.56x45_ss190 \n
+			device_torch\n
+		</supplies>
+		
+		<start_dialog>dialog_pz_tepa</start_dialog>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+<specific_character id="pz_shihka" team_default = "1">
+		<name>Профессор Миллер</name>
+		<icon>ui_npc_u_stalker_ecolog</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>pz_shihka</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+		<visual>gz\npc\scientists\ecolog_white</visual>
+                <snd_config>characters_voice\human_02\ecolog\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_colt1911 \n
+			ammo_11.43x23_fmj = 2 \n
+		</supplies>
+		
+		
+#include "gameplay\character_criticals_3.xml"
+					
+		<start_dialog>hello_dialog</start_dialog>
+	</specific_character>
+
+	<specific_character id="pz_sh_guard1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_sh_guard1</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+			
+		<rank>366</rank>
+		<reputation>-30</reputation>
+
+		<visual>actors\neytral\stalker_neytral_rukzak_2</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416_m2 \n
+			ammo_5.56x45_ss190 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+	<specific_character id="pz_sh_guard2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_3</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_sh_guard2</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+			
+		<rank>366</rank>
+		<reputation>-30</reputation>
+
+		<visual>actors\neytral\stalker_neytral_rukzak_2</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416_m2 \n
+			ammo_5.56x45_ss190 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+	<specific_character id="pz_hata_stalk_1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_head_1</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_hata_stalk_1</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+			
+		<rank>366</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pps \n
+			ammo_7.62x25_p \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+						<actor_dialog>dialog_pz_hata_guard_talk</actor_dialog>
+	</specific_character>
+
+	<specific_character id="pz_hata_stalk_2" team_default = "1">
+		<name>Странник</name>
+		<icon>ui_npc_u_stalker_ki_head_1</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_hata_stalk_2</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+			
+		<rank>366</rank>
+		<reputation>-30</reputation>
+
+		<visual>actors\bandit\stalker_bandit_master</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+		<start_dialog>dialog_pz_wanderer</start_dialog>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+	<specific_character id="pz_hata_stalk_3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_head_1</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_hata_stalk_3</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+			
+		<rank>366</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416 \n
+			ammo_5.56x45_ss190 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+	<specific_character id="pz_hata_zomb" team_default = "1">
+		<name>Зомбированный</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_hata_zomb</class>
+		<community>stalker</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\actor_stalker_zombie</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+		</supplies>	
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+
+
+		<start_dialog>dialog_pz_hata_zomb_talk</start_dialog>
+	</specific_character>
+
+        	<specific_character id="pz_lab_scien1" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>pz_lab_scien1</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+
+				<visual>gz\npc\scientists\ecolog_white</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+                        pz_scien_diary \n
+		</supplies>
+		
+		
+#include "gameplay\character_criticals_3.xml"
+					
+	</specific_character>
+
+        	<specific_character id="pz_lab_scien2" team_default = "1">
+		<name>Неизвестный</name>
+		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>pz_lab_scien2</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+
+				<visual>gz\npc\scientists\ecolog_white</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+		</supplies>
+		
+		
+#include "gameplay\character_criticals_3.xml"
+					
+	</specific_character>
+
+<specific_character id="pz_otis" team_default = "1">
+		<name>Отис</name>
+		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>pz_otis</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+
+				<visual>gz\npc\iskateli\otis_new</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_colt1911 \n
+			ammo_11.43x23_fmj = 2 \n
+			wpn_val \n
+			ammo_9x39_sp5 = 3 \n
+			device_torch \n
+                        kruglov_flash \n
+		</supplies>
+
+		<actor_dialog>dialog_pz_otis_start_to_lab</actor_dialog>
+		<actor_dialog>dialog_pz_otis_open_lab</actor_dialog>
+		<actor_dialog>dialog_pz_otis_start_to_lab2</actor_dialog>
+		<actor_dialog>dialog_pz_otis_open_lab_done</actor_dialog>
+		
+				
+
+#include "gameplay\character_criticals_3.xml"
+					
+	</specific_character>
+
+<specific_character id="pz_otis_lab" team_default = "1">
+		<name>Отис</name>
+		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>pz_otis_lab</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+
+				<visual>gz\npc\iskateli\otis_gas</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_colt1911 \n
+			ammo_11.43x23_fmj\n
+			wpn_val \n
+			ammo_9x39_sp5\n
+			device_torch \n
+                        wpn_binoc \n
+		</supplies>
+#include "gameplay\character_criticals_3.xml"
+
+                <start_dialog>dialog_pz_otis_lab_to_zomb</start_dialog>
+		<actor_dialog>dialog_pz_otis_electricity</actor_dialog>
+		<actor_dialog>dialog_pz_otis_return</actor_dialog>
+
+#include "gameplay\character_criticals_3.xml"
+
+
+					
+	</specific_character>
+
+
+<specific_character id="pz_lab_scien_1" team_default = "1">
+		<name>Профессор Ковальский</name>
+		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>pz_lab_scien_1</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+
+				<visual>actors\ecolog\stalker_ecolog_military</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g36 \n
+			ammo_5.56x45_ss190 \n
+			device_torch \n
+		</supplies>
+                <start_dialog>dialog_pz_lab_scien</start_dialog>
+		<actor_dialog>dialog_pz_scien_1_return</actor_dialog>
+		<actor_dialog>dialog_scien_after_lab</actor_dialog>
+		<actor_dialog>dialog_scien_after_lab_alt</actor_dialog>
+
+
+#include "gameplay\character_criticals_3.xml"
+			
+	</specific_character>
+
+<specific_character id="pz_lab_scien_2" team_default = "1">
+		<name>Научуный сотрудник Семёхин</name>
+		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>pz_lab_scien_2</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+
+				<visual>actors\ecolog\stalker_ecolog</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+			device_torch \n
+		</supplies>
+		<actor_dialog>dialog_pz_scien_2_return</actor_dialog>
+
+#include "gameplay\character_criticals_3.xml"
+			
+	</specific_character>
+
+
+<specific_character id="pz_lab_scien_3" team_default = "1">
+		<name>Научный сотрудник Глебов</name>
+		<icon>ui_npc_u_stalker_neytral_hood_9</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>pz_lab_scien_3</class>
+		<community>iskateli</community> <terrain_sect>stalker_iskateli_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>250</rank>
+		<reputation>20</reputation>
+
+				<visual>actors\ecolog\stalker_ecolog</visual>
+		<snd_config>characters_voice\human_03\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416 \n
+			ammo_5.56x45_ss190 \n
+			device_torch \n
+		</supplies>
+		<actor_dialog>dialog_pz_scien_3_return</actor_dialog>
+
+#include "gameplay\character_criticals_3.xml"
+			
+	</specific_character>
+
+	<specific_character id="pz_borman" team_default = "1">
+		<name>Борман</name>
+		<icon>ui_npc_u_ds_lastday_mask</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>bar_ryaboy_bio</bio>
+
+		<class>pz_borman</class>
+		<community>last_day</community> <terrain_sect>stalker_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+		
+		<rank>404</rank>
+		<reputation>30</reputation>
+		<visual>gz\npc\lastday\borman</visual>
+		<snd_config>characters_voice\human_02\stalker\</snd_config>
+		<crouch_type>-1</crouch_type>
+
+		<supplies>
+			[spawn] \n
+			wpn_glock \n
+			ammo_9x19_fmj \n
+			wpn_spas12 \n
+			ammo_12x70_buck \n
+		</supplies>
+ <start_dialog>dialog_pz_borman</start_dialog> 
+		
+#include "gameplay\character_criticals_1.xml"
+
+	</specific_character>
+
+	<specific_character id="pz_killer_vrag" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_mask</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_killer_vrag</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>398</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_01\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416 \n
+			ammo_5.56x45_ss190 \n
+			device_torch \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+	<specific_character id="pz_killer_volkodav" team_default = "1">
+		<name>Волкодав</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_killer_volkodav</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\volkodav</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g36 \n
+			ammo_5.56x45_ss190 = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+		 <actor_dialog>dialog_alt_mrcs_volkodav</actor_dialog> 
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+	<specific_character id="pz_killer_volkodav_build" team_default = "1">
+		<name>Волкодав</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>pz_killer_volkodav_build</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\volkodav</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g36 \n
+			ammo_5.56x45_ss190 = 2 \n
+			device_torch \n
+			hand_radio\n
+                        pz_merclager_documents \n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+
+		 <start_dialog>dialog_alt_mrcs_volkodav_2</start_dialog> 
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+
+</xml>

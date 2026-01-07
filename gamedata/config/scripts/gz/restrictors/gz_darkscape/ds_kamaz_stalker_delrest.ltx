@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {=is_alive(10527)} sr_idle2
+
+[sr_idle2]
+on_actor_inside = %+dv_kamaz_stalker_ready_to_spawn =del_ds_kamaz_stalker% nil

@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-lesnik_quest_off} %+rf_hunters_actor_dialog_start% sr_idle2
+
+[sr_idle2]
+on_info = {+dialog_rf_hunters_kill_gigant_done} %-rf_small_giant_dell% nil
+END

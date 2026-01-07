@@ -1,0 +1,470 @@
+--Тёмная лощина (gz_darcscape)
+
+function ds_neut_doctor_about_rac(dlg)
+ assembly_dialogs.construct_dialog("ds_neut_doctor_about_rac",dlg)
+end
+function ds_interesing(dlg)
+ assembly_dialogs.construct_dialog("ds_interesing",dlg)
+end
+function ds_cap(dlg)
+ assembly_dialogs.construct_dialog("ds_cap",dlg)
+end
+function ds_ld_sumka_ocelot(dlg)
+ assembly_dialogs.construct_dialog("ds_ld_sumka_ocelot",dlg)
+end
+function dialog_rf_bridge_legion(dlg)
+ assembly_dialogs.construct_dialog("dialog_rf_bridge_legion",dlg)
+end
+function dialog_rf_docs(dlg)
+ assembly_dialogs.construct_dialog("dialog_rf_docs",dlg)
+end
+function rf_scien_list(dlg)
+ assembly_dialogs.construct_dialog("rf_scien_list",dlg)
+end
+function ds_ld_ocelot_group(dlg)
+ assembly_dialogs.construct_dialog("ds_ld_ocelot_group",dlg)
+end
+function gar_crazy_bandit(dlg)
+ assembly_dialogs.construct_dialog("gar_crazy_bandit",dlg)
+end
+function rf_scien_bef_meet(dlg)
+ assembly_dialogs.construct_dialog("rf_scien_bef_meet",dlg)
+end
+function gar_black_digger_diary(dlg)
+ assembly_dialogs.construct_dialog("gar_black_digger_diary",dlg)
+end
+function rf_ld_blockp_back(dlg)
+ assembly_dialogs.construct_dialog("rf_ld_blockp_back",dlg)
+end
+function rf_ld_blockp(dlg)
+ assembly_dialogs.construct_dialog("rf_ld_blockp",dlg)
+end
+function dialog_rf_pd_lead(dlg)
+ assembly_dialogs.construct_dialog("dialog_rf_pd_lead",dlg)
+end
+function dialog_scien_rf_done(dlg)
+ assembly_dialogs.construct_dialog("dialog_scien_rf_done",dlg)
+end
+function ds_ld_racia(dlg)
+ assembly_dialogs.construct_dialog("ds_ld_racia",dlg)
+end
+function gar_sniper_wounded(dlg)
+ assembly_dialogs.construct_dialog("gar_sniper_wounded",dlg)
+end
+function ds_doc_medkit_case_3(dlg)
+ assembly_dialogs.construct_dialog("ds_doc_medkit_case_3",dlg)
+end
+function ag_dolg_lab_guard(dlg)
+ assembly_dialogs.construct_dialog("ag_dolg_lab_guard",dlg)
+end
+function ag_commendant_marsh_monsters_second(dlg)
+ assembly_dialogs.construct_dialog("ag_commendant_marsh_monsters_second",dlg)
+end
+function ag_commendant_marsh_monsters_third(dlg)
+ assembly_dialogs.construct_dialog("ag_commendant_marsh_monsters_third",dlg)
+end
+function ag_dialog_anom_scien_1(dlg)
+ assembly_dialogs.construct_dialog("ag_dialog_anom_scien_1",dlg)
+end
+function ag_dialog_anom_scien_2(dlg)
+ assembly_dialogs.construct_dialog("ag_dialog_anom_scien_2",dlg)
+end
+function pz_wanderer(dlg)
+ assembly_dialogs.construct_dialog("pz_wanderer",dlg)
+end
+function dv_find_weapons_case_2(dlg)
+ assembly_dialogs.construct_dialog("dv_find_weapons_case_2",dlg)
+end
+function ds_cap_after_sumka(dlg)
+ assembly_dialogs.construct_dialog("ds_cap_after_sumka",dlg)
+end
+function ds_about_dv(dlg)
+ assembly_dialogs.construct_dialog("ds_about_dv",dlg)
+end
+function dv_dolg_raciya_apt_scientic(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_raciya_apt_scientic",dlg)
+end
+function ag_kalash_about_general_2(dlg)
+ assembly_dialogs.construct_dialog("ag_kalash_about_general_2",dlg)
+end
+function dv_dolg_raciya_apt_army(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_raciya_apt_army",dlg)
+end
+function dv_dolg_raciya_apt(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_raciya_apt",dlg)
+end
+function isk_doc_dialog(dlg)
+ assembly_dialogs.construct_dialog("isk_doc_dialog",dlg)
+end
+function ds_torg_about_shved(dlg)
+ assembly_dialogs.construct_dialog("ds_torg_about_shved",dlg)
+end
+function ds_doc_about_shved(dlg)
+ assembly_dialogs.construct_dialog("ds_doc_about_shved",dlg)
+end
+function ds_ocelot_return_saved(dlg)
+ assembly_dialogs.construct_dialog("ds_ocelot_return_saved",dlg)
+end
+function ds_doc_medkit_case(dlg)
+ assembly_dialogs.construct_dialog("ds_doc_medkit_case",dlg)
+end
+function ds_doc_medkit_case_2(dlg)
+ assembly_dialogs.construct_dialog("ds_doc_medkit_case_2",dlg)
+end
+function ds_dialog_meh(dlg)
+ assembly_dialogs.construct_dialog("ds_dialog_meh",dlg)
+end
+function ds_hunt(dlg)
+ assembly_dialogs.construct_dialog("ds_hunt",dlg)
+end
+function ds_hunt_2(dlg)
+ assembly_dialogs.construct_dialog("ds_hunt_2",dlg)
+end
+function ds_hunt_3(dlg)
+ assembly_dialogs.construct_dialog("ds_hunt_3",dlg)
+end
+function ds_hunt_alt(dlg)
+ assembly_dialogs.construct_dialog("ds_hunt_alt",dlg)
+end
+function ds_isk_about_isk(dlg)
+ assembly_dialogs.construct_dialog("ds_isk_about_isk",dlg)
+end
+function ds_isk_doctor_pda(dlg)
+ assembly_dialogs.construct_dialog("ds_isk_doctor_pda",dlg)
+end
+function ds_iskateli_trader_1(dlg)
+ assembly_dialogs.construct_dialog("ds_iskateli_trader_1",dlg)
+end
+function ds_neut_trader_about_rac(dlg)
+ assembly_dialogs.construct_dialog("ds_neut_trader_about_rac",dlg)
+end
+function ds_wounded_digger_1(dlg)
+ assembly_dialogs.construct_dialog("ds_wounded_digger_1",dlg)
+end
+function ds_wounded_digger_2(dlg)
+ assembly_dialogs.construct_dialog("ds_wounded_digger_2",dlg)
+end
+function ds_neut_mehanik_about_rac(dlg)
+ assembly_dialogs.construct_dialog("ds_neut_mehanik_about_rac",dlg)
+end
+function ds_isk_provodnik1(dlg)
+ assembly_dialogs.construct_dialog("ds_isk_provodnik1",dlg)
+end
+function ds_isk_provodnik2(dlg)
+ assembly_dialogs.construct_dialog("ds_isk_provodnik2",dlg)
+end
+
+function ds_rob_dialog(dlg)
+ assembly_dialogs.construct_dialog("ds_rob_dialog2",dlg)
+end
+function ds_kap_stalker_meet(dlg)
+ assembly_dialogs.construct_dialog("ds_kap_stalker_meet",dlg)
+end
+function ds_kamaz_stalker_meet_1(dlg)
+ assembly_dialogs.construct_dialog("ds_kamaz_stalker_meet_1",dlg)
+end
+--Тёмная долина(gz_darkvalley)
+function dv_prisoner_quest(dlg)
+ assembly_dialogs.construct_dialog("dv_prisoner_quest",dlg)
+end
+function dv_varag_prisoner_flesh_nagr(dlg)
+ assembly_dialogs.construct_dialog("dv_varag_prisoner_flesh_nagr",dlg)
+end
+function dv_miklih_prisoner(dlg)
+ assembly_dialogs.construct_dialog("dv_miklih_prisoner",dlg)
+end
+function dv_petro(dlg)
+ assembly_dialogs.construct_dialog("dv_petro",dlg)
+end
+function sv_borman_noyt(dlg)
+ assembly_dialogs.construct_dialog("sv_borman_noyt",dlg)
+end
+function dv_anom_stalk(dlg)
+ assembly_dialogs.construct_dialog("dv_anom_stalk",dlg)
+end
+function dv_anom_bad_stalk(dlg)
+ assembly_dialogs.construct_dialog("dv_anom_bad_stalk",dlg)
+end
+function dv_dolg_shpion(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_shpion",dlg)
+end
+function dv_dolg_shpion_2(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_shpion_2",dlg)
+end
+function dv_rush_to_greh(dlg)
+ assembly_dialogs.construct_dialog("dv_rush_to_greh",dlg)
+end
+function dv_rush_to_greh_2(dlg)
+ assembly_dialogs.construct_dialog("dv_rush_to_greh_2",dlg)
+end
+function dv_dolg_raciya_s_2(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_raciya_s_2",dlg)
+end
+function dv_dolg_raciya_s_3(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_raciya_s_3",dlg)
+end
+function dv_dolg_rush_done_old(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_rush_done_old",dlg)
+end
+function dv_dolg_rush_done(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_rush_done",dlg)
+end
+function dv_max(dlg)
+ assembly_dialogs.construct_dialog("dv_max",dlg)
+end
+function dv_max_2(dlg)
+ assembly_dialogs.construct_dialog("dv_max_2",dlg)
+end
+function dv_max_3(dlg)
+ assembly_dialogs.construct_dialog("dv_max_3",dlg)
+end
+function dv_max_4(dlg)
+ assembly_dialogs.construct_dialog("dv_max_4",dlg)
+end
+function dv_dolgs_t(dlg)
+ assembly_dialogs.construct_dialog("dv_dolgs_t",dlg)
+end
+function dv_dolgs_2(dlg)
+ assembly_dialogs.construct_dialog("dv_dolgs_2",dlg)
+end
+function dv_gps_money_1(dlg)
+ assembly_dialogs.construct_dialog("dv_gps_money_1",dlg)
+end
+function dv_gps_money_2(dlg)
+ assembly_dialogs.construct_dialog("dv_gps_money_2",dlg)
+end
+function dv_gps_money_3(dlg)
+ assembly_dialogs.construct_dialog("dv_gps_money_3",dlg)
+end
+function dv_attack_greh_done_2(dlg)
+ assembly_dialogs.construct_dialog("dv_attack_greh_done_2",dlg)
+end
+function dv_attack_greh_done_2_alt(dlg)
+ assembly_dialogs.construct_dialog("dv_attack_greh_done_2_alt",dlg)
+end
+function dv_sv_about(dlg)
+ assembly_dialogs.construct_dialog("dv_sv_about",dlg)
+end
+function dv_about_pda(dlg)
+ assembly_dialogs.construct_dialog("dv_about_pda",dlg)
+end
+function dv_about_pda_2(dlg)
+ assembly_dialogs.construct_dialog("dv_about_pda_2",dlg)
+end
+function dv_dolg_raciya_s(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_raciya_s",dlg)
+end
+function dv_dolg_rush_to_greh_old_s(dlg)
+ assembly_dialogs.construct_dialog("dv_dolg_rush_to_greh_old_s",dlg)
+end
+function dv_about_raciya_chehov(dlg)
+ assembly_dialogs.construct_dialog("dv_about_raciya_chehov",dlg)
+end
+function dv_dialog_about_cap(dlg)
+ assembly_dialogs.construct_dialog("dv_dialog_about_cap",dlg)
+end
+function dv_find_weapons_case(dlg)
+ assembly_dialogs.construct_dialog("dv_find_weapons_case",dlg)
+end
+function dv_chehov_dialog_weapons_case_give(dlg)
+ assembly_dialogs.construct_dialog("dv_chehov_dialog_weapons_case_give",dlg)
+end
+function dv_chehov_dialog_weapons_case_give_2(dlg)
+ assembly_dialogs.construct_dialog("dv_chehov_dialog_weapons_case_give_2",dlg)
+end
+function dv_lukash_proverka(dlg)
+ assembly_dialogs.construct_dialog("dv_lukash_proverka",dlg)
+end
+--Промзона
+function pz_otis_start_to_lab(dlg)
+ assembly_dialogs.construct_dialog("pz_otis_start_to_lab",dlg)
+end
+function pz_otis_start_to_lab2(dlg)
+ assembly_dialogs.construct_dialog("pz_otis_start_to_lab2",dlg)
+end
+function pz_otis_open_lab(dlg)
+ assembly_dialogs.construct_dialog("pz_otis_open_lab",dlg)
+end
+function pz_otis_open_lab_done(dlg)
+ assembly_dialogs.construct_dialog("pz_otis_open_lab_done",dlg)
+end
+function pz_otis_lab_to_zomb(dlg)
+ assembly_dialogs.construct_dialog("pz_otis_lab_to_zomb",dlg)
+end
+function pz_otis_electricity(dlg)
+ assembly_dialogs.construct_dialog("pz_otis_electricity",dlg)
+end
+function pz_lab_scien(dlg)
+ assembly_dialogs.construct_dialog("pz_lab_scien",dlg)
+end
+function pz_otis_return(dlg)
+ assembly_dialogs.construct_dialog("pz_otis_return",dlg)
+end
+function pz_scien_1_return(dlg)
+ assembly_dialogs.construct_dialog("pz_scien_1_return",dlg)
+end
+function pz_scien_2_return(dlg)
+ assembly_dialogs.construct_dialog("pz_scien_2_return",dlg)
+end
+function pz_scien_3_return(dlg)
+ assembly_dialogs.construct_dialog("pz_scien_3_return",dlg)
+end
+function pz_tepa(dlg)
+ assembly_dialogs.construct_dialog("pz_tepa",dlg)
+end
+function pz_ghost(dlg)
+ assembly_dialogs.construct_dialog("pz_ghost",dlg)
+end
+function pz_borman(dlg)
+ assembly_dialogs.construct_dialog("pz_borman",dlg)
+end
+function pz_alt_mrcs(dlg)
+ assembly_dialogs.construct_dialog("pz_alt_mrcs",dlg)
+end
+function pz_alt_mrcs_volkodav(dlg)
+ assembly_dialogs.construct_dialog("pz_alt_mrcs_volkodav",dlg)
+end
+function pz_alt_mrcs_volkodav_2(dlg)
+ assembly_dialogs.construct_dialog("pz_alt_mrcs_volkodav_2",dlg)
+end
+function pz_scien_after_lab(dlg)
+ assembly_dialogs.construct_dialog("pz_scien_after_lab",dlg)
+end
+function pz_scien_after_lab_alt(dlg)
+ assembly_dialogs.construct_dialog("pz_scien_after_lab_alt",dlg)
+end
+function pz_merc_leader_guard(dlg)
+ assembly_dialogs.construct_dialog("pz_merc_leader_guard",dlg)
+end
+function pz_isk_leader_dialog1(dlg)
+ assembly_dialogs.construct_dialog("pz_isk_leader_dialog1",dlg)
+end
+function pz_isk_leader_hitman_dialog(dlg)
+ assembly_dialogs.construct_dialog("pz_isk_leader_hitman_dialog",dlg)
+end
+function pz_isk_after_lab_dialog(dlg)
+ assembly_dialogs.construct_dialog("pz_isk_after_lab_dialog",dlg)
+end
+function pz_isk_leader_dialog2(dlg)
+ assembly_dialogs.construct_dialog("pz_isk_leader_dialog2",dlg)
+end
+function pz_isk_leader_dialog3(dlg)
+ assembly_dialogs.construct_dialog("pz_isk_leader_dialog3",dlg)
+end
+function pz_hata_guard_talk(dlg)
+ assembly_dialogs.construct_dialog("pz_hata_guard_talk",dlg)
+end
+function pz_hata_zomb_talk(dlg)
+ assembly_dialogs.construct_dialog("pz_hata_zomb_talk",dlg)
+end
+function pz_merclager_fc_2_dialog_1(dlg)
+ assembly_dialogs.construct_dialog("pz_merclager_fc_2_dialog_1",dlg)
+end
+function pz_merclager_fc_1_dialog_1(dlg)
+ assembly_dialogs.construct_dialog("pz_merclager_fc_1_dialog_1",dlg)
+end
+--Агропром
+function ag_agr_scien_1(dlg)
+ assembly_dialogs.construct_dialog("ag_agr_scien_1",dlg)
+end
+function ag_scien_perehod(dlg)
+ assembly_dialogs.construct_dialog("ag_scien_perehod",dlg)
+end
+function ag_ld_borman_old(dlg)
+ assembly_dialogs.construct_dialog("ag_ld_borman_old",dlg)
+end
+function ag_ld_borman(dlg)
+ assembly_dialogs.construct_dialog("ag_ld_borman",dlg)
+end
+function ag_dolg_borman_noyt(dlg)
+ assembly_dialogs.construct_dialog("ag_dolg_borman_noyt",dlg)
+end
+function ag_dolg_night_hunt(dlg)
+ assembly_dialogs.construct_dialog("ag_dolg_night_hunt",dlg)
+end
+function ag_agr_kuprian(dlg)
+ assembly_dialogs.construct_dialog("ag_agr_kuprian",dlg)
+end
+function ag_dolg_zoo(dlg)
+ assembly_dialogs.construct_dialog("ag_dolg_zoo",dlg)
+end
+function ag_dolg_zoo_done(dlg)
+ assembly_dialogs.construct_dialog("ag_dolg_zoo_done",dlg)
+end
+function ag_cap_about_scien(dlg)
+ assembly_dialogs.construct_dialog("ag_cap_about_scien",dlg)
+end
+function ag_agr_com_blokp_neut_reputation(dlg)
+ assembly_dialogs.construct_dialog("ag_agr_com_blokp_neut_reputation",dlg)
+end
+function ag_com_blokp_neut_reputation_2(dlg)
+ assembly_dialogs.construct_dialog("agr_com_blokp_neut_reputation_2",dlg)
+end
+function ag_com_blokp_good_reputation_1(dlg)
+ assembly_dialogs.construct_dialog("agr_com_blokp_good_reputation_1",dlg)
+end
+function ag_com_blokp_good_reputation_2(dlg)
+ assembly_dialogs.construct_dialog("agr_com_blokp_good_reputation_2",dlg)
+end
+function ag_com_blokp_cat_hunt(dlg)
+ assembly_dialogs.construct_dialog("agr_com_blokp_cat_hunt",dlg)
+end
+function ag_commendant_marsh_monsters_first(dlg)
+ assembly_dialogs.construct_dialog("ag_commendant_marsh_monsters_first",dlg)
+end
+function ag_ds_digger_about_dolg_1(dlg)
+ assembly_dialogs.construct_dialog("ag_ds_digger_about_dolg_1",dlg)
+end
+function ag_ds_digger_about_dolg_2(dlg)
+ assembly_dialogs.construct_dialog("ag_ds_digger_about_dolg_2",dlg)
+end
+function ag_filin_meet(dlg)
+ assembly_dialogs.construct_dialog("ag_filin_meet",dlg)
+end
+function ag_filin_thanks(dlg)
+ assembly_dialogs.construct_dialog("ag_filin_thanks",dlg)
+end
+function ag_filin_about_him(dlg)
+ assembly_dialogs.construct_dialog("ag_filin_about_him",dlg)
+end
+function ag_krylov_about_cap(dlg)
+ assembly_dialogs.construct_dialog("ag_krylov_about_cap",dlg)
+end
+function ag_krylov_about_cap_dolg(dlg)
+ assembly_dialogs.construct_dialog("ag_krylov_about_cap_dolg",dlg)
+end
+function ag_kalash_about_general_1(dlg)
+ assembly_dialogs.construct_dialog("ag_kalash_about_general_1",dlg)
+end
+function ag_kalash_about_present_1(dlg)
+ assembly_dialogs.construct_dialog("ag_kalash_about_present_1",dlg)
+end
+function dv_putnik_dialog(dlg)
+ assembly_dialogs.construct_dialog("dv_putnik_dialog",dlg)
+end
+function ag_kalash_about_present_2(dlg)
+ assembly_dialogs.construct_dialog("ag_kalash_about_present_2",dlg)
+end
+function ag_kalash_about_sniperka(dlg)
+ assembly_dialogs.construct_dialog("ag_kalash_about_sniperka",dlg)
+end
+function ag_loki_case_open(dlg)
+ assembly_dialogs.construct_dialog("ag_loki_case_open",dlg)
+end
+function ag_about_enter_to_krylov(dlg)
+ assembly_dialogs.construct_dialog("ag_about_enter_to_krylov",dlg)
+end
+function ag_about_enter_to_krylov2(dlg)
+ assembly_dialogs.construct_dialog("ag_about_enter_to_krylov2",dlg)
+end
+
+--Общие диалоги
+function mechanic_dialog(dlg)
+ assembly_dialogs.construct_dialog("mechanic_dialog",dlg)
+end
+function hacker_dialog(dlg)
+ assembly_dialogs.construct_dialog("hacker_dialog",dlg)
+end
+function hacker_dialog_otkaz(dlg)
+ assembly_dialogs.construct_dialog("hacker_dialog_otkaz",dlg)
+end

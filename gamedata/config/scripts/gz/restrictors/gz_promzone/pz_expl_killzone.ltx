@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+pz_merclager_bomb_blowup} sr_idle2
+
+[sr_idle2]
+on_actor_inside = sr_idle3
+
+[sr_idle3]
+on_timer = 1000|%=aes_kill_actor%
+on_info = {+pz_fire_end} nil
+
+
+

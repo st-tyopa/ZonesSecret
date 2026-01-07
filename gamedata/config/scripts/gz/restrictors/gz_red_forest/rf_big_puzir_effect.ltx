@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+yan_otshel_walk_start} sr_particle
+
+[sr_particle]
+name = anomaly2\anomaly_spatial_bubble_idle
+path = rf_big_puzir
+mode = 2 		
+looped = true            
+on_info = {+rf_spawn_puzir} sr_particle1
+
+[sr_particle1]
+name = anomaly2\anomaly_spatial_bubble_rupture
+path = rf_big_puzir
+mode = 2 		
+looped = false  
+on_signal = particle_end | nil

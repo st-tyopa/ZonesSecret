@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-yan_sos_bandit_player_in_house} %+yan_sos_bandit_player_in_house% sr_idle2
+on_info = {+yan_sos_in_house_spawn_bandit} sr_idle@nil
+
+[sr_idle2]
+on_actor_outside = {+yan_sos_bandit_player_in_house} %-yan_sos_bandit_player_in_house% sr_idle
+on_info = {+yan_sos_in_house_spawn_bandit} sr_idle@nil
+
+[sr_idle@nil]

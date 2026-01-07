@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+x15_escape_from_lab_done} %+play_snd_cheka% sr_idle2 
+
+[sr_idle2]
+on_timer = 100| %+play_snd_rgd5_explode =run_postprocess(deadcity_wake) =disable_ui_elements(weapon) =disable_ui%  sr_idle3
+
+[sr_idle3]
+on_timer = 100| %=teleport_actor(yan_gg_walk:yan_gg_look)% sr_idle4
+
+[sr_idle4]
+on_timer = 8000| nil %+yan_endgame_spawn_predately =enable_ui%

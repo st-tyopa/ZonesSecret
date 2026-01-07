@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-pz_night_spawn_zone} %+pz_night_spawn_zone% sr_idle2
+
+[sr_idle2]
+on_actor_outside = {+pz_night_spawn_zone} %-pz_night_spawn_zone% sr_idle
+
+[sr_idle@nil]

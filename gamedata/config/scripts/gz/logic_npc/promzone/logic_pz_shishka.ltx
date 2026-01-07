@@ -1,0 +1,32 @@
+[logic]
+active = walker@lab_zombie_sit
+
+[walker@lab_zombie_sit]
+path_walk = pz_shishka_stay
+path_look = pz_shishka_look
+danger = danger_condition@scout
+on_info = {+pz_to_heli_start} walker@pz_to_heli1
+
+[walker@pz_to_heli1]
+path_walk = pz_shishka_stay
+path_look = pz_shishka_look
+meet = no_meet
+danger = danger_condition@scout
+on_game_timer = 10| walker@pz_to_heli
+
+[walker@pz_to_heli]
+path_walk = pz_way_to_heli2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+danger = danger_condition@scout
+on_signal = heli2| walker@pz_heli_stay
+
+[walker@pz_heli_stay]
+path_walk = pz_shishka_stay_2
+path_look = pz_shishka_look_2
+danger = danger_condition@scout
+
+[danger_condition@scout]
+ignore_distance       = 5

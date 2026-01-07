@@ -1,0 +1,413 @@
+local actor = db.actor
+local ini = system_ini()
+local good_table = {}
+--//--------------------------------------------------/// Диалог ///--------------------------------------------------//--
+----//***********************************Прекондишины*********************************\\----
+function prec_pda_novice() --/пда новичка
+ if actor:object("pda_stalker_novice") then
+  return true
+ end
+end
+function prec_pda_regular() --/пда сталкера
+ if actor:object("pda_stalker_regular") then
+  return true
+ end
+end
+function prec_pda_veteran() --/ пда ветерана
+ if actor:object("pda_stalker_veteran") then
+  return true
+ end
+end
+function prec_pda_master() --/ пда мастера
+ if actor:object("pda_stalker_master") then
+  return true
+ end
+end
+function prec_pda_chehov() --// Пда чехова
+ if actor:object("pda_sv_cheh") then
+  return true
+ end
+end
+function prec_pda_kupr() --/ пда куприянова
+ if actor:object("pda_dolg_kuprianov") then
+  return true
+ end
+end
+function prec_pda_st_depo() --/ пда сталкера из депо
+ if actor:object("pda_depo_dead_stalker") then
+  return true
+ end
+end
+function prec_pda_maps_band() --/ пда Гноя
+ if actor:object("pda_maps_band") then
+  return true
+ end
+end
+function prec_pda_borman() --/ пда бормана
+ if actor:object("pda_borman") then
+  return true
+ end
+end
+function prec_pda_otshel() --/ пда отшельника
+ if actor:object("quest_pda_otshel") then
+  return true
+ end
+end
+function prec_pda_gorb() --/пда горбатого
+ if actor:object("pda_gorb") then
+  return true
+ end
+end
+function prec_pda_hunter() --/пда охотника
+ if actor:object("pda_hunt") then
+  return true
+ end
+end
+function prec_pda_leshui()
+ if actor:object("pda_bandit_leshui") then
+  return true
+ end
+end
+function prec_pda_loki()
+ if actor:object("pda_sv_loki") then
+  return true
+ end
+end
+function prec_money() 
+ local money = gz_utils.load_variable("cost_hack", "20000")
+  if actor:money() >= money then
+   return true
+  end
+end
+----//***********************************Выбор ПДА*********************************\\----
+function pda_novice_action() --/пда новичка
+ local obj = actor:object("pda_stalker_novice")
+ if obj then 
+   gz_utils.save_variable("pda_clicked", obj:section())
+  end
+end
+function pda_regular_action() --/пда сталкера
+ local obj = actor:object("pda_stalker_regular")
+ if obj then
+   gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_veteran_action() --/ пда ветерана
+ local obj = actor:object("pda_stalker_veteran")
+ if obj then
+   gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_master_action() --/ пда мастера
+ local obj = actor:object("pda_stalker_master")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_chehov_action() --// Пда чехова
+ local obj = actor:object("pda_sv_cheh")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_kupr_action() --/ пда куприянова
+ local obj = actor:object("pda_dolg_kuprianov")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_st_depo_action() --/ пда сталкера из депо
+ local obj = actor:object("pda_depo_dead_stalker")
+ if obj then 
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_maps_band_action() --/ пда Гноя
+ local obj = actor:object("pda_maps_band")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_borman_action() --/ пда бормана
+ local obj = actor:object("pda_borman")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_otshel_action() --/ пда отшельника
+ local obj = actor:object("quest_pda_otshel")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_gorb_action() --/пда горбатого
+ local obj = actor:object("pda_gorb")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_hunter_action() --/пда охотника
+ local obj = actor:object("pda_hunt")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_leshui_action()
+ local obj = actor:object("pda_bandit_leshui")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+function pda_loki_action()
+ local obj = actor:object("pda_sv_loki")
+ if obj then
+  gz_utils.save_variable("pda_clicked", obj:section())
+ end
+end
+--//Вычисляем всё, что надо для формирования цены:
+function cost_and_time_calc()
+ local pda = gz_utils.load_variable("pda_clicked", "not_device")
+  if pda ~= "not_device" then
+	if ini:line_exist(pda, "encryption_level") then
+	 level_lock = ini:r_string(pda, "encryption_level")
+    else
+     level_lock = "baryga"
+    end
+	encrypt_level = gz_pda.convert_encrypt_to_num(level_lock)
+	level_lock = game.translate_string(level_lock)
+	cost_hack = 500*encrypt_level
+	gz_utils.save_variable("cost_hack", cost_hack)
+	timre_hack = 2*encrypt_level
+	if timre_hack <= 4 then
+	 ends = "а"
+	else
+	 ends = "ов"
+	end
+	gz_utils.save_variable("hack_level", encrypt_level) --над этим нам чуть позже придется поиздеваться)
+	string_message = "Хм, здесь "..level_lock.." уровень шифрования, значит обойдется это тебе в "..cost_hack.." рублей. Через "..timre_hack.." час"..ends.." пришлю тебе на ПДА все данные, которые удастся расшифровать. По рукам?"
+	db.actor:give_talk_message(string_message, "ui\\icon_guider", Frect():set(0,324,165,108), "iconed_answer_item")
+  end
+end
+--//Ломаем ПДА
+function pda_hack_start()	
+   m_timers.start_game_timer(encrypt_level*2*3600, "gz_caches.give_nistyak"):set_name("start_pda_hack_hacker") 
+   gz_utils.give_info("hacker_its_job")
+   actor:give_money(-500*encrypt_level)
+   section_pda = gz_utils.load_variable("pda_clicked")
+   gz_utils.remove_item(actor:object(section_pda))
+   gz_utils.del_variable("cost_hack")
+   gz_utils.del_variable("hack_level")
+end
+function give_nistyak()
+ section_pda = gz_utils.load_variable("pda_clicked", "ERROR")
+ if section_pda ~= "ERROR" then
+ if ini:line_exist(section_pda, "encryption_level") then
+  level_lock = ini:r_string(section_pda, "encryption_level")
+ else
+  level_lock = "el_it_can_not_be_determined"
+ end
+ encrypt_level = convert_encrypt_to_num(level_lock)
+ enciclopedy_rnd = math.random(1, encrypt_level*3)
+ new_statja_num = 0
+ for i = 1, enciclopedy_rnd do
+   statja_for_pda = enciclopedy_list[math.random(table.getn(enciclopedy_list))]
+   if gz_utils.has_info(statja_for_pda) == false then
+    gz_utils.give_info(statja_for_pda)
+    new_statja_num = new_statja_num + 1
+   end
+ end
+ if ini:line_exist(section_pda, "unical_info") then
+	unic_info = ini:r_s32(section_pda, "unical_info")
+	 for i = 1, unic_info do
+      if ini:line_exist(section_pda, "unical_info_"..i) then 
+       unic_info_paste = ini:r_string(section_pda, "unical_info_"..i)
+	   gz_utils.give_info(unic_info_paste)
+      end
+     end
+ end
+ news_manager.send_tip(db.actor, "%c[255,255,0,0]Взлом завершён.\\n%c[255,0,0,220]Новых записей в энциклопедии: ".."%c[255,0,220,0]"..new_statja_num)
+ gz_utils.del_info("hacker_its_job")
+ gz_utils.load_variable("pda_clicked", "ERROR")
+ end
+end
+
+function clear()
+   gz_utils.del_variable("cost_hack")
+   gz_utils.del_variable("hack_level")
+end
+
+--//Тайник Охотника
+function gz_caches_map_1()
+ local sim = alife()
+ local obj = sim:story_object(90000)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "Тайник Охотника")
+  end
+end
+function gz_caches_map_1_dell()
+ local sim = alife()
+ local obj = sim:story_object(90000)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+ --//Тайник Локи
+function gz_caches_map_2()
+ local sim = alife()
+	local obj = sim:story_object(90111)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "Тайник Локи")
+  end
+end
+function gz_caches_map_2_dell()
+ local sim = alife()
+ local obj = sim:story_object(90111)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+--//Тайник Горбатого
+function gz_caches_map_3()
+ local sim = alife()
+ local obj = sim:story_object(90002)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "Тайник Горбатого")
+  end
+end
+function gz_caches_map_3_dell()
+ local sim = alife()
+ local obj = sim:story_object(90002)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+--//Тайник Отшельника
+function gz_caches_map_5()
+ local sim = alife()
+ local obj = sim:story_object(90004)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "Тайник Отшельника")
+  end
+end
+function gz_caches_map_5_dell()
+ local sim = alife()
+ local obj = sim:story_object(90004)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+--//Тайник Бормана
+function gz_caches_map_6()
+ local sim = alife()
+ local obj = sim:story_object(90005)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "Тайник Бормана")
+  end
+end
+function gz_caches_map_6_dell()
+ local sim = alife()
+ local obj = sim:story_object(90005)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+--//Метки на тайники копателя
+function gz_map_gar_dig_1()
+ local sim = alife()
+ local obj = sim:story_object(84001)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "возможное место тайника Копателя")
+  end
+end
+function gz_map_gar_dig_1_dell()
+ local sim = alife()
+ local obj = sim:story_object(84001)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+function gz_map_gar_dig_2()
+ local sim = alife()
+ local obj = sim:story_object(84002)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "возможное место тайника Копателя")
+  end
+end
+function gz_map_gar_dig_2_dell()
+ local sim = alife()
+ local obj = sim:story_object(84002)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+function gz_map_gar_dig_3()
+ local sim = alife()
+ local obj = sim:story_object(84003)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "возможное место тайника Копателя")
+  end
+end
+function gz_map_gar_dig_3_dell()
+ local sim = alife()
+ local obj = sim:story_object(84003)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+
+function dv_dolg_t1()
+ local sim = alife()
+ local obj = sim:story_object(12000)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "Примерное местонахождение тайника Долга")
+  end
+end
+function dv_dolg_t1_dell()
+ local sim = alife()
+ local obj = sim:story_object(12000)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+
+function dv_dolg_t2()
+ local sim = alife()
+ local obj = sim:story_object(12001)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "Примерное местонахождение тайника Долга")
+  end
+end
+function dv_dolg_t2_dell()
+ local sim = alife()
+ local obj = sim:story_object(12001)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+
+function dv_dolg_t3()
+ local sim = alife()
+ local obj = sim:story_object(12002)
+  if obj then
+   level.map_add_object_spot(obj.id, "crlc_big", "Примерное местонахождение тайника Долга")
+  end
+end
+function dv_dolg_t3_dell()
+ local sim = alife()
+ local obj = sim:story_object(12002)
+  if obj then
+   level.map_remove_object_spot(obj.id, "crlc_big");
+  end
+end
+
+--//Сообщения о тайнике
+function gz_caches_map_tip()
+ news_manager.send_tip(db.actor, "%c[255,255,128,128] \\n%c[255,255,0,0] Новая отметка тайника на карте.", 0, "cache_map", 25000)
+ local snd = sound_object([[device\pda\pda_news]]) 
+ snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end
+function gz_caches_diary_tip()
+ news_manager.send_tip(db.actor, "%c[255,255,128,128] \\n%c[255,255,0,0] Новая заметка о тайнике.", 0, "cache_diary", 25000)
+ local snd = sound_object([[device\pda\pda_news]]) 
+ snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end

@@ -1,0 +1,62 @@
+; Артефакты для аномалии "Амебы"
+
+[af_ameba_slime]:af_base     ; Слизь
+$spawn				         = "artifacts\ameba slime"
+visual				         = physics\anomaly\artefact_ameba3.ogf
+description			         = enc_zone_artifact_af-ameba-slime
+inv_name			         = af-ameba-slime
+inv_weight			         = 0.5
+inv_grid_x			         = 7
+inv_grid_y			         = 4
+cost				         = 1000
+jump_height			         = .0
+particles			         = ;
+lights_enabled               = false
+bleeding_restore_speed       = 0.004
+hit_absorbation_sect         = af_ameba_slime_absorbation
+
+[af_ameba_slime_absorbation]:af_base_absorbation
+burn_immunity                = 1.1	
+chemical_burn_immunity       = 1.1
+
+[af_ameba_slug]:af_base      ; Слизняк
+$spawn				         = "artifacts\ameba slug"
+visual				         = physics\anomaly\artefact_ameba2.ogf
+description			         = enc_zone_artifact_af-ameba-slug
+inv_name			         = af-ameba-slug
+inv_weight			         = 0.5
+inv_grid_x			         = 6
+inv_grid_y			         = 4
+cost				         = 2500
+jump_height			         = .01
+particles			         = ;
+lights_enabled               = false
+trail_light_color            = 0.6,0.6,0.5
+trail_light_range            = 1.0
+bleeding_restore_speed       = 0.008
+hit_absorbation_sect         = af_ameba_absorbation
+
+[af_ameba_absorbation]:af_base_absorbation
+burn_immunity                = 1.1
+chemical_burn_immunity       = 1.1
+
+[af_ameba_mica]:af_base      ; Слюда
+$spawn				         = "artifacts\ameba mica"
+visual				         = physics\anomaly\artefact_ameba1.ogf
+description			         = enc_zone_artifact_af-ameba-mica
+inv_name			         = af-ameba-mica
+inv_weight			         = 0.5
+inv_grid_x			         = 5
+inv_grid_y			         = 4
+cost				         = 5000
+jump_height			         = .01
+particles			         = ;
+lights_enabled               = false
+trail_light_color            = 0.6,0.7,0.6
+trail_light_range            = 1
+bleeding_restore_speed       = 0.012
+hit_absorbation_sect         = af_ameba_mica_absorbation
+
+[af_ameba_mica_absorbation]:af_base_absorbation
+burn_immunity                = 1.1
+chemical_burn_immunity       = 1.1

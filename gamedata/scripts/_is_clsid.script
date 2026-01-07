@@ -1,0 +1,200 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Менеджер clsid объектов.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 04.07.2011
+--]]
+
+
+local stalkers    = {clsid.actor,  clsid.stalker, clsid.script_stalker}
+local monsters    = {clsid.bloodsucker, clsid.boar, clsid.burer, clsid.cat, clsid.controller, clsid.crow, clsid.dog_black, clsid.psy_dog_phantom, clsid.psy_dog, 
+                     clsid.dog_red, clsid.flesh, clsid.flesh_group, clsid.fracture, clsid.pseudo_gigant, clsid.chimera, clsid.phantom, clsid.poltergeist, 
+					 clsid.snork, clsid.tushkano, clsid.zombie, clsid.bloodsucker_s, clsid.boar_s, clsid.burer_s, clsid.cat_s, clsid.chimera_s, clsid.controller_s, 
+					 clsid.psy_dog_phantom_s, clsid.psy_dog_s, clsid.dog_s, clsid.flesh_s, clsid.gigant_s, clsid.fracture_s, clsid.poltergeist_s, clsid.pseudodog_s, 
+					 clsid.snork_s, clsid.tushkano_s, clsid.zombie_s}
+local anomalis    = {clsid.zone_bfuzz_s, clsid.zone_galant_s, clsid.zone_mbald_s, clsid.zone_mincer_s, clsid.zone_acid_fog, clsid.ameba_zone, 
+					 clsid.zone_bfuzz, clsid.zone_dead, clsid.zone_galantine, clsid.zone_mosquito_bald, clsid.zone_mincer, clsid.nogravity_zone, 
+					 clsid.zone_radioactive, clsid.zone_rusty_hair, clsid.team_base_zone, clsid.torrid_zone, clsid.zone}
+local restrictors = {clsid.level_changer, clsid.respawn, clsid.script_zone, clsid.space_restrictor, clsid.spectator, 115}
+local smarts      = {clsid.smart_terrain, clsid.smart_zone}
+local artefacts   = {clsid.art_bast_artefact, clsid.art_black_drops, clsid.art_gravi_black, clsid.art_dummy, clsid.art_electric_ball, clsid.art_faded_ball,
+					 clsid.art_galantine, clsid.art_gravi, clsid.art_mercury_ball, clsid.art_needles, clsid.art_rusty_hair, clsid.art_thorn, clsid.art_zuda, 
+					 clsid.artefact, clsid.artefact_s}
+local ammos       = {clsid.wpn_ammo, clsid.wpn_ammo_m209, clsid.wpn_ammo_og7b, clsid.wpn_ammo_vog25, clsid.wpn_grenade_f1, clsid.wpn_grenade_fake, 
+                     clsid.wpn_grenade_rgd5, clsid.wpn_grenade_rpg7}
+local vehicles    = {clsid.helicopter, clsid.car, clsid.car_s}
+local traders     = {clsid.trader, clsid.script_trader}
+local devices     = {clsid.device_pda, clsid.device_torch, clsid.device_detector_simple, clsid.obj_attachable, clsid.obj_document, clsid.device_torch_s, 
+                     clsid.wpn_binocular_s, clsid.wpn_binocular}
+local outfits     = {clsid.equ_exo, clsid.equ_military, clsid.equ_scientific, clsid.equ_stalker, clsid.equ_stalker_s}
+local meds        = {clsid.obj_antirad, clsid.obj_bandage, clsid.obj_medkit}
+local physics     = {clsid.obj_bolt, clsid.obj_breakable, clsid.obj_climable, clsid.obj_physic, clsid.obj_phys_destroyable, clsid.obj_phskeleton, 
+                     clsid.script_object, clsid.switcher}
+local explods     = {clsid.obj_explosive}
+local foods       = {clsid.obj_food, clsid.obj_bottle}
+local h_lamp      = {clsid.hanging_lamp, clsid.projector}
+local inventory   = {clsid.inventory_box}
+local weapons     = {clsid.wpn_ak74_s, clsid.wpn_bm16_s, clsid.wpn_groza_s, clsid.wpn_hpsa_s, clsid.wpn_knife_s, clsid.wpn_lr300_s, clsid.wpn_pm_s, clsid.wpn_rg6_s, 
+					 clsid.wpn_rpg7_s, clsid.wpn_shotgun_s, clsid.wpn_svd_s, clsid.wpn_svu_s, clsid.wpn_usp45_s, clsid.wpn_val_s, clsid.wpn_vintorez_s, 
+					 clsid.wpn_walther_s, clsid.wpn_ak74, clsid.wpn_bm16, clsid.wpn_fn2000, clsid.wpn_fort, clsid.wpn_groza, clsid.wpn_hpsa, clsid.wpn_knife, 
+					 clsid.wpn_lr300, clsid.wpn_mounted, clsid.wpn_pm, clsid.wpn_rg6, clsid.wpn_rpg7, clsid.wpn_shotgun, clsid.wpn_silencer, 
+					 clsid.wpn_stat_mgun, clsid.wpn_svd, clsid.wpn_svu, clsid.wpn_usp45, clsid.wpn_val, clsid.wpn_vintorez, clsid.wpn_walther}
+local addons      = {clsid.wpn_scope_s, clsid.wpn_grenade_launcher, clsid.wpn_scope, clsid.wpn_wmagaz, clsid.wpn_wmaggl}
+
+--/summary/>> итератор
+function Is(cid, flt)
+	for _, v in ipairs(flt) do
+		if v == cid then
+			return true
+		end
+	end
+	return false
+end
+
+--/summary/>> все
+function GetAll(obj)
+	return true
+end
+
+--//-----------------------------------------------------
+--// Сталкеры
+--//-----------------------------------------------------
+--/summary/>> сталкеры
+function GetNpcStalker(obj)
+	return Is(get_clsid(obj), stalkers)
+end
+
+--/summary/>> торговцы
+function GetNpcTrade(obj)
+	return Is(get_clsid(obj), traders)
+end
+
+--/summary/>> сталкеры (включая торговцев)
+function GetNpc(obj)
+	local cid = get_clsid(obj)
+	return Is(cid, stalkers)    or
+	       Is(cid, traders)
+end
+
+--//-----------------------------------------------------
+--// Мутанты
+--//-----------------------------------------------------
+--/summary/>> монстры
+function GetMonster(obj)
+	return Is(get_clsid(obj), monsters)
+end
+
+--//-----------------------------------------------------
+--// Предметы
+--//-----------------------------------------------------
+--/summary/>> артефакты
+function GetItemArtefact(obj)
+	return Is(get_clsid(obj), artefacts)
+end
+
+--/summary/>> оружие
+function GetItemWeapon(obj)
+	return Is(get_clsid(obj), weapons)
+end
+
+--/summary/>> снаряды
+function GetItemAmmo(obj)
+	return Is(get_clsid(obj), ammos)
+end
+
+--/summary/>> еда
+function GetItemFood(obj)
+	return Is(get_clsid(obj), foods)
+end
+
+--/summary/>> устройства (пда, рация, и т.д.)
+function GetItemDevice(obj)
+	return Is(get_clsid(obj), devices)
+end
+
+--/summary/>> бронежилеты
+function GetItemOutfit(obj)
+	return Is(get_clsid(obj), outfits)
+end
+
+--/summary/>> медикаменты
+function GetItemMed(obj)
+	return Is(get_clsid(obj), meds)
+end
+
+--/summary/>> предметы (итемсы всех тпов и разновидностей)
+function GetItem(obj)
+	local cid = get_clsid(obj)
+	return Is(cid, artefacts) or
+	       Is(cid, ammos)     or
+		   Is(cid, devices)   or
+		   Is(cid, outfits)   or
+		   Is(cid, meds)      or
+		   Is(cid, foods)     or
+		   Is(cid, weapons)
+end
+
+--//-----------------------------------------------------
+--// Объекты
+--//-----------------------------------------------------
+--/summary/>> физические
+function GetObjectPhysic(obj)
+	return Is(get_clsid(obj), physics)
+end
+
+--/summary/>> детанирующие физические объекты (бочки, канистры, балоны)
+function GetObjectExplod(obj)
+	return Is(get_clsid(obj), explods)
+end
+
+--/summary/>> световые приборы
+function GetObjectHLamp(obj)
+	return Is(get_clsid(obj), h_lamp)
+end
+
+--/summary/>> нычка
+function GetObjectInvBox(obj)
+	return Is(get_clsid(obj), inventory)
+end
+
+--/summary/>> техника
+function GetObjectVehicl(obj)
+	return Is(get_clsid(obj), vehicles)
+end
+
+--/summary/>> объекты (включая физические и vehicles)
+function GetObject(obj)
+	local cid = get_clsid(obj)
+	return Is(cid, vehicles)  or
+	       Is(cid, physics)   or
+		   Is(cid, explods)   or
+		   Is(cid, h_lamp)    or
+		   Is(cid, inventory)
+end
+
+--//-----------------------------------------------------
+--// Зоны
+--//-----------------------------------------------------
+--/summary/>> аномалии
+function GetZoneAnom(obj)
+	return Is(get_clsid(obj), anomalis)
+end
+
+--/summary/>> рестрикторы
+function GetZoneRestrict(obj)
+	return Is(get_clsid(obj), restrictors)
+end
+
+--/summary/>> смарт-террейны
+function GetZoneSmart(obj)
+	return Is(get_clsid(obj), smarts)
+end
+
+--/summary/>> зоны (аномалии, рестрикторы, террейны)
+function GetZone(obj)
+	local cid = get_clsid(obj)
+	return Is(cid, anomalis)    or
+	       Is(cid, restrictors) or
+		   Is(cid, smarts)
+end
+

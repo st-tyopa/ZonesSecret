@@ -1,0 +1,16 @@
+[logic]
+active = mob_home
+on_death = death
+on_hit = hit
+
+
+[mob_home]
+path_home = dscol_zomb_home
+home_min_radius = 25
+home_max_radius = 50
+
+[hit]
+on_info = nil %=kill_phantoms%
+
+[death]
+on_info = nil %=kill_phantoms%

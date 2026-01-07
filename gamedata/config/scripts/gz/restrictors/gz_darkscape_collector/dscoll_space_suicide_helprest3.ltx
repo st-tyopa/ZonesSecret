@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle
+ 
+[sr_idle]
+on_info = {+dscol_cutscene_1_2_start} sr_idle@2
+
+[sr_idle@2]
+on_timer = 100| sr_sound_act
+
+[sr_sound_act]
+snd = izlome_idle_3
+delay = 0
+delay_max = 0
+stereo = false
+on_signal = sound_end | sr_idle@end
+
+[sr_idle@end]

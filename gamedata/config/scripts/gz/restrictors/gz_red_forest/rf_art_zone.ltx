@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+rf_art_can_use} sr_idle2
+on_info = {+rf_spawn_puzir} sr_idle@nil
+
+[sr_idle2]
+on_actor_outside = {-rf_art_can_use} sr_idle2
+on_info = {+rf_spawn_puzir} sr_idle@nil
+
+[sr_idle@nil]

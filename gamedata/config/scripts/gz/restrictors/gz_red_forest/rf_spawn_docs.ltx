@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle2
+
+[sr_idle@1]
+on_info = {+find_rf_docs_start} %=spawn_obj_in_zone(rf_mil_pda:rf_spawn_rg6_rest)% sr_idle21
+
+[sr_idle2]
+on_info = {+rf_find_cave_gun} sr_idle3
+on_info2 = {+rf_cave_zasada_com_dead +rf_cave_zasada_mil2_dead +rf_cave_zasada_mil1_dead +rf_cave_zasada_mil3_dead} %+rf_cave_zasada_find_mil_pda% nil
+
+[sr_idle3] 
+on_timer = 5000|%+rf_find_cave_gun_sms_done% sr_idle4
+on_info2 = {+rf_cave_zasada_com_dead +rf_cave_zasada_mil2_dead +rf_cave_zasada_mil1_dead +rf_cave_zasada_mil3_dead} %+rf_cave_zasada_find_mil_pda% nil
+
+[sr_idle4]
+on_info = {+rf_cave_zasada_com_dead +rf_cave_zasada_mil2_dead +rf_cave_zasada_mil1_dead +rf_cave_zasada_mil3_dead} %+rf_cave_zasada_find_mil_pda% nil
+
+
+[sr_idle@nil]

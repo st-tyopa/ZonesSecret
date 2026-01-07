@@ -1,0 +1,12 @@
+[logic]
+active = walker@1
+
+[walker@1]
+path_walk = dv_fc_sv2_stay
+path_look = dv_fc_sv1_stay_look
+on_info = {+dv_fc_start} remark@threat
+
+[remark@threat]
+anim = threat
+target = actor
+meet = no_meet

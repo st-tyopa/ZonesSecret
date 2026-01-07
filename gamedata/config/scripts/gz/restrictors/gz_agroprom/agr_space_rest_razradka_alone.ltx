@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+kill_scien_done +go_to_evacuation_zone_start} sr_idle2
+on_info2 = {+lead_agr_scien_start} nil
+
+[sr_idle2]
+on_actor_inside = %+agr_anomaly_razradka_start% nil

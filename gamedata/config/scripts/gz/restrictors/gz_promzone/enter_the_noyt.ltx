@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+pz_leader_guard_smena} sr_idle@11
+
+[sr_idle@11]
+on_actor_inside = {+pz_rob_merclager_docs_start +pz_merclager_bomb_blowup} %+pz_actor_in_danger_zone% sr_idle@2
+
+[sr_idle@2]
+on_info = {+pz_actor_in_danger_zone -pz_merclager_leader_seif_stay} %+pz_actor_enemy_merclager% sr_idle@nil
+
+[sr_idle@nil]

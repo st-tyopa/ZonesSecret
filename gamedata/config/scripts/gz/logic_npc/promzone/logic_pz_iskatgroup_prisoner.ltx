@@ -1,0 +1,20 @@
+[logic]
+active = walker@1
+combat_ignore = combat_ignore@pz_isk_pris
+
+[walker@1]
+path_walk = pz_iskateli_group_prisoner_walk_1
+path_look = pz_iskateli_group_leader_walk_1
+def_state_standing = prisoner
+meet = no_meet
+combat_ignore_cond = always
+on_info = {+kill_pz_prisoner} %=kill%
+
+[walker@run]
+path_walk = pz_iskateli_group_prisoner_run
+meet = no_meet
+combat_ignore_cond = always
+
+
+[combat_ignore@pz_isk_pris]
+combat_ignore_cond = always

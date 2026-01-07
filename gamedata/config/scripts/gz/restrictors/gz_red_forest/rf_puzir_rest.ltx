@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+rf_spawn_puzir} %=run_postprocess(blink) =play_puzir_particle_2 =play_snd(anomaly\teleport_incoming)% sr_idle1
+
+[sr_idle1]
+on_game_timer = 500|%=stop_postprocess(blink)% nil

@@ -1,0 +1,29 @@
+[logic]
+active = ph_car@idle1
+on_hit = hit
+
+[ph_car@idle1]
+target=actor
+fire_range=120
+fire_time = 5000
+fire_repeat=1000
+auto_fire=true
+invulnerable = false
+headlights = off 
+on_death_info = pz_second_btr_destr
+on_info = {+actor_is_killer} ph_car@idle2
+;on_info = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start} ph_car@idle2
+
+[ph_car@idle2]
+fire_range=120
+fire_time = 5000
+fire_repeat=1000
+auto_fire=true
+invulnerable = false
+headlights = on 
+on_death_info = pz_second_btr_destr
+on_info = {-actor_is_killer} ph_car@idle1, {+pz_actor_enemy_merclager} ph_car@idle1 
+;on_info = {+pz_rob_merclager_docs_fail +pz_actor_enemy_merclager -actor_is_killer +pz_rob_merclager_docs_start} ph_car@idle1
+
+[hit]
+on_info = %+pz_actor_enemy_merclager -actor_is_killer%

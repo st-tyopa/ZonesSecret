@@ -1,0 +1,55 @@
+; Артефакты для аномалии "Жарка"
+
+[af_drops]:af_base        ;Капли
+$spawn 			          = "artifacts\zharka drops"
+visual				      = physics\anomaly\artefact_kaply.ogf
+description			      = enc_zone_artifact_af-drops
+inv_name			      = af-drops
+inv_weight			      = 0.5
+inv_grid_x			      = 12
+inv_grid_y			      = 4
+cost				      = 1000
+jump_height			      = .01
+particles			      = ;
+lights_enabled            = false
+trail_light_color         = 0.6,0.7,0.5
+trail_light_range         = 0.5
+radiation_restore_speed   = -0.001
+power_restore_speed       = -0.001
+
+[af_fireball]:af_base     ; Огненный шар
+$spawn 			          = "artifacts\zharka fireball"
+visual				      = physics\anomaly\artefact_fire.ogf
+description			      = enc_zone_artifact_af-fireball
+inv_name			      = af-fireball
+inv_weight			      = 0.5
+inv_grid_x			      = 13
+inv_grid_y			      = 4
+cost				      = 2500
+impulse_threshold		  = 10
+radius					  = 10
+strike_impulse			  = 20
+particles			      = ;
+lights_enabled            = false
+trail_light_color         = 0.9,0.5,0.5
+trail_light_range         = 3.0
+radiation_restore_speed   = -0.002
+power_restore_speed       = -0.001
+
+[af_cristall]:af_base     ; Кристалл
+$spawn 			          = "artifacts\zharka cristall"
+visual				      = physics\anomaly\artefact_cristall.ogf
+description			      = enc_zone_artifact_af-cristall
+inv_name			      = af-cristall
+inv_weight			      = 0.5
+inv_grid_x			      = 14
+inv_grid_y			      = 4
+cost				      = 5000
+jump_height			      = .01
+particles			      = ;
+lights_enabled            = false
+trail_light_color         = 0.9,0.5,0.5
+trail_light_range         = 3.0
+artefact_activation_seq	  = af_activation_mincer		
+radiation_restore_speed   = -0.003
+power_restore_speed       = -0.001

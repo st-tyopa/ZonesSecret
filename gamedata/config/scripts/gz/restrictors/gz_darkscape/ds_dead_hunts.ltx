@@ -1,0 +1,7 @@
+[logic]
+active = sr_idle
+ 
+[sr_idle]
+on_info = {+ds_krovo_hunt_start +hunt_2_dead +hunt_1_dead -krovo_nagr} %+ds_hunt_krovo_fail% sr_idle@nil
+
+[sr_idle@nil]

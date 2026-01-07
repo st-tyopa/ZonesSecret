@@ -1,0 +1,49 @@
+[logic]
+active = walker@dv_max_stay
+on_death = death
+
+[walker@dv_max_stay]
+path_walk = dv_max_stay
+path_look = dv_max_look
+on_info = {+find_weapons_case_dialog} walker@dv_max
+
+[walker@dv_max]
+path_walk = dv_max_walk
+path_look = dv_max_walk_look
+on_signal = max |  %+find_weapons_case_dialog_2% remark@dv_max_zapravka
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+danger = danger_condition@scout
+
+[remark@dv_max_zapravka]
+anim = guard
+target = actor
+on_info = {+find_weapons_case_done} walker@dv_max_sdelka
+
+[walker@dv_max_sdelka]
+path_walk = dv_max_walk_sdelka
+path_look = dv_max_look_sdelka
+meet = no_meet
+on_signal = maxsdelkastop| %+find_weapons_case_zasada =dv_zasada%
+on_info = {+find_weapons_bandits_dead} walker@dv_max_talk
+
+[walker@dv_max_talk]
+path_walk = dv_max_stay_2
+path_look = dv_max_look_2
+danger = danger_condition@scout_3
+
+
+
+[danger_condition@scout_2]
+ignore_distance       = 5
+
+[danger_condition@scout_3]
+ignore_distance_corpse = 1
+
+[death]
+on_info = %+max_dead%
+ 
+[danger_condition@scout]
+ignore_distance       = 5

@@ -1,0 +1,593 @@
+[trader]
+buy_condition = dsneut_trader_generic_buy
+sell_condition = {-dv_sv_greshbase_rush_done} dsneut_trader_start_sell, {+dv_sv_greshbase_rush_done} sv_friend_sell, {+dv_sv_greshbase_rush_done +cap_dead}  sv_friend_sell_aft_cap
+buy_supplies = {-dv_sv_greshbase_rush_done} supplies_start, {+dv_sv_greshbase_rush_done}  supplies_sv_friend, {+dv_sv_greshbase_rush_done +cap_dead}  supplies_sv_friend_aft_cap
+
+[dsneut_trader_generic_buy]
+;Артефакты
+af_medusa				= 1,	0.5
+af_cristall_flower		= 1,	0.5
+af_night_star			= 1,	0.5
+af_vyvert				= 1,	0.5
+af_gravi				= 1,	0.5
+af_gold_fish			= 1,	0.5
+af_blood				= 1,	0.5
+af_mincer_meat			= 1,	0.5
+af_soul					= 1,	0.5
+af_electra_sparkler		= 1,	0.5
+af_electra_flash		= 1,	0.5
+af_electra_moonlight	= 1,	0.5
+af_rusty_thorn			= 1,	0.5
+af_rusty_kristall		= 1,	0.5
+af_rusty_sea-urchin		= 1,	0.5
+af_ameba_slime			= 1,	0.5
+af_ameba_slug			= 1,	0.5
+af_ameba_mica			= 1,	0.5
+af_drops				= 1,	0.5
+af_fireball				= 1,	0.5
+af_cristall				= 1,	0.5
+af_dummy_glassbeads		= 1,	0.5
+af_dummy_pellicle		= 1,	0.5
+af_dummy_battery		= 1,	0.5
+af_dummy_dummy			= 1,	0.5
+af_dummy_spring			= 1,	0.5
+af_fuzz_kolobok			= 1,	0.5
+
+;Аммуниция
+ammo_9x18_fmj				;NO TRADE
+ammo_9x18_pmm				;NO TRADE
+ammo_9x19_pbp				;NO TRADE
+ammo_9x19_fmj				;NO TRADE
+ammo_11.43x23_hydro			;NO TRADE
+ammo_11.43x23_fmj			;NO TRADE
+ammo_12x70_buck				;NO TRADE
+ammo_12x76_dart				;NO TRADE
+ammo_12x76_zhekan			;NO TRADE
+ammo_5.45x39_ap				;NO TRADE
+ammo_5.45x39_fmj			;NO TRADE
+ammo_9x39_sp5				;NO TRADE
+ammo_9x39_ap				;NO TRADE
+ammo_9x39_pab9				;NO TRADE
+ammo_5.56x45_ss190			;NO TRADE
+ammo_5.56x45_ap				;NO TRADE
+ammo_7.62x54_7h14			;NO TRADE
+ammo_7.62x54_7h1			;NO TRADE
+ammo_7.62x54_ap				;NO TRADE
+ammo_og-7b				;NO TRADE
+ammo_vog-25p			;NO TRADE
+ammo_vog-25				;NO TRADE
+grenade_f1				;NO TRADE
+grenade_rgd5			;NO TRADE
+ammo_m209				;NO TRADE
+ammo_7.62x25_p                         ;NO TRADE
+ammo_7.62x25_ps                         ;NO TRADE
+ammo_7.62x39_fmj			;NO TRADE
+ammo_7.62x39_ap			;NO TRADE
+
+;Оружие
+wpn_rpk              = ;NO TRADE
+wpn_bizon               = ;NO TRADE
+wpn_pm					= ;NO TRADE
+wpn_fort				= ;NO TRADE
+wpn_beretta				= ;NO TRADE
+wpn_sig220				= ;NO TRADE
+wpn_colt1911			= ;NO TRADE
+wpn_desert_eagle		= ;NO TRADE
+wpn_bm16				= ;NO TRADE
+wpn_toz34				= ;NO TRADE
+wpn_spas12				= ;NO TRADE
+wpn_ak74u				= ;NO TRADE
+wpn_mp5					= ;NO TRADE
+wpn_ak74				= ;NO TRADE
+wpn_groza				= ;NO TRADE
+wpn_val					= ;NO TRADE
+wpn_vintorez			= ;NO TRADE
+wpn_svu					= ;NO TRADE
+wpn_svd					= ;NO TRADE
+wpn_rg-6				= ;NO TRADE
+wpn_rpg7				= ;NO TRADE
+wpn_g36					= ;NO TRADE
+wpn_knife               = ;NO TRADE
+wpn_bizon                  = ;NO TRADE
+wpn_bm16_full                = ;NO TRADE
+wpn_hk416                = ;NO TRADE
+wpn_sks                = ;NO TRADE
+wpn_mp133                = ;NO TRADE
+wpn_saiga12c                = ;NO TRADE
+wpn_mp153                = ;NO TRADE
+wpn_ak105                = ;NO TRADE
+wpn_g3                = ;NO TRADE
+wpn_galil                = ;NO TRADE
+wpn_akm                = ;NO TRADE
+wpn_pps                = ;NO TRADE
+wpn_tt33                = ;NO TRADE
+wpn_glock                = ;NO TRADE
+wpn_python                = ;NO TRADE
+wpn_g3sg1                = ;NO TRADE
+wpn_pkp                = ;NO TRADE
+
+;ADDONS
+wpn_addon_scope					= ;NO TRADE
+wpn_addon_scope_susat			= ;NO TRADE
+wpn_addon_silencer				= ;NO TRADE
+wpn_addon_grenade_launcher		= ;NO TRADE
+wpn_addon_grenade_launcher_m203 = ;NO TRADE
+wpn_sil_9p                      = ;NO TRADE
+wpn_sil_545		= ;NO TRADE
+wpn_sil_556		= ;NO TRADE
+wpn_sil_1143		= ;NO TRADE
+wpn_sil_762_ar		= ;NO TRADE
+
+;Броники
+novice_outfit			;NO TRADE
+bandit_outfit			;NO TRADE
+killer_outfit			;NO TRADE
+monolit_outfit			;NO TRADE
+soldier_outfit			;NO TRADE
+specops_outfit			;NO TRADE
+military_outfit			;NO TRADE
+stalker_outfit			;NO TRADE
+scientific_outfit		;NO TRADE
+exo_outfit				;NO TRADE
+svoboda_light_outfit	;NO TRADE
+svoboda_heavy_outfit	;NO TRADE
+dolg_outfit				;NO TRADE
+dolg_scientific_outfit	;NO TRADE
+ecolog_outfit			;NO TRADE
+protection_outfit		;NO TRADE
+
+;Медикаменты
+bandage					;NO TRADE
+medkit					;NO TRADE
+medkit_scientic			;NO TRADE
+medkit_army				;NO TRADE
+antirad					;NO TRADE
+drug_booster			;NO TRADE
+drug_psy_blockade		;NO TRADE
+drug_radioprotector		;NO TRADE
+drug_coagulant			;NO TRADE
+
+;Детали монстров
+mutant_flesh_eye		= 0.5,	0.3
+mutant_boar_leg			= 0.5,	0.3
+mutant_dog_tail			= 0.5,	0.3
+mutant_psevdodog_tail	        = 0.5,	0.3
+mutant_krovosos_jaw		= 0.5,	0.3
+mutant_burer_hand		= 0.5,	0.3
+mutant_zombie_hand		= 0.5,	0.3
+mutant_snork_leg		= 0.5,	0.3
+
+;Еда
+bread					;NO TRADE
+kolbasa					;NO TRADE
+conserva				;NO TRADE
+vodka					;NO TRADE
+energy_drink			;NO TRADE
+water                           ;NO TRADE
+
+;Предметы
+device_torch			;NO TRADE
+device_pda				;NO TRADE
+hand_radio				;NO TRADE
+guitar_a				;NO TRADE
+harmonica_a				;NO TRADE
+filter			;NO TRADE
+gazmask_helm			;NO TRADE
+
+;Квестовые предметы
+team_diary		;NO TRADE
+quest_case_instruments		;NO TRADE
+pda_torgash		;NO TRADE
+quest_gps	;NO TRADE
+quest_case_arts			;NO TRADE
+quest_medkit_case		;NO TRADE
+quest_medkit_case_doc    	;NO TRADE
+quest_guitar			;NO TRADE
+quest_weapons_case			;NO TRADE
+quest_raciya			;NO TRADE
+svoboda_radiostanciya		;NO TRADE
+pda_predateley			;NO TRADE
+pda_predat			;NO TRADE
+pda_cap_dv					;NO TRADE
+quest_raciya_detail_1				;NO TRADE
+quest_raciya_detail_2		;NO TRADE
+quest_raciya_detail_3				;NO TRADE
+quest_raciya_detail_4    	;NO TRADE
+storyline_gar_dynamite			;NO TRADE
+quest_diary_wounded_digger			;NO TRADE
+quest_diary_dead_digger1			;NO TRADE
+quest_diary_dead_digger2			;NO TRADE
+quest_diary_suicide_digger			;NO TRADE
+king_gigant_hand			;NO TRADE
+quest_key_greh_guard			;NO TRADE
+quest_art_kolokol			;NO TRADE
+pda_depo_dead_stalker			;NO TRADE
+quest_jeton_military_controller			;NO TRADE
+pda_depo_dead_stalker			;NO TRADE
+
+
+
+
+;Уникальные предметы
+outfit_novice_m1		;NO TRADE
+outfit_bandit_m1		;NO TRADE
+outfit_dolg_m1			;NO TRADE
+outfit_killer_m1		;NO TRADE
+outfit_specnaz_m1		;NO TRADE
+outfit_stalker_m1		;NO TRADE
+outfit_stalker_m2		;NO TRADE
+outfit_svoboda_m1		;NO TRADE
+outfit_exo_m1			;NO TRADE
+wpn_ak74_m1				;NO TRADE
+wpn_fort_m1				;NO TRADE
+wpn_ak74u_m1			;NO TRADE
+wpn_mp5_m1				;NO TRADE
+wpn_groza_m1			;NO TRADE
+wpn_spas12_m1			;NO TRADE
+wpn_hk416_m1				;NO TRADE
+wpn_hk416_m2			;NO TRADE
+wpn_svd_m1				;NO TRADE
+wpn_g3sg1			;NO TRADE
+wpn_colt_m1				;NO TRADE
+wpn_val_m1				;NO TRADE
+wpn_pm_arena			;NO TRADE
+wpn_mp5_arena			;NO TRADE
+wpn_toz34_arena			;NO TRADE
+wpn_spas12_arena		;NO TRADE
+wpn_ak74_arena			;NO TRADE
+wpn_bm16_arena			;NO TRADE
+wpn_ak74u_arena			;NO TRADE
+wpn_val_arena			;NO TRADE
+wpn_groza_arena			;NO TRADE
+
+
+[supplies_start]
+;Аммуниция
+ammo_5.45x39_fmj		= 2,	0.5
+ammo_5.45x39_fmj		= 2,	0.5
+ammo_9x18_fmj	                = 3,	0.7
+ammo_9x18_pmm	                = 3,	0.5
+ammo_9x19_fmj	                = 5,	0.7
+ammo_12x70_buck				= 3,	0.7
+ammo_12x76_dart				= 3,	0.6
+ammo_12x76_zhekan			= 3,	0.5
+ammo_7.62x25_p                          = 5, 0.7
+ammo_7.62x25_ps                         = 5, 0.7
+ammo_7.62x39_fmj                        = 5, 0.7
+ammo_7.62x39_ap                        = 5, 0.7
+ammo_5.56x45_ap                       = 5, 0.7
+grenade_f1				= 1,	0.5
+grenade_rgd5				= 1,	0.5
+
+
+bandage					= 10,	1
+medkit					= 3,	1
+medkit_army				= 1,	1
+antirad					= 2,	1
+
+bread					= 3,	1
+kolbasa					= 2,	1
+conserva				= 5,	1
+vodka					= 5,	1
+energy_drink			= 5,	1
+water			= 3, 1
+
+filter			= 3, 0.7
+gazmask_helm			= 1, 0.7
+
+
+;Оружие
+wpn_colt1911                            = 1,	0.5
+wpn_fort				= 1,	0.7
+wpn_ak74u				= 1,	0.7
+wpn_ak74				= 1,	0.5
+wpn_akm                                 = 1,	0.6
+wpn_sks                                 = 1,	0.6
+wpn_mp133                     = 1,	0.6
+wpn_g3                                 = 1,	0.5
+wpn_galil                                 = 1,	0.5
+
+;ADDONS
+wpn_addon_scope	                     = 1,	0.5
+wpn_addon_grenade_launcher                     = 1,	0.7
+wpn_addon_scope_susat			= 1,	0.5
+wpn_addon_grenade_launcher_m203 = 1,	0.5
+wpn_sil_9p                      = 1,	0.7
+wpn_sil_545		= 1,	0.7
+wpn_sil_1143		= 1,	0.5
+wpn_sil_762_ar		= 1,	0.7
+
+
+;Броники
+stalker_outfit			= 1,	0.8
+svoboda_light_outfit                    = 1,	0.5
+
+
+[dsneut_trader_start_sell]
+ammo_9x18_fmj				= 1, 3
+ammo_9x18_pmm				= 1, 3
+ammo_9x19_fmj				= 1, 3
+ammo_12x70_buck				= 1, 3
+ammo_12x76_dart				= 1, 3
+ammo_12x76_zhekan			= 1, 3
+ammo_5.45x39_fmj				= 1, 3
+ammo_5.45x39_fmj		= 1,	3
+ammo_7.62x25_p                          = 1, 3
+ammo_7.62x25_ps                         = 1, 3
+ammo_7.62x39_fmj                        = 1, 3
+ammo_7.62x39_ap                        = 1, 3
+ammo_5.56x45_ap                       = 1, 3
+grenade_f1					= 1, 3
+grenade_rgd5				= 1, 3
+power_core			= 1,	3
+
+;Оружие
+wpn_colt1911                            = 1,	3
+wpn_fort				= 1,	3
+wpn_toz34				= 1,	3
+wpn_ak74u				= 1,	3
+wpn_ak74				= 1,	3
+wpn_akm                                 = 1,	3
+wpn_sks                                 = 1,	3
+wpn_g3                = 1,	3
+wpn_galil                = 1,	3
+wpn_mp133                     = 1,	3
+
+;ADDONS
+wpn_addon_scope	                     = 1,	3
+wpn_addon_grenade_launcher                     = 1,	3
+wpn_addon_scope_susat			= 1,	3
+wpn_addon_grenade_launcher_m203 = 1,	3
+wpn_sil_9p                      = 1,	3
+wpn_sil_545		= 1,	3
+wpn_sil_1143		= 1,	3
+wpn_sil_762_ar		= 1,	3
+
+;Броники
+stalker_outfit			= 1,	3
+svoboda_light_outfit                    = 1,	3
+
+;Предметы
+bread					= 1, 3
+kolbasa					= 1, 3
+conserva				= 1, 3
+vodka					= 1, 3
+energy_drink			= 1, 3
+water			= 1, 3
+
+filter			= 1, 3
+gazmask_helm			= 1, 3
+
+bandage					= 0.7,	1
+medkit					= 0.7,	1
+medkit_army				= 0.7,	1
+antirad					= 0.7,	1
+
+
+
+
+
+
+[supplies_sv_friend]
+;Аммуниция
+ammo_5.45x39_fmj		= 2,	0.5
+ammo_5.45x39_fmj		= 2,	0.5
+ammo_9x18_fmj	                = 3,	0.7
+ammo_9x18_pmm	                = 3,	0.5
+ammo_9x19_fmj	                = 5,	0.7
+ammo_12x70_buck				= 3,	0.7
+ammo_12x76_dart				= 3,	0.6
+ammo_12x76_zhekan			= 3,	0.5
+ammo_7.62x25_p                          = 5, 0.7
+ammo_7.62x25_ps                         = 5, 0.7
+ammo_7.62x39_fmj                        = 5, 0.7
+ammo_7.62x39_ap                        = 5, 0.7
+ammo_5.56x45_ap                       = 5, 0.7
+grenade_f1				= 1,	0.5
+grenade_rgd5				= 1,	0.5
+ammo_5.56x45_ap                       = 5, 0.7
+ammo_m209                             = 3, 0.7
+ammo_vog-25                             = 3, 0.7
+ammo_vog-25p                             = 3, 0.7
+water			= 3, 1
+power_core			= 3,	0.5
+
+
+;Оружие
+wpn_colt1911                            = 1,	0.5
+wpn_fort				= 1,	0.5
+wpn_toz34				= 1,	0.5
+wpn_ak74u				= 1,	0.5
+wpn_ak74				= 1,	0.5
+wpn_akm                                 = 1,	0.5
+wpn_sks                                 = 1,	0.5
+wpn_mp153                               = 1,	0.5
+wpn_ak105                               = 1,	0.5
+wpn_hk416                               = 1,	0.5
+wpn_g3sg1				= 1,	0.5
+
+;ADDONS
+wpn_addon_scope					= 1,    0.7
+wpn_addon_scope_susat			= 1,    0.7
+wpn_addon_grenade_launcher		= 1,    0.7
+wpn_addon_grenade_launcher_m203 = 1,    0.7
+wpn_sil_9p                      = 1,    0.7
+wpn_sil_545		= 1,    0.7
+wpn_sil_556		= 1,    0.7
+wpn_sil_1143		= 1,    0.7
+wpn_sil_762_ar		= 1,    0.7
+
+
+;Броники
+stalker_outfit			= 1,	0.8
+svoboda_light_outfit                    = 1,	0.8
+svoboda_heavy_outfit                    = 1,	0.8
+
+bread					= 3,	1
+kolbasa					= 2,	1
+conserva				= 5,	1
+vodka					= 5,	1
+energy_drink			= 5,	1
+water			= 3, 1
+
+bandage					= 10,	1
+medkit					= 3,	1
+medkit_army				= 1,	1
+antirad					= 2,	1
+drug_booster					= 2,	1
+drug_psy_blockade					= 2,	1
+drug_radioprotector					= 2,	1
+drug_coagulant						= 2,	1
+
+filter			= 3, 1
+gazmask_helm			= 1, 1
+device_nightvision_middle			= 1, 0.5
+
+
+[supplies_sv_friend_aft_cap]
+;Аммуниция
+ammo_5.45x39_fmj		= 2,	0.5
+ammo_5.45x39_fmj		= 2,	0.5
+ammo_9x18_fmj	                = 3,	0.7
+ammo_9x18_pmm	                = 3,	0.5
+ammo_9x19_fmj	                = 5,	0.7
+ammo_12x70_buck				= 3,	0.7
+ammo_12x76_dart				= 3,	0.6
+ammo_12x76_zhekan			= 3,	0.5
+ammo_7.62x25_p                          = 5, 0.7
+ammo_7.62x25_ps                         = 5, 0.7
+ammo_7.62x39_fmj                        = 5, 0.7
+ammo_7.62x39_ap                        = 5, 0.7
+ammo_5.56x45_ap                       = 5, 0.7
+grenade_f1				= 1,	0.5
+grenade_rgd5				= 1,	0.5
+ammo_5.56x45_ap                       = 5, 0.7
+ammo_m209                             = 3, 0.7
+ammo_vog-25                             = 3, 0.7
+ammo_vog-25p                             = 3, 0.7
+water			= 3, 1
+power_core			= 3,	0.5
+
+
+;Оружие
+wpn_rpk			= 1,	0.5
+wpn_val			= 1,	0.5
+wpn_svd_m1			= 1,	0.5
+wpn_groza                        = 1,    0.2
+wpn_g36                        = 1,    0.2
+wpn_vintorez                        = 1,    0.5
+wpn_python                        = 1,    0.8
+wpn_desert_eagle                        = 1,    0.7
+
+;ADDONS
+wpn_addon_scope					= 1,    0.7
+wpn_addon_scope_susat			= 1,    0.7
+wpn_addon_grenade_launcher		= 1,    0.7
+wpn_addon_grenade_launcher_m203 = 1,    0.7
+wpn_sil_9p                      = 1,    0.7
+wpn_sil_545		= 1,    0.7
+wpn_sil_556		= 1,    0.7
+wpn_sil_1143		= 1,    0.7
+wpn_sil_762_ar		= 1,    0.7
+
+
+;Броники
+stalker_outfit			= 1,	0.8
+svoboda_light_outfit                    = 1,	0.8
+svoboda_heavy_outfit                    = 1,	0.8
+
+bread					= 3,	1
+kolbasa					= 2,	1
+conserva				= 5,	1
+vodka					= 5,	1
+energy_drink			= 5,	1
+water			= 3, 1
+
+bandage					= 10,	1
+medkit					= 3,	1
+medkit_army				= 1,	1
+antirad					= 2,	1
+drug_booster					= 2,	1
+drug_psy_blockade					= 2,	1
+drug_radioprotector					= 2,	1
+drug_coagulant						= 2,	1
+
+filter			= 5, 1
+gazmask_helm			= 1, 1
+device_nightvision_good			= 1, 0.8
+
+
+[sv_friend_sell]
+ammo_9x18_fmj				= 1, 3
+ammo_9x18_pmm				= 1, 3
+ammo_9x19_fmj				= 1, 3
+ammo_12x70_buck				= 1, 3
+ammo_12x76_dart				= 1, 3
+ammo_12x76_zhekan			= 1, 3
+ammo_5.45x39_fmj				= 1, 3
+ammo_5.45x39_fmj		= 1,	3
+ammo_7.62x25_p                          = 1, 3
+ammo_7.62x25_ps                         = 1, 3
+ammo_7.62x39_fmj                        = 1, 3
+ammo_7.62x39_ap                        = 1, 3
+ammo_5.56x45_ap                       = 1, 3
+ammo_5.56x45_ap                       = 1, 3
+ammo_m209                             = 1, 3
+ammo_vog-25                             = 1, 3
+ammo_vog-25p                             = 1, 3
+grenade_f1			 		= 1, 3
+grenade_rgd5				= 1, 3
+power_core			= 1,	3
+
+;Оружие
+wpn_colt1911                            = 1,	2
+wpn_fort				= 1,	2
+wpn_toz34				= 1,	2
+wpn_ak74u				= 1,	2
+wpn_ak74				= 1,	2
+wpn_akm                                 = 1,	2
+wpn_sks                                 = 1,	2
+wpn_mp153                               = 1,	2
+wpn_ak105                               = 1,	2
+wpn_hk416                               = 1,	2
+wpn_g3sg1					= 1,	2
+
+
+;ADDONS
+wpn_addon_scope					= 1,    2
+wpn_addon_scope_susat			= 1,    2
+wpn_addon_grenade_launcher		= 1,    2
+wpn_addon_grenade_launcher_m203 = 1,    2
+wpn_sil_9p                      = 1,    2
+wpn_sil_545		= 1,    2
+wpn_sil_556		= 1,    2
+wpn_sil_1143		= 1,    2
+wpn_sil_762_ar		= 1,    2
+
+;Броники
+stalker_outfit			= 1,	3
+svoboda_light_outfit                    = 1,	1.5
+svoboda_heavy_outfit                    = 1,	2
+
+;Предметы
+bread					= 1, 3
+kolbasa					= 1, 3
+conserva				= 1, 3
+vodka					= 1, 3
+energy_drink			= 1, 3
+water			= 1, 3
+
+
+bandage					= 0.7,	1
+medkit					= 0.7,	1
+medkit_army				= 0.7,	1
+antirad					= 0.7,	1
+drug_booster			= 0.7,	1
+drug_psy_blockade		= 0.7,	1
+drug_radioprotector		= 0.7,	1
+drug_coagulant			= 0.7,	1
+
+
+filter			= 1, 2
+gazmask_helm			= 1, 2
+device_nightvision_middle			= 1, 3

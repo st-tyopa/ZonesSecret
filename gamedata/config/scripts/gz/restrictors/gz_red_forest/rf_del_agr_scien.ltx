@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+agr_scien_perehod_done} %+agr_scien_del% sr_idle1, {-agr_scien_perehod_done +rf_osvedomel_meet_start} %+dell_rf_osvedomel% sr_idle@nil
+
+[sr_idle1]
+on_actor_inside = {+rf_osvedomel_meet_start -dell_rf_osvedomel} %+dell_rf_osvedomel% sr_idle@nil
+
+[sr_idle@nil]

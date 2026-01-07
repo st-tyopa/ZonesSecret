@@ -1,0 +1,18 @@
+[logic]
+active = camper
+on_death = death
+
+[camper]
+path_walk = rf_mil_cave_2_pos
+path_look = rf_mil_cave_com_look
+radius = 50
+no_retreat = true
+def_state_moving = sneak_fire
+def_state_campering = sneak_fire
+shoot = always
+
+[danger_condition@scout_1]
+ignore_distance_corpse = 20
+
+[death]
+on_info = %+rf_cave_zasada_mil2_dead%

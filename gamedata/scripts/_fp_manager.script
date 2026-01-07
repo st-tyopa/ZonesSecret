@@ -1,0 +1,216 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Класс файл-поинта + Его менеджер.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 03.06.2011
+--]]
+
+--//типы ошибок инициализации файл-поинта
+local not_point   = "no_@"        --'файл не является файл-поинтом
+local no_data     = "no_data"     --'ошибка в определении строки данных файл-поинта
+local error_data  = "error_data"  --'ошибка при определении количества данных в строке данных файл-поинта
+local error_level = "error_level" --'ошибка при определении левела
+--//при выдаче всех вышеупомянутых ошибках, файл-поинт не инициализируется
+
+class "file_point"
+
+function file_point:__init()
+	self.name       = ""
+	self.string_data = ""
+	self.position   = vector()
+	self.rotation   = 0.0
+	self.level_id   = nil
+	self.level_name = nil
+end
+
+--/summary/>> метод инициализации файла
+function file_point:Init(fileName)
+	local ind_end_name = string.match(fileName, "()%@")       --' определяем индекс окончания имени поинта
+	if not ind_end_name then return false, not_point end      --' прекращаем инициализацию, если вхождение не найдено, и возвращаем тип ошибки
+	self.name = string.sub(fileName, 0, ind_end_name - 1)     --' запоминаем имя поинта
+	self.string_data = string.sub(fileName, ind_end_name + 1) --' запоминает строку данных поинта
+	local error = self:_initDataPoint(self.string_data)       --' вызываем метод парсинга строки данных
+	if error then return false, error end                     --' прекращаем инициализацию, если метод парсинга выдаёт ошибку, и возвращаем тип ошибки
+	return true                                               --' возвращяем положительный результат инициализации
+end
+
+--/summary/>> метод распарсивания строки данных файл-поинта
+function file_point:_initDataPoint(string_data)
+    if (not string_data) then return no_data end
+	string_data = string.gsub(string_data, "t", ".")
+	local tbl_data = {}
+	for w in string.gmatch(string_data, "%s*([^z@]+)%s*") do
+        table.insert(tbl_data, w)
+    end
+	if #tbl_data ~= 5 then return error_data end
+	local x,y,z = tonumber(tbl_data[1]), tonumber(tbl_data[2]), tonumber(tbl_data[3])
+	self.position   = vector():set(x or 0, y or 0, z or 0)
+	self.rotation   = tonumber(tbl_data[4]) or 0
+	self.level_id   = tonumber(tbl_data[5])
+	self.level_name = (self.level_id and alife():level_name(self.level_id)) or nil
+	if not self.level_name then return error_level end
+end
+
+--/summary/>> метод определения имени файла
+function file_point:GetFileName()
+    return self.name.."@"..self.string_data
+end
+
+--/summary/>> метод переименования файл-поинта
+function file_point:Rename(newName)
+    self.name = newName
+end
+
+--//-------------------------------------
+--// File-Points Manager
+--//-------------------------------------
+local ListFilePoints = {}
+local create_point_ok  = false
+local reactive_hud     = false
+local reactive_hud_tim = 0
+local error_tim        = 0
+local new_file_name    = nil
+local init_list        = false
+
+function GetListFilePoints()
+    return ListFilePoints
+end
+
+--/summary/>> функция определения поинта по его имени
+function GetPointByName(name)
+    for i,p in ipairs(ListFilePoints) do
+	    if name == p.name then
+		    return p, i
+		end
+	end
+end
+
+--/summary/>> функция переименования файл-поинта
+function RenameFilePoint(name, newName)
+    local point = GetPointByName(name)
+    local newFileName = newName.."@"..point.string_data
+	local f = getFS()
+	local s_path = f:update_path("$game_saves$", point:GetFileName()..".dds")
+    local n_path = f:update_path("$game_saves$", newFileName..".dds")
+	if (f:exist(s_path)) then
+	     f:file_rename(s_path, n_path, true)
+	end
+	point:Rename(newName)
+end
+
+--/summary/>> функция удаления файл-поинта
+function DelFilePoint(name)
+    local point, ind = GetPointByName(name)
+	local file = point:GetFileName()..".dds"
+	local f = getFS()
+    if (f:exist("$game_saves$", file)) then
+	    f:file_delete("$game_saves$", file)
+		table.remove(ListFilePoints, ind)
+	end
+end
+
+--/summary/>> функция добавления файл-поинта в список
+function AddFilePoint(fileName)
+    local point = file_point()
+	local valid, error = point:Init(fileName)
+	if valid then
+		table.insert(ListFilePoints, point)
+	else
+		if error and error ~= not_point then
+			get_console():execute("("..fileName..")>>"..error)
+		end
+	end
+end
+
+--/summary/>> функция инициализации списка файл-поинтов
+function InitFilePoints()
+    ListFilePoints = {}
+    local flist = getFS():file_list_open_ex("$game_saves$",FS.FS_ListFiles,"*.dds")
+	local f_cnt = flist:Size()
+	
+	flist:Sort(FS.FS_sort_by_modif_down)
+	
+	for	it=0, f_cnt-1 	do
+		local fileFull	=	flist:GetAt(it):NameFull()
+		local fileName = string.sub(fileFull, 0, (string.len(fileFull) - 4))
+		AddFilePoint(fileName)
+	end
+end
+
+--/summary/>> апдейт менеджера
+function update()
+    if not init_list then
+	    InitFilePoints()
+	    init_list = true
+		return
+	end
+    if new_file_name then
+	    local valid = updateCreateNewPoint()
+		if valid then
+			new_file_name = nil
+		end
+	end
+end
+
+--/summary/>> функция создания нового файл-поинта.
+function CreateNewPoint(name)
+    local position = db.actor:position()
+	local rotate = -(device().cam_dir):getH()
+	local lev_id = alife():level_id()
+	new_file_name = name.."@"..
+	            string.format("%1.2f,%1.2f,%1.2f", position.x, position.y, position.z).."@"..
+				string.format("%1.2f", rotate).."@"..
+				tostring(lev_id)
+	new_file_name = string.gsub(new_file_name, "%.", "t")
+    new_file_name = string.gsub(new_file_name, ",", "z")
+end
+
+--/summary/>> функция апдейта создания нового файл-поинта. (апдейтить пока не вернёт true, или пока не выдаст ошибку)
+function updateCreateNewPoint()
+    if (not create_point_ok) then
+	    if (not reactive_hud) then
+	        xr_effects.disable_ui_elements(db.actor, nil, {"all"})
+			reactive_hud = true
+			reactive_hud_tim = time_global() + 1000
+		elseif time_global() >= reactive_hud_tim then
+	        get_console():execute("save " .. new_file_name)
+		    create_point_ok = true
+		    error_tim = time_global() + 5000
+		end
+	else
+	    local f = getFS()
+		if (f:exist("$game_saves$", new_file_name..".dds")) then
+		    AddFilePoint(new_file_name)
+		    if (f:exist("$game_saves$", new_file_name..".sav")) then
+				f:file_delete("$game_saves$", new_file_name..".sav")
+				create_point_ok = false
+				xr_effects.enable_ui_elements(db.actor, nil, {"all"})
+				reactive_hud = false
+				return true  --'успешная операция по созданию нового файл-поинта
+			else
+				this.create_point_error("sav")
+			end
+		else
+			this.create_point_error("dds")
+		end
+	end
+end
+
+--/summary/>> функция вывода мессиджа, при неудачном создании нового файл-поинта
+function create_point_error(f)
+    if (error_tim > 0 and error_tim <= time_global()) then
+	    local message_box_error = CUIMessageBoxEx()
+		message_box_error:Init("message_box_error")
+	    if f == "dds" then
+			message_box_error:SetText("Не удалось создать файл-поинт с именем '"..new_file_name.."'. Попробуйте ещё раз.")
+		elseif f == "sav" then
+		    message_box_error:SetText("Не удалось найти и удалить файл '"..new_file_name..".sav'. Проделайте данную операцию в ручную.")
+		end
+        error_tim = 0
+	    create_point_ok = false
+	    xr_effects.enable_ui_elements(db.actor, nil, {"all"})
+	    new_file_name = nil
+	    reactive_hud = false
+	    level.start_stop_menu(message_box_error, true)
+	end
+end

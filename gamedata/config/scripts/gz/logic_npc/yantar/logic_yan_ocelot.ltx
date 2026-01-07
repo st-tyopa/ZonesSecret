@@ -1,0 +1,65 @@
+[logic]
+active = walker
+on_hit = hit
+on_death = death
+
+[walker]
+path_walk = yan_ocelot_walk
+wounded = wounded
+meet = no_meet
+on_signal = ocelotstop| %+ocelot_rob_start% walker1
+
+[walker1]
+path_walk = yan_ocelot_sit
+path_look = yan_ocelot_sit_look
+def_state_standing = hide
+meet = no_meet
+combat_ignore = combat_ignore
+on_info = {+yan_rob_hands_up2} %+yan_ocelot_hands_up_talk =friendactor% walker2
+wounded = wounded
+
+[remark@hands_up]
+anim = hands_up
+target = actor
+snd = ocelot_3
+meet = meet
+wounded = wounded
+
+[walker2]
+path_walk = yan_ocelot_sit
+path_look = yan_ocelot_sit_look
+meet = meet
+def_state_standing = hands_up
+wounded = wounded
+
+[wounded]
+hp_state = 99|wounded_heavy@help_heavy
+hp_state_see = 99|wounded_heavy@help_heavy
+hp_victim = 50|nil
+hp_cover = 99|false
+hp_fight = 99|false
+meet = meet2
+combat_ignore = combat_ignore
+on_actor_dist_le = 3|%=on_talk_ocelot%
+on_info = {+yan_rob_ocelot_shot} %=friendactor% remark
+help_dialog = dialog_zmeelov_rob_wound
+help_start_dialog = dialog_zmeelov_rob_wound
+
+[remark]
+anim = guard
+target = actor
+
+[combat_ignore]
+
+[hit]
+on_info = %+yan_rob_ocelot_shot% 
+
+[death]
+on_info = %+yan_rob_ocelot_dead%
+
+[meet]
+abuse = false
+
+[meet2]
+abuse = false
+use = {=dist_to_actor_le(3)} self

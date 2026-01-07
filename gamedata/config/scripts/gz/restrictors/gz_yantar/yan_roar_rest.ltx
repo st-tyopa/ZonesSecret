@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+yan_othsel_chimera_roar} sr_idle2
+
+[sr_idle2]
+on_game_timer = 5|%=play_snd(soz\characters_voice\scenario\rnd_horror18) +yan_othsel_chimera_roar_done% sr_idle3
+
+[sr_idle3]
+on_game_timer = 75|sr_idle4
+
+[sr_idle4]
+on_info = {-yan_otshel_rac_1} %+yan_roar_sms% sr_idle@nil, {+yan_otshel_rac_1} sr_idle@nil
+
+[sr_idle@nil]

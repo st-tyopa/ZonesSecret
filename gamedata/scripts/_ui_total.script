@@ -1,0 +1,1162 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Набор элементов списков и классов всплывающих окон.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 10.06.2011
+--]]
+
+--// шаблоны для функции string.gmatch(s,p)
+local sh_zpt  = "%s*([^%,]+)%s*"          --'шаблон распарсивания списка
+local sh_path = "%s*([^\\]+)%s*"          --'шаблон распарсивания путей
+local sh_mult = "%s*([^\n]+)%s*"          --'шаблон распарсивания мультиплексного текста
+local sh_secn = "%[%s*([@_%w]+)%s*%]"     --'шаблон определения имён секций "[name]"
+local sh_id_val = "%s*([_%w]+)%s*%=%s*([+=-\|}{)(/@_%s%,%.%w]+)%s*" --'шаблон распарсивания параметров схем конфигураций (возвращает два параметра "ключ", "значение")
+--' "%s*([допустимые знаки ключа]+)%s*%=%s*([допустимые знаки значения]+)%s*" --'возможно упомянуты не все допустимые знаки. Добавить при необходимости.
+
+--//----------------------------------------------------
+--// Класс элемента списка (строка)
+--//----------------------------------------------------
+class "list_item" (CUIListItemEx)
+
+function list_item:__init(width, height) super()
+	self:SetWndRect		    (0, 0, width, height)
+	self:InitTexture        ("ui\\ui_scb_scroll_box")
+	self:SetHighlightColor  (GetARGB(255,255,150,0))
+	self:SetSelectionColor  (GetARGB(255,200,200,250))
+	self:SetStretchTexture  (true)
+	self:ClipperOn()
+end
+
+--//----------------------------------------------------
+--// Класс элемента списка (статическое изображение, строка)
+--//----------------------------------------------------
+class "list_picStr" (CUIListItemEx)
+
+function list_picStr:__init(width, height, wPic, hPic) super()
+	self:SetWndRect		    (0, 0, width, height)
+	
+	self:InitTexture        ("ui\\ui_frame_02_back")
+	self:SetStretchTexture  (true)
+	self:SetSelectionColor  (GetARGB(255,255,255,255))
+	
+	self.pic					= CUIStatic	()
+	self.pic:SetAutoDelete	(true)           
+	self:AttachChild		(self.pic)         
+	self.pic:SetWndRect		(0, 0, wPic, hPic) 
+	self.pic:SetStretchTexture(true)           
+	
+	self.str                    = CUIStatic	()
+	self.str:SetAutoDelete	(true) 
+	self:AttachChild		(self.str)
+	self.str:SetWndRect		(wPic + 7, 0, width - wPic, hPic)
+	self.str:SetFont        (GetFontLetterica18Russian())
+	self.str:SetText        ("text")
+	self.str:SetTextAlign   (0)
+end
+
+--//----------------------------------------------------
+--// Класс элемента списка (анимированное изображение, строка)
+--//----------------------------------------------------
+class "list_animStr" (CUIListItemEx)
+
+function list_animStr:__init(width, height, wAnim, hAnim,  xml, anim) super()
+	self:SetWndRect		    (0, 0, width, height)
+	
+	self:InitTexture        ("ui\\ui_frame_02_back")
+	self:SetStretchTexture  (true)
+	self:SetSelectionColor  (GetARGB(255,255,255,255))
+	
+	if (xml) and anim then
+	    xml:InitAnimStatic(anim, self)
+	end
+	
+	self.str                    = CUIStatic	()
+	self.str:SetAutoDelete	(true) 
+	self:AttachChild		(self.str)
+	self.str:SetWndRect		(wAnim + 7, 0, width - wAnim, hAnim)
+	self.str:SetFont        (GetFontLetterica18Russian())
+	self.str:SetText        ("text")
+	self.str:SetTextAlign   (0)
+end
+
+--//----------------------------------------------------
+--// Базовый класс всплывающих окон мобильника
+--//----------------------------------------------------
+
+class "base_total" (CUIScriptWnd)
+
+function base_total:__init(owner, target)super()
+    self.owner = owner
+	self.target = target
+	self.Xml = CScriptXmlInit()
+    self.Xml:ParseFile("mobile\\_ui_total.xml")
+	
+	self.Message_box_error = CUIMessageBoxEx()
+	self.Message_box_error:Init("message_box_error")
+	
+	self.BackFrame = self.Xml:InitFrame("frame_message", self)
+	self.Title = self.Xml:InitStatic("frame_message:title", self.BackFrame)
+
+    self.BtnOk = self.Xml:Init3tButton("button_ok", self)
+	self:Register(self.BtnOk, "button_ok")
+	self:AddCallback("button_ok",     ui_events.BUTTON_CLICKED,	self.ClickOk,     self)
+	
+	self.BtnCancel = self.Xml:Init3tButton("button_cancel", self)
+	self:Register(self.BtnCancel, "button_cancel")
+	self:AddCallback("button_cancel", ui_events.BUTTON_CLICKED,	self.ClickCancel, self)
+end
+
+function base_total:ClickOk()
+	self:ClickCancel()
+end
+
+function base_total:ClickCancel()
+    self:GetHolder():start_stop_menu(self, true)
+end
+
+--//----------------------------------------------------
+--// Класс всплывающего окошка с редактором ввода.
+--//----------------------------------------------------
+class "message_editBox" (base_total)
+
+--/args/>
+--'owner   --объект, из которого было открыто данное окно
+--'target  --функция или метод, в который требуется передать введённый текст(значение) при клике кнопки "OK"
+--'veric   --функция или метод, проверки валидности вводимого текста(значения). Должен возвращать два значения (валидность, текст ошибки)
+--'str     --текст по умолчанию (выводится в эдит, при старте окна)
+--'format  --формат ввода. ("s" -все символы, "n" -только целые числа, "f" -только числа, в том числе и с плавающей запятой)
+--'...     --набор дополнительных параметров, требующих передачи их в функцию target (передача производится в виде таблицы)
+function message_editBox:__init(owner, target, veric, str, format, ...) super(owner, target)
+    self.veric = veric
+	self.str = str
+	self.args = {...}
+    self:Init(262,284,500,200)
+	
+	local num = format == "n"
+	local flt = format == "f"
+	local tlt = (format and #format > 1 and format) or nil
+	local prst = (num and "число.") or (flt and "значение float.") or "имя."
+	local title = tlt or "Введите нужное ".. prst
+	self.Title:SetText(title)
+	
+	local teg_edit = (flt == true and "_f") or ""
+	self.edit = self.Xml:InitEditBox("edit_box"..teg_edit, self)
+	self.edit:SetNumbersOnly(num)
+	self.edit:SetText(self.str or "")
+end
+
+function message_editBox:ClickOk()
+    local name = self.edit:GetText()
+	if (#name == 0) then		
+	    self.Message_box_error:SetText("введите значение!")
+	    self:GetHolder():start_stop_menu(self.Message_box_error, true)
+		return
+	end
+	if (self.veric) then
+	    local valid, error = self.veric(name)
+		if (not valid) then
+		    self.Message_box_error:SetText(error)
+	        self:GetHolder():start_stop_menu(self.Message_box_error, true)
+			return
+		end
+	end
+    if (self.target) then 
+	    self.target(self.owner, name, self.args) 
+	end
+	base_total.ClickOk(self)
+end
+
+--//----------------------------------------------------
+--// Класс всплывающего окошка, выбора элемента указанной таблицы
+--//----------------------------------------------------
+
+class "choice_string" (base_total)
+
+--/args/>
+--'owner       --объект, из которого было открыто данное окно
+--'target      --функция или метод, в который требуется передать введённый текст(значение) при клике кнопки "OK"
+--'tbl         --список значений элементов списка 
+--'title       --заголовок окна
+--'focused     --устанавливаемы фокус на один из элементов списка, при старте окна. Может иметь три типа значения (string, number, nil)
+               --где: string -текст значения элемента, number -индекс элемента в списке(таблице), nil -не устанавливать фокус
+--'height_list --изменённая высота виджета списка (если требуется)
+function choice_string:__init(owner, target, tbl, title, focused, height_list)super(owner, target)
+	self:Init(362,219,300,350)
+	
+	self.BackFrame:Init(0,0,300,350)
+	self.Title:SetWidth(200)
+	self.Title:SetText(title)
+	self.BtnOk:SetWndPos(30, 300)
+	self.BtnCancel:SetWndPos(152, 300)
+	
+	self.list = self.Xml:InitList("choice_string_list", self)
+	if (height_list) then
+	    self.list:SetHeight(height_list)
+	end
+	self:Register(self.list, "list")
+	self:AddCallback("list", ui_events.WINDOW_LBUTTON_DB_CLICK,	self.ClickOk, self)
+	self:InitList(tbl, focused or owner.value)
+end
+
+function choice_string:InitList(tbl, focused)
+	for ind, str in ipairs(tbl) do
+	    if (type(str) == "table") then str = str[1] end
+		local item = list_item(265, 29)
+		item:SetText(str)
+		item.string = str
+		item.index = ind
+		self.list:AddItem(item)
+		if (focused == str or focused == ind) then
+			self.list:SetFocusedItem(self.list:GetItemPos(item))
+		end
+	end
+	self.list:ScrollToPos(self.list:GetFocusedItem())
+end
+
+function choice_string:ClickOk()
+    local item = _utils.GetSelectedOrFocusedItemList(self.list)
+	if (not item) then return end
+	if (self.target) then
+	    self.target(self.owner, item.string, item.index)
+	end
+	base_total.ClickOk(self)
+end
+
+--//----------------------------------------------------
+--// Класс редактора выбора файл-поинта, для спавнера
+--//----------------------------------------------------
+class "choice_file_points" (base_total)
+
+function choice_file_points:__init(owner, target)super(owner, target)
+	self:Init(212,159,600,450)	
+	
+	self.BackFrame:Init(0,0,600,450)
+	self.Title:SetWidth(500)
+	self.Title:SetText("Выберите файл-поинт для спавна.")
+	self.BtnOk:SetWndPos(155, 400)
+	self.BtnCancel:SetWndPos(328, 400)
+	
+	self.list = self.Xml:InitList("choice_points_list", self)
+	self:Register(self.list, "list")
+	self:AddCallback("list", ui_events.WINDOW_LBUTTON_DB_CLICK,	self.ClickOk, self)
+	self:InitList()
+end
+
+function choice_file_points:InitList()
+	local tbl = _fp_manager.GetListFilePoints()
+	for _, p in ipairs(tbl) do
+		if (p.level_id and alife():level_name(p.level_id) == level.name()) then
+			local point = list_picStr(300, 128, 126, 126)
+			point.str:SetText(p.name)
+			point.pic:InitTexture(p:GetFileName())
+			point.name = p.name
+			self.list:AddItem(point)
+		end
+	end
+end
+
+function choice_file_points:ClickOk()
+	local item = _utils.GetSelectedItemList(self.list)
+	if (not item) then
+	    self.Message_box_error:SetText("Не выбран файл-поинт!")
+	    self:GetHolder():start_stop_menu(self.Message_box_error, true)
+	    return
+	end
+	
+	local point_name = item.str:GetText()
+	self.target(self.owner, item.name)
+	base_total.ClickOk(self)
+end
+
+--//----------------------------------------------------
+--// Класс всплывающего окошка, выбора визуала
+--//----------------------------------------------------
+
+class "choice_visual" (base_total)
+
+function choice_visual:__init(owner)super(owner)
+	self:InitTypeVisual(owner.parent.section)
+	self:Init(212,149,600,460)
+	
+	self.back_path = {}
+	self.tek_pos = 0
+	
+	self.BackFrame:Init(0,0,600,465)
+	self.Title:SetWidth(500)
+	self.Title:SetText("Выберите файл модели объекта.")
+	self.BtnOk:SetWndPos(155, 415)
+	self.BtnCancel:SetWndPos(328, 415)
+	
+	self:Register(self.Xml:InitButton("btn_forward_visual", self), "btn_forward")
+	self:Register(self.Xml:InitButton("btn_back_visual",    self), "btn_back")
+	self:AddCallback("btn_forward",     ui_events.BUTTON_CLICKED, 		    self.ClickForwardPath,	 self)
+	self:AddCallback("btn_back",        ui_events.BUTTON_CLICKED, 		    self.ClickBackPath,	     self)
+	
+	self.list = self.Xml:InitList("choice_visual_list", self)
+	self:Register(self.list, "list")
+	self:AddCallback("list", ui_events.WINDOW_LBUTTON_DB_CLICK,	self.ClickOk, self)
+	self:InitList(self.tipe_path)
+	
+	if (self.list:GetSize() > 0) then
+	    table.insert(self.back_path, self.tipe_path)
+	    self.tek_pos = 1
+	end
+end
+
+function choice_visual:InitTypeVisual(section)
+    self.tipe_path = ""
+	local ini_section = "objects_path_visuales"
+	local ini = ini_file("mobile\\classes_by_visuales.ltx")
+	if (ini) then
+	    if (ini:section_exist(ini_section)) then
+		    local cls = utils.cfg_get_string(system_ini(), section, "class", db.actor, true, "", "")
+			if (cls and cls ~= "") then
+			    self.tipe_path = (ini:line_exist(ini_section, cls) and ini:r_string(ini_section, cls)) or "" 
+			end
+		end
+	end
+end
+
+function choice_visual:InitList(path)
+    self.list:RemoveAll()
+    local f = getFS()
+	local update_path = f:update_path("$game_meshes$", path)
+	--'init_folders
+	local list_folders = f:file_list_open(update_path, bit_or(FS.FS_ListFolders, FS.FS_RootOnly))
+	for ind=0, list_folders:Size() - 1 do
+        local folder_name = list_folders:GetAt(ind)
+		if (self:GetValidVisual(self.owner.parent.section, folder_name, path)) then
+			local folder = list_picStr(565, 120, 118, 118)
+			folder.pic:InitTexture("mobile\\ui_folder_01")
+			folder.str:SetText(string.sub(folder_name, 0, #folder_name - 1))
+			folder.path = path..folder_name
+			folder.file = false
+			self.list:AddItem(folder)
+		end
+    end
+	--'init_files
+	local list_files = f:file_list_open(update_path, bit_or(FS.FS_ListFiles, FS.FS_RootOnly))
+	local count_files = list_files:Size()
+	if (count_files == 0) then return end	
+	local ini = INIF.ini_file_m("mobile\\mobile_spawn_icons.ltx")
+	local sections = _utils.get_sections("mobile\\mobile_spawn_icons.ltx")
+	for ind=0, count_files - 1 do
+        local file_name = list_files:GetAt(ind) 
+		local frmt = string.match(file_name, ".ogf")
+		file_name = string.sub(file_name, 0, #file_name - 4)
+		if (frmt and self:GetValidVisual(self.owner.parent.section, file_name, path)) then
+            local file = list_picStr(565, 120, 118, 118)
+		    file.str:SetText(file_name)
+			local x, y, texture_file = self:getRectOriginTexture(ini, sections, path..file_name)
+			file.pic:InitTexture(texture_file)
+			file.pic:SetOriginalRect(x and x * 128 or 0, y and y * 128 or 0, 128, 128)
+		    file.file_name = file_name
+		    file.file_name_Fill = path..file_name
+		    file.file = true
+		    self.list:AddItem(file)
+		end
+    end
+end
+
+--/summary/>> метод определения координат иконок
+function choice_visual:getRectOriginTexture(ini, sections, ico)
+	local iterate_icons = function(ini, section, ico)
+								local texture = utils.cfg_get_string(ini, section, "texture_file", db.actor, true, "", "")
+								if (ini:line_exist(section, ico)) then
+									local x, y = ini:r_point(section, ico)
+									return x, y, texture
+								end
+						  end
+    local def_section = "default_icon"
+	for _, section in ipairs(sections) do
+	    if section ~= def_section then
+		    local x, y, texture = iterate_icons(ini, section, ico)
+		    if x and y and texture ~= "" then
+		        return x, y, texture
+		    end
+		end
+	end
+	local x, y, texture = iterate_icons(ini, def_section, "ico")
+	if x and y and texture ~= "" then
+		return x, y, texture
+	end
+	return 0, 0, "ui\\ui_noise"
+end
+
+function choice_visual:GetValidVisual(section, visual_name, path)
+    local ini = ini_file("mobile\\classes_by_visuales.ltx")
+	if (ini:section_exist(section)) then
+    	if (ini:line_exist(section, visual_name)) then
+	        return false
+		end
+		for w in string.gmatch(path, sh_path) do
+            if (ini:line_exist(section, w)) then
+	            return false
+		    end
+        end
+	end
+	return true
+end
+
+function choice_visual:ClickOk()
+    local item = _utils.GetSelectedOrFocusedItemList(self.list)
+	if (not item) then return end
+	if (item.file) then
+	    self.owner.value = item.file_name_Fill
+	    self.owner.win_value:SetText(item.file_name)
+	    base_total.ClickOk(self)
+	else
+	    local new_path = item.path
+	    self:InitList(new_path)
+		while #self.back_path > self.tek_pos do
+		    table.remove(self.back_path, #self.back_path)
+		end
+		table.insert(self.back_path, item.path)
+		self.tek_pos = self.tek_pos + 1
+	end
+end
+
+function choice_visual:ClickBackPath()
+    local size = #self.back_path
+	if (size <= 1) then return end
+	if (self.tek_pos == 1) then return end
+	if (self.tek_pos < 1) then
+	    news_manager.send_tip(db.actor, "error: текущая позиция меньше минимально-допустимого!!! ("..tostring(self.tek_pos).." < 1)")
+		return
+	end
+	local back_path = self.back_path[self.tek_pos - 1]
+	self.tek_pos = self.tek_pos - 1
+	self:InitList(back_path)
+end
+
+function choice_visual:ClickForwardPath()
+    local size = #self.back_path
+	if (size == self.tek_pos) then return end
+	if (size < self.tek_pos) then
+	    news_manager.send_tip(db.actor, "error: размер списка меньше текущей позиции!!! ("..tostring(size).." < "..tostring(self.tek_pos)..")")
+		return
+	end
+	self.tek_pos = self.tek_pos + 1
+	local back_path = self.back_path[self.tek_pos]
+	self:InitList(back_path)
+end
+
+--//----------------------------------------------------
+--// Класс всплывающего окошка, настройки custom_data 
+--//----------------------------------------------------
+
+class "setting_custom_data" (base_total)
+
+function setting_custom_data:__init(owner, target)super(owner, target)
+    self:Init(212,159,600,450)
+	
+	self.BackFrame:Init(0,0,600,450)
+	self.Title:SetWidth(500)
+	self.Title:SetText("Настройки custom_data.")
+	self.BtnOk:SetWndPos(155, 400)
+	self.BtnCancel:SetWndPos(328, 400)
+	
+	self.path_cfg = self.Xml:InitEditBox("edit_box_cfg", self)
+	self:Register(self.Xml:InitButton("btn_choise_cfg",    self), "choise_cfg")
+	self:AddCallback("choise_cfg", ui_events.BUTTON_CLICKED, self.ClickOpenListCfg, self)
+	
+	self.sections_list = self.Xml:InitList("list_sections", self)
+	self:Register(self.sections_list, "sections_list")
+	self:AddCallback("sections_list", ui_events.LIST_ITEM_CLICKED,	self.InitParams, self)
+	self.params_list = self.Xml:InitList("list_params", self)
+	self:Register(self.params_list, "params_list")
+	self:AddCallback("params_list", ui_events.WINDOW_LBUTTON_DB_CLICK,	self.ClickReValueParam, self)
+	
+	self:Register(self.Xml:Init3tButton("btn_add_new_section",    self), "new_section")
+	self:AddCallback("new_section", ui_events.BUTTON_CLICKED, self.ClickAddNewSection, self)
+	
+	self:Register(self.Xml:Init3tButton("btn_add_new_param",    self), "new_param")
+	self:AddCallback("new_param", ui_events.BUTTON_CLICKED, self.ClickAddNewParam, self)
+	
+	self:Register(self.Xml:Init3tButton("btn_del_section",    self), "del_section")
+	self:AddCallback("del_section", ui_events.BUTTON_CLICKED, self.DelSection, self)
+	
+	self:Register(self.Xml:Init3tButton("btn_del_param",    self), "del_param")
+	self:AddCallback("del_param", ui_events.BUTTON_CLICKED, self.DelParam, self)
+	
+	self:Register(self.Xml:Init3tButton("btn_re_param",    self), "re_param")
+	self:AddCallback("re_param", ui_events.BUTTON_CLICKED, self.ClickReValueParam, self)
+	
+	self.data = {}
+	self:InitData()
+	self:InitListes()
+end
+
+--'метод инициализации списка секций
+function setting_custom_data:InitListes()
+    self.sections_list:RemoveAll()
+	self.params_list:RemoveAll()
+	for i, v in ipairs(self.data) do
+	    local item = list_item(150, 29)
+		item.index = i
+		item:SetText(v.name_section)
+		self.sections_list:AddItem(item)
+	end
+end
+
+--'метод инициализации списка параметров выбранной секции
+function setting_custom_data:InitParams()
+    self.params_list:RemoveAll()
+	local item_sec = _utils.GetSelectedItemList(self.sections_list)
+	if (not item_sec) then return end
+	for id, value in pairs(self.data[item_sec.index].params) do
+	    local item = list_item(400, 29)
+		item.override = id
+		item.value = value
+		item:SetText(id)
+		item.win_value = self.Xml:InitStatic("win_value_by_param", item)
+	    item.win_value:SetText(""..string.format("= %s", "%c[255,255,0,0]"..tostring(value)))
+		self.params_list:AddItem(item)
+	end
+end
+
+--'методы выбора конфигурационного файла логики
+function setting_custom_data:ClickOpenListCfg()
+	local tbl = {}
+	local f = getFS()
+	local update_path = f:update_path("$game_config$", "scripts\\")
+	
+	local list_files = f:file_list_open(update_path, FS.FS_ListFiles)
+	local count_files = list_files:Size()
+	if (count_files == 0) then return end	
+	for ind=0, count_files - 1 do
+        local file_name = list_files:GetAt(ind) 
+		table.insert(tbl, file_name)
+    end
+	
+	local select_cfg = function(_, cfg)
+		self.path_cfg:SetText("scripts\\"..cfg)
+	end
+	level.start_stop_menu(this.choice_string(self, select_cfg, tbl, "Choice cfg-file"), false)
+end
+
+--'методы создания новой секции
+function setting_custom_data:ClickAddNewSection()
+    local tbl = {"logic"}
+	for scheme, stype in pairs(stypes) do
+	    if (stype == 0) then
+		    table.insert(tbl, scheme)
+		end
+	end
+    level.start_stop_menu(this.create_section(self, setting_custom_data.AddSection, tbl, "Add New Section"), false)
+end
+function setting_custom_data:AddSection(name)
+    local section = {}
+	section.name_section = name
+	section.params = {}
+	local index = #self.data + 1
+	self.data[index] = section
+	local item = list_item(150, 29)
+	item.index = index
+	item:SetText(name)
+	self.sections_list:AddItem(item)
+end
+
+--'методы создания нового параметра
+function setting_custom_data:ClickAddNewParam()
+    local item_sec = _utils.GetSelectedItemList(self.sections_list)
+    if (not item_sec) then return end
+	local section = item_sec:GetText()
+	section = section:match("([^%@]+)") --'если секция имеет собственное имя, то выделим из него имя схемы
+	local ini = ini_file("mobile\\overrides_by_schemes.ltx")
+    local tbl = {}
+	if (ini:section_exist(section)) then
+	    do
+	        local ind = 0
+	        repeat
+	            local valid, id, value = ini:r_line(section, ind, "", "")
+			    if (valid and id ~= "override") then
+			        table.insert(tbl, {id, value})
+			    end
+			    ind = ind + 1
+	        until (not valid)
+	    end
+	end
+    level.start_stop_menu(this.create_param(self, setting_custom_data.AddParam, tbl, "Add New Parametr"), false)
+end
+function setting_custom_data:AddParam(id, value)
+    local item_sec = _utils.GetSelectedItemList(self.sections_list)
+	if (not item_sec) then return end
+    self.data[item_sec.index].params[id] = value
+	self:InitParams()
+	--'auto_sections
+	local ini = ini_file("mobile\\overrides_by_schemes.ltx")
+	if (ini:section_exist("auto_sections") and ini:line_exist("auto_sections", id)) then
+	    local iskls = ini:r_string("auto_sections", id) or ""
+		for w in string.gmatch(value, sh_zpt) do
+			w = string.gsub(w, "%s*(%b{})%s*", "")
+			w = string.gsub(w, "%s*(%b%%)%s*", "")
+			if (#w ~= 0) then
+				local cr = true
+			    for z in string.gmatch(iskls, sh_zpt) do
+				    if (z == w) then
+					    cr = false
+					end
+				end
+				for _,v in pairs(self.data) do
+				    if (v.name_section == w) then
+					    cr = false
+					end
+				end
+				if (cr) then
+			        self:AddSection(w)
+				end
+			end
+		end
+	end
+end
+
+--'метод изменения параметра
+function setting_custom_data:ClickReValueParam()
+	local item_sec = _utils.GetSelectedItemList(self.sections_list)
+	if (not item_sec) then return end
+    local item_prm = _utils.GetSelectedItemList(self.params_list)
+	if (not item_prm) then return end
+	local title = "["..item_sec:GetText().."] >> "..item_prm.override.." ="
+	level.start_stop_menu(message_editBox(self, setting_custom_data.ReValue, nil, item_prm.value, title), false)
+end
+function setting_custom_data:ReValue(value)
+    local item_sec = _utils.GetSelectedItemList(self.sections_list)
+	if (not item_sec) then return end
+    local item_prm = _utils.GetSelectedItemList(self.params_list)
+	if (not item_prm) then return end
+	self.data[item_sec.index].params[item_prm.override] = value
+	self:InitParams()
+end
+
+--'метод удаления секции
+function setting_custom_data:DelSection()
+    local item_sec = _utils.GetSelectedItemList(self.sections_list)
+	if (not item_sec) then return end
+	local index = item_sec.index
+	table.remove(self.data, index)
+	self:InitListes()
+end
+
+--'метод удаления параметра
+function setting_custom_data:DelParam()
+    local item_sec = _utils.GetSelectedItemList(self.sections_list)
+	if (not item_sec) then return end
+    local item_prm = _utils.GetSelectedItemList(self.params_list)
+	if (not item_prm) then return end
+	self.data[item_sec.index].params[item_prm.override] = nil
+	self:InitParams()
+end
+
+--'метод распарсивания данных custom_data в таблицу её параметров
+--'self.data = {
+--'    [index] = {
+--'        name_section = "name_section",
+--'        params       = {
+--'            *param = "*value",
+--'            ...      = "..."
+--'        }
+--'    },
+--'    [...] = {...}
+--'}
+function setting_custom_data:InitData()
+    local ltx = self.owner.value
+	if (ltx:match(".ltx")) then
+		self.path_cfg:SetText(ltx)
+		return
+	end
+	for w in string.gmatch(ltx, sh_mult) do
+     --определяем секцию
+        for sn in string.gmatch(w, sh_secn) do
+	        local t = {}
+		    t.params = {}
+		    t.name_section = sn
+		    table.insert(self.data, t)
+	    end
+        --определяем параметры текущей секции
+	    local count = #self.data
+	    if (count ~= 0) then
+	        for ov, pr in string.gmatch(w, sh_id_val) do 
+		        self.data[count].params[ov] = pr
+	        end
+	    end
+    end
+end
+
+function setting_custom_data:ClickOk()
+    local ltx = ""
+    for _, sec in ipairs(self.data) do
+	    ltx = ltx.."["..sec.name_section.."]\n"
+		for id, prm in pairs(sec.params) do
+		    ltx = ltx..id.." = "..prm.."\n"
+		end
+	end
+	if (#ltx == 0) then
+		ltx = self.path_cfg:GetText()
+		if (#ltx ~= 0) then
+			ltx = ltx:gsub([[\\]], "\\")
+			ltx = ltx:gsub("/", "\\")
+			if (not ltx:match(".ltx")) then
+				ltx = ltx..".ltx"
+			end
+			ltx = "[logic]\n cfg = "..ltx
+		end
+	end
+	self.target(self.owner, ltx)
+    base_total.ClickOk(self)
+end
+
+--//----------------------------------------------------
+--// Класс всплывающего окошка, выбора/создания новой секции в custom_data
+--//----------------------------------------------------
+
+class "create_section" (choice_string)
+
+function create_section:__init(owner, target, tbl, title)super(owner, target, tbl, title, nil, 203)
+	self.edit = self.Xml:InitEditBox("edit_box_c", self)
+	self:AddCallback("list", ui_events.LIST_ITEM_CLICKED, self.SelectSection, self)
+end
+
+function create_section:SelectSection()
+    local item = _utils.GetSelectedItemList(self.list)
+	if (not item) then return end
+	self.edit:SetText(item.string)
+	self.edit.value = item.string
+end
+
+function create_section:ClickOk()
+    local name = self.edit:GetText()
+	if (#name == string.match(name, "@")) then
+	    name = self.edit.value
+	end
+	if (not name or name == "") then return end
+	if (self.target) then
+	    self.target(self.owner, name)
+	end
+	self:ClickCancel()
+end
+
+--//----------------------------------------------------
+--// Класс всплывающего окошка, выбора/создания нового параметра секции в custom_data
+--//----------------------------------------------------
+
+class "create_param" (choice_string)
+
+function create_param:__init(owner, target, tbl, title)super(owner, target, tbl, title, nil, 203)
+    self.tbl = tbl
+	self.edit = self.Xml:InitEditBox("edit_box_p", self)
+	self:AddCallback("list", ui_events.LIST_ITEM_CLICKED, self.SelectParam, self)
+	
+	self:Register(self.Xml:InitButton("btn_choise_val",    self), "choise_val")
+	self:AddCallback("choise_val", ui_events.BUTTON_CLICKED, self.ClickOpenListValues, self)
+end
+
+function create_param:SelectParam()
+    local item = _utils.GetSelectedItemList(self.list)
+	if (not item) then return end
+	self.edit:SetText(item.string.." = ")
+end
+
+function create_param:ClickOpenListValues()
+    local item = _utils.GetSelectedItemList(self.list)
+	if (not item) then return end
+	local tip = ""
+	for _, prm in ipairs(self.tbl) do
+	    if (prm[1] == item.string) then
+		    tip = prm[2]
+			break
+		end
+	end
+	if (tip == "number" or tip == "bool" or tip == "string") then return end
+	local tbl_vals = _utils.getTableValuesParam(tip)
+	if (type(tbl_vals) == "table") and #tbl_vals > 0 then
+		table.sort(tbl_vals, 
+			function(a,b)
+	            local byte_a = string.byte(a)
+		        local byte_b = string.byte(b)
+				if (math.diap(byte_a, 65, 96)) then byte_a = byte_a + 31.5 end
+				if (math.diap(byte_b, 65, 96)) then byte_a = byte_a + 31.5 end
+		        return byte_a < byte_b
+	        end)
+		level.start_stop_menu(choice_string(self, create_param.AddValue, tbl_vals, "Выберите значение!"), false)
+	end
+end
+
+function create_param:AddValue(value)
+    local item = _utils.GetSelectedItemList(self.list)
+	if (not item) then return end
+	value = string.sub(value, 0, string.match(value, "()%w%s*[>>]"))
+	self.edit:SetText(self.edit:GetText()..value)
+end
+
+function create_param:ClickOk()
+    local name = self.edit:GetText()
+	if (not name or name == "") then return end
+	local id, value
+	for k, v in string.gmatch(name, sh_id_val) do
+        id, value = k, v
+    end
+	if (not value or value == "" or value == " ") then
+	    self.Message_box_error:SetText("не задано значение параметру!")
+	    self:GetHolder():start_stop_menu(self.Message_box_error, true)
+		return
+	end
+	if (self.target) then
+	    self.target(self.owner, id, value)
+	end
+	self:ClickCancel()
+end
+
+--//---------------------------------------------------
+--// класс CUIComboNew (базовый, абстрактный)
+--//---------------------------------------------------
+
+class "CUIComboNew" (CUIStatic)
+
+local combo_index = 0 --' индексатор (id) объектов класса CUIComboNew()
+                      --' применяется для разделения событий объектов
+					  --' внутри одного окна.
+
+--/summary/>> конструктор
+function CUIComboNew:__init(x, y, width, scriptWnd)super()
+	self:SetWndRect(x, y, width, 23)
+
+	self.height = 19
+	self.width = width - 25
+	
+	if (combo_index >= 100) then
+		combo_index = 1
+	else
+		combo_index = combo_index + 1
+	end
+	self.id = combo_index
+	
+	self.max_items_list = 6 --' максимальная высота списка, по отображаемым элементам
+	
+	local frame_back = CUIFrameLineWnd()
+	frame_back:Init("ui\\ui_string_04", 0, 2, self.width, self.height, true)
+	self:AttachChild(frame_back)
+
+	self.btn_open_list = CUI3tButton()
+	self.btn_open_list:Init(width - 25, 0, 25, 23)
+	self.btn_open_list:InitTexture("ui_cb_button")
+	self.btn_open_list:SetStretchTexture(true)
+	self.btn_open_list:Enable(false)
+	self:AttachChild(self.btn_open_list)
+	scriptWnd:Register(self.btn_open_list, "btn_combo_new"..self.id)
+	scriptWnd:AddCallback("btn_combo_new"..self.id, ui_events.BUTTON_CLICKED, self.OpenCloseList, self)
+
+	self.frame_list = CUIFrameWindow()
+	self.frame_list:Init("ui\\ui_frame_01",0, 21, self.width, 46)
+	self.frame_list:Show(false)
+	self:AttachChild(self.frame_list)
+
+	self.list = CUIListWnd()
+	self.list:Init(4, 4, self.width - 8, 36)
+	self.list:SetItemHeight(self.height)
+	self.list:SetAutoDelete(true)
+	self.list:ShowSelectedItem(false)
+	self.frame_list:AttachChild(self.list)
+	scriptWnd:Register(self.list, "list_combo_new"..self.id)
+	scriptWnd:AddCallback("list_combo_new"..self.id, ui_events.LIST_ITEM_CLICKED, self.SelectItem, self)
+	
+	self.static_focus = false
+	scriptWnd:Register(self, "static_combo_new"..self.id)
+	scriptWnd:AddCallback("static_combo_new"..self.id, ui_events.STATIC_FOCUS_LOST,     self.StaticLost, self)
+	scriptWnd:AddCallback("static_combo_new"..self.id, ui_events.STATIC_FOCUS_RECEIVED, self.StaticRece, self)
+end
+
+--/summary/>> Метод вызываемый при клике "btn_open_list"
+function CUIComboNew:OpenCloseList()
+	if (self.frame_list:IsShown()) then 
+		self:HideList()
+		return
+	end
+	self:ShowList()
+end
+
+--/summary/>> Метод выбора элемента списка
+function CUIComboNew:SelectItem()
+	self:HideList()
+end
+
+--/summary/>> Метод добавления элемента в список
+function CUIComboNew:AddItem(str, val)
+	local item = _ui_total.list_item(self.width - 8, self.height)
+	item:SetText(str)
+	item.value = val
+	self.list:AddItem(item)
+	local count = self.list:GetSize()
+	local height = self.height * (count <= self.max_items_list and count or self.max_items_list) 
+	self.list:SetHeight(height)
+	self.frame_list:SetHeight(height + 8)
+	if (str ~= "") then
+		if (not self.btn_open_list:IsEnabled()) then
+			self.btn_open_list:Enable(true)
+		end
+	end
+end
+
+--/summary/>> Метод, возвращающий размер списка
+function CUIComboNew:GetSizeList()
+	return self.list:GetSize()
+end
+
+--/summary/>> Метод, возвращающий элемент списка по указанному индексу
+function CUIComboNew:GetItemList(ind)
+	return self.list:GetItem(ind)
+end
+
+--/summary/>> Метод открытия списка
+function CUIComboNew:ShowList()
+	if (self.list:GetSize() < 2) then return end
+	self:SetHeight(self.frame_list:GetHeight() + 30)
+	self.frame_list:Show(true)
+end
+
+--/summary/>> Метод скрытия списка
+function CUIComboNew:HideList()
+	self.frame_list:Show(false)
+	self:SetHeight(23)
+end
+
+--/summary/>> Метод скрытия списка, при отводе курсора мыши
+function CUIComboNew:StaticLost()
+	if (self.static_focus) then
+		if (self.frame_list:IsShown()) then 
+			self:HideList()
+		end
+		self.static_focus = false
+	end
+end
+
+--/summary/>> Метод отслеживания захода курсора мыши в зону виджета
+function CUIComboNew:StaticRece()
+	self.static_focus = true
+end
+
+--/summary/>> Метод удаления всех элементов списка
+function CUIComboNew:RemoveAll()
+	self.list:RemoveAll()
+end
+
+--/summary/>> Метод удаления элемента списка по его индексу
+function CUIComboNew:RemoveItem(ind)
+	self.list:RemoveItem(ind)
+end
+
+--//----------------------------------------------------------
+--// класс:     CUIComboBoxNew (класс, аналог CUIComboBox())
+--//                      properties max_items_list                --максимальная высота списка, по отображаемым элементам (по умолчанию 6)
+--// local text, value =  function GetSelectedItem()               --возвращает данные выбранного элемента
+--//                      function AddItem(text, value)            --добавляет элемент с указанными данными в список
+--//                      function ActionSelectItem(method, owner) --устанавливает событие при смене значения бокса (метод получает два значения (text, value))
+--//                      function RemoveAll()                     --удаляет все элементы списка
+--//                      function RemoveItem(ind)                 --удаляет элемент списка по указанному индексу
+--// local count       =  function GetSizeList()                   --возвращает размер списка
+--// local item        =  function GetItemList(ind)                --возвращает элемент списка по указанному индексу. (class list_item())
+--//----------------------------------------------------------
+
+class "CUIComboBoxNew" (CUIComboNew)
+
+--/summary/>> конструктор
+function CUIComboBoxNew:__init(x, y, width, scriptWnd, nul)super(x, y, width, scriptWnd)
+	self.nul = nul --' (true) включить пустую строку в список элементов.
+	self.action = nil
+	
+	self.edit = CUIStatic()
+	self.edit:Init(4, 2, self.width - 5, self.height)
+	self:AttachChild(self.edit)
+	
+	if (nul) then
+		self:AddItem("")
+	end
+end
+
+--/summary/>> Метод выбора элемента списка (оверайд)
+function CUIComboBoxNew:SelectItem()
+	local select = _utils.GetSelectedItemList(self.list)
+	if (select) then
+		local str = select:GetText()
+		self.edit:SetText(str)
+		self.edit.value = select.value
+		CUIComboNew.SelectItem(self)
+		if (self.action) then
+			self.action(self.owner, str, select.value)
+		end
+	end
+end
+
+--/summary/>> Метод, возвращающий текст и значение выбранного элемента
+function CUIComboBoxNew:GetSelectedItem()
+	return self.edit:GetText(), self.edit.value
+end
+
+--/summary/>> Метод, установки выборанного элемента списка (по индексу нахождения в списке)
+function CUIComboBoxNew:SetSelectedItem(ind)
+	local item = self.list:GetItem(ind)
+	if (item) then
+	    self.edit:SetText(item:GetText())
+		self.edit.value = item.value
+	end
+end
+
+--/summary/>> Метод добавления элемента в список (override)
+function CUIComboBoxNew:AddItem(str, val)
+	CUIComboNew.AddItem(self, str, val)
+	if (not self.nul and self.list:GetSize() == 1) then
+		self:SetSelectedItem(0)
+	end
+end
+
+--/summary/>> Метод установки события при смене значения методом SelectItem()
+function CUIComboBoxNew:ActionSelectItem(method, owner)
+	self.action = method
+	self.owner = owner
+end
+
+--/summary/>> Метод удаления всех элементов списка (override)
+function CUIComboBoxNew:RemoveAll()
+	CUIComboNew.RemoveAll(self)
+	self.edit:SetText("")
+	self.edit.value = nil
+end
+
+--/summary/>> Метод удаления элемента списка по его индексу (override)
+function CUIComboBoxNew:RemoveItem(ind)
+	local item = self:GetItemList(ind)
+	if (self.edit:GetText() == item:GetText() and self.edit.value == item.value) then
+		self:SetSelectedItem(0)
+	end
+	CUIComboNew.RemoveItem(self, ind)
+end
+
+--//----------------------------------------------------------
+--// класс:     CUIComboBoxEditNew (класс эдит-бокса с возможностями открывающегося списка, ранее вводимых значений.)
+--//                properties max_items_list        --максимальная высота списка, по отображаемым элементам (по умолчанию 6)
+--// local value =  function GetItem()               --возвращает текст эдита
+--//                function SetItem(str)            --вставляет текст в тедло эдита
+--//                function Remember()              --добавляет элемент в открывающийся список, с текстом из эдита (если нет такового в списке)
+--//                function AddItem(text)           --добавляет элемент с указанным текстом в список
+--//                function RemoveAll()             --удаляет все элементы списка
+--//                function RemoveItem(ind)         --удаляет элемент списка по указанному индексу
+--// local count =  function GetSizeList()           --возвращает размер списка
+--// local item  =  function GetItemList(ind)        --возвращает элемент списка по указанному индексу. (class list_item())
+--// local tbl   =  function GetItemsList()          --возвращает список элементов, как таблицу их текстовых значений.
+--//                function AddItems(tbl)           --создание списка элементов по указанной текстовой таблице
+--//                function AddItems(...)           --создание списка элементов по указанному набору текстовых параметров
+--//----------------------------------------------------------
+
+class "CUIComboBoxEditNew" (CUIComboNew)
+
+--/summary/>> конструктор
+function CUIComboBoxEditNew:__init(x, y, width, scriptWnd, val)super(x, y, width, scriptWnd)
+	self.edit = CUIEditBoxEx()
+	self.edit:Init(4, 2, self.width - 5, self.height)
+	self:AttachChild(self.edit)
+	
+	self:AddItem("")
+end
+
+--/summary/>> Метод выбора элемента списка (оверайд)
+function CUIComboBoxEditNew:SelectItem()
+	local select = _utils.GetSelectedItemList(self.list)
+	if (select) then
+		self.edit:SetText(select:GetText())
+		CUIComboNew.SelectItem(self)
+	end
+end
+
+--/summary/>> Метод, возвращающий текст эдита
+function CUIComboBoxEditNew:GetItem()
+	return self.edit:GetText()
+end
+
+--/summary/>> Метод установки текста в эдит
+function CUIComboBoxEditNew:SetItem(str)
+	return self.edit:SetText(str)
+end
+
+--/summary/>> Метод добавления элемента из эдита в список
+function CUIComboBoxEditNew:Remember()
+	local str = self:GetItem()
+	if (str and #str > 0) then
+		for i=0, self.list:GetSize() - 1 do
+			local item = self.list:GetItem(i)
+			if (item and item:GetText() == str) then
+				return
+			end
+		end
+	end
+	self:AddItem(str)
+end
+
+--/summary/>> Метод добавления элементов в список
+function CUIComboBoxEditNew:AddItems(...)
+	local one = select(1, ...)
+	local items = (type(one) == "table" and one) or {...}
+	for val, str in ipairs(items) do
+		if (type(str) == "string") then
+			self:AddItem(str, val)
+		end
+	end
+end
+
+--/summary/>> Метод возвращающий таблицу элементов списка
+function CUIComboBoxEditNew:GetItemsList()
+	local count = self.list:GetSize()
+	local tbl = {}
+	for i=0, count - 1 do
+		local item = self.list:GetItem(i)
+		if (item and #item:GetText() ~= 0) then
+			table.insert(tbl, item:GetText())
+		end
+	end
+	return tbl
+end
+
+--//----------------------------------------------------------
+--// класс: Контекстного меню (не нашло применения)
+--//----------------------------------------------------------
+
+local context_id = 0
+
+class "context" (CUIFrameWindow)
+
+function context:__init(parent, owner)super()
+	context_id = context_id + 1
+	self.id = context_id
+	self.parent = parent
+	self.owner = owner or parent
+	self:SetWndRect(0, 0, 150, 32)
+	self:Show(false)
+	self:InitTexture("ui\\ui_frame_01")
+	
+	self.btns = {}
+	self.btn_texture = ""
+end
+
+function context:InitFon(frame)
+	self:InitTexture(frame)
+end
+
+function context:SetTextureBtn(texture3t)
+	self.btn_texture = texture3t
+end
+
+function context:AddButton(text, target)
+	local btn_id = #self.btns
+	local name = "btn_"..btn_id
+	local btn = CUI3tButton()
+	btn:SetAutoDelete(true)
+	btn:Init(0, btn_id * 32, 150, 32)
+	btn:SetText(text)
+	btn.target = target
+	btn.id     = btn_id
+	local reg_name = "context_"..self.id.."_btn_"..btn_id
+	self.parent:Register(btn, reg_name)
+	self.parent:AddCallback(reg_name, ui_events.BUTTON_CLICKED,	target, self.owner)
+	self:AttachChild(btn)
+	self[name] = btn
+	table.insert(self.btns, name)
+end

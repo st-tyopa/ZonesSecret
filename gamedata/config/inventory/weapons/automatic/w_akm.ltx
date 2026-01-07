@@ -1,0 +1,276 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[wpn_akm]:identity_immunities
+GroupControlSection				= spawn_group
+discovery_dependency				= 
+$spawn              				= "weapons\ak47"	
+$npc						= on				
+$prefetch 					= 8
+scheduled					= off               
+cform               				= skeleton
+class               				= WP_AK74
+min_radius          				= 0				
+max_radius          				= 100				
+description					= enc_arsenal_akm
+
+chamber_status          = true
+
+ef_main_weapon_type				= 2
+ef_weapon_type					= 6
+
+zoom_dof             = 0.5, 1.0, 180
+reload_dof           = 0.0, 0.5, 5, 1.7
+
+;-----------------------------------------------------------------------------------
+holder_range_modifier				= 1.0		       
+holder_fov_modifier				= 0.7              
+;-----------------------------------------------------------------------------------
+
+cost						= 5500				
+weapon_class					= assault_rifle		
+	
+ammo_limit					= 210				
+ammo_elapsed					= 30				
+	
+ammo_mag_size					= 30				
+fire_modes					= 1, -1
+
+ammo_class					= ammo_7.62x39_fmj, ammo_7.62x39_ap   
+grenade_class					= ammo_vog-25, ammo_vog-25p			
+launch_speed					= 0
+
+hand_dependence					= 1									
+single_handed					= 0
+	
+slot 						= 1,2									
+animation_slot					= 2									
+
+inv_name	        			= ars-akm							
+inv_name_short					= ars-akm
+inv_weight					= 3.3								
+
+inv_grid_width     				= 5
+inv_grid_height    				= 2
+inv_grid_x         				= 30
+inv_grid_y         				= 0
+
+
+
+kill_msg_x					= 0
+kill_msg_y					= 28
+kill_msg_width					= 84
+kill_msg_height					= 28
+
+;-----------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------
+;params of weapon recoil
+fire_dispersion_base				= 0.18		;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor				= 1.25f
+
+;отдача
+cam_relax_speed         			= 2.0		;скорость возврата в исходное положение
+cam_relax_speed_ai      			= 360.75
+cam_dispersion          			= 0.3		;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc				= 0.3		;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac				= 0.75		;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle					= 10.0	    	;максимальный угол отдачи
+cam_max_angle_horz				= 20.0		;(degree) maximum shot horizontal degree 
+cam_step_angle_horz				= 1.5		;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor 		= 2	    	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 				= 0.001		;вероятность осечки при максимальном износе 
+misfire_condition_k				= 0.04
+condition_shot_dec 				= 0.00004	;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+fire_point              			=  0,0.218,0.656        
+fire_point2             			=  0,0.161,0.583        
+
+flame_particles					= weapons\generic_weapon05
+smoke_particles					= amik\weapons\smoke_particles\smoke_particles_01
+grenade_flame_particles				= amik\weapons\grenade_flame_particles\grenade_flame_particles_02
+	
+shell_point		 			= 0,0.216,0.174
+shell_particles	 				= amik\weapons\7.62x39_shells_r
+
+PDM_disp_base 					= 1.0
+PDM_disp_vel_factor 				= 1.3
+PDM_disp_accel_factor 				= 1.3
+PDM_crouch	 				= 1.0
+PDM_crouch_no_acc 				= 1.0
+
+; ttc
+hit_power        				= 0.72
+hit_impulse		 			= 120
+hit_type 					= fire_wound
+
+fire_distance            			= 600		
+bullet_speed					= 715		
+rpm                      			= 600		
+
+use_aim_bullet					= true		
+time_to_aim					= 1.0	
+
+;params when silencer is attached 
+;similar to corresponding params without prefix silencer_
+
+silencer_hit_power       			= 0.6
+silencer_hit_impulse	 			= 10
+silencer_fire_distance   			= 550
+silencer_bullet_speed	 			= 600
+
+hud                      			= wpn_akm_hud				
+
+position               				= -0.026, -0.175, 0.0
+orientation      	        		= 0,0,0						
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+strap_position         				= -0.16,-0.40,0.15
+strap_orientation      				= -10,-5,10
+strap_bone0					= bip01_spine2
+strap_bone1					= bip01_spine1
+
+visual                  			= weapons\ak47\wpn_akm.ogf
+
+light_color					= 0.6,0.5,0.3				
+light_range					= 5							
+light_var_color					= 0.05						
+light_var_range					= 0.5
+light_time 					= 0.2						
+
+ph_mass						= 3
+
+;addons
+scope_status					= 2
+silencer_status					= 2
+grenade_launcher_status				= 2
+
+zoom_enabled					= true						
+scope_zoom_factor	    			= 70					
+
+scope_name 					= wpn_addon_scope	
+silencer_name  					= wpn_sil_762_ar					
+grenade_launcher_name 				= wpn_addon_grenade_launcher
+
+scope_x                     			= 34
+scope_y                     			= 2
+silencer_x                  			= 216
+silencer_y                  			= 14
+grenade_launcher_x          			= 127
+grenade_launcher_y          			= 26
+
+;sounds (name of the sound, volume (0.0 - 1.0), delay (sec))
+
+snd_draw					= weapons\generic_draw
+snd_holster					= weapons\generic_holster
+
+snd_reload					= weapons\akm\akm_reload
+
+snd_shoot_grenade				= weapons\gp25\gp25_grenshoot
+snd_reload_grenade				= weapons\akm\akm_grenload
+snd_reload_grenade1				= weapons\akm\akm_grenload1
+snd_switch					= weapons\akm\akm_switch
+
+;--------------- New sound of etRussk ---------------
+snd_shoot					= weapons\akm\akm_m24r2__06
+snd_shoot1					= weapons\akm\akm_m24l2__06
+;----------------- Sound of etRussk -----------------
+snd_silncer_shot				= weapons\akm\ak_silencer_type1_00
+snd_silncer_shot1				= weapons\akm\ak_silencer_type1_01
+snd_silncer_shot2				= weapons\akm\ak_silencer_type1_02
+snd_silncer_shot3				= weapons\akm\ak_silencer_type1_03
+snd_silncer_shot4				= weapons\akm\ak_silencer_type1_04
+snd_silncer_shot5				= weapons\akm\ak_silencer_type1_05
+snd_silncer_shot6				= weapons\akm\ak_silencer_type1_06
+snd_silncer_shot7				= weapons\akm\ak_silencer_type1_07
+snd_silncer_shot8				= weapons\akm\ak_silencer_type1_08
+snd_silncer_shot9				= weapons\akm\ak_silencer_type1_09
+snd_silncer_shot10				= weapons\akm\ak_silencer_type1_10
+snd_silncer_shot11				= weapons\akm\ak_silencer_type1_11
+
+snd_empty					= weapons\akm\ak_empty_00
+snd_empty1					= weapons\akm\ak_empty_01
+;----------------------------------------------------
+
+;params when silencer is attached 
+;similar to corresponding params without prefix silencer_
+
+;silencer_flame_particles 			= weapons\generic_weapon01
+silencer_smoke_particles 			= amik\weapons\smoke_particles\p_smoke_particles_02
+
+
+silencer_light_color				= 0.6,0.5,0.3
+silencer_light_range				= 0.01
+silencer_light_var_color			= 0.05
+silencer_light_var_range			= 0.5
+silencer_light_time 				= 0.2
+
+
+;-----------------------------------------------------------------------------
+;-- HUD DESCRIPTION
+;-----------------------------------------------------------------------------
+ 
+[wpn_akm_hud]
+
+allow_inertion					= true
+
+shell_point     	   	 		= 0,0,-0.05 
+shell_dir			     		= 0.0, 1.0, 0.0
+
+fire_point					= 0,0.05,0
+fire_point2              			= 0.05,-0.08,-0.5
+fire_bone               			= wpn_body
+
+position					= -0.025000,-0.140000,0.130000
+orientation					= 0,0,0
+
+visual                  			= weapons\ak47\wpn_akm_hud.ogf
+
+grenade_bone            			= joint12
+
+anim_idle					= idle
+anim_idle_aim					= aim
+anim_reload					= reload
+anim_draw					= draw
+anim_holster					= holster
+anim_shoot					= shoot
+anim_idle_sprint				= sprint
+anim_idle_moving				= moving
+	
+anim_idle_g					= idle_w_gl
+anim_idle_g_aim					= aim_w_gl
+anim_reload_g					= reload_g
+anim_shoot_g					= shoot_g
+anim_switch_grenade_on				= aim_w_gl
+anim_switch_grenade_off				= aim_w_gl
+anim_draw_g					= draw_w_gl
+anim_holster_g					= holster_w_gl
+anim_idle_sprint_g				= sprint_w_gl
+anim_idle_moving_g				= moving_w_gl
+
+anim_idle_gl					= idle_w_gl
+anim_idle_gl_aim				= aim_w_gl
+anim_reload_gl					= reload_w_gl
+anim_draw_gl					= draw_w_gl
+anim_holster_gl					= holster_w_gl
+anim_shoot_gl					= shoot_w_gl
+anim_idle_sprint_gl				= sprint_w_gl
+anim_idle_moving_gl				= moving_w_gl
+
+zoom_offset					= -0.127570,0.040900,-0.129000
+zoom_rotate_x					= 0.000300
+zoom_rotate_y					= -0.000600
+
+grenade_normal_zoom_offset			= -0.127570,0.040900,-0.129000
+grenade_normal_zoom_rotate_x			= 0.000300
+grenade_normal_zoom_rotate_y			= -0.000600
+
+grenade_zoom_offset				= -0.093300,-0.011500,-0.105000
+grenade_zoom_rotate_x				= -0.104000
+grenade_zoom_rotate_y				= -0.005000
+
+zoom_hide_crosshair				= false
+
+zoom_rotate_time				= 0.3
+rotate_time					= 0.3
+
+

@@ -1,0 +1,1547 @@
+function have_instruments(npc, player)
+	return db.actor:object("quest_case_instruments") ~= nil
+end
+
+-----------------------------Проверки на деньги------------------
+function rob_have_money()
+	return db.actor:money() >= 2500
+end
+
+function rob_have_not_money()
+	return db.actor:money() < 2500
+end
+
+function has_money_osvedomel_2000()
+	return db.actor:money() >= 2000
+end
+
+function has_money_rf_tan()
+	return db.actor:money() >= 7000
+end
+-----------------------------Квест на карты Припяти------------------
+function have_guitar(npc, player)
+	return db.actor:object("quest_guitar") ~= nil
+end
+
+function dv_bandits_death()
+    if has_alife_info("dv_bandit_1_death") and
+        has_alife_info("dv_bandit_2_death") and
+        has_alife_info("dv_bandit_3_death") and
+        has_alife_info("dv_bandit_4_death") and
+        has_alife_info("dv_bandit_5_death") then
+        return true 
+    else 
+        return false
+    end
+end
+
+--Спавним ящик с оружием в инвентарь ящика "схрона бандитов"
+function dv_bandits_shron_spawn_in_inv_box2()
+local inv = alife():story_object(11525)
+alife():create("quest_weapons_case", vector(), 0, 0, inv.id)
+end
+
+------------------------------------------------------------------
+
+
+----------------Квест с Маячками----------------
+
+function varag_sms_1()
+  news_manager.send_tip(db.actor, "%c[255,255,128,128] Варяг:\n%c[default] Хорошо идёшь, сигнал принял. Зайди ко мне за наградой!", 0, "varag", 15000)
+  end
+  
+function varag_sms_2()
+   news_manager.send_tip(db.actor, "%c[255,255,128,128] Варяг:\n%c[default] Сигнал принял, заскочи ко мне за презентом!", 0, "varag", 15000)
+  end
+   
+function varag_sms_3()
+  news_manager.send_tip(db.actor, "%c[255,255,128,128] Варяг:\n%c[default] Отличная работа, можешь зайти ко мне за наградой!", 0, "varag", 15000)
+  end
+  
+
+function give_gps_money(first_speaker, second_speaker)
+	dialogs.relocate_money(first_speaker, 1500, "in")
+end
+
+function give_sv_money(first_speaker, second_speaker)
+	dialogs.relocate_money(first_speaker, 10000, "in")
+end
+
+
+function set_current_time1 (hour, min, sec)
+ local current_time_factor = level.get_time_factor ()
+
+ printf ("Need time : %d:%d:%d", hour, min, sec)
+
+ local current_time = game.time ()
+ local c_day = math.floor (current_time / 86400000)
+ local c_time = current_time - c_day * 86400000
+ local n_time = (sec + min * 60 + hour * 3600) * 1000
+
+ if c_time > n_time then c_day = c_day + 1 end
+ n_time = n_time + c_day * 86400000
+
+ level.set_time_factor (10000)
+
+ level.set_time_factor (current_time_factor)
+end
+
+function stop_time_scale()
+	local time_factor = system_ini():r_float("alife","time_factor")
+	level.set_time_factor(time_factor)
+	db.actor:disable_info_portion("info_time_scale")
+end
+
+function precond_medkit_1(first_speaker, second_speaker) 
+       local item_sections = {"medkit"} 
+       local needed = 5
+       local count = 0
+       local item_section
+   local function calc(temp, item)
+       if item:section() == item_section then
+       count = count + 1
+end end 
+   for k,v in pairs(item_sections) do
+   item_section = v
+   db.actor:iterate_inventory(calc, db.actor)
+end 
+   return count >= needed
+end 
+
+function precond_vodka_2(first_speaker, second_speaker) 
+       local item_sections = {"vodka"} 
+       local needed = 2
+       local count = 0
+       local item_section
+   local function calc(temp, item)
+       if item:section() == item_section then
+       count = count + 1
+end end 
+   for k,v in pairs(item_sections) do
+   item_section = v
+   db.actor:iterate_inventory(calc, db.actor)
+end 
+   return count >= needed
+end 
+
+function precond_medkit_army(first_speaker, second_speaker) 
+       local item_sections = {"medkit_army"} 
+       local needed = 5
+       local count = 0
+       local item_section
+   local function calc(temp, item)
+       if item:section() == item_section then
+       count = count + 1
+end end 
+   for k,v in pairs(item_sections) do
+   item_section = v
+   db.actor:iterate_inventory(calc, db.actor)
+end 
+   return count >= needed
+end 
+
+function have_medkit_5()
+    return gz_prologue.have_n_m("medkit",5)
+end
+
+function have_medkit_army_5()
+    return gz_prologue.have_n_m("medkit_army",5)
+end
+
+function have_medkit_sci_5()
+    return gz_prologue.have_n_m("medkit_scientic",5)
+end
+
+
+function have_n_m(section,number)
+    local actor = db.actor
+    if actor then
+        local cnt = 0
+        actor:iterate_inventory(
+            function (dummy, item)
+            if item:section() == section then cnt = cnt + 1 end
+            end
+        ,nil)
+        return cnt >= number
+    end
+    return false
+end
+
+
+function precond_medkit_scientic(first_speaker, second_speaker) 
+       local item_sections = {"medkit_scientic"} 
+       local needed = 5
+       local count = 0
+       local item_section
+   local function calc(temp, item)
+       if item:section() == item_section then
+       count = count + 1
+end end 
+   for k,v in pairs(item_sections) do
+   item_section = v
+   db.actor:iterate_inventory(calc, db.actor)
+end 
+   return count >= needed
+end 
+
+function precond_time_2()
+     return level.get_time_hours() >= 22 
+ end
+ 
+ function precond_time_1()
+     return level.get_time_hours() < 22 
+ end
+ 
+function change_time()
+-- xr_effects.run_postprocess(nil, nil, "agr_u_fade")
+ set_current_time1(20, 0, 0)
+end
+
+function inv_box_spawn()
+ alife():create("inv_box", vector():set(220.638,0.288,62.814), 713724, 233)
+end
+------------------------------------------------------------
+
+
+
+-- Эффект в начале игры
+
+function give_racia (player, stalker)
+	dialogs.relocate_item_section(player, "racya_b", "in")
+end
+
+function give_agr_dat (player, stalker)
+	dialogs.relocate_item_section(player, "agr_dolg_datchik", "in")
+		dialogs.relocate_item_section(player, "agr_dolg_datchik", "in")
+			dialogs.relocate_item_section(player, "agr_dolg_datchik", "in")
+end
+
+function razgovor()
+	local snd = xr_sound.get_safe_sound_object( [[characters_voice\scenario\aes\aes_chopers_begin_3]] )
+	snd:play_at_pos(db.actor, vector ():set (0, 0, 0), 0, sound_object.s2d)
+end
+
+function play_sound_ds1()
+	local snd = xr_sound.get_safe_sound_object( [[characters_voice\scenario\ds\effect_vertolet]] )
+	snd:play_at_pos(db.actor, vector ():set (0, 0, 0), 0, sound_object.s2d)
+end
+
+function play_sound_ds2()
+	local snd = xr_sound.get_safe_sound_object( [[characters_voice\scenario\ds\ds_most_message]] )
+	snd:play_at_pos(db.actor, vector ():set (0, 0, 0), 0, sound_object.s2d)
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Сообщение от 'Серый':\n%c[default] Если хочешь поговорить - убирай оружие и подходи. Иначе буду стрелять!", nil, nil, 30000)
+end
+
+function dv_message1()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Лукаш:\n%c[default] Убирай оружие, шаг вперед и стой смирно, не дергайся!", 0, "luka", 15000)
+end
+
+function varag_sms()
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Варяг:\n%c[default] Зорин, заскочи ко мне, получишь награду.", 0, "varag", 15000)
+end
+
+function play_sound_dv3()
+	local snd = xr_sound.get_safe_sound_object( [[characters_voice\scenario\dv\dv_dolggroup_help]] )
+	snd:play_at_pos(db.actor, vector ():set (0, 0, 0), 0, sound_object.s2d)
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Сообщение от 'Кортез':\n%c[default] Сталкер, нужна помощь! Я скинул тебе координаты, подойди, надо поговорить.", nil, nil, 15000)
+end
+--------------------------------------------------------
+
+---------------------------------------------------------------------
+
+
+
+--------------------------------------------------------
+
+
+
+---------------------------------------------------------------------
+-- Сообщение от Чехова
+-- Сообщение от Чехова
+function cheh_message2()
+if not has_alife_info("talk_with_chehov_start") then
+local snd_obj = xr_sound.get_safe_sound_object([[characters_voice\scenario\dv\dv_chehov_about_work]]) 
+      snd_obj:play(db.actor, 0, sound_object.s2d) 
+      level.add_call ( 
+                      function () 
+                          return not(snd_obj:playing()) 
+                      end, 
+                      function () 
+                          db.actor:give_info_portion ("talk_with_chehov_start") 
+                      end 
+                     ) 
+end
+end
+
+---------------------------------------------------------------------
+
+-- Звук сообщения SOS группы Долга
+function play_dolg_sos_message()
+local snd_obj = xr_sound.get_safe_sound_object([[characters_voice\scenario\dv\dv_dolg_need_help_message]]) 
+      snd_obj:play(db.actor, 0, sound_object.s2d) 
+      level.add_call ( 
+                      function () 
+                          return not(snd_obj:playing()) 
+                      end, 
+                      function () 
+                          gz_utils.give_info("dv_help_dolg_group")	
+                      end 
+                     ) 
+end
+----------------------------------------
+
+function play_music_dv1()
+	local snd = xr_sound.get_safe_sound_object( [[characters_voice\scenario\dv\st_attack_grehbase]] )
+	snd:play_at_pos(db.actor, vector ():set (0, 0, 0), 0, sound_object.s2d)
+end
+
+
+-- Звук сообщения после убийства Маниковского
+function play_sound_scien_mess()
+local snd_obj = xr_sound.get_safe_sound_object([[detectors\bomb_timer]]) 
+      snd_obj:play(db.actor, 0, sound_object.s2d) 
+      level.add_call ( 
+                      function () 
+                          return not(snd_obj:playing()) 
+                      end, 
+                      function () 
+                          db.actor:give_info_portion ("go_to_evacuation_zone_start") 
+                      end 
+                     ) 
+end
+
+---------------------------------------------------------------------
+
+
+----------------------------------------
+
+
+----------------------------------------
+
+
+
+----------------------------------------
+
+
+-- Звук сообщения из ПДА предателей
+function play_sound_pred_pda()
+local snd_obj = xr_sound.get_safe_sound_object([[detectors\bomb_timer]]) 
+      snd_obj:play(db.actor, 0, sound_object.s2d) 
+      level.add_call ( 
+                      function () 
+                          return not(snd_obj:playing()) 
+                      end, 
+                      function () 
+                          db.actor:give_info_portion ("go_to_scien_assist_start") 
+                      end 
+                     ) 
+end
+----------------------------------------
+
+-- Звук звонка ученого
+function play_sound_phone_assist()
+local snd_obj = xr_sound.get_safe_sound_object([[detectors\bomb_timer]]) 
+      snd_obj:play(db.actor, 0, sound_object.s2d) 
+      level.add_call ( 
+                      function () 
+                          return not(snd_obj:playing()) 
+                      end, 
+                      function () 
+                          db.actor:give_info_portion ("kill_zal_merc_start") 
+                      end 
+                     ) 
+end
+
+function have_art(npc, player)
+	return db.actor:object("quest_art_kolokol") ~= nil
+end
+
+function have_gar_quest_art(npc, player)
+	return db.actor:object("af_ds_art") ~= nil
+end
+
+function have_gar_quest_art_2(npc, player)
+	return db.actor:object("af_gar_gubka") ~= nil
+end
+
+function have_gz_tainik_case(npc, player)
+	return db.actor:object("gz_tainik_case") ~= nil
+end
+
+function has_money_seriy(actor, npc)
+	return actor:money() >= 5000
+end
+
+function has_money_loki_case(actor, npc)
+	return actor:money() >= 3000
+end
+
+function has_money_gar_art(actor, npc)
+	return actor:money() >= 1500
+end
+
+
+function has_money_osved_repair_pda(actor, npc)
+	return actor:money() >= 4000
+end
+
+function give_osvedomel_money_repair_pda(actor, npc)
+	dialogs.relocate_money(actor, 4000, "out")	
+end
+
+function has_money_osved_mercs(actor, npc)
+	return actor:money() >= 500
+end
+function has_money_merc_pda(actor, npc)
+	return actor:money() >= 2000
+end
+
+function transfer_ds_sumka_ld_money (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 1500, "in")
+end
+
+function transfer_ds_sumka_in (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "ds_sumka", "in")
+end
+
+function transfer_pz_flire (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "pz_flair", "in")
+end
+
+function transfer_ds_sumka_out (first_speaker, second_speaker)
+		dialogs.relocate_item_section(first_speaker, "ds_sumka", "out")
+end
+
+function transfer_medkit_out(first_speaker, second_speaker)
+		dialogs.relocate_item_section(first_speaker, "medkit", "out")
+end
+
+
+function give_art_money(actor, npc)
+	dialogs.relocate_money(npc, 1500, "out")	
+end
+
+function give_merc_pda_money(actor, npc)
+	dialogs.relocate_money(npc, 2000, "out")	
+end
+
+function give_seriy_money(actor, npc)
+	dialogs.relocate_money(npc, 5000, "out")	
+end
+
+function give_seriy_money(actor, npc)
+	dialogs.relocate_money(npc, 3000, "out")	
+end
+
+function transfer_gubka_art (first_speaker, second_speaker)
+    dialogs.relocate_item_section(first_speaker, "af_ds_art", "out")
+end
+
+function transfer_gubka_art_2 (first_speaker, second_speaker)
+    dialogs.relocate_item_section(first_speaker, "af_gar_gubka", "out")
+end
+
+function transfer_art_2 (first_speaker, second_speaker)
+    dialogs.relocate_item_section(first_speaker, "quest_art_kolokol", "out")
+end
+
+function dv_zapravka_bandit_dead()
+local gulag = xr_gulag.get_gulag("dv_zapravka")
+local gulag_popular = gulag:get_population()
+	if gulag_popular < 1 then
+	db.actor:give_info_portion("rush_bandits_done")
+	end
+end
+
+function dolg_war()
+if not has_alife_info("enter_to_dolgbase_is_open") then
+relation_registry.set_community_goodwill ("dolg", db.actor:id (), -5000)
+news_manager.send_tip(db.actor, "%c[255,255,128,128]Внимание:\n%c[default] Вы враг группировке Долг", nil, nil, 15000)
+end
+end
+
+function svoboda_war()
+if not has_alife_info("lukash_pogovorili") then
+relation_registry.set_community_goodwill ("freedom", db.actor:id (), -5000)
+news_manager.send_tip(db.actor, "%c[255,255,128,128]Внимание:\n%c[default] Вы враг группировке Свобода", nil, nil, 15000)
+end
+end
+
+
+
+function Actor_Has_ListItems(sSection,iNum) 
+ if not iNum then iNum = 1 end 
+ local oActor = db.actor 
+ local iCnt = 0 
+ if oActor and sSection then 
+ oActor:iterate_inventory( 
+ function (dummy, oItem) 
+ if oItem:section() == sSection then 
+ iCnt = iCnt + 1 
+ if iCnt >= iNum then 
+ return true --/> актор имеет N предметов 
+ end 
+ end 
+ end 
+ ,nil) 
+ end 
+ return iCnt >= iNum --/> имеет ли актор N предметов 
+ end
+ 
+ function precond_medkit() 
+ return this.Actor_Has_ListItems("medkit_scientic", 2) 
+ end
+ 
+ function precond_time()
+     return level.get_time_hours() >= 7 and level.get_time_hours() <= 8 
+ end
+ 
+--Звуковое сопровождение
+
+--При штурме Греха
+function play_sound_attackgreh()
+	local snd = xr_sound.get_safe_sound_object( [[characters_voice\scenario\ds\effect_vertolet]] )
+	snd:play_at_pos(db.actor, vector ():set (0, 0, 0), 0, sound_object.s2d)
+end
+
+
+
+
+---***** Ветка сюжета с альтернативным входом *****---
+
+function is_actor_enemy_agr_dolgbase ()
+    local gulag = xr_gulag.get_gulag_by_name ("agr_dolgbase")
+ if gulag == gulag or gulag:npc_is_enemy_to_anybody (db.actor) == true
+then    
+       db.actor:give_info_portion("dolg_war") 
+       return true
+    end
+    return false
+end
+
+-- Взрыв динамита Диггера
+function explosion_dynamit (actor, npc)
+    local source = nil
+    local sim = alife ()
+    if sim then
+       local se_obj = sim:story_object (21506)  
+       if se_obj then
+          source = level.object_by_id(se_obj.id)
+       end
+    end
+
+    if source == nil then
+       return
+    end
+
+    local h = hit ();
+    h.power = 1000000;
+    h.direction = vector():set( 1, 0, 0 );
+    h.impulse = 1;
+    h.draftsman = source;
+    h.type = hit.chemical_burn;
+    source:hit (h);
+    
+    source:explode(0)
+ -- удаляем стенку	
+ local se_obj = alife():story_object(21507) 
+ if se_obj then 
+ sim:release(se_obj, true) 
+ end
+end
+
+-- Сообщение от Серого о Диггере
+
+-- Есть динамит
+function on_item_take_storyline_gar_dynamite (obj)
+if(obj) then
+local s_obj = alife():object(obj:id())
+if(s_obj) and (s_obj:section_name()=="storyline_gar_dynamite") then
+db.actor:give_info_portion("gar_find_dynamit_done")
+end
+end
+end
+
+-- Функция провала заданий
+function is_actor_enemy_redfor_military ()
+    local gulag = xr_gulag.get_gulag_by_name ("redfor_military")
+	if gulag == nil or gulag:npc_is_enemy_to_anybody (db.actor) == false then
+       return false
+    end    
+    return true
+end
+
+---***** Основная ветка сюжета *****---
+
+-- Сообщение от Макара о вертолете
+--function isk_message_about_vertolet()
+	--news_manager.send_tip(db.actor, "%c[255,255,128,128] Сообщение от 'Макар':\n%c[default] Совсем из головы вылетело. Вот координаты твоего вертолета, может понадобится...", nil, nil, 15000)
+--end
+
+function isk_message_about_vertolet()
+local snd_obj = xr_sound.get_safe_sound_object([[characters_voice\scenario\agr\agr_mess_about_digger]]) 
+      snd_obj:play(db.actor, 0, sound_object.s2d) 
+      level.add_call ( 
+                      function () 
+                          return not(snd_obj:playing()) 
+                      end, 
+                      function () 
+                          db.actor:give_info_portion ("isk_message_about_vertolet_have") 
+                      end 
+                     ) 
+end
+
+
+--Квест с рацией
+
+--Сообщение о нахождении рации в вертолете
+function find_raciya_in_vertolet_done_message()
+	local snd = sound_object([[characters_voice\soz\gz_darkscape\gg_bad_racia_heli]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Сообщение:\n%c[default] Рация в вертолете неисправна.", nil, nil, 15000)
+end
+
+
+
+-- Переговор с ОКА на ТД
+function oka_dialog1()
+local snd_obj = xr_sound.get_safe_sound_object([[characters_voice\scenario\dv\oka_dialog_racya1]]) 
+      snd_obj:play(db.actor, 0, sound_object.s2d) 
+      level.add_call ( 
+                      function () 
+                          return not(snd_obj:playing()) 
+                      end, 
+                      function () 
+                          db.actor:give_info_portion ("pda_coordinats_start") 
+                          if has_alife_info("ds_stalker_save_thanks") and not has_alife_info("ds_kamaz_stalker_dead") then
+                          db.actor:give_info_portion ("dv_kamaz_done")
+                          else
+                          db.actor:give_info_portion ("alt_wounded_stalk")
+                      end
+                          db.actor:give_info_portion ("mikluha_message2") 
+                      end 
+                     ) 
+end
+
+---------------------------------------------------------------------
+-- Сообщение от Миклухи при входе на базу
+function cheh_message1()
+local snd_obj = xr_sound.get_safe_sound_object([[characters_voice\scenario\dv\dvl_freedom_base_enter]]) 
+      snd_obj:play(db.actor, 0, sound_object.s2d) 
+      level.add_call ( 
+                      function () 
+                          return not(snd_obj:playing()) 
+                      end, 
+                      function () 
+                          db.actor:give_info_portion ("talk_with_baseleader_start") 
+                      end 
+                     ) 
+end
+
+-- Функция о наличии всех нужных деталей
+function find_all_details_have()
+	if has_alife_info("find_details_battery_have") and has_alife_info("find_details_tranzistor_have") and has_alife_info("find_details_provoloka_have") and has_alife_info("find_details_plata_have") then
+db.actor:give_info_portion("find_all_details_have")
+		return true
+	else
+		return false
+	end
+end
+
+-- Функция провала квеста "добраться до лагеря в дс"
+function is_actor_enemy_ds_neutlager ()
+    local gulag = xr_gulag.get_gulag_by_name ("ds_neutlager")
+	if gulag == nil or gulag:npc_is_enemy_to_anybody (db.actor) == false then
+       return false
+    end    
+    return true
+end
+
+-- Функция провала квеста "добраться до лагеря на свалке"
+function is_actor_enemy_gar_neutlager ()
+    local gulag = xr_gulag.get_gulag_by_name ("gar_neutlager")
+	if gulag == nil or gulag:npc_is_enemy_to_anybody (db.actor) == false then
+       return false
+    end    
+    return true
+end
+
+-- Функция провала квеста "добраться до базы долга"
+function is_actor_enemy_agr_dolgbase ()
+    local gulag = xr_gulag.get_gulag_by_name ("agr_dolgbase")
+	if gulag == nil or gulag:npc_is_enemy_to_anybody (db.actor) == false then
+       return false
+    end    
+    return true
+end
+
+function is_actor_enemy_svoboda ()
+    local gulag = xr_gulag.get_gulag_by_name ("dark_svob_blokp")
+	local gulag_two = xr_gulag.get_gulag_by_name ("dv_svobbase")
+	if gulag == nil or gulag:npc_is_enemy_to_anybody (db.actor) == false then
+       return false
+    end    
+    return true
+end
+
+function is_actor_enemy_dolg_dv ()
+    local gulag = xr_gulag.get_gulag_by_name ("dv_dolg_group")
+	if gulag == nil or gulag:npc_is_enemy_to_anybody (db.actor) == false then
+       return false
+    end    
+    return true
+end
+
+-- Функция провала задания с точкой эвакуации
+function is_actor_enemy_redfor_military ()
+    local gulag = xr_gulag.get_gulag_by_name ("redfor_military")
+	if gulag == nil or gulag:npc_is_enemy_to_anybody (db.actor) == false then
+       return false
+    end    
+    return true
+end
+
+
+--------------------------------------------------------------------------------------------------------
+-- Трансферы предметами и деньгами
+
+----------------Долг на ТД--------------------------
+
+function relocate_item_from_actor (victim, section, amount)
+ local count = 0
+ local function calc(temp, item)
+  if count < amount and item:section() == section then
+   db.actor:transfer_item(item, victim)
+    news_manager.relocate_item(db.actor, "out", section)
+   count = count + 1
+  end 
+ end 
+ db.actor:iterate_inventory(calc, db.actor)
+end
+
+function transfer_art (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_mincer_meat", "in")
+end
+
+function transfer_art_1 (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_electra_sparkler", "in")
+end
+
+function case_arts (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "quest_case_arts", "in")
+end
+
+function transfer_medkit(first_speaker, second_speaker) 
+   gz_prologue.relocate_item_from_actor(first_speaker,  "medkit",5)
+end
+
+function transfer_medkit_army(first_speaker, second_speaker) 
+   gz_prologue.relocate_item_from_actor(first_speaker, "medkit_army",5)
+end 
+
+function transfer_bizon (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_g3", "in")
+end
+
+function transfer_test_af (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "quest_art_kolokol", "in")
+end
+
+function transfer_proslushka (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "gar_proslushka", "in")
+end
+
+function transfer_medkit_scientic(first_speaker, second_speaker) 
+   gz_prologue.relocate_item_from_actor(first_speaker, "medkit_scientic",5)
+end 
+
+function transfer_art_case (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_case_arts", "out")
+end
+-----------------------------------------------
+
+function transfer_deneg (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 2500, "in")
+end
+
+function transfer_money_luk (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_beretta_m1", "in")
+end
+
+function transfer_money_doc (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 1000, "in")
+end
+
+function transfer_money_lab_noyt (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 10000, "in")
+end
+
+function transfer_money_lab_noyt_2 (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 15000, "in")
+end
+
+function transfer_gps_3 (first_speaker, second_speaker)
+ dialogs.relocate_item_section(first_speaker, "quest_gps", "in")
+ dialogs.relocate_item_section(first_speaker, "quest_gps", "in")
+ dialogs.relocate_item_section(first_speaker, "quest_gps", "in")
+end
+
+function give_osvedomel_money_2000(actor, npc)
+	dialogs.relocate_money(actor, 2000, "out")	
+end
+
+function give_petro_money(actor, npc)
+	dialogs.relocate_money(actor, 10000, "out")	
+end
+
+function transfer_sv_suit (first_speaker, second_speaker)
+ dialogs.relocate_item_section(first_speaker, "svoboda_light_outfit", "in")
+end
+
+function transfer_dolg_suit (first_speaker, second_speaker)
+ dialogs.relocate_item_section(first_speaker, "dolg_outfit", "in")
+end
+
+function transfer_pda_sred (first_speaker, second_speaker)
+ dialogs.relocate_item_section(first_speaker, "pnv_sred", "in")
+end
+
+function transfer_instruments (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_case_instruments", "out")
+end
+
+function transfer_quest_agr_merc_pda (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_agr_merc_pda", "out")
+end
+
+function transfer_medkit_case (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "shpion_papka", "out")
+end
+
+function transfer_medkit_case_doc (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_medkit_case_doc", "out")
+end
+
+function transfer_shved_pda (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "pda_ld_code", "out")
+end
+
+function transfer_guitar (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_guitar", "out")
+end
+
+function transfer_raciya (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "racya_b", "in")
+end
+
+function transfer_actors_isk_kurtka (first_speaker, second_speaker)
+ if db.actor:dont_has_info("isk_trader_given_odegda") then
+    dialogs.relocate_item_section(first_speaker, "novice_outfit", "in")
+end
+end
+
+function transfer_actors_isk_plasch (first_speaker, second_speaker)
+ if db.actor:dont_has_info("isk_trader_given_odegda") then
+  dialogs.relocate_item_section(first_speaker, "bandit_veteran_outfit", "in")
+ end
+end
+
+function transfer_actors_yan_plasch (first_speaker, second_speaker)
+  dialogs.relocate_item_section(first_speaker, "bandit_veteran_outfit", "in")
+      dialogs.relocate_item_section(first_speaker, "wpn_pm", "in")
+end
+
+function transfer_actors_isk_pm (first_speaker, second_speaker)
+ if db.actor:dont_has_info("isk_trader_given_pistolet") then
+    dialogs.relocate_item_section(first_speaker, "wpn_pm", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x18_fmj", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x18_fmj", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x18_fmj", "in")
+end
+end
+
+function transfer_actors_isk_tt (first_speaker, second_speaker)
+ if db.actor:dont_has_info("isk_trader_given_pistolet") then
+    dialogs.relocate_item_section(first_speaker, "wpn_tt33", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_7.62x25_p", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_7.62x25_p", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_7.62x25_p", "in")
+end
+end
+
+function transfer_actors_isk_things1 (first_speaker, second_speaker)
+ if db.actor:dont_has_info("isk_trader_not_repeat_dialog") then
+	dialogs.relocate_item_section(first_speaker, "medkit", "in")
+	dialogs.relocate_item_section(first_speaker, "device_torch", "in")
+	dialogs.relocate_item_section(first_speaker, "wpn_binoc", "in")
+	dialogs.relocate_item_section(first_speaker, "wpn_knife", "in")
+			dialogs.relocate_item_section(first_speaker, "conserva", "in")
+	dialogs.relocate_item_section(first_speaker, "bandage", "in")
+	dialogs.relocate_item_section(first_speaker, "bandage", "in")
+	dialogs.relocate_item_section(first_speaker, "water", "in")
+	dialogs.relocate_item_section(first_speaker, "power_core", "in")
+	--dialogs.relocate_item_section(first_speaker, "pnv_bad", "in")
+	db.actor:give_info_portion("isk_trader_given_things")
+end
+end
+
+function transfer_actors_isk_things2 (first_speaker, second_speaker)
+ if db.actor:dont_has_info("isk_trader_not_repeat_dialog") then
+	dialogs.relocate_item_section(first_speaker, "medkit", "in")
+	dialogs.relocate_item_section(first_speaker, "device_torch", "in")
+	dialogs.relocate_item_section(first_speaker, "wpn_binoc", "in")
+	dialogs.relocate_item_section(first_speaker, "wpn_knife", "in")
+	dialogs.relocate_item_section(first_speaker, "bandage", "in")
+	dialogs.relocate_item_section(first_speaker, "bandage", "in")
+	dialogs.relocate_item_section(first_speaker, "water", "in")
+		dialogs.relocate_item_section(first_speaker, "conserva", "in")
+	dialogs.relocate_item_section(first_speaker, "power_core", "in")
+	--dialogs.relocate_item_section(first_speaker, "pnv_bad", "in")
+	db.actor:give_info_portion("isk_trader_given_things")
+end
+end
+
+function transfer_weapons_case (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_weapons_case", "out")
+end
+
+function transfer_raciya_details (first_speaker, second_speaker)
+    dialogs.relocate_item_section(first_speaker, "quest_raciya_detail_1", "out")
+    dialogs.relocate_item_section(first_speaker, "quest_raciya_detail_2", "out")
+	dialogs.relocate_item_section(first_speaker, "quest_raciya_detail_3", "out")
+	dialogs.relocate_item_section(first_speaker, "quest_raciya_detail_4", "out")
+end
+
+function transfer_all_diaryes (first_speaker, second_speaker)
+    dialogs.relocate_item_section(first_speaker, "quest_diary_wounded_digger", "out")
+    dialogs.relocate_item_section(first_speaker, "quest_diary_dead_digger1", "out")
+	dialogs.relocate_item_section(first_speaker, "quest_diary_dead_digger2", "out")
+	dialogs.relocate_item_section(first_speaker, "quest_diary_suicide_digger", "out")
+end
+---------------------------------------------------------------------
+
+function test_transfer(first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_pm", "out")
+end
+
+-- Функция о наличии всех дневников
+function find_all_diaryes_have()
+	if has_alife_info("quest_diary_dead_digger1_have") and has_alife_info("quest_diary_dead_digger2_have") and has_alife_info("quest_diary_suicide_digger_have") then
+db.actor:give_info_portion("find_all_diaryes_have")
+		return true
+	else
+		return false
+	end
+end
+
+
+-- Функция для квеста с рацией
+function find_raciya_in_dsneutlager_done()
+	if has_alife_info("ds_neut_mehanik_dialog_rac_done") and has_alife_info("ds_neut_trader_dialog_rac_done") and has_alife_info("ds_neut_doctor_dialog_rac_done") then
+db.actor:give_info_portion("find_raciya_in_dsneutlager_done")
+		return true
+	else
+		return false
+	end
+end
+
+
+--Функция для завершения квеста с поиском рации на базе Свободы
+function find_raciya_in_svobbase()
+	if has_alife_info("find_details_for_yar_start") then
+db.actor:give_info_portion("find_raciya_in_vertolet_done")
+db.actor:give_info_portion("find_raciya_in_dsneutlager_done")
+db.actor:give_info_portion("find_raciya_in_svobbase_done")
+		return true
+	else
+		return false
+	end
+end
+
+
+
+----Сцена со сталкером у Камаза----
+-------------------------------------------------------------------------------------------
+function ds_kamaz_pseudodogs()
+local gulag = xr_gulag.get_gulag("ds_kamaz_pseudodogs")
+local gulag_popular = gulag:get_population()
+	if gulag_popular < 1 then
+	db.actor:give_info_portion("ds_kamaz_pseudodogs_dead")
+	end
+end
+
+-- Поршень о смерти собачек
+function ds_kamaz_pseudodogs_all_dead()
+	if has_alife_info("ds_kamaz_pseudodogs_dog1_dead") and has_alife_info("ds_kamaz_pseudodogs_dog2_dead") and has_alife_info("ds_kamaz_pseudodogs_dog3_dead") and has_alife_info("ds_kamaz_pseudodogs_dog4_dead") and has_alife_info("ds_kamaz_pseudodogs_dog5_dead") and has_alife_info("ds_kamaz_pseudodogs_dog6_dead") and has_alife_info("ds_kamaz_pseudodogs_dog7_dead") and has_alife_info("ds_kamaz_pseudodogs_dog8_dead") and has_alife_info("ds_kamaz_pseudodogs_dog9_dead") and has_alife_info("ds_kamaz_pseudodogs_dog10_dead") then
+db.actor:give_info_portion("ds_kamaz_pseudodogs_all_dead")
+end
+end
+----------------------------------------------------------------------------------------------
+
+
+function RDF()
+  return  has_alife_info("dolgs_t_1") and  has_alife_info("dolgs_t_2") and  has_alife_info("dolgs_t_3")
+end
+
+function RDF_2()
+  return  has_alife_info("setup_agr_dat_1_done") and  has_alife_info("setup_agr_dat_2_done") and  has_alife_info("setup_agr_dat_3_done")
+end
+
+function chimera_death()
+  return  has_alife_info("yan_chimera_death") and  has_alife_info("yan_chimera_death_2")
+end
+
+
+
+
+
+
+
+-------------------------------------------------
+-------------------------------------------------
+--------------- НИИ "Агропром" ------------------
+-------------------------------------------------
+-------------------------------------------------
+
+-- Проверка на деньги в диалоге с Калашом
+function agr_kalash_have_money()
+	return db.actor:money() >= 7000
+end
+
+-- Отдаем ему деньги
+function give_kalash_money(actor, npc)
+	dialogs.relocate_money(npc, 7000, "out")	
+end
+
+-- Получаем винтовку
+function transfer_agr_kalash_sniperka (first_speaker, second_speaker)
+ dialogs.relocate_item_section(second_speaker, "wpn_svu", "in")
+ dialogs.relocate_item_section(second_speaker, "ammo_7.62x54_7h1", "in")
+ dialogs.relocate_item_section(second_speaker, "ammo_7.62x54_7h1", "in")
+end
+
+
+-------------------------------------------------
+-------------------------------------------------
+--------------- Рыжий Лес -----------------------
+-------------------------------------------------
+-------------------------------------------------
+
+function has_pda_predat()
+ return db.actor:object("pda_predat")
+end
+
+
+function predateli_complete()
+ return db.actor:object("pda_predat") and has_alife_info("kill_predateli_complete")
+end
+
+
+--------------- Камазовец -----------------------
+function dv_kamaz_done()
+    local se_obj = alife():object("ds_kamaz_stalker")
+    if se_obj then
+        alife():release(se_obj, true)
+		db.actor:give_info_portion("dv_kamaz_done")
+    end
+end
+--------------- Квест с картами(новый) -----------------------
+function dv_pda_spawn_in_box()
+    local inv = alife():story_object(11700)
+alife():create("pda_maps", vector(), 0, 0, inv.id)
+end
+
+
+--------------- Cерый даёт дроб перед депо -----------------------
+function transfer_drob_for_depo (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "wpn_mp133", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_12x70_buck", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_12x70_buck", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_12x70_buck", "in")
+end
+--------------- Платим деньги за проход на базу долга(нейтральная ветка) -----------------------
+function agr_block_have_money()
+	return db.actor:money() >= 1500
+end
+
+function give_block_money(actor, npc)
+	dialogs.relocate_money(npc, 1500, "out")	
+end
+--------------- Квест с флешкой пленника -----------------------
+function dv_flesh_spawn_in_box()
+    local inv = alife():story_object(21516)
+alife():create("prisoners_flesh", vector(), 0, 0, inv.id)
+end
+
+
+
+function transfer_deneg_gar_sv (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 5000, "in")
+end
+
+function transfer_deneg_agr_dats (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 6000, "in")
+end
+
+function transfer_deneg_gar_sv_2 (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 7500, "in")
+end
+
+function transfer_prisoners_flesh (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "prisoners_flesh", "out")
+end
+
+function transfer_akm (first_speaker, second_speaker)
+ dialogs.relocate_item_section(first_speaker, "wpn_akm", "in")
+ dialogs.relocate_item_section(first_speaker, "ammo_7.62x39_fmj", "in")
+ dialogs.relocate_item_section(first_speaker, "ammo_7.62x39_fmj", "in")
+ dialogs.relocate_item_section(first_speaker, "ammo_7.62x39_fmj", "in")
+ dialogs.relocate_item_section(first_speaker, "ammo_7.62x39_fmj", "in")
+end
+
+function transfer_sks (first_speaker, second_speaker)
+ dialogs.relocate_item_section(first_speaker, "wpn_sks", "in")
+ dialogs.relocate_item_section(first_speaker, "ammo_7.62x39_fmj", "in")
+ dialogs.relocate_item_section(first_speaker, "ammo_7.62x39_fmj", "in")
+ dialogs.relocate_item_section(first_speaker, "ammo_7.62x39_fmj", "in")
+ dialogs.relocate_item_section(first_speaker, "ammo_7.62x39_fmj", "in")
+end
+
+function transfer_dinamit (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "storyline_gar_dynamite", "out")
+end
+
+function transfer_diggers_maps (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "diggers_maps", "out")
+end
+
+function transfer_prisoners_flesh (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "prisoners_flesh", "out")
+end
+
+function transfer_lab_noyt (first_speaker, second_speaker)
+    db.actor:give_info_portion("borman_noyt_done")
+	dialogs.relocate_item_section(first_speaker, "lab_noyt", "out")
+end
+
+function transfer_art_filin (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_cristall", "in")
+end
+
+function dv_money_spawn_in_box()
+    inv = alife():story_object(11757)
+alife():create("bekas_money", vector(), 0, 0, inv.id)
+end
+
+function dv_maps_spawn_in_box()
+    inv = alife():story_object(11701)
+alife():create("quest_guitar", vector(), 0, 0, inv.id)
+end
+
+function gar_maps_spawns_in_tainik_digger()
+    inv = alife():story_object(21579)
+	alife():create("diggers_maps", vector(), 0, 0, inv.id)
+end
+
+
+function transfer_card (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "lager_card", "in")
+end
+
+function transfer_helm_gaz (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "helm_gaz", "in")
+end
+
+function transfer_merc_racia (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "merc_racia", "in")
+end
+
+function transfer_helm_gaz_out (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "helm_gaz", "out")
+end
+
+
+
+function transfer_king_gigant_hand (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "king_gigant_hand", "out")
+end
+
+function transfer_rf_art (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_rf_art", "out")
+end
+
+function transfer_rf_talisman (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_talisman", "out")
+end
+
+function transfer_rf_docs (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "rf_docs", "out")
+		dialogs.relocate_item_section(first_speaker, "rf_mil_pda", "out")
+end
+
+function transfer_pz_blue_cont (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "pz_lab_blue_case", "out")
+end
+
+function transfer_fake_pm (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "wpn_pm", "out")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x18_fmj", "out")
+	dialogs.relocate_item_section(first_speaker, "ammo_9x18_fmj", "out")
+end
+
+function transfer_saiga (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_saiga12c", "in")
+end
+
+function transfer_detector (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "detector_advances", "in")
+end
+
+function transfer_hunt_nagr (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "power_core", "in")
+		dialogs.relocate_item_section(second_speaker, "power_core", "in")
+end
+
+function transfer_hunt_bm (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_bm16_full", "in")
+		dialogs.relocate_item_section(second_speaker, "ammo_12x70_buck", "in")
+			dialogs.relocate_item_section(second_speaker, "ammo_12x70_buck", "in")
+						dialogs.relocate_item_section(second_speaker, "medkit", "in")
+end
+
+
+function transfer_rf_talisman_nagr (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "af_soul", "in")
+	dialogs.relocate_item_section(second_speaker, "af_dummy_glassbeads", "in")
+end
+
+function transfer_agr_abakan (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_ak105", "in")
+end
+
+function rf_docs_spawns_in_box()
+    inv = alife():story_object(51720)
+	alife():create("rf_docs", vector(), 0, 0, inv.id)
+		alife():create("rf_lab_card", vector(), 0, 0, inv.id)
+			alife():create("wpn_rg-6", vector(), 0, 0, inv.id)
+end
+
+function agr_borman_box()
+    inv = alife():story_object(31600)
+	level.map_add_object_spot_ser(inv.id, "crlc_big", "Тайник Бормана")
+alife():create("conserva", vector(), 0, 0, inv.id)
+alife():create("conserva", vector(), 0, 0, inv.id)
+alife():create("medkit", vector(), 0, 0, inv.id)
+alife():create("water", vector(), 0, 0, inv.id)
+end
+
+function ld_code_box_1()
+    inv = alife():story_object(65007)
+	level.map_add_object_spot_ser(inv.id, "crlc_big", "Тайник Последнего дня")
+alife():create("wpn_g36", vector(), 0, 0, inv.id)
+alife():create("ammo_5.56x45_ss190", vector(), 0, 0, inv.id)
+alife():create("ammo_5.56x45_ss190", vector(), 0, 0, inv.id)
+alife():create("ammo_5.56x45_ss190", vector(), 0, 0, inv.id)
+alife():create("scientific_outfit", vector(), 0, 0, inv.id)
+alife():create("medkit", vector(), 0, 0, inv.id)
+alife():create("medkit", vector(), 0, 0, inv.id)
+alife():create("medkit", vector(), 0, 0, inv.id)
+alife():create("water", vector(), 0, 0, inv.id)
+alife():create("water", vector(), 0, 0, inv.id)
+end
+
+function ld_code_box_2()
+    inv = alife():story_object(65008)
+	level.map_add_object_spot_ser(inv.id, "crlc_big", "Тайник Последнего дня")
+alife():create("wpn_groza", vector(), 0, 0, inv.id)
+alife():create("ammo_9x39_pab9", vector(), 0, 0, inv.id)
+alife():create("ammo_9x39_pab9", vector(), 0, 0, inv.id)
+alife():create("medkit", vector(), 0, 0, inv.id)
+alife():create("medkit", vector(), 0, 0, inv.id)
+alife():create("water", vector(), 0, 0, inv.id)
+end
+
+
+
+function transfer_noyt (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "pda_borman", "out")
+		dialogs.relocate_item_section(first_speaker, "noyt_borman", "out")
+end
+
+function transfer_nagr_borman (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 10000, "in")
+end
+
+function transfer_felix_money (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 4000, "in")
+end
+
+function transfer_nagr_borman_cezar (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_val_m1", "in")
+end
+
+function transfer_noyt_borman(first_speaker, second_speaker)
+		dialogs.relocate_item_section(first_speaker, "noyt_borman", "out")
+end
+
+function transfer_yell_case_osved(first_speaker, second_speaker)
+		dialogs.relocate_item_section(first_speaker, "pz_lab_yell_case", "out")
+end
+
+function transfer_gz_tainik_case(first_speaker, second_speaker)
+		dialogs.relocate_item_section(first_speaker, "gz_tainik_case", "out")
+end
+
+function transfer_loki_case_flesh_2(first_speaker, second_speaker)
+		dialogs.relocate_item_section(first_speaker, "loki_case_flesh", "out")
+end
+
+function transfer_loki_case_flesh (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "loki_case_flesh", "in")
+end
+
+function transfer_felixs_pism(first_speaker, second_speaker)
+		dialogs.relocate_item_section(first_speaker, "tainik_pismo", "out")
+end
+
+function transfer_nagr_borman_dolg (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "dolg_scientific_outfit", "in")
+end
+
+function transfer_nagr_borman_freed (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "svoboda_heavy_outfit", "in")
+end
+
+
+----Промзона------
+
+--------------- Искатели дают бомбу -----------------------
+function transfer_pz_isk_bomb (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "storyline_pz_bomb", "in")
+end
+
+function transfer_yan_scien_nagr (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "ecolog_outfit", "in")
+end
+
+function agr_kuprian_buh (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "vodka", "in")
+		dialogs.relocate_item_section(first_speaker, "vodka", "in")
+end
+
+function kuprian_buh_use()
+local item = db.actor:object("vodka")
+if item then
+db.actor:eat(item)
+end
+end
+
+function transfer_pz_isk_cont (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "pz_merclager_documents", "out")
+end
+
+function transfer_yan_pda_zombie (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_pda_zombie", "out")
+end
+
+function dell_pz_dinamit()
+    for a = 1,65534 do  
+        local se_obj = alife():object(a)
+        if se_obj and se_obj:section_name() == "storyline_pz_bomb" then
+            alife():release(se_obj, true)
+        end
+    end
+end
+
+function dell_gar_dinamit()
+    for a = 1,65534 do  
+        local se_obj = alife():object(a)
+        if se_obj and se_obj:section_name() == "storyline_gar_dynamite" then
+            alife():release(se_obj, true)
+        end
+    end
+end
+
+function transfer_yan_zombie_nagr (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "af_cristall", "in")
+		dialogs.relocate_item_section(first_speaker, "af_electra_moonlight", "in")
+end
+
+function transfer_agr_dolg_svu (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "wpn_svu", "in")
+		dialogs.relocate_item_section(first_speaker, "ammo_7.62x54_7h1", "in")
+			dialogs.relocate_item_section(first_speaker, "ammo_7.62x54_7h1", "in")
+end
+
+function transfer_agr_comend_nagr (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "medkit_scientic", "in")
+		dialogs.relocate_item_section(first_speaker, "medkit_scientic", "in")
+			dialogs.relocate_item_section(first_speaker, "medkit_scientic", "in")
+			dialogs.relocate_item_section(first_speaker, "antirad", "in")
+			dialogs.relocate_item_section(first_speaker, "antirad", "in")
+end
+
+function transfer_shpion_papka (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "shpion_papka", "in")
+end
+function transfer_yan_dat_3 (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_datchik", "in")
+		dialogs.relocate_item_section(first_speaker, "quest_datchik", "in")
+				dialogs.relocate_item_section(first_speaker, "quest_datchik", "in")
+end
+
+function transfer_quest_pills_toxic (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "quest_pills_toxic", "in")
+end
+
+--------------- Спавним вещи в тайник Лесника -----------------------
+// function rf_spawn_npc()
+//local npc = alife():create(...)
+
+//local particle = particles_object("путь до эффекта телепорта")
+//particle:play_at_pos(npc:position())
+
+//end
+
+function diary_tip()
+	local snd = sound_object([[device\pda\pda_tip_2]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0)
+	news_manager.send_tip(db.actor, "%c[255,255,0,0] Новая запись в ПДА.", 0, "diary_tip", 25000) 
+end
+
+function use_alco()
+	db.actor.alcohol = 0.3
+	local snd = sound_object([[interface\inv_vodka]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end
+
+function dv_prisoner_call()
+	local snd = sound_object([[characters_voice\soz\gz_darkvalley\dv_sv_prisoner]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] Пленник:\n%c[default]  Эй, мужик, подойди сюда, помощь твоя нужна. Только тише, а то услышать могут.", 0, "default", 15000)
+end
+
+
+
+function und_contr_spawn()
+	local snd = sound_object([[soz\characters_voice\scenario\fan1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end
+
+function und_whispers()
+		local snd = sound_object([[soz\characters_voice\scenario\zov1]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end
+
+function dv_psy_contr_on_old()
+db.actor.psy_health = -0.8
+end
+
+function dv_psy_contr_off()
+db.actor.psy_health = 0.8
+end
+
+
+function dv_psy_contr_on (actor, npc)
+	level.add_pp_effector ("radar_psi.ppe", 2006, false)
+end
+
+function transfer_bekas_contr (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "bekas_money", "out")
+end
+
+function transfer_petro_money (first_speaker, second_speaker)
+    dialogs.relocate_money(second_speaker, 10000, "in")
+end
+
+function transfer_dv_black_diger_diary (first_speaker, second_speaker)
+	dialogs.relocate_item_section(first_speaker, "dv_black_diger_diary", "out")
+end
+
+function give_rf_tan_money(actor, npc)
+	dialogs.relocate_money(npc, 7000, "out")	
+end
+
+function give_loki_case_money(actor, npc)
+	dialogs.relocate_money(npc, 3000, "out")	
+end
+
+function give_osvedomel_money(actor, npc)
+	dialogs.relocate_money(npc, 500, "out")	
+end
+
+function give_rf_tan_vss (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "wpn_vintorez", "in")
+end
+
+function transfer_varag_prisoner_nagr (first_speaker, second_speaker)
+ dialogs.relocate_item_section(second_speaker, "wpn_hk416", "in")
+ dialogs.relocate_item_section(second_speaker, "ammo_5.56x45_ss190", "in")
+ dialogs.relocate_item_section(second_speaker, "ammo_5.56x45_ss190", "in")
+ dialogs.relocate_item_section(second_speaker, "ammo_5.56x45_ss190", "in")
+end
+
+function give_bandits_money(actor, npc)
+    dialogs.relocate_money(npc, 2500, "out")
+	end
+	
+	
+	function transfer_actors_isk_weapons (first_speaker, second_speaker)
+    dialogs.relocate_item_section(first_speaker, "wpn_tt33", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_7.62x25_p", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_7.62x25_p", "in")
+	dialogs.relocate_item_section(first_speaker, "ammo_7.62x25_p", "in")
+    dialogs.relocate_item_section(first_speaker, "novice_outfit", "in")
+    dialogs.relocate_money(first_speaker, 460, "in")
+	dialogs.relocate_item_section(first_speaker, "medkit", "in")
+	dialogs.relocate_item_section(first_speaker, "device_torch", "in")
+	dialogs.relocate_item_section(first_speaker, "wpn_binoc", "in")
+	dialogs.relocate_item_section(first_speaker, "wpn_knife", "in")
+			dialogs.relocate_item_section(first_speaker, "conserva", "in")
+	dialogs.relocate_item_section(first_speaker, "bandage", "in")
+	dialogs.relocate_item_section(first_speaker, "bandage", "in")
+	dialogs.relocate_item_section(first_speaker, "water", "in")
+	dialogs.relocate_item_section(first_speaker, "power_core", "in")
+	--dialogs.relocate_item_section(first_speaker, "pnv_bad", "in")	
+end
+
+
+function play_snd_cheka()
+	local snd = sound_object([[weapons\f1\f1_cheka]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end
+
+function play_snd_rgd5_explode()
+	local snd = sound_object([[weapons\rgd5_explode]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end
+
+--Янтарь
+--Убиваем фейкового стрелка
+function kill_guns()
+local npc = level_object_by_sid(65014)
+if npc == nil or npc:alive () == false then
+return
+end
+npc:kill(npc)
+end
+
+
+function on_talk_kobold()
+    local npc = level_object_by_sid(65000) 
+    db.actor:run_talk_dialog(npc)
+end
+
+--x15
+--Убиваем профессора
+function kill_x15_professor()
+local npc = level_object_by_sid(95009)
+if npc == nil or npc:alive () == false then
+return
+end
+npc:kill(npc)
+end
+
+function give_x15_prof_flash (first_speaker, second_speaker)
+	dialogs.relocate_item_section(second_speaker, "x15_scien_flash", "in")
+end

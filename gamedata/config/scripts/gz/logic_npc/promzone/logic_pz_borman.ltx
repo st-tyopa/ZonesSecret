@@ -1,0 +1,16 @@
+[logic]
+active = walker
+on_death = death
+
+[walker]
+path_walk = pz_borman_sit
+path_look = pz_borman_look
+on_info = {+pz_borman_help} walker@pz_borman_to_end
+
+[walker@pz_borman_to_end]
+path_walk = pz_borman_sit
+path_look = pz_borman_look
+on_actor_dist_ge_nvis = 130| %+pz_borman_alive%
+
+[death]
+on_info = %+kill_borman%

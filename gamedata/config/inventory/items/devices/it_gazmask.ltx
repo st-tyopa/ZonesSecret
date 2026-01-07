@@ -1,0 +1,36 @@
+[filter]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn = "devices\quest_items\und_agr_cap_cross"
+class = II_ATTCH
+cform = skeleton
+visual = equipments\gazmask\gazmask_item_filtr.ogf
+radius = 1
+quest_item = false
+description = "Фильтр для противогаза описание"
+filter_life = 120
+inv_name = "Фильтр"
+inv_name_short = "Фильтр"
+inv_weight = 0.3
+inv_grid_width = 1
+inv_grid_height = 1
+inv_grid_x = 19
+inv_grid_y = 4
+cost = 1500
+
+[gazmask_helm]:filter
+description = kaska_s
+inv_name = kaska
+inv_name_short = kaska
+visual = equipments\gazmask\gazmask_item.ogf
+inv_weight = 1
+inv_grid_width = 2
+inv_grid_height = 2
+inv_grid_x = 15
+inv_grid_y = 32
+cost = 5555
+static = gazmask
+filter_life = 125
+sound_good = item_sounds\gazmask_idle
+sound_bad = item_sounds\gazmask_pizdec
+slot = 11

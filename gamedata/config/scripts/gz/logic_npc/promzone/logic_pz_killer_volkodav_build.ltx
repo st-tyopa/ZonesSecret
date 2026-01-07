@@ -1,0 +1,29 @@
+[logic]
+active = walker
+on_death = death
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+
+[walker]
+path_walk = pz_alt_mercs_volkodav_stay
+path_look = pz_alt_mercs_volkodav_look
+meet = meet@self_doc
+on_info = {+pz_alt_mercs_build_come} walker2
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker2]
+path_walk = pz_alt_mercs_volkodav_stay
+path_look = pz_alt_mercs_volkodav_look
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[meet@self_doc] 
+use = {=dist_to_actor_le(3)} self
+
+[hit@pz_merc]
+on_info = {=hit_by_actor} %-actor_is_killer +pz_actor_enemy_merclager%
+
+[death]
+on_info = %+pz_alt_mercs_killer1_dead -actor_is_killer +pz_actor_enemy_merclager%
+
+[combat_ignore@pz_merc]
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}

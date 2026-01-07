@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-lukash_pogovorili} sr_idle2 %+dv_lukash_blokp_remark_claim%
+
+[sr_idle2]
+on_timer = 10000| sr_idle@3
+
+[sr_idle@3] 
+on_actor_inside = {=actor_has_weapon}  %+svoboda_war%, {!check_slot} %+lukash_go%
+on_info = {+lukash_pogovorili} sr_idle@end
+
+[sr_idle@end]

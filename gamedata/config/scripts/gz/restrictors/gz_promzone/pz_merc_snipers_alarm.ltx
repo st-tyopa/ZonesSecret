@@ -1,0 +1,30 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+pz_merclager_bomb_blowup} sr_idle@12
+on_actor_inside = {~50-actor_is_killer} %=play_snd(characters_voice\soz\gz_promzone\zat_b40_merc_go_away_1_pda)% sr_idle@2, {~50-actor_is_killer} %=play_snd(characters_voice\soz\gz_promzone\zat_b40_merc_go_away_2_pda)% sr_idle@2
+
+[sr_idle@2]
+on_game_timer = 500|sr_idle@1
+on_info = {+pz_merclager_bomb_blowup} sr_idle@12
+
+[sr_idle@12]
+on_timer = 5000|%+pz_leader_wtf_sms% sr_idle@13
+
+[sr_idle@13]
+on_timer = 6000|%+pz_merc_blowup_sms% sr_idle@312
+on_info = {+pz_merclager_leader_seif_stay +pz_merc_leader_in_zone} %+pz_leader_guard_talk% sr_idle@3
+
+[sr_idle@312]
+on_info = {+pz_merclager_leader_seif_stay +pz_merc_leader_in_zone} %+pz_leader_guard_talk% sr_idle@3
+on_timer = 6000|%+pz_merc_blowup_sms% sr_idle@312
+
+[sr_idle@3]
+on_info = {+pz_leader_guard_propusk} sr_idle@31
+
+[sr_idle@31]
+on_timer = 3000|%+pz_merclager_have_some_time% sr_idle@32
+
+[sr_idle@32]
+on_info = {+pz_leader_guard_on_bomb -pz_rob_merclager_escape_done} %+pz_actor_enemy_merclager%

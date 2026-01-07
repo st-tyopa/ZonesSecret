@@ -1,0 +1,33 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+pz_merclager_bomb_spawn} %=dell_pz_dinamit% sr_timer@1
+
+[sr_timer@1]
+type = dec
+start_value = 9000
+on_value = 0 | %+pz_merclager_bomb_blowup =pz_explosion_merclager_bomb% sr_idle@2
+string = pz_merclager_bomb_timer
+
+[sr_idle@2]
+on_info = {+pz_gg_talk_about_leader_away_1} sr_idle@3
+
+[sr_idle@3]
+on_timer = 6000|%+pz_gg_talk_about_leader_away% nil
+
+
+[sr_tip]
+name = gz_pz_merclager_isk_message
+type = tips
+single = true
+on_signal = tip_sended| sr_timer@2
+
+[sr_timer@2]
+type = dec
+start_value = 9000
+on_value = 0 | %+pz_actor_enemy_merclager +pz_merclager_back_to_positions% nil
+string = pz_merclager_bomb_alarm
+
+[sr_idle@nil]
+

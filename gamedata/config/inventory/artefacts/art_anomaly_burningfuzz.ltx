@@ -1,0 +1,18 @@
+; "∆гучий ѕух аномали€"
+
+[af_fuzz_kolobok]:af_base ; колобок
+$spawn 			          = "artifacts\fuzz kolobok"
+visual				      = physics\anomaly\artefact_colob.ogf
+description			      = enc_zone_artifact_af-fuzz-kolobok
+inv_name			      = af-fuzz-kolobok
+inv_weight			      = 0.5
+inv_grid_x			      = 17
+inv_grid_y			      = 1
+cost				      = 5000
+jump_height			      = .0
+particles			      = anomaly2\artefact\artefact_puxx
+lights_enabled            = false
+hit_absorbation_sect      = af_fuzz_kolobok_absorbation
+
+[af_fuzz_kolobok_absorbation]:af_base_absorbation
+wound_immunity            = 0.95		

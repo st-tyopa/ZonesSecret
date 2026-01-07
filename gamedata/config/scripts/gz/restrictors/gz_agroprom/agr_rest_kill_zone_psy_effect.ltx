@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = sr_psy_antenna
+on_info = {+agr_anomaly_razradka_end} nil
+on_info2 = {+agr_anomaly_razradka_start} sr_idle2
+
+[sr_psy_antenna]
+eff_intensity = -10
+hit_intensity = 0
+phantom_prob = 70
+on_info = {+agr_anomaly_razradka_end} nil
+
+[sr_idle2]
+on_timer = 4000|%=run_postprocess(agr_u_fade:01:false) =play_snd(soz\characters_voice\scenario\blowout_lightning_05)% nil

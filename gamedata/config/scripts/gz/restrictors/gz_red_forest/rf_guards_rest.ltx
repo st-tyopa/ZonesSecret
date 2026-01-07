@@ -1,0 +1,41 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-kill_scien_done} %+rf_lead_scien_blockp_start +rf_ld_blockp_threat =disable_ui% sr_idle1
+
+[sr_idle1]
+on_info = {+rf_ld_blockp_ph1_end} sr_idle2
+
+[sr_idle2]
+on_timer = 1000|%+rf_ld_blockp_ph2_actor% sr_idle3
+
+[sr_idle3]
+on_timer = 7000|%+rf_ld_blockp_ph3% sr_idle4
+
+[sr_idle4]
+on_info = {+rf_ld_blockp_ph3_end} sr_idle5
+
+[sr_idle5]
+on_timer = 2000|%+rf_ld_blockp_ph4_racia% sr_idle6
+
+[sr_idle6]
+on_info = {+rf_ld_blockp_ph4_racia_end} sr_idle7
+
+[sr_idle7]
+on_timer = 1000|%=play_snd_from_obj(54005:characters_voice\soz\gz_red_forest\ld_racia_ok)% sr_idle8
+
+[sr_idle8]
+on_timer = 2500|%+rf_ld_blockp_ok_racia_end% sr_idle9
+
+[sr_idle9]
+on_info = {+rf_scien_going_conf} %=disable_ui% sr_idle10
+
+[sr_idle10]
+on_info = {+rf_scien_going_conf_done} %=run_postprocess(agr_u_fade:01:false)% sr_idle11
+
+[sr_idle11]
+on_timer = 5000|%=travel_in_time_1% sr_idle12
+
+[sr_idle12]
+on_info = {+rf_scien_going_conf_end} %=enable_ui% nil

@@ -1,0 +1,14 @@
+[logic]
+active = mob_home
+on_death = mob_death
+
+[mob_home]
+path_home = pz_lab_zomb_home
+home_min_radius = 0
+home_max_radius = 5
+
+[mob_combat]
+on_info = nil %+pz_lab_sms_zomb_attack%
+
+[mob_death]
+on_info = %+pz_lab_zombie_7_dead =pz_all_zombs_dead%

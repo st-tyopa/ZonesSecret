@@ -1,0 +1,43 @@
+[logic]
+active = walker@rf_manik
+on_death = walker@rf_manik
+
+[walker@rf_manik]
+path_walk = rf_scien_lead
+path_look = rf_scien_look
+on_signal = rf_scien |  %+rf_lead_scien_hands_up% remark@rf_scien_hands
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+danger = danger_condition@agr_manik
+
+[remark@rf_scien_hands]
+anim = hands_up
+target = rf_enter_guard_com_stay, 0
+on_info = {+rf_ld_blockp_ph3_end} walker@rf_manik2
+
+[walker@rf_manik2]
+path_walk = rf_scein_lead_after_blockp
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = rf_scien2 |  remark@rf_scien
+
+[remark@rf_scien]
+anim = guard
+target = actor
+on_info = {+rf_scien_going_conf} walker@rf_manik3
+
+[walker@rf_manik3]
+path_walk = rf_manik_on_conf
+on_signal = rf_scien3 | %+rf_scien_going_conf_done% walker@rf_manik4
+
+[walker@rf_manik4]
+path_walk = rf_manik_stay
+path_look = rf_manik_look
+on_signal = rf_scien4 | %+rf_scien_going_conf_end%
+
+[danger_condition@agr_manik]
+ignore_distance = 0

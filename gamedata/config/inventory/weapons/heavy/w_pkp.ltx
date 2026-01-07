@@ -1,0 +1,206 @@
+[wpn_pkp]:identity_immunities
+GroupControlSection			= spawn_group
+discovery_dependency 			= 
+$spawn              			= "weapons\pkp"
+$npc			 		= on				
+$prefetch 		 		= 8
+scheduled				= off             
+cform                   		= skeleton
+class                   		= WP_LR300
+min_radius          			= 30				
+max_radius          			= 100	
+description				= enc_weapons1_wpn-pkp
+
+ef_main_weapon_type			= 2
+ef_weapon_type				= 6
+chamber_status          = true
+
+zoom_dof             = 0.5, 1.0, 180
+reload_dof           = 0.0, 0.5, 5, 1.7
+
+;-----------------------------------------------------------------------------------
+holder_range_modifier			= 1.0
+holder_fov_modifier			= 0.7 
+;-----------------------------------------------------------------------------------
+
+
+weapon_class				= assault_rifle
+
+cost					= 25000
+
+ammo_limit		 		= 1000
+ammo_current				= 200
+ammo_elapsed		 		= 200
+
+ammo_mag_size		 		= 100
+ammo_class		 		= ammo_7.62x54_7h1, ammo_7.62x54_7h14, ammo_7.62x54_ap 
+fire_modes				= -1
+
+hand_dependence		 		= 1
+single_handed				= 0
+
+inv_name	        		= wpn-pkp								
+inv_name_short				= wpn-pkp	
+inv_weight				= 8.2
+
+inv_grid_width     			= 6
+inv_grid_height    			= 2
+inv_grid_x         			= 0
+inv_grid_y         			= 30
+
+kill_msg_x				= 72
+kill_msg_y				= 82
+kill_msg_width				= 56
+kill_msg_height				= 23
+
+slot 					= 1,2		
+animation_slot				= 2		
+
+;-----------------------------------------------------------------------------------
+;params of weapon recoil
+fire_dispersion_base			= 0.14		;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor			= 1.5f
+
+;отдача
+cam_relax_speed         		= 5.25		;скорость возврата в исходное положение
+cam_dispersion          		= 0.7		;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc			= 0.3		;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac			= 0.9		;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle				= 10.0	    	;максимальный угол отдачи
+cam_max_angle_horz			= 20.0		;(degree) maximum shot horizontal degree 
+cam_step_angle_horz			= 1.0;1		;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor 	= 5	    	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 			= 0.001		;вероятность осечки при максимальном износе
+misfire_condition_k			= 0.01 
+condition_shot_dec 			= 0.0001 	;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+direction               		= 0, 0, 1
+
+fire_point           	    		= 0.0, 0.174, 0.8
+
+flame_particles		    		= amik\weapons\flame_particles\dtk_flame_particles_4
+smoke_particles		   		= amik\weapons\smoke_particles\smoke_particles_01
+
+shell_point		 		= 0.00, 0.250, 0.189
+shell_dir		 		= 0.0, 1.0, 0.0
+shell_particles	 			= amik\weapons\7_62x54\7_62x54_l
+
+rpm_empty_click 	 		= 200
+
+PDM_disp_base 				= 1.0
+PDM_disp_vel_factor 			= 0.8
+PDM_disp_accel_factor 			= 0.8
+PDM_crouch	 			= 1.0
+PDM_crouch_no_acc 			= 1.0
+
+; ttc
+hit_power          			= 0.87
+hit_impulse		 		= 190
+hit_type 				= fire_wound
+
+fire_distance          			= 1000 
+bullet_speed				= 825
+rpm                      		= 650		
+; end ttc
+
+use_aim_bullet				= true		
+time_to_aim				= 1.0
+
+silencer_hit_power       		= 0.45
+silencer_hit_impulse	 		= 150
+silencer_fire_distance   		= 770
+silencer_bullet_speed	 		= 870
+
+
+
+hud                      		= wpn_pkp_hud				
+normal          	        	= 0, 1, 0
+
+;----------------------------------------------------------
+position        	        	= -0.026,0.005,-0.025
+orientation     	        	= 0, 0, 0
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+;под мишкой
+strap_position				= -0.26, -0.11, 0.25
+strap_orientation			= -15, -9, 110				
+strap_bone0				= bip01_spine2
+strap_bone1				= bip01_spine1
+startup_ammo            		= 1000
+visual         		        	= weapons\pkp\wpn_pkp.ogf	
+
+light_color		 		= 0.6,0.5,0.3
+light_range		 		= 5
+light_var_color		 		= 0.05
+light_var_range		 		= 0.1
+light_time 		 		= 0.2
+
+ph_mass			 		= 7
+
+;addons
+scope_status				= 0
+silencer_status				= 0
+grenade_launcher_status			= 0
+
+scope_name 				= wpn_addon_scope			
+scope_x 				= 40						
+scope_y 				= 0
+
+silencer_name  				= wpn_addon_silencer
+silencer_x 				= 218
+silencer_y 				= 13
+
+;sounds (name of the sound, volume (0.0 - 1.0), delay (sec))
+snd_draw				= weapons\pkp\pkp_draw
+snd_holster				= weapons\pkp\pkp_holster
+snd_shoot				= weapons\pkp\pkp_shoot
+snd_empty				= weapons\pkp\pkp_empty
+snd_reload				= weapons\pkp\pkp_reload
+
+;silencer_flame_particles 		= weapons\generic_weapon01
+silencer_smoke_particles 		= amik\weapons\smoke_particles\p_smoke_particles_02
+
+silencer_light_color			= 1.0, 0.1, 0.0
+silencer_light_range			= 0.01
+silencer_light_var_color		= 0.05
+silencer_light_var_range		= 0.5
+silencer_light_time 			= 0.2
+
+zoom_enabled				= true
+scope_zoom_factor	    		= 70
+
+
+[wpn_pkp_hud]
+shell_point				= 0.0, 0.0, 0.0
+shell_dir                        	= 0.0, 1.0, 0.0
+
+fire_point                       	= 0.0, 0.01, 0.15
+fire_point2                      	= 0.0, 0.0, 0.0
+
+fire_bone                        	= wpn_body
+
+orientation                      	= 0.0, 0.0, 0.0
+position                         	= 0.0, -0.13, 0.21
+
+visual                           	= weapons\pkp\wpn_pkp_hud.ogf
+
+anim_draw                        	= pecheneg_draw
+anim_holster                     	= pecheneg_holster
+anim_idle                        	= pecheneg_idle
+anim_idle_aim                    	= pecheneg_aim
+anim_idle_sprint                 	= pecheneg_sprint
+anim_reload                      	= pecheneg_reload
+anim_shoot                       	= pecheneg_shoot
+anim_idle_moving			= pecheneg_moving
+
+zoom_offset				= -0.106200,0.027500,-0.163100
+zoom_rotate_x				= -0.009600
+zoom_rotate_y				= -0.000700
+
+zoom_rotate_time                 	= 0.3
+rotate_time                      	= 0.3
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------

@@ -1,0 +1,29 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = %=disable_ui% sr_idle12
+
+[sr_idle111]
+on_info = {+intro_rolik} sr_idle12
+
+[sr_idle12]
+on_info = {+soz_intro_video_stop} %+ds_helifire_start =play_snd_from_obj(10902:soz\characters_voice\scenario\zhar) =play_snd(soz\characters_voice\scenario\heartbeat_blood)% sr_idle1
+
+[sr_idle1]
+on_timer = 5000|%=run_postprocess(agr_u_fade:01:false) +ds_expl =play_snd_from_obj(10902:weapons\heli_explosion)% sr_idle11
+
+[sr_idle11]
+on_timer = 4500|%=run_postprocess(deadcity_wake) =disable_ui =teleport_actor(ds_camera_start_game_walk:ds_camera_start_game_look)% sr_idle21
+
+[sr_idle21]
+on_timer = 500|%=travel_in_time_7 =stop_cam_effector(1001)% sr_idle2
+
+[sr_idle2]
+on_timer = 4000|%+ds_start_iscateli_awake% sr_idle3
+
+[sr_idle3]
+on_timer = 10000|%+ds_start_doc_talk =enable_ui% sr_idle4
+
+[sr_idle4]
+on_timer = 5000|%=enable_ui =enable_ui% nil

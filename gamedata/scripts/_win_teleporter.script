@@ -1,0 +1,276 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Интерфейс телепортера.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 20.05.2011
+--]]
+local exp_levels = 
+{
+	ai_test2                = true,
+	l03u_agr_underground_hw = true,
+	ai_test_new             = true,
+	l03_agroprom_hw         = true,
+	l05_bar_hw              = true,
+	koan_test               = true,
+	slipch_al_test          = true,
+	ai_test                 = true,
+	jim_dark                = true,
+	stohe_selo              = true,
+	plecha_selo             = true,
+}
+local const_dist_jump = 5
+
+class "win_tel" (CUIWindow)
+
+--/summary/>> конструктор
+function win_tel:__init() super()
+    self.title = "Teleporter"
+end
+
+--/summary/>> метод инициализации объекта класса
+function win_tel:InitControls(win_frect, xml, parent)
+    self.parent = parent
+	self.xml = xml
+    self:Init(win_frect)
+	self:SetAutoDelete(true)
+	
+	--'разделительная полоса
+	xml:InitStatic("separ", self)
+	
+	self.message_box_delete = CUIMessageBoxEx()
+	parent:Register(self.message_box_delete, "msg_box_delete")
+	self.message_box_delete:Init("message_box_delete_file_name")
+	
+	
+	local win_data = xml:InitFrame("frame_win_data", self)
+	self.win_nam = xml:InitStatic("frame_win_data:win_nam", win_data)
+	self.win_pos = xml:InitStatic("frame_win_data:win_pos", win_data)
+	self.win_rot = xml:InitStatic("frame_win_data:win_rot", win_data)
+	self.win_lvl = xml:InitStatic("frame_win_data:win_lvl", win_data)
+	parent:Register(xml:Init3tButton("frame_win_data:teleport", win_data), "button_teleport")
+	self.select_point = false
+	
+	--'список локаций
+	self.list_levels = xml:InitList("list_levels", self)
+	self.list_levels:ShowSelectedItem(false)
+	self.list_levels:EnableScrollBar(true)
+	parent:Register(self.list_levels, "list_levels")
+	
+	--'список поинтов
+	self.list_points = xml:InitList("list_points", self)
+	self.list_points:ShowSelectedItem(false)
+	self.list_points:EnableScrollBar(true)
+	parent:Register(self.list_points, "list_points")
+	self:InitListLevels()
+	
+	--'кнопка создания нового поинта
+	parent:Register(xml:Init3tButton("create_point", self), "create_point")
+	
+	--'кнопка переименования выбранного файл-поинта
+	parent:Register(xml:Init3tButton("rename_point", self), "rename_point")
+	
+	--'кнопка удаления выбранного файл-поинта
+	parent:Register(xml:Init3tButton("delete_point", self), "delete_point")
+	
+	--'менеджер прыжка вперёд на установленное расстояние
+	local fjump = xml:InitFrame("frame_jump", self)
+	self.edit_jump = xml:InitEditBox("frame_jump:edit_box", fjump)
+	self.edit_jump:SetText(tostring(self.parent.owner.edit_jump))
+	parent:Register(xml:Init3tButton("frame_jump:jump",     fjump), "btn_jump")
+	parent:Register(xml:Init3tButton("frame_jump:jump_geo", fjump), "jump_geo")
+	
+	self:InitCallBacks()
+end
+
+--/summary/>> метод регистрации событий
+function win_tel:InitCallBacks()
+    self.parent:AddCallback("list_levels", ui_events.LIST_ITEM_CLICKED, 			  self.OnListLevelClicked,		self) --клик по левелу
+	self.parent:AddCallback("list_points", ui_events.LIST_ITEM_CLICKED, 		      self.OnListPointClicked,		self) --клик по файл-поинту
+	self.parent:AddCallback("list_points", ui_events.WINDOW_LBUTTON_DB_CLICK, 		  self.OnTeleportClicked,	    self) --двойной клик по списку файл-поинтов
+	self.parent:AddCallback("create_point", ui_events.BUTTON_CLICKED, 			      self.OnCreatePointClicked,	self) --клик создания нового файл-поинта
+	self.parent:AddCallback("rename_point", ui_events.BUTTON_CLICKED, 			      self.OnRenamePointClicked,	self) --клик переименования фай-поинта
+	self.parent:AddCallback("delete_point", ui_events.BUTTON_CLICKED, 			      self.OnDeletePointClicked,	self) --клик удвления файл-поинта
+	self.parent:AddCallback("button_teleport", ui_events.BUTTON_CLICKED, 			  self.OnTeleportClicked,	    self) --клик старта телепортации
+	self.parent:AddCallback("btn_jump",     ui_events.BUTTON_CLICKED, 			      self.OnJumpClicked,	        self) --клик старта прыжка
+	self.parent:AddCallback("jump_geo",     ui_events.BUTTON_CLICKED, 			      self.JumpOnGeo,	            self) --клик возврата на поверхность
+	
+	self.parent:AddCallback("msg_box_delete",     ui_events.MESSAGE_BOX_YES_CLICKED,		self.OnMsgYesDelete,						self)
+end
+
+--/summary/>> метод инициализации списка локаций
+function win_tel:InitListLevels()
+    local list_levels = _utils.get_list_vertices()
+    for lvl in pairs(list_levels) do
+		if (not exp_levels[lvl]) then
+	        local item = _ui_total.list_item(170, 29)
+		    item:SetText(game.translate_string(lvl))
+		    item.level = lvl
+		    self.list_levels:AddItem(item)
+		    if (level.name() == item.level) then
+		        self.list_levels:SetFocusedItem(self.list_levels:GetItemPos(item))
+		    end
+		end
+	end
+	self.list_levels:ScrollToPos(self.list_levels:GetFocusedItem() or 0)
+	self:OnListLevelClicked()
+end
+
+--/summary/>> метод вызываемый при выборе локации
+function win_tel:OnListLevelClicked()
+	local item = _utils.GetSelectedOrFocusedItemList(self.list_levels)
+	if (not item) then return end
+	self:InitListPoints(item.level)
+end
+
+--/summary/>> метод инициализации списка файл-поинтов
+function win_tel:InitListPoints(s_level)
+    self.list_points:RemoveAll()
+	
+	--'defolt
+	local ini = INIF.ini_file_m("mobile\\mobile_defpoints.ltx")
+	local vec = ini:section_exist("points") and ini:line_exist("points", s_level) and ini:r_vector4("points", s_level)
+	
+	if vec then
+	    local point = _ui_total.list_animStr(300, 128, 126, 126, self.xml, "anim_def_point")
+		point.str:SetText("default")
+		point.name = "default"
+		point.pos = vec
+		point.rot = vec.w
+		point.lvl = s_level
+		self.list_points:AddItem(point)
+	end
+	
+	--'files
+	local tbl = _fp_manager.GetListFilePoints()
+	for _, p in ipairs(tbl) do
+		if (p.level_id and alife():level_name(p.level_id) == s_level) then
+			local point = _ui_total.list_picStr(300, 128, 126, 126)
+			point.pos = p.position
+		    point.rot = p.rotation
+			point.lvl = p.level_name
+			point.name = p.name
+			point.file_name = p:GetFileName()
+			point.str:SetText(point.name)
+			point.pic:InitTexture(point.file_name)
+			self.list_points:AddItem(point)
+		end
+	end
+	self:OnListPointClicked()
+end
+
+--/summary/>> метод вызываемый при выборе файл-поинта
+function win_tel:OnListPointClicked()
+	local item = _utils.GetSelectedItemList(self.list_points)
+	if (item) then
+		local pos, rot, lvl = item.pos, item.rot, item.lvl
+	    if (pos and rot and lvl) then
+		    self.win_nam:SetText(item.str:GetText())
+	        self.win_pos.data = pos
+	        self.win_pos:SetText(string.format("Pos: %1.2f, %1.2f, %1.2f", pos.x, pos.y, pos.z))
+	        self.win_rot.data = rot
+	        self.win_rot:SetText(string.format("Rot: %1.2f", rot))
+	        self.win_lvl.data = lvl
+	        self.win_lvl:SetText("Lvl: "..lvl)
+	        self.select_point = true
+	    else
+		    self:ResetWinData()
+	    end
+	else
+	    self:ResetWinData()
+	end
+end
+
+--/summary/>> сброс параметров телепортации
+function win_tel:ResetWinData()
+    self.win_nam:SetText("")
+	self.win_pos.data = nil
+	self.win_pos:SetText("Pos: nil")
+	self.win_rot.data = nil
+	self.win_rot:SetText("Rot: nil")
+	self.win_lvl.data = nil
+	self.win_lvl:SetText("Lvl: nil")
+	self.select_point = false
+end
+
+--/summary/>> метод запуска телепортации
+function win_tel:OnTeleportClicked()
+    if (not self.select_point) then 
+	    self.parent.message_box_error:SetText("Не выбраны координаты для телепортации!")
+	    self.parent:GetHolder():start_stop_menu(self.parent.message_box_error, true)
+	    return
+	end
+	
+	self.parent.owner:InitDataTeleport(self.win_pos.data, self.win_rot.data, self.win_lvl.data)
+	self.parent:quit()
+end
+
+--/summary/>> проверочная функция для создания и переименования файл-поинта
+function determineWhetherName(name)
+    local whetherName = _fp_manager.GetPointByName(name)
+	if whetherName then
+	    return false, 'Файл-поинт с именем "'..name..'" уже существует. Введите другое имя!'
+	end
+	return true
+end
+
+--/summary/>> метод создания нового файл-поинта
+function win_tel:OnCreatePointClicked()
+    level.start_stop_menu(_ui_total.message_editBox(self, win_tel.CreateNewPoint, determineWhetherName, "", "s"), false)
+end
+function win_tel:CreateNewPoint(name)
+	_fp_manager.CreateNewPoint(name)
+	self.parent:quit()
+end
+
+--/summary/>> метод переименования файл-поинта
+function win_tel:OnRenamePointClicked()
+    local item = _utils.GetSelectedItemList(self.list_points)
+	if (not item) or (item.name == "default") then return end
+	level.start_stop_menu(_ui_total.message_editBox(self, win_tel.RenamePoint, determineWhetherName, item.str:GetText(), "s"), false)
+end
+function win_tel:RenamePoint(newName)
+	local item = _utils.GetSelectedItemList(self.list_points)
+	if (not item) or (item.name == "default") then return end
+	_fp_manager.RenameFilePoint(item.name, newName)
+	self:OnListLevelClicked()
+end
+
+--/summary/>> метод удаления файл-поинта
+function win_tel:OnDeletePointClicked()
+    local item = _utils.GetSelectedItemList(self.list_points)
+	if (not item) or (item.name == "default") then return end
+	self.message_box_delete:SetText("Вы действительно хотите удалить фай-поинт '"..item.str:GetText().."'?")
+	self.parent:GetHolder():start_stop_menu(self.message_box_delete, true)
+end
+function win_tel:OnMsgYesDelete()
+    local item = _utils.GetSelectedItemList(self.list_points)
+	if (not item) then return end
+	_fp_manager.DelFilePoint(item.name)
+	self:OnListLevelClicked()
+end
+
+--/summary/>> метод вызываемый при клике прыжка
+function win_tel:OnJumpClicked()
+    local dist = self.edit_jump:GetText()
+	if (string.len(dist) == 0) then return end
+	dist = tonumber(dist)
+	if dist then
+	    local actor = db.actor
+	    local dir = actor:direction()--device().cam_dir
+	    local pos = vector():set(actor:position()):sub(vector():set(dir):mul(-dist))
+		actor:set_actor_position(pos)
+		self.parent:quit()
+	end
+end
+
+--/summary/>> метод вызываемый при клике возврата на поверхность геометрии
+function win_tel:JumpOnGeo()
+	local pos_lvid = level.vertex_position(db.actor:level_vertex_id())
+	db.actor:set_actor_position(pos_lvid)
+	self.parent:quit()
+end
+
+--/summary/>> метод сохранения данных вкладки при закрытии интерфейса меню
+function win_tel:save()
+    self.parent.owner.edit_jump = tonumber(self.edit_jump:GetText()) or const_dist_jump
+end

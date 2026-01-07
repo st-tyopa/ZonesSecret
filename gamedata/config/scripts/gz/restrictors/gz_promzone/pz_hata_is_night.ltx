@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle@day
+
+[sr_idle@day]
+on_info = {!is_day +pz_hata_zomb_free_start} %+pz_hata_zomb_free_night% sr_idle@night
+
+[sr_idle@night]
+on_info = {+pz_hata_zomb_free_done} nil, {=is_day +pz_hata_zomb_free_start} %-pz_hata_zomb_free_night% sr_idle@day

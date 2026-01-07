@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+proslushka_done} sr_idle2
+
+[sr_idle2]
+on_actor_outside = %+proslushka_ushel% sr_idle@nil
+
+[sr_idle@nil]

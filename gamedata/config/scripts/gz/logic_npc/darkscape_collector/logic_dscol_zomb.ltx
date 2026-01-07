@@ -1,0 +1,18 @@
+[logic]
+active = mob_fake_death
+on_death = death
+on_hit = hit
+
+[mob_fake_death]
+on_actor_dist_le = 25 | mob_home
+
+[mob_home]
+path_home = dscol_rat_3
+home_min_radius = 5
+home_max_radius = 100
+
+[hit]
+on_info = nil %=kill_phantoms%
+
+[death]
+on_info = nil %=kill_phantoms%

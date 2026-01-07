@@ -1,0 +1,33 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+pz_merclager_bomb_blowup} sr_idle2
+
+[sr_idle2]
+on_timer = 2000|%+pz_first_barrel_expl% sr_idle3
+
+[sr_idle3]
+on_timer = 1000|%+pz_second_barrel_expl =play_snd_from_obj(84140:soz\characters_voice\scenario\zhar)% sr_particle
+
+[sr_particle]
+name = explosions\campfire_07
+path = pz_flame_barrel
+mode = 2 		
+looped = true            
+on_timer = 7000|%+pz_fire_second%
+on_timer2 = 8000|nil
+
+[sr_particle2]
+name = explosions\campfire_04
+path = pz_flame_barrel
+mode = 2 		
+looped = true            
+on_timer = 4000|sr_particle3
+
+[sr_particle3]
+name = explosions\campfire_02_hot
+path = pz_flame_barrel
+mode = 2 		
+looped = true            
+on_timer = 2000|%+pz_fire_end% nil

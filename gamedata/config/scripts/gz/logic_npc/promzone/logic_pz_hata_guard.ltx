@@ -1,0 +1,16 @@
+[logic]
+active = walker
+on_death = death
+
+[walker]
+path_walk = pz_hata_guard_stay
+path_look = pz_hata_guard_look
+on_info = {+pz_hata_zomb_free_night} sleeper
+
+[sleeper]
+path_main = pz_hata_sleeper1
+meet = no_meet
+on_info = {-pz_hata_zomb_free_night} walker
+
+[death]
+on_info = %+pz_hata_guard_dead%

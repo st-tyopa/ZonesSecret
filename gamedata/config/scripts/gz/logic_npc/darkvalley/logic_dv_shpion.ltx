@@ -1,0 +1,76 @@
+[logic]
+active = walker@shpion
+on_death = death
+
+[death]
+on_info = %+dv_shpion_dead%
+
+[walker@shpion]
+path_walk = dv_shpion_stay
+path_look = dv_shpion_look
+on_info = {+dv_shpion_govor} remark
+
+[walker@shpion2]
+path_walk = dv_shpion_stay
+path_look = dv_shpion_look
+on_info = {+dv_shpion_ahtung} remark3
+
+[walker@dv_shpion_hide1]
+path_walk = dv_shpion_stay
+path_look = dv_shpion_look
+on_game_timer = 4|%+dv_shpion_ahtung2% walker@dv_shpion_hide
+
+[walker@dv_shpion_hide]
+path_walk = dv_shpion_hide
+def_state_standing = hide
+meet = no_meet
+on_game_timer = 30|%+dv_shpion_hide%
+on_info = {+dv_sh_greh_dead} walker@yan_kill_2
+
+[walker@yan_kill_2]
+path_walk = dv_shpion_stay
+path_look = dv_shpion_look
+
+[zoneguard@yan_kill_1]
+path_walk = dv_shpion_stay
+path_look = dv_shpion_look
+zone_warn = dv_shpion_meet
+zone_guard = dv_shpion_guard
+team = dv_shpion
+no_move = true
+no_danger = false
+ignore_friends = true
+on_info = {+dv_shpion_govor3} walker@yan_kill_1
+
+[remark]
+anim = threat
+target = dv_shpion_look, 0
+snd = dv_krivoy_01
+on_info = {+dv_shpion_govor3} remark2
+
+[remark2]
+anim = guard
+target = dv_shpion_look, 0
+meet = no_meet
+snd = dv_krivoy_02
+on_signal = sound_end| %=enable_ui% walker@shpion2
+
+[remark3]
+anim = caution
+target = actor
+meet = no_meet
+snd = dv_krivoy_03
+on_signal = sound_end| remark35
+
+[remark35]
+anim = caution
+meet = no_meet
+target = actor
+on_game_timer = 20|%+dv_shpion_ahtung2% remark4
+
+[remark4]
+anim = caution
+target = actor
+meet = no_meet
+snd = dv_krivoy_04
+on_signal = sound_end| walker@dv_shpion_hide

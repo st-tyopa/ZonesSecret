@@ -1,0 +1,36 @@
+[logic]
+active = walker@gar_cezar_stay_prilavok
+;trade = misc\soz_traders\trade_gar_cezar.ltx
+;inv_max_weight = 10000
+
+[walker@gar_cezar_stay_prilavok]
+path_walk = gar_cezar_stay
+path_look = gar_cezar_look
+;on_info = {+proslushka_done -prosl_cezar_dialog_done} walker@gar_cezar_stay_prilavok2
+;on_actor_dist_ge_nvis = 130| %+dell_felixs_group%
+combat_ignore_cond = always
+
+
+
+
+
+
+
+[walker@gar_cezar_stay]
+path_walk = gar_cezar_stay_map
+path_look = gar_cezar_stay_map_look
+;on_info = {=actor_in_zone(gar_cezar_zone)} walker@gar_cezar_stay_prilavok
+;on_actor_dist_ge_nvis = 130| %+dell_felixs_group%
+combat_ignore_cond = always
+
+[walker@gar_cezar_stay_prilavok2]
+path_walk = gar_cezar_stay
+path_look = gar_cezar_look
+meet = meet@self_doc
+;on_info = {+prosl_cezar_dialog_done} walker@gar_cezar_stay_prilavok
+;on_actor_dist_ge_nvis = 130| %+dell_felixs_group%
+combat_ignore_cond = always
+
+[meet@self_doc] 
+use = {=dist_to_actor_le(5)} self
+combat_ignore_cond = always

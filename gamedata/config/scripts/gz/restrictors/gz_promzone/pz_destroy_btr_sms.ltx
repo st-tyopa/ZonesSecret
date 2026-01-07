@@ -1,0 +1,20 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+pz_second_btr_destr -pz_actor_enemy_merclager} %+pz_first_btr_sms% sr_idle11, {+pz_second_btr_destr +pz_actor_enemy_merclager} %+pz_first_btr_sms% sr_idle2
+on_info2 = {+pz_first_btr_destr -pz_actor_enemy_merclager} %+pz_first_btr_sms% sr_idle12, {+pz_first_btr_destr +pz_actor_enemy_merclager} %+pz_first_btr_sms% sr_idle3
+
+[sr_idle11]
+on_timer = 6000|%+pz_actor_enemy_merclager% sr_idle2
+
+[sr_idle12]
+on_timer = 6000|%+pz_actor_enemy_merclager% sr_idle3
+
+[sr_idle2]
+on_info = {+pz_first_btr_destr} %+pz_second_btr_sms% nil
+
+[sr_idle3]
+on_info = {+pz_second_btr_destr} %+pz_second_btr_sms% nil
+
+[sr_idle@nil]

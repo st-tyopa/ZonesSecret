@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {+pz_merclager_bomb_spawn} %+pz_rob_merclager_on_position_done% sr_idle@2
+
+[sr_idle@2]
+on_timer = 15000| %+pz_stolguards_scene_start% sr_idle@nil
+
+[sr_idle@nil]

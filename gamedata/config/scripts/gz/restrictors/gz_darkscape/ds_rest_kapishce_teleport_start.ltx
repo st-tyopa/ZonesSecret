@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = %+kapishce_teleport_start% sr_psy_antenna@timers  ;вошли в 1-й раз - получаем поршень и включаем пси-эффект
+
+[sr_psy_antenna@timers]
+eff_intensity = 100
+hit_intensity = 0
+phantom_prob = 70
+on_timer = 45000| %+kapishce_teleport_cancel%  sr_idle2
+
+[sr_idle2]
+on_actor_inside = sr_psy_antenna	;отключение телепорта в капище, включение пси-эффекта
+
+[sr_psy_antenna]
+eff_intensity = 100
+hit_intensity = 0
+phantom_prob = 70

@@ -1,0 +1,64 @@
+; Артефакты для аномалии "мясорубка"
+
+[af_blood]:af_base          ; Кровь камня
+$spawn				        = "artifacts\mincer blood"
+visual				        = physics\anomaly\artefact_myasorubka1.ogf
+description			        = enc_zone_artifact_af-blood
+inv_name			        = af-blood
+inv_weight			        = 0.5
+inv_grid_x			        = 17
+inv_grid_y			        = 0
+cost				        = 1000
+jump_height			        = .01
+particles			        = ;
+lights_enabled              = false
+artefact_activation_seq		= af_activation_mincer
+health_restore_speed        = 0.0002
+hit_absorbation_sect        = af_blood_absorbation
+
+[af_blood_absorbation]:af_base_absorbation
+strike_immunity             = 1.1
+wound_immunity              = 1.1		
+fire_wound_immunity         = 1.1
+
+[af_mincer_meat]:af_base    ; Ломоть мяса
+$spawn				        = "artifacts\mincer meatloaf"
+visual				        = physics\anomaly\artefact_myasorubka2.ogf
+description			        = enc_zone_artifact_af-mincer-meat
+inv_name			        = af-mincer-meat
+inv_weight			        = 0.5
+inv_grid_x			        = 18
+inv_grid_y			        = 16
+cost				        = 2500
+jump_height			        = 0
+particles			        = ;
+lights_enabled              = false
+artefact_activation_seq		= af_activation_mincer
+health_restore_speed        = 0.0004
+hit_absorbation_sect        = af_mincer_meat_absorbation
+
+[af_mincer_meat_absorbation]:af_base_absorbation
+strike_immunity             = 1.1
+wound_immunity              = 1.1		
+fire_wound_immunity         = 1.1
+
+[af_soul]:af_base
+$spawn				        = "artifacts\mincer soul"
+visual				        = physics\anomaly\artefact_myasorubka3.ogf 
+description			        = enc_zone_artifact_af-soul
+inv_name			        = af-soul
+inv_weight			        = 0.5
+inv_grid_x			        = 19
+inv_grid_y			        = 16
+cost				        = 5000
+jump_height			        = .01
+particles			        = ;
+lights_enabled              = false
+artefact_activation_seq		= af_activation_mincer
+health_restore_speed        = 0.0006
+hit_absorbation_sect        = af_soul_absorbation
+
+[af_soul_absorbation]:af_base_absorbation
+strike_immunity             = 1.1
+wound_immunity              = 1.1		
+fire_wound_immunity         = 1.1

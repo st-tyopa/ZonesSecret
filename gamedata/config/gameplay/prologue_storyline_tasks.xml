@@ -1,0 +1,1833 @@
+<!-- Сюжетные квесты -->
+
+<game_task id="find_kep">
+	<title>find_kep_text_name</title>
+	<description>find_kep_text_descr</description>
+		<objective>
+			<text>find_kep_text_name</text>
+			<icon>ui_icons_storyline_find_kep</icon>
+			<infoportion_complete>kep_speak_done</infoportion_complete>
+			<article>soz_storyline_find_kep</article>
+		</objective>
+		<objective>
+			<text>find_kep_text_name</text>
+			<infoportion_complete>kep_speak_done</infoportion_complete>
+		</objective>		
+</game_task>
+
+<game_task id="find_team">
+	<title>find_team_text_name</title>
+	<description>find_team_text_descr</description>
+		<objective>
+			<text>find_team_text_name</text>
+			<icon>ui_icons_storyline_find_group</icon>
+			<infoportion_complete>find_team_done</infoportion_complete>
+            <infoportion_fail>find_team_fail</infoportion_fail>
+			<article>find_team</article>
+		</objective>
+		<objective>
+			<text>find_team_text_subtask1</text>
+			<infoportion_complete>find_team_done</infoportion_complete>
+            <infoportion_fail>find_team_fail</infoportion_fail>
+		</objective>		
+</game_task>
+
+<game_task id="find_raciya" prio="550">
+	<title>find_raciya_text_name</title>
+	<description>find_raciya_text_descr</description>
+		<objective>
+			<text>find_raciya_text_name</text>
+			<icon>ui_icons_storyline_find_raciya</icon>
+		<function_complete>gz_prologue.find_raciya_in_svobbase</function_complete>
+			<infoportion_complete>find_raciya_in_svobbase_done</infoportion_complete>
+            <infoportion_fail>svoboda_war</infoportion_fail>
+			<article>soz_storyline_find_raciya</article>
+		</objective>
+		<objective>
+			<text>find_raciya_text_subtask1</text>
+			<map_location_type hint="Упавший вертолет">green_location</map_location_type>
+			<object_story_id>ds_vertolet</object_story_id>
+			<infoportion_complete>find_raciya_in_vertolet_done</infoportion_complete>
+            <infoportion_fail>svoboda_war</infoportion_fail>
+		</objective>
+		<objective>
+			<text>find_raciya_text_subtask2</text>
+			<map_location_type hint="Лагерь сталкеров">green_location</map_location_type>
+			<object_story_id>ds_neutlager</object_story_id>
+			<infoportion_complete>find_raciya_in_dsneutlager_done</infoportion_complete>
+		<function_complete>gz_prologue.find_raciya_in_dsneutlager_done</function_complete>
+			<function_fail>gz_prologue.enemy_ds_neutlager</function_fail>
+            <infoportion_fail>svoboda_war</infoportion_fail>
+		</objective>
+		<objective>
+			<text>find_raciya_text_subtask3</text>
+			<map_location_type hint="Лагерь Свободы">green_location</map_location_type>
+			<object_story_id>dv_svobbase_mapspot</object_story_id>
+		<function_complete>gz_prologue.find_raciya_in_svobbase</function_complete>
+            <infoportion_fail>svoboda_war</infoportion_fail>		
+		</objective>
+	</game_task>
+
+<!-- ТД. "Найти рацию" для ветки сюжета с долгом -->
+<game_task id="find_raciya_alt" prio="550">
+	<title>find_raciya_alt_text_name</title>
+	<description>find_raciya_alt_text_descr</description>
+		<objective>
+			<text>find_raciya_alt_text_name</text>
+			<icon>ui_icons_storyline_find_raciya</icon>
+			<infoportion_complete>find_raciya_alt_done</infoportion_complete>
+			<article>soz_storyline_find_raciya</article>
+		</objective>
+		<objective>
+			<text>find_raciya_alt_text_subtask1</text>
+			<infoportion_complete>find_raciya_alt_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="talk_with_iskprovod" prio="500">
+	<title>Разговор с проводником</title>
+		<objective>
+			<text>Поговорить с проводником</text>
+			<icon>ui_icons_storyline_talk_with_iskprovod</icon>
+			<infoportion_complete>talk_with_iskprovod_done</infoportion_complete>
+			<article>soz_storyline_talk_with_iskprovod</article>
+		</objective>
+		<objective>
+			<text>Поговорить с проводником</text>
+			<map_location_type hint="Проводник">blue_location</map_location_type>
+			<object_story_id>ds_provodnik</object_story_id>
+			<infoportion_complete>talk_with_iskprovod_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="return_things" prio="510">
+	<title>Свои вещи</title>
+		<objective>
+			<text>Забрать свои вещи у торговца</text>
+			<icon>ui_icons_storyline_return_things</icon>
+			<infoportion_complete>return_things_done</infoportion_complete>
+			<article>soz_storyline_return_things</article>
+		</objective>
+		<objective>
+			<text>Забрать свои вещи у торговца</text>
+			<map_location_type hint="Торговец">green_location</map_location_type>
+			<object_story_id>ds_iskatlager_trader</object_story_id>
+			<infoportion_complete>return_things_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="talk_with_baseleader" prio="540">
+	<title>Поговорить с лидером лагеря</title>
+		<objective>
+			<text>Поговорить с лидером лагеря</text>
+			<icon>ui_icons_storyline_talk_with_baseleader</icon>
+            <article>quest_talk_with_baseleader</article>
+			<infoportion_complete>talk_with_baseleader_done</infoportion_complete>
+			<function_fail>gz_prologue.is_actor_enemy_svoboda</function_fail>
+			<function_fail>gz_prologue.is_actor_enemy_svoboda_base</function_fail>
+		</objective>
+		<objective>
+			<text>Спросить у лидера лагеря про рацию</text>
+			<map_location_type hint="Миклуха">blue_location</map_location_type>
+			<object_story_id>dv_cheh</object_story_id>
+			<infoportion_complete>talk_with_baseleader_done</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<game_task id="find_details_for_yar" prio="560">
+	<title>Детали для рации</title>
+		<objective>
+			<text>Найти и принести детали Яру</text>
+			<icon>ui_icons_storyline_find_details_for_yar</icon>
+			<infoportion_complete>pda_coordinats_start</infoportion_complete>
+            <infoportion_fail>svoboda_war</infoportion_fail>	
+			<article>soz_storyline_find_details_for_yar</article>
+		</objective>
+		
+		<objective>
+			<text>Найти аккумулятор</text>
+	    	<map_location_type hint="Детали для рации">crlc_big</map_location_type>
+			<object_story_id>dv_details_zone</object_story_id>
+			<infoportion_complete>find_details_battery_have</infoportion_complete>
+            <infoportion_fail>svoboda_war</infoportion_fail>	
+		</objective>
+		<objective>
+			<text>Найти транзистор</text>
+	    	<map_location_type hint="Детали для рации">crlc_big</map_location_type>
+			<object_story_id>dv_details_zone</object_story_id>
+			<infoportion_complete>find_details_tranzistor_have</infoportion_complete>
+            <infoportion_fail>svoboda_war</infoportion_fail>	
+		</objective>
+		<objective>
+			<text>Найти проволоку</text>
+	    	<map_location_type hint="Детали для рации">crlc_big</map_location_type>
+			<object_story_id>dv_details_zone</object_story_id>
+			<infoportion_complete>find_details_provoloka_have</infoportion_complete>
+            <infoportion_fail>svoboda_war</infoportion_fail>	
+		</objective>
+		<objective>
+			<text>Найти плату</text>
+	    	<map_location_type hint="Детали для рации">crlc_big</map_location_type>
+			<object_story_id>dv_details_zone</object_story_id>
+			<infoportion_complete>find_details_plata_have</infoportion_complete>
+            <infoportion_fail>svoboda_war</infoportion_fail>	
+		</objective>
+		
+		<objective>
+			<text>Найти все детали</text>
+	    	<map_location_type hint="Детали для рации">crlc_big</map_location_type>
+			<object_story_id>dv_details_zone</object_story_id>
+		<function_complete>gz_prologue.find_all_details_have</function_complete>
+            <infoportion_fail>svoboda_war</infoportion_fail>	
+		</objective>
+		
+		<objective>
+			<text>Принести детали Яру</text>
+			<infoportion_complete>find_details_for_yar_done</infoportion_complete>
+			<map_location_type hint="dv_yar">blue_location</map_location_type>
+			<object_story_id>dv_yar</object_story_id>
+		</objective>
+		
+		<objective>
+			<text>Подождать пока будет готова рация</text>
+			<infoportion_complete>make_raciya_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Забрать рацию</text>
+			<infoportion_complete>find_raciya_done</infoportion_complete>
+			<map_location_type hint="dv_yar">blue_location</map_location_type>
+			<object_story_id>dv_yar</object_story_id>
+                </objective>
+                <objective>
+			<text>Связаться с базой</text>
+			<infoportion_complete>pda_coordinats_start</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="back_guitar" prio="560">
+	<title>Карты Припяти</title>
+		<objective>
+			<text>Принести карты Припяти</text>
+			<icon>ui_icons_storyline_city_maps</icon>
+                        <article>quest_city_maps</article>
+			<infoportion_complete>find_guitar_done</infoportion_complete>
+			<function_fail>gz_prologue.is_actor_enemy_svoboda</function_fail>
+			<function_fail>gz_prologue.is_actor_enemy_svoboda_base</function_fail>
+		</objective>
+		
+		<objective>
+			<text>Найти карты</text>
+			<map_location_type hint="quest_guitara">green_location</map_location_type>
+			<object_story_id>dv_quest_guitara</object_story_id>
+			<function_complete>gz_prologue.have_guitar</function_complete>
+		</objective>
+		<objective>
+			<text>Принести карты Лукашу</text>
+			<infoportion_complete>find_guitar_done</infoportion_complete>
+			<map_location_type hint="dv_lukash">blue_location</map_location_type>
+			<object_story_id>dv_lukash</object_story_id>
+			<map_location_hidden>1</map_location_hidden>
+		</objective>
+	</game_task>
+	
+<game_task id="pda_coordinats" prio="570">
+	<title>Квадрат 065</title>
+		<objective>
+			<text>Отправиться за Кэпом в квадрат 065</text>
+			<icon>ui_icons_storyline_pda_coordinats</icon>	
+                        <article>quest_pda_coordinats</article>				
+			<infoportion_complete>pda_coordinats_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Добраться до источника сигнала</text>
+			<map_location_type hint="cap_pda">green_location</map_location_type>
+			<object_story_id>cap_pda</object_story_id>
+			<icon>ui_iconsTotal_find_item</icon>
+			<infoportion_complete>pda_coordinats_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="greh_base_shturm" prio="570">
+	<title>База Греха</title>
+		<objective>
+			<text>База Греха</text>
+			<icon>ui_icons_storyline_greh_base</icon>	
+                        <article>quest_pda_coordinats</article>				
+			<infoportion_complete>greh_sturm_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Пробраться на базу греха в одиночку</text>
+			<map_location_type hint="cap_pda">green_location</map_location_type>
+			<object_story_id>cap_pda</object_story_id>
+			<icon>ui_iconsTotal_find_item</icon>
+			<infoportion_complete>greh_shturm_alone</infoportion_complete>
+			<infoportion_set_complete>greh_sturm_done</infoportion_set_complete>
+			<function_fail>gz_tasks.greh_base</function_fail>
+		</objective>
+                <objective>
+			<text>Пробраться на базу греха с Долгом или со Свободой</text>
+			<map_location_type hint="cap_pda">green_location</map_location_type>
+			<object_story_id>cap_pda</object_story_id>
+			<icon>ui_iconsTotal_find_item</icon>
+                        <infoportion_fail>greh_shturm_alone</infoportion_fail>
+			<infoportion_complete>sv_sturm</infoportion_complete>
+			<infoportion_complete>dolg_sturm</infoportion_complete>
+			<function_complete>gz_tasks.greh_base</function_complete>
+			<infoportion_set_complete>greh_sturm_done</infoportion_set_complete>
+		</objective>
+	</game_task>
+<game_task id="wounded_stalker_grehbase" prio="580">
+	<title>Раненый сталкер</title>
+		<objective>
+			<text>Узнать о Кэпе у раненого сталкера</text>
+			<icon>ui_icons_storyline_pda_coordinats</icon>	
+			<article>wounded_stalker_grehbase</article>
+			<infoportion_complete>dv_prisoner_dialog_end</infoportion_complete>
+</objective>
+		<objective>
+			<text>Открыть замок двери</text>
+			<map_location_type hint="dv_grehbase_prisoner_door">green_location</map_location_type>
+			<object_story_id>dv_grehbase_prisoner_door</object_story_id>
+			<infoportion_complete>dv_gb_prisoner_door_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Добыть у сталкера инфу о Кэпе</text>
+			<map_location_type hint="dv_wounded_stalker">blue_location</map_location_type>
+			<object_story_id>dv_wounded_stalker</object_story_id>
+			<infoportion_complete>dv_prisoner_dialog_end</infoportion_complete>
+		</objective>
+	</game_task>
+
+        <game_task id="contact_with_base" prio="570">
+	<title>Связаться с базой по рации</title>
+		<objective>
+			<text>Связаться с базой</text>
+			<icon>ui_icons_storyline_find_raciya</icon>
+                        <article>contact_with_base</article>				
+			<infoportion_complete>pda_coordinats_start</infoportion_complete>
+                        <infoportion_fail>find_details_for_yar_done</infoportion_fail>
+		</objective>
+                <objective>
+			<text>Связаться с базой</text>
+			<infoportion_complete>pda_coordinats_start</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<!-- Свалка -->
+	
+<!-- Добраться до лагеря сталкеров (новое) -->
+<game_task id="gar_follow_to_garneutlager" prio="580">
+	<title>Лагерь на Свалке</title>
+		<objective>
+			<text>Распросить о командире у сталкеров на Свалке</text>
+			<icon>ui_icons_storyline_go_to_garneutlager</icon>
+                        <article>quest_go_to_garneutlager</article>
+			<function_fail>gz_prologue.is_actor_enemy_gar_neutlager</function_fail>
+			<infoportion_complete>go_to_agroprom_start</infoportion_complete>
+		</objective>
+		
+		<objective>
+			<text>Добраться до лагеря сталкеров</text>
+			<map_location_type hint="gar_neutbase">green_location</map_location_type>
+			<object_story_id>gar_neutlager</object_story_id>
+			<infoportion_complete>gar_follow_to_garneutlager_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Узнать куда направился Кэп</text>
+	    	<map_location_type hint="gar_neutbase">crlc_big</map_location_type>
+			<object_story_id>gar_neutlager</object_story_id>
+			<infoportion_complete>go_to_agroprom_start</infoportion_complete>
+		</objective>
+	</game_task>
+
+<!-- Квест "Осиное гнездо" (новое) -->
+<game_task id="gar_hornets_nest" prio="590">
+	<title>"Осиное Гнездо"</title>
+		<objective>
+			<text>Уничтожить логово мутантов в заброшенном депо</text>
+			<icon>ui_icons_storyline_go_to_garneutlager</icon>
+			<function_fail>gz_prologue.is_actor_enemy_gar_neutlager</function_fail>
+			<infoportion_complete>gar_hornets_nest_done</infoportion_complete>
+		</objective>
+		
+		<objective>
+			<text>Встретиться с отрядом сталкеров</text>
+			<map_location_type hint="gar_depo_neutrals">blue_location</map_location_type>
+			<object_story_id>gar_depo_neutrals</object_story_id>
+			<infoportion_complete>gar_go_to_depo_neutrals_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Уничтожить мутантов</text>
+	    	<map_location_type hint="gar_depo">crlc_big</map_location_type>
+			<object_story_id>gar_depo</object_story_id>
+			<infoportion_complete>gar_depo_all_mutants_dead</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Доложить Серому</text>
+			<infoportion_complete>gar_hornets_nest_done</infoportion_complete>
+			<map_location_type hint="gar_neutbase_seriy">blue_location</map_location_type>
+			<object_story_id>gar_neutbase_seriy</object_story_id>
+		</objective>
+	</game_task>	
+	
+	
+<!-- Найти артефакт в депо (вырезать) -->
+<game_task id="find_art_depo" prio="590">
+	<title>Достать редкий артефакт</title>
+		<objective>
+			<text>Найти и принести редкий артефакт</text>
+			<icon>ui_icons_storyline_find_art_depo</icon>
+                        <article>quest_gar_find_art_depo_info</article>
+			<infoportion_complete>find_art_depo_done</infoportion_complete>
+			<infoportion_fail>find_art_depo_fail</infoportion_fail>
+			<function_fail>gz_prologue.is_actor_enemy_gar_neutlager</function_fail>
+		</objective>
+		
+		<objective>
+			<text>Найти вход в депо</text>
+			<map_location_type hint="gar_depo">green_location</map_location_type>
+			<object_story_id>gar_depo</object_story_id>
+			<infoportion_complete>find_enter_in_depo_complete</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Найти артефакт</text>
+			<function_complete>gz_prologue.have_art</function_complete>
+		</objective>
+		<objective>
+			<text>Вернуть артефакт</text>
+			<infoportion_complete>find_art_depo_done</infoportion_complete>
+			<map_location_type hint="gar_neutbase_seriy">blue_location</map_location_type>
+			<object_story_id>gar_neutbase_seriy</object_story_id>
+		</objective>
+	</game_task>
+
+<game_task id="go_to_agroprom" prio="600">
+	<title>Кэп и "Долг"</title>
+		<objective>
+			<text>Узнать о командире на базе "Долга"</text>
+			<icon>ui_icons_storyline_go_to_agroprom</icon>
+			<article>go_to_agroprom</article>
+			<infoportion_complete>talk_with_dolglider_about_cap_complete</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Добраться до базы "Долга"</text>
+			<infoportion_complete>go_to_agroprom_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Узнать на базе "Долга" куда отправился Кэп</text>
+			<infoportion_complete>talk_with_dolglider_about_cap_complete</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="agr_dolg_leader" prio="600">
+	<title>Распросить лидера "Долга" о Кэпе</title>
+		<objective>
+			<text>Распросить лидера "Долга" о командире</text>
+			<icon>ui_icons_storyline_go_to_agroprom</icon>
+			<article>go_to_agroprom</article>
+			<infoportion_complete>talk_with_dolglider_about_cap_complete</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Пройти к лидеру "Долга"</text>
+			<infoportion_complete>enter_to_dolglider_complete</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Узнать у лидера "Долга" куда отправился Кэп</text>
+			<infoportion_complete>talk_with_dolglider_about_cap_complete</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="kep_speak" prio="630">
+	<title>Поговорить с Кэпом</title>
+		<objective>
+			<text>Поговорить с Кэпом</text>
+			<icon>ui_icons_storyline_kep_speak</icon>
+			<infoportion_complete>kep_speak_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Поговорить с Кэпом</text>
+			<infoportion_complete>kep_speak_done</infoportion_complete>
+		</objective>		
+</game_task>
+	
+<game_task id="kill_scien_start" prio="640">
+	<title>Ликвидировать ученого</title>
+		<objective>
+			<text>Убить ученого Маниковского</text>
+			<icon>ui_icons_storyline_kill_scien_start</icon>
+			<article>kill_scien_start</article>
+			<infoportion_complete>kill_scien_done</infoportion_complete>
+                        <infoportion_fail>rf_scien_stay_done</infoportion_fail>
+		</objective>
+		
+		<objective>
+			<text>Убить ученого Маниковского</text>
+			<infoportion_complete>kill_scien_done</infoportion_complete>
+			<map_location_type hint="arg_scien_manik">blue_location</map_location_type>
+			<object_story_id>arg_scien_manik</object_story_id>
+		</objective>
+	</game_task>
+
+<game_task id="go_to_evacuation_zone" prio="650">
+	<title>Точка 701</title>
+		<objective>
+			<text>Встретиться с группой военных</text>
+			<icon>ui_icons_storyline_go_to_evacuation_zone</icon>		
+			<article>go_to_evacuation_zone</article>	
+			<infoportion_complete>rf_cave_documents_start</infoportion_complete>
+			<infoportion_fail>predatelstvo</infoportion_fail>
+			<infoportion_fail>predatelstvo_alt</infoportion_fail>
+		</objective>
+		<objective>
+			<text>Прибыть в точку высадки группы</text>
+			<map_location_type hint="Точка эвакуации">green_location</map_location_type>
+			<object_story_id>rd_military_predateli</object_story_id>
+			<infoportion_complete>rf_cave_documents_start</infoportion_complete>
+			<infoportion_fail>predatelstvo</infoportion_fail>
+		</objective>
+		<objective>
+			<text>Поговорить с командиром группы</text>
+			<map_location_type hint="lager">crlc_big</map_location_type>
+			<infoportion_complete>rf_cave_documents_start</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="rf_cave_documents" prio="650">
+	<title>Подземелья и мутанты</title>
+		<objective>
+			<text>Добыть документы в пещерах</text>
+			<icon>ui_icons_storyline_go_to_evacuation_zone</icon>
+			<article>rf_cave_documents</article>			
+			<infoportion_complete>rf_cave_documents_complete</infoportion_complete>
+			<infoportion_fail>kill_predateli_complete</infoportion_fail>
+		</objective>
+		<objective>
+			<text>Проникнуть с отрядом в пещеры</text>
+			<map_location_type hint="lager">crlc_big</map_location_type>
+			<infoportion_complete>redfor_military_group_in_cave</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Найти документы в подземелье</text>
+			<map_location_type hint="lager">crlc_big</map_location_type>
+			<infoportion_complete>rf_cave_docs_find_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Принести документы командиру</text>
+			<map_location_type hint="lager">crlc_big</map_location_type>
+			<infoportion_complete>rf_cave_documents_complete</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="kill_predateli" prio="660">
+ <title>Предательство</title>
+  <objective>
+   <text>Предательство своих</text>
+   <icon>ui_icons_storyline_kill_predateli</icon>
+			<article>kill_predateli</article>
+   <function_complete>gz_prologue.predateli_complete</function_complete>
+  </objective>
+  
+  <objective>
+   <text>Уничтожить предателей</text>
+   <infoportion_complete>kill_predateli_complete</infoportion_complete>
+  </objective>
+  <objective>
+   <text>Найти ПДА командира</text>
+   <function_complete>gz_prologue.has_pda_predat</function_complete>
+  </objective>
+ </game_task>
+
+
+<game_task id="kill_predateli_1" prio="660">
+ <title>Предательство</title>
+  <objective>
+   <text>Предательство своих</text>
+   <icon>ui_icons_storyline_kill_predateli</icon>
+			<article>kill_predateli</article>
+   <function_complete>gz_prologue.predateli_complete</function_complete>
+  </objective>
+  <objective>
+   <text>Найти ПДА командира</text>
+   <function_complete>gz_prologue.has_pda_predat</function_complete>
+  </objective>
+ </game_task>
+ 
+ <game_task id="kill_predateli_2" prio="660">
+ <title>Предательство</title>
+  <objective>
+   <text>Предательство своих</text>
+   <icon>ui_icons_storyline_kill_predateli</icon>
+			<article>kill_predateli</article>
+   <infoportion_complete>kill_predateli_complete</infoportion_complete>
+  </objective>
+  
+  <objective>
+   <text>Уничтожить предателей</text>
+   <infoportion_complete>kill_predateli_complete</infoportion_complete>
+  </objective>
+ </game_task>
+	
+	
+	
+	
+	<!-- Янтарь -->
+	
+
+	<!-- Приходим в лагерь, говорим с другим ученым, он говорит что помощник Маниковского на задании и просит его подождать.-->
+<game_task id="go_to_scien_assist" prio="670">
+	<title>Помощник Маниковского</title>
+		<objective>
+			<text>Ассистент ученого</text>
+			<icon>ui_icons_storyline_go_to_scien_assist</icon>
+			<article>go_to_scien_assist</article>	
+			<infoportion_complete>talk_scien_assist_done</infoportion_complete>
+		</objective>
+		
+		<objective>
+			<text>Добраться до лагеря ученых</text>
+			<map_location_type hint="yan_scienlager">green_location</map_location_type>
+			<object_story_id>Лагерь ученых</object_story_id>
+			<infoportion_complete>go_to_scien_assist_complete</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Поговорить с помощником</text>
+			<map_location_type hint="Помощник">blue_location</map_location_type>
+			<object_story_id>yan_scienlager_lider</object_story_id>
+			<infoportion_complete>talk_scien_assist_done</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<game_task id="find_noyt_in_old_lab" prio="100">
+	<title>Найти документы в заброшенном научном комплексе</title>
+		<objective>
+			<text>Найти документы в заброшенном научном комплексе</text>
+			<icon>ui_icons_storyline_zabr_bunker</icon>
+                        <article>find_noyt_in_old_lab</article>
+			<infoportion_complete>give_noyt_from_lab_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Поговорить с Семёновым</text>
+			<infoportion_complete>yan_scien_lead_to_lager_start</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Попасть в научный комплекс</text>
+			<infoportion_complete>open_door_in_lab_done</infoportion_complete>
+		</objective>
+                <objective>
+			<text>Найти папку с документами в лаборатории</text>
+			<infoportion_complete>find_noyt_in_lab_done</infoportion_complete>
+		</objective>
+                <objective>
+			<text>Отнести документы ассистенту Шпилевскому</text>
+			<infoportion_complete>give_noyt_from_lab_done</infoportion_complete>
+		</objective>
+</game_task>
+
+<game_task id="follow_semenov_to_bunker" prio="100">
+	<title>Следовать за Семёновым до заброшенного научного комплекса</title>
+		<objective>
+			<text>Следовать за Семёновым до заброшенного научного комплекса</text>
+			<icon>ui_icons_storyline_scien_lead</icon>
+                        <article>find_noyt_in_old_lab</article>
+			<infoportion_complete>give_noyt_from_lab_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Следовать за Семёновым</text>
+			<infoportion_complete>yan_bunker_door_blocked_open</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Отнести документы Шпилевскому</text>
+			<infoportion_complete>give_noyt_from_lab_done</infoportion_complete>
+		</objective>
+</game_task>
+
+
+<game_task id="back_to_scien_lager" prio="700">
+	<title>Вернуться к ученому</title>
+		<objective>
+			<text>Вернуться к помощнику ученого</text>
+			<icon>ui_icons_storyline_go_to_scien_assist</icon>
+			<infoportion_complete>back_to_scien_lager_done</infoportion_complete>
+			<infoportion_fail>back_to_scien_lager_fail</infoportion_fail>
+		</objective>
+		<objective>
+			<text>Вернуться к помощнику ученого</text>
+			<map_location_type hint="Помощник ученого">blue_location</map_location_type>
+			<object_story_id>yan_assist2</object_story_id>
+			<infoportion_complete>back_to_scien_lager_done</infoportion_complete>
+
+		</objective>
+	</game_task>
+
+
+	
+<!-- *получаем квест на промзоне в диалоге с искателями* После разговора с раненым ассистентом Шпилевским нужно спуститься в лабу и найти Кайнозовского -->
+<game_task id="find_scien_in_underground" prio="710">
+	<title>Спуститься за ученым в подземелье</title>
+		<objective>
+			<text>Спуститься за ученым в подземелье</text>
+                        <article>find_scien_in_underground</article>
+			<icon>ui_icons_storyline_find_scien_in_underground</icon>
+			<infoportion_complete>find_scien_in_underground_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Спуститься в подземелье</text>
+			<map_location_type hint="Вход в лабораторию">green_location</map_location_type>
+			<object_story_id>yan_lvlchanger_to_labx15</object_story_id>
+			<infoportion_complete>find_enter_in_yan_underground_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Найти профессора</text>
+			<infoportion_complete>find_scien_in_underground_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+
+	
+	
+	
+	
+	
+		<!-- Лаборатория Х-15 -->
+	
+	
+<game_task id="x15task_kill_merc3" prio="700">
+	<title>Уничтожить наемников в подземелии</title>
+		<objective>
+			<text>Уничтожить наемников и поговорить с профессором</text>
+			<icon>ui_icons_storyline_find_raciya</icon>
+			<article>agr_racia_about_manic</article>
+			<infoportion_complete>x15_talk_with_professor_done</infoportion_complete>
+			<infoportion_fail>x15_talk_with_professor_fail</infoportion_fail>
+		</objective>
+		<objective>
+			<text>Уничтожить наемников</text>
+			<infoportion_complete>x15_kill_merc3_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Поговорить с профессором</text>
+			<map_location_type hint="Профессор">green_location</map_location_type>
+                        <object_story_id>x15_professor</object_story_id>
+			<infoportion_complete>x15_talk_with_professor_done</infoportion_complete>
+			<infoportion_fail>x15_talk_with_professor_fail</infoportion_fail>
+		</objective>
+	</game_task>
+	
+<game_task id="x15_yan_gameover_quest" prio="710">
+	<title>Передать флешку профессору Громову</title>
+		<objective>
+			<text>Найти выход из лаборатории и передать флешку профессору</text>
+			<icon>ui_icons_storyline_find_raciya</icon>
+			<article>agr_racia_about_manic</article>
+			<infoportion_complete>x15_yan_gameover_quest_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Включить электропитание для двери</text>
+			<map_location_type hint="Рубильник">blue_location</map_location_type>
+			<object_story_id>x15_power_on</object_story_id>
+			<infoportion_complete>x15_switcher_on</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Выбраться из лаборатории</text>
+			<map_location_type hint="Дверь">green_location</map_location_type>
+			<object_story_id>x15_levelchanger_exit_to_yantar</object_story_id>
+			<infoportion_complete>x15_escape_from_lab_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Отдать флешку профессору Громову</text>
+			<map_location_type hint="Профессор Громов">blue_location</map_location_type>
+			<object_story_id>fake_gromov</object_story_id>
+			<infoportion_complete>x15_yan_gameover_quest_done</infoportion_complete>
+		</objective>
+		
+	</game_task>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<!-- Промзона -->
+	
+<game_task id="pz_iskateli_group" prio="690">
+	<title>Группа искателей</title>
+		<objective>
+			<text>Поговорить с Искателями</text>
+			<icon>ui_icons_storyline_talk_with_isk</icon>
+			<article>pz_iskateli_group</article>
+			<infoportion_complete>pz_iskateli_group_done</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Добраться до группы искателей</text>
+			<map_location_type hint="Искатели">green_location</map_location_type>
+			<object_story_id>pz_iskateli_group</object_story_id>
+			<infoportion_complete>pz_goto_iskateli_group_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Поговорить с главным</text>
+			<map_location_type hint="Оцелот">blue_location</map_location_type>
+			<object_story_id>pz_iskateli_group_leader</object_story_id>
+			<infoportion_complete>pz_iskateli_group_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="pz_lab_diggers" prio="691">
+	<title>Диггеры</title>
+		<objective>
+			<text>Диггеры: экспедиция в заброшенную лабораторию</text>
+			<icon>ui_icons_storyline_pz_lab</icon>
+			<article>pz_lab_diggers</article>
+			<infoportion_complete>pz_lab_return_base_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Поговорить с Отисом</text>
+		<map_location_type hint="Отис">blue_location</map_location_type>
+			<object_story_id>pz_otis</object_story_id>
+			<infoportion_complete>pz_otis_lab_run</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Следовать за Отисом до лаборатории</text>
+		<map_location_type hint="Отис">blue_location</map_location_type>
+			<object_story_id>pz_otis</object_story_id>
+			<infoportion_complete>pz_otis_lab_enter</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Найти способ проникнуть в лабораторию</text>
+			<infoportion_complete>pz_otis_lab_open_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Осмотреть лабораторию в поисках синего контейнера</text>
+			<infoportion_complete>pz_lab_case_have</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Вернуться на базу</text>
+			<infoportion_complete>pz_lab_return_base_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="pz_lab_electrisity" prio="692">
+	<title>Да будет свет, сказал электрик...</title>
+		<objective>
+			<text>Да будет свет, сказал электрик...</text>
+			<icon>ui_icons_storyline_lab_elec</icon>
+			<article>pz_lab_electrisity</article>
+			<infoportion_complete>pz_lab_electrisity_done</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Перезапустить резервный генератор</text>
+			<infoportion_complete>pz_lab_electrisity_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="pz_lab_case" prio="693">
+	<title>Забрать контейнер</title>
+		<objective>
+			<text>Забрать контейнер</text>
+			<icon>ui_icons_storyline_blue_cont</icon>
+			<article>pz_lab_case</article>
+			<infoportion_complete>pz_lab_case_have</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Поднять синий контейнер</text>
+			<infoportion_complete>pz_lab_case_have</infoportion_complete>
+		</objective>
+	</game_task>
+	
+	
+<game_task id="pz_rob_merclager_docs" prio="690">
+	<title>Кража контейнера</title>
+		<objective>
+			<text>Выкрасть контейнер с базы наемников</text>
+			<icon>ui_icons_storyline_red_cont</icon>
+			<article>pz_rob_merclager_docs</article>
+			<infoportion_complete>pz_rob_merclager_docs_complete</infoportion_complete>
+			<function_complete>gz_tasks.killer_suit_update</function_complete>
+			<infoportion_fail>pz_alt_mercs_build_come</infoportion_fail>
+		</objective>
+
+		<objective>
+			<text>Найти костюм наемников</text>
+			<map_location_type hint="Здание где находится тайник">crlc_big</map_location_type>
+			<object_story_id>pz_metka_merc_outfit</object_story_id>
+			<infoportion_complete>pz_rob_merclager_have_outfit_done</infoportion_complete>
+		</objective>
+		
+		<objective>
+			<text>Надеть костюм наемников</text>
+			<infoportion_complete>actor_is_killer</infoportion_complete>
+		</objective>
+		
+		<objective>
+			<text>Проникнуть на базу наемников</text>
+			<map_location_type hint="База наемников">crlc_big</map_location_type>
+			<object_story_id>zal_scien_lager</object_story_id>
+			<infoportion_complete>pz_rob_merclager_on_base_done</infoportion_complete>
+		</objective>
+		
+		<objective>
+			<text>Заложить взрывчатку</text>
+			<map_location_type hint="Склад топлива">green_location</map_location_type>
+			<object_story_id>pz_mercbase_bobm_site</object_story_id>
+			<infoportion_complete>pz_merclager_bomb_spawn</infoportion_complete>
+		</objective>
+		
+		<objective>
+			<text>Отойти на безопасное расстояние и дождаться взрыва</text>
+			<infoportion_complete>pz_merclager_bomb_blowup</infoportion_complete>
+		</objective>
+		
+		<objective>
+			<text>Украсть контейнер</text>
+			<map_location_type hint="Контейнер">green_location</map_location_type>
+			<object_story_id>pz_mercbase_documents</object_story_id>
+			<infoportion_complete>pz_rob_merclager_docs_done</infoportion_complete>
+			<function_complete>xr_effects.pz_mercbase_rob_docs</function_complete>
+		</objective>
+		
+		<objective>
+			<text>Покинуть базу</text>
+			<map_location_type hint="Выход с базы">green_location</map_location_type>
+			<object_story_id>pz_mercbase_escape_gate</object_story_id>
+			<function_complete>xr_effects.pz_merclager_escape</function_complete>
+			<infoportion_complete>pz_rob_merclager_escape_done</infoportion_complete>
+		</objective>
+		
+		<objective>
+			<text>Отдать контейнер искателям</text>
+			<map_location_type hint="Скиф">blue_location</map_location_type>
+			<object_story_id>pz_iskateli_group_leader</object_story_id>
+			<infoportion_complete>pz_rob_merclager_docs_complete</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<game_task id="pz_meet_tyopa" prio="690">
+	<title>"Важная шишка"</title>
+		<description>pz_meet_tyopa_descr</description>
+		<objective>
+			<text>Покинуть Зону вместе с группой Тёпы</text>
+			<map_location_type hint="Тёпа">green_location</map_location_type>
+                        <object_story_id>pz_meet_tepa_rest</object_story_id>
+			<article>pz_meet_tyopa</article>
+			<icon>ui_icons_storyline_esc_with_tyopa</icon>
+			<infoportion_complete>pz_heli_endgame</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Встретится с группой Тёпы</text>
+			<infoportion_complete>pz_to_heli_start</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Покинуть Зону вместе с группой</text>
+			<infoportion_complete>pz_heli_endgame</infoportion_complete>
+		</objective>
+	</game_task>	
+	
+<game_task id="pz_heli" prio="690">
+	<title>Возвращение домой</title>
+		<description>pz_heli_descr</description>
+		<objective>
+			<text>Возвращение домой</text>
+			<icon>ui_icons_storyline_esc_heli</icon>
+			<article>pz_heli</article>
+			<infoportion_complete>pz_heli_endgame</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Зажечь сигнальный дым на позиции</text>
+			<map_location_type hint="Место для сигнального дыма">green_location</map_location_type>
+			<object_story_id>pz_burn_flire</object_story_id>
+			<infoportion_complete>pz_heli_start_fly</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Погрузиться на вертолёт</text>
+			<infoportion_complete>pz_heli_endgame</infoportion_complete>
+		</objective>
+	</game_task>
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+<game_task id="help_dolg_group" prio="530">
+	<title>Ответить на сигнал SOS</title>
+		<objective>
+			<text>Ответить на сигнал SOS</text>
+			<icon>ui_icons_storyline_help_dolg_group</icon>
+                        <article>help_dolg_group</article>
+			<infoportion_complete>dv_sos_talk_with_dolg_done</infoportion_complete>
+            <infoportion_fail>talk_with_chehov_done</infoportion_fail>
+		</objective>
+		
+		<objective>
+			<text>Прибыть в указанную точку</text>
+			<map_location_type hint="Группа Долга">green_location</map_location_type>
+			<object_story_id>dv_dolglager</object_story_id>
+			<infoportion_complete>go_to_signal_sos_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Узнать что случилось</text>
+			<map_location_type hint="Капитан Куприянов">blue_location</map_location_type>
+			<object_story_id>dv_dolglager_lider</object_story_id>
+			<infoportion_complete>dv_sos_talk_with_dolg_done</infoportion_complete>
+		</objective>
+	</game_task>
+	
+	
+<game_task id="dv_dolggroup_find_five_medkit" prio="540">
+	<title>Найти медикаменты</title>
+		<objective>
+			<text>Найти медикаменты</text>
+			<icon>ui_icons_storyline_find_ten_medkit</icon>
+                        <article>find_ten_medkit</article>
+			<infoportion_complete>dv_dolggroup_find_five_medkit_done</infoportion_complete>
+			<function_fail>gz_prologue.is_actor_enemy_dolg_dv</function_fail>
+		</objective>
+		<objective>
+			<text>Принести медикаменты</text>
+			<infoportion_complete>dv_dolggroup_find_five_medkit_done</infoportion_complete>
+			<map_location_type hint="dv_dolg_group_lider">blue_location</map_location_type>
+			<object_story_id>dv_dolg_group_lider</object_story_id>
+		</objective>
+	</game_task>
+
+
+
+
+
+	
+	
+<game_task id="find_ten_medkit" prio="540">
+	<title>Найти медикаменты</title>
+		<objective>
+			<text>Найти медикаменты</text>
+			<icon>ui_icons_storyline_find_ten_medkit</icon>
+                        <article>find_ten_medkit</article>
+			<infoportion_complete>find_ten_medkit_done</infoportion_complete>
+			<function_fail>gz_prologue.is_actor_enemy_dolg_dv</function_fail>
+		</objective>
+		<objective>
+			<text>Принести медикаменты</text>
+			<infoportion_complete>find_ten_medkit_done</infoportion_complete>
+			<map_location_type hint="dv_dolg_group_lider">blue_location</map_location_type>
+			<object_story_id>dv_dolg_group_lider</object_story_id>
+		</objective>
+	</game_task>
+
+	
+	
+	
+	
+	
+	
+<game_task id="find_tainik" prio="550">
+	<title>Забрать собранные сведения у информатора Долга</title>
+		<objective>
+              <text>Встретиться с информатором Долга</text>
+              <icon>ui_icons_storyline_find_tainik</icon>
+              <infoportion_complete>find_tainik_done_have</infoportion_complete>
+              <infoportion_fail>find_tainik_fail</infoportion_fail>
+                        <article>find_tainik</article>
+              <function_fail>gz_prologue.is_actor_enemy_dolg_dv</function_fail>
+               </objective>
+                <objective>
+			<text>Встретиться с информатором Долга</text>
+			<infoportion_complete>dv_shpion_govor3</infoportion_complete>
+			<map_location_type hint="Информатор Долга">blue_location</map_location_type>
+			<object_story_id>dv_shpion</object_story_id>
+		</objective>
+                <objective>
+			<text>Забрать у него собранные сведения</text>
+			<infoportion_complete>dv_shpion_atack</infoportion_complete>
+			<map_location_type hint="Информатор Долга">blue_location</map_location_type>
+			<object_story_id>dv_shpion</object_story_id>
+		</objective>
+		<objective>
+			<text>Отнести информацию Капитану Куприянову</text>
+			<infoportion_complete>find_tainik_done_have</infoportion_complete>
+			<map_location_type hint="dv_dolg_group_lider">blue_location</map_location_type>
+			<object_story_id>dv_dolg_group_lider</object_story_id>
+		</objective>
+	</game_task>
+	
+<game_task id="return_night" prio="550">
+	<title>Вернуться ночью</title>
+		<objective>
+			<text>Вернуться ночью</text>
+			<icon>ui_icons_storyline_return_night</icon>
+                        <article>return_night</article>
+			<infoportion_complete>dv_dolg_group_sbor</infoportion_complete>
+			<function_fail>gz_prologue.is_actor_enemy_dolg_dv</function_fail>
+		</objective>
+		<objective>
+			<text>Вернуться ночью</text>
+			<infoportion_complete>dv_dolg_group_sbor</infoportion_complete>
+			<map_location_type hint="dv_dolg_group_lider">blue_location</map_location_type>
+			<object_story_id>dv_dolg_group_lider</object_story_id>
+		</objective>
+	</game_task>
+
+<game_task id="agr_ds_digger_meet" prio="610">
+	<title>Старый знакомый</title>
+		<objective>
+			<text>Поговорить с Угрюмым</text>
+                        <article>quest_ds_digger_meet</article>
+			<icon>ui_icons_storyline_gar_digger_meet</icon>
+			<infoportion_complete>agr_talk_with_ds_digger_done</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Поговорить с Угрюмым</text>
+			<map_location_type hint="Диггер">blue_location</map_location_type>
+			<object_story_id>agr_ds_woundeddigger</object_story_id>
+			<infoportion_complete>agr_talk_with_ds_digger_done</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<game_task id="gar_digger_meet" prio="610">
+	<title>Диггер на Свалке</title>
+		<objective>
+			<text>Пообщаться с диггером</text>
+                        <article>quest_digger_meet</article>
+			<icon>ui_icons_storyline_gar_digger_meet</icon>
+			<infoportion_complete>gar_find_black_digger_start</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Встретиться с диггером</text>
+                        <map_location_type hint="Диггер">blue_location</map_location_type>
+			<object_story_id>gar_digger</object_story_id>
+			<infoportion_complete>gar_digger_meet_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Поговорить с диггером</text>
+                        <map_location_type hint="Диггер">blue_location</map_location_type>
+			<object_story_id>gar_digger</object_story_id>
+			<infoportion_complete>gar_find_black_digger_start</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="alt_enter_in_agr_underground" prio="600">
+	<title>Альтернативный вход</title>
+		<objective>
+			<text>Найти другой в подземелье</text>
+                        <article>alt_enter_in_agr_underground</article>
+			<icon>ui_icons_storyline_alt_enter</icon>
+			<infoportion_complete>go_to_underground_done</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Найти другой вход в подземелье</text>
+			<infoportion_complete>alt_enter_in_agr_underground_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Проникнуть в подземелье</text>
+			<infoportion_complete>find_enter_in_underground_complete</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Найти Кэпа в подземелье</text>
+			<infoportion_complete>go_to_underground_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="find_nigger_digger_tainik" prio="600">
+	<title>Найти тайник Чёрного Копателя</title>
+		<objective>
+			<text>Тайник Чёрного Копателя</text>
+                        <article>find_black_digger</article>
+			<icon>ui_icons_storyline_black_digger</icon>
+			<infoportion_complete>give_maps_otello</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Найти тайник</text>
+			<infoportion_complete>find_tainik_black_digger_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Отыскать карты подземелья</text>
+			<infoportion_complete>find_tainik_maps_black_digger</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Отнести карты Отелло</text>
+			<infoportion_complete>give_maps_otello</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="gar_find_dynamit" prio="620">
+	<title>Подрывное дело</title>
+		<objective>
+			<text>Раздобыть динамит</text>
+			<icon>ui_icons_storyline_gar_find_dynamit</icon>
+                        <article>gar_self_destroy_the_wall</article>
+			<infoportion_complete>gar_self_destroy_the_wall</infoportion_complete>
+			<infoportion_fail>gar_digger_dead</infoportion_fail>
+		</objective>
+	
+		<objective>
+			<text>Вариант 1: Добыть у бандитов взрывчатку</text>
+			<map_location_type hint="Лагерь бандитов">blue_location</map_location_type>
+			<object_story_id>gar_ban_zombi_rest</object_story_id>
+			<infoportion_complete>gar_find_dynamit_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Вариант 2: Купить взрывчатку у Цезаря</text>
+			<map_location_type hint="Цезарь">blue_location</map_location_type>
+			<object_story_id>gar_cezar</object_story_id>
+			<infoportion_complete>gar_find_dynamit_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Вернутся к Диггеру</text>
+			<map_location_type hint="Диггер">blue_location</map_location_type>
+			<object_story_id>gar_digger</object_story_id>
+			<infoportion_complete>gar_self_destroy_the_wall</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<game_task id="gar_go_to_agroprom" prio="600">
+	<title>Кэп и "Долг"</title>
+		<objective>
+			<text>Узнать о Кэпе на базе Долга</text>
+			<icon>ui_icons_storyline_go_to_agroprom</icon>
+                        <article>gar_go_to_agroprom</article>
+			<infoportion_fail>agr_pass_to_dolgbase_fail</infoportion_fail>
+			<infoportion_complete>agr_conversation_with_dolg_general_done</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Добраться до базы "Долга"</text>
+			<map_location_type hint="База Долга">blue_location</map_location_type>
+			<object_story_id>agr_dolgbase</object_story_id>
+			<infoportion_complete>agr_go_to_agroprom_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Узнать у "должников" о Кэпе</text>
+			<infoportion_complete>agr_conversation_with_dolg_general_done</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<game_task id="agr_pass_to_dolgbase" prio="600">
+	<title>Допуск на базу "Долга"</title>
+		<objective>
+			<text>Получить разрешение на вход на базу "Долга"</text>
+			<icon>ui_icons_storyline_go_to_agroprom</icon>
+                        <article>gar_go_to_agroprom</article>
+			<infoportion_fail>agr_pass_to_dolgbase_fail</infoportion_fail>
+			<infoportion_complete>agr_pass_to_dolgbase_have</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Поговорить с командиром блокпоста</text>
+			<map_location_type hint="Командир блокпоста">blue_location</map_location_type>
+			<object_story_id>agr_dolgbase_com_blokp_1</object_story_id>
+			<infoportion_complete>agr_talk_with_blokpost_commander_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Получить пропуск на базу</text>
+			<infoportion_complete>agr_pass_to_dolgbase_have</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="agr_kill_flock_of_mutants" prio="600">
+	<title>Экзамен на доверие</title>
+		<objective>
+			<text>Получить доверие начальника охраны, убив мутантов</text>
+			<icon>ui_icons_storyline_agr_mutants</icon>
+			<infoportion_complete>agr_pass_to_dolgbase_have</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Уничтожить стаю мутантов</text>
+			<map_location_type hint="Стая мутантов">blue_location</map_location_type>
+			<object_story_id>agr_flock_of_mutants_rest</object_story_id>
+			<infoportion_complete>agr_kill_flock_of_mutants_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Доложить командиру блокпоста</text>
+			<map_location_type hint="Командир блокпоста">blue_location</map_location_type>
+			<object_story_id>agr_dolgbase_com_blokp_1</object_story_id>
+			<infoportion_complete>agr_pass_to_dolgbase_have</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<game_task id="agr_conversation_with_dolg_general" prio="600">
+	<title>Разговор с генералом</title>
+		<objective>
+			<text>Поговорить с генералом о Кэпе</text>
+			<icon>ui_icons_storyline_talk_with_general</icon>
+			<infoportion_complete>agr_conversation_with_dolg_general_done</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Поговорить с начальником охраны</text>
+			<map_location_type hint="Начальник охраны">blue_location</map_location_type>
+			<object_story_id>agr_dolgbase_nachalnik</object_story_id>
+			<infoportion_complete>agr_talk_with_security_chief_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Получить у него разрешение на вход к генералу</text>
+			<map_location_type hint="Начальник охраны">blue_location</map_location_type>
+			<object_story_id>agr_dolgbase_nachalnik</object_story_id>
+			<infoportion_complete>agr_cat_hunt_cutscene_start</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Пройти к генералу</text>
+			<infoportion_complete>agr_go_to_dolg_general_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Поговорить с генералом о Кэпе</text>
+
+			<infoportion_complete>agr_conversation_with_dolg_general_done</infoportion_complete>
+		</objective>
+	</game_task>	
+	
+<game_task id="agr_cat_hunt" prio="600">
+	<title>Крепкий сон</title>
+		<objective>
+			<text>Усыпить и притащить тело кошки</text>
+			<icon>ui_icons_storyline_go_to_agroprom</icon>
+			<infoportion_complete>agr_cat_hunt_cutscene_start</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Усыпить кошку</text>
+			<map_location_type hint="Начальник охраны">blue_location</map_location_type>
+			<object_story_id>agr_hunt_cat_1</object_story_id>
+			<infoportion_complete>agr_cat_hunt_1_dead</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Притащить кошку к Ловцу</text>
+			<map_location_type hint="Начальник охраны">blue_location</map_location_type>
+			<object_story_id>agr_hunt_cat_kletka_rest</object_story_id>
+			<infoportion_complete>agr_cat_hunt_cutscene_start</infoportion_complete>
+		</objective>
+	</game_task>
+		
+<game_task id="cap_in_underground" prio="610">
+	<title>Кэп в подземелье</title>
+		<objective>
+			<text>Следовать за Капитаном в подземелье</text>
+                        <article>cap_in_underground</article>
+			<icon>ui_icons_storyline_cap_in_underground</icon>
+			<infoportion_complete>go_to_underground_done</infoportion_complete>
+		</objective>
+	
+		<objective>
+			<text>Попасть в подземелье</text>
+			<map_location_type hint="Вход в подземку">blue_location</map_location_type>
+			<object_story_id>agr_dolgbase_enter_to_undergrd</object_story_id>
+			<infoportion_complete>find_enter_in_underground_complete</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Найти Капитана в подземелье</text>
+			<infoportion_complete>go_to_underground_done</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<game_task id="exit_from_underground" prio="720">
+	<title>Выбраться из подземелья</title>
+		<objective>
+			<text>Выбраться из подземелья</text>
+			<icon>ui_icons_storyline_exit_from_underground</icon>
+			<infoportion_complete>exit_from_underground_complete</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Выбраться из подземелья</text>
+			<infoportion_complete>exit_from_underground_complete</infoportion_complete>
+		</objective>
+	</game_task>
+	
+<game_task id="activate_gener" prio="100">
+	<title>activate_gener_text</title>
+		<objective>
+			<text>activate_gener_text</text>
+			<icon>ui_icons_storyline_activate_gener</icon>
+			<article>activate_gener</article>
+			<infoportion_complete>activate_gener_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>find_gener_text</text>
+			<infoportion_complete>find_gener_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>start_gener_text</text>
+			<infoportion_complete>activate_gener_done</infoportion_complete>
+		</objective>
+</game_task>
+
+<game_task id="open_germodoor" prio="100">
+	<title>Открыть гермодверь</title>
+		<objective>
+			<text>Открыть гермодверь</text>
+			<icon>ui_icons_storyline_activate_gener</icon>
+			<infoportion_complete>open_germodoor_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Открыть гермодверь</text>
+			<infoportion_complete>open_germodoor_done</infoportion_complete>
+		</objective>
+</game_task>
+
+
+<!-------------------------------- - Ветка при спасении учёного -  -------------------------->
+<game_task id="lead_agr_scien" prio="100">
+	<title>Вывести Маниковского</title>
+		<objective>
+			<text>Вывести Маниковского</text>
+			<icon>ui_icons_storyline_lead_manic</icon>
+                        <article>lead_agr_scien</article>
+			<infoportion_complete>rf_scien_going_conf</infoportion_complete>
+			<infoportion_fail>kill_scien_done</infoportion_fail>
+		</objective>
+                <objective>
+			<text>Сопроводить учёного в рыжий лес</text>
+			<infoportion_complete>agr_scien_perehod_done</infoportion_complete>
+		</objective>
+                      <objective>
+			<text>Привести на базу сталкеров</text>
+			<infoportion_complete>rf_scien_going_conf</infoportion_complete>
+		</objective>
+</game_task>
+
+<game_task id="find_crazy_stalk" prio="100">
+	<title>Найти сталкера</title>
+		<objective>
+			<text>Найти сталкера</text>
+			<icon>ui_icons_storyline_find_crazy_stalk</icon>
+                        <article>find_crazy_stalk</article>
+			<infoportion_complete>rf_docs_have</infoportion_complete>
+		</objective>
+                <objective>
+			<text>Найти обезумевшего сталкера</text>
+			<infoportion_complete>dialog_rf_beglec_done</infoportion_complete>
+		</objective>
+                      <objective>
+			<text>Забрать документы</text>
+			<infoportion_complete>rf_docs_have</infoportion_complete>
+		</objective>
+</game_task>
+
+<game_task id="help_crazy_stalk" prio="100">
+	<title>Помочь сталкеру</title>
+		<objective>
+			<text>Помочь сталкеру</text>
+			<article>help_crazy_stalk</article>
+			<icon>ui_icons_storyline_find_crazy_stalk</icon>
+			<infoportion_complete>give_rf_art_done</infoportion_complete>
+		</objective>
+                <objective>
+			<text>Поговорить с лесником</text>
+			<infoportion_complete>find_rf_art_start</infoportion_complete>
+		</objective>
+                      <objective>
+			<text>Найти способ помочь зомбированому сталкеру</text>
+			<infoportion_complete>give_rf_art_done</infoportion_complete>
+		</objective>
+</game_task>
+
+<game_task id="find_rf_art" prio="100">
+	<title>Найти артефакт</title>
+		<objective>
+			<text>Найти артефакт</text>
+			<icon>ui_icons_storyline_find_art_depo</icon>
+			<article>find_rf_art</article>
+			<infoportion_complete>give_rf_art_done</infoportion_complete>
+		</objective>
+                <objective>
+			<text>Найти ночью артефакт "Тюльпан"</text>
+			<infoportion_complete>rf_art_have</infoportion_complete>
+		</objective>
+                      <objective>
+			<text>Отдать артефакт зомбированому сталкеру</text>
+			<infoportion_complete>give_rf_art_done</infoportion_complete>
+		</objective>
+</game_task>
+
+<game_task id="find_rf_docs" prio="100">
+	<title>Найти документы</title>
+		<objective>
+			<text>Найти документы</text>
+			<article>find_rf_docs</article>
+			<icon>ui_icons_storyline_city_maps</icon>
+			<infoportion_complete>rf_bridge_dialog_scien_done</infoportion_complete>
+		</objective>
+                <objective>
+			<text>Найти папку с документами</text>
+			<infoportion_complete>rf_docs_have</infoportion_complete>
+		</objective>
+                      <objective>
+			<text>Отдать её Легиону</text>
+			<infoportion_complete>rf_docs_give</infoportion_complete>
+		</objective>
+                      <objective>
+			<text>Поговорить с профессором</text>
+			<infoportion_complete>rf_bridge_dialog_scien_done</infoportion_complete>
+		</objective>
+</game_task>
+<game_task id="escape_zone" prio="300">
+	<title>Уйти из Зоны</title>
+		<objective>
+			<text>Уйти из Зоны</text>
+			<article>escape_zone</article>
+			<icon>ui_icons_storyline_escape_zone</icon>
+			<infoportion_complete>escape_zone_done</infoportion_complete>
+		</objective>
+                <objective>
+			<text>Покинуть Зону</text>
+			<infoportion_complete>escape_zone_done</infoportion_complete>
+		</objective>
+                          <objective>
+			<text>Вернуться домой</text>
+			<infoportion_complete>escape_zone_done</infoportion_complete>
+		</objective>
+</game_task>
+
+
+
+
+
+<!-- Новое -->
+
+	
+	
+
+<game_task id="find_alives_on_base" prio="690">
+	<title>"Научный лагерь"</title>
+		<objective>
+			<text>Найти выживших</text>
+			<icon>ui_icons_storyline_find_alive</icon>
+			<article>find_alives_on_base</article>
+			<infoportion_complete>find_alives_on_base_done</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Найти выживших в научном лагере</text>
+			<infoportion_complete>find_alives_on_base_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="lab_find_flash" prio="690">
+	<title>"Поднять информацию"</title>
+		<objective>
+			<text>Поднять информацию с трупа учёного</text>
+			<icon>ui_icons_storyline_take_info</icon>
+			<article>lab_find_flash</article>
+			<infoportion_complete>find_lab_flash_done</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Поднять информацию с трупа учёного</text>
+			<infoportion_complete>find_lab_flash_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+
+<game_task id="dv_dolg_sms_zavod_task" prio="690">
+	<title>"Помощь Долгу"</title>
+		<objective>
+			<text>Помочь Долгу штурмовать базу Греха</text>
+			<icon>ui_icons_storyline_help_dolg_greh</icon>
+			<infoportion_complete>dv_dolg_grehbase_rush_done</infoportion_complete>
+                        <infoportion_fail>find_weapons_case_start_2</infoportion_fail>
+		</objective>
+
+		<objective>
+			<text>Штурмовать вместе с Долгом базу Греха</text>
+			<infoportion_complete>dv_dolg_grehbase_rush_done</infoportion_complete>
+                        <infoportion_fail>find_weapons_case_start_2</infoportion_fail>
+		</objective>
+	</game_task>
+
+<game_task id="dv_sv_sms_zavod_task" prio="690">
+	<title>"Помощь Свободе"</title>
+		<objective>
+			<text>Помочь Свободе штурмовать базу Греха</text>
+			<icon>ui_icons_storyline_help_svob_greh</icon>
+			<infoportion_complete>dv_sv_greshbase_rush_done</infoportion_complete>
+                        <infoportion_fail>dv_dolg_group_sbor</infoportion_fail>
+		</objective>
+
+		<objective>
+			<text>Штурмовать вместе со Свободой базу Греха</text>
+			<infoportion_complete>dv_sv_greshbase_rush_done</infoportion_complete>
+                        <infoportion_fail>dv_dolg_group_sbor</infoportion_fail>
+		</objective>
+	</game_task>
+
+<game_task id="dv_vibor_zavod_task" prio="690">
+	<title>"Выбор: Долг или Свобода"</title>
+		<objective>
+			<text>Помочь Долгу или Свободе</text>
+			<icon>ui_icons_storyline_dolg_vs_svob</icon>
+			<infoportion_complete>dv_dolg_grehbase_rush_done</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Помочь Долгу или Свободе в штурме завода</text>
+			<infoportion_complete>dv_dolg_grehbase_rush_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+
+
+<game_task id="agr_racia_about_manic" prio="690">
+	<title>Сообщить командованию о ликвидации Маниковского</title>
+		<objective>
+			<text>Сообщить командованию о ликвидации Маниковского</text>
+			<icon>ui_icons_storyline_find_raciya</icon>
+			<article>agr_racia_about_manic</article>
+			<infoportion_complete>go_to_evacuation_zone_start</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Связаться с базой по рации</text>
+			<infoportion_complete>go_to_evacuation_zone_start</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Сообщить о ликвидации профессора Маниковского</text>
+			<infoportion_complete>go_to_evacuation_zone_start</infoportion_complete>
+		</objective>
+	</game_task>
+
+
+
+<game_task id="agr_talk_with_scien" prio="690">
+	<title>Поговорить с учёным</title>
+		<objective>
+			<text>Поговорить с учёным</text>
+			<icon>ui_icons_storyline_esc_heli</icon>
+			<article>agr_talk_with_scien</article>
+			<infoportion_complete>agr_anomaly_scien_dialog_done</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Узнать у учёного, что случилось</text>
+			<infoportion_complete>agr_anomaly_scien_dialog_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="gar_meet_with_messenger" prio="690">
+	<title>Встретиться со связным</title>
+		<objective>
+			<text>Встретиться со связным на Свалке</text>
+			<icon>ui_icons_storyline_esc_heli</icon>
+			<article>gar_messenger</article>
+			<infoportion_complete>gar_messenger_dead</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Узнать подробности операции у связного</text>
+			<map_location_type hint="Связной">green_location</map_location_type>
+			<object_story_id>gar_messenger</object_story_id>
+                        <infoportion_fail>gar_messenger_dead</infoportion_fail>
+			<infoportion_complete>agr_anomaly_scien_dialog_done</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="gar_snipers" prio="690">
+	<title>Уничтожить снайперов</title>
+		<objective>
+			<text>Уничтожить снайперов</text>
+			<icon>ui_icons_storyline_snipers</icon>
+			<infoportion_complete>gar_find_messenger_trup</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Уничтожить снайперов убивших Связного</text>
+			<infoportion_complete>gar_find_messenger_trup</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="gar_messenger_trup" prio="690">
+	<title>Обыскать труп Связного</title>
+		<objective>
+			<text>Обыскать труп Связного</text>
+			<icon>ui_icons_storyline_pda</icon>
+			<article>gar_messenger_trup</article>
+			<infoportion_complete>gar_follow_to_garneutlager_start</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Обыскать труп Связного</text>
+			<infoportion_complete>gar_follow_to_garneutlager_start</infoportion_complete>
+		</objective>
+	</game_task>
+
+<game_task id="rf_cave_zasada_find_mil_pda">
+	<title>Обыскать нападавших</title>
+		<objective>
+			<text>Обыскать тела нападавших</text>
+			<icon>ui_icons_storyline_cave</icon>
+			<article>rf_cave_zasada_find_mil_pda</article>
+			<infoportion_complete>rf_mil_pda_cave_have</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Обыскать тела нападавших и выяснить кто они</text>
+			<infoportion_complete>rf_mil_pda_cave_have</infoportion_complete>
+		</objective>
+
+	</game_task>
+
+<game_task id="rf_scien_bridge">
+	<title>Найти профессора Маниковского</title>
+		<objective>
+			<text>Найти профессора Маниковского</text>
+			<icon>ui_iconsTotal_yan_scientist_job</icon>
+			<article>rf_scien_bridge</article>
+			<infoportion_complete>rf_bridge_dialog_legion_done</infoportion_complete>
+		</objective>
+		<objective>
+			<text>Спросить у Легиона куда подевался профессор</text>
+			<infoportion_complete>rf_bridge_dialog_legion_done</infoportion_complete>
+		</objective>
+	</game_task>
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- Вырезанное -->
+	
+	
+	
+	
+	<game_task id="help_scien_lager" prio="680">
+	<title>Добраться до лагеря ученых</title>
+		<objective>
+			<text>Ассистент ученого</text>
+			<icon>ui_icons_storyline_help_scien_lager</icon>
+						<map_location_type hint="yan_scienlager">green_location</map_location_type>
+			<object_story_id>zal_scien_lager</object_story_id>
+			<infoportion_complete>go_to_zallager_done</infoportion_complete>
+                        <infoportion_set_complete>kill_zal_merc_start</infoportion_set_complete>
+		</objective>
+		
+		<objective>
+			<text>Добраться до лагеря ученых</text>
+			<infoportion_complete>go_to_zallager_done</infoportion_complete>
+                        <infoportion_set_complete>kill_zal_merc_start</infoportion_set_complete>
+		</objective>
+	</game_task>
+	
+	<game_task id="kill_zal_merc" prio="690">
+	<title>Зачистка</title>
+		<objective>
+			<text>Уничтожить напавших</text>
+			<icon>ui_icons_storyline_kill_zal_merc</icon>
+			<infoportion_complete>help_scien_lager_complete</infoportion_complete>
+		</objective>
+
+		<objective>
+			<text>Уничтожить напавших</text>
+			<infoportion_complete>kill_merc_complete</infoportion_complete>
+			<function_complete>xr_effects.zal_merc_dead</function_complete>
+		</objective>
+		<objective>
+			<text>Найти выживших</text>
+			<infoportion_complete>help_scien_lager_complete</infoportion_complete>
+		</objective>
+	</game_task>

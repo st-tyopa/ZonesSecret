@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<game_information_portions>
+ <info_portion id="slot_zanyat"></info_portion>
+ <info_portion id="hacker_its_job"></info_portion>
+ <info_portion id="gazmask_good"></info_portion>
+ <info_portion id="gazmask_bad"></info_portion>
+ 
+ 
+ <info_portion id="ggwp"></info_portion>
+ 
+ <info_portion id="pnv_vkluchen"></info_portion>
+ <info_portion id="nachalo_igry"></info_portion>
+ <info_portion id="gg_in_sleep"></info_portion>
+ <info_portion id="intro_rolik"></info_portion>
+
+
+ <info_portion id="test_infos_1">
+ <action>gz_pda.test_1</action>
+ </info_portion>
+<info_portion id="test_infos_2">
+ <action>gz_pda.test_2</action>
+ </info_portion>
+ <info_portion id="test_infos_3">
+ <action>gz_pda.test_3</action>
+ </info_portion>
+</game_information_portions>

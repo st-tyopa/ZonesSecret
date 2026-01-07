@@ -1,0 +1,28 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+rf_mil_horror_sound_start} %=play_snd(ambient\horror\rnd_horror1)% sr_idle1
+
+[sr_idle1]
+on_game_timer = 25|%+rf_mil_horror_sold_talk% sr_idle2
+
+[sr_idle2]
+on_game_timer = 35|%+rf_mil_horror_cap_talk% sr_idle3
+
+[sr_idle3]
+on_game_timer = 45|%=play_snd(ambient\horror\rnd_horror26)% sr_idle41
+
+[sr_idle41]
+on_info = {+redfor_military_group_in_cave} %+red_for_mil_kontakt% sr_idle42
+
+[sr_idle42]
+on_game_timer = 40|%+red_for_mil_kontakt_yes% sr_idle4
+
+[sr_idle4]
+on_info = {+predatelstvo_sms} sr_idle45
+
+[sr_idle45]
+on_timer = 3000|%+predatelstvo_sms_gg% sr_idle@nil
+
+[sr_idle@nil]

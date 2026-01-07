@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle11
+
+[sr_idle11]
+on_actor_inside = {+redfor_military_group_in_cave_1 -redfor_military_group_in_cave} %+redfor_military_group_in_cave_sms% sr_idle2
+
+[sr_idle2]
+on_game_timer = 50|%+redfor_military_group_in_cave% sr_idle4
+
+[sr_idle3]
+on_info = {+rf_cave_docs_find_done} %+rf_cave_docs_find_sms% sr_idle31
+
+[sr_idle31]
+on_game_timer = 55|%+rf_cave_docs_find_com_sms% sr_idle4
+
+[sr_idle4]
+on_info = {=gulag_empty(redfor_military)} %+kill_predateli_complete% sr_idle@nil
+
+[sr_idle@nil]

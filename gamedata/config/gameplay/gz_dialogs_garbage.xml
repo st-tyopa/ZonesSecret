@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+
+ <dialog id="gar_sniper_wounded">
+  <dont_has_info>gar_sniper_wounded_dialog_done</dont_has_info>
+  <has_info>gar_sniper_wounded</has_info>
+  <init_func>dialogs_new_system.gar_sniper_wounded</init_func>    
+ </dialog>
+
+ <dialog id="gar_crazy_bandit">
+  <dont_has_info>gar_crazy_dialog_done</dont_has_info>
+  <init_func>dialogs_new_system.gar_crazy_bandit</init_func>    
+ </dialog>
+
+ <dialog id="gar_black_digger_diary">
+  <dont_has_info>gar_find_black_digger_diary_done</dont_has_info>
+  <has_info>gar_find_black_digger_diary</has_info>
+  <has_info>dv_black_digger_diary_have</has_info>
+  <init_func>dialogs_new_system.gar_black_digger_diary</init_func>    
+ </dialog>
+
+ <dialog id="dialog_prisoner_quest_gar_sv">
+                <has_info>find_prisoners_flesh_have</has_info>
+                <dont_has_info>gar_sv_dialog_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здорова, мэн! Спасибо, что вывел нас к тайнику, но флешку-то ты отдай, она предназначалась Свободе.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Гаврила нёс её цезарю, это его флешка.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Давай так: я дам тебе 5 тысяч, ты отдаёшь нам инфу, и мы расходимся друзьями?</text>
+                <next>3</next>
+                <next>31</next>
+                <next>35</next>
+            </phrase>
+            <phrase id="3">
+                <text>По рукам.</text>
+                <next>4</next>
+            </phrase>
+             <phrase id="4">
+                <text>Люблю тех, кто понимает с первого раза, вот твои деньги.</text>
+                  <give_info>gar_sv_dialog_done</give_info>
+                 <action>gz_prologue.transfer_deneg_gar_sv</action>
+                 <action>gz_prologue.transfer_prisoners_flesh</action>
+            </phrase>
+	    <phrase id="31">
+                <text>Торговец заплатит больше.</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Ах ты ж, хитрый еврей. Хорошо 7500, согласен?</text>
+                <next>51</next>
+                <next>52</next>
+            </phrase>
+             <phrase id="51">
+                <text>10 тысяч и по рукам.</text>
+                <next>53</next>
+            </phrase>
+            <phrase id="53">
+                <text>Эээ нет, мэн. Не люблю я торговаться. Ребята, кончайте его!</text>
+                <next>54</next>
+                <next>55</next>
+            </phrase>
+            <phrase id="54">
+                <text>Да, стой ты! Хорошо 7500, так 7500.</text>
+                <next>515</next>
+            </phrase>
+            <phrase id="55">
+                <text>Валите отсюда лучше, пока я вам бошки не по отстреливал.</text>
+                 <give_info>gar_sv_vrag</give_info>
+                 <action>dialogs.break_dialog</action>
+            </phrase>
+             <phrase id="52">
+                <text>Согласен.</text>
+                <next>515</next>
+            </phrase>
+             <phrase id="515">
+                <text>Вот деньги, давай флешку и проваливай.</text>
+                 <give_info>gar_sv_dialog_done</give_info>
+                <action>gz_prologue.transfer_deneg_gar_sv_2</action>
+                 <action>gz_prologue.transfer_prisoners_flesh</action>
+            </phrase>
+	    <phrase id="35">
+                <text>Да, пошёл ты!</text>
+                 <give_info>gar_sv_vrag</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_cezar_quest">
+                <dont_has_info>gar_sv_dialog_done</dont_has_info>
+                <dont_has_info>dialog_cezar_quest_done</dont_has_info>
+                <has_info>gar_sv_vrag</has_info>
+                <has_info>prisoner_quest_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я от Гаврилы, он просил передать флешку.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Ты кто?! Где курьер, что с ним случилось?!</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Посыльный твой - Гаврила, попал в плен к свободовцам, флешку они не нашли. Я встретил его на их базе, там он и попросил меня отнести флешку тебе.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Вот паскуды, фримены последнее время совсем не в свои дела нос суют. Любопытной Варваре, на базаре нос оторвали, хе-хе. Давай сюда флешку, с зелеными потом разберёмся.</text>
+                <next>4</next>
+            </phrase>
+			<phrase id="4">
+                <text>Вот она, в целости и сохранности.</text>
+                <next>5</next>
+            </phrase>
+			<phrase id="5">
+                <text>Хорошо, очень хорошо. Так-с, защитная программа цела, код взломать никто не пытался. Держи вот награду, за труды.</text>
+                <give_info>dialog_cezar_quest_done</give_info>
+                <action>gz_prologue.transfer_prisoners_flesh</action>
+                <action>gz_prologue.transfer_deneg_gar_sv_2</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+       <dialog id="dialog_osvedomel_kap_info">
+                <dont_has_info>go_to_agroprom_start</dont_has_info>
+             <!--   <dont_has_info>find_art_depo_done</dont_has_info>  -->
+                <has_info>gar_follow_to_garneutlager_done</has_info>
+                <has_info>dialog_start_osvedomel_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я ищу своего друга. Климом кличют, к вам в лагерь не заходил такой?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Хм, да, был такой, несколько часов назад.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Не знаешь, куда он мог направится?</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Почему ж, знаю. Но эта информация будет не за бесплатно. С тебя 5000 рублей.</text>
+                <next>5</next>
+                <next>45</next>
+            </phrase>
+            <phrase id="45">
+                <text>Да, пошёл ты!</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="5">
+                <text>Неужели это такая информация, за которую нужно платить?</text>
+               <next>6</next>
+            </phrase>
+                <phrase id="6">
+                <text>dialog_osvedomel_kep</text>
+               <next>7</next>
+               <next>8</next>
+            </phrase>
+                <phrase id="7">
+                <precondition>gz_prologue.has_money_seriy</precondition>
+                <text>Ладно, ладно. Держи свои деньги.</text>
+               <next>9</next>
+            </phrase>
+             <phrase id="9">
+                <text>dialog_osved_about_cap</text>
+                <action>gz_prologue.give_seriy_money</action>
+               <next>10</next>
+            </phrase>
+                <phrase id="10">
+                <text>Не густо информации, за пять тысяч-то.</text>
+                <action>dialogs.break_dialog</action>
+                <give_info>go_to_agroprom_start</give_info>
+                <give_info>gar_osved_infa_about_cap</give_info>
+            </phrase>
+               <phrase id="8">
+                <text>Я на мели.</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+     <dialog id="dialog_osvedomel_digger_tainik_quest">
+        <dont_has_info>dialog_osvedomel_digger_dialog_done</dont_has_info>
+        <dont_has_info>quest_digger_tainik_start</dont_has_info>
+        <dont_has_info>dialog_osvedomel_digger_otkaz</dont_has_info>
+        <has_info>dialog_start_osvedomel_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ты сказал, что знаешь подробности моей операции?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Да, могу нарыть и ещё больше, но не за бесплатно естественно.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Сколько?</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Деньги не нужны, могу предложить вариант: услуга за услугу.</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Что за услуга?</text>
+               <next>8</next>
+            </phrase>
+             <phrase id="8">
+                <text>dialog_osvedomel_beka</text>
+               <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>И как же я это должен сделать?</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>dialog_osvedomel_beka1</text>
+                <next>11</next>
+                <next>121</next>
+            </phrase>
+             <phrase id="11">
+                <text>А где же мне найти Петро?</text>
+                <next>20</next>
+            </phrase>
+            <phrase id="121">
+                <text>Не, я пас.</text>
+                <give_info>dialog_osvedomel_digger_otkaz</give_info>
+            </phrase>
+              <phrase id="20">
+                <text>Он обычно где-то тут в лагере ошивается.</text>
+                <give_info>dialog_osvedomel_digger_dialog_done</give_info>
+                <give_info>quest_digger_tainik_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+     <dialog id="dialog_osvedomel_infa_oper">
+        <dont_has_info>dialog_osvedomel_infa_done</dont_has_info>
+        <dont_has_info>find_bekas_box_fail_new</dont_has_info>
+        <has_info>find_bekas_money_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вот, я достал этот контейнер, но что в нём?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>О, это тебя не должно волновать, ты нашёл его и это главное. А теперь я могу рассказать тебе, что мне известно насчёт твоей операции.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Ты прав, у меня сейчас и так забот не мало. Держи свою побрекушку.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Вот, всё необходимое я скинул тебе на ПДА. Приятно было с тобой поработать.</text>
+        				<action>gz_prologue.transfer_bekas_contr</action> 
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Взаимно.</text>
+                <give_info>dialog_osvedomel_infa_done</give_info>
+                <give_info>infa_about_heli_have</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+     <dialog id="dialog_osvedomel_infa_mercs">
+        <dont_has_info>osvedomel_mercs_infa_done</dont_has_info>
+        <has_info>infa_about_heli_have</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Расскажи, мне о группировке наёмников "Синий Орёл".</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Мне о ней известно не так уж и много, поэтому цена 500 рублей.</text>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <precondition>gz_prologue.has_money_osved_mercs</precondition>
+                <text>Вот, держи.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>dialog_osved_mercs_infa</text>
+        				<action>gz_prologue.give_osvedomel_money</action> 
+            <give_info>osvedomel_mercs_infa_done</give_info>
+            </phrase>
+            <phrase id="3">
+                <text>У меня пока нет таких денег.</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+	
+	
+       <dialog id="dialog_petro_about_bekas">
+                <dont_has_info>find_bekas_at_td_start</dont_has_info>
+                <has_info>quest_digger_tainik_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Привет, брат.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="65">
+                <text>Я хочу заключить с тобой сделку.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <text>Здравствуй. Ты Петро?</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="3">
+                <text>Какую ещё сделку? И откуда ты знаешь меня?</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="4">
+                <text>Он самый. Чем могу помочь?</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="5">
+                <text>Я предлагаю тебе рассказать, где находится твой друг Бекас, а ещё лучше – указать координаты его схрона.</text>
+               <next>7</next>
+            </phrase>
+                <phrase id="6">
+                <text>Ты же знаешь Бекаса? Он вроде, как твой друг. Я работаю на учёных. Они просили разыскать Бекаса и передать ему, что у них есть для него высокооплачиваемая работа, связанная с поиском артефактов.</text>
+               <next>8</next>
+            </phrase>
+                <phrase id="7">
+                <text>Интересно. И что я получу взамен? </text>
+               <next>9</next>
+            </phrase>
+             <phrase id="8">
+                <text>Вот как. Хорошо, я сообщу ему о предложении учёных.</text>
+               <next>10</next>
+            </phrase>
+                <phrase id="9">
+                <text>Я оставлю тебя в живых.</text>
+                 <next>11</next>
+            </phrase>
+               <phrase id="10">
+                <text>Нет, так не пойдёт. Я должен лично ему всё передать и получить ответ в течение пятнадцати минут. У нас всё строго. </text>
+                 <next>12</next>
+            </phrase>
+              <phrase id="11">
+                <text>Что?! Да ты кто вообще такой?! </text>
+                 <next>13</next>
+            </phrase>
+              <phrase id="12">
+                <text>Даже так? Хм… впрочем, ты не похож на человека с плохими намерениями. Бекас сейчас находится в Тёмной долине, КПК у него почти всегда выключен, поэтому его координаты скинуть не удастся.</text>
+            <give_info>find_bekas_at_td_start</give_info>
+            </phrase>
+              <phrase id="13">
+                <text>Считаю до трёх. Не скажешь про тайник или Бекаса – пристрелю! Раз…</text>
+                 <next>15</next>
+            </phrase>
+            <phrase id="15">
+                <text>Но…</text>
+                 <next>17</next>
+            </phrase>
+               <phrase id="17">
+                <text>Два…</text>
+                 <next>18</next>
+            </phrase>
+            <phrase id="18">
+                <text>dialog_petro_about_bekas_1</text>
+                 <next>19</next>
+            </phrase>
+             <phrase id="19">
+                <text>Не твоё дело.</text>
+                <give_info>find_bekas_at_td_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+      <dialog id="dialog_bekas_vrag">
+                <dont_has_info>bekas_vrag</dont_has_info>
+                <dont_has_info>find_bekas_box_fail</dont_has_info>
+                <has_info>find_bekas_at_td_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Чем могу помочь?</text>
+				
+                <next>15</next>
+            </phrase>
+            <phrase id="15">
+                <text>Ты Бекас? Петро просил передать, что он хотел встретиться с тобой через два дня, у железнодорожного моста на свалке.</text>
+                <next>23</next>
+            </phrase>
+      <phrase id="23">
+                <text>Петро? Ты его знаешь? Странно, обычно он посыльных не отправлял, видно на этот раз что-то серьёзное.</text>
+                <next>35</next>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>А теперь давай к делу: я знаю, что у тебя есть тайник с документами из лаборатории. В твоих же интересах указать мне его местоположение. </text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Ты это сейчас серьезно? Откуда ты узнал про тайник? Что с Петро? Говори мразь!</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="35">
+                <text>Ну моё дело передать, бывай.</text>
+                <next>45</next>
+            </phrase>
+               <phrase id="45">
+                <text>Ага, спасибо.</text>
+               <give_info>find_bekas_box_fail</give_info>
+            </phrase>
+            <phrase id="3">
+                <text>Повторю вопрос: где тайник? Иначе я сделаю с тобой тоже самое, что сделал с Петро.</text>
+                              <give_info>bekas_vrag</give_info>
+               <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_dig_find_digger_tainik">
+		<dont_has_info>gar_find_black_digger_start</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Здорова, меня зовут Зорин, я от Угрюмого, Он сказал, ты знаешь, как можно попасть в подземелья Агропрома?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Привет, не сказать, что прям знаю. Мне лишь известно, что часть поздемелья проходит где-то под свалкой, но где именно и как туда попасть, я без понятия.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Чёрт, может можно что-то придумать? Мне очень надо попасть в подземку.</text>
+                <next>25</next>
+            </phrase>
+             <phrase id="25">
+                <text>dialog_digger_about_black</text>
+                <next>26</next>
+            </phrase>
+            <phrase id="26">
+                <text>Раз ты с ним знаком, может он упоминал в разговорах, что-то про свой схрон?</text>
+                <next>27</next>
+            </phrase>
+            <phrase id="27">
+                <text>Насколько я помню, убежище находится под одной из больших мусорных куч, а проход должен быть где-то рядом. Мусорных куч не так уж и много на Свалке, я тебе отмечу тебе в ПДА.</text>
+                <next>28</next>
+            </phrase>
+            <phrase id="28">
+                <text>Хорошо, спасибо за помощь.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Да пока не за что, мы же ещё ничего не нашли. Кстати, Чёрный Копатель был не так прост, он рассказывал мне про ловушки в его тайнике. Вполне возможно, что это он приврал немного, но всё же будь осторожен.</text>
+                <give_info>gar_find_black_digger_start</give_info>     
+                <action>gz_caches.gz_map_gar_dig_1</action>
+                <action>gz_caches.gz_map_gar_dig_2</action>
+                <action>gz_caches.gz_map_gar_dig_3</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_dig_find_dynamite">
+                <has_info>find_tainik_maps_black_digger</has_info>
+		<dont_has_info>give_maps_otello</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>У меня хорошие новости, я нашёл карты.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Отлично, надеюсь легенда Зоны не будет на нас в обиде, так-с теперь нужно найти динамит.</text>
+                                
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>А зачем он, прямого прохода в подземелье не существует?</text>
+                <next>25</next>
+            </phrase>
+             <phrase id="25">
+                <text>В том то и дело, что нет. Тоннель должен проходить не глубоко подземлёй.</text>
+                <next>26</next>
+            </phrase>
+            <phrase id="26">
+                <text>Где же на Свалке можно найти динамит?</text>
+                <next>27</next>
+            </phrase>
+            <phrase id="27">
+                <text>dialog_digger_dinamit_new</text>
+                <next>28</next>
+            </phrase>
+            <phrase id="28">
+                <text>Выбор конечно так себе. А если что, где я смогу найти этого Сухого?</text>
+                <next>4</next>
+            </phrase>
+              <phrase id="4">
+                <text>У них лагерь на севере Свалки, в зелёном вагончике, возле дороги к озеру Янтарь. Ладно, ищи динамит, а я пока попробую разобраться с картами, что ты нашёл.</text>
+                                <action>gz_prologue.transfer_diggers_maps</action>
+                <give_info>give_maps_otello</give_info>     
+                <give_info>gar_find_dynamit_start</give_info> 
+                <give_info>gar_find_dynamit_true</give_info> 
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+        <dialog id="dialog_dig_have_dynamite">
+        <has_info>gar_find_dynamit_start</has_info>
+		<dont_has_info>gar_transfer_dynamit_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Ну, как успехи?</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="11">
+		<has_info>gar_find_dynamit_done</has_info>
+                <text>Вот, раздобыл. Тяжёлый падла.</text>
+                  <next>2</next>                  
+            </phrase>
+            <phrase id="2">
+                <text>dialog_digger_dinamit_1</text>
+                  <next>3</next>               
+            </phrase>
+            <phrase id="3">
+                <text>Спасибо, за помощь!</text>
+                  <next>4</next>
+                <give_info>gar_self_destroy_the_wall</give_info>     
+            </phrase>
+            <phrase id="4">
+                <text>Слушай, у меня к тебе будет одна просьба...</text>
+                                  <next>5</next>    
+            </phrase>
+            <phrase id="5">
+                <text>Что за просьба?</text>
+                                  <next>6</next>    
+            </phrase>
+            <phrase id="6">
+                <text>Что за просьба?</text>
+                                  <next>7</next>    
+            </phrase>
+            <phrase id="7">
+                <text>dialog_digger_about_black11</text>
+                                  <next>8</next>    
+            </phrase>
+            <phrase id="8">
+                <text>Хорошо, постараюсь сделать всё возможное.</text>  
+                <give_info>gar_find_black_digger_diary</give_info>   
+                                  <next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Спасибо, для меня действительно это очень важно.</text>  
+            </phrase>
+            <phrase id="9">
+                <text>Извини, у меня вряд ли выдастся возможность.</text>   
+            </phrase>
+            <phrase id="12">
+		<dont_has_info>gar_find_dynamit_done</dont_has_info>
+                <text>Не нашёл ещё.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+   
+        <dialog id="dialog_osvedomel_start">
+		<dont_has_info>dialog_start_osvedomel_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>И кто же ты такой? Больно рожа бандитская...</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>На свою армейскую лысину лучше посмотри... сталкеры не очень жалуют бывших вояк в Зоне.</text>
+                                
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>А по мне так это заметно что ли?</text>
+                <next>3</next>
+            </phrase>
+             <phrase id="3">
+                <text>У меня есть разные глаза и уши, чтобы знать кто передо мной...</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>И ты что - знаешь всё про каждого?</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Почти... работа у меня такая - знать обо всех и всём, что творится вокруг. И эту информацию я могу продать тому, кто в ней нуждается. Меня зовут Информатором.</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>А меня...</text>
+                <next>7</next>
+            </phrase>
+             <phrase id="7">
+                <text>Я в курсе, кто ты. В сталкерской среде фамилии и имена не приветствуются, а ты себе пока кликуху еще не заработал.</text>
+                <next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Вот как. И какую же информацию ты можешь сообщить?</text>
+                <next>9</next>
+                </phrase>
+            <phrase id="9">
+                <text>Любую... все, что тебя заинтересует. Правда информация не бесплатная. Но все конечно зависит от вопросов, что ты задашь.</text>
+                <next>10</next>
+                </phrase>
+                <phrase id="10">
+                <text>Откуда ты знаешь, кто я?</text>
+                <next>11</next>
+                </phrase>
+                 <phrase id="11">
+                <text>У меня хорошие источники. Я знаю про вашу операцию... и настоящую цель этой операции.</text>
+                <next>12</next>
+                </phrase>
+              <phrase id="12">
+                <text>Расскажи сначала, что тут творится вообще?</text>
+                <next>125</next>
+                </phrase>
+           <phrase id="125">
+                <text>dialog_osvedomel_start_1</text>
+                <give_info>dialog_start_osvedomel_done</give_info> 
+                </phrase>
+            <phrase id="13">
+                <text>Хотелось бы узнать про группировки поподробнее... и что значит, что мы даже не знаем, кто отдает нам приказы? Мы подчиняемся нашему командованию, а командование - правительству Украины!</text>
+                <next>14</next>
+                </phrase>
+              <phrase id="14">
+                <text>dialog_osvedomel_start_2</text>
+                <give_info>dialog_start_osvedomel_done</give_info>     
+                <next>15</next>
+                <next>151</next>
+                </phrase>
+              <phrase id="15">
+                <precondition>gz_prologue.has_money_osvedomel_2000</precondition>
+                <text>Держи деньги.</text>
+                <next>16</next>
+                </phrase>
+                   <phrase id="151">
+                <text>Денег нет.</text>
+                <give_info>dialog_osvedomel_about_teams</give_info>     
+                <action>dialogs.break_dialog</action>
+                </phrase>
+                   <phrase id="16">
+                <text>dialog_osvedomel_teams</text>
+                </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_osvedomel_about_teams">
+        <has_info>dialog_osvedomel_teams</has_info>
+		<dont_has_info>dialog_osvedomel_teams_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Расскажи мне о группировках.</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Цена всё та же, 2000 рублей.</text>
+                  <next>2</next>  
+                   <next>25</next>                
+            </phrase>
+            <phrase id="2">
+                <text>Вот, 2000.</text>
+                  <next>3</next>
+				<action>gz_prologue.give_osvedomel_money_2000</action>                
+            </phrase>
+              <phrase id="25">
+                <text>Пардон, деньги я ещё не нашёл.</text>
+                <action>dialogs.break_dialog</action>              
+            </phrase>
+            <phrase id="3">
+                <text>dialog_osvedomel_teams</text>
+                <give_info>dialog_osvedomel_teams_done</give_info>     
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_cezar_borman_noyt">
+        <has_info>pda_borman_have</has_info>
+             <has_info>kill_borman</has_info>
+		<dont_has_info>kill_borman_done</dont_has_info>
+		<dont_has_info>kill_borman_done_other</dont_has_info>
+		<dont_has_info>iron_give_noyt</dont_has_info>
+		<dont_has_info>cezar_noyt_fail</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>У меня есть ноутбук, информация на котором, может тебя заинтересовать.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Ну ка, давай сюда свой компьютер, сейчас посмотрим... </text>
+                  <next>2</next>  
+            </phrase>
+ <phrase id="2">
+                <text>Только информация на нём защищена.</text>
+                  <next>3</next>  
+            </phrase>
+ <phrase id="3">
+                <text>dialog_cezar_borman_noyt_1</text>
+                  <next>4</next> 
+                  <next>5</next>   
+            </phrase>
+ <phrase id="4">
+                <text>В самый раз.</text>
+                  <next>45</next>  
+            </phrase>
+ <phrase id="45">
+                <text>Вот он, новенький, с ПСО.</text>
+				<action>gz_prologue.transfer_noyt_borman</action>     
+				<action>gz_prologue.transfer_nagr_borman_cezar</action>  
+                <give_info>kill_borman_done_other</give_info>    
+                <give_info>kill_borman_done</give_info>   
+            </phrase>
+ <phrase id="5">
+                <text>Нет уж, отдам ноут кому-нибудь другому.</text>
+                <give_info>cezar_noyt_fail</give_info>     
+                <action>dialogs.break_dialog</action> 
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_igrok_otrava">
+		<dont_has_info>gar_otrava_start</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>[Надо травануть торговца]</text>
+                <next>1</next>
+            </phrase>
+ <phrase id="1">
+                <text>[Ок]</text>
+                <give_info>gar_otrava_start</give_info>  
+				<action>gz_prologue.transfer_quest_pills_toxic</action>        
+                <action>dialogs.break_dialog</action> 
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_bedolaga">
+		<dont_has_info>ds_art_quest_dialog_done</dont_has_info>
+		<dont_has_info>ds_art_quest_start</dont_has_info>
+		<dont_has_info>ds_art_quest_nehoch</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Здарова... ты, чей эт будешь?</text>
+                <next>1</next>
+            </phrase>
+      <phrase id="1">
+				<text>Здаров, по какому поводу пьём? От тебя алкоголем за километр несёт.</text>
+                <next>2</next>
+            </phrase>
+      <phrase id="2">
+				<text>А что выпить уже нельзя? Не твоё дело, мля... Горе у меня случилось.</text>
+                <next>3</next>
+            </phrase>
+      <phrase id="3">
+				<text>Ну может чем помочь смогу? Всё же лучше чем проблемы запивать.</text>
+                <next>4</next>
+            </phrase>
+      <phrase id="4">
+				<text>dialog_bedolaga_1</text>
+                <next>5</next>
+                <next>6</next>
+                <next>8</next>
+            </phrase>
+      <phrase id="6">
+				<text>Да уж... ну ладно, не буду мешать.</text>
+                              <give_info>ds_art_quest_dialog_done</give_info>  
+            </phrase>
+      <phrase id="8">
+                <precondition>gz_prologue.have_gar_quest_art</precondition>
+				<text>По счастливой случайности, есть у меня с собой этот артефакт.</text>
+                <next>9</next>
+            </phrase>
+      <phrase id="9">
+				<text>Дружище, можешь мне его отдать? Только... у меня нет ничего взамен.</text>
+                <next>10</next>
+                <next>11</next>
+            </phrase>
+      <phrase id="10">
+				<text>Держи, может ещё сочтёмся как-нибудь.</text>
+                <next>12</next>
+            </phrase>
+      <phrase id="12">
+				<text>Спасибо! Век не забуду, теперь я смогу вылечить свою любимую... Спасибо ещё раз.</text>
+				<action>gz_prologue.transfer_gubka_art</action>   
+                <next>13</next>
+            </phrase>
+      <phrase id="13">
+				<text>Да пожалуйста.</text>
+                                              <give_info>ds_art_quest_back</give_info>  
+            </phrase>
+      <phrase id="11">
+				<text>Ну уж нет, так просто не отдам. Артефакт то редкий.</text>
+                                             <give_info>ds_art_quest_nehoch</give_info>  
+            </phrase>
+      <phrase id="5">
+				<text>Ну,может я смогу найти тебе эту "Губку"?</text>
+                <next>7</next>
+            </phrase>
+ <phrase id="7">
+                <text>Было бы хорошо, да только где ж ты её возьмёшь сейчас.</text>
+                <give_info>ds_art_quest_start</give_info>  
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_gubka_nehoch">
+		<dont_has_info>ds_art_quest_back</dont_has_info>
+		<has_info>ds_art_quest_nehoch</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <precondition>gz_prologue.have_gar_quest_art</precondition>
+				<text>Ладно, я передумал. Держи свою "Губку".</text>
+                <next>1</next>
+            </phrase>
+      <phrase id="1">
+				<text>Спасибо! Век не забуду, теперь я смогу вылечить свою любимую... Спасибо ещё раз.</text>
+				<action>gz_prologue.transfer_gubka_art</action>   
+                <next>2</next>
+            </phrase>
+      <phrase id="2">
+				<text>Да пожалуйста.</text>
+                                              <give_info>ds_art_quest_back</give_info>  
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_gubka_back">
+		<dont_has_info>ds_art_quest_back</dont_has_info>
+		<dont_has_info>ds_art_quest_nehoch</dont_has_info>
+		<has_info>ds_art_quest_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <precondition>gz_prologue.have_gar_quest_art</precondition>
+				<text>Нашёл я твою "Губку".</text>
+                <next>11</next>
+            </phrase>
+                 <phrase id="11">
+				<text>Дружище, можешь мне её отдать? Только... у меня нет ничего взамен.</text>
+                <next>10</next>
+                <next>115</next>
+            </phrase>
+   <phrase id="10">
+				<text>Держи, может ещё сочтёмся как-нибудь.</text>
+                <next>12</next>
+            </phrase>
+      <phrase id="12">
+				<text>Спасибо! Век не забуду, теперь я смогу вылечить свою любимую... Спасибо ещё раз.</text>
+				<action>gz_prologue.transfer_gubka_art</action>   
+                <next>13</next>
+            </phrase>
+      <phrase id="13">
+				<text>Да пожалуйста.</text>
+                                              <give_info>ds_art_quest_back</give_info>  
+            </phrase>
+      <phrase id="115">
+				<text>Ну уж нет, так просто не отдам. Артефакт то редкий.</text>
+                                             <give_info>ds_art_quest_nehoch</give_info>  
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_gubka_osvedom">
+		<dont_has_info>ds_art_quest_osved_done</dont_has_info>
+		<dont_has_info>ds_art_quest_back</dont_has_info>
+		<has_info>ds_art_quest_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Мне нужна информация, где можно найти артефакт "Губка".</text>
+                <next>1</next>
+            </phrase>
+      <phrase id="1">
+				<text>Полторы тысячи.</text>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+      <phrase id="2">
+                <precondition>gz_prologue.has_money_gar_art</precondition>
+				<text>Держи.</text>
+                <next>4</next>
+            </phrase>
+      <phrase id="3">
+				<text>Это того не стоит.</text>
+            </phrase>
+      <phrase id="4">
+				<text>Последний раз его находили в юго-восточной части свалки, поисчи там.</text>
+				<action>gz_prologue.give_art_money</action>   
+                <next>5</next>
+            </phrase>
+      <phrase id="5">
+				<text>Спасибо.</text>
+                <give_info>ds_art_quest_osved_done</give_info>  
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_hacker_merc_pda">
+		<has_info>hacker_start_dialog_done</has_info>
+		<dont_has_info>proslushka_start</dont_has_info>
+		<has_info>open_agr_merc_pda_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>У меня есть ноутбук с зашифрованной информацией, тут стоит продвинутая система защиты, взломать сможешь?</text>
+                <next>1</next>
+            </phrase>
+      <phrase id="1">
+				<text>Дайка гляну, что тут у нас... Хм, думаю если покопаться, то смогу придумать как прочесть информацию. С тебя 5000 рублей.</text>
+              <next>2</next>
+                <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <precondition>gz_prologue.has_money_seriy</precondition>
+                <text>Хорошо, вот, держи деньги.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="3">
+                <text>У меня пока нет таких денег.</text>
+                <next>35</next>
+            </phrase>
+            <phrase id="35">
+                <text>В таком случае, ничем не могу помочь.</text>
+            </phrase>
+            <phrase id="4">
+				<text>Я сообщу как всё будет готово.</text>
+           				<action>gz_prologue.transfer_loki_case_flesh_2</action>
+           				<action>gz_prologue.transfer_quest_agr_merc_pda</action>
+            <give_info>gar_hack_mercs_noyt_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_hacker_mercs_noyt_done">
+		<dont_has_info>open_agr_merc_pda_done</dont_has_info>
+		<has_info>gar_hack_mercs_noyt_done</has_info>
+        <phrase_list>
+          <phrase id="0">
+                <text>Я насчёт флешки.</text>
+                <next>1</next>
+            </phrase>
+          <phrase id="1">
+                <text>Да, да, всё уже готово.</text>
+            <give_info>open_agr_merc_pda_done</give_info>
+                <next>2</next>
+            </phrase>
+          <phrase id="2">
+                <text>Спасибо за помощь.</text>
+                <next>3</next>
+            </phrase>
+          <phrase id="3">
+                <text>Да не за что, рад быть полезным.</text>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+    <dialog id="dialog_hacker_merc_pda_alt">
+		<dont_has_info>proslushka_start</dont_has_info>
+		<has_info>open_agr_merc_pda_otkaz</has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Ладно, я передумал. Я помогу тебе с прослушкой.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>dialog_gar_proslushka_3</text>
+				<action>gz_prologue.transfer_quest_agr_merc_pda</action> 
+                <action>gz_prologue.transfer_proslushka</action> 
+                <give_info>proslushka_start</give_info>  
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_cezar_proslishka_detected">
+		<dont_has_info>proslushka_ushel</dont_has_info>
+		<dont_has_info>prosl_cezar_dialog_done</dont_has_info>
+		<has_info>proslushka_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>[Так-так, кто тут у нас. Спалили.]</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>[Ппц]</text>
+                 <give_info>prosl_cezar_dialog_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_lukash_prison_nagr">
+		<dont_has_info>dialog_varag_prisoner_flesh_nagr_done</dont_has_info>
+		<has_info>gar_mikluh_tainik</has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Я от Миклухи за наградой.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Да, конечно, вот она.</text>
+          				<action>gz_prologue.transfer_varag_prisoner_nagr</action>
+                 <give_info>dialog_varag_prisoner_flesh_nagr_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_osvedomel_yellcont">
+		<dont_has_info>dialog_varag_prisoner_flesh_nagr_done</dont_has_info>
+		<has_info>yell_case_have</has_info>
+		<has_info>yell_case_osvedomel_sell</has_info>
+        <phrase_list>
+            <phrase id="0">
+				<text>Я нашёл жёлтый аномальный контейнер, наподобие того, что я находил в тайнике Бекаса. Подумал тебя заинтересует.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Да конечно, хорошо что обратился именно ко мне. Я оценю эту вещь, скажем в 7500, сойдёт?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>По рукам.</text>
+                <next>3</next>
+
+            </phrase>
+            <phrase id="3">
+                <text>С тобой приятно иметь дело, вот твоя награда.</text>
+          				<action>gz_prologue.transfer_deneg_gar_sv_2</action>
+          				<action>gz_prologue.transfer_yell_case_osved</action>
+                 <give_info>yell_case_osvedomel_sell</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+    <dialog id="dialog_hacker_caches">
+        <has_info>hacker_start_dialog_done</has_info>
+        <init_func>gz_caches.init_gz_caches_dialog</init_func> 
+    </dialog>
+
+    <dialog id="dialog_ugr_after_agr">
+		<dont_has_info>gar_ugr_about_guards</dont_has_info>
+		<has_info>dialog_sv_attack_greh_done</has_info>
+		<has_info>gar_digger_meet_start</has_info>
+		<has_info>spawn_gar_ugr</has_info>
+        <phrase_list>
+            <phrase id="0">
+	        <text>О, привет. Я тут на Свалке не давно, но так приятно встретить знамого человека.</text>
+                <next>01</next>
+            </phrase>
+            <phrase id="01">
+	        <text>О, какие люди! Ну что, смог найти проход в подземелья агропрома?</text>
+                <next>1</next>
+                <next>15</next>
+            </phrase>
+            <phrase id="1">
+		<dont_has_info>gar_transfer_dynamit_done</dont_has_info>
+                <text>Ещё нет, работаю над этим.</text>
+                <next>22</next>
+            </phrase>
+          <phrase id="15">
+		<has_info>gar_transfer_dynamit_done</has_info>
+                <text>Да, спасибо за помощь.</text>
+                <next>21</next>
+                <next>215</next>
+            </phrase>
+          <phrase id="21">
+		<has_info>all_diaryes_transfer</has_info>
+                <text>Не за что, к тому же я у тебя можно сказать в долгу, ты мне тогда в Лощине очень помог.</text>
+                <next>3</next>
+            </phrase>
+          <phrase id="215">
+		<dont_has_info>all_diaryes_transfer</dont_has_info>
+                <text>Не за что, всегда рад помочь брату сталкеру.</text>
+                <next>3</next>
+            </phrase>
+          <phrase id="22">
+                <text>Ну ладно, я чем смог - помог, больше насчёт этой подземки мне ничего не известно.</text>
+                <next>3</next>
+            </phrase>
+          <phrase id="3">
+                <text>Ну а ты что собираешься дальше делать?</text>
+                <next>4</next>
+            </phrase>
+          <phrase id="4">
+                <text>dialog_gar_ugr_about_guards</text>
+                <next>5</next>
+            </phrase>
+          <phrase id="5">
+                <text>Проводник? И какие же у тебя есть маршруты?</text>
+                <next>6</next>
+            </phrase>
+          <phrase id="6">
+                <text>dialog_gar_ugr_about_guards_2</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>А это хорошая идея, думаю ваш бизнес будет довольно востребован среди сталкеров. Да и мне не помешало бы иногда воспользоваться такой услугой.</text>
+                <next>8</next>
+                <next>81</next>
+            </phrase>
+            <phrase id="8">
+		<has_info>all_diaryes_transfer</has_info>
+                <text>dialog_gar_ugr_about_guards_3</text>
+                <next>9</next>
+            </phrase>
+            <phrase id="81">
+		<dont_has_info>all_diaryes_transfer</dont_has_info>
+                <text>Приживётся бизнес план или нет - покажет время. За переходы с "точки" на "точку" мы берём по 3000 рублей.</text>
+                <next>91</next>
+            </phrase>
+            <phrase id="9">
+                <text>Ну и на том спасибо, думаю я всё же как-нибудь воспользуюсь вашими услугами.</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="91">
+                <text>Что ж думаю я всё же как-нибудь воспользуюсь вашими услугами.</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Да без проблем, если что, обращайся.</text>
+                 <give_info>gar_ugr_about_guards</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_ugr_guard">
+		<dont_has_info>gar_ugr_about_guards</dont_has_info>
+		<dont_has_info>dialog_sv_attack_greh_done</dont_has_info>
+		<dont_has_info>gar_digger_meet_start</dont_has_info>
+		<has_info>spawn_gar_ugr</has_info>
+        <phrase_list>
+            <phrase id="0">
+	        <text>О, привет. Я тут на Свалке недавно, но так приятно встретить знамого человека.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Хех, взаимно, привет.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Какими судьбами на Свалке, решил составить конкуренцию местным диггерам?</text>
+                <next>3</next>
+            </phrase>
+          <phrase id="3">
+                <text>dialog_gar_ugr_about_guards</text>
+                <next>5</next>
+            </phrase>
+          <phrase id="5">
+                <text>Проводник? И какие же у тебя есть маршруты?</text>
+                <next>6</next>
+            </phrase>
+          <phrase id="6">
+                <text>dialog_gar_ugr_about_guards_2</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>А это хорошая идея, думаю ваш бизнес будет довольно востребован среди сталкеров. Да и мне не помешало бы иногда воспользоваться такой услугой.</text>
+                <next>8</next>
+                <next>81</next>
+            </phrase>
+            <phrase id="8">
+		<has_info>all_diaryes_transfer</has_info>
+                <text>dialog_gar_ugr_about_guards_3_5</text>
+                <next>9</next>
+            </phrase>
+            <phrase id="81">
+		<dont_has_info>all_diaryes_transfer</dont_has_info>
+                <text>Приживётся бизнес план или нет - покажет время. За переходы с "точки" на "точку" мы берём по 3000 рублей.</text>
+                <next>91</next>
+            </phrase>
+            <phrase id="9">
+                <text>Ну и на том спасибо, думаю я всё же как-нибудь воспользуюсь вашими услугами.</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="91">
+                <text>Что ж думаю я всё же как-нибудь воспользуюсь вашими услугами.</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Да без проблем, если что, обращайся.</text>
+                 <give_info>gar_ugr_about_guards</give_info>
+<give_info>dell_ds_ugr</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+ <dialog id="dialog_hacker_start">
+		<dont_has_info>hacker_start_dialog_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+	        <text>По какому вопросу?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Привет, ты наверное и есть тот самый хакер?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Тот самый? Неужто я такой известный стал?</text>
+                <next>4</next>
+            </phrase>
+          <phrase id="4">
+                <text>Да вот, слышал о тебе от пары людей.</text>
+                <next>5</next>
+            </phrase>
+          <phrase id="5">
+                <text>Ну сарафанное радио это хорошо, для бизнеса полезно. Так всё же, чем я могу помочь?</text>
+                <next>6</next>
+            </phrase>
+          <phrase id="6">
+                <text>Я пока просто так зашёл, поговорить. А вообще прибыльное это дело?</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>dialog_hacker_start_1</text>
+                <next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Научился ты всему этому ещё с большой земли?</text>
+                <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>dialog_hacker_start_2</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Идея хорошая, может рано или поздно ты осуществишь свою задумку.</text>
+            <give_info>hacker_start_dialog_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_felix_pismo">
+		<dont_has_info>gar_felix_dialog_done</dont_has_info>
+		<has_info>tainik_pismo_have</has_info>
+        <phrase_list>
+            <phrase id="0">
+	        <text>Привет, ты Василь? Я тут нашёл твою записку в моём тайнике.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Привет, да уж, не думал что хозяин объявится. Мне тогда твой схрон очень помог.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Так может вернёшь мне, то что было в тайнике?</text>
+                <next>4</next>
+            </phrase>
+          <phrase id="4">
+                <text>Да, конечно. Там было не так уж и много: пару консерв да Беретта с патронами. Сейчас у меня ничего из этого не осталось, давай я тебе отдам 4000 рублей и будем считать, что я вернул долг.</text>
+                <next>5</next>
+            </phrase>
+          <phrase id="5">
+                <text>Давай так.</text>
+                <next>6</next>
+            </phrase>
+          <phrase id="6">
+                <text>Вот, держи.</text>
+            <give_info>gar_felix_dialog_done</give_info>
+           				<action>gz_prologue.transfer_felix_money</action>
+           				<action>gz_prologue.transfer_felixs_pism</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_gar_loki_case_open">
+		<dont_has_info>loki_case_open_done</dont_has_info>
+                <precondition>gz_prologue.have_gz_tainik_case</precondition>
+        <phrase_list>
+            <phrase id="0">
+	        <text>Привет, а сможешь мне открыть защитный контейнер с кодовым замком? Не за бесплатно естественно.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Почему бы и нет, могу. Механики у меня мастера на все руки, и не с таким справлялись. Это обойдётся тебе в 3000 рублей.</text>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <precondition>gz_prologue.has_money_loki_case</precondition>
+                <text>Хорошо, вот, держи деньги.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="3">
+                <text>У меня пока нет таких денег.</text>
+                <next>35</next>
+            </phrase>
+            <phrase id="35">
+                <text>Ну что ж, приходи как появятся.</text>
+            </phrase>
+          <phrase id="4">
+                <text>Так, давай свой контейнер сюда. Подожди немного... Готово, и что же тут у нас? Хм, какая-то флешка. Ну что ж, вот держи.</text>
+           				<action>gz_prologue.transfer_gz_tainik_case</action>
+           				<action>gz_prologue.transfer_loki_case_flesh</action>
+           				<action>gz_prologue.give_loki_case_money</action>
+            <give_info>loki_case_open_done</give_info>
+                <next>5</next>
+            </phrase>
+          <phrase id="5">
+                <text>Спасибо.</text>
+                <next>6</next>
+            </phrase>
+          <phrase id="6">
+                <text>Всегда пожалуйста, обращайся.</text>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_hacker_loki_flesh">
+		<dont_has_info>secret_perepiska_infa_done</dont_has_info>
+		<has_info>loki_case_open_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+	        <text>Привет, мне нужно взломать одну флешку.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Дай-ка сюда, посморю. Хм, знакомая шифровка, используется для защиты информации Объединённого Командования. У них защита не мудрёная, легко обойти, так что обойдётся это тебе в 1500 рублей.</text>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <precondition>gz_prologue.has_money_gar_art</precondition>
+                <text>Хорошо, вот, держи деньги.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="3">
+                <text>У меня пока нет таких денег.</text>
+                <next>35</next>
+            </phrase>
+            <phrase id="35">
+                <text>В таком случае, ничем не могу помочь.</text>
+            </phrase>
+          <phrase id="4">
+                <text>Хорошо, как будет готово, я сообщу.</text>
+           				<action>gz_prologue.transfer_loki_case_flesh_2</action>
+           				<action>gz_prologue.give_art_money</action>
+            <give_info>gar_hack_loki_flesh_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+	
+	
+ <dialog id="dialog_gar_seriy1">
+        <phrase_list>
+            <phrase id="0">
+        <dont_has_info>go_to_agroprom_start</dont_has_info>
+        <has_info>gar_follow_to_garneutlager_done</has_info>
+                <text>Здравствуй, сталкер. Что хотел?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Здорова. Говорят к вам тут сталкер заходил, здоровый такой, со шрамом.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Ну заходил.</text>
+                <next>3</next> 
+            </phrase>
+            <phrase id="3">
+                <text>Куда он пошел?</text>
+                <next>4</next> 
+            </phrase>
+            <phrase id="4">
+                <text>На Агропром.</text>
+        <give_info>go_to_agroprom_start</give_info>
+                <next>5</next> 
+            </phrase>
+          <phrase id="5">
+                <text>Спасибо,пока.</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+	
+
+ <dialog id="dialog_serui_about_agro">
+		<dont_has_info>infa_about_agro</dont_has_info>
+		<has_info>go_to_agroprom_start</has_info>
+        <phrase_list>
+          <phrase id="0">
+                <text>Можешь рассказать про обстановку на Агропроме?</text>
+                <next>1</next>
+            </phrase>
+          <phrase id="1">
+                <text>dialog_serui_about_agro</text>
+            <give_info>infa_about_agro</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_hacker_loki_flesh_done">
+		<dont_has_info>secret_perepiska_infa_done</dont_has_info>
+		<has_info>gar_hack_loki_flesh_done</has_info>
+        <phrase_list>
+          <phrase id="0">
+                <text>Я насчёт флешки.</text>
+                <next>1</next>
+            </phrase>
+          <phrase id="1">
+                <text>Да, да, всё уже готово.</text>
+            <give_info>secret_perepiska_infa_done</give_info>
+                <next>2</next>
+            </phrase>
+          <phrase id="2">
+                <text>Спасибо за помощь.</text>
+                <next>3</next>
+            </phrase>
+          <phrase id="3">
+                <text>Да не за что, рад быть полезным.</text>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+
+
+</game_dialogs>

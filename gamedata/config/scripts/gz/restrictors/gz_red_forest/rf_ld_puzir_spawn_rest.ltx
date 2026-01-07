@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_outside = {+art_get_away} %-art_get_away% 
+on_actor_inside = {+art_get_away} %+rf_spawn_puzir -art_get_away =play_snd(anomaly\teleport_incoming)% sr_idle@nil
+
+[sr_idle@nil]

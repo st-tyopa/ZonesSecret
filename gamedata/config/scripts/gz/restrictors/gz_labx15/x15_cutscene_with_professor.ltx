@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+x15_professor_start_message} sr_idle@2 %=disable_ui =x15_professor_last_message%
+
+[sr_idle@2]
+on_timer = 55000 | sr_idle@3 %+x15_talk_with_professor_done%
+
+[sr_idle@3]
+on_timer = 3000 | sr_idle@4 %+x15_professor_kill =enable_ui%
+
+[sr_idle@4]
+on_timer = 3000 | sr_idle@5 %=enable_ui_elements(weapon)%
+
+[sr_idle@5]
+on_timer = 1000 | nil %+x15_yan_gameover_quest_start%

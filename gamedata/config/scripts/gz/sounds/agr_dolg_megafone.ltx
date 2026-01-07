@@ -1,0 +1,11 @@
+[logic]
+active = ph_idle@dolg_megafone
+ 
+[ph_idle@dolg_megafone]
+on_info = {=actor_out_zone(agr_rest_underground_sounds_zone)} ph_sound@dolg_megafone
+ 
+[ph_sound@dolg_megafone]
+snd = agr_dolg_megafone
+min_idle = 5000
+max_idle = 15000
+on_info = {=actor_in_zone(agr_rest_underground_sounds_zone)} ph_idle@dolg_megafone

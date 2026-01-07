@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+gar_snipers_shoots} %=play_snd(soz\characters_voice\scenario\sg550_shoot_sil)% sr_idle2
+
+[sr_idle2]
+on_timer = 500|%=play_snd(soz\characters_voice\scenario\sg550_shoot_sil) +gar_messenger_dead% sr_idle3
+
+[sr_idle3]
+on_info = {+gar_sniper_1_dead +gar_sniper_2_dead} %+gar_find_messenger_trup% sr_idle4
+
+[sr_idle4]
+on_info = {+go_to_agroprom_start} %-gar_dell_mutants% nil
+

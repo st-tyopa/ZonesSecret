@@ -1,0 +1,490 @@
+local t = {}
+
+function load_job(sj, gname, type, squad, groups)
+--------------------------------------------------------------------------
+-- главный лагерь долга
+--------------------------------------------------------------------------	
+	if type == "agr_dolgbase" then
+--------------------------------------------------------------------------
+-- эксклюзивные работы
+--------------------------------------------------------------------------
+    -- лидер долга  (утро)
+		t = { section = "logic@agr_dolgbase_leader_walk",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_lider_krylov"
+			end
+		}
+		table.insert(sj, t)
+    -- торговец  оружием
+		t = { section = "logic@agr_dolgbase_weapontrader_walk",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_weapontrader"
+			end
+		}
+		table.insert(sj, t)
+
+	-- Ловец
+			t = { section = "logic@agr_dolgbase_lovets",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_lovets"
+			end
+		}
+		table.insert(sj, t)
+	-- Начальник охраны
+			t = { section = "logic@agr_dolgbase_nachalnik",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_nachalnik"
+			end
+		}
+		table.insert(sj, t)
+		
+    -- часовой 1
+		t = { section = "logic@agr_dolgbase_guard1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 2
+		t = { section = "logic@agr_dolgbase_guard2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 3
+		t = { section = "logic@agr_dolgbase_guard3_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 4
+		t = { section = "logic@agr_dolgbase_guard4_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+	-- Охранники Крылова
+		t = { section = "logic@agr_dolgbase_guard_krylov1",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_guard_krylov1"
+			end
+		}
+		table.insert(sj, t)
+		t = { section = "logic@agr_dolgbase_guard_krylov2",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_guard_krylov2"
+			end
+		}
+		table.insert(sj, t)
+
+	--Блокпост №1
+		t = { section = "logic@agr_dolgbase_blokp1_commander",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_blokp1_commander"
+			end
+		}
+		table.insert(sj, t)
+
+		t = { section = "logic@agr_dolgbase_blokp1_guard1",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_blokp1_guard1"
+			end
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@agr_dolgbase_blokp1_guard2",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_blokp1_guard2"
+			end
+		}
+		table.insert(sj, t)
+		
+	--Блокпост №2
+		t = { section = "logic@agr_dolgbase_blokp2_commander",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_blokp2_commander"
+			end
+		}
+		table.insert(sj, t)
+
+		t = { section = "logic@agr_dolgbase_blokp2_guard1",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+		t = { section = "logic@agr_dolgbase_blokp2_guard2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+	-- Часовые на вышках
+			t = { section = "logic@agr_dolgbase_watchtower1",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_watchtower1"
+			end
+		}
+		table.insert(sj, t)
+		
+			t = { section = "logic@agr_dolgbase_watchtower2",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_watchtower2"
+			end
+		}
+		table.insert(sj, t)
+		
+			t = { section = "logic@agr_dolgbase_watchtower3",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_watchtower3"
+			end
+		}
+		table.insert(sj, t)
+		
+			t = { section = "logic@agr_dolgbase_watchtower4",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgbase_watchtower4"
+			end
+		}
+		table.insert(sj, t)
+	
+		
+    -- костер мужик 1
+		t = { section = "logic@agr_dolgbase_kamp_work1",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@agr_dolgbase_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@agr_dolgbase_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 1
+		t = { section = "logic@agr_dolgbase_patrol1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 2
+		t = { section = "logic@agr_dolgbase_patrol2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@agr_dolgbase_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	end
+--------------------------------------------------------------------------
+-- блокпост долга
+--------------------------------------------------------------------------	
+	if type == "agr_dolgblokpost" then
+--------------------------------------------------------------------------
+-- эксклюзивные работы
+--------------------------------------------------------------------------
+    -- лидер блокпоста  (утро)
+		t = { section = "logic@agr_dolgblokpost_leader_walk",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_dolgblokpost_commander_krivtsov"
+			end
+		}
+		table.insert(sj, t)
+    -- часовой 1
+		t = { section = "logic@agr_dolgblokpost_guard1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 2
+		t = { section = "logic@agr_dolgblokpost_guard2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 3
+		t = { section = "logic@agr_dolgblokpost_guard3_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 4
+		t = { section = "logic@agr_dolgblokpost_guard4_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 1
+		t = { section = "logic@agr_dolgblokpost_kamp_work1",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@agr_dolgblokpost_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@agr_dolgblokpost_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 1
+		t = { section = "logic@agr_dolgblokpost_patrol1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 2
+		t = { section = "logic@agr_dolgblokpost_patrol2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- костер мужик 2
+		t = { section = "logic@agr_dolgblokpost_kamp_work2",
+			idle = 0,
+			prior = 6, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	end
+
+--------------------------------------------------------------------------
+-- главный лагерь наемников
+--------------------------------------------------------------------------	
+	if type == "agr_mercbase" then
+--------------------------------------------------------------------------
+-- эксклюзивные работы
+--------------------------------------------------------------------------
+    -- часовой 1
+		t = { section = "logic@agr_mercbase_guard1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 2
+		t = { section = "logic@agr_mercbase_guard2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 3
+		t = { section = "logic@agr_mercbase_guard6_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой 4
+		t = { section = "logic@agr_mercbase_guard7_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 1
+		t = { section = "logic@agr_mercbase_guard3_patrol",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 2
+		t = { section = "logic@agr_mercbase_guard4_patrol",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный 3
+		t = { section = "logic@agr_mercbase_guard5_patrol",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		
+			t = { section = "logic@agr_mercbase_sniper1",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_mercbase_sniper_1"
+			end
+		}
+		table.insert(sj, t)
+		
+			t = { section = "logic@agr_mercbase_sniper2",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_mercbase_sniper_2"
+			end
+		}
+		table.insert(sj, t)
+		
+			t = { section = "logic@agr_mercbase_sniper3",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_mercbase_sniper_3"
+			end
+		}
+		table.insert(sj, t)
+		
+			t = { section = "logic@agr_mercbase_sniper4",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "agr_mercbase_sniper_4"
+			end
+		}
+		table.insert(sj, t)
+	end
+end
+--------------------------------------------------------------------------
+-- состояния гулагов
+--------------------------------------------------------------------------
+
+function load_states(gname, type)	
+	if type == "agr_dolgbase" then 
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+	if type == "agr_dolgblokpost" then 
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+	if type == "agr_mercbase" then 
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+	return nil
+end
+
+--------------------------------------------------------------------------
+-- Dynamic ltx
+--------------------------------------------------------------------------
+function load_ltx(gname, type)
+	return nil
+end
+
+function checkStalker(npc_community, gulag_type, npc_rank, se_obj)
+	if gulag_type == "agr_dolgbase" then
+		return npc_community == "dolg"
+	end
+	if gulag_type == "agr_dolgblokpost" then
+		return npc_community == "dolg"
+	end
+	if gulag_type == "agr_mercbase" then
+		return npc_community == "killer"
+	end
+	return false
+end
+
+function checkMonster(npc_community, gulag_type)
+	return false
+end

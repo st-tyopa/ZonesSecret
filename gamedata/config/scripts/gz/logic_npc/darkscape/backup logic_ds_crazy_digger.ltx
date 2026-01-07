@@ -1,0 +1,26 @@
+[logic]
+active = camper2
+on_death = death
+
+[death]
+on_info = %+ds_suiddigger_dead%
+
+[camper1]
+path_walk = ds_suiddigger_stay_walk
+path_look = ds_suiddigger_stay_look
+on_info = {+suiddigger_kill_youself} remark@ds_suiddigger_kill
+radius = 0
+
+[camper2]
+path_walk = ds_suiddigger_stay_walk
+path_look = ds_suiddigger_stay_walk
+radius = 10
+no_retreat = true
+on_info = {+suiddigger_kill_youself} remark@ds_suiddigger_kill
+
+[remark@ds_suiddigger_kill]
+anim = psy_shoot
+tagret = ds_suiddigger_look2, 0
+on_signal = anim_end |  %=kill%
+
+

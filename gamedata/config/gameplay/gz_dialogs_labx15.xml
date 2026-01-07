@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+    <dialog id="x15_professor_last_dialog">
+        <phrase_list>
+            <phrase id="0">
+                <text>Наконец-то... Кхм...</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Профессор, вы это, держитесь. Сейчас я помогу вам.</text>
+				<action>dialogs.break_dialog</action>
+                <give_info>x15_professor_start_message</give_info>
+            </phrase>
+        </phrase_list>
+	</dialog>
+</game_dialogs>

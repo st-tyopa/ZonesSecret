@@ -1,0 +1,198 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[wpn_glock]:identity_immunities
+GroupControlSection				= spawn_group
+discovery_dependency 				= 
+$spawn                   			= "weapons\glock"					
+$npc			 			= on		
+$prefetch 					= 8
+scheduled         		   		= off              
+cform             		    		= skeleton
+class                    			= WP_WALTH
+min_radius               			= 0
+max_radius               			= 50
+description					= enc_weapons1_wpn-glock
+chamber_status          = true
+ef_weapon_type					= 5
+zoom_dof					= -1000, 1.0, 1000
+reload_dof					= 0.0, 0.5, 5, 1.7
+;-----------------------------------------------------------------------------------
+holder_range_modifier				= 1.0               
+holder_fov_modifier				= 1.0              
+;-----------------------------------------------------------------------------------
+
+cost					 	= 2000
+
+ammo_limit		 			= 120
+ammo_current		 			= 96
+ammo_elapsed		 			= 16
+
+ammo_mag_size		 			= 19
+ammo_class		 			= ammo_9x19_fmj, ammo_9x19_pbp 
+
+hand_dependence		 			= 1
+single_handed					= 1
+							
+slot 			 			= 1,2,4
+animation_slot					= 1									
+
+inv_name					= wpn-glock
+inv_name_short					= wpn-glock
+
+inv_weight					= 0.7
+
+inv_grid_width     				= 2
+inv_grid_height    				= 1
+inv_grid_x         				= 12
+inv_grid_y         				= 3
+
+kill_msg_x					= 168
+kill_msg_y					= 178
+kill_msg_width					= 27
+kill_msg_height					= 23
+
+;-----------------------------------------------------------------------------------
+fire_dispersion_base				= 0.17 	;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+
+;отдача
+cam_relax_speed         			= 8.6	;скорость возврата в исходное положение
+cam_dispersion          			= 0.47	;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc				= 0.0	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac				= 1.0	;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle					= 20.0	;максимальный угол отдачи
+cam_max_angle_horz				= 10.0	;(degree) maximum shot horizontal degree 
+cam_step_angle_horz				= 0.7	;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor 		= 5	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 				= 0.002	;вероятность осечки при максимальном износе 
+misfire_condition_k				= 0.05
+condition_shot_dec 				= 0.0001 ;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+direction           	   			= 0, 0, 1
+fire_point               			= 0.0, 0.136, 0.133
+
+flame_particles					= weapons\generic_weapon03
+smoke_particles		   			= amik\weapons\smoke_particles\p_smoke_particles_02
+shell_particles	 				= amik\weapons\9x19_shells_r
+
+shell_point		 			= 0.0, 0.136, 0.03
+shell_dir		 			= 0.0, 0.0, 0.4
+
+rpm_empty_click 	 			= 200
+
+PDM_disp_base 					= 1.0
+PDM_disp_vel_factor 				= 0.5
+PDM_disp_accel_factor 				= 0.5
+PDM_crouch	 				= 1.0
+PDM_crouch_no_acc 				= 1.0
+
+; ttc
+hit_power           				= 0.48
+hit_impulse		 			= 120
+hit_type 					= fire_wound	
+
+fire_distance           			= 50
+bullet_speed		 			= 360
+rpm                    				= 300
+; end ttc
+
+use_aim_bullet					= true		
+time_to_aim					= 1.0	
+
+silencer_hit_power       			= 0.45
+silencer_hit_impulse	 			= 100
+silencer_fire_distance   			= 100
+silencer_bullet_speed	 			= 280
+
+hud                      			= wpn_glock_hud
+normal                   			= 0, 1, 0
+position                 			= -0.021, -0.095, 0.0
+orientation              			= 0, 0, 0
+
+visual                   			= weapons\glock\wpn_glock.ogf
+
+light_color		 			= 0.6,0.5,0.3
+light_range		 			= 3.0
+light_var_color		 			= 0.05
+light_var_range		 			= 0.5
+light_time 		 			= 0.2
+
+ph_mass			 			= 1
+
+;addons
+scope_status					= 0
+silencer_status					= 2
+grenade_launcher_status				= 0
+
+zoom_enabled					= true
+scope_zoom_factor	    			= 70
+
+;звуки
+snd_draw					= weapons\glock\glock_draw
+snd_holster					= weapons\glock\glock_holster
+snd_shoot					= weapons\glock\glock_shoot
+snd_shoot1					= weapons\glock\glock_shoot1 
+snd_shoot2					= weapons\glock\glock_shoot2
+snd_empty					= weapons\glock\glock_empty
+snd_reload					= weapons\glock\glock_reload
+snd_close					= weapons\glock\glock_close
+snd_silncer_shot				= weapons\glock\glock_shot_sil
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; silencer
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+silencer_name  					= wpn_sil_9p
+silencer_x 					= 68
+silencer_y 					= -15				
+
+;params when silencer is attached 
+;similar to corresponding params without prefix silencer_
+
+;silencer_flame_particles 			= weapons\generic_weapon01
+silencer_smoke_particles 			= amik\weapons\smoke_particles\p_smoke_particles_02
+silencer_light_color				= 0.6,0.5,0.3
+silencer_light_range				= 0.01
+silencer_light_var_color			= 0.05
+silencer_light_var_range			= 0.5
+silencer_light_time 				= 0.2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[wpn_glock_hud]
+
+shell_point          				= 0.05,0, -0.1
+fire_point					= 0,0.040,-0.2
+fire_bone                			= wpn_body
+
+position             				= 0.0,-0.17,0.0
+orientation                 			= 0,0,0
+
+visual                   			= weapons\glock\wpn_glock_hud.ogf
+
+anim_holster					= holster
+anim_idle					= idle
+anim_empty					= idle_empty
+anim_reload					= reload
+anim_reload_empty				= reload_empty
+anim_draw					= draw
+anim_draw_empty					= draw_empty
+anim_shoot					= shoot
+anim_shot_last					= shoot_last
+anim_close					= holster_empty
+anim_idle_aim					= idle_aim
+anim_idle_sprint				= idle_sprint
+anim_idle_sprint_empty				= idle_sprint_empty
+anim_idle_moving				= idle_moving
+anim_idle_moving_empty				= idle_moving_empty
+
+zoom_offset					= -0.135000,0.055950,-0.150000
+zoom_rotate_x					= -0.013300
+zoom_rotate_y					= 0.023400
+
+zoom_hide_crosshair				= true
+
+zoom_rotate_time				= 0.15
+rotate_time					= 0.15
+
+-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------

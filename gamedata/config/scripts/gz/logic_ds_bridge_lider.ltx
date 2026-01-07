@@ -1,0 +1,23 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker@start
+
+[walker@start]
+path_walk = ds_neutrals_blokp_leader_walk
+path_look = ds_neutrals_blokp_leader_look
+def_state_moving1 = raid
+def_state_moving2 = raid
+;on_actor_dist_le = 60|{-go_to_lager_dv} remark@60m
+on_info = {+go_to_lager_dv} walker@gg_proshol
+
+[walker@gg_proshol]
+path_walk = ds_neutrals_blokp_leader_walk
+path_look = ds_neutrals_blokp_leader_look
+
+
+;[remark@def]
+;no_move = true
+;anim = wait
+;target = actor

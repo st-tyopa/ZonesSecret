@@ -1,0 +1,65 @@
+-- Телепорт для Тепы
+
+function iskatel_to_world() 
+	timer = 1500 -- 1.5 секунды
+    timeNow = time_global()
+    level.add_call(CondFunc, teleport)
+	local snd_obj = xr_sound.get_safe_sound_object([[anomaly\teleport_work_1]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    level.add_pp_effector("peace_fade.ppe", 1973, false)
+	timeskip(0, 30)
+end
+
+function teleport()
+    local a = vector()
+	-- Задаем координаты
+	a.x = -55
+	a.y = 0
+	a.z = -488
+	db.actor:set_actor_position(a)
+	db.actor:set_actor_direction(0)
+end
+
+function test_teleport() 
+	timer = 1500 -- 1.5 секунды
+    timeNow = time_global()
+    level.add_call(CondFunc, test_teleport_init)
+	local snd_obj = xr_sound.get_safe_sound_object([[anomaly\teleport_work_1]])
+	snd_obj:play_no_feedback(db.actor, sound_object.s2d, 0, vector(), 1.0)
+    level.add_pp_effector("peace_fade.ppe", 1973, false)
+	timeskip(0, 30)
+end
+
+function test_teleport_init()
+    local a = vector()
+	-- Задаем координаты
+	a.x = -358
+	a.y = 2
+	a.z = 573
+	db.actor:set_actor_position(a)
+	db.actor:set_actor_direction(0)
+end
+
+function CondFunc() -- таймер в реальном времени.
+ if time_global() > timeNow + timer then
+  return true
+ end
+ return false
+end
+
+function timeskip(h, m)
+
+local ms = (h * 60 + m) * 12
+level.set_time_factor(ms)
+game.start_tutorial("time_scale")
+end
+
+--Координаты Севера локации:
+-- а.х = -358
+-- а.у = 1
+-- A.z = 579
+
+-- Координаты около вертолета:
+--	a.x = -50
+--	a.y = -3
+--	a.z = -488

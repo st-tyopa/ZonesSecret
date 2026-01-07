@@ -1,0 +1,19 @@
+[logic]
+active = walker
+on_death = death
+
+[walker]
+path_walk = pz_merc_pat_3
+on_actor_dist_ge_nvis = 130| %-pz_mercs_distance% walker1
+danger = danger_condition@scout
+
+[walker1]
+path_walk = pz_merc_pat_3
+on_actor_dist_le_nvis = 130| %+pz_mercs_distance% walker
+danger = danger_condition@scout
+
+[danger_condition@scout]
+ignore_distance       = 15
+
+[death]
+on_info = %+pz_merc_pat3_dead%

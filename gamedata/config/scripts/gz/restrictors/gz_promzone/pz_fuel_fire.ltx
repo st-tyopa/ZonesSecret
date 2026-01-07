@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+pz_fire_second} %=play_snd_from_obj(84140:soz\characters_voice\scenario\zhar)% sr_particle2
+
+[sr_particle2]
+name = explosions\campfire_04
+path = pz_flame_barrel
+mode = 2 		
+looped = true            
+on_timer = 4000|%+pz_fire_third%
+on_timer2 = 5000|nil

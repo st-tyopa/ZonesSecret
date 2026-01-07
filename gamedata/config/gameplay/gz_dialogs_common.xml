@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+    
+ <dialog id="dialog_gz_mechanic">
+  <has_info>dialog_meh</has_info>
+  <init_func>dialogs_new_system.mechanic_dialog</init_func>
+ </dialog>  
+ 
+ <dialog id="dialog_gz_hacker" force_reload="1">
+  <dont_has_info>hacker_its_job</dont_has_info>
+  <init_func>dialogs_new_system.hacker_dialog</init_func>
+ </dialog> 
+ <dialog id="dialog_gz_hacker_otkaz">
+  <has_info>hacker_its_job</has_info>
+  <init_func>dialogs_new_system.hacker_dialog_otkaz</init_func>
+ </dialog>
+ 
+</game_dialogs>

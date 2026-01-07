@@ -1,0 +1,39 @@
+[logic]
+active = walker@rf_ocelot
+
+[walker@rf_ocelot]
+path_walk = rf_ld_ocelot_15_stay
+path_look = rf_ld_ocelot_look
+on_info = {+rf_ocelot_talk_done_2} walker@rf_ocelot_2
+
+[walker@rf_ocelot_2]
+path_walk = rf_ld_ocelot_stay_2
+path_look = rf_ld_ocelot_2_look
+on_info = {+rf_ocelot_talk_done_3} walker@rf_ocelot_3
+
+[walker@rf_ocelot_3]
+path_walk = rf_ld_ocelot_3_walk
+meet = no_meet
+on_signal = ocelotlook| remark@rf_ocelot_cross1
+
+[remark@rf_ocelot_cross1]
+anim = guard
+snd = ocelot_rest_in_peace
+target = rf_ld_ocelot_4_look, 0
+meet = no_meet
+on_signal = sound_end|%+rf_ld_ocelot_talk_cross% remark@rf_ocelot_cross
+
+[walker@rf_ocelot_4]
+path_walk = rf_ocelot_4_stay
+path_look = rf_ld_ocelot_4_look
+meet = no_meet
+on_game_timer = 200|%+rf_ld_ocelot_talk_cross% remark@rf_ocelot_cross
+
+[remark@rf_ocelot_cross]
+anim = guard
+target = actor
+on_info = {+rf_ld_ocelot_talk_cross_done} walker@rf_ocelot_5
+
+[walker@rf_ocelot_5]
+path_walk = rf_ld_ocelot_stay_2
+path_look = rf_ld_ocelot_2_look

@@ -1,0 +1,8 @@
+[logic]
+active = kamp
+
+[kamp]
+path_walk = gar_messenger_sit
+center_point = promz_bandit_smart_kran_kamp_1
+on_actor_dist_le_nvis = 10|%+gar_snipers_shoots% 
+on_info = {+gar_messenger_dead} %=hit_npc(promz_bandit_smart_kran_kamp_1:bip01_head:400:400)%

@@ -1,0 +1,9 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+svoboda_war} %=dv_cap_kuprianov +dv_play_dolg_sos_message% sr_idle@2
+on_info = {+find_weapons_case_start_2} nil
+
+[sr_idle@2]
+on_timer = 20000 | nil %+dv_help_dolg_group%

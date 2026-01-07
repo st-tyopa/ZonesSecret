@@ -1,0 +1,32 @@
+[logic]
+active = remark1
+
+[remark1]
+no_move = true
+target = actor
+anim = guard
+combat_ignore_cond = always
+danger = danger_ignore
+;use_medkit = true
+meet = meet
+;on_info = {+pogovorili} remark2
+
+[remark2]
+no_move = true
+target = actor
+anim = guard
+combat_ignore_cond = always
+danger = danger_ignore
+
+[danger_ignore]
+ignore_distance = 0
+
+[meet]
+meet_state		= 15|guard@wait
+meet_state_wpn	= 15|backoff@threat_weap
+victim		= 15|actor
+victim_wpn		= 15|actor
+use			= true
+use_wpn		= false
+syndata		= backoff@threat_weap
+;meet_dialog = {+go_to_lager1} dd_meet_guard

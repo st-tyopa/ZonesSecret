@@ -1,0 +1,21 @@
+;Главарь
+[logic]
+active = walker1
+
+[walker1]
+path_walk = ds_bandits_vertolet_idle_walk1
+on_info = {+ds_bandits_goto_vert_start_2} walker2
+danger = danger_condition@scout
+
+[walker2]
+path_walk = ds_bandits_vertolet_vert_way1_walk
+path_look = ds_bandits_vertolet_vert_look1
+on_timer = 120000| walker3
+danger = danger_condition@scout
+
+[walker3]
+path_walk = ds_bandits_vertolet_to_ost_walk
+on_signal = banonost| {-ds_bandits_ostanovka} %+ds_bandits_ostanovka% 
+
+[danger_condition@scout]
+ignore_distance       = 10

@@ -1,0 +1,339 @@
+--[[------------------------------------------
+///* Проект: "Mobile_Manager"
+///* Описание файла: Дополнительные функции для "Мобилы"
+///* Автор: Singapur22 
+///* Дата последнего изменения: 29.05.2011
+--]]------------------------------------------
+
+_G.math.diap = function(num, min, max)
+	if (num < min or num > max) then return false end
+	return true
+end
+
+--/summary/>> Скрипт создания списка гейм и левел вертексов для каждой локации, включая тестовые и новые.
+--' listvert = { local_name = { gmin, gmax, lmax }, ... }
+--' local_name = имя локации
+--' gmin = минимальный гейм_вертекс
+--' gmax = максимальный гейм_вертекс
+--' lmax = максимальный левел_вертекс (относительно максимального гейм_вертекса)
+--'----------------------------------------
+local listvert = {}
+
+--/summary/>> функция захвата таблицы listvert внешними скриптами
+function get_list_vertices() 
+    if not listvert[level.name()] then
+	    this.iter_vertices()
+	end
+    return listvert
+end
+
+--/summary/>> функция итерации
+function iter_vertices()
+    --вычисление максимальных и минимальных гейм вертексов для каждой локации
+    --включая тестовые и новые.
+    local lev
+    for i=0, 4294967295 do
+        if game_graph():valid_vertex_id(i) then
+            local lev_id = game_graph():vertex( i ):level_id() -- айди локации
+            local lev_name = alife():level_name( lev_id )      -- имя локации
+            if not listvert[lev_name] then
+                listvert[lev_name] = {}
+                listvert[lev_name].gmin = i
+                if lev then
+                    listvert[lev].gmax = i-1
+                end
+                lev = lev_name
+            end
+        else
+            listvert[lev].gmax = i-1
+            break
+        end
+    end
+    --вычисление максимальных левел вертексов для каждой локации
+    for k, v in pairs(listvert) do
+        local lmax = 0
+        for i=v.gmin, v.gmax do
+            local lvid = game_graph():vertex(i):level_vertex_id()
+            if lvid > lmax then lmax = lvid end
+        end
+        listvert[k].lmax = lmax
+    end
+end
+
+--/summary/>> Функция телепортации на другую локацию
+--/args/'    position, level_name
+--/return/'  id заспавненного чейнджера
+function teleport(pos, lvl)
+    local v_lvl = get_list_vertices()[lvl]
+    local gvid = v_lvl and v_lvl.gmin
+	if (not gvid) then 
+	    self.message_box_error:SetText("Не удалось определить локацию для телепортации!")
+	    level.start_stop_menu(self.message_box_error, true)
+		return false
+	end
+	local lvid = game_graph():vertex(gvid):level_vertex_id()
+	
+	local sobj = alife():create("level_changer", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+	
+	local tbl = _net_utils.Get_Data_LvChanger(sobj)
+	tbl.dest_game_vertex_id  = gvid
+	tbl.dest_level_vertex_id = lvid
+	tbl.dest_position        = pos
+	tbl.dest_level_name      = lvl
+	tbl.silent_mode          = 1
+	_net_utils.Set_Data_LvChanger(tbl, sobj)
+	return sobj.id
+end
+
+--/summary/>> Функция определения списка группировок распределённых по их системным индексам
+function get_communities()
+    local tbl = {}
+	local str = system_ini():r_string("game_relations", "communities")
+	for w in string.gmatch(str, "%s*([^,%d]+)%s*") do
+        table.insert(tbl, w)
+    end
+	return tbl
+end
+
+--/summary/>> Функция определения группировки по её системному индексу
+function get_community_by_index(ind)
+    local tbl = get_communities()
+	return tbl[ind + 1]
+end
+
+--/summary/>> Функция автоматического парсинга строки в соответствующий тип значения
+--/return/'number or bool or string
+function ParseByTypeString(str)
+    local num = tonumber(str)
+	if num then return num end
+	if str == "true" then return true end
+	if str == "false" then return false end
+	return str
+end
+
+--/summary/>> Функция определения формата для edit_box
+function DefTypeByString(value)
+    local num = tonumber(value)
+	if num then
+	    if string.match(value, "%.") then 
+			get_console():execute("f")
+			return "f"
+		else return "n"
+		end
+	end 
+	return "s"
+end
+
+--/summary/>> Функции определения выбранного элемента в указанном списке
+--' с отключеным фокусом
+function GetSelectedItemList(list)
+    local select = list:GetSelectedItem()
+	if select < 0 then return end
+	return list:GetItem(select)
+end
+
+--' с включеным фокусом
+function GetSelectedOrFocusedItemList(list)
+    local select = list:GetSelectedItem()
+	local focus = list:GetFocusedItem()
+	local index = (select >= 0 and select) or focus
+	if index < 0 then return end
+	return list:GetItem(index)
+end
+
+
+--/summary/>> Функция определяющая, пуста ли таблица
+--/return/' пустая = true, не пустая = false
+function table_empty(tbl)
+    local empty = true
+    for _ in pairs(tbl) do
+        empty = false
+		break
+    end
+	return empty
+end
+
+--/summary/>> Функция определения реального имени сталкера
+function get_real_name_stalker(obj)
+    if IsStalker(obj) then
+	    local sobj = alife():object(obj:id())
+		if sobj then
+            local tbl = _net_utils.Get_Data_Stalker(sobj, false)
+	        return tbl.charname
+		end
+		return "no sobj"
+	end
+	return "no stalker"
+end
+
+--/summary/>> функция определения списка секций в указанном файле (Работает НЕ со всеми файлами!!!)
+--/' В частности, обязательные условия: 
+--/' Файл не должен содержать базовых секций, загружаемых из system.ltx (только дочерние).
+--/' Или же, файл не должен являться системным.
+--/return/'{index = section, ...}
+function get_sections(file_name, tbl)
+    tbl = tbl or {}
+	local f = getFS()
+	local path = f:update_path("$game_config$", file_name)
+	if not path then return tbl end
+	local of = f:r_open(path)
+	if of then
+	    local str = of:r_stringZ()
+	    for w in string.gmatch(str, "%[%s*([@_%w]+)%s*%]") do
+		    table.insert(tbl, w)
+        end
+	end
+	return tbl
+end
+
+--/summary/>> функция определения списка онлайн сталкеров
+--/return/'{index = id, ...}
+function getStalkers(alive)
+    local tbl = {}
+	for id in pairs(db.storage) do
+	    local obj = level.object_by_id(id)
+		if obj and isStalker(obj) and ((alive and obj:alive()) or (alive == false and not obj:alive()) or alive == nil) then
+		    table.insert(tbl, id)
+		end
+	end
+	return tbl
+end
+
+--/summary/>> функция парсинга параметров файла "overrides_by_schemes.ltx"
+function getTableValuesParam(str)
+    local all_els = {}
+	--'парсим скриптовые таблицы
+    for ft in string.gmatch(str, '%"%s*([-_%.%w]+)%s*%"') do
+        local base_tbl, file_name
+		local tbl_name = ft
+		for f, t in string.gmatch(ft, "([-_%w]+)%.([-_%w]+)") do
+            file_name = f
+			tbl_name = t
+        end
+		if file_name and tbl_name then
+		    base_tbl = _G[file_name] and _G[file_name][tbl_name]
+		else
+		    base_tbl = _G[ft]
+		end
+		if type(base_tbl) == "table" then
+		    for k in pairs(base_tbl) do
+			    table.insert(all_els, k)
+		    end
+		end
+    end
+	--'парсим конфиговые списки параметров
+	for cf, sec in string.gmatch(str, "%s*([%\%.-_%w]+)%s*%|%s*([-_%w]+)%s*") do
+	    local ini = ini_file(cf)
+		if ini and ini:section_exist(sec) then
+		    do
+				local ind = 0
+				repeat
+					local valid, id, value = ini:r_line(sec, ind, "", "")
+					if valid then
+					    table.insert(all_els, id.." >> "..value)
+					end
+					ind = ind + 1
+				until (not valid)
+			end
+		end
+	end
+	--'парсим дополнительные параметры
+    for pm, list in string.gmatch(str, "%s*([%+%-])%s*%{%s*([-_%s%,%w]+)%s*%}") do
+        for el in string.gmatch(list, "%s*([^%,%s][-_%w]+)%s*") do
+            if pm == "+" then
+				table.insert(all_els, el)
+			end
+			if pm == "-" then
+				local ind = 0
+				for i, v in ipairs(all_els) do
+					if v == el then
+						ind = i
+						break
+					end
+				end
+				if ind > 0 and all_els[ind] then
+					table.remove(all_els, ind)
+				end
+			end
+		end
+	end
+	return all_els
+end
+
+--//-----------------------------------------------------------
+--// Методы спавна
+--//-----------------------------------------------------------
+
+--/summary/>> функция перепаковки net_packet заспавненного объекта
+--/args/' объект, таблица параметров перепаковки
+function repack_net(sobj, props)
+    --'определяем имена методов перепаковки
+	local get = props.net_funcs.get
+	local set = props.net_funcs.set
+	local upd = (props.net_funcs.upd == "true")
+	if not get or not set then return end
+	--'производим перепаковку
+	local tbl = _net_utils[get](sobj, upd)
+	for k,v in pairs(props) do
+	    tbl[k] = v
+		if upd and tbl["upd"..k] ~= nil then
+			tbl["upd"..k] = v
+		end
+	end
+	_net_utils[set](tbl, sobj, upd)
+end
+
+--/summary/>> Функция относительно безопасного спавна с возможностями настройки свойств объектов
+--/args/' 
+--'таблица параметров объектов,
+--'позиция для спавна,
+--'левел вертекс,
+--'гейм вертекс,
+--'ай-ди объекта, если спавнить в инвентарь, иначе nil или 65535
+function create(sections, pos, lvid, gvid, id)
+    local sini = system_ini()
+	local aborts = {}        --'таблица для не найденых секций
+	local objs_props = {}    --'таблица заспавненных объектов со списками свойств требующих онлайновой установки
+	for _,item in pairs(sections) do
+	    local section = item.section
+		local count = item.count
+	    if sini:section_exist(section) then
+		    local cls = sini:line_exist(section, "class") and sini:r_string(section, "class") or nil
+		    if (cls == "AI_PHANT") and db.actor:position():distance_to_sqr(pos) > 2 then --' спавн фантомов
+			    for i=1, count do
+			        level.spawn_phantom(pos)
+			    end
+			elseif (cls == "AMMO") then --' спавн патронов
+			    local base_box_size = tonumber(sini:r_string(section, "box_size"))
+				do
+	                repeat
+	                    local spawn_box_size = count > base_box_size and base_box_size or count
+						alife():create_ammo(section, pos, lvid, gvid, id or 65535, spawn_box_size)
+						count = count - base_box_size
+	                until (count <= 0)
+				end
+			elseif (cls ~= nil) then   --' спавн всего остального
+		        if (id and id ~= 65535 and not sini:line_exist(section, "cost")) then id = nil end
+		        for i=1, count do
+			        local sobj = alife():create(section, pos, lvid, gvid, id or 65535)
+					repack_net(sobj, item.props)
+					--'установка новых свойств объекту через оффлайновые мотоды
+	                for k,v in pairs(item.props) do
+	                    local func_off = _getset_properties["offline_set_"..k]
+		                if func_off then
+		                    func_off(sobj, v)
+			                item.props[k] = nil
+		                end
+	                end
+					objs_props[sobj.id] = item.props
+			    end
+			end
+		else
+		    table.insert(aborts, section)
+		end
+	end
+	return aborts, objs_props
+end
+
+function Init()
+end

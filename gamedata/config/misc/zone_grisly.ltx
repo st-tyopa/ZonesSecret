@@ -1,0 +1,264 @@
+;===========================================================================
+; by amik ;) 
+;===========================================================================
+[zone_grisly]:zone_mincer
+$spawn 			= "zones\zone_grisly"
+GroupControlSection	= spawn_group_zone
+class			= Z_NOGRAV
+
+ef_anomaly_type		= 7
+ef_weapon_type		= 19
+pick_dof_effector = off
+
+idle_light_volumetric = off
+light_volumetric = off
+hit_impulse_scale	= 0.9
+effective_radius	= 0.95 ;размер радиуса в процентах от оригинального, где действует зона
+sound			= zone_mosquito_bald
+postprocess		= postprocess_new
+
+artefacts		=
+BirthProbability = 0.0
+
+;----------- Anomaly settings -----------------------
+min_start_power		= 0.99
+max_start_power		= 4.00
+attenuation			= 1
+period				= 1
+min_artefact_count	= 0
+max_artefact_count	= 0
+
+hit_type		= shock
+
+blowout_light_time	= 150
+blowout_explosion_time	= 150
+blowout_particles_time	= 150
+blowout_sound_time  	= 150
+
+disable_time		= -1	;время игнорирования неживого объекта в зоне (-1 если не нужно)
+disable_time_small	= 50	;время игнорирования маленького неживого объекта в зоне (-1 если не нужно)
+disable_idle_time	= -1	;время отключения idle партиклов
+
+ignore_nonalive		= false;
+ignore_small		= false;
+ignore_artefacts	= false;
+
+awaking_time		= 500
+blowout_time		= 1000	
+accamulate_time		= 1000
+
+blowout_light		= off
+idle_light		= off
+
+visible_by_detector = on
+blowout_wind	= off
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;рождение артефактов во время срабатывания
+spawn_blowout_artefacts = off
+======================================================================================
+
+
+
+
+
+
+;===========================================================================
+; zone_grisly_center
+;===========================================================================
+[zone_grisly_center]:m_poltergeist_e
+GroupControlSection	= spawn_group
+$spawn          = "monsters\old\zone_grisly_center"
+visual = physics\anomaly\anomaly_grisly
+
+;----------------------------------------------------------------------------
+; Movement::Velocities & Acceleration
+;----------------------------------------------------------------------------
+; speed factors		linear | angular_real | angular_path | min |  max
+Velocity_Stand		= 0,		5.0,			5.0,		0.2,	0.5
+Velocity_WalkFwdNormal	= 0.0,		2.0,			2.0,		0.2,	2.0
+Velocity_WalkFwdDamaged	= 0.0,		3.0,			3.0,		0.8,	2.0
+Velocity_RunFwdNormal	= 0.0,		3.0,			3.0,		0.4,	1.0
+Velocity_RunFwdDamaged	= 0.0,  	3.2,			3.2,		0.4,	1
+Velocity_Drag		= 0.0,		3.0,			3.0,		1,		1
+Velocity_Steal		= 0.0,		3.0,			3.0,		1,		1
+
+; Speed factors while invisible
+Velocity_Invisible_Linear	= 0.0
+Velocity_Invisible_Angular	= 0.0
+;-------------------------------------------------------------------------
+; Entity Conditions
+;-------------------------------------------------------------------------
+DayTime_Begin		= 0
+DayTime_End		= 23
+
+hit_type = strike
+
+species			= bird ;poltergeist
+material		= objects\bullet ;creatures\hoof
+;============ entity condition =========================================== 
+satiety_v 		= 0.0   		;скорость уменьшения сытости со временем
+radiation_v 		= 0.0   		;скорость уменьшения радиации
+satiety_power_v 	= 0.005			;увеличение силы при уменьшении сытости
+satiety_health_v 	= 0.001			;увеличение здоровья при уменьшении сытости
+satiety_critical 	= 0.0			;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+radiation_health_v 	= 0.0   		;уменьшение здоровья при воздействии радиации
+morale_v		= 0.6			;скорость восстановления морали
+health_hit_part 	= 0.0			;процент хита, уходящий на отнимание здоровья
+power_hit_part 		= 0.0			;процент хита, уходящий на отнимание силы
+psy_health_v 		= 0.9			;скорость восстановления psy-здоровья
+
+immunities_sect		= zone_grisly_center_immunities
+
+;открытые раны
+bleeding_v		= 0.0	;потеря крови при номинальной ране в секунду
+wound_incarnation_v	= 0.0	;крутизна кривой заживления (какой процент раны останется после заживления в игровую секунду)
+min_wound_size		= 0.0
+
+satiety_threshold	= 0.0	; below this value monster fill hunger
+
+sound_idle		= monsters\biting\def_0
+sound_eat		= monsters\biting\def_0
+sound_aggressive	= monsters\biting\def_0
+sound_attack_hit	= monsters\biting\def_0
+sound_take_damage	= monsters\biting\def_0
+sound_die		= monsters\biting\def_0
+sound_threaten		= monsters\biting\def_0
+sound_landing		= monsters\biting\def_0
+sound_steal		= monsters\biting\def_0
+sound_panic		= monsters\biting\def_0
+sound_growling		= monsters\biting\def_0
+sound_die_in_anomaly	= monsters\biting\def_0
+
+idle_sound_delay	= 0
+eat_sound_delay		= 0
+attack_sound_delay	= 0
+
+SoundThreshold		 = 0.06	; range [0..1]
+max_hear_dist		 = 40
+;-------------------------------------------------------------------------
+; Vision
+;-------------------------------------------------------------------------
+eye_fov		= 180
+eye_range	= 80
+
+min_view_distance   		= 1.0		; коэффициент, который множится на eye_range, в зависимости от угла
+max_view_distance	 	= 1.0		; коэффициент, который множится на eye_range, в зависимости от угла
+visibility_threshold	 	= 100.0		; значение, при достижении суммой которого объект считается видимым
+always_visible_distance 	= 0.5
+time_quant			= 0.001
+decrease_value			= 0.01		; значение, на которое уменьшается вес, если объект попал в фрустум, но отсёкся по каким-то причинам
+velocity_factor		     	= 0.5
+luminocity_factor		= 0.5 		; фактор освещения (только для Актёра)
+transparency_threshold		= 0.25
+
+;-------------------------------------------------------------------------
+; Morale
+;-------------------------------------------------------------------------
+Morale_Hit_Quant		= 0.1
+Morale_Attack_Success_Quant	= 0.3
+Morale_Take_Heart_Speed		= 0.1
+Morale_Despondent_Speed		= 0.1
+Morale_Stable_Speed		= 0.3
+Morale_Despondent_Threashold	= 0.5
+;---------------------------------------------------------------------
+anger_hunger_threshold	= 0.7 ;0.1
+anger_loud_threshold	= 0.6 ;0.7
+;---------------------------
+
+Invisible_Energy_Restore_Velocity		= 0.3
+Invisible_Energy_Decline_Velocity		= 0.0
+Invisible_Energy_Critical_Value			= 0.01
+Invisible_Energy_Activate_Value			= 0.99
+Invisible_Energy_Aggressive_Restore_Velocity	= 0.5
+
+Particles_Damage	= amik\monsters\phantom\damage ;monsters\polter_damage
+Particles_Death		= monsters\polter_death
+Particles_Idle		= amik\anomaly\zone_grisly\dist_1
+Particles_Hidden	= monsters\polter_hide
+
+;===========================================================================
+; IMMUNITIES
+;===========================================================================
+[zone_grisly_center_immunities]
+burn_immunity 		= 0.0		;коэффициенты иммунитета
+strike_immunity 	= 0.0
+shock_immunity 		= 0.0
+wound_immunity 		= 0.0
+radiation_immunity 	= 0.0
+telepatic_immunity 	= 0.0
+chemical_burn_immunity 	= 0.0
+explosion_immunity 	= 0.0
+fire_wound_immunity = 0.0
+
+damage	= zone_grisly_damage
+
+[zone_grisly_damage]
+;bone_name	 = <hit_scale>,-1,<wound_scale>
+;<hit_scale>	- коэфф. изменения хита (уменьшения здоровья)
+;<wound_scale>	- коэфф. изменения величины открытой раны
+
+default			= 0.0,	-1,	0.0
+
+bip01_pelvis 		= 0.0, -1, 0.0
+bip01_spine 		= 0.0, -1, 0.0
+bip01_spine1 		= 0.0, -1, 0.0
+bip01_neck 		= 0.0, -1, 0.0
+bip01_head 		= 0.0, -1, 0.0
+
+;=================================================================================
+; *** PROFILES zone_grisly_center ************************************************
+;=================================================================================
+[zone_grisly_normal_flame]:zone_grisly_center
+$spawn = "monsters\zone_grisly_center_flame"
+
+type = flamer
+
+flame_sound		= monsters\biting\def_0
+
+flame_particles_prepare	= none                                ;monsters\polter_yadro
+flame_particles_fire	= amik\anomaly\zone_grisly\data\psy   ;static\monsters_fire_idle
+flame_particles_stop	= none ;static\monsters_fire_stop
+
+flame_fire_time_delay	= 1000 ;2400	; don't change - for programmers only
+flame_fire_time_play	= 6000
+flame_length		= 8.0
+flame_hit_value		= 0.6
+flame_hit_delay		= 200
+flames_count		= 3
+flames_delay		= 2000	;3500
+flame_aura_radius	= 10
+
+flame_scan_radius		= 30 ;10
+flame_scan_sound		= monsters\biting\def_0 ;monsters\burer\burer_scan_affect_0
+flame_scan_effector_section	= zone_grisly_center_scan_effector
+flame_scan_delay_min_max	= 5000,10000
+
+flame_min_dist			= 3.0
+flame_max_dist			= 30 ;15
+flame_min_height		= 0.6
+flame_max_height		= 1.5
+;========================================================================================================
+Particles_Damage	= amik\monsters\phantom\damage ;monsters\polter_damage
+Particles_Death		= monsters\polter_death
+Particles_Idle		= amik\anomaly\zone_grisly\dist_1 ;amik\monsters\phantom\idle
+Particles_Hidden	= monsters\polter_hide
+
+Hidden_Particles = none	;monsters\polter_hidden
+Sound_Idle	 = monsters\biting\def_0
+;========================================================================================================
+[zone_grisly_center_scan_effector]
+duality_h		= 0.003
+duality_v		= 0.002
+blur			= 0.5
+gray			= 0.3
+noise_intensity		= 0.0
+noise_grain		= 2
+noise_fps		= 8
+color_base		= 0.637,0.442,0.456 ; 0.55,0.5,0.5
+color_gray		= 0.333,0.333,0.333
+color_add		= 0.05,0.0,0.0
+time			= 10.00
+time_attack		= 0.3		; fade in
+time_release		= 0.85		; fade out
+;========================================================================================================

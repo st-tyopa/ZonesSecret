@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = sr_idle@nil
+
+[sr_idle2]
+on_game_timer = 10|%+dv_dolg_sms_zavod% sr_idle3
+
+[sr_idle21]
+on_game_timer = 10|%+dv_dolg_sms_zavod% sr_idle@nil
+
+[sr_idle3]
+on_game_timer = 15|%+dv_sv_sms_zavod +dv_zavod_vibor% sr_idle@nil
+
+[sr_idle31]
+on_game_timer = 15|%+dv_sv_sms_zavod% sr_idle@nil
+
+[sr_idle@nil]

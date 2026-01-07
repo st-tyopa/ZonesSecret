@@ -1,0 +1,1167 @@
+
+
+--[[ ---------------------------------------------------------------------------------------------------
+ File        : guiders.script
+ Description : Проводники
+ Version     : 2.0 Final
+ Copyright   : 2010 © Stalk15
+ Author      : Stalk15
+ Last update : 7.11.2010 
+--]]----------------------------------------------------------------------------------------------------
+
+--------------- Можно менять ---------------
+local sale = 1.25         --/Чем больше значение, тем дешевле будет стоить услуга проводника.Значение <= 1 не ставить
+----- local not_guid = false    --/ false\true Отключение\Включение:Проведет вас проводник или откажется.Чтоб Отключить\Включить, нужно вызвать из этого файла функцию on_or_off_not_guid  
+local AllDestImm = false  --/ true - точки назначения доступны только если Вы уже побывали на этой локации, или если Вы имеете квест, связанный с этой локацией.false - все точки назначения доступны сразу.
+local SaleFriend = 1.15   --/Чем больше значение, тем дешевле будет стоить услуга проводника друга
+--------------- Нельзя менять ---------------
+local start_guid, guid_effect = false, false
+local on_start_guid = false
+local timer = 0
+local obj_id = 0         --/До куда мерить дистанцию.
+local cost_on_guid = 77  --/будет цена
+local SaleStatus = ""    --/Статус скидки
+local guider_name = "."
+local CountRank = 0
+
+local sms_guider_1 = {
+      "Фух!Вот мы и на месте.Удачи тебе.",
+      "Ну на конец то, пришли!Если тебе еще куда надо - обращайся.",
+      "Вот это место.Не пропадай, Сталкер, удачи.",
+      "Добрались, слава тебе господи.Живы и здоровы.",
+
+      "Мы пришли.И чего ты только забыл в этом жутком месте ...",
+      "Вот это самое место.Будь осторожен, всетаки тут не безопасно.",
+      "Ну вот мы и добрались.Жуткое место, удачи.",
+	  "Мы на месте.Я бы тут не задерживался - опасно тут.",
+	  
+	  "Ай твою!Сволочи, внезапно напали!",
+	  "Аха!съели, суки!Я еще не такое умею.",
+	  "Ай-ёё!Чуть не замочили, уроды!"
+    }
+	
+local x1, y1, z1, lvid, gvid, on_level, sObject, MessGuider = nil, nil, nil, nil, nil, nil, nil, nil
+----------------------------------------// Точки назначения //----------------------------------------
+
+---------------------------- Кордон ----------------------------
+--/Лагерь новичков.
+function on_escape_novice_lager()
+    x1 = -148.654
+	y1 = -16.46
+	z1 = -146.994
+    lvid = 101792
+	gvid = 45
+	on_level = "l01_escape"
+	obj_id = 003
+	sObject = nil
+end 
+
+--/Блокпост военных под мостом.
+function on_escape_blockpost_under_most()
+    x1 = 59.654
+	y1 = -0.72
+	z1 = 108.994
+    lvid = 346906
+	gvid = 162
+	on_level = "l01_escape"
+	obj_id = 033
+	sObject = nil
+end
+
+--/Бокпост на переходе на Свалку.
+function on_escape_blockpost_exit_on_gar()
+    x1 = 25.654
+	y1 = 16.55
+	z1 = 676.994
+    lvid = 304852
+	gvid = 207
+	on_level = "l01_escape"
+	obj_id = 091
+	sObject = nil
+end
+---------------------------- Свалка ----------------------------
+--/Стоянка брошенной техники.
+function on_garbage_parking_abandoned_teh()
+    x1 = -62.9896354675293
+	y1 = -2.58442449569702
+	z1 = -213.144912719727
+    lvid = 134602
+	gvid = 268
+	on_level = "l02_garbage"
+	obj_id = 193
+	sObject = nil
+	--news_manager.send_tip(db.actor, tostring(on_level), 0, "trader", 5000)
+end
+
+--/Дэпо.
+function on_garbage_depo()
+    x1 = -64.8000030517578
+	y1 = 0.899999916553497
+	z1 = 9.60000038146973
+    lvid = 133639
+	gvid = 330
+	on_level = "l02_garbage"
+	obj_id = 116
+	sObject = nil
+end
+
+--/Блокпост Долга.
+function on_garbage_blockpost_dolg()
+    x1 = 39.1533279418945
+	y1 = 0.443946838378906
+	z1 = 207.780548095703
+    lvid = 213348
+	gvid = 359
+	on_level = "l02_garbage"
+	obj_id = 115
+	sObject = nil
+end
+---------------------------- Агропром ----------------------------
+--/База Военных.
+function on_agroprom_baze_military()
+    x1 = -189.1533279418945
+	y1 = 0.37
+	z1 = -82.780548095703
+    lvid = 46982
+	gvid = 598
+	on_level = "l03_agroprom"
+	obj_id = 321
+	sObject = nil
+end
+
+--/Развилка.
+function on_agroprom_center()
+    x1 = 103.1533279418945
+	y1 = 0.40
+	z1 = -43.780548095703
+    lvid = 337948
+	gvid = 424
+	on_level = "l03_agroprom"
+	obj_id = 115
+	sObject = nil
+end
+
+--/Лагерь Сталкеров.
+function on_agroprom_lager_stalkers()
+    x1 = 107.1533279418945
+	y1 = 0.05
+	z1 = 32.780548095703
+    lvid = 341433
+	gvid = 422
+	on_level = "l03_agroprom"
+	obj_id = 303
+	sObject = nil
+end
+---------------------------- Темная долина ----------------------------
+--/Холл завода
+function on_darkvalley_holl()
+    x1 = 72.59992980957
+	y1 = 0.04   
+	z1 = -258.9776725769043
+    lvid = 262717
+	gvid = 855
+	on_level = "l04_darkvalley"
+	obj_id = 426
+	sObject = nil
+end
+
+--/База Бандитов
+function on_darkvalley_ban_baze()
+    x1 = -67.59992980957
+	y1 = -3.28   
+	z1 = -20.9776725769043
+    lvid = 95770
+	gvid = 892
+	on_level = "l04_darkvalley"
+	obj_id = 431
+	sObject = nil
+end
+
+--/Ферма
+function on_darkvalley_ferma()
+    x1 = -123.59992980957
+	y1 = 2.49   
+	z1 = -419.9776725769043
+    lvid = 33658
+	gvid = 827
+	on_level = "l04_darkvalley"
+	obj_id = 421
+	sObject = nil
+end
+---------------------------- Бар ----------------------------
+--/Недалеко от Бара.
+function on_bar_bar()
+    x1 = 165.59992980957
+	y1 = 0.00                
+	z1 = 63.9776725769043
+    lvid = 42832
+	gvid = 1179
+	on_level = "l05_bar"
+	obj_id = 500
+	sObject = nil
+end
+
+--/Застава.
+function on_bar_zastava()
+    x1 = 224.59992980957
+	y1 = -0.00                
+	z1 = -16.9776725769043
+    lvid = 56533
+	gvid = 1263
+	on_level = "l05_bar"
+	obj_id = 518
+	sObject = nil
+end
+---------------------------- Дикая Тер. ----------------------------
+--/В начале
+function on_rostok_()
+    x1 = 16.59992980957
+	y1 = -0.00                
+	z1 = 123.9776725769043
+    lvid = 66636
+	gvid = 1414
+	on_level = "l06_rostok"
+	obj_id = 597
+	sObject = nil
+end
+
+--/Рядом с аномалией "Жарка"
+function on_rostok_anom()
+    x1 = -217.59992980957
+	y1 = 0.11                
+	z1 = -55.9776725769043
+    lvid = 22709
+	gvid = 1402
+	on_level = "l06_rostok"
+	obj_id = 605
+	sObject = nil
+end
+
+---------------------------- Янтарь ----------------------------
+--/Бункер
+function on_yantar_bunker()
+    x1 = 32.59992980957
+	y1 = -11.71                
+	z1 = -277.9776725769043
+    lvid = 54979
+	gvid = 1480
+	on_level = "l08_yantar"
+	obj_id = 902
+	sObject = nil
+end
+
+--/У завода
+function on_yantar_zavod()
+    x1 = 118.59992980957
+	y1 = 2.10                
+	z1 = -45.9776725769043
+    lvid = 104213
+	gvid = 1441
+	on_level = "l08_yantar"
+	obj_id = 907
+	sObject = nil
+end
+
+---------------------------- Милитари ----------------------------
+--/Хутор Долга
+function on_military_dolg_khutor()
+    x1 = -229.59992980957
+	y1 = -12.49                
+	z1 = 65.9776725769043
+    lvid = 102083
+	gvid = 1679
+	on_level = "l07_military"
+	obj_id = 774
+	sObject = nil
+end
+
+--/База Свободы
+function on_military_baze_freedom()
+    x1 = -6.59992980957
+	y1 = -6.34                
+	z1 = 96.9776725769043
+    lvid = 301155
+	gvid = 1636
+	on_level = "l07_military"
+	obj_id = 733
+	sObject = nil
+end
+
+--/Северный блокпост Свободы
+function on_military_sever_blockpost()
+    x1 = 83.59992980957
+	y1 = -1.98                
+	z1 = 302.9776725769043
+    lvid = 380753
+	gvid = 1775
+	on_level = "l07_military"
+	obj_id = 724
+	sObject = nil
+end
+---------------------------- x18 ----------------------------
+--/В начале
+function on_x18_nachalo()
+    x1 = -3.59992980957
+	y1 = 9.40                
+	z1 = -7.9776725769043
+    lvid = 2180
+	gvid = 1166
+	on_level = "l04u_labx18"
+	obj_id = 452
+	sObject = nil
+end
+---------------------------- x16 ----------------------------
+--/В начале
+function on_x16_nachalo()
+    x1 = 147.59992980957
+	y1 = 32.13                
+	z1 = -13.9776725769043
+    lvid = 7789
+	gvid = 1541
+	on_level = "l08u_brainlab"
+	obj_id = 918
+	sObject = nil
+end
+
+--/Около тоннеля
+function on_x18_tunel()
+    x1 = -122.665664672852
+	y1 = 21.5899124145508              
+	z1 = -31.5125751495361
+    lvid = 126
+	gvid = 1529
+	on_level = "l08u_brainlab"
+	obj_id = 918
+	sObject = nil
+end
+
+---------------------------- Радар ----------------------------
+--/В начале
+function on_radar_nachalo()
+    x1 = 573.59992980957
+	y1 = -52.13                
+	z1 = -394.9776725769043
+    lvid = 202026
+	gvid = 1878
+	on_level = "l10_radar"
+	obj_id = 1008
+	sObject = nil
+end
+
+--/У антен
+function on_radar_antens()
+    x1 = 26.9680633544922
+	y1 = 14.4403867721558              
+	z1 = 17.8999729156494
+    lvid = 197671
+	gvid = 1862
+	on_level = "l10_radar"
+	obj_id = 1000
+	sObject = nil
+end
+---------------------------- Подземелье Агропрома ----------------------------
+--/В начале
+function on_agr_underground_nachalo()
+    x1 = -38.59992980957
+	y1 = -3.89                
+	z1 = 37.9776725769043
+    lvid = 4813
+	gvid = 724
+	on_level = "l03u_agr_underground"
+	obj_id = 399
+	sObject = nil
+end
+
+--/В Тайник Стрелка
+function on_agr_underground_gunslinger()
+    x1 = -69.7555389404297
+	y1 = -6.87324237823486
+	z1 = -70.4957275390625
+    lvid = 3440
+	gvid = 717
+	on_level = "l03u_agr_underground"
+	obj_id = 399
+	sObject = nil
+end
+----------------------------------------------------------  Base function  ----------------------------------------------------------
+--/Проверка дистанции и вычисление оплаты 
+function Check_distance_to_destination_and_computation_cost(first_speaker, second_speaker)
+    local obj, obj2
+        if obj_id == nil then
+		    obj = alife():object(sObject)
+        elseif sObject == nil then
+	        obj = alife():story_object(obj_id)
+        end	
+            local guider_rank = ranks.get_obj_rank_name(first_speaker)
+            local destination2 = game_graph():vertex(obj.m_game_vertex_id):level_id() 
+            local level_name2 = alife():level_id()
+			--/На другую локу
+	            if destination2 ~= level_name2 then
+                    if obj then
+                        local g_v = obj.m_game_vertex_id                              
+                        local pos1 = game_graph():vertex(g_v):game_point()  
+                        g_v = db.actor:game_vertex_id()                      
+                        local pos2 = game_graph():vertex(g_v):game_point()  
+                        local dist = pos1:distance_to(pos2)   
+                        cost_on_guid = dist/sale
+						MessGuider = 27000
+	                 end
+	             end
+				 --/На активную локу
+	                if destination2 == level_name2 then
+			            if obj_id ~= nil or obj_id ~= 0 then
+			                obj2 = level_object_by_sid(obj_id)
+			            end
+			            if obj_id == nil or obj_id == 0 then
+			                obj2 = alife():object(sObject)
+			            end
+			        end
+		            if obj2 and destination2 == level_name2 then
+			            local dist_2 = obj2:position():distance_to(db.actor:position())
+				        cost_on_guid = dist_2/(sale + 3.3)
+						MessGuider = 10000
+                    end	
+--------------------  Основная корректировка цены  ----------------------------
+	            if on_level == "l03_agroprom" and obj_id == 321 then
+	                cost_on_guid = cost_on_guid + cost_on_guid/5
+		        elseif on_level == "l03_agroprom" and obj_id == 115 then
+		            cost_on_guid = cost_on_guid + cost_on_guid/5
+   		        elseif on_level == "l03_agroprom" and obj_id == 303 then
+		            cost_on_guid = cost_on_guid + cost_on_guid/5
+					
+   		        elseif on_level == "l03u_agr_underground" and gvid ~= 724 then
+		            cost_on_guid = cost_on_guid + cost_on_guid/3.8  
+   		        elseif on_level == "l03u_agr_underground" and gvid == 724 then
+		            cost_on_guid = cost_on_guid + cost_on_guid/4.9
+					
+	            elseif on_level == "l01_escape" then
+     				cost_on_guid = cost_on_guid + cost_on_guid/5
+					
+	            elseif on_level == "l02_garbage" and obj_id == 193 then
+     				cost_on_guid = cost_on_guid + cost_on_guid/4.8
+	            elseif on_level == "l02_garbage" and obj_id ~= 116 and obj_id ~= 115 then
+     				cost_on_guid = cost_on_guid + cost_on_guid/4.8
+					
+		        elseif on_level == "l04_darkvalley" and obj_id == 426 then
+                    cost_on_guid = cost_on_guid + cost_on_guid/4.6
+       		    elseif on_level == "l04_darkvalley" and obj_id == 431 then
+		            cost_on_guid = cost_on_guid + cost_on_guid/5.1
+		        elseif on_level == "l04_darkvalley" and obj_id == 421 then
+                    cost_on_guid = cost_on_guid + cost_on_guid/6.1
+		        elseif on_level == "l06_rostok" and obj_id == 421 then
+		            cost_on_guid = cost_on_guid + cost_on_guid/4.1		   
+	            elseif on_level == "l06_rostok" and obj_id == 605 then
+                    cost_on_guid = cost_on_guid + cost_on_guid/4.7
+	            elseif on_level == "l07_military" and obj_id == 733 then
+    				cost_on_guid = cost_on_guid + cost_on_guid/4.9
+	            elseif on_level == "l07_military" and obj_id == 724 then
+     				cost_on_guid = cost_on_guid + cost_on_guid/4.9
+
+	            elseif on_level == "l10_radar" and obj_id == 1008 then
+     				cost_on_guid = cost_on_guid + cost_on_guid/4.4
+	            elseif on_level == "l10_radar" and obj_id == 1000 then
+     				cost_on_guid = cost_on_guid + cost_on_guid/4.1
+					
+	            elseif on_level == "l08u_brainlab" and gvid ~= 1529 then
+     				cost_on_guid = cost_on_guid + cost_on_guid/3.5
+	            elseif on_level == "l08u_brainlab" and gvid == 1529 then
+     				cost_on_guid = cost_on_guid + cost_on_guid/2.8
+
+	            elseif on_level == "l04u_labx18" then
+     				cost_on_guid = cost_on_guid + cost_on_guid/3.5					
+	        end		
+-------------------- Корректировка цены по рангу проводника и ГГ --------------------
+          if guider_rank ~= "novice" then
+		    if guider_rank == "experienced" then
+			    cost_on_guid = cost_on_guid * 1.12
+				CountRank = 300
+			elseif guider_rank == "veteran" then
+			    cost_on_guid = cost_on_guid * 1.2
+				CountRank = 600
+			elseif guider_rank == "master" then
+			    cost_on_guid = cost_on_guid * 1.27
+				CountRank = 900
+		    end
+		end
+		 ---------------- Скидка, если проводник Друг ----------------
+		if first_speaker:relation(second_speaker) == game_object.friend then
+		    cost_on_guid = cost_on_guid/SaleFriend
+			SaleStatus = "Со скидкой"
+		else
+		    SaleStatus = "Без скидки"
+		end 
+		 -------------------------------------------------------------
+  --/А вдруг цена 0 будет илb что-то взглюкнуло?
+	    if cost_on_guid <= 0 or cost_on_guid == nil then
+            cost_on_guid = 150
+			   news_manager.send_tip(db.actor, "!!!Ошибка в вычислении оплаты!!!", 0, "trader", 5000)
+        end	
+	cost_on_guid = math.floor(cost_on_guid)
+end
+--------------------------------------------------------------------------------------------------------------------
+function _on_start_guid(first_speaker, second_speaker)
+    local obj
+        if obj_id == nil then
+		    obj = alife():object(sObject)
+        elseif sObject == nil then
+	        obj = alife():story_object(obj_id)
+        end	
+	    local destination = game_graph():vertex(obj.m_game_vertex_id):level_id() 
+        local level_name = alife():level_id()
+	if destination ~= level_name then
+        local VisGuider
+	    local guider = second_speaker:id()
+	    local sGuider = alife():object(guider)
+	    local t = xrs_utils.read_stalker_params(sGuider)
+	    VisGuider = t.visual
+
+	    local SpawnGuider = alife():create("guider",vector():set(x1+2,y1+3,z1+2),lvid, gvid)
+	    local t = xrs_utils.read_stalker_params(SpawnGuider)
+	    t.visual = VisGuider
+	    t.sid = 3773
+	    t.custom = "[logic]\ncfg = scripts\\guider.ltx"
+	    xrs_utils.write_stalker_params(t,SpawnGuider)
+		db.actor:give_info_portion("guider_spawn")
+	--/ character параметры
+	    local GuiderCom = second_speaker:character_community()
+		--/Ранг
+        tmp = xr_logic.pstor_retrieve(db.actor, "guiderrank", 0)
+        tmp = CountRank
+        xr_logic.pstor_store(db.actor, "guiderrank", tmp) 
+		--/Группировка
+		tmp = xr_logic.pstor_retrieve(db.actor, "guidercom", 0)
+		tmp = GuiderCom
+		xr_logic.pstor_store(db.actor, "guidercom", tmp)
+	end
+	  --/Имя
+		tmp = xr_logic.pstor_retrieve(db.actor, "guidername", 0)
+		tmp = guider_name
+		xr_logic.pstor_store(db.actor, "guidername", tmp)
+		
+       --/Сам проводник
+		tmp = xr_logic.pstor_retrieve(db.actor, "guideruserdata", 0)
+		tmp = second_speaker:id()
+		xr_logic.pstor_store(db.actor, "guideruserdata", tmp)
+        		
+    start_guid = true
+    on_start_guid = true
+	timer = time_global()
+	this.off_input(30)
+	level.add_pp_effector("monolith_off.ppe", 1977, false)
+	 if on_level == "l03u_agr_underground" or on_level == "l04u_labx18" or on_level == "l06_rostok" or
+        on_level == "l08u_brainlab" or on_level == "l10_radar" then
+	    db.actor:give_info_portion("start_guid_2")
+    else
+	    db.actor:give_info_portion("start_guid_1") 
+    end
+end
+
+function start_guid_update()
+    if on_start_guid == true then
+	    level.hide_indicators()
+		  if time_global() - timer > 1.7*1000 and guid_effect == false then
+		   level.remove_pp_effector(1977)
+		   this.guid_effect_2()
+		   guid_effect = true
+		end
+    end
+    if guid_effect == true and time_global() - timer > 4.1*1000 then
+		this.start_guid__()
+        on_start_guid = false
+	    guid_effect = false
+	end	
+	if db.actor and has_alife_info("guider_spawn") and has_alife_info("guid_complete") then
+	    local Guider = alife():story_object(3773)
+	    local cGuider = level_object_by_sid(3773)
+	        if Guider or cGuider then
+		        if cGuider:position():distance_to(db.actor:position()) > 39 or cGuider:position():distance_to(db.actor:position()) == nil then   -- or has_alife_info("guider_death") and time_global() - timer > 7.7*1000
+			        alife():release(Guider, true)
+--			        news_manager.send_tip(db.actor, "Удалили")
+		            db.actor:disable_info_portion("guider_spawn")
+					db.actor:disable_info_portion("guider_on_hit")
+					db.actor:disable_info_portion("guider_death")
+					db.actor:disable_info_portion("guid_complete")
+                end					
+          end
+	 end  
+end
+
+--/Начинаем переход
+function start_guid__()
+    local obj
+        if obj_id == nil then
+		    obj = alife():object(sObject)
+        elseif sObject == nil then
+	        obj = alife():story_object(obj_id)
+        end	
+		if obj then
+	        local destination = game_graph():vertex(obj.m_game_vertex_id):level_id() 
+		    local level_name = alife():level_id()                                   
+		        if destination ~= level_name then
+			        guid_teleport.start_level_changer(vector():set(x1,y1,z1), lvid, gvid, on_level)
+	      else
+		    local a = vector() a.x = x1  a.y = y1  a.z = z1  
+            db.actor:set_actor_position(a)			
+        end				
+	end
+end
+
+--/Функции оплаты
+function give_money_to_guider(actor, npc)
+    dialogs.relocate_money(npc, cost_on_guid, "out")
+end
+
+function give_to_actor_money_on_guid(first_speaker, second_speaker)
+	dialogs.relocate_money(first_speaker, cost_on_guid, "in")
+end
+
+function have_money_on_guid(actor, npc)
+	return actor:money() >= cost_on_guid
+end
+
+function not_have_money_on_guid(actor, npc)
+	return not have_money_on_guid(actor, npc)
+end
+
+--/"Одно-группировники" ведут бесплатно
+function check_community_guiders(first_speaker, second_speaker)
+  	return first_speaker:character_community() == second_speaker:character_community()
+end
+function check_community_guiders_not(first_speaker, second_speaker)
+    return not check_community_guiders(first_speaker, second_speaker)
+end
+
+--/Функция Включение/Отключение:Проведет вас проводник или откажется
+function on_or_off_not_guid()
+    if not has_alife_info("not_guid") then
+        db.actor:give_info_portion("not_guid") 
+	elseif has_alife_info("not_guid") then
+        db.actor:disable_info_portion("not_guid")
+	end
+end
+
+function pre_off_not_guid()
+    return not has_alife_info("not_guid")
+end
+function pre_on_not_guid()
+    return has_alife_info("not_guid")
+end
+
+--/guid effect
+function guid_effect_2()
+    level.add_cam_effector("camera_effects\\empty.anm", 1972, false, "guiders.effector_callbak_guid_unfade")
+    level.add_pp_effector("peace_fade.ppe", 1973, false)
+end
+
+function effector_callbak_guid_unfade()
+    level.add_cam_effector("camera_effects\\empty.anm", 1972, false, "guiders.effector_callbak_guid_reset")
+    level.add_pp_effector("peace_unfade.ppe", 1973, false)
+	message_from_the_guider()
+end
+
+function effector_callbak_guid_reset()
+    level.show_indicators()
+	--start_guid = false
+	level.add_pp_effector ("radar_psi.ppe", 7777, false)
+end
+
+function on_other_level_effect()
+    if has_alife_info("end_guid") then
+	    level.add_cam_effector("camera_effects\\empty.anm", 1972, false, "guiders.set_guider_char_params")
+	    level.add_pp_effector ("radar_psi.ppe", 7779, false)
+	    db.actor:disable_info_portion("end_guid")
+	end
+end
+
+function message_from_the_guider_and_effect()
+    message_from_the_guider()
+	on_other_level_effect()
+	Del_LevelChanger()   --/Заодно удалим LC
+end
+
+function message_from_the_guider()
+    local TabG
+    local Rnd = math.random(1, 4)
+        if has_alife_info("start_guid_1") then
+            TabG = math.random(1, 4)
+	    elseif has_alife_info("start_guid_2") then
+	        TabG = math.random(5, 8)
+	    end
+	    if has_alife_info("start_guid_1") or has_alife_info("start_guid_2") then
+	        if db.actor then
+			  db.actor:give_info_portion("end_guid") 
+			  db.actor:give_info_portion("guid_complete") 
+			    local guidername_ = xr_logic.pstor_retrieve(db.actor, "guidername", 0)
+	            local text = "%c[255,69,207,246]Проводник:%c[255,255,150,0]"..tostring(guidername_).."\\n%c[default]"..sms_guider_1[TabG]
+		        local SnsObj = xr_sound.get_safe_sound_object([[device\pda\pda_tip]])
+			    SnsObj:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+		    if Rnd == 1 then
+				db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,216,165,108), math.random(700, 1900), MessGuider)
+	        elseif Rnd == 2 then
+	            db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,0,83,47), math.random(700, 1900), MessGuider)
+	        elseif Rnd == 3 then
+			    db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,108,165,108), math.random(700, 1900), MessGuider)
+	        elseif Rnd == 4 then
+			    db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(165,108,165,108), math.random(700, 1900), MessGuider)
+	        end
+	        db.actor:disable_info_portion("start_guid_1")
+	        db.actor:disable_info_portion("start_guid_2")
+	        off_input(70)
+	    end
+    end
+end
+
+--/Напали на проводника
+function message_help_to_guider()
+  local Guider = alife():story_object(3773)
+  local cGuider = level_object_by_sid(3773)
+  local Rnd = math.random(1, 4)
+	if Guider or cGuider then
+		if cGuider:position():distance_to(db.actor:position()) > 15 then
+		    local guidername_ = xr_logic.pstor_retrieve(db.actor, "guidername", 0)
+            local text = "%c[255,69,207,246]Проводник:%c[255,255,150,0]"..tostring(guidername_).."\\n%c[default]"..sms_guider_1[math.random(9, 11)]
+            local SnsObj = xr_sound.get_safe_sound_object([[device\pda\pda_sos]])
+	        SnsObj:play_at_pos(db.actor, vector():set(0,0,0), 0, sound_object.s2d)
+			    if Rnd == 1 then
+				    db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,216,165,108), 300, 10000)
+	            elseif Rnd == 2 then
+	                db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,0,83,47), 300, 10000)
+	            elseif Rnd == 3 then
+			        db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,108,165,108), 300, 10000)
+	            elseif Rnd == 4 then
+			        db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(165,108,165,108), 300, 10000)
+			    end
+		  end
+	 end
+end
+
+--/Проводник сдох
+function message_death_guider()
+    local guidername_ = xr_logic.pstor_retrieve(db.actor, "guidername", 0)
+    local text = "«%c[255,69,207,246]Погиб проводник:%c[255,255,150,0]"..tostring(guidername_).."»"
+    db.actor:give_game_news(text, "ui\\icon_guider", Frect():set(0,0,83,47), 300, 10000)
+end
+
+--/Установка character параметров проводнику
+function set_guider_char_params()
+  local Guider = alife():story_object(3773)
+  local cGuider = level_object_by_sid(3773)
+	if Guider or cGuider then
+	    local SetRank = xr_logic.pstor_retrieve(db.actor, "guiderrank", 0)
+		local SetCom = xr_logic.pstor_retrieve(db.actor, "guidercom", 0)
+	    cGuider:set_character_community(SetCom, 0, 0)   
+        cGuider:set_character_rank(SetRank)
+	end
+end
+
+--/Если проводник сдох, то удаляем оригинального
+function delete_guider()
+    local Guider = xr_logic.pstor_retrieve(db.actor, "guideruserdata", 0)
+    local sGuider = alife():object(Guider)
+	alife():release(sGuider, true)
+end
+
+--/Отключение ввода
+function off_input(time)
+    set_inactivate_input_time(time)
+end
+
+--/На всякий случай - для сброса
+function reset_guid()
+    if has_alife_info("start_guid_1") or has_alife_info("start_guid_2") then
+	    db.actor:disable_info_portion("start_guid_1")
+	    db.actor:disable_info_portion("start_guid_2")
+    elseif has_alife_info("guider_spawn") then
+	    db.actor:disable_info_portion("guider_spawn")	
+    elseif has_alife_info("end_guid") then
+	    db.actor:disable_info_portion("end_guid")
+    elseif has_alife_info("guider_on_hit") then
+	    db.actor:disable_info_portion("guider_on_hit")
+    elseif has_alife_info("guider_death") then
+	    db.actor:disable_info_portion("guider_death")
+    elseif has_alife_info("guid_complete") then
+	    db.actor:disable_info_portion("guid_complete")
+	end
+	local Guider = alife():story_object(3773)
+	local cGuider = level_object_by_sid(3773)
+	if Guider or cGuider then
+	    alife():release(Guider, true)
+	end
+end
+
+function Del_LevelChanger()
+  local LV = alife():story_object(46489)
+    if LV then                                           
+	    alife():release(LV, true)                                     
+--	    news_manager.send_tip(db.actor, "alife():release(LV, true)", 0, "trader", 19000)
+    end
+end
+--//-----------------------------------------/// Разные прекондишены на фразы точек назначения ///-----------------------------------------//--
+
+-----------------// Все точки дступны не сразу //-----------------
+local allpre = AllDestImm == true
+
+function pre_phrase_garbage()
+    if not allpre then return true end
+	    if allpre and has_alife_info("gar_dm_novice_asked_for_help") then
+	   return true
+	end
+end
+
+function pre_phrase_agroprom()
+    if not allpre then return true end
+	    if allpre and has_alife_info("agroprom_military_case") then
+	   return true
+	end
+end
+
+function pre_phrase_darkvelly()
+    if not allpre then return true end
+	    if allpre and has_alife_info("bar_darklab_document_start") then
+	   return true
+	end
+end
+
+function pre_phrase_bar()
+    if not allpre then return true end
+	    if allpre and has_alife_info("agroprom_military_case_done") then
+	   return true
+	end
+end
+
+function pre_phrase_rostok()
+    if not allpre then return true end
+	    if allpre and has_alife_info("agroprom_military_case_done") then
+	   return true
+	end
+end
+
+function pre_phrase_yantar()
+    if not allpre then return true end
+	    if allpre and has_alife_info("bar_x16_documents_start") then
+	   return true
+	end
+end
+
+function pre_phrase_military()
+    if not allpre then return true end
+	    if allpre and has_alife_info("bar_x16_documents_done") then
+	   return true
+	end
+end
+
+function pre_phrase_radar()
+    if not allpre then return true end
+	    if allpre and has_alife_info("bar_deactivate_radar_start") then
+	   return true
+	end
+end
+
+function pre_phrase_agr_underground()
+    if not allpre then return true end
+	    if allpre and has_alife_info("agr_find_gunslinger_cache_done") then
+	   return true
+	end
+end
+--//--------------------------------------------------/// Диалог ///--------------------------------------------------//--
+
+------------------- Текста ---------------------------
+local guider_dialog_phr_0 = "Куда ты можешь меня отвести?"
+local guider_dialog_phr_1 = "Да есть пару мест.Только ты учти, я вожу только туда, куда знаю безопасную дорогу.И оплату беру за расстояние с того, кто не свой.Так куда тебе надо?"
+local guider_dialog_phr_2 = "Пока ни куда."
+
+local guider_dialog_phr_3 = "Кордон.Лагерь новичков."
+local guider_dialog_phr_4 = "Кордон.Блокпост военных под мостом."
+local guider_dialog_phr_5 = "Кордон.Бокпост на переходе на Свалку."
+
+local guider_dialog_phr_6 = "Свалка.Стоянка брошенной техники."
+local guider_dialog_phr_7 = "Свалка.Дэпо."
+local guider_dialog_phr_8 = "Свалка.Блокпост Долга."
+
+local guider_dialog_phr_9 = "Агропром.База Военных."
+local guider_dialog_phr_10 = "Агропром.Развилка."
+local guider_dialog_phr_11 = "Агропром.Лагерь сталкеров." 
+
+local guider_dialog_phr_12 = "Темная долина.Холл завода."
+local guider_dialog_phr_13 = "Темная долина.База Бандитов."
+local guider_dialog_phr_14 = "Темная долина.Стоянка на ферме."
+
+local guider_dialog_phr_15 = "Бар.Бар 100 Рентген."
+local guider_dialog_phr_16 = "Бар.Застава."
+
+local guider_dialog_phr_17 = "Дикая Территория.У перехода в Бар."
+local guider_dialog_phr_18 = "Дикая Территория.У аномалии Жарка."
+
+local guider_dialog_phr_19 = "Янтарь.Бункер ученых."
+local guider_dialog_phr_20 = "Янтарь.Завод."
+
+local guider_dialog_phr_21 = "Армейские Склады.Хутор долга."
+local guider_dialog_phr_22 = "Армейские Склады.База Свободы."
+local guider_dialog_phr_23 = "Армейские Склады.Дальний Блокпост Свободы - Барьер."
+
+--============================================ Доп. v1.0 --============================================
+local guider_dialog_phr_34 = "Лаборатория х18.Начало."
+
+local guider_dialog_phr_35 = "Лаборатория х16.Начало."
+local guider_dialog_phr_36 = "Лаборатория х16.Около тоннеля."
+
+local guider_dialog_phr_37 = "Радар.Начало."
+local guider_dialog_phr_38 = "Радар.У антенн."
+
+local guider_dialog_phr_39 = "Подземелье Агропрома.В начале."
+local guider_dialog_phr_40 = "Подземелье Агропрома.Тайник Стрелка."
+
+--============================================ Доп. v1.0 --============================================
+
+local guider_dialog_phr_24 = "Ну что, готов выдвигаться?"
+local guider_dialog_phr_25 = "Да, пошли."
+
+local guider_dialog_phr_26 = "Хорошо, пошли.Только извини, бесплатно я тебя провести не смогу - не из нашей ты группировки. "
+local guider_dialog_phr_27 = "Держи деньги."
+local guider_dialog_phr_28 = "У меня нет такой суммы."
+local guider_dialog_phr_29 = "Ну что, готов выдвигаться?"
+local guider_dialog_phr_30 = "Да, пошли."
+
+local guider_dialog_phr_31 = "Я передумал."
+local guider_dialog_phr_32 = "Как хочешь, дело твое."
+
+
+function init_guiders_dialog(dlg)
+    phr0 = dlg:AddPhrase(guider_dialog_phr_0, "0", "", -10000)
+	     phr0:GetPhraseScript():AddAction("guiders.reset_guid")
+	phr1 = dlg:AddPhrase(guider_dialog_phr_1, "1", "0", -10000)
+	    phr1:GetPhraseScript():AddPrecondition("guiders.pre_off_not_guid")
+    phr2 = dlg:AddPhrase(guider_dialog_phr_2, "2", "0", -10000)	
+	    phr2:GetPhraseScript():AddPrecondition("guiders.pre_on_not_guid")	
+
+    phr31 = dlg:AddPhrase(guider_dialog_phr_31, "31", "1", -10000)
+		
+	phr3 = dlg:AddPhrase(guider_dialog_phr_3, "3", "1", -9966)
+	    phr3:GetPhraseScript():AddAction("guiders.on_escape_novice_lager")		
+	phr4 = dlg:AddPhrase(guider_dialog_phr_4, "4", "1", -9967)
+	    phr4:GetPhraseScript():AddAction("guiders.on_escape_blockpost_under_most")
+	phr5 = dlg:AddPhrase(guider_dialog_phr_5, "5", "1", -9968)
+	    phr5:GetPhraseScript():AddAction("guiders.on_escape_blockpost_exit_on_gar")
+    phr6 = dlg:AddPhrase(guider_dialog_phr_6, "6", "1", -9969)
+	    phr6:GetPhraseScript():AddPrecondition("guiders.pre_phrase_garbage")
+	    phr6:GetPhraseScript():AddAction("guiders.on_garbage_parking_abandoned_teh")
+    phr7 = dlg:AddPhrase(guider_dialog_phr_7, "7", "1", -9970)	
+	    phr7:GetPhraseScript():AddPrecondition("guiders.pre_phrase_garbage")
+	    phr7:GetPhraseScript():AddAction("guiders.on_garbage_depo")
+	phr8 = dlg:AddPhrase(guider_dialog_phr_8, "8", "1", -9971)
+	    phr8:GetPhraseScript():AddPrecondition("guiders.pre_phrase_garbage")
+	    phr8:GetPhraseScript():AddAction("guiders.on_garbage_blockpost_dolg")
+	phr9 = dlg:AddPhrase(guider_dialog_phr_9, "9", "1", -9974)
+	    phr9:GetPhraseScript():AddPrecondition("guiders.pre_phrase_agroprom")
+	    phr9:GetPhraseScript():AddAction("guiders.on_agroprom_baze_military")
+	phr10 = dlg:AddPhrase(guider_dialog_phr_10, "10", "1", -9975)
+	    phr10:GetPhraseScript():AddPrecondition("guiders.pre_phrase_agroprom")
+	    phr10:GetPhraseScript():AddAction("guiders.on_agroprom_center")
+    phr11 = dlg:AddPhrase(guider_dialog_phr_11, "11", "1", -9976)
+	    phr11:GetPhraseScript():AddPrecondition("guiders.pre_phrase_agroprom")
+	    phr11:GetPhraseScript():AddAction("guiders.on_agroprom_lager_stalkers")
+    phr12 = dlg:AddPhrase(guider_dialog_phr_12, "12", "1", -9977)	
+	    phr12:GetPhraseScript():AddPrecondition("guiders.pre_phrase_darkvelly")
+	    phr12:GetPhraseScript():AddAction("guiders.on_darkvalley_holl")
+	phr13 = dlg:AddPhrase(guider_dialog_phr_13, "13", "1", -9978)
+	    phr13:GetPhraseScript():AddPrecondition("guiders.pre_phrase_darkvelly")
+	    phr13:GetPhraseScript():AddAction("guiders.on_darkvalley_ban_baze")
+	phr14 = dlg:AddPhrase(guider_dialog_phr_14, "14", "1", -9979)
+	    phr14:GetPhraseScript():AddPrecondition("guiders.pre_phrase_darkvelly")
+	    phr14:GetPhraseScript():AddAction("guiders.on_darkvalley_ferma")
+	phr15 = dlg:AddPhrase(guider_dialog_phr_15, "15", "1", -9980)
+	    phr15:GetPhraseScript():AddPrecondition("guiders.pre_phrase_bar")
+	    phr15:GetPhraseScript():AddAction("guiders.on_bar_bar")
+    phr16 = dlg:AddPhrase(guider_dialog_phr_16, "16", "1", -9981)
+	    phr16:GetPhraseScript():AddPrecondition("guiders.pre_phrase_bar")
+	    phr16:GetPhraseScript():AddAction("guiders.on_bar_zastava")
+    phr17 = dlg:AddPhrase(guider_dialog_phr_17, "17", "1", -9982)
+        phr17:GetPhraseScript():AddPrecondition("guiders.pre_phrase_rostok")	
+	    phr17:GetPhraseScript():AddAction("guiders.on_rostok_")
+	phr18 = dlg:AddPhrase(guider_dialog_phr_18, "18", "1", -9983)
+	    phr18:GetPhraseScript():AddPrecondition("guiders.pre_phrase_rostok")
+	    phr18:GetPhraseScript():AddAction("guiders.on_rostok_anom")
+	phr19 = dlg:AddPhrase(guider_dialog_phr_19, "19", "1", -9984)
+	    phr19:GetPhraseScript():AddPrecondition("guiders.pre_phrase_yantar")
+	    phr19:GetPhraseScript():AddAction("guiders.on_yantar_bunker")
+	phr20 = dlg:AddPhrase(guider_dialog_phr_20, "20", "1", -9985)
+	    phr20:GetPhraseScript():AddPrecondition("guiders.pre_phrase_yantar")
+	    phr20:GetPhraseScript():AddAction("guiders.on_yantar_zavod")
+	phr21 = dlg:AddPhrase(guider_dialog_phr_21, "21", "1", -9986)
+	    phr21:GetPhraseScript():AddPrecondition("guiders.pre_phrase_military")
+	    phr21:GetPhraseScript():AddAction("guiders.on_military_dolg_khutor")
+	phr22 = dlg:AddPhrase(guider_dialog_phr_22, "22", "1", -9987)
+	    phr22:GetPhraseScript():AddPrecondition("guiders.pre_phrase_military")
+	    phr22:GetPhraseScript():AddAction("guiders.on_military_baze_freedom")
+	phr23 = dlg:AddPhrase(guider_dialog_phr_23, "23", "1", -9988)
+	    phr23:GetPhraseScript():AddPrecondition("guiders.pre_phrase_military")
+	    phr23:GetPhraseScript():AddAction("guiders.on_military_sever_blockpost")
+----------------------------------- Доп. v1.0 -----------------------------------
+	phr34 = dlg:AddPhrase(guider_dialog_phr_34, "34", "1", -9989)
+	    phr34:GetPhraseScript():AddPrecondition("guiders.pre_phrase_darkvelly")
+	    phr34:GetPhraseScript():AddAction("guiders.on_x18_nachalo")
+	phr35 = dlg:AddPhrase(guider_dialog_phr_35, "35", "1", -9990)
+	    phr35:GetPhraseScript():AddPrecondition("guiders.pre_phrase_yantar")
+	    phr35:GetPhraseScript():AddAction("guiders.on_x16_nachalo")
+	phr36 = dlg:AddPhrase(guider_dialog_phr_36, "36", "1", -9991)
+	    phr36:GetPhraseScript():AddPrecondition("guiders.pre_phrase_yantar")
+	    phr36:GetPhraseScript():AddAction("guiders.on_x18_tunel")
+	phr37 = dlg:AddPhrase(guider_dialog_phr_37, "37", "1", -9992)
+	    phr37:GetPhraseScript():AddPrecondition("guiders.pre_phrase_radar")
+	    phr37:GetPhraseScript():AddAction("guiders.on_radar_nachalo")
+	phr38 = dlg:AddPhrase(guider_dialog_phr_38, "38", "1", -9993)
+	    phr38:GetPhraseScript():AddPrecondition("guiders.pre_phrase_radar")
+	    phr38:GetPhraseScript():AddAction("guiders.on_radar_antens")
+	phr39 = dlg:AddPhrase(guider_dialog_phr_39, "39", "1", -9972)
+	    phr39:GetPhraseScript():AddPrecondition("guiders.pre_phrase_agr_underground")
+	    phr39:GetPhraseScript():AddAction("guiders.on_agr_underground_nachalo")
+	phr40 = dlg:AddPhrase(guider_dialog_phr_40, "40", "1", -9973)
+	    phr40:GetPhraseScript():AddPrecondition("guiders.pre_phrase_agr_underground")
+	    phr40:GetPhraseScript():AddAction("guiders.on_agr_underground_gunslinger")
+----------------------------------- Доп. v1.0 -----------------------------------
+	
+	phr24 = dlg:AddPhrase(guider_dialog_phr_24, "24", "3", -10000)
+	    phr24:GetPhraseScript():AddPrecondition("guiders.check_community_guiders")
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "4", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "5", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "6", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "7", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "8", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "9", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "10", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "11", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "12", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "13", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "14", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "15", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "16", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "17", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "18", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "19", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "20", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "21", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "22", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "23", -10000)
+----------------------------------- Доп. v1.0 -----------------------------------
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "34", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "35", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "36", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "37", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "38", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "39", -10000)
+	phr24Dublicate = dlg:AddPhrase(guider_dialog_phr_24, "24", "40", -10000)
+----------------------------------- Доп. v1.0 -----------------------------------
+	phr25 = dlg:AddPhrase(guider_dialog_phr_25, "25", "24", -10000)
+--		phr25:GetPhraseScript():AddAction("guiders.start_guid")
+        phr25:GetPhraseScript():AddAction("guiders._on_start_guid")
+		phr25:GetPhraseScript():AddAction("dialogs.break_dialog")
+		
+		
+	phr26 = dlg:AddPhrase(guider_dialog_phr_26, "26", "3", -10000)
+        phr26:GetPhraseScript():AddPrecondition("guiders.check_community_guiders_not")	
+		phr26:GetPhraseScript():AddAction("guiders.Check_distance_to_destination_and_computation_cost")
+		phr26:GetPhraseScript():AddAction("guiders.on_guider_dialog_phr_26")
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "4", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "5", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "6", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "7", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "8", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "9", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "10", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "11", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "12", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "13", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "14", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "15", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "16", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "17", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "18", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "19", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "20", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "21", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "22", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "23", -10000)
+----------------------------------- Доп. v1.0 -----------------------------------
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "34", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "35", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "36", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "37", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "38", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "39", -10000)
+	phr26Dublicate = dlg:AddPhrase(guider_dialog_phr_26, "26", "40", -10000)
+----------------------------------- Доп. v1.0 -----------------------------------
+	
+	phr27 = dlg:AddPhrase(guider_dialog_phr_27, "27", "26", -10000)
+	    phr27:GetPhraseScript():AddPrecondition("guiders.have_money_on_guid")
+		phr27:GetPhraseScript():AddAction("guiders.give_money_to_guider")
+	phr28 = dlg:AddPhrase(guider_dialog_phr_28, "28", "26", -10000)
+	    phr28:GetPhraseScript():AddPrecondition("guiders.not_have_money_on_guid")
+	phr29 = dlg:AddPhrase(guider_dialog_phr_29, "29", "27", -10000)
+	phr30 = dlg:AddPhrase(guider_dialog_phr_30, "30", "29", -10000)
+        phr30:GetPhraseScript():AddAction("dialogs.break_dialog")	
+--	    phr30:GetPhraseScript():AddAction("guiders.start_guid")
+		phr30:GetPhraseScript():AddAction("guiders._on_start_guid")
+		
+	phr31 = dlg:AddPhrase(guider_dialog_phr_31, "31", "24", -10000)
+    phr31 = dlg:AddPhrase(guider_dialog_phr_31, "31", "26", -10000)
+--	phr31 = dlg:AddPhrase(guider_dialog_phr_31, "31", "29", -10000)
+	
+	phr32 = dlg:AddPhrase(guider_dialog_phr_32, "32", "31", -10000)
+	
+	phr33 = dlg:AddPhrase(guider_dialog_phr_31, "33", "29", -10000)
+	    phr33:GetPhraseScript():AddAction("guiders.give_to_actor_money_on_guid")
+end
+
+function on_guider_dialog_phr_26(first_speaker, second_speaker)
+    local guider_dialog_phr_26_2
+	if SaleStatus == "Без скидки" then
+	    guider_dialog_phr_26_2 = "%c[255,255,255,255]Стоимость услуги проводника:%c[default] "..tostring(cost_on_guid).."%c[255,255,204,0]руб%c[default].".."\\n%c[10,145,161,255]Скидка%c[default]:%c[33,230,18,18]"..SaleStatus
+    elseif SaleStatus == "Со скидкой" then
+	    guider_dialog_phr_26_2 = "%c[255,255,255,255]Стоимость услуги проводника:%c[default] "..tostring(cost_on_guid).." %c[255,255,204,0]руб%c[default].".."\\n%c[10,145,161,255]Скидка%c[default]:%c[255,6,255,0]"..SaleStatus
+	end
+    guider_name = first_speaker:character_name()
+    local guider_rank = ranks.get_obj_rank_name(first_speaker) 
+    local guider_info = "%c[10,145,161,255]Проводник:%c[default] "..tostring(guider_name).."\\n%c[10,145,161,255]Ранг%c[default]:%c[188,241,255,86] "..game.translate_string(guider_rank)
+    local task_texture, task_rect = get_texture_info("ui_iconsNpc_stalker_neytral_balon_4")
+    db.actor:give_talk_message(guider_info, task_texture, task_rect, "iconed_answer_item")	
+	    if cost_on_guid >= math.random(900, 1370) then
+	        db.actor:give_talk_message(guider_dialog_phr_26_2, "ui\\icon_guider", Frect():set(0,324,165,108), "iconed_answer_item")
+        else
+		    db.actor:give_talk_message(guider_dialog_phr_26_2, "ui\\icon_guider", Frect():set(165,0,165,108), "iconed_answer_item")
+	 end
+end 
+
+--local Fast = false
+function on_start_guid_update()
+--    if Fast == false then
+	    db.actor:set_fastcall(start_guid_update, db.actor)
+--		Fast = true
+--	end
+end
+
+on_start_guid_update()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

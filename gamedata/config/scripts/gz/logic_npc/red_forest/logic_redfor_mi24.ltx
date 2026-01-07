@@ -1,0 +1,21 @@
+[logic]
+active = heli_move@idle
+
+[heli_move@idle]
+path_move = heli_idle_move
+engine_sound = false
+on_info = {+vertolet_go} heli_move@fly1
+
+[heli_move@fly1]
+path_move = heli_fly_new_1
+engine_sound = true
+on_signal = desantstart| heli_move@fly2
+
+[heli_move@fly2]
+path_move = heli_fly_new_2
+engine_sound = true
+on_signal = idlemove2| heli_move@idle2
+
+[heli_move@idle2]
+path_move = heli_idle_move_2
+engine_sound = false

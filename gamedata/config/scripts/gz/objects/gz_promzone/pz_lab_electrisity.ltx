@@ -1,0 +1,15 @@
+[logic] 
+active = ph_idle 
+
+[ph_idle] 
+on_info = {+pz_lab_electrisity_start} ph_idle2 
+
+[ph_idle2] 
+on_use = ph_idle@nil %+pz_lab_electrisity_done =play_snd(soz\characters_voice\scenario\switch_1) =run_postprocess(blink)%
+tips = pz_electr
+on_info = {+pz_lab_electrisity_done} ph_idle21
+
+[ph_idle21] 
+on_game_timer = 500|%=stop_postprocess(blink)% ph_idle@nil
+
+[ph_idle@nil]

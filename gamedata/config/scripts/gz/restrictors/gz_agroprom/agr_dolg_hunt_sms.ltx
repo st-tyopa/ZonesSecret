@@ -1,0 +1,6 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_npc_in_zone = 31515|agr_digger_open_gate|%+agr_digger_need_way%
+on_timer = 500| %-agr_digger_need_way%

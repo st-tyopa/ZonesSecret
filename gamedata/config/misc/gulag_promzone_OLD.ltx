@@ -1,0 +1,532 @@
+;------------------------
+;---- База наемников ----
+;------------------------
+
+;- новое
+
+;-- Главный
+[logic@pz_merclager_leader]
+active = walker@pz_merclager_leader_stay
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_leader_stay]
+path_walk = leader_walk
+path_look = leader_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_merclager_bomb_blowup} walker@pz_merclager_leader_run
+
+[walker@pz_merclager_leader_run]
+path_walk = leader_run
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_signal = pzmercleader|walker@pz_merclager_leader_stay_2
+
+[walker@pz_merclager_leader_stay_2]
+path_walk = leader_walk_2
+path_look = leader_look_2
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_merclager_back_to_positions} walker@pz_merclager_leader_stay_3
+
+[walker@pz_merclager_leader_stay_3]
+path_walk = leader_walk
+path_look = leader_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+;-- Охранник лидера 1
+[logic@pz_merclager_leader_guard_1]
+active = walker@pz_merclager_leader_guard_1_stay
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_leader_guard_1_stay]
+path_walk = leader_guard_1_walk
+path_look = leader_guard_1_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_merclager_bomb_blowup} walker@pz_merclager_leader_guard_1_run
+
+[walker@pz_merclager_leader_guard_1_run]
+path_walk = leader_guard_1_run
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_signal = pzmerclg1|walker@pz_merclager_leader_guard_1_stay_2
+
+[walker@pz_merclager_leader_guard_1_stay_2]
+path_walk = leader_guard_1_walk_2
+path_look = leader_guard_1_look_2
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_merclager_back_to_positions} walker@pz_merclager_leader_guard_1_stay_3
+
+[walker@pz_merclager_leader_guard_1_stay_3]
+path_walk = leader_guard_1_walk
+path_look = leader_guard_1_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+;-- Охранник лидера 2
+[logic@pz_merclager_leader_guard_2]
+active = walker@pz_merclager_leader_guard_2_stay
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_leader_guard_2_stay]
+path_walk = leader_guard_2_walk
+path_look = leader_guard_2_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_merclager_bomb_blowup} walker@pz_merclager_leader_guard_2_run
+
+[walker@pz_merclager_leader_guard_2_run]
+path_walk = leader_guard_2_run
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_signal = pzmerclg2|walker@pz_merclager_leader_guard_2_stay_2
+
+[walker@pz_merclager_leader_guard_2_stay_2]
+path_walk = leader_guard_2_walk_2
+path_look = leader_guard_2_look_2
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_merclager_back_to_positions} walker@pz_merclager_leader_guard_2_stay_3
+
+[walker@pz_merclager_leader_guard_2_stay_3]
+path_walk = leader_guard_2_walk
+path_look = leader_guard_2_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+
+;---Охранник лидера 3
+[logic@pz_merclager_leader_guard_3]
+active = patrol@pz_merclager_leader_guard_3_patrol
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[patrol@pz_merclager_leader_guard_3_patrol]
+path_walk = leader_guard_3_patrol
+commander           = true
+formation           = back
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_merclager_bomb_blowup} walker@pz_merclager_leader_guard_3_run
+
+[walker@pz_merclager_leader_guard_3_run]
+path_walk = leader_guard_3_run
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_signal = pzmerclg3|walker@pz_merclager_leader_guard_3_stay
+
+[walker@pz_merclager_leader_guard_3_stay]
+path_walk = leader_guard_3_walk_2
+path_look = leader_guard_3_look_2
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_merclager_back_to_positions} patrol@pz_merclager_leader_guard_3_patrol_2
+
+[patrol@pz_merclager_leader_guard_3_patrol_2]
+path_walk = leader_guard_3_patrol
+commander           = true
+formation           = back
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+
+
+;---Патрульный на территории лагеря
+[logic@pz_merclager_guard_patrol_1]
+active = patrol@pz_merclager_guard_patrol_1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[patrol@pz_merclager_guard_patrol_1]
+path_walk = guard_1_patrol
+commander           = true
+formation           = back
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+
+;---Сидящие у костра
+[logic@pz_merclager_guard_1]
+active = kamp@pz_merclager_kamp_angar
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[logic@pz_merclager_guard_2]
+active = kamp@pz_merclager_kamp_angar
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[logic@pz_merclager_guard_3]
+active = kamp@pz_merclager_kamp_angar
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[logic@pz_merclager_guard_4]
+active = kamp@pz_merclager_kamp_angar
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+
+
+;--Костры--
+;----------
+
+[kamp@pz_merclager_kamp_angar]
+center_point = kamp_angar
+path_walk = kamp_angar_task
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+
+;--- Фэйсконтроли на входе на базу ----
+;--------------------------------------
+
+;--- Фэйсконтроль №1
+
+;--- Главный
+[logic@pz_merclager_facecontrol_com_1]
+active = walker@pz_merclager_facecontrol_com_1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_facecontrol_com_1]
+path_walk = facecontrol_com_1_walk_1
+path_look = facecontrol_com_1_look_1
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+actor_is_killer +pz_rob_merclager_docs_start} walker@pz_merclager_facecontrol_com_1_2
+
+
+[walker@pz_merclager_facecontrol_com_1_2]
+path_walk = facecontrol_com_1_walk_1
+path_look = facecontrol_com_1_look_1
+meet = meet@pz_merclager_fc_1
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_rob_merclager_on_base_done} walker@pz_merclager_facecontrol_com_1_walk2
+
+[walker@pz_merclager_facecontrol_com_1_walk2]
+path_walk = facecontrol_com_1_walk_1
+path_look = facecontrol_com_1_look_1
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[meet@pz_merclager_fc_1]
+meet_dialog     = dialog_pz_merclager_fc_1_dialog_1
+meet_state      = 30|wait
+meet_state_wpn  = 30|wait
+victim          = 30|actor
+victim_wpn      = 30|actor
+use = {=dist_to_actor_le(3)} self
+use_wpn         = {=dist_to_actor_le(3)} self
+
+;---Охранник 1
+[logic@pz_merclager_facecontrol_1_guard_1]
+active = walker@pz_merclager_facecontrol_1_guard_1_walk1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_facecontrol_1_guard_1_walk1]
+path_walk = fc_1_guard_1_walk
+path_look = fc_1_guard_1_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+;---Охранник 2
+[logic@pz_merclager_facecontrol_1_guard_2]
+active = walker@pz_merclager_facecontrol_1_guard_2_walk1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_facecontrol_1_guard_2_walk1]
+path_walk = fc_1_guard_2_walk
+path_look = fc_1_guard_2_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+;--- Фэйсконтроль №2
+
+;--- Главный
+[logic@pz_merclager_facecontrol_com_2]
+active = walker@pz_merclager_facecontrol_com_2
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_facecontrol_com_2]
+path_walk = fc_2_leader_walk
+path_look = fc_2_leader_look
+meet = meet@pz_merclager_fc_2
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+actor_is_killer +pz_rob_merclager_docs_start} walker@pz_merclager_facecontrol_com_2_2
+
+
+[walker@pz_merclager_facecontrol_com_2_2]
+path_walk = fc_2_leader_walk
+path_look = fc_2_leader_look
+meet = meet@pz_merclager_fc_2
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_rob_merclager_on_base_done} walker@pz_merclager_facecontrol_com_2_walk2
+
+
+[walker@pz_merclager_facecontrol_com_2_walk2]
+path_walk = fc_2_leader_walk
+path_look = fc_2_leader_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[meet@pz_merclager_fc_2]
+meet_dialog     = dialog_pz_merclager_fc_2_dialog_1
+meet_state      = 30|wait
+meet_state_wpn  = 30|wait
+victim          = 30|actor
+victim_wpn      = 30|actor
+use = {=dist_to_actor_le(3)} self
+use_wpn         = {=dist_to_actor_le(3)} self
+
+;---Охранник 1
+[logic@pz_merclager_facecontrol_2_guard_1]
+active = walker@pz_merclager_facecontrol_2_guard_1_walk1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_facecontrol_2_guard_1_walk1]
+path_walk = fc_2_guard_1_walk
+path_look = fc_2_guard_1_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+;---Охранник 2
+[logic@pz_merclager_facecontrol_2_guard_2]
+active = walker@pz_merclager_facecontrol_2_guard_2_walk1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_facecontrol_2_guard_2_walk1]
+path_walk = fc_2_guard_2_walk
+path_look = fc_2_guard_2_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+
+[combat_ignore@pz_merc]
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[hit@pz_merc]
+on_info = {=hit_by_actor} %-actor_is_killer +pz_actor_enemy_merclager%
+
+[death@pz_merc]
+on_info = {=killed_by_actor} %-actor_is_killer +pz_actor_enemy_merclager%
+
+;--Снайпера--
+;------------
+
+;--Снайпер 1
+[logic@pz_merclager_sniper_1]
+active = walker@pz_merclager_sniper_1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_sniper_1]
+path_walk = sniper_1_walk
+path_look = sniper_1_look
+def_state_standing = threat
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+;--Снайпер 2
+[logic@pz_merclager_sniper_2]
+active = walker@pz_merclager_sniper_2
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_sniper_2]
+path_walk = sniper_2_walk
+path_look = sniper_2_look
+def_state_standing = threat
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;-------------
+;---СТАРОЕ----
+;-------------
+
+
+;-- Охранник у стола (стоит, говорит по рации и уходит)
+[logic@pz_merclager_stolguard1]
+active = walker@pz_merclager_stolguard1_1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_stolguard1_1]
+path_walk = stolguard_walk_1
+path_look = stolguard_look_1
+on_info = {+pz_stolguards_scene_start} remark@pz_merclager_stolguard_raciya1
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[remark@pz_merclager_stolguard_raciya1]
+anim = guard_rac
+snd = esc_wolf_radio
+target = pz_merclager_stolguard_look_1
+on_signal = sound_end| remark@pz_merclager_stolguard_raciya2 %=play_snd_from_stolguard1_raciya%
+on_info = {+pz_stolguard1_raciya_end} walker@pz_merclager_stolguard1_2
+meet = no_meet
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[remark@pz_merclager_stolguard_raciya2]
+anim = guard_rac
+target = pz_merclager_stolguard_look_1
+on_timer = 5000 | walker@pz_merclager_stolguard1_2 %+pz_stolguard1_raciya_end%
+on_info = {+pz_stolguard1_raciya_end} walker@pz_merclager_stolguard1_2
+meet = no_meet
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_merclager_stolguard1_2]
+path_walk = stolguard_walk_2
+on_signal = mercrob| %+pz_rob_merclager_wait_done% walker@pz_merclager_stolguard1_3
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_merclager_stolguard1_3]
+path_walk = stolguard_walk_2_1
+on_signal = stolguard1| walker@pz_merclager_stolguard1_4
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_merclager_stolguard1_4]
+path_walk = stolguard_walk_3
+path_look = stolguard_look_3
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+
+;-- Охранник который будет стоять у стола
+[logic@pz_merclager_stolguard2]
+active = walker@pz_merclager_stolguard2_1
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_stolguard2_1]
+path_walk = stolguard2_walk_1
+path_look = stolguard2_look_1
+on_info = {+pz_rob_merclager_wait_done} walker@pz_merclager_stolguard2_2
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_merclager_stolguard2_2]
+path_walk = stolguard2_walk_2
+on_signal = stolguard2| %+pz_second_mercguard_back% walker@pz_merclager_stolguard2_3
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_merclager_stolguard2_3]
+path_walk = stolguard_walk_1
+path_look = stolguard_look_1
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+
+
+;--Снайпер 3
+[logic@pz_merclager_sniper_3]
+active = camper@pz_merclager_sniper_3
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[camper@pz_merclager_sniper_3]
+path_walk = sniper_3_walk
+path_look = sniper_3_look
+sniper = true
+def_state_campering = threat
+on_info = {+actor_is_killer +pz_rob_merclager_docs_start} walker@pz_merclager_sniper_3
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_merclager_sniper_3]
+path_walk = sniper_3_walk
+path_look = sniper_3_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+;--Снайпер 4
+[logic@pz_merclager_sniper_4]
+active = camper@pz_merclager_sniper_4
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[camper@pz_merclager_sniper_4]
+path_walk = sniper_4_walk
+path_look = sniper_4_look
+sniper = true
+def_state_campering = threat
+on_info = {+actor_is_killer +pz_rob_merclager_docs_start} walker@pz_merclager_sniper_4
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_merclager_sniper_4]
+path_walk = sniper_4_walk
+path_look = sniper_4_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+;--Снайпер 5
+[logic@pz_merclager_sniper_5]
+active = camper@pz_merclager_sniper_5
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[camper@pz_merclager_sniper_5]
+path_walk = sniper_5_walk
+path_look = sniper_5_look
+sniper = true
+def_state_campering = threat
+on_info = {+actor_is_killer +pz_rob_merclager_docs_start} walker@pz_merclager_sniper_5
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_merclager_sniper_5]
+path_walk = sniper_5_walk
+path_look = sniper_5_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+;--Снайпер 6
+[logic@pz_merclager_sniper_6]
+active = camper@pz_merclager_sniper_6
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[camper@pz_merclager_sniper_6]
+path_walk = sniper_6_walk
+path_look = sniper_6_look
+sniper = true
+def_state_campering = threat
+on_info = {+actor_is_killer +pz_rob_merclager_docs_start} walker@pz_merclager_sniper_6
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[walker@pz_merclager_sniper_6]
+path_walk = sniper_6_walk
+path_look = sniper_6_look
+combat_ignore_cond = {-pz_rob_merclager_docs_fail -pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+
+
+
+
+
+
+
+
+;--Костры--
+;----------
+
+[kamp@pz_merclager_kamp_floor3]
+center_point = kamp_floor3
+path_walk = kamp_floor3_task
+
+[kamp@pz_merclager_kamp_floor4]
+center_point = kamp_floor4
+path_walk = kamp_floor4_task

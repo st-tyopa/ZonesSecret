@@ -1,0 +1,25 @@
+;--Проводник
+[logic]
+active = walker1
+
+[walker1]
+path_walk = ds_isk_guard_stay
+path_look = ds_isk_guard_look
+on_info = {+ds_tepa_remark_povyazka} remark
+
+[remark]
+anim = guard
+target = actor
+meet = no_meet
+snd = tyopa_1
+on_signal = sound_end| %+ds_tepa_teleport% walker2
+
+[walker2]
+path_walk = ds_isk_guard_stay
+path_look = ds_isk_guard_look
+
+
+[meet]
+zone = ds_rest_isklager_provodnik_meet_zone|salut_free@talk_hello
+use = true
+use_wpn = true

@@ -1,0 +1,16 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = pz_hata_zomb_sit
+path_look = pz_hata_zomb_look
+def_state_standing = sit_ass
+on_info = {+pz_hata_zomb_call_2} walker2
+
+[walker2]
+path_walk = pz_hata_zomb_stay
+path_look = pz_hata_zomb_look_2
+meet = meet@self_doc
+
+[meet@self_doc] 
+use = {=dist_to_actor_le(5)} self

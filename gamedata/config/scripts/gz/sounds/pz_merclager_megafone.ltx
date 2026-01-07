@@ -1,0 +1,20 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+on_info = {+pz_actor_enemy_merclager} ph_sound@alarm
+on_info2 = {+pz_merclager_bomb_blowup} ph_idle1
+
+[ph_idle1]
+on_timer = 3000|ph_sound@siren
+
+[ph_sound@alarm]
+snd = siren
+on_info = {+pz_rob_merclager_docs_complete} nil
+
+[ph_sound@siren]
+snd = siren
+looped = true
+on_info = {+pz_rob_merclager_docs_complete} nil
+
+[ph_idle@2]

@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {+pz_iskateli_group_start} %+pz_goto_iskateli_group_done% sr_idle@2
+
+[sr_idle@2]
+on_info = {+pz_phone_isk_call_start} sr_idle@3
+
+[sr_idle@3]
+on_timer = 3000|%+pz_scien_sos% sr_idle@nil
+
+[sr_idle@nil]

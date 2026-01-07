@@ -1,0 +1,160 @@
+[medkit]:items_base ; Красная аптечка
+$spawn 				     = "food and drugs\medkit"
+class				     = II_MEDKI
+visual				     = equipments\item_aptechka.ogf
+description			     = enc_equipment_medi_medkit1
+inv_name			     = Medkit
+inv_name_short		     = Medkit
+inv_weight			     = 0.3
+inv_grid_width		     = 1
+inv_grid_height		     = 1
+inv_grid_x			     = 20
+inv_grid_y			     = 11
+cost				     = 250
+boost_time				 = 10.0
+boost_health_restore	 = 0.01
+boost_bleeding_restore	 = 0.005
+use_sound			     = interface\inv_medkit
+
+[medkit_army]:medkit ; Синяя аптечка
+$spawn 				     = "food and drugs\medkit_army"
+visual				     = equipments\item_aptechka3.ogf
+description			     = enc_equipment_medi_medkit2
+inv_name			     = Medkit_army
+inv_name_short		     = Medkit_army
+inv_grid_width		     = 1
+inv_grid_height		     = 1
+inv_grid_x			     = 21
+inv_grid_y			     = 11
+cost				     = 650
+boost_time				 = 5.0
+boost_health_restore	 = 0.02
+boost_bleeding_restore	 = 0.02
+
+[medkit_scientic]:medkit ; Желтая аптечка
+$spawn 				     = "food and drugs\medkit_scientic"
+visual				     = equipments\item_aptechka2.ogf
+description			     = enc_equipment_medi_medkit3
+inv_name			     = Medkit_scientific
+inv_name_short		     = Medkit_scientific
+inv_grid_width		     = 1
+inv_grid_height		     = 1
+inv_grid_x			     = 20
+inv_grid_y			     = 12
+cost				     = 800
+boost_time				 = 10.0
+boost_health_restore	 = 0.01
+boost_radiation_restore	 = 0.01
+boost_bleeding_restore	 = 0.005
+
+[bandage]:items_base    ; Бинт
+$spawn 				     = "food and drugs\bandage"
+class				     = II_MEDKI
+visual				     = equipments\item_bandage.ogf
+description			     = enc_equipment_medi_bandage1
+inv_name			     = bandage
+inv_name_short		     = bandage
+inv_weight			     = 0.1
+inv_grid_width		     = 1
+inv_grid_height		     = 1
+inv_grid_x			     = 3
+inv_grid_y			     = 18
+cost				     = 20
+boost_time			 	 = 5.0
+boost_bleeding_restore	 = 0.02
+use_sound			     = interface\inv_bandage
+
+[drug_booster]:items_base ; Геркулес
+$spawn 				     = "food and drugs\drug_booster"
+class				     = II_MEDKI
+visual				     = equipments\drug_booster.ogf
+inv_name			     = st_drug_booster
+inv_name_short		     = st_drug_booster
+description			     = st_drug_booster_descr
+inv_grid_width           = 1
+inv_grid_height          = 1
+inv_grid_x               = 20
+inv_grid_y               = 32
+cost				     = 200
+boost_time			     = 300.0
+boost_max_weight	     = 20.0
+use_sound			     = interface\inv_softdrink
+
+[drug_psy_blockade]:items_base ; Пси-блокада
+$spawn 				     = "food and drugs\drug_psy_blockade"
+class				     = II_MEDKI
+visual				     = equipments\drug_psy_blockade.ogf
+inv_name			     = st_drug_psy_blockade
+inv_name_short		     = st_drug_psy_blockade
+description			     = st_drug_psy_blockade_descr
+inv_grid_width		     = 1
+inv_grid_height		     = 1
+inv_grid_x			     = 20
+inv_grid_y			     = 33
+cost				     = 550
+boost_time			     = 60.0
+boost_telepat_protection = 0.05
+use_sound			     = interface\inv_pills
+
+[drug_anabiotic]:items_base ; Анабиотик
+$spawn 				     = "food and drugs\drug_anabiotic"
+class				     = II_MEDKI
+visual				     = equipments\item_bandage.ogf
+inv_name			     = st_drug_anabiotic
+inv_name_short		     = st_drug_anabiotic
+description			     = st_drug_anabiotic_descr
+inv_grid_width		     = 1
+inv_grid_height		     = 1
+inv_grid_x			     = 11
+inv_grid_y			     = 29
+cost				     = 1000
+use_sound			     = interface\inv_pills
+
+[antirad]:items_base     ; Антирад
+$spawn 				     = "food and drugs\antirad"
+class				     = II_MEDKI
+visual				     = equipments\item_antirad.ogf
+inv_name			     = st_antirad
+inv_name_short		     = st_antirad
+description			     = st_antirad_descr
+inv_weight			     = 0.05
+inv_grid_width		     = 1
+inv_grid_height		     = 1
+inv_grid_x			     = 18
+inv_grid_y			     = 12
+cost				     = 250
+boost_time			     = 10.0
+boost_radiation_restore	 = 0.01
+use_sound			     = interface\inv_pills
+
+[drug_radioprotector]:items_base ; Радиопротектор
+$spawn 				        = "food and drugs\drug_radioprotector"
+class				        = II_MEDKI
+visual				        = equipments\drug_radioprotector.ogf
+inv_name			        = st_drug_radioprotector
+inv_name_short		        = st_drug_radioprotector
+description			        = st_drug_radioprotector_descr
+inv_grid_width		        = 1
+inv_grid_height		        = 1
+inv_grid_x			        = 21
+inv_grid_y			        = 32
+cost				        = 300
+boost_time					= 60.0
+boost_radiation_protection	= 0.015
+use_sound			        = interface\inv_pills
+
+[drug_coagulant]:items_base
+$spawn 				    = "food and drugs\drug_coagulant"
+class				    = II_MEDKI
+visual				    = equipments\drug_coagulant.ogf
+inv_name			    = st_drug_coagulant
+inv_name_short		    = st_drug_coagulant
+description			    = st_drug_coagulant_descr
+inv_grid_width		    = 1
+inv_grid_height		    = 1
+inv_grid_x			    = 13
+inv_grid_y			    = 33
+cost				    = 200
+boost_time				= 20.0
+boost_bleeding_restore	= 0.03 
+use_sound			    = interface\inv_pills

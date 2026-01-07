@@ -1,0 +1,14 @@
+[logic]
+active = walker@dv_torgash_stay
+
+[walker@dv_torgash_stay]
+path_walk = dv_putnik_sit
+path_look = dv_putnik_look
+def_state_standing = sit_ass
+on_info = {+find_bekas_in_vagon} walker@gar_loki_to_end
+
+[walker@gar_loki_to_end]
+path_walk = dv_putnik_sit
+path_look = dv_putnik_look
+def_state_standing = sit_ass
+on_actor_dist_ge_nvis = 130| %+dell_dv_putnik%

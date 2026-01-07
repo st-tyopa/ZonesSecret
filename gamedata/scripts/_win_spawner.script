@@ -1,0 +1,657 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Интерфейс спавнера.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 28.05.2011
+--]]
+
+local types = {
+    {"artefacts", "ammos", "wpns", "addons", "outfits", "meds", "myaso", "eats", "devices", "quests", "uniqus"},
+    {"physics", "stalkers", "monsters", "spawn_sections", "anoms", "restrictors"}
+}
+
+local files_ini = {
+    "mobile\\mobile_items.ltx",
+	"mobile\\mobile_objects.ltx"
+}
+
+local const_dist = 5
+local list_edit_section = {}
+
+class "win_spawner" (CUIWindow)
+--//------------------------------------------------------------------
+--// ИНИЦИАЛИЗАТОРЫ
+--//------------------------------------------------------------------
+
+--/summary/>> конструктор
+function win_spawner:__init() super()
+    self.title = "Spawner"
+end
+
+--/summary/>> инициализация
+function win_spawner:InitControls(win_frect, xml, parent)
+    self.xml = xml
+    self.parent = parent
+    self:Init(win_frect)
+	self:SetAutoDelete(true)
+	
+	xml:InitStatic("separ", self)
+	local separ2 = xml:InitStatic("separ", self)
+	separ2:SetWndPos(0, 340)
+	
+	--'кнопка спавна
+	parent:Register(xml:Init3tButton("btn_spawn", self), "btn_spawn")
+	
+	--'окно свойств выбранного объекта/предмета
+	local fpp = xml:InitFrame("frame_prop", self)
+	self.list_prop = xml:InitList("frame_prop:list_prop", fpp)
+	parent:Register(self.list_prop, "list_prop")
+	parent:Register(xml:Init3tButton("frame_prop:btn", fpp), "btn_prop")
+	self.fill_prop = xml:InitStatic("fill_value_prop", self)
+	
+	self:InitCoordManager(xml, parent)
+	self:InitListesItemsSpawn(xml, parent)
+	self:InitEditSections(xml, parent)
+	
+	self:InitCallBacks()
+end
+
+--/summary/>> Инициализатор списков объектов/предметов
+function win_spawner:InitListesItemsSpawn(xml, parent)
+    --'радио кнопок выбора типа объет/предмет
+	self.tab_type = xml:InitTab("tab_type", self)
+	self.tab_type:SetNewActiveTab(self.parent.owner.tab_type_index or 0)
+	parent:Register(self.tab_type, "tab_type")
+	
+	--'список типов объектов/предметов
+	self.list_types = xml:InitList("list_types", self)
+	parent:Register(self.list_types, "list_types")
+	
+	--'базовый список объектов/предметов выбранного типа
+	local fal = xml:InitFrame("frame_all_list", self)
+	self.list_all = xml:InitList("frame_all_list:list_all", fal)
+	parent:Register(self.list_all, "list_all")
+	
+	--'список выбранных объектов/предметов для спавна
+	local fsl = xml:InitFrame("frame_spawn_list", self)
+	self.list_spawn = xml:InitList("frame_spawn_list:list_spawn", fsl)
+	parent:Register(self.list_spawn, "list_spawn")
+	
+	--'кнопки добавления/удаления
+	parent:Register(xml:InitButton("but_add_object", self), "btn_add")
+	parent:Register(xml:InitButton("but_del_object", self), "btn_del")
+	
+	self:CreateListTypes()
+end
+
+--/summary/>> Инициализатор редактора ручного ввода имён секций
+function win_spawner:InitEditSections(xml, parent)
+    --'редактор ручного ввода имён секций
+	self.edit_section = _ui_total.CUIComboBoxEditNew(345, 3, 200, parent)
+	parent:Register(self.edit_section.edit, "edit_section")
+	self:AttachChild(self.edit_section)
+	self.edit_section:AddItems(list_edit_section)
+	
+	--'иконка отвечающая за валидность вводимых имён секций
+	self.valid_sec_icon = xml:InitStatic("valid_sec_icon", self)
+	
+	--'кнопка добавления секции из редактора в список для спавна
+	parent:Register(xml:Init3tButton("btn_add_sec_from_edit", self), "add_from_edit")
+end
+
+--/summary/>> Инициализатор менеджера координат
+function win_spawner:InitCoordManager(xml, parent)
+    --'радио кнопок определения типа места спавна
+	self.tab_where = xml:InitTab("tab_where", self)
+	self.tab_where:SetNewActiveTab(self.parent.owner.tab_where_index or 0)
+	parent:Register(self.tab_where, "tab_where")
+	
+	--'радио кнопок определения способа ввода координат, по типу "на поверхность геометрии"
+	self.tab_pov_geo = xml:InitTab("tab_pov_geo", self)
+	self.tab_pov_geo:SetNewActiveTab(self.parent.owner.tab_pov_geo_index or 0)
+	parent:Register(self.tab_pov_geo, "tab_pov_geo")
+	
+	--'редактор ввода дистанции
+	self.st_edit_dist = xml:InitStatic("edit_distance", self)
+	self.edit_dist = xml:InitEditBox("edit_distance:edit_box", self.st_edit_dist)
+	self.edit_dist:SetText(tostring(self.parent.owner.edit_dist))
+	
+	--'вьювер файл-поинтов
+	self.win_file_point = xml:InitStatic("win_file_point", self)
+	self.wfp_image = xml:InitStatic("win_file_point:image", self.win_file_point)
+	self.wfp_btn = xml:Init3tButton("win_file_point:btn", self.win_file_point)
+	parent:Register(self.wfp_btn, "wfp_btn")
+	self:SelectFilePoint(self.parent.owner.spawn_point)
+	
+	--'радио кнопок выбора объекта с инвентарём
+	self.tab_inv_obj = xml:InitTab("tab_inv_obj", self)
+	self.tab_inv_obj:SetNewActiveTab(self.parent.owner.tab_inv_obj_index or 0)
+	parent:Register(self.tab_inv_obj, "tab_inv_obj")
+	
+	--'редактор ввода sid
+	self.st_edit_sid = xml:InitStatic("edit_sid", self)
+	self.edit_sid = xml:InitEditBox("edit_sid:edit_box", self.st_edit_sid)
+	self.edit_sid:SetText(tostring(self.parent.owner.edit_sid))
+	
+	--'список близлежащих инвентори или сталкеров.
+	self.list_ivent = xml:InitList("list_invent", self)
+	parent:Register(self.list_ivent, "list_ivent")
+	
+	self:Tab_Where()
+end
+
+--/summary/>> инициализация событий
+function win_spawner:InitCallBacks()
+    self.parent:AddCallback("tab_type",      ui_events.TAB_CHANGED,	            self.CreateListTypes,        self)
+	self.parent:AddCallback("tab_where",     ui_events.TAB_CHANGED,	            self.Tab_Where,              self)
+	self.parent:AddCallback("tab_pov_geo",   ui_events.TAB_CHANGED,	            self.Tab_PovGeo,             self)
+	self.parent:AddCallback("tab_inv_obj",   ui_events.TAB_CHANGED,	            self.Tab_InvObj,             self)
+	self.parent:AddCallback("list_types",    ui_events.LIST_ITEM_CLICKED,       self.OnListTypesClicked,     self)
+	self.parent:AddCallback("list_all",      ui_events.WINDOW_LBUTTON_DB_CLICK, self.OnAddClicked,           self)
+	self.parent:AddCallback("list_spawn",    ui_events.WINDOW_LBUTTON_DB_CLICK, self.OnDelClicked,           self)
+	self.parent:AddCallback("btn_add",       ui_events.BUTTON_CLICKED, 		    self.OnAddClicked,	         self)
+	self.parent:AddCallback("btn_del",       ui_events.BUTTON_CLICKED, 		    self.OnDelClicked,	         self)
+	self.parent:AddCallback("btn_spawn",     ui_events.BUTTON_CLICKED, 		    self.OnSpawnClicked,	     self)
+	self.parent:AddCallback("edit_section",  ui_events.EDIT_TEXT_CHANGED, 		self.OnEditChanged,	         self)
+	self.parent:AddCallback("add_from_edit", ui_events.BUTTON_CLICKED, 		    self.OnAddFromEdit,	         self)
+	self.parent:AddCallback("list_prop",     ui_events.WINDOW_LBUTTON_DB_CLICK, self.OnPropClicked,          self)
+	self.parent:AddCallback("list_prop",     ui_events.LIST_ITEM_CLICKED,       self.OnPropSelect,           self)
+	self.parent:AddCallback("btn_prop",      ui_events.BUTTON_CLICKED,          self.OnPropClicked,          self)
+	self.parent:AddCallback("list_spawn",    ui_events.LIST_ITEM_CLICKED,       self.ShowProperties,         self)
+	self.parent:AddCallback("wfp_btn",       ui_events.BUTTON_CLICKED,          self.OpenChoicePoints,       self)
+	self.parent:AddCallback("list_ivent",    ui_events.LIST_ITEM_CLICKED,       self.OnListIventClick,       self)
+end
+
+--//------------------------------------------------------------------------
+--// УПРАВЛЯЮЩИЕ МЕТОДЫ КЛАССА
+--//------------------------------------------------------------------------
+--\/**\/**\/**\/**\/**\/**\/**\/**\/**\/**\/**\/**\/**\/**\/**\/**\/**\/**\/
+
+--//---------------------------------------------------
+--// методы установки координат
+--//---------------------------------------------------
+
+--/summary/>> Управление отображением дочерних элементов радио кнопок "выбора типа места спавна". 
+function win_spawner:Tab_Where()
+    local select_where = self.tab_where:GetActiveIndex()
+	self:Show_Tab_InvObj(select_where == 1)
+	self:Show_Tab_PovGeo(select_where == 2)
+end
+
+--/summary/>> Управление отображением дочерних элементов радио кнопок "на поверхность геометрии".
+function win_spawner:Tab_PovGeo()
+    local select_povgeo = self.tab_pov_geo:GetActiveIndex()
+	self.st_edit_dist:Show(select_povgeo == 0)
+	self.win_file_point:Show(select_povgeo == 1)
+end
+
+--/summary/>> Метод отвечающий за отображение радио кнопок "на поверхность геометрии" и соответствующих ей дочерних элементов.
+function win_spawner:Show_Tab_PovGeo(bool)
+    self.tab_pov_geo:Show(bool)
+    if not bool then
+	    self.st_edit_dist:Show(false)
+	    self.win_file_point:Show(false)
+	else
+		self:Tab_PovGeo()
+	end	
+end
+
+--/summary/>> метод открытия окна выбора файл-поинта
+function win_spawner:OpenChoicePoints()
+	level.start_stop_menu(_ui_total.choice_file_points(self, win_spawner.SelectFilePoint), false)
+end
+
+--/summary/>> метод вызываемый при выборе файл-поинта
+function win_spawner:SelectFilePoint(point_name)
+	local point = _fp_manager.GetPointByName(point_name)
+	if not point then return end
+	self.win_file_point.name = point_name
+	self.wfp_image:InitTexture(point:GetFileName())
+	self.wfp_btn:SetTextST(point_name)
+	self.win_file_point.pos = point.position
+end
+
+--/summary/>> Управление отображением дочерних элементов радио кнопок "в инвентарь объекта".
+function win_spawner:Tab_InvObj()
+    local select_invobj = self.tab_inv_obj:GetActiveIndex()
+	local valid_zero = (select_invobj == 0)
+	self.st_edit_sid:Show(valid_zero)
+	self.list_ivent:Show(not valid_zero)
+	if (not valid_zero) then
+	    self:CreateListIvent(select_invobj == 1)
+	end
+end
+
+--/summary/>> Метод отвечающий за отображение радио кнопок "в инвентарь объекта" и соответствующих ей дочерних элементов.
+function win_spawner:Show_Tab_InvObj(bool)
+    self.tab_inv_obj:Show(bool)
+    if not bool then
+	    self.st_edit_sid:Show(false)
+		self.list_ivent:Show(false)
+	else
+		self:Tab_InvObj()
+	end	
+end
+
+--/summary/>> создание списока близнаходящихся объектов содержащих инвентарь
+--/attribute/' stalkers = true // inventory_boxes = false
+function win_spawner:CreateListIvent(stalk_or_inv)
+    self.list_ivent:RemoveAll()
+	local tbl = {}
+	for id in pairs(db.storage) do
+	    if (id ~= 0) then
+	        local obj = level.object_by_id(id)
+			if (stalk_or_inv) then
+		        if IsStalker(obj) then
+				    table.insert(tbl, obj)
+		        end
+			else
+			    if (obj:clsid() == clsid.inventory_box) then
+			        table.insert(tbl, obj)
+				end
+			end
+		end
+	end
+	--'сортируем по дистанции от актора (первый-ближайший//последний-самый дальний)
+	table.sort(tbl, function(a,b)
+	    local actor_pos = db.actor:position()
+	    local dist_a = a:position():distance_to_sqr(actor_pos)
+		local dist_b = b:position():distance_to_sqr(actor_pos)
+		return dist_a < dist_b
+	    end)
+	for _, iobj in ipairs(tbl) do
+	    local item = _ui_total.list_item(100, 20)
+		local id = iobj:id()
+		local text = (stalk_or_inv and (_utils.get_real_name_stalker(iobj)..(not iobj:alive() and " (труп)" or "")) or iobj:section()..id)
+		item:SetText(text)
+		item.id = id
+		self.list_ivent:AddItem(item)
+	end
+end
+
+--/summary/>> клик списока близнаходящихся объектов содержащих инвентарь
+function win_spawner:OnListIventClick()
+    
+end
+
+--//---------------------------------------------------
+--// методы управления списками объектов(предметов)
+--//---------------------------------------------------
+
+--/summary/>> создание списка типов объектов(предметов)
+function win_spawner:CreateListTypes()
+    self.list_types:RemoveAll()
+	self.list_all:RemoveAll()
+    local select = self.tab_type:GetActiveIndex()
+	for _,n in ipairs(types[select + 1]) do
+	    local item = _ui_total.list_item(150, 27)
+		item:SetText(game.translate_string(n))
+		item:SetFont(GetFontLetterica18Russian())
+		item:SetTextAlign(1)
+		item.section = n
+		self.list_types:AddItem(item)
+	end
+end
+
+--/summary/>> создание списка объектов(предметов) по выбранному типу
+function win_spawner:OnListTypesClicked()
+    local item = _utils.GetSelectedItemList(self.list_types)
+	if not item then return end
+	
+	self.list_all:RemoveAll()
+	
+	if item.section == "spawn_sections" then
+	    local sections = _utils.get_sections("creatures\\spawn_sections.ltx")
+		for _, section in ipairs(sections) do
+		    local item2 = _ui_total.list_item(100, 20)
+		    item2:SetText(section)
+		    item2.section = section
+		    self.list_all:AddItem(item2)
+		end
+	else
+	    local ini = ini_file(files_ini[self.tab_type:GetActiveIndex() + 1])
+	
+	    do
+	        local ind = 0
+	        repeat
+	            local valid, id, value = ini:r_line(item.section, ind, "", "")
+			    if (valid and value == "true") then
+			        local item2 = _ui_total.list_item(100, 20)
+		            item2:SetText(id)
+		            item2.section = id
+		            self.list_all:AddItem(item2)
+			    end
+			    ind = ind + 1
+	        until (not valid)
+	    end
+	end
+end
+
+--/summary/>> определяет объект(предмет) в общем списке, для добавления его в список для спавна
+function win_spawner:OnAddClicked()
+    local item = _utils.GetSelectedItemList(self.list_all)
+	if not item then return end
+	self:AddSectionSpawn(item.section)
+end
+
+--/summary/>> добавляет объект(предмет) в список для спавна
+function win_spawner:AddSectionSpawn(section)
+    local item2 = _ui_total.list_item(100, 20)
+	item2:SetText(section)
+	item2.section = section
+	item2.count = 1
+	item2.props = {}
+	item2.s_props = {}
+	item2.props.net_funcs = { get = nil, set = nil, upd = nil}
+	local ini = ini_file("mobile\\mobile_spawn_properties.ltx")
+	local sini = system_ini()
+	if ini:section_exist(section.."_prop") then
+	    do
+	        local ind = 0
+	        repeat
+	            local valid, id, value = ini:r_line(section.."_prop", ind, "", "")
+			    if valid then
+				    if (id == "net_funcs" and value ~= "") then
+					    if ini:section_exist(value) then
+					        item2.props.net_funcs.get = ini:line_exist(value, "get") and ini:r_string(value, "get") or nil
+	                        item2.props.net_funcs.set = ini:line_exist(value, "set") and ini:r_string(value, "set") or nil
+							item2.props.net_funcs.upd = ini:line_exist(value, "upd") and ini:r_string(value, "upd") or nil
+						end
+					elseif value:match("%b$$") then
+						local base_id = value:match("[^%$]+")
+						if base_id and sini:section_exist(section) and sini:line_exist(section, base_id) then
+							local base_value = sini:r_string(section, base_id)
+							if base_value then
+								item2.props[id] = _utils.ParseByTypeString(base_value)
+								item2.s_props[id] = base_value
+							end
+						end
+					else
+			            item2.props[id] = _utils.ParseByTypeString(value)
+						item2.s_props[id] = value
+					end
+			    end
+			    ind = ind + 1
+	        until (not valid)
+	    end
+	end
+	self.list_spawn:AddItem(item2)
+end
+
+--/summary/>> удаляет объект(предмет) из списка для спавна
+function win_spawner:OnDelClicked()
+    local select = self.list_spawn:GetSelectedItem()
+	if select < 0 then return end
+	self.list_spawn:RemoveItem(select)
+	self.list_prop:RemoveAll()
+	self.fill_prop:SetText("")
+end
+
+--/summary/>> производит проверку валидности названия секции в эдит боксе
+function win_spawner:OnEditChanged()
+	local section = self.edit_section:GetItem()
+	if (#section ~= 0) then
+	    local sini = system_ini()
+		if sini:section_exist(section) then
+		    self.valid_sec_icon:InitTexture("ui_icons_PDA_subtask_accomplished")
+		else
+		    self.valid_sec_icon:InitTexture("ui_icons_PDA_subtask_failed")
+		end
+	else
+	    self.valid_sec_icon:InitTexture("ui_icons_newPDA_SmallRed")
+	end
+end
+
+--/summary/>> определяет объект(предмет) в эдит боксе, для добавления его в список для спавна
+function win_spawner:OnAddFromEdit()
+	local section = self.edit_section:GetItem()
+	if (#section == 0) then return end
+	local sini = system_ini()
+	if sini:section_exist(section) then
+	    self:AddSectionSpawn(section)
+	else
+	    self.parent.message_box_error:SetText("Секции с именем '"..section.."' не существует! Введите правильное имя секции.")
+	    self.parent:GetHolder():start_stop_menu(self.parent.message_box_error, true)
+		return
+	end
+	self.edit_section:Remember()
+end
+
+--//--------------------------------
+--// методы на спавн
+--//--------------------------------
+
+--/summary/>> вызываемый метод при клике спавна
+function win_spawner:OnSpawnClicked()
+    local size = self.list_spawn:GetSize()
+	if size == 0 then return end
+    self:SaveProperties()
+    local sections = self:GetSections(size)
+	self.parent.message_box_error:SetText("Не выбраны координаты для спавна!")
+	local pos, lvid, gvid, id = self:GetCoord()
+	if (not pos) then
+	    self.parent:GetHolder():start_stop_menu(self.parent.message_box_error, true)
+	    return
+	end
+	local aborts, objs_props = _utils.create(sections, pos, lvid, gvid, id)
+	if (#aborts > 0) then
+	    local ss = table.concat(aborts, ", ")
+		local one = (#aborts == 1)
+		local sec, her = (one and "и" or "й"), (one and "её" or "их")
+		self.parent.message_box_error:SetText("Спавн секци"..sec.." '"..ss.."' не был произведён, в виду "..her.." отсутствия!")
+	    self.parent:GetHolder():start_stop_menu(self.parent.message_box_error, true)
+	end
+	self.parent.owner.props = objs_props
+	self.parent:quit()
+end
+
+--/summary/>> возвращает список предметов(объектов) для спавна
+function win_spawner:GetSections(size)
+	local sections = {}
+	for i=0, size-1 do
+		local item = self.list_spawn:GetItem(i)
+		if item then
+		    local val = {}
+			val.section = item.section
+			val.count = item.count
+			val.props = item.props
+			table.insert(sections, val)
+		end
+	end
+	return sections
+end
+
+--/summary/>> возвращает координаты для спавна
+function win_spawner:GetCoord()
+    local actor = db.actor
+    local select_where = self.tab_where:GetActiveIndex()
+	local pos, lvid, gvid, id
+	if (select_where == 0) then
+	    pos  = actor:position()
+		lvid = actor:level_vertex_id()
+		gvid = actor:game_vertex_id()
+		id   = actor:id()
+	elseif (select_where == 1) then
+	    local select_invobj = self.tab_inv_obj:GetActiveIndex()
+		if (select_invobj == 0) then
+		    local sid = self.edit_sid:GetText()
+			if (#sid ~= 0) then
+			    sid = tonumber(sid)
+				if (sid and sid ~= 0) then
+				    local sobj = alife():story_object( sid )
+					if sobj then
+					    pos  = sobj.position
+						lvid = sobj.m_level_vertex_id
+						gvid = sobj.m_game_vertex_id
+						id   = sobj.id
+					else
+					    self.parent.message_box_error:SetText("Объект с указанным story_id не найден, или не существует.")
+	                    return
+					end
+				end
+			end
+		else
+		    local item = _utils.GetSelectedItemList(self.list_ivent)
+			if item then
+			    local obj = level.object_by_id(item.id)
+				if obj then
+				    pos  = obj:position()
+					lvid = obj:level_vertex_id()
+					gvid = obj:game_vertex_id()
+					id   = item.id
+				else
+				    local sobj = alife():object(item.id)
+					if sobj then
+					    pos  = sobj.position
+						lvid = sobj.m_level_vertex_id
+						gvid = sobj.m_game_vertex_id
+						id   = item.id
+					else
+					    self.parent.message_box_error:SetText("Указанный объект с инвентарём, не найден.")
+	                    return
+					end
+				end
+			end
+		end
+	elseif (select_where == 2) then
+	    local select_povgeo = self.tab_pov_geo:GetActiveIndex()
+	    if (select_povgeo == 0) then
+		    local dist = self.edit_dist:GetText()
+			if (#dist ~= 0) then
+			    dist = tonumber(dist)
+				if (dist) then
+				    local dir = vector():set(device().cam_dir)
+					dir.y = 0
+				    pos = vector():set(actor:position()):sub(dir:mul(-dist))
+					lvid = actor:level_vertex_id()
+		            gvid = actor:game_vertex_id()
+					id = 65535
+				end
+			end
+		elseif (select_povgeo == 1) then
+		    pos = self.win_file_point.pos
+			lvid = actor:level_vertex_id()
+		    gvid = actor:game_vertex_id()
+			id = 65535
+		elseif (select_povgeo == 2) then
+		    -->> ввод координат (ещё не решил, нужен ли он вообще?!)
+			-->> а может заменить на "по координатам объекта"?...
+			-->> ... с теми же условиями, что и с координатами актора.
+			-->> ... например, на указанном расстоянии от указанного сталкера
+			-->> по напралению его взгляда. Тобишь, перед сталкером, или за его спиной, 
+			-->> если указано отрицательное значение дистанции.
+		end
+	end
+	return pos, lvid, gvid, id
+end
+
+--//--------------------------------
+--// методы на свойства
+--//--------------------------------
+
+--/summary/>> метод отображения свойств объекта, с возможностью их изменения
+function win_spawner:ShowProperties()
+    self:SaveProperties()
+    self.list_prop:RemoveAll()
+	self.fill_prop:SetText("")
+	local item = _utils.GetSelectedItemList(self.list_spawn)
+	if not item then return end
+	
+	--//элемент количества
+	self:CreateElementProp("count", item.count, item)
+	
+	--//элементы свойств объекта
+	for id, value in pairs(item.s_props) do
+		if id ~= "net_funcs" then
+		    self:CreateElementProp(id, value, item)
+		end
+	end
+end
+
+--/summary/>> метод создания элемента в списке свойств
+function win_spawner:CreateElementProp(id, value, parent)
+    local item_prop  = _ui_total.list_item(200, 20)
+	item_prop.value  = _utils.ParseByTypeString(value)
+	item_prop.s_value = value
+	item_prop.parent = parent                           --'запоминаем объект, к которому относится данное свойство
+	item_prop.id     = id                               --'запоминаем идентификационное имя свойства, для packet
+	local func_get = _getset_properties["get_"..id]
+	local func_get_id, func_get_value
+	if func_get then
+	    func_get_id, func_get_value = func_get(item_prop.value)
+	end
+	item_prop:SetText(func_get_id or id)
+	item_prop.win_value = self.xml:InitStatic("el_prop_stat", item_prop)
+	item_prop.win_value:SetText(func_get_value or value)
+	if type(item_prop.value) == "boolean" then item_prop.bool = true
+	elseif func_get then item_prop.set = true
+	end
+	self.list_prop:AddItem(item_prop)
+end
+
+--/summary/>> метод сохранения свойств
+function win_spawner:SaveProperties()
+    local size = self.list_prop:GetSize()
+	if size ~= 0 then
+	    for i=0, size -1 do
+		    local item_prop = self.list_prop:GetItem(i)
+		    if item_prop then
+			    local key = item_prop.id
+				if key == "count" then
+		            item_prop.parent[key] = tonumber(item_prop.win_value:GetText()) or 1
+				else
+					local s_value = item_prop.set and item_prop.value or item_prop.win_value:GetText()
+				    local value = _utils.ParseByTypeString(s_value)
+				    item_prop.parent.props[key] = value
+					item_prop.parent.s_props[key] = tostring(s_value)
+				end
+		    end
+		end
+	end
+end
+
+--/summary/>> метод изменения свойств объекта
+function win_spawner:OnPropClicked()
+	local item_prop = _utils.GetSelectedItemList(self.list_prop)
+	if item_prop then 
+	    if item_prop.set then
+	        local func_set = _getset_properties["set_"..item_prop.id]
+		    if func_set then
+	            func_set(item_prop)
+		    end
+		elseif item_prop.bool then
+		    item_prop.value = not item_prop.value
+			item_prop.win_value:SetText(tostring(item_prop.value))
+		else
+		    local function set_value(item_prop, value)
+	            item_prop.value = _utils.ParseByTypeString(value)
+				item_prop.s_value = value
+		        item_prop.win_value:SetText(value)
+	        end
+            level.start_stop_menu(_ui_total.message_editBox(item_prop, set_value, nil, item_prop.value, _utils.DefTypeByString(item_prop.win_value:GetText())), false)
+		end
+		self.fill_prop:SetText(item_prop.win_value:GetText())
+	end
+end
+
+function win_spawner:OnPropSelect()
+    local item_prop = _utils.GetSelectedItemList(self.list_prop)
+	if not item_prop then return end
+	self.fill_prop:SetText(item_prop.win_value:GetText())
+end
+
+--//---------------------------------------
+--// методы сохранения параметров вкладки
+--//---------------------------------------
+
+--/summary/>> метод сохранения данных вкладки при закрытии интерфейса меню
+function win_spawner:save(owner)
+	list_edit_section       = self.edit_section:GetItemsList()
+    owner.tab_type_index    = self.tab_type:GetActiveIndex()
+	owner.tab_where_index   = self.tab_where:GetActiveIndex()
+	owner.tab_pov_geo_index = self.tab_pov_geo:GetActiveIndex()
+	owner.tab_inv_obj_index = self.tab_inv_obj:GetActiveIndex()
+	owner.edit_dist         = tonumber(self.edit_dist:GetText()) or const_dist
+	owner.spawn_point       = self.win_file_point.name or ""
+	owner.edit_sid          = tonumber(self.edit_sid:GetText()) or 0
+end

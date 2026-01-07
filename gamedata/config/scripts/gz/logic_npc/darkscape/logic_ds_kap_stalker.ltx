@@ -1,0 +1,12 @@
+[logic]
+active = walker@idle
+
+[walker@idle]
+path_walk = ds_kapish_stalk_look
+path_look = ds_kapish_stalk_walk
+on_info = {+ds_kap_stalker_meet_done} remark@anim
+
+[remark@anim]
+anim = wait
+target = actor
+on_actor_dist_ge_nvis = 130| %+del_kap_stalker%

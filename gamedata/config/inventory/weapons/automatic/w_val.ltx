@@ -1,0 +1,226 @@
+;;;;;;;;;;;;;;;;;;;;;;
+[wpn_val]:identity_immunities
+GroupControlSection					= spawn_group
+discovery_dependency				=
+$spawn								= "weapons\val"					; option for Level Editor
+$npc								= on				; option for Level Editor
+$prefetch							= 8
+scheduled							= off              ; option for ALife Simulator
+cform								= skeleton
+class								= WP_VAL
+min_radius							= 30
+max_radius							= 100
+description							= enc_weapons1_wpn-val
+chamber_status          = true
+ef_main_weapon_type					= 2
+ef_weapon_type						= 6
+
+zoom_dof						= 0.5, 1.0, 180
+reload_dof					= 0.0, 0.5, 5, 1.7
+
+;-----------------------------------------------------------------------------------
+holder_range_modifier				= 1.0		       ; во сколько раз увеличиваетс€ eye_range
+holder_fov_modifier					= 0.7              ; во сколько раз увеличиваетс€ eye_fov
+;-----------------------------------------------------------------------------------
+
+cost								= 9000	;2400
+weapon_class						= assault_rifle
+
+ammo_limit							= 210
+ammo_current						= 180
+ammo_elapsed						= 20
+
+ammo_mag_size						= 20
+ammo_class							= ammo_9x39_pab9, ammo_9x39_sp5, ammo_9x39_ap
+fire_modes							= 1, -1
+
+hand_dependence						= 1
+single_handed						= 0
+
+slot								= 1,2		; // secondary
+animation_slot						= 2		; type of the animation that will be used
+
+inv_name							= wpn-val
+inv_name_short						= wpn-val
+inv_weight							= 2.5
+
+inv_grid_width     = 5
+inv_grid_height    = 2
+inv_grid_x         = 0
+inv_grid_y         = 34
+
+
+kill_msg_x							= 0
+kill_msg_y							= 154
+kill_msg_width						= 78
+kill_msg_height						= 21
+
+;-----------------------------------------------------------------------------------
+;базова€ дисперси€
+fire_dispersion_base				= 0.14	;угол (в градусах) базовой дисперсии оружи€ (оружи€ зажатого в тисках)
+control_inertion_factor				= 1.04f
+
+;отдача
+cam_relax_speed         	= 5	;скорость возврата в исходное положение
+cam_dispersion          	= 0.3	;увеличени€ угла (в градусах) с каждым выстрелом
+cam_dispersion_inc		= 0.05	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac		= 1.0	;ствол будет подыматьс€ на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle			= 7.0	;максимальный угол отдачи
+cam_max_angle_horz		= 10.0	;(degree) maximum shot horizontal degree 
+cam_step_angle_horz		= 0.5;0.4	;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor = 5	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 	= 0.003	;веро€тность осечки при максимальном износе 
+misfire_condition_k		= 0.05
+condition_shot_dec 		= 0.0002 ;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+
+direction							= 0, 0, 1
+
+fire_point							= 0.0, 0.174, 0.562
+
+smoke_particles						= weapons\generic_shoot_00
+
+shell_point		 			= 0.0, 0.174, 0.078
+shell_dir		 			= 0.0, 1.0, 0.0
+shell_particles						= weapons\arsenal_shells1
+
+rpm_empty_click						= 200
+
+PDM_disp_base						= 1.0
+PDM_disp_vel_factor					= 1.2
+PDM_disp_accel_factor				= 1.2
+PDM_crouch							= 1.0
+PDM_crouch_no_acc					= 1.0
+
+; ttc
+hit_power							= 0.68
+hit_impulse							= 87
+hit_type							= fire_wound
+
+fire_distance						= 400 ;1000
+bullet_speed						= 290	;начальна€ скорость пули
+rpm									= 650 ;800
+; end ttc
+
+use_aim_bullet						= true		;ѕоддерживаетс€ ли перва€ суппер пул€
+time_to_aim							= 1.0
+
+hud									= wpn_val_hud
+normal								= 0, 1, 0
+
+;----------------------------------------------------------
+position        	        = -0.026, -0.131, 0.0
+orientation     	        = 0, 0, 0
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+;под мишкой
+strap_position						= -0.26,-0.11,0.20			; position (offset) and orientation of the weapon when it is strapped
+strap_orientation					= -15,-9,110				; (3rd person view in degrees)
+strap_bone0							= bip01_spine2
+strap_bone1							= bip01_spine1
+
+startup_ammo						= 90
+visual								= weapons\val\wpn_val.ogf
+
+light_disabled						= true
+
+ph_mass								= 2.5
+;cost			 			= 2100
+
+;addons
+scope_status						= 2
+scope_dynamic_zoom                  = true
+silencer_status						= 1
+grenade_launcher_status				= 0
+
+zoom_enabled						= true
+scope_zoom_factor = 70
+scope_name							= wpn_addon_scope
+scope_dynamic_zoom = true
+
+scope_texture						= wpn_crosshair
+scope_x								= 40						; offset in inventory icon
+scope_y								= -2
+; ----------------------------== Sounds ==---------------------------------
+snd_draw				= weapons\generic_draw
+snd_holster				= weapons\generic_holster
+snd_silncer_shot		= weapons\val\val_shoot
+snd_shoot					= weapons\vintorez\vss_9x39_shotbullet_0
+snd_shoot1					= weapons\vintorez\vss_9x39_shotbullet_1
+snd_shoot2					= weapons\vintorez\vss_9x39_shotbullet_2
+snd_shoot3					= weapons\vintorez\vss_9x39_shotbullet_3  
+snd_empty				= weapons\gen_empty, 0.5
+snd_reload				= weapons\val\val_reload, 0.7
+; --------------------------------------------------------------------------------
+
+
+
+
+weapon_min_queue_size_far = 1; минимальна€ очередь на дальние дистанции. ќдиночные. 
+Ћогично? 
+weapon_max_queue_size_far = 6; ћаксимум -6 патронов в очереди. ¬ принципе, здесь можно и поменьше, но практика показывает, что такой огонь довольно эффективен. 
+
+
+weapon_min_queue_interval_far = 500; ѕериодичность выстрелов.  ак € пон€л, в миллисекундах. 
+Ѕез изменений: пусть успевают прицелитьс€ перед выстрелом :) 
+weapon_max_queue_interval_far = 1000; —екунда на прицеливание их же устроит? Ќо дальше уж надо жать на курок. 
+
+weapon_min_queue_size_medium = 6; тут ничего не мен€л... вроде. 
+weapon_max_queue_size_medium = 10 
+weapon_min_queue_interval_medium= 500; также без изменений 
+weapon_max_queue_interval_medium= 750 
+weapon_min_queue_size_close = 10; вблизи (почти в упор) им надо шмал€ть не щад€ обоймы. ѕока сталкер ћеченый не опомнилс€. 
+weapon_max_queue_size_close = 30; при удаче они даже всад€т всю обойму :) 
+weapon_min_queue_interval_close = 100; интервал на ближних дистанци€х также минимальный: с такого рассто€ни€ нужно стрел€ть не дума€. 
+weapon_max_queue_interval_close = 300 
+
+
+
+
+
+
+
+[wpn_val_hud]
+allow_inertion		= true
+
+shell_point			= 0.060000,-0.020000,-0.090000
+shell_dir		 			= 0.0, 1.0, 0.0
+
+fire_point			= 0.019000,0.022000,0.060000
+fire_bone			= wpn_body
+orientation      	        = 0,0,0
+position         	        = -0.042,-0.132,0.1955
+visual				= weapons\val\wpn_val_hud.ogf
+
+anim_idle			= lancew_val_idle
+anim_reload			= lancew_val_reload
+anim_draw			= lancew_val_draw
+anim_holster		= lancew_val_holster
+anim_shoot			= lancew_val_shoot
+anim_idle_aim		= lancew_val_idle_aim
+anim_idle_sprint	= lancew_val_sprint
+anim_idle_moving	= lancew_val_moving
+
+;смещени€ HUD дл€ режима приближени€
+zoom_offset			= -0.107500,0.051900,-0.150000
+zoom_rotate_x		= -0.004000
+zoom_rotate_y		= -0.000000
+
+
+[wpn_val_m1]:wpn_val	;ћодифицированный ¬ал
+$spawn             				= "weapons\uniq\wpn_val_m1"	
+description						= enc_weapons1_wpn-val_m1
+inv_name						= wpn-val_m1
+inv_name_short					= wpn-val_m1
+inv_grid_width     				= 5
+inv_grid_height    				= 2
+inv_grid_x         				= 0
+inv_grid_y         				= 32
+scope_status					= 1
+zoom_enabled					= true
+scope_zoom_factor	    		= 15
+scope_texture					= wpn\wpn_crosshair
+condition_shot_dec 				= 0.00005
+scope_dynamic_zoom          	= true

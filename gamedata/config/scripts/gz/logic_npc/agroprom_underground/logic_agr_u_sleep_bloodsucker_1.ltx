@@ -1,0 +1,14 @@
+[logic]
+active = mob_walker@1
+
+[mob_walker@1]
+path_walk = agr_u_sleep_bloodsucker_1_walk
+path_look = agr_u_sleep_bloodsucker_1_look
+friendly = true
+on_game_timer = 10| mob_remark
+
+[mob_remark]
+anim = krovosos_sleep
+time = 50000
+on_signal = action_end | mob_remark
+friendly_true

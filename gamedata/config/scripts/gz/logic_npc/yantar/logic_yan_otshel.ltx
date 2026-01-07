@@ -1,0 +1,78 @@
+[logic]
+active = walker@yan_otshel
+
+[walker@yan_otshel]
+path_walk = yan_otshel_stay
+path_look = yan_otshel_look
+on_info = {+yan_otshel_walk_start} walker@yan_otshel_2
+
+[walker@yan_otshel_2]
+path_walk = yan_otshel_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = chimera| %+yan_othsel_chimera_roar% 
+on_info = {+yan_othsel_chimera_roar_done} remark@yan_otshel_glad
+
+[remark@yan_otshel_glad]
+anim = hide
+snd = otshel_1
+on_actor_dist_ge_nvis = 10|%+yan_otshel_rac_1%
+meet = no_meet
+on_info = {+yan_roar_sms} remark@yan_otshel_glad1, {+yan_otshel_rac_1} remark@yan_otshel_glad1
+
+[remark@yan_otshel_glad1]
+meet = no_meet
+on_game_timer = 45|remark@yan_otshel_glad2
+
+[remark@yan_otshel_glad2]
+meet = no_meet
+snd = otshel_2
+on_actor_dist_ge_nvis = 10|%+yan_otshel_rac_2%
+on_timer = 2000|remark@yan_otshel_glad3
+
+[remark@yan_otshel_glad3]
+meet = no_meet
+on_info = {-yan_otshel_rac_2} %+yan_roar_sms_2% walker@yan_otshel_3, {+yan_otshel_rac_2} walker@yan_otshel_3
+
+[walker@yan_otshel_3]
+path_walk = yan_otshel_walk_3
+def_state_standing = hide
+danger = danger_condition@scout_2
+meet = no_meet
+on_info = {+yan_chimera_death +yan_chimera_death_2} walker@yan_otshel_stay2
+
+[walker@yan_otshel_stay2]
+path_walk = yan_otshel_death_walk
+meet = no_meet
+danger = danger_condition@scout_2
+on_signal = deathtrop|  remark@yan_otshel_trup
+
+[remark@yan_otshel_trup]
+anim = guard
+snd = otshel_3
+on_actor_dist_ge_nvis = 10|%+yan_otshel_rac_3%
+meet = no_meet
+on_timer = 2000|remark@yan_otshel_trup2
+
+[remark@yan_otshel_trup2]
+anim = guard
+meet = no_meet
+on_info = {-yan_otshel_rac_3} %+yan_death_trop% remark@yan_otshel_trup3, {+yan_otshel_rac_3} remark@yan_otshel_trup3
+
+[remark@yan_otshel_trup3]
+anim = guard
+meet = no_meet
+on_game_timer = 75| walker@yan_otshel_stay3
+
+[walker@yan_otshel_stay3]
+path_walk = yan_otshel_stay_2
+path_look = yan_otshel_look_2
+danger = danger_condition@scout_3
+
+[danger_condition@scout_2]
+ignore_distance       = 5
+
+[danger_condition@scout_3]
+ignore_distance       = 15

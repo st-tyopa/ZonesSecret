@@ -1,0 +1,12 @@
+custom_data = <<END
+[logic]
+cfg = scripts\gz\logic_dv_wounded_stalker.ltx
+END
+
+
+
+custom_data = <<END
+[logic]
+cfg = scripts\gz\logic_npc\darkvalley\logic_dv_wounded_stalker.ltx
+END
+

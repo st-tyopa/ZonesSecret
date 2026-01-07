@@ -1,0 +1,300 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Интерфейс информатора.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 01.05.2011
+--]]
+
+local point_log = 0
+local list_edit_infop = {}
+
+class "win_info" (CUIWindow)
+
+function win_info:__init() super()
+    self.title = "Information"
+end
+
+function win_info:__finalize()
+
+end
+
+function win_info:InitControls(win_frect, xml, parent)
+    self.parent = parent
+    self:Init(win_frect)
+	self:SetAutoDelete(true)
+	
+	local fwc = xml:InitFrame("frame_win_coord", self)
+	
+	--'checkeds
+	self.check_pos = xml:InitCheck("frame_win_coord:check_pos", fwc)
+	parent:Register(self.check_pos, "check_pos")
+	
+	self.check_dir = xml:InitCheck("frame_win_coord:check_dir", fwc)
+	parent:Register(self.check_dir, "check_dir")
+	
+	self.check_rot = xml:InitCheck("frame_win_coord:check_rot", fwc)
+	parent:Register(self.check_rot, "check_rot")
+	
+	self.check_lvid = xml:InitCheck("frame_win_coord:check_lvid", fwc)
+	parent:Register(self.check_lvid, "check_lvid")
+	
+	self.check_gvid = xml:InitCheck("frame_win_coord:check_gvid", fwc)
+	parent:Register(self.check_gvid, "check_gvid")
+	
+	self.check_vai = xml:InitCheck("frame_win_coord:check_vai", fwc)
+	parent:Register(self.check_vai, "check_vai")
+	
+	self.wpos = xml:InitStatic("frame_win_coord:win_pos", fwc)
+	self.wdir = xml:InitStatic("frame_win_coord:win_dir", fwc)
+	self.wrot = xml:InitStatic("frame_win_coord:win_rot", fwc)
+	self.wlvid = xml:InitStatic("frame_win_coord:win_lvid", fwc)
+	self.wgvid = xml:InitStatic("frame_win_coord:win_gvid", fwc)
+	self.wvai = xml:InitStatic("frame_win_coord:win_vai", fwc)
+	
+	self.check_show_coord = xml:InitCheck("frame_win_coord:check_show_coord", fwc)
+	parent:Register(self.check_show_coord, "check_show_coord")
+	
+	local btn_save_log = xml:Init3tButton("frame_win_coord:btn_save_log", fwc)
+	parent:Register(btn_save_log, "btn_save_log")
+	
+	--'fps
+	local ffps = xml:InitFrame("frame_fps", self)
+	self.check_fps = xml:InitCheck("frame_fps:check_show_fps", ffps)
+	parent:Register(self.check_fps, "check_fps")
+	self.wfps = xml:InitStatic("frame_fps:win_fps", ffps)
+	
+	--'infoportions
+	local fip = xml:InitFrame("frame_infoportion", self)
+	
+	self.list_infop = xml:InitList("frame_infoportion:list_infop", fip)
+	parent:Register(self.list_infop, "list_infop")
+	
+	local btn_add_infop = xml:Init3tButton("frame_infoportion:btn_add", fip)
+	parent:Register(btn_add_infop, "btn_add_infop")
+	
+	self.check_infop = xml:InitCheck("frame_infoportion:check_show", fip)
+	parent:Register(self.check_infop, "check_infop")
+	
+	local btn_del_infop = xml:Init3tButton("frame_infoportion:btn_del", fip)
+	parent:Register(btn_del_infop, "btn_del_infop")
+	
+	self.edit_infop = _ui_total.CUIComboBoxEditNew(10, 23, 200, parent)
+	self.edit_infop:AddItems(list_edit_infop)
+	fip:AttachChild(self.edit_infop)
+	
+	--'inits
+	self:InitCheck()
+	self:InitShown()
+	self:InitInfopList()
+	self:InitCallBacks()
+end
+
+--//инициализация событий
+function win_info:InitCallBacks()
+    self.parent:AddCallback("check_pos",         ui_events.BUTTON_CLICKED, 			  self.OnCheckPosClicked,		self) --'чекер позиции
+	self.parent:AddCallback("check_dir",         ui_events.BUTTON_CLICKED, 			  self.OnCheckDirClicked,		self) --'чекер дирекции
+	self.parent:AddCallback("check_rot",         ui_events.BUTTON_CLICKED, 			  self.OnCheckRotClicked,		self) --'чекер угла поворота
+	self.parent:AddCallback("check_lvid",        ui_events.BUTTON_CLICKED, 			  self.OnCheckLvidClicked,		self) --'чекер левел вертекса
+	self.parent:AddCallback("check_gvid",        ui_events.BUTTON_CLICKED, 			  self.OnCheckGvidClicked,		self) --'чекер гейм вертекса
+	self.parent:AddCallback("check_vai",         ui_events.BUTTON_CLICKED, 			  self.OnCheckVaiClicked,		self) --'чекер валидности вертекса
+	self.parent:AddCallback("check_show_coord",  ui_events.BUTTON_CLICKED, 			  self.OnCheckShowClicked,		self) --'чекер отображения данных о позиции
+	self.parent:AddCallback("btn_save_log",      ui_events.BUTTON_CLICKED, 			  self.OnSaveInLogClicked,		self) --'кнопка сохранения данных о позиции в лог
+	self.parent:AddCallback("check_fps",         ui_events.BUTTON_CLICKED, 			  self.OnCheckFpsClicked,		self) --'чекер отображения fps
+	self.parent:AddCallback("check_infop",       ui_events.BUTTON_CLICKED, 			  self.OnCheckInfopClicked,		self) --'чекер отображения значений инфопорций
+	self.parent:AddCallback("btn_add_infop",     ui_events.BUTTON_CLICKED, 			  self.OnAddInfopClicked,		self) --'кнопка добавления инфопорции в список
+	self.parent:AddCallback("btn_del_infop",     ui_events.BUTTON_CLICKED, 			  self.OnDelInfopClicked,		self) --'кнопка удаления инфопорции из списка
+	self.parent:AddCallback("list_infop",        ui_events.WINDOW_LBUTTON_DB_CLICK,   self.OnDelInfopClicked,       self) --'дабл клик инфопорции в списке
+end 
+
+--//виртуальная функция апдейта (оверрайд)
+function win_info:Update()
+    self:update_fps()
+end
+
+--//инициализация состояний чекеров
+function win_info:InitCheck()
+    local obj = self.parent.owner
+    local tbl = obj.checkeds_info
+    self.check_pos:SetCheck(tbl.position or false)
+	self.check_dir:SetCheck(tbl.direction or false)
+	self.check_rot:SetCheck(tbl.rotation or false)
+	self.check_lvid:SetCheck(tbl.lvid or false)
+	self.check_gvid:SetCheck(tbl.gvid or false)
+	self.check_vai:SetCheck(tbl.valid_vertex or false)
+	self.check_show_coord:SetCheck(obj.show_coord)
+	self.check_fps:SetCheck(obj.show_fps)
+	self.check_infop:SetCheck(obj.show_infop)
+end
+
+--//инициализация результатов от состояний чекеров
+function win_info:InitShown()
+    self:OnCheckPosClicked()
+	self:OnCheckDirClicked()
+	self:OnCheckRotClicked()
+	self:OnCheckLvidClicked()
+	self:OnCheckGvidClicked()
+	self:OnCheckVaiClicked()
+	self:OnCheckShowClicked()
+	self:OnCheckFpsClicked()
+end
+
+--//управляющие функции чекеров окна вывода координат
+function win_info:OnCheckPosClicked() --'position
+    if (self.check_pos:GetCheck()) then
+	    self.check_pos.value = db.actor:position()
+		self.parent.owner.checkeds_info.position = true
+	    self.wpos:SetText(string.format("%1.2f,%1.2f,%1.2f", self.check_pos.value.x, self.check_pos.value.y, self.check_pos.value.z))
+	else
+	    self.check_pos.value = nil
+		self.parent.owner.checkeds_info.position = false
+		self.wpos:SetText("")
+	end
+end
+
+function win_info:OnCheckDirClicked() --'direction
+    if (self.check_dir:GetCheck()) then
+	    self.parent.owner.checkeds_info.direction = true
+	    self.check_dir.value = device().cam_dir
+	    self.wdir:SetText(string.format("%1.2f,%1.2f,%1.2f", self.check_dir.value.x, self.check_dir.value.y, self.check_dir.value.z))
+	else
+	    self.check_dir.value = nil
+		self.parent.owner.checkeds_info.direction = false
+		self.wdir:SetText("")
+	end
+end
+
+function win_info:OnCheckRotClicked() --'rotation
+    if (self.check_rot:GetCheck()) then
+	    self.parent.owner.checkeds_info.rotation = true
+	    self.check_rot.value = -(device().cam_dir):getH()
+	    self.wrot:SetText(string.format("%1.2f", self.check_rot.value))
+	else
+	    self.check_rot.value = nil
+		self.parent.owner.checkeds_info.rotation = false
+		self.wrot:SetText("")
+	end
+end
+
+function win_info:OnCheckLvidClicked() --'level_vertex_id
+    if (self.check_lvid:GetCheck()) then
+	    self.parent.owner.checkeds_info.lvid = true
+	    self.check_lvid.value = db.actor:level_vertex_id()
+	    self.wlvid:SetText(tostring(self.check_lvid.value))
+	else
+	    self.check_lvid.value = nil
+		self.parent.owner.checkeds_info.lvid = false
+		self.wlvid:SetText("")
+	end
+end
+
+function win_info:OnCheckGvidClicked() --'game_vertex_id
+    if (self.check_gvid:GetCheck()) then
+	    self.parent.owner.checkeds_info.gvid = true
+	    self.check_gvid.value = db.actor:game_vertex_id()
+	    self.wgvid:SetText(tostring(self.check_gvid.value))
+	else
+	    self.check_gvid.value = nil
+		self.parent.owner.checkeds_info.gvid = false
+		self.wgvid:SetText("")
+	end
+end
+
+function win_info:OnCheckVaiClicked() --'valid_vertexes
+    if (self.check_vai:GetCheck()) then
+	    self.parent.owner.checkeds_info.valid_vertex = true
+	    local pos2 = level.vertex_position(db.actor:level_vertex_id())
+	    self.check_vai.value = pos2:distance_to(db.actor:position()) <= 0.7
+	    self.wvai:SetText(tostring(self.check_vai.value))
+	else
+	    self.check_vai.value = nil
+		self.parent.owner.checkeds_info.valid_vertex = false
+		self.wvai:SetText("")
+	end
+end
+
+function win_info:OnCheckShowClicked() --'show_coord
+    self.parent.owner.show_coord = self.check_show_coord:GetCheck()
+end
+
+--//функция сохранения данных о координатах в лог
+function win_info:OnSaveInLogClicked()
+    local point_num = tostring(point_log)
+    get_console():execute("load ~p"..point_num..(point_log < 10 and ":name = name0" or ":name = name")..point_num)
+    if self.check_pos.value then 
+	    get_console():execute("load ~p"..point_num..string.format(":position = %1.2f,%1.2f,%1.2f", self.check_pos.value.x, self.check_pos.value.y, self.check_pos.value.z)) 
+	end
+	if self.check_dir.value then
+	    get_console():execute("load ~p"..point_num..string.format(":direction = %1.2f,%1.2f,%1.2f", self.check_dir.value.x, self.check_dir.value.y, self.check_dir.value.z))
+	end
+	if self.check_rot.value then
+	    get_console():execute("load ~p"..point_num..string.format(":rotation = %1.2f", self.check_rot.value))
+	end
+	if self.check_lvid.value then get_console():execute("load ~p"..point_num..":level_vertex_id = "..tostring(self.check_lvid.value)) end
+	if self.check_gvid.value then get_console():execute("load ~p"..point_num..":game_vertex_id = "..tostring(self.check_gvid.value)) end
+	point_log = point_log + 1
+	news_manager.send_tip(db.actor, "Произведено сохранение данных в лог! 'point"..point_num.."'")
+end
+
+--//управляющие функции результатами fps
+function win_info:OnCheckFpsClicked()
+    self.parent.owner.show_fps = self.check_fps:GetCheck()
+end
+
+function win_info:update_fps()
+    if (self.check_fps:GetCheck()) then
+	    self.wfps:SetText(tostring(self.parent.owner.fps))
+	else
+	    self.wfps:SetText("")
+	end
+end
+
+--//управляющие функции инфопорциями
+function win_info:OnCheckInfopClicked()
+    self.parent.owner.show_infop = self.check_infop:GetCheck()
+end
+
+function win_info:InitInfopList()
+    local tbl = self.parent.owner.infops
+	for _,name in ipairs(tbl) do
+	    self:AddInfop(name)
+	end
+end
+
+function win_info:OnAddInfopClicked()
+    local name = self.edit_infop:GetItem()
+	if string.len(name) == 0 then return end
+	self.edit_infop:Remember()
+	self:AddInfop(name)
+	table.insert(self.parent.owner.infops, name)
+end
+
+function win_info:AddInfop(name)
+    local item = _ui_total.list_item(250, 24)
+	item:SetText(name)
+	item.value = has_alife_info(name)
+	item.w_val = CUIStatic()
+	item.w_val:SetWndRect(200, 0, 50, 24)
+	item.w_val:SetTextY(3)
+	item.w_val:SetText("= "..tostring(item.value))
+	item:AttachChild(item.w_val)
+	self.list_infop:AddItem(item)
+	self.edit_infop:SetItem("")
+end
+
+function win_info:OnDelInfopClicked()
+    local select = self.list_infop:GetSelectedItem()
+	if (select < 0) then return end
+	local item = self.list_infop:GetItem(select)
+	if (item) then
+		for k,name in ipairs(self.parent.owner.infops) do
+	        if (name == item:GetText()) then
+		        table.remove(self.parent.owner.infops, k)
+		    end
+	    end
+		self.list_infop:RemoveItem(select)
+	end
+end
+
+function win_info:save()
+	list_edit_infop                   = self.edit_infop:GetItemsList()
+end

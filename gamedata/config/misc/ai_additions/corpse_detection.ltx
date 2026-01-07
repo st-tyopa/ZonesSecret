@@ -1,0 +1,313 @@
+﻿;--------------------------------------
+; Rulix aka Bak
+; Настройки собирательства
+;--------------------------------------
+
+[main]
+check_period		= 5000		; мс ; время между проверками
+knife_req_to_loot_monster = false	; обязательно ли наличие ножа для добычи частей у монстров
+take_quest_items	= false		; можно ли собирать квестовые предметы
+min_weapon_condition	= 0.1		; при состоянии ниже оружие не брать
+excluded_communities	= zombied, greh	; названия группировок, которым будет запрещено лутать (character_community)
+
+
+[forbidden_items];секции предметов, запрещённых к подбору (section)
+wpn_rg-6
+bolt
+device_torch
+guitar_a
+harmonica_a
+binocular_a
+
+
+[forbidden_corpses];имена трупов, запрещённых к обыскиванию (name,profile_name)
+
+
+[excluded_npcs];имена, профили НПС, которым будет запрещено лутать (name,profile_name)
+pz_otis_lab
+pz_lab_scien_1
+pz_lab_scien_2
+pz_lab_scien_3
+yan_otshel
+yan_scien_guard
+rf_ld_puzir_1
+agr_dolgbase_lider_krylov
+agr_dolgbase_mehanik_gromov
+agr_dolgbase_trader_mityai
+agr_dolgbase_watchtower1
+agr_dolgbase_watchtower2
+agr_dolgbase_watchtower3
+agr_dolgbase_watchtower4
+agr_dolgblokpost_commander_krivtsov
+agr_dolgbase_guard_krylov1
+agr_dolgbase_guard_krylov2
+agr_dolgbase_guard_krylov3
+agr_dolgbase_blokp2_commander
+agr_dolgbase_blokp1_commander
+agr_dolgbase_weapontrader
+agr_ds_neutlager_woundeddigger
+agr_dolgbase_lovets
+agr_dolgbase_nachalnik
+agr_military_commander_cap
+agr_scien_manik
+agr_filin
+bar_psih
+ds_bridge_stalker_lider
+ds_bridge_stalker_default
+ds_ld_blokp_leader
+ds_neutlager_mehanic
+ds_neutlager_trader
+ds_neutlager_barmen
+ds_neutlager_doctor
+ds_neutlager_woundeddigger
+ds_kap_stalker
+ds_kamaz_stalker
+ds_locman
+agr_dolg_hunt_2
+agr_dolg_hunt_1
+agr_dolg_hunt_kom
+dv_svobblokpost_commander_lukash
+mil_Svoboda_master_Max
+dv_svobbase_lider_cheh
+dv_svobbase_mehanik_yar
+dv_svobbase_trader_varyag
+dv_svobbase_guard_cheh
+dv_zapravka_bandit_1
+dv_zapravka_bandit_2
+dv_zapravka_bandit_3
+dv_zapravka_bandit_4
+dv_zapravka_bandit_5
+dv_sv_greshbase_lider_sputnik
+dv_dolg_group_lider
+dv_maps_bandit
+dv_svobbase_prisoner
+dv_bekas
+dv_petro
+dv_anomaly_stalk
+dv_anomaly_stalk_bad
+dv_shpion
+gar_neutbase_lider
+gar_digger
+gar_sv_garbage_com
+gar_sv_garbage_guard
+bar_barman
+bar_stalker_guard
+gar_osvedomel
+gar_petro
+gar_guard_1
+gar_guard_2
+gar_bedolaga
+gar_hacker
+gar_gorb
+gar_hacker_guard
+pz_iskatgroup_leader
+pz_iskatgroup_iskatel_1
+pz_iskatgroup_iskatel_2
+pz_isk_rpg
+pz_iskatgroup_merc_prisoner
+pz_merclager_leader
+pz_merclager_sniper_1
+pz_merclager_sniper_2
+pz_merclager_sniper_3
+pz_merclager_sniper_4
+pz_merclager_sniper_5
+pz_merclager_sniper_6
+pz_merclager_facecontrol_com_1
+pz_merclager_facecontrol_com_2
+pz_tepa
+pz_shihka
+pz_sh_guard1
+pz_sh_guard2
+pz_hata_stalk_2
+pz_otis
+pz_borman
+rf_military_commander
+rf_military_default
+rf_military_default_1
+rf_military_default_2
+redfor_bridge_ld_leader
+redfor_bridge_ld_bridge_guard
+redfor_hunters_leader
+redfor_lesnik
+redfor_beglec
+rf_lesnik_tank
+rf_ld_puzir_1
+rf_ld_ocelot
+rf_gz_tan_2
+rf_gz_tan_1
+rf_osvedomel
+yan_scienlager_lider
+yan_scienlager_lider2
+yan_gbf_kamp_stalker3
+yan_assist
+yan_scien_guard
+yan_bandit_guard
+yan_scien_1
+yan_scien_2
+yan_assist_2
+yan_kobold
+yan_ghost_fin
+yan_otshel
+yan_zmeelov
+yan_zmeelov_group1
+yan_zmeelov_group2
+yan_zmeelov_rob
+yan_zmeelov_rob_group1
+yan_zmeelov_rob_group2
+yan_ocelot_base
+yan_slepoi
+gar_sniper_1
+gar_sniper_2
+yan_sos_bandit_1
+
+
+[useful_items]	; clsid list
+; медикаменты, еда
+obj_antirad
+;obj_attachable
+obj_bandage
+;obj_bottle
+obj_food
+obj_medkit
+
+; патроны
+wpn_ammo
+wpn_ammo_m209
+wpn_ammo_og7b
+wpn_ammo_vog25
+
+; наряды
+equ_stalker_s
+
+; аддоны
+wpn_grenade_launcher
+wpn_scope_s
+wpn_silencer
+
+; гранаты
+wpn_grenade_f1
+wpn_grenade_rgd5
+
+;================Profiles================
+
+[default]
+min_loot_distance	= 8		; Всегда собирать вещи, ближе чем эта дистанция
+max_loot_distance	= 55		; Максимальное расстояние поиска
+min_loot_value		= 50		; Минимальная ценность предмета, за которым будет ходить дальше min_loot_distance
+max_loot_value		= 9000		; Максимальнно требуемая ценность предмета (на max_loot_distance)
+walk_dist		= 3.7		; Расстояние перехода на шаг (ближе - шагаем, дальше - бежим)
+
+meet			= false		; прерывать шмон при разговоре
+leisurely		= false		; собираем вещички не спеша (не бегать)
+keep_actor_haul		= false		; Не трогать чуваков, убитых игроком
+loot_items		= true		; собирать предметы с пола
+loot_stalker		= true		; обыскивать трупы людей
+loot_mutant		= true		; чикибрикать монстров
+
+gather_items_enabled	= true		; собирать выбранное движком оружие (best_item) (расстояние не ограничено)
+take_artefacts		= true		; брать артефакты
+take_best_weapons_only	= false		; брать только оружие лучше своего
+take_useful_items_only	= false		; брать только предметы из списка useful_items (помимо оружия и артефактов)
+
+
+[story]	; ограничения для НПС со story_id
+meet			= true		; прерывать шмон при разговоре
+gather_items_enabled	= false		; собирать выбранное движком оружие
+max_loot_distance	= 30		; Будет выбирать только вещи, ближе чем эта дистанция
+min_loot_value		= 1000		; Минимальная ценность предмета, за которым будет ходить дальше min_loot_distance
+max_loot_value		= 9000		; Максимальнно требуемая ценность предмета (на max_loot_distance)
+
+
+; custom -------------------------------
+
+[dont_loot]
+max_loot_distance	= 0		; Будет выбирать только вещи, ближе чем эта дистанция
+gather_items_enabled	= false
+
+
+[greedy_guard]
+meet			= true		; прерывать шмон при разговоре
+min_loot_distance	= 1.3		; Всегда собирать вещи, ближе чем эта дистанция
+max_loot_distance	= 3		; Будет выбирать только вещи, ближе чем эта дистанция
+min_loot_value		= 6000		; Минимальная ценность предмета, за которым будет ходить дальше min_loot_distance
+max_loot_value		= 9000		; Максимальнно требуемая ценность предмета (на max_loot_distance)
+walk_dist		= 2		; Расстояние перехода на шаг (ближе - шагаем, дальше - бежим)
+loot_mutant		= false		; чикибрикать монстров
+
+
+[quest]
+meet			= true		; прерывать шмон при разговоре
+keep_actor_haul		= true		; Не трогать чуваков, убитых игроком
+min_loot_distance	= 5		; Всегда собирать вещи, ближе чем эта дистанция
+max_loot_distance	= 10		; Будет выбирать только вещи, ближе чем эта дистанция
+min_loot_value		= 5000		; Минимальная ценность предмета, за которым будет ходить дальше min_loot_distance
+max_loot_value		= 5000		; Максимальнно требуемая ценность предмета (на max_loot_distance)
+walk_dist		= 7		; Расстояние перехода на шаг (ближе - шагаем, дальше - бежим)
+
+
+; schemes ------------------------------
+
+[camper]
+min_loot_distance	= 2.5
+max_loot_distance	= 16
+min_loot_value		= 2000
+max_loot_value		= 5000
+take_useful_items_only	= true
+take_best_weapons_only	= true
+
+[sleeper]
+min_loot_distance	= 0
+max_loot_distance	= 4
+max_loot_value		= 1000
+leisurely		= true
+
+[patrol]
+min_loot_distance	= 4
+max_loot_distance	= 12
+min_loot_value		= 500
+max_loot_value		= 5000
+walk_dist		= 2.5
+take_useful_items_only	= true
+
+[remark]:dont_loot
+disabled_strict		= yes
+
+; communities --------------------------
+
+[monolith]
+loot_mutant		= false
+take_artefacts		= false
+take_best_weapons_only	= true
+take_useful_items_only	= true
+
+[trader]
+meet			= true
+min_loot_distance	= 3
+max_loot_distance	= 10
+
+[ecolog]
+meet			= true
+min_loot_distance	= 4
+max_loot_distance	= 15
+take_best_weapons_only	= true
+take_useful_items_only	= true
+
+[military]
+min_loot_distance	= 5
+max_loot_distance	= 20
+take_best_weapons_only	= true
+loot_mutant		= false
+
+; profile_name -------------------------
+
+[esc_shustryi]:quest
+
+;[agr_krot]:greedy_guard
+
+[agr_stalker_general]:quest
+
+[bar_barman_guard]:greedy_guard
+
+; smart_terrain name -------------------
+
+[mil_dolg]:quest

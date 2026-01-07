@@ -1,0 +1,40 @@
+[logic]
+active = walker
+on_hit = hit
+on_death = death
+
+[walker]
+path_walk = yan_ocelot_guard1_walk
+on_info = {+ocelot_rob_start} walker2, {+yan_rob_ocelot_shot} %+yan_rob_rano =killactor =set_enemies(65004:65005)%, {+yan_rob_ocelot_dead} %=killactor =set_enemies(65004:65005)%, {+ocelot_group_enemy} %=killactor =set_enemies(65004:65005)%
+
+[walker2]
+path_walk = yan_ocelot_guard1_hide
+path_look = yan_zmeelov_guard1_rob_look
+def_state_standing = hide
+combat_ignore = combat_ignore
+on_info = {+yan_rob_hands_up2} walker3, {+yan_rob_ocelot_dead} %=killactor =set_enemies(65004:65005)%, {+yan_rob_ocelot_shot -yan_rob_hands_up2} %+yan_rob_rano =killactor =set_enemies(65004:65005)%, {-actor_is_bandit} %=killactor =set_enemies(65004:65005)%, {+ocelot_group_enemy} %=killactor =set_enemies(65004:65005)%
+
+[walker3]
+path_walk = yan_ocelot_guard1_hide
+path_look = yan_zmeelov_guard1_rob_look
+def_state_standing = hands_up
+combat_ignore = combat_ignore
+wounded = wounded
+on_info = {+yan_rob_ocelot_dead} %=killactor =set_enemies(65004:65005)%, {-actor_is_bandit} %=killactor =set_enemies(65004:65005)%, {+ocelot_group_enemy} %=killactor =set_enemies(65004:65005)%
+
+[wounded]
+hp_state = 99|wounded_heavy@help_heavy
+hp_state_see = 99|wounded_heavy@help_heavy
+hp_victim = 50|nil
+hp_cover = 99|false
+hp_fight = 99|false
+meet = no_meet
+combat_ignore = combat_ignore
+
+[combat_ignore]
+
+[hit]
+on_info = {-yan_rob_ocelot_shot} %+yan_rob_ocelot_guard_shot =killactor =set_enemies(65004:65005)%
+
+[death]
+on_info = %+yan_ocelot_guard1_dead%

@@ -1,0 +1,11 @@
+[logic] 
+active = ph_idle 
+
+[ph_idle] 
+on_info = {+gz_tainik_3_spawn} ph_idle2 
+
+[ph_idle2] 
+on_use = ph_idle@nil %+gz_tainik3_mine_stop% 
+tips = gar_mine_1 
+
+[ph_idle@nil]

@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {-rf_bridge_scien +rf_mil_pda_cave_have} %+rf_bridge_scien% sr_idle1
+
+[sr_idle1]
+on_actor_inside = %+rf_bridge_scien_find% sr_idle2
+
+[sr_idle2]
+on_info = {+rf_bridge_dialog_legion_done} %-rf_cave_zasada_mobs_off% nil
+
+
+[sr_idle@nil]

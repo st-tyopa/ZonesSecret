@@ -1,0 +1,26 @@
+[logic]
+active = walker@dv_petro_stay
+
+[walker@dv_petro_stay]
+path_walk = dv_petro_stay
+path_look = dv_petro_look
+meet = meet@self_doc
+on_info = {+kill_petro} walker@dv_petro_stay2
+on_info2 = {+find_bekas_box_fail_new} walker@dv_petro_stay3
+
+[walker@dv_petro_stay2]
+path_walk = dv_petro_stay
+path_look = dv_petro_look
+meet = no_meet
+on_actor_dist_ge_nvis = 130| %+dv_dell_petro%
+on_info = %=killactor%
+
+[walker@dv_petro_stay3]
+path_walk = dv_petro_stay
+path_look = dv_petro_look
+on_actor_dist_ge_nvis = 130| %+dv_dell_petro%
+meet = no_meet
+
+[meet@self_doc] 
+use_wpn = self
+use = {=dist_to_actor_le(3)} self

@@ -1,0 +1,13 @@
+[logic] 
+active = ph_idle1
+
+[ph_idle1] 
+on_info = {+dynamit_timer_start} ph_sound
+
+[ph_sound]
+snd = dinamit_timer
+min_idle = 0
+max_idle = 1000
+on_info = {+dynamit_blowup} %=delete_object% ph_idle@nil
+
+[ph_idle@nil]

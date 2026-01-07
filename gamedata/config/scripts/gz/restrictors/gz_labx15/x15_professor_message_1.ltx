@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {+find_enter_in_yan_underground_done} sr_idle@2 %=play_x15_professor_message_1%
+
+[sr_idle@2]
+on_timer = 11000| sr_idle@3 %+find_scien_in_underground_done%
+
+[sr_idle@3]
+on_timer = 1000| nil %+x15_kill_merc3_start%

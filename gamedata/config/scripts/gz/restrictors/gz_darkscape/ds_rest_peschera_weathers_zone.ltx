@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@idle
+
+[sr_idle@idle]
+on_actor_inside = sr_psy_antenna@in %=set_indoor_weather%
+
+[sr_psy_antenna@in]
+eff_intensity = 10
+hit_intensity = 0
+phantom_prob = 50
+min_phantom_idle = 10000
+max_phantom_idle = 15000
+on_actor_outside = sr_idle@idle %=set_default_weather%

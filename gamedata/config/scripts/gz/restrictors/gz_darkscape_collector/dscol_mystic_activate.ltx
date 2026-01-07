@@ -1,0 +1,22 @@
+[logic]
+active = sr_idle
+ 
+[sr_idle]
+on_info = {+dscol_af_prelest_have +ds_lost_diggers_start} %+dscol_job_is_done% sr_idle2, {+dscol_af_prelest_have -ds_lost_diggers_start} %+dscol_find_diggers_wthout_task% sr_idle2
+
+[sr_idle2]
+on_timer = 1000| %+dscol_mystic_activate% nil
+
+[sr_idle3]
+on_timer = 5000| %=play_snd(soz\characters_voice\scenario\zov1)% sr_idle4
+
+[sr_idle4]
+on_info = {+dscol_ghost_disappear} %=play_snd(soz\characters_voice\scenario\rnd_horror1)% sr_idle5
+
+[sr_idle5]
+on_timer = 4000|%=run_postprocess(agr_u_fade:01:false)% sr_idle6
+
+[sr_idle6]
+on_timer = 5000|nil
+
+

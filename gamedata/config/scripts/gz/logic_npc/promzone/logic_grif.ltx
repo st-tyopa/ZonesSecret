@@ -1,0 +1,92 @@
+;-- Главный
+[logic@pz_merclager_leader]
+active = walker@pz_merclager_leader_stay
+combat_ignore = combat_ignore@pz_merc
+on_hit = hit@pz_merc
+on_death = death@pz_merc
+
+[walker@pz_merclager_leader_stay]
+path_walk = pz_merclager_leader_walk
+path_look = pz_merclager_leader_look
+meet = meet@pz_leader
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_leader_wtf_sms} walker@pz_merclager_leader_in_door
+
+[walker@pz_merclager_leader_in_door]
+path_walk = pz_merclager_leader_guard_seif_stay
+path_look = pz_merclager_leader_guard_seif_look
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_leader_wtf_sms_2} walker@pz_merclager_leader_in_door11
+
+[walker@pz_merclager_leader_in_door11]
+path_walk = pz_merclager_leader_guard_seif_stay
+path_look = pz_merclager_leader_guard_seif_look
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_timer = 5000| walker@pz_merclager_leader_in_door_stay
+
+[walker@pz_merclager_leader_in_door_stay]
+path_walk = pz_merclager_leader_guard_seif_stay
+path_look = pz_merclager_leader_guard_seif_look
+on_actor_dist_le_nvis = 20|remark@lider_racia2
+on_actor_dist_ge_nvis = 20|%+pz_leader_wtf_sms_3% remark@lider_racia1
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[remark@lider_racia1]
+anim = guard_rac
+target = actor
+meet = no_meet
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_timer = 5000| walker@pz_merclager_leader_run
+
+[remark@lider_racia2]
+anim = guard_rac
+target = actor
+snd = grif_03_bez_racia
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_signal = sound_end|%+pz_leader_wtf_sms_3% walker@pz_merclager_leader_run
+
+[walker@pz_merclager_leader_run]
+path_walk = pz_merclager_leader_walk_12
+path_look = pz_merclager_leader_look_2
+on_actor_dist_le_nvis = 20|%+pz_gg_talk_about_leader_away%
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_signal = guard|remark@lider_seif
+
+[remark@lider_seif]
+anim = guard
+snd = grif_05
+;target = nil
+target = 84139
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_signal = sound_end|%+pz_leader_guard_smena% walker@pz_merclager_leader_run1
+
+[walker@pz_merclager_leader_run12]
+path_walk = pz_merclager_leader_walk_12
+path_look = pz_merclager_leader_look_2
+on_actor_dist_le_nvis = 20|%+pz_gg_talk_about_leader_away%
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_timer = 4000|%+pz_leader_guard_smena% walker@pz_merclager_leader_run1
+
+[walker@pz_merclager_leader_run1]
+path_walk = pz_merclager_leader_run
+on_actor_dist_ge_nvis = 30|%+pz_merc_leader_in_zone%
+;on_actor_dist_le_nvis = 20|%+pz_gg_talk_about_leader_away%
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_signal = pzmercleader|%+pz_boss_merc_alarm% walker@pz_merclager_leader_stay_2
+
+[walker@pz_merclager_leader_stay_2]
+path_walk = pz_merclager_leader_walk_2
+path_look = pz_merclager_leader_look_2
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+on_info = {+pz_merclager_back_to_positions} walker@pz_merclager_leader_stay_3
+
+[walker@pz_merclager_leader_stay_3]
+path_walk = pz_merclager_leader_walk
+path_look = pz_merclager_leader_look
+combat_ignore_cond = {-pz_actor_enemy_merclager +actor_is_killer +pz_rob_merclager_docs_start =fighting_actor}
+
+[meet@pz_leader]
+use = true
+
+[death@pz_merc]
+on_info = {=killed_by_actor} %-actor_is_killer +pz_actor_enemy_merclager +pz_grif_dead%

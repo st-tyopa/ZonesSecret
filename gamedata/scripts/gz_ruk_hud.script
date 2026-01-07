@@ -1,0 +1,73 @@
+-----------------------------------------------------------------------------------------------------------------------------------
+-- Схема смены рук при смене костюма
+-- Автор: Вампир35.
+-- Последнее редактирование: 13.07.2014 18:15
+-- За метод замены текстуры спасибо Alpet'у
+-----------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------
+-- Каллбеки проверки апдейты =)
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+function update() -- тут у нас вызывается смена текстуры.
+  if last_outfit == nil then last_outfit = "hello" end
+  if db.actor:item_in_slot(6) == nil then
+   outfit = "sviter"
+  else
+   outfit = db.actor:item_in_slot(6):section()
+  end
+   if last_outfit ~= outfit then
+    perchatka = system_ini():r_string(outfit,"texture_arm")
+    exo = system_ini():r_string(outfit,"texture_exo")
+	local t = texture_find("hands\\act_arm_0")
+    if t then
+     t:set_name("hands\\"..perchatka)
+     t:reload()
+    end
+    local t_b = texture_find("hands\\act_arm_0_bump")
+    if t_b then
+     t_b:set_name("hands\\"..perchatka.."_bump")
+     t_b:reload()
+    end
+    local te = texture_find("hands\\act_arm_exo")
+    if te then
+     te:set_name("hands\\"..exo)
+     te:reload()
+    end
+    local te_b = texture_find("hands\\act_arm_exo_bump")
+     if te_b then
+     te_b:set_name("hands\\"..exo.."_bump")
+     te_b:reload()
+    end
+	last_outfit = outfit
+end   
+end
+
+-- Вспомогательные функции
+-- Четыре функции из АМК:
+--записываем переменную
+function save_variable(variable_name, value)
+  if value==nil then
+    news_manager.send_tip(db.actor, "saving nil into "..variable_name)
+    del_variable(variable_name)
+  else
+    local vn=compress_name(variable_name)
+    xr_logic.pstor_store(db.actor, vn, value)
+  end
+end
+--загружаем переменную
+function load_variable(variable_name, value_if_not_found)
+  local vn=compress_name(variable_name)
+  return xr_logic.pstor_retrieve(db.actor, vn, value_if_not_found)
+end
+--удаляем переменную
+function del_variable(variable_name)
+  local vn=compress_name(variable_name)
+  if db.storage[db.actor:id()].pstor[vn] then
+    db.storage[db.actor:id()].pstor[vn] = nil
+  end
+end
+-- Преобразует имя переменной в короткое
+function compress_name(name)
+  return name
+end

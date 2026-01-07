@@ -1,0 +1,21 @@
+[logic]
+active = walker@stay
+on_death = death
+
+[walker@stay]
+path_walk = dv_grehat_2_stay_walk
+path_look = dv_grehat_2_stay_look
+;on_info = {+dv_grehat_start_attack} walker@attack
+on_info = {+dv_grehat_start_attack} walker@victory
+
+[walker@attack]
+path_walk = dv_grehat_1_move_walk
+meet = no_meet
+on_signal = endmove|walker@victory
+
+[walker@victory]
+path_walk = dv_grehat_2_stay2_walk
+path_look = dv_grehat_2_stay2_look
+
+[death]
+on_info = %+dv_greshnik_attacker_2_dead =dv_greshnik_attacker_all_dead%

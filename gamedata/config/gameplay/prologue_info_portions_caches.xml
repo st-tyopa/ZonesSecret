@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<game_information_portions>
+
+<!-- - Инфопоршни для тайников-  -->
+
+<!-- - Новые Тайники(хакера) -  -->
+<info_portion id="gz_tainik_1_spawn"><action>gz_caches.gz_caches_map_1</action><action>gz_caches.gz_caches_map_tip</action></info_portion>
+<info_portion id="gz_tainik_2_spawn"><article>gz_caches_loki_shron_info</article><action>gz_caches.gz_caches_diary_tip</action></info_portion>
+<info_portion id="gz_tainik_3_spawn"><action>gz_caches.gz_caches_map_3</action><action>gz_caches.gz_caches_map_tip</action></info_portion>
+<info_portion id="gz_tainik_4_spawn"><article>gz_caches_angar_stalk_info</article><action>gz_caches.gz_caches_diary_tip</action></info_portion>
+<info_portion id="gz_tainik_5_spawn"><action>gz_caches.gz_caches_map_5</action><action>gz_caches.gz_caches_map_tip</action></info_portion>
+<info_portion id="gz_tainik_6_spawn"><action>gz_caches.gz_caches_map_6</action><action>gz_caches.gz_caches_map_tip</action></info_portion>
+<info_portion id="gz_tainik_7_spawn"><article>gz_caches_gnoi_info</article><action>gz_caches.gz_caches_diary_tip</action></info_portion>
+<info_portion id="gz_tainik_8_spawn"><article>gz_caches_cheh_info</article><action>gz_caches.gz_caches_diary_tip</action></info_portion>
+<info_portion id="gz_tainik_9_spawn"><article>gz_caches_kuprian_info</article><action>gz_caches.gz_caches_diary_tip</action></info_portion>
+<info_portion id="gz_tainik_10_spawn"><article>gz_caches_leshii_info</article><action>gz_caches.gz_caches_diary_tip</action></info_portion>
+
+<info_portion id="gz_tainik_1_dell"><action>gz_caches.gz_caches_map_1_dell</action></info_portion>
+<info_portion id="gz_tainik_2_dell"><action>gz_caches.gz_caches_map_2_dell</action></info_portion>
+<info_portion id="gz_tainik_3_dell"><action>gz_caches.gz_caches_map_3_dell</action></info_portion>
+<info_portion id="gz_tainik_5_dell"><action>gz_caches.gz_caches_map_5_dell</action></info_portion>
+<info_portion id="gz_tainik_6_dell"><action>gz_caches.gz_caches_map_6_dell</action></info_portion>
+
+<info_portion id="rf_gz_tan_talk_done"></info_portion>
+<info_portion id="rf_gz_tan_talk_kill"></info_portion>
+<info_portion id="gz_tainik_1_activate"></info_portion>
+<info_portion id="gz_tainik1_mine_stop"></info_portion>
+<info_portion id="gz_tainik_2_activate"></info_portion>
+<info_portion id="gz_tainik2_mine_stop"></info_portion>
+<info_portion id="gz_tainik_3_activate"></info_portion>
+<info_portion id="gz_tainik3_mine_stop"></info_portion>
+
+
+<info_portion id="pda_gorb_have"></info_portion>
+<info_portion id="pda_hunt_have"></info_portion>
+<info_portion id="pda_bandit_leshui_have"></info_portion>
+<info_portion id="pda_sv_loki_have"></info_portion>
+<info_portion id="pda_sv_cheh_have"></info_portion>
+<info_portion id="pda_maps_band_have"></info_portion>
+<info_portion id="pda_dolg_kuprianov_have"></info_portion>
+<info_portion id="gz_tainik_case_have"></info_portion>
+<info_portion id="pda_borman_have"></info_portion>
+<info_portion id="ds_pda_bool_have"></info_portion>
+<info_portion id="ds_pda_barmen_dialog_done"></info_portion>
+
+
+
+
+
+
+
+
+</game_information_portions>

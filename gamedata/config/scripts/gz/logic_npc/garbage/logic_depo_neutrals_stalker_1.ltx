@@ -1,0 +1,22 @@
+[logic]
+active = walker@gar_deponeutrals_stalker_1_stay_1
+
+[walker@gar_deponeutrals_stalker_1_stay_1]
+path_walk = gar_neutdepo_stalker_1_stay
+path_look = gar_neutdepo_stalker_1_look
+on_info = {+gar_neutdepo_stalkers_go_to_depo} walker@gar_neutdepo_stalker_1_go_to_depo
+
+[walker@gar_neutdepo_stalker_1_go_to_depo]
+path_walk = gar_neutdepo_stalkers_patrol
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = neutdepostop| %+gar_neutdepo_stalkers_depo_on_pos% walker@gar_deponeutrals_stalker_1_stay_2
+on_info = {+gar_neutdepo_stalkers_depo_on_pos} walker@gar_deponeutrals_stalker_1_stay_2
+meet = no_meet	
+combat_ignore_cond = always	
+			
+[walker@gar_deponeutrals_stalker_1_stay_2]
+path_walk = gar_neutdepo_stalker_1_stay_2
+path_look = gar_neutdepo_stalker_1_look_2
+meet = no_meet

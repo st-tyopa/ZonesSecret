@@ -1,0 +1,23 @@
+[logic]
+active = walker@yan_kill1
+combat_ignore = always
+danger = danger_condition
+
+[walker@yan_kill1]
+path_walk = yan_kill_1_stay
+path_look = yan_kobold_look
+def_state_standing = threat
+meet = no_meet
+
+[danger_condition]
+ignore_distance = 1
+ignore_distance_grenade = 1
+ignore_distance_corpse = 1
+ignore_distance_hit = 1
+ignore_distance_sound = 1
+danger_inertion_time_grenade = 10
+danger_inertion_time_corpse = 10
+danger_inertion_time_hit = 10
+danger_inertion_time_sound = 10
+danger_inertion_time_ricochet = 10
+danger_expiration_time = 10

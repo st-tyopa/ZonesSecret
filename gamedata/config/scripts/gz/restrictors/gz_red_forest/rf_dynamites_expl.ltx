@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+rf_all_hunters_on_pos} sr_idle2
+
+[sr_idle2]
+on_timer = 1000| %=rf_explosion_dynamit_1% sr_idle3
+
+[sr_idle3]
+on_timer = 500| %+rf_gigant_spawn =rf_explosion_dynamit_2% sr_idle4
+
+[sr_idle4]
+on_timer = 500| %+rf_gigant_attack =rf_explosion_dynamit_3% nil

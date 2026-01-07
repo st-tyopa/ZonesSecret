@@ -1,0 +1,484 @@
+------------------------Военные предатели---------------
+;Командир
+[logic@redfor_military_leader]
+active = walker@redfor_military_leader_walk
+on_death = death@rf_military
+
+[walker@redfor_military_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+meet = meet@redfor_military_leader
+def_state_standing = guard
+on_info = {+rf_cave_documents_start} remark@call_redfor_military_leader
+
+[meet@redfor_military_leader]
+use = true
+
+[remark@call_redfor_military_leader]
+anim = guard
+snd = esc_factory_raid
+target = actor
+on_signal = sound_end| walker@redfor_military_to_cave_commander %+rf_military_group_to_cave%
+meet = no_meet
+
+[walker@redfor_military_to_cave_commander]
+path_walk = to_cave_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = rfmilonpesch | walker@redfor_military_in_cave_commander %+redfor_military_group_in_cave_1%
+
+[walker@redfor_military_in_cave_commander]
+path_walk = incave_com_walk
+path_look = incave_com_look
+def_state_standing = hide
+meet = meet@redfor_military_leader
+on_info = {+rf_predat_scene_remark_start} %=disable_ui% remark@incave_commander 
+
+[remark@incave_commander]
+anim = punch
+target = actor
+;on_signal = anim_end| %=run_cam_effector(fusker:999:false)% remark@incave_commander2
+;on_signal = anim_end| %=actor_punch% remark@incave_commander2
+on_timer = 1500| %=run_cam_effector(fusker:999:false)% remark@incave_commander2
+
+[remark@incave_commander2]
+anim = threat
+target = actor
+on_timer = 5000| walker@redfor_military_to_cave_commander %=teleport_actor(rf_teleport_stay:rf_teleport_look) =enable_ui +predatelstvo +rf_predat_scene_end%
+
+;Солдат 1
+[logic@redfor_military_guard_1]
+active = walker@redfor_military_guard1_walk
+on_death = death@rf_military
+
+[walker@redfor_military_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+def_state_standing = hide
+meet = no_meet
+on_signal = rfmilonpesch | walker@redfor_military_in_cave_soldat1
+on_info = {+rf_military_group_to_cave} walker@redfor_military_to_cave_soldat1
+
+[walker@redfor_military_to_cave_soldat1]
+path_walk = to_cave_walk3
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_info = {+redfor_military_group_in_cave_1} walker@redfor_military_in_cave_soldat1
+on_signal = hor | %+rf_mil_horror_sound_start%
+
+[walker@redfor_military_in_cave_soldat1]
+path_walk = incave_sold1_walk
+path_look = incave_sold1_look
+def_state_standing = hide
+meet = no_meet
+on_info = {+rf_predat_scene_remark_start} remark@incave_soldier1
+
+[remark@incave_soldier1]
+anim = threat
+target = actor
+on_info = {+rf_predat_scene_end} walker@redfor_military_in_cave_soldat1_2
+
+[walker@redfor_military_in_cave_soldat1_2]
+path_walk = incave_sold1_walk
+path_look = incave_sold1_look
+def_state_standing = hide
+meet = no_meet
+
+;Солдат 2
+[logic@redfor_military_guard_2]
+active = walker@redfor_military_guard2_walk
+on_death = death@rf_military
+
+[walker@redfor_military_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+def_state_standing = hide
+meet = no_meet
+on_info = {+rf_military_group_to_cave} walker@redfor_military_to_cave_soldat2
+
+[walker@redfor_military_to_cave_soldat2]
+path_walk = to_cave_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = rfmilonpesch | walker@redfor_military_in_cave_soldat2
+on_info = {+redfor_military_group_in_cave_1} walker@redfor_military_in_cave_soldat2
+
+[walker@redfor_military_in_cave_soldat2]
+path_walk = incave_sold2_walk
+path_look = incave_sold2_look
+def_state_standing = hide
+meet = no_meet
+on_info = {+rf_predat_scene_remark_start} remark@incave_soldier2
+
+[remark@incave_soldier2]
+anim = threat
+target = actor
+on_info = {+rf_predat_scene_end} walker@redfor_military_in_cave_soldat2_2
+
+[walker@redfor_military_in_cave_soldat2_2]
+path_walk = incave_sold2_walk
+path_look = incave_sold2_look
+def_state_standing = hide
+meet = no_meet
+
+;Солдат 3
+[logic@redfor_military_guard_3]
+active = walker@redfor_military_guard3_walk
+on_death = death@rf_military
+
+[walker@redfor_military_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+def_state_standing = hide
+meet = no_meet
+on_info = {+rf_military_group_to_cave} walker@redfor_military_to_cave_soldat3
+
+[walker@redfor_military_to_cave_soldat3]
+path_walk = to_cave_walk3
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = rfmilonpesch | walker@redfor_military_in_cave_soldat3
+on_info = {+redfor_military_group_in_cave_1} walker@redfor_military_in_cave_soldat3
+
+[walker@redfor_military_in_cave_soldat3]
+path_walk = incave_sold3_walk
+path_look = incave_sold3_look
+def_state_standing = hide
+meet = no_meet
+on_info = {+rf_predat_scene_remark_start} remark@incave_soldier3
+
+[remark@incave_soldier3]
+anim = threat
+target = actor
+on_info = {+rf_predat_scene_end} walker@redfor_military_in_cave_soldat3_2
+
+[walker@redfor_military_in_cave_soldat3_2]
+path_walk = incave_sold3_walk
+path_look = incave_sold3_look
+def_state_standing = hide
+meet = no_meet
+
+;Солдат 4
+[logic@redfor_military_guard_4]
+active = walker@redfor_military_guard4_walk
+on_death = death@rf_military
+
+[walker@redfor_military_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+def_state_standing = hide
+meet = no_meet
+on_info = {+rf_military_group_to_cave} walker@redfor_military_to_cave_soldat4
+
+[walker@redfor_military_to_cave_soldat4]
+path_walk = to_cave_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = rfmilonpesch | walker@redfor_military_in_cave_soldat4
+on_info = {+redfor_military_group_in_cave_1} walker@redfor_military_in_cave_soldat4
+
+[walker@redfor_military_in_cave_soldat4]
+path_walk = incave_sold4_walk
+path_look = incave_sold4_look
+def_state_standing = hide
+meet = no_meet
+on_info = {+rf_predat_scene_remark_start} remark@incave_soldier4
+
+[remark@incave_soldier4]
+anim = threat
+target = actor
+on_info = {+rf_predat_scene_end} walker@redfor_military_in_cave_soldat4_2
+
+[walker@redfor_military_in_cave_soldat4_2]
+path_walk = incave_sold4_walk
+path_look = incave_sold4_look
+def_state_standing = hide
+meet = no_meet
+
+[death@rf_military]
+on_info = %=predateli_dead%
+
+------------------------Блокпост последнего дня---------------
+[logic@redfor_bridge_ld_guard1]
+active = walker@redfor_bridge_ld_guard1_walk1
+
+[walker@redfor_bridge_ld_guard1_walk1]
+path_walk = guard1_walk1
+path_look = guard1_look1
+
+
+[logic@redfor_bridge_ld_guard2]
+active = walker@redfor_bridge_ld_guard2_walk1
+
+[walker@redfor_bridge_ld_guard2_walk1]
+path_walk = guard2_walk1
+path_look = guard2_look1
+
+
+[logic@redfor_bridge_ld_guard3]
+active = walker@redfor_bridge_ld_guard3_walk1
+
+[walker@redfor_bridge_ld_guard3_walk1]
+path_walk = guard3_walk1
+path_look = guard3_look1
+
+
+[logic@redfor_bridge_ld_guard4]
+active = walker@redfor_bridge_ld_guard4_patrol
+
+[walker@redfor_bridge_ld_guard4_patrol]
+path_walk = guard4_patrol
+
+
+[logic@redfor_bridge_ld_guard5]
+active = walker@redfor_bridge_ld_guard5_walk1
+
+[walker@redfor_bridge_ld_guard5_walk1]
+path_walk = guard5_walk1
+path_look = guard5_look1
+
+
+[logic@redfor_bridge_ld_guard6]
+active = walker@redfor_bridge_ld_guard6_walk1
+
+[walker@redfor_bridge_ld_guard6_walk1]
+path_walk = guard6_walk1
+path_look = guard6_look1
+
+
+
+[logic@redfor_bridge_ld_guard7]
+active = walker@redfor_bridge_ld_guard7_walk1
+
+[walker@redfor_bridge_ld_guard7_walk1]
+path_walk = guard7_walk1
+path_look = guard7_look1
+
+
+
+[logic@redfor_bridge_ld_guard8]
+active = walker@redfor_bridge_ld_guard8_walk1
+
+[walker@redfor_bridge_ld_guard8_walk1]
+path_walk = guard8_walk1
+path_look = guard8_look1
+
+
+
+[logic@redfor_bridge_ld_bridge_guard]
+active = walker@redfor_bridge_ld_bridge_guard_walk
+
+[walker@redfor_bridge_ld_bridge_guard_walk]
+path_walk = bridge_guard_walk
+path_look = bridge_guard_look
+def_state_standing = ward
+meet = meet@1
+
+[meet@1]
+meet_state 		= 2 | ward@bar_guard_stop  
+meet_state_wpn 	        = 2 | ward@bar_guard_stop  
+victim 			= nil
+victim_wpn 		= nil
+use			= false
+use_wpn		= false
+abuse       = false
+
+
+
+[logic@redfor_bridge_ld_leader]
+active = walker@redfor_bridge_ld_leader_walk
+
+[walker@redfor_bridge_ld_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+def_state_standing = ward
+
+
+------------------------Группа охотников---------------
+[logic@redfor_hunters_hunter1]
+active = walker@redfor_hunters_hunter1_walk1
+on_hit = hit@redfor_hunters
+on_death = death@redfor_hunters
+
+[walker@redfor_hunters_hunter1_walk1]
+path_walk = hunter1_walk1
+path_look = hunter1_look1
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_info = {+rf_hunters_actor_ready_to_help} walker@redfor_hunters_hunter1_walk2
+
+[walker@redfor_hunters_hunter1_walk2]
+path_walk = hunter1_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_signal = hunw3| walker@redfor_hunters_hunter1_walk3
+
+[walker@redfor_hunters_hunter1_walk3]
+path_walk = hunter1_walk3
+path_look = hunter1_look3
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_info = {+rf_hunters_go_to_positions} walker@redfor_hunters_hunter1_to_pos
+
+[walker@redfor_hunters_hunter1_to_pos]
+path_walk = hunter1_to_pos_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_signal = hun1onpos | %+rf_hunter1_on_pos =rf_hunters_on_positions% walker@redfor_hunters_hunter1_on_pos
+
+[walker@redfor_hunters_hunter1_on_pos]
+path_walk = hunter1_on_pos_walk
+path_look = hunters_on_pos_look
+def_state_standing = hide
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_info = {+rf_hunters_kill_gigant_done} kamp@redfor_hunters_hunter1_kamp
+
+[kamp@redfor_hunters_hunter1_kamp]
+center_point  = kamp_center
+path_walk = kamp_center_task
+soundgroup = esc_lager
+meet = meet@hunters_kamp
+combat_ignore_cond = {-rf_hunters_open_fire}
+
+;Охотник 2
+[logic@redfor_hunters_hunter2]
+active = walker@redfor_hunters_hunter2_walk1
+on_hit = hit@redfor_hunters
+on_death = death@redfor_hunters
+
+[walker@redfor_hunters_hunter2_walk1]
+path_walk = hunter2_walk1
+path_look = hunter2_look1
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_info = {+rf_hunters_go_to_positions} walker@redfor_hunters_hunter2_to_pos
+
+[walker@redfor_hunters_hunter2_to_pos]
+path_walk = hunter2_to_pos_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_signal = hun2onpos | %+rf_hunter2_on_pos =rf_hunters_on_positions% walker@redfor_hunters_hunter2_on_pos
+
+[walker@redfor_hunters_hunter2_on_pos]
+path_walk = hunter2_on_pos_walk
+path_look = hunters_on_pos_look
+def_state_standing = hide
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_info = {+rf_hunters_kill_gigant_done} kamp@redfor_hunters_hunter2_kamp
+
+[kamp@redfor_hunters_hunter2_kamp]
+center_point  = kamp_center
+path_walk = kamp_center_task
+soundgroup = esc_lager
+combat_ignore_cond = {-rf_hunters_open_fire}
+meet = meet@hunters_kamp
+
+
+;Охотник 3
+[logic@redfor_hunters_hunter3]
+active = walker@redfor_hunters_hunter3_walk1
+on_hit = hit@redfor_hunters
+on_death = death@redfor_hunters
+
+[walker@redfor_hunters_hunter3_walk1]
+path_walk = hunter3_walk1
+path_look = hunter3_look1
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_info = {+rf_hunters_go_to_positions} walker@redfor_hunters_hunter3_to_pos
+
+[walker@redfor_hunters_hunter3_to_pos]
+path_walk = hunter3_to_pos_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_signal = hun3onpos | %+rf_hunter3_on_pos =rf_hunters_on_positions% walker@redfor_hunters_hunter3_on_pos
+
+[walker@redfor_hunters_hunter3_on_pos]
+path_walk = hunter3_on_pos_walk
+path_look = hunters_on_pos_look
+def_state_standing = hide
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_info = {+rf_hunters_kill_gigant_done} kamp@redfor_hunters_hunter3_kamp
+
+[kamp@redfor_hunters_hunter3_kamp]
+center_point  = kamp_center
+path_walk = kamp_center_task
+soundgroup = esc_lager
+combat_ignore_cond = {-rf_hunters_open_fire}
+meet = meet@hunters_kamp
+
+
+;Лидер
+[logic@redfor_hunters_leader]
+active = walker@redfor_hunters_leader_walk1
+on_hit = hit@redfor_hunters
+on_death = death@redfor_hunters
+
+[walker@redfor_hunters_leader_walk1]
+path_walk = leader_walk1
+path_look = leader_look1
+def_state_standing = binocular
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_info = {+rf_leader_remark_ready} remark@redfor_hunters_leader_remark_ready
+
+[remark@redfor_hunters_leader_remark_ready]
+anim = guard
+snd = esc_factory_raid
+on_signal = sound_end| %+rf_hunters_go_to_positions% walker@redfor_hunters_leader_to_pos
+target = actor
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+
+[walker@redfor_hunters_leader_to_pos]
+path_walk = leader_to_pos_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_signal = hunleadonpos | %+rf_hunter_leader_on_pos =rf_hunters_on_positions% walker@redfor_hunters_leader_on_pos
+
+[walker@redfor_hunters_leader_on_pos]
+path_walk = leader_on_pos_walk
+path_look = hunters_on_pos_look
+def_state_standing = hide
+meet = no_meet
+combat_ignore_cond = {-rf_hunters_open_fire}
+on_info = {+rf_hunters_kill_gigant_done} kamp@redfor_hunters_leader_kamp
+
+[kamp@redfor_hunters_leader_kamp]
+center_point  = kamp_center
+path_walk = kamp_center_task
+soundgroup = esc_lager
+combat_ignore_cond = {-rf_hunters_open_fire}
+meet = meet@hunters_kamp
+
+[meet@hunters_kamp]
+use = true
+
+[hit@redfor_hunters]
+on_info = %+rf_hunters_open_fire%
+
+[death@redfor_hunters]
+on_info = %+rf_hunters_open_fire%

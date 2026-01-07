@@ -1,0 +1,12 @@
+[logic] 
+active = ph_idle 
+
+[ph_idle] 
+on_info = {+pz_to_heli_start} ph_idle2 
+
+[ph_idle2] 
+on_use = ph_idle@nil %+pz_heli_start_fly =dell_pz_flire% 
+tips = pz_burn_flire
+on_info = {+pz_heli_start_fly} ph_idle@nil
+
+[ph_idle@nil]

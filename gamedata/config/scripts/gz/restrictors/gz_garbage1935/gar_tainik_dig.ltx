@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+gar_find_black_digger_start} %+gz_tainik_dig_activate% sr_idle@nil
+on_info = {+gz_tainik_dig_stop} %+gz_tainik_dig_dell% sr_idle@nil
+
+[sr_idle@nil]

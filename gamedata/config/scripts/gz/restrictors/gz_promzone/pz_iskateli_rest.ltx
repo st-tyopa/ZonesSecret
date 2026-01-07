@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {+pz_go_to_iskateli_start} sr_cutscene
+
+[sr_cutscene]
+point = ds_camera_start_game_walk
+look = ds_camera_start_game_look
+cam_effector = soz_ds_isk_start_game
+on_signal = cameff_end| %+pz_isk_cutscene_end% sr_idle@nil
+
+[sr_idle@nil]

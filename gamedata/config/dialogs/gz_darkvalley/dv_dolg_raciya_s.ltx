@@ -1,0 +1,40 @@
+[dv_dolg_raciya_s]
+
+x0 = dv_dolg_raciya_s_text_about_sos
+link0 = 1
+
+x1 = dv_dolg_raciya_s_text_003
+gi = dv_sos_talk_with_dolg_done
+link1 = 2,3,4,5,6
+
+x2 = dv_dolg_raciya_s_text_007 ;Три вида аптечек
+p2 = gz_prologue.precond_medkit_1
+link2 = 21
+
+x3 = dv_dolg_raciya_s_text_010
+p3 = gz_prologue.precond_medkit_army
+link3 = 31
+
+x4 = dv_dolg_raciya_s_text_011
+p4 = gz_prologue.precond_medkit_scientic
+link4 = 41
+
+x5 = dv_dolg_raciya_s_text_004 ;Конечно принесу, ждите меня.
+gi5 = find_ten_medkit_start
+a5 = dialogs.break_dialog
+
+x21 = dv_dolg_raciya_s_text_008  ;Отдаём аптеки
+a21 = gz_prologue.transfer_medkit, gz_prologue.transfer_art
+gi21 = find_ten_medkit_done
+
+x31 = dv_dolg_raciya_s_text_008
+a31 = gz_prologue.transfer_medkit_army, gz_prologue.transfer_art
+gi31 = find_ten_medkit_done
+
+x41 = dv_dolg_raciya_s_text_008
+a41 = gz_prologue.transfer_medkit_scientic, gz_prologue.transfer_art
+gi41 = find_ten_medkit_done
+
+x6 = dv_dolg_raciya_s_text_005
+gi6 = find_tainik_dialog
+a6 = dialogs.break_dialog

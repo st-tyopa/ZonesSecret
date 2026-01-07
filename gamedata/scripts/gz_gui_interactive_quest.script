@@ -1,0 +1,83 @@
+function gui_start(quest)
+quest_infos = quest
+gz_utils.save_variable("quest", quest_infos)
+level.start_stop_menu(this.interact_gui(),true)
+end
+
+class "interact_gui" (CUIScriptWnd)
+function interact_gui:__init() super()
+    self:Init(175,257,675,266)
+	self.y = function() yes() level.start_stop_menu(self,true) end
+	self.n = function() level.start_stop_menu(self,true) end
+    -- фон
+    self.back = CUIStatic()
+    self.back:Init(0,0,675,266)
+    self.back:InitTexture("ui\\ui_gz_gui")
+    self.back:SetOriginalRect(0,0,675,266)
+	self:AttachChild(self.back)
+		
+	self.help_vopros = CUIStatic()
+	self.help_vopros:Init(80,110,200,10)
+    self.help_vopros:SetText("Ответить на призыв о помощи?")
+	self.help_vopros:SetFont(GetFontGraffiti22Russian())
+	self.help_vopros:SetTextAlign(CGameFont.alCenter)
+	self.help_vopros:SetTextColor(255,255,255,255)
+	self.back:AttachChild(self.help_vopros)
+	
+    -- кнопка ДА
+    self.yess = CUIButton()
+    self.yess:SetAutoDelete(true)
+    self.yess:Init(172,225,133,25)
+	self.yess:InitTexture("ui\\ui_gz_gui")
+	self.yess:SetOriginalRect(6,296,133,25)
+	self.yess:SetStretchTexture(true)
+	self.yess:SetText("Да")
+	self.yess:SetFont(GetFontGraffiti22Russian())
+	self.yess:SetTextColor(255,255,255,255)
+    self:Register(self.yess,"yess")
+	self.back:AttachChild(self.yess)
+    self:AddCallback("yess",ui_events.BUTTON_DOWN,self.y,self)
+	
+	-- кнопка НЕТ
+    self.no = CUIButton()
+    self.no:SetAutoDelete(true)
+    self.no:Init(370,225,133,25)
+	self.no:InitTexture("ui\\ui_gz_gui")
+	self.no:SetOriginalRect(6,296,133,25)
+	self.no:SetStretchTexture(true)
+	self.no:SetText("Нет")
+	self.no:SetFont(GetFontGraffiti22Russian())
+	self.no:SetTextColor(255,255,255,255)
+    self:Register(self.no,"no")
+	self.back:AttachChild(self.no)
+    self:AddCallback("no",ui_events.BUTTON_DOWN,self.n,self)
+	
+end
+
+function yes()
+   quest = gz_utils.load_variable("quest", "no")
+   if quest ~= "no" then
+    gz_utils.give_info(quest)
+
+   end
+end
+
+
+function result()
+db.actor.health = 1 -- восстановим здоровье
+db.actor.psy_health = 1 -- восстановим пси здоровье
+db.actor.radiation = -1 -- выведем радиацию. Проверить надо.
+db.actor.power = 1 -- восстановим энергию
+db.actor.satiety = 1 -- восстановим сытость
+db.actor.alcohol = -1 -- уменьшаем опьянение
+items_hud.zhazhda = 0 -- утоляем жажду
+db.actor:heal_wounds(1)
+end
+
+
+function CondFunc() -- таймер в реальном времени.
+ if time_global() > timeNow + timer then
+  return true
+ end
+ return false
+end

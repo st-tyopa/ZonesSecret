@@ -1,0 +1,12 @@
+[logic]
+active = remark@yan_otshel_glad
+
+[walker@gar_bedolaga_sit]
+path_walk = gar_bed_sit
+path_look = gar_bed_look
+def_state_standing = sit_ass
+
+[remark@yan_otshel_glad]
+anim = sit_ass
+snd = gar_bedolaga
+on_actor_dist_ge_nvis = 2|walker@gar_bedolaga_sit

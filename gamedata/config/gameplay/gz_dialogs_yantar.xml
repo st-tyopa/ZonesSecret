@@ -1,0 +1,1266 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+ <dialog id="dialog_yan_assist">
+                <dont_has_info>find_noyt_in_old_lab_start</dont_has_info> 
+                <has_info>go_to_scien_assist_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Чем могу быть полезен?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Здравствуйте, мне нужно встретиться с научным сотрудником Кайзановским. Не подскажете, как я могу его найти?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Кайзановский и его группа сейчас в экспедиции, они должны скоро вернутся.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Хм, а не можете сказать, где экспедиция в данный момент?</text>
+                <next>4</next>
+            </phrase>
+             <phrase id="4">
+                <text>Увы, не могу. Чем ближе к центру Зоны, тем хуже работает связь. Вот уже пару суток нам не удавалось связаться с группой.</text>
+                  <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Но у меня к нему очень срочное дело. Как скоро группа вернётся?</text>
+                <next>6</next>
+            </phrase>
+             <phrase id="6">
+                <text>Ориентировочно, в течении дня должна прибыть на базу.</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Эх, ладно, придётся остаться тут у вас и подождать.</text>
+                <next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Слушайте, раз вы всё равно некоторое время будете в нашем комплексе, не могли бы вы помочь нам? Не за бесплатно естественно.</text>
+                <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>Ну, почему, можно. Всё же лучше, чем сидеть без дела. В чём суть задания?</text>
+                <next>10</next>
+            </phrase>
+             <phrase id="10">
+                <text>dialog_assist_1</text>
+                <next>11</next>
+            </phrase>
+             <phrase id="11">
+                <text>Хорошо, а вы пока постарайтесь связаться ещё раз с Кайзановским.</text>
+                <give_info>find_noyt_in_old_lab_start</give_info>
+                <next>12</next>
+            </phrase>
+	    <phrase id="12">
+                <text>Хорошо. Сотрудник Семёнов ждёт вас на первом этаже. Обыщите вместе с ним все комнаты в научном комплексе, их там всего пару штук. Документы должны быть в одной из них. </text>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_yan_assist_2">
+                <dont_has_info>give_noyt_from_lab_done</dont_has_info>
+                <has_info>find_noyt_in_lab_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вы говорили, что лаборатория пуста! Из-за вас погиб Семёнов... Мутант одним ударом одбросил его на несколько метров, переломав ему все кости!</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>dialog_yan_assist_2_1</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Как я понимаю кровосос связан с вашим инцидентом?</text>
+                <next>3</next>
+            </phrase>
+             <phrase id="3">
+                <text>dialog_yan_assist_2</text>
+                <next>31</next>
+            </phrase>
+            <phrase id="31">
+                <text>Да уж, из-за простого сбоя в программе столько людей погибло... Вот ваши документы, но из-за "сбоя в системе" платите вдвое больше.</text>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+            <phrase id="4">
+                <dont_has_info>kill_fracture</dont_has_info>
+                <text>Вы очень нам помогли! Вот ваша награда.</text>
+                <action>gz_prologue.transfer_lab_noyt</action>
+                <action>gz_prologue.transfer_money_lab_noyt</action>
+                <give_info>give_noyt_from_lab_done</give_info>
+                <next>6</next>
+            </phrase>
+            <phrase id="5">
+                <has_info>kill_fracture</has_info>
+                <text>Вы очень нам помогли! Ещё вам полагается надбавка за уничтожение мутанта, теперь в том старом научном лагере безопасно.</text>
+                <action>gz_prologue.transfer_lab_noyt</action>
+                <action>gz_prologue.transfer_money_lab_noyt_2</action>
+                 <give_info>give_noyt_from_lab_done</give_info>
+                <next>6</next>
+            </phrase>
+               <phrase id="6">
+                <text>Кайзановский уже вернулся?</text>
+                <next>7</next>
+            </phrase> 
+               <phrase id="7">
+                <text>Да, он этажем выше, я ему передал, что вы приходили.</text>
+                <give_info>spawn_scien_assist</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_sos_bandit">
+                <dont_has_info>dialog_sos_bandit_done</dont_has_info>
+                <has_info>yan_spawn_bandit</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>dialog_sos_bandit_1</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+               <phrase id="1">
+                <text>Что-то выстрелов из деревни не слышно.</text>
+                <next>11</next>
+            </phrase> 
+               <phrase id="11">
+                <text>Вот я тоже боюсь, что может уже быть поздно. Пожалуйста, прошу, помоги мне. Надо попытаться хоть что-то сделать, может ещё удастся их спасти.</text>
+                <next>12</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="12">
+                <text>Ладно, помогу я. Веди.</text>
+                <give_info>dialog_sos_bandit_done</give_info>
+                <give_info>yan_zombi_off</give_info>
+                 <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="2">
+                <text>Нет уж, мне моя жизнь дорога, а зомбей слишком много.</text>
+                <give_info>dialog_sos_bandit_done</give_info>
+                <give_info>yan_sos_bandit_otshili</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+  
+ <dialog id="dialog_assist_dead_lager">
+                <dont_has_info>find_scien_in_underground_start</dont_has_info>
+                <dont_has_info>find_alives_on_base_done</dont_has_info>
+                <has_info>find_alives_on_base</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Аааа... как же больно.</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Вы сильно ранены? Сейчас я вас перевяжу.</text>
+                <give_info>dialog_sos_bandit_test</give_info>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Не поможет уже... Наёмники, положили почти всех... Суки...</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>А где Кайзановский?</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Он... и ещё пару человек, успели спуститься в подземку, но наёмники пошли за ними... Наши все уже наверное мертвы.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>А вы? Почему вас то оставили?</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Меня ранили, когда мы спускались... Я потерял сознание... Наши и наёмники наверное подумали, что я уже мёртв.</text>
+                <next>65</next>
+            </phrase>
+            <phrase id="65">
+                <text>Но зачем наёмникам нападать на ваш лагерь, что им нужно от Кайзановского?</text>
+                <next>67</next>
+            </phrase>
+ <phrase id="67">
+                <text>dialog_manic_wounded</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Всё это дерьмо из-за какого-то диска?! Ладно, держитесь, я быстро, найду Кайзоновского и вернусь, вызовем подмогу.</text>
+                <give_info>find_alives_on_base_done</give_info>
+                <give_info>find_scien_in_underground_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+ <dialog id="dialog_about_yan_quest_zombie">
+                <dont_has_info>find_quest_zombie_start</dont_has_info>
+                <dont_has_info>find_quest_zombie_fail</dont_has_info>
+                <dont_has_info>quest_pda_zombie_find</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здарова мужики, не часто в этих местах встретишь сталкеров, что привело вас сюда?</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Да вот, друга своего ищем. Пропал где-то на Янтаре, всё тут уже обошли - не можем найти, как сквозь землю провалился.</text>
+                <give_info>dialog_sos_bandit_test</give_info>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>А как же так получилось?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>dialog_about_yan_quest_zombie_1</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Да уж, вот что делает с людьми жажда наживы.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Ты мне ещё пофилософствуй тут. Все сталкеры, в том числе и ты, тут ради наживы и оказались. Ты лучше помог бы нам его найти, может мы какое место на янтаре упустили.</text>
+                <next>5</next>
+                <next>6</next>
+            </phrase>
+            <phrase id="5">
+                <text>Ладно, сделаю что смогу, как хоть друга вашего звали?</text>
+                <next>7</next>
+            </phrase>
+   <phrase id="7">
+                <text>Петька Борзой, если его уже нет в живых, то принеси хотя бы его ПДА.</text>
+                <give_info>find_quest_zombie_start</give_info>
+            </phrase>
+            <phrase id="6">
+                <text>Не мужики, времени нет ещё чьими-то поисками заниматься.</text>
+                <give_info>find_quest_zombie_fail</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+ <dialog id="dialog_about_yan_quest_zombie_1">
+                <has_info>find_quest_zombie_start</has_info>
+                <dont_has_info>find_quest_zombie_fail</dont_has_info>
+                <dont_has_info>find_quest_zombie_done</dont_has_info>
+                <has_info>quest_pda_zombie_find</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вот, нашёл я ПДА вашего друга.</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Так значит его всё-таки нет уже в живых? А где-ты нашёл его? Может похороним хоть по человечески.</text>
+                <action>gz_prologue.transfer_yan_pda_zombie</action>
+                <give_info>find_quest_zombie_done</give_info>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Он был одним из зомбированных в деревне. Там опасно, я бы не советовал заниматься его похоронами.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Да, пожалуй ты прав. Ладно, спасибо тебе большое, держи награду. Большего пока что нет.</text>
+                <action>gz_prologue.transfer_yan_zombie_nagr</action>
+                <next>3</next>
+            </phrase>
+   <phrase id="3">
+                <text>В его записях упоминалось про некий артефакт на вершине башни в деревне.</text>
+                <next>4</next>
+            </phrase>
+   <phrase id="4">
+                <text>Так вот в чём причина была. Да это ему всё мерещилось, там люди в ходящих мертвецов превращаются, а ему всё артефакты.</text>
+                <next>5</next>
+            </phrase>
+   <phrase id="5">
+                <text>Куда дальше направитесь?</text>
+                <next>6</next>
+            </phrase>
+   <phrase id="6">
+                <text>Пока не знаем, но сюда на Янтарь уже не будем возвращаться, хватит с нас уже двух погибших.</text>
+                <next>7</next>
+            </phrase>
+   <phrase id="7">
+                <text>Ну что ж, бывайте мужики.</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_about_yan_quest_zombie_2">
+                <dont_has_info>find_quest_zombie_fail</dont_has_info>
+                <dont_has_info>find_quest_zombie_done</dont_has_info>
+                <dont_has_info>find_quest_zombie_start</dont_has_info>
+                <has_info>quest_pda_zombie_find</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вот, нашёл я ПДА вашего друга. Там упоминались ваши имена.</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Так значит его всё-таки нет уже в живых? А где-ты нашёл его? Может похороним хоть по человечески.</text>
+                <action>gz_prologue.transfer_yan_pda_zombie</action>
+                <give_info>find_quest_zombie_done</give_info>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Он был одним из зомбированных в деревне. Там опасно, я бы не советовал заниматься его похоронами.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Да, пожалуй ты прав. Ладно, спасибо тебе большое, держи награду. Большего пока что нет.</text>
+                <action>gz_prologue.transfer_yan_zombie_nagr</action>
+  <next>3</next>
+            </phrase>
+   <phrase id="3">
+                <text>В его записях упоминалось про некий артефакт на вершине башни в деревне.</text>
+                <next>4</next>
+            </phrase>
+   <phrase id="4">
+                <text>Так вот в чём причина была. Да это ему всё мерещилось, там люди в ходящих мертвецов превращаются, а ему всё артефакты.</text>
+                <next>5</next>
+            </phrase>
+   <phrase id="5">
+                <text>Куда дальше направитесь?</text>
+                <next>6</next>
+            </phrase>
+   <phrase id="6">
+                <text>Пока не знаем, но сюда на Янтарь уже не будем возвращаться, хватит с нас уже двух погибших.</text>
+                <next>7</next>
+            </phrase>
+   <phrase id="7">
+                <text>Ну что ж, бывайте мужики.</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_scien_datchiki_1">
+                <dont_has_info>setup_dat_start</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я слышал учёные могут предложить хорошо оплачиваемую работу?</text>
+                <next>1</next>
+            </phrase>
+    <phrase id="1">
+                <text>Да это так, мы всегда нуждаемся в свободных руках способных выполнять различную работу. У нас как раз есть свободный заказ. Вы же за этим сюда пришли?</text>
+                <next>15</next>
+               <next>2</next>
+            </phrase>
+       <phrase id="15">
+                <text>Да, я вас слушаю</text>
+                <next>16</next>
+            </phrase>
+       <phrase id="16">
+                <text>Если вкратце, то нужно расставить датчики в аномальных Зонах. Берётесь?</text>
+                <next>32</next>
+            </phrase>
+  <phrase id="32">
+                <text>А по подробнее?</text>
+                <next>33</next>
+            </phrase>
+            <phrase id="2">
+                <text>Извинте, не до того сейчас.</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+   <phrase id="33">
+                <text>dialog_scien_datchiki_1</text>
+                <next>4</next>
+            </phrase>
+   <phrase id="4">
+                <text>Что за аномальне Зоны, где именно они находятся?</text>
+                <next>5</next>
+            </phrase>
+   <phrase id="5">
+                <text>Первая на площадке со строительной техникой, не подалёку отсюда. Вторая в аномальном разломе, западнее заброшенной научной базы. А третья в деревне.</text>
+                <next>6</next>
+                <next>7</next>
+            </phrase>
+   <phrase id="6">
+                <text>Хорошо, сделаю.</text>
+                <give_info>setup_dat_start</give_info>
+                <action>gz_prologue.transfer_yan_dat_3</action>
+            </phrase>
+   <phrase id="7">
+                <text>Нет уж, первая ещё ладно, но в разлом и в деревню зомби я не полезу.</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_scien_datchiki_2">
+                <dont_has_info>setup_dat_done</dont_has_info>
+                <has_info>setup_dat_1_done</has_info>
+                <has_info>setup_dat_2_done</has_info>
+                <has_info>setup_dat_3_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я установил все 3 сканнера.</text>
+                <next>31</next>
+            </phrase>
+       <phrase id="31">
+                <text>Да, я уже получил сигналы об установке. Все 3 сканнера установлены в нужном месте и уже отправляют нам данные по аномалиям. Спсибо большое, вы нам очень помогли.</text>
+                <action>gz_prologue.transfer_yan_scien_nagr</action>
+                <next>2</next>
+            </phrase>
+  <phrase id="2">
+                <text>Был рад сотруднечеству.</text>
+                <give_info>setup_dat_done</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_otshel">
+                <dont_has_info>yan_otshel_walk_start</dont_has_info>
+                <dont_has_info>yan_othsel_otkaz</dont_has_info>
+                <has_info>yan_find_otshel</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я от Лесника, нам нужна помощь в одном деле.</text>
+                <next>1</next>
+            </phrase>
+      <phrase id="1">
+                <text>Лесник? Ах, да, помню этого старика, перескались на просторах Зоны. Что у вас случилось?</text>
+                <next>11</next>
+            </phrase>
+       <phrase id="11">
+                <text>dialog_yan_otshel_1</text>
+                <next>2</next>
+            </phrase>
+       <phrase id="2">
+                <text>dialog_yan_otshel_15</text>
+                <next>3</next>
+            </phrase>
+  <phrase id="3">
+                <text>Что за дело?</text>
+                <next>31</next>
+            </phrase>
+  <phrase id="31">
+                <text>dialog_yan_otshel_2</text>
+                <next>32</next>
+                <next>33</next>
+            </phrase>
+  <phrase id="33">
+                <text>Ну уж нет, хоть это и детёныши, я не хочу рисковать своей шкурой.</text>
+                <give_info>yan_othsel_otkaz</give_info>
+            </phrase>
+      <phrase id="32">
+                <text>Действительно надо что-то делать, каков план?</text>
+                <next>4</next>
+            </phrase>
+  <phrase id="4">
+                <text>Сейчас охотники в лагере, за аномальным разломом. Встретимся с ними, там уже вместе и решим как действовать будем. Готов выдвигаться?</text>
+                <next>5</next>
+            </phrase>
+      <phrase id="5">
+        <text>Да, пошли.</text>
+                <give_info>yan_otshel_walk_start</give_info>
+                <give_info>yan_chimera_spawn</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_otshel_15">
+                <dont_has_info>yan_otshel_walk_start</dont_has_info>
+                <has_info>yan_othsel_otkaz</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я передумал, я всё-таки помогу вам.</text>
+                <next>31</next>
+            </phrase>
+       <phrase id="31">
+                <text>Отлично, готов выдвигатся?</text>
+                <next>2</next>
+            </phrase>
+      <phrase id="2">
+                <text>Да, готов.</text>
+                <give_info>yan_otshel_walk_start</give_info>
+                <give_info>yan_chimera_spawn</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_otshel_2">
+                <dont_has_info>yan_otshel_dialog_done</dont_has_info>
+                <has_info>yan_chimera_death</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Чёрт, не успели...</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>dialog_yan_otshel_17</text>
+                <next>2</next>
+            </phrase>
+     <phrase id="2">
+                <text>Если уж это "детёныши" химеры, как ты выразился, то я боюсь представить взрослую особь.</text>
+                <next>3</next>
+            </phrase>
+       <phrase id="3">
+                <text>В схватке даже с одной взрослой химмерой у нас было бы мало шансов.</text>
+                <next>4</next>
+            </phrase>
+       <phrase id="4">
+                <text>Что ж, помянуть бродяг ещё успеем, сейчас надо постараться спасти других. Можешь рассказать про аномалию?</text>
+                <next>5</next>
+            </phrase>
+       <phrase id="5">
+                <text>dialog_yan_otshel_16</text>
+                <next>6</next>
+            </phrase>
+      <phrase id="6">
+                <text>Спасибо за помощь, а мне надо бы торопиться.</text>
+                <give_info>yan_otshel_dialog_done</give_info>
+                <give_info>yan_find_zerkalo_start</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_otshel_3">
+                <dont_has_info>yan_otshel_dialog_done_2</dont_has_info>
+                <has_info>yan_otshel_dialog_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Можешь ещё рассказать о пространственных аномалиях?</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>dialog_otshel_puzir</text>
+                <next>2</next>
+            </phrase>
+     <phrase id="2">
+                <text>Ты имеешь ввиду, что всё-таки есть способ самостоятельно выбраться из пузыря?</text>
+                <next>3</next>
+            </phrase>
+       <phrase id="3">
+                <text>Не совсем, но иногда пузыри сами раскрывались через некоторое время.</text>
+                <next>4</next>
+            </phrase>
+       <phrase id="4">
+                <text>Может можно раскрыть пузырь изнутри с помощью артефакта?</text>
+                <next>5</next>
+            </phrase>
+       <phrase id="5">
+                <text>dialog_otshel_puzir_2</text>
+                <next>6</next>
+            </phrase>
+      <phrase id="6">
+                <text>Что ж, спасибо за информацию.</text>
+                <give_info>yan_otshel_dialog_done_2</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+ <dialog id="dialog_zmeelov">
+                <dont_has_info>yan_zmeelov_dialog_done</dont_has_info>
+                <dont_has_info>yan_zmeelov_dialog_done1</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Привет, меня Зорином кличут, я от Оцелота, он должен был предупредить обо мне. </text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>dialog_zmeelov_rob1</text>
+                <next>2</next>
+                <next>5</next>
+            </phrase>
+     <phrase id="2">
+                <text>План хорош, я с вами.</text>
+                <next>3</next>
+            </phrase>
+     <phrase id="5">
+                <text>Я пожалуй предпочту не ввязываться в это.</text>
+                <give_info>yan_zmeelov_dialog_done1</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+       <phrase id="3">
+                <text>dialog_zmeelov_rob2</text>
+                <next>4</next>
+            </phrase>
+       <phrase id="4">
+                <text>Хорошо, ждём сигнала и выдвигаемся.</text>
+                <give_info>yan_zmeelov_dialog_done</give_info>
+                <give_info>yan_zmeelov_rob_zombi_off</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+    
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_zmeelov_rob">
+                <dont_has_info>yan_zmeelov_dialog_rob_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну что, они уже идут?</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>dialog_zmeelov_rob</text>
+	       <action>gz_prologue.transfer_actors_yan_plasch</action>
+                <next>2</next>
+            </phrase>
+     <phrase id="2">
+                <text>Ясно, я на позицию.</text>
+                <give_info>yan_zmeelov_dialog_rob_done</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_zmeelov_rob_kill_guards">
+                <has_info>ocelot_rob_start</has_info>
+                <has_info>yan_rob_ocelot_shot</has_info>
+                <dont_has_info>yan_ocelot_rob_done</dont_has_info>
+                <dont_has_info>yan_ocelot_guard1_dead</dont_has_info>
+                <dont_has_info>yan_ocelot_guard2_dead</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну что, можно возвращаться на базу?</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>Да, всё прошло как по маслу. Для вида возьмём немного вещей у этих двух ребят, чтобы больше было похоже на гоп-стоп и можно уходить. Думаю, они бойцы опытные, путь на базу найдут.</text>
+                <next>2</next>
+            </phrase>
+     <phrase id="2">
+                <text>Хорошо, за работу.</text>
+                <give_info>yan_ocelot_rob_done</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_zmeelov_rob_kill_guards_bad">
+                <has_info>yan_rob_ocelot_shot</has_info>
+                <dont_has_info>yan_ocelot_rob_done</dont_has_info>
+                <has_info>yan_ocelot_guard1_dead</has_info>
+                <has_info>yan_ocelot_guard2_dead</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну что, можно возвращаться на базу?</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>dialog_zmeelov_rob_return</text>
+                <next>2</next>
+            </phrase>
+     <phrase id="2">
+                <text>Ладно, пора за работу.</text>
+                <give_info>yan_ocelot_rob_done_pre</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+    
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_zmeelov_rob_kill_guards_bad1">
+                <has_info>yan_rob_ocelot_shot</has_info>
+                <dont_has_info>yan_ocelot_rob_done</dont_has_info>
+                <has_info>yan_ocelot_guard1_dead</has_info>
+                <has_info>yan_ocelot_guard2_dead</has_info>
+                <has_info>yan_zmeelov_rob_dead</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну что, можно возвращаться на базу?</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>dialog_zmeelov_rob_return</text>
+                <next>2</next>
+            </phrase>
+     <phrase id="2">
+                <text>Ладно, пора за работу.</text>
+                <give_info>yan_ocelot_rob_done_pre</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_zmeelov_rob_kill_guards_bad2">
+                <has_info>yan_rob_ocelot_shot</has_info>
+                <dont_has_info>yan_ocelot_rob_done</dont_has_info>
+                <has_info>yan_ocelot_guard1_dead</has_info>
+                <has_info>yan_ocelot_guard2_dead</has_info>
+                <has_info>yan_zmeelov_rob_dead</has_info>
+                <has_info>yan_zmeelov_rob_guard1_dead</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну что, можно возвращаться на базу?</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>dialog_zmeelov_rob_return</text>
+                <next>2</next>
+            </phrase>
+     <phrase id="2">
+                <text>Ладно, пора за работу.</text>
+                <give_info>yan_ocelot_rob_done_pre</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_ocelot_rob_good">
+                <has_info>yan_rob_ocelot_shot</has_info>
+                <has_info>yan_ocelot_rob_done</has_info>
+                <has_info>ocelot_rob_start</has_info>
+                <dont_has_info>yan_ocelot_guard1_dead</dont_has_info>
+                <dont_has_info>yan_ocelot_guard2_dead</dont_has_info>
+                <dont_has_info>yan_zmeelov_rob_dead</dont_has_info>
+                <dont_has_info>yan_zmeelov_rob_guard1_dead</dont_has_info>
+                <dont_has_info>ld_code_box1_spawn</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну что, как ты?</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>Что ж, бывало и лучше. Самое главное, что бронежилет выдержал, все живы здоровы, да и в целом всё прошло гладко. Спасибо, что согласился помочь. Без тебя у нас вряд ли бы всё получилось.</text>
+                <next>2</next>
+            </phrase>
+        <phrase id="2">
+                <text>Теперь ты собираешься вернуться на Большую землю?</text>
+                <next>3</next>
+            </phrase>
+        <phrase id="3">
+                <text>dialog_ocelot_rob_good</text>
+                <next>4</next>
+            </phrase>
+        <phrase id="4">
+                <text>Ну, удачи тебе, сталкер. Был рад знакомству.</text>
+                <next>5</next>
+            </phrase>
+        <phrase id="5">
+                <text>dialog_ocelot_rob_good1</text>
+                <give_info>ld_code_box1_spawn</give_info>
+                <give_info>yan_zmeelov_quest_done</give_info>
+                <next>6</next>
+            </phrase>
+     <phrase id="6">
+                <text>Хорошо, спасибо. А группировка будет непротив, что мы их добро разворовываем?</text>
+                   <next>7</next>
+            </phrase>
+     <phrase id="7">
+                <text>Ну, ничем другим отблагодарить я тебя не смогу. Я тебе сообщил координаты тайника, а брать его содержимое или нет, это уже твоя забота.</text>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_ocelot_rob_bad">
+                <has_info>yan_rob_ocelot_shot</has_info>
+                <has_info>yan_ocelot_rob_done</has_info>
+                <dont_has_info>ocelot_rob_start</dont_has_info>
+                <dont_has_info>ld_code_box2_spawn</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну что, как ты?</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>Что ж, бывало и лучше. Бронежилет выдержал, я цел. Плохо, что всё прошло не так гладко как хотелось бы. Но что есть, то есть. Спсибо, что помог нам.</text>
+                <next>2</next>
+            </phrase>
+        <phrase id="2">
+                <text>Теперь ты собираешься вернуться на Большую землю?</text>
+                <next>3</next>
+            </phrase>
+        <phrase id="3">
+                <text>dialog_ocelot_rob_good</text>
+                <next>4</next>
+            </phrase>
+        <phrase id="4">
+                <text>Ну, удачи тебе, сталкер. Был рад знакомству.</text>
+                <next>5</next>
+            </phrase>
+        <phrase id="5">
+                <text>dialog_ocelot_rob_good2</text>
+                <give_info>ld_code_box2_spawn</give_info>
+                <next>6</next>
+            </phrase>
+     <phrase id="6">
+                <text>Хорошо, спасибо. А группировка будет непротив, что мы их добро разворовываем?</text>
+                   <next>7</next>
+            </phrase>
+     <phrase id="7">
+                <text>Ну, ничем другим отблагодарить я тебя не смогу. Я тебе сообщил координаты тайника, а брать его содержимое или нет, это уже твоя забота.</text>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+ <dialog id="dialog_zmeelov_about_prizrak">
+                <has_info>yan_ocelot_rob_done</has_info>
+                <dont_has_info>yan_zmeelov_about_prizrak_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Куда дальше направитесь с группой? Продолжите работу на учёных?</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>dialog_zmeelov_about_prizrak</text>
+                <next>2</next>
+            </phrase>
+        <phrase id="2">
+                <text>Я по мимо охраны, и твоей группы, тут больше никого не встречал.</text>
+                <next>3</next>
+            </phrase>
+        <phrase id="3">
+                <text>dialog_zmeelov_about_prizrak2</text>
+                <next>4</next>
+            </phrase>
+        <phrase id="4">
+                <text>Я слышал, что учёные переодически сотрудничают с группировками.</text>
+                <next>5</next>
+            </phrase>
+        <phrase id="5">
+                <text>dialog_zmeelov_about_prizrak3</text>
+                <next>6</next>
+            </phrase>
+        <phrase id="6">
+                <text>Да, странно это.</text>
+                    <give_info>yan_zmeelov_about_prizrak_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_yan_slepoi">
+                <dont_has_info>yan_slepoi_dialog_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>О, какие люди! Привет, Зорин, рад тебя видеть.</text>
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>Привет, взаимно. Вот уж кого-кого, а тебя не ожидал тут встретить. Какими судьбами, пишешь статью о работе учёных в Зоне?</text>
+                <next>2</next>
+            </phrase>
+        <phrase id="2">
+                <text>Несовсем, сейчас с деньгами туго. Вот и приходится работать на учёных, чтоб были хоть какие-то деньги на провизию и аммуницию.</text>
+                <next>3</next>
+            </phrase>
+        <phrase id="3">
+                <text>Ну а как твой материал о Зоне, скоро уже закончишь?</text>
+                <next>4</next>
+            </phrase>
+        <phrase id="4">
+                <text>dialog_yan_slepoi</text>
+                <next>5</next>
+            </phrase>
+        <phrase id="5">
+                <text>Да, задумка грандиозная. А сам сколько ещё планируешь оставаться тут в Зоне?</text>
+                <next>6</next>
+            </phrase>
+        <phrase id="6">
+                <text>Не знаю, поначалу я думал, что всё будет быстро и легко. Но нет, с Зоной повидимому так не бывает.</text>
+                <next>7</next>
+            </phrase>
+        <phrase id="7">
+                <text>Я лично уже хочу как можно скорее убраться. Да и "застрял" я тут не по своей воле.</text>
+                <next>8</next>
+            </phrase>
+        <phrase id="8">
+                <text>Значит на то были свои причины. Ладно, Зорин, мне скоро надо будет уходить по заданию учёных. Был рад пообщаться, пересечёмся ещё как-нибудь, если Зона позволит. Бывай.</text>
+                <next>9</next>
+            </phrase>
+        <phrase id="9">
+                <text>Давай, удачи.</text>
+                    <give_info>yan_slepoi_dialog_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_yan_scien_lead_in_lager">
+                <dont_has_info>yan_scien_lead_to_lager_start</dont_has_info>
+                <has_info>find_noyt_in_old_lab_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здравствуйте, Асистент Шпилевский должен был предупредить вас обо мне.</text>
+
+                <next>1</next>
+            </phrase>
+        <phrase id="1">
+                <text>Да, да, он уже сообщил мне. Ну что, готовы выдвигаться?</text>
+                <next>2</next>
+            </phrase>
+        <phrase id="2">
+                <text>Готов.</text>
+                    <give_info>yan_scien_lead_to_lager_start</give_info>
+                    <give_info>yan_scien_dogs_off</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+ <dialog id="dialog_yan_scien_lead_in_tube">
+                <dont_has_info>yan_scien_lead_tel_dialog</dont_has_info>
+                <has_info>yan_scien_lead_to_lager_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>dialog_yan_semenov</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Хорошо, я следом за вами.</text>
+                    <give_info>yan_scien_lead_tel_dialog</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+	    <dialog id="dialog_kain_about_manik_1">
+        <dont_has_info>talk_scien_assist_done</dont_has_info>
+        <has_info>go_to_scien_assist_complete</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Да? Я вас слушаю.</text>
+                <next>1</next>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <dont_has_info>kill_scien_done</dont_has_info>
+                <text>dialog_kain_about_manik_1</text>
+                <next>21</next>
+            </phrase>
+             <phrase id="21">
+                <text>dialog_kain_about_manik_2</text>
+                <next>31</next>
+            </phrase>
+            <phrase id="31">
+                <text>dialog_kain_about_manik_3</text>
+                <next>41</next>
+            </phrase>
+             <phrase id="41">
+                <text>Хорошо что они жив. Ладно, я постораюсь вам помочь.</text>
+                <next>51</next>
+            </phrase> 
+            <phrase id="51">
+                <text>Спасибо!</text>
+                <next>61</next>
+            </phrase>
+            <phrase id="61">
+                <text>dialog_kain_about_manik_6</text>
+                <next>711</next>
+            </phrase>
+            <phrase id="711">
+                <text>А как же вы? Если на профессора охотились наёмники, то думаю они скоро и до вас доберутся, вам нельзя оставаться в Зоне.</text>
+                <next>712</next>
+            </phrase>
+            <phrase id="712">
+                <text>Я приму меры, чтобы этого не произошло, но и покидать Зону мне ещё рано. Ну а вам желаю удачи, надюсь вы сможете вернуться домой.</text>
+                <next>71</next>
+            </phrase>
+            <phrase id="71">
+                <text>Спасибо, ещё раз! Вы меня очень выручили.</text>
+				<give_info>talk_scien_assist_done</give_info>
+				<give_info>pz_iskateli_group_start</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="1">
+                <has_info>kill_scien_done</has_info>
+                <text>dialog_kain_about_manik_1_alt</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>dialog_kain_about_manik_2_alt</text>
+                <next>3</next>
+            </phrase>
+			<phrase id="3">
+                <text>Во всей этой ситуации, я осведомлён не лучше чем вы.</text>
+                <next>4</next>
+            </phrase>
+			<phrase id="4">
+                <text>dialog_kain_about_manik_4_alt</text>
+                <next>522</next>
+            </phrase>
+			<phrase id="522">
+                <text>Да не ужели вы не понимаете?! Вас как и меня хотят убить, я лично видел приказ в ПДА военного на вашу ликвидацию, как предателя. Вам нужно как можно скорее покинуть Зону.</text>
+                <next>521</next>
+            </phrase>
+			<phrase id="521">
+                <text>Нет, только не сейчас. Я приму меры по своей безопасности, но пока ещё слишком рано уходить...</text>
+                <next>521</next>
+            </phrase>
+			<phrase id="5">
+                <text>Ну как знаете. Спасибо за помощь, вы меня выручили.</text>
+				<give_info>talk_scien_assist_done</give_info>
+				<give_info>pz_iskateli_group_start</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+   <dialog id="dialog_kain_about_manik_2">
+        <dont_has_info>help_scien_lager_start</dont_has_info>
+        <has_info>phone_kain_call_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>dialog_kain_about_manik2_0</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>dialog_kain_about_manik2_1</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>dialog_kain_about_manik2_2</text>
+                <next>3</next>
+            </phrase>
+			<phrase id="3">
+                <text>dialog_kain_about_manik2_3</text>
+                <next>4</next>
+            </phrase>
+			<phrase id="4">
+                <text>dialog_kain_about_manik2_4</text>
+				<give_info>talk_scien_assist_done</give_info>
+				<give_info>pz_iskateli_group_start</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+   <dialog id="dialog_kain_about_zone">
+        <dont_has_info>exit_from_underground_start</dont_has_info>
+        <has_info>yan_start_go_to_scienlager</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Видите, господин сталкер, как оно всё вышло?</text>
+				<give_info>find_scien_in_underground_done</give_info>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Да уж, вижу. За что они вас?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Просто, я знаю больше, чем нужно. А им такие люди не нужны. Им не нужно, чтобы о них узнали.</text>
+                <next>3</next>
+            </phrase>
+			<phrase id="3">
+                <text>Что мне делать-то теперь?</text>
+                <next>4</next>
+            </phrase>
+			<phrase id="4">
+                <text>Узнать, кто они и уничтожить Зону. </text>
+                <next>5</next>
+            </phrase>
+			<phrase id="5">
+                <text>Да, обещаю.</text>
+				<give_info>exit_from_underground_start</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+	<dialog id="dialog_zal_prisoner">
+        <phrase_list>
+            <phrase id="0">
+                <text>Стой! Спокойно, не стреляй! Вовремя ты их.</text>
+				<give_info>help_scien_lager_complete</give_info>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Кто ты?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Меня Кобольдом кличут. А тебя?</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Неважно. Что тут произошло?</text>
+                <next>4</next>
+            </phrase>
+			<phrase id="4">
+                <text>Наемники напали, всех убили, меня хотели к себе увести...</text>
+                <next>5</next>
+            </phrase>
+			<phrase id="5">
+                <text>Зачем?</text>
+                <next>6</next>
+            </phrase>
+			<phrase id="6">
+                <text>Не знаю. Как источник информации видимо... Стой, я слышал, что они хотят напасть на наш лагерь в Янтаре, надо спешить!</text>
+                <next>7</next>
+            </phrase>
+			<phrase id="7">
+                <text>Да, пошли!</text>
+				<give_info>back_to_scien_lager_start</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_zal_prisoner2">
+        <has_info>back_to_scien_lager_start</has_info>
+		<dont_has_info>go_to_yan_have</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ты что встал?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Давай ты первый иди и подожди меня на Янтаре.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Хорошо.</text>
+				<give_info>go_to_yan_have</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+    <dialog id="dialog_yan_prisoner">
+		<dont_has_info>yan_start_go_to_scienlager</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Идем?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Да, конечно. Хоть бы успеть!</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Угу.</text>
+				<give_info>yan_start_go_to_scienlager</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+   <dialog id="dialog_yan_prisoner2">
+		<has_info>yan_start_go_to_scienlager</has_info>
+		<dont_has_info>find_scien_in_underground_start</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Похоже опоздали...</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Только не это. Они все убиты. А нет, не все, Кайнозовского нет? Видимо, он ушел в подземелье. Давай ты за ним, а я навстречу ему по поверхности.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Хороший выбор.</text>
+				<give_info>find_scien_in_underground_start</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+	
+	<dialog id="dialog_final">
+                <dont_has_info>yan_fin_dalog_end</dont_has_info> 
+        <phrase_list>
+            <phrase id="0">
+                <text>А вот и ты, мы тебя уже заждались Зорин. Будь так добр, отдай жёсткий диск.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Постой, я тебя узнаю, я где-то тебя видел… Ты генерал-лейтенант Шмырев? Кажется, всё начинает сходиться...</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Вижу у тебя много вопросов. Что ж, ты прошёл долгий путь, думаю ты можешь знать правду, прежде чем всё закончится. Да, я генерал-лейтенант Шмырев, а для своих людей я использую позывной Кобольд. </text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Так это твои люди сбили вертушки? То есть ты уничтожил своих же людей? А главное: зачем, всё из-за этой чёртовой железки?</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>dialog_final_1</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Доказательства рукотворности Зоны, но разве стоило гробить жизни ребят ради этого?</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>dialog_final_2</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>А в чём тогда была суть операции?</text>
+                <next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>dialog_final_3</text>
+                <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>И поэтому в подземельях под заводом, капитан наткнулся на засаду твоих людей.</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Верно.</text>
+                <next>11</next>
+                <next>12</next>
+            </phrase>
+            <phrase id="11">
+                <has_info>kill_scien_done</has_info> 
+                <text>Тогда почему группа эвакуации напала на меня, если операцией руководил Полковник?</text>
+                <next>115</next>
+            </phrase>
+           <phrase id="115">
+                <text>dialog_final_4</text>
+                <next>13</next>
+            </phrase>
+            <phrase id="12">
+                <dont_has_info>kill_scien_done</dont_has_info> 
+                <text>Выходит, когда я спас Маниковского, ты решил заняться поисками его ассистента, откуда ты узнал про него?</text>
+                <next>125</next>
+            </phrase>
+            <phrase id="125">
+                <text>Перед тем как ты добрался до профессора, он всё же раскололся, что информацию спрятал у себя его ассистент. Однако он был в экспедиции, и мы лишь дожидались его возвращения.</text>
+                <next>13</next>
+            </phrase>
+            <phrase id="13">
+                <text>И потом твои люди перестреляли группу учёных на янтаре, а Кайзановский укрылся в лаборатории. И всё ради этой информации? Как так получилось, что твоё имя было в списке?</text>
+                <next>14</next>
+            </phrase>
+            <phrase id="14">
+                <text>dialog_final_5</text>
+                <next>15</next>
+            </phrase>
+            <phrase id="15">
+                <text>А потом на одном из испытаний случилась авария, которая и породила Зону?</text>
+                <next>16</next>
+            </phrase>
+            <phrase id="16">
+                <text>dialog_final_6</text>
+                <next>17</next>
+            </phrase>
+            <phrase id="17">
+                <text>Выходит целью операции «Север» было выяснить, что произошло тогда в 2006-ом? А почему только спустя 3 года?</text>
+                <next>18</next>
+            </phrase>
+            <phrase id="18">
+                <text>dialog_final_7</text>
+                <next>19</next>
+            </phrase>
+            <phrase id="19">
+                <text>И всё же, почему ты мне обо всём рассказываешь? Думаешь, я или другие до тебя никогда не доберутся?</text>
+                <next>20</next>
+            </phrase>
+            <phrase id="20">
+                <text>dialog_final_8 </text>
+                <next>21</next>
+            </phrase>
+  <phrase id="21">
+                <text>Выходит… всех нас использовали, мы лишь средство достижения цели для высоких чинов. Судьбы простых солдат никогда не интересовали руководство… Что ж, делай что должен, стреляй…  мне уже всё равно. </text>
+                <give_info>yan_fin_dalog_end</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+</game_dialogs>

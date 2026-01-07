@@ -1,0 +1,445 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Интерфейс контроля за объектами игры.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 14.06.2011
+--]]
+--//--/    типы объектов     /---------/     Фильтры    /
+local combo_typs = 
+{
+	{"Сталкеры",     "GetNpc", {
+									{"Все",             ""},
+									{"Сталкеры", "Stalker"}, 
+	                                {"Торговцы",   "Trade"}
+								}
+	},
+	{"Мутанты",  "GetMonster"},    --' no filters
+	{"Объекты",   "GetObject", {
+									{"Все",                ""},
+									{"Физические",   "Physic"},
+									{"Детанирующие", "Explod"},
+									{"Осветительные", "HLamp"},
+									{"Инвентарные",  "InvBox"},
+									{"Техника",      "Vehicl"}
+								}
+	},
+	{"Зоны",        "GetZone", {
+	                                {"Все",                 ""},
+									{"Аномалии",        "Anom"},
+									{"Рестрикторы", "Restrict"},
+									{"Смарты",         "Smart"}
+								}
+	},
+	{"Предметы",    "GetItem", {
+	                                {"Все",                 ""},
+									{"Артефакты",   "Artefact"},
+									{"Оружие",        "Weapon"},
+									{"Снаряды",         "Ammo"},
+									{"Еда",             "Food"},
+									{"Приборы",       "Device"},
+									{"Бронежилеты",   "Outfit"},
+									{"Медикаменты",      "Med"}
+								}
+	},
+	{"Все",          "GetAll"}     --' no filters
+}
+
+local dis    = 65535 / 100
+local spot_name = "general_spot_mobile"
+
+class "win_contr" (CUIWindow)
+--//------------------------------------------------------------------
+--// ИНИЦИАЛИЗАТОРЫ
+--//------------------------------------------------------------------
+
+--/summary/>> конструктор
+function win_contr:__init() super()
+    self.title = "Controller"
+end
+
+--/summary/>> инициализация
+function win_contr:InitControls(win_frect, xml, parent)
+    self.xml = xml
+    self.parent = parent
+	self.tbl_all_objs = {}
+	self.start_load = false
+    self:Init(win_frect)
+	self:SetAutoDelete(true)
+	
+	self.message_box_delete = CUIMessageBoxEx()
+	parent:Register(self.message_box_delete, "msg_box_delete_object")
+	self.message_box_delete:Init("message_box_delete_file_name")
+	
+	xml:InitStatic("separ", self)
+	
+	local frame_list = xml:InitFrame("frame_objs_list", self)
+	self.contr_list = xml:InitList("frame_objs_list:list_objs", frame_list)
+	parent:Register(self.contr_list, "contr_list")
+	
+	--'кнопка удаления объекта
+	self.del_obj = xml:Init3tButton("btn_contr_del_obj", self)
+	parent:Register(self.del_obj, "btn_contr_del_obj")
+	
+	--'кнопка телепортации к объекту
+	self.tel = xml:Init3tButton("btn_contr_tel", self)
+	parent:Register(self.tel, "btn_contr_tel")
+	
+	--'кнопка установки/удаления меток
+	self.spot = xml:Init3tButton("btn_contr_spot", self)
+	parent:Register(self.spot, "btn_contr_spot")
+	
+	--'кнопка удаления всех ранее установленых меток
+	self.del_all_spots = xml:Init3tButton("btn_del_all_spots", self)
+	parent:Register(self.del_all_spots, "btn_del_all_spots")
+	
+	--'кнопка отфильтровки объектов по выбнной секции
+	self.filter_by_section = xml:Init3tButton("btn_filter_by_section", self)
+	parent:Register(self.filter_by_section, "btn_filter_by_section")
+	
+	--'комбобокс выбора типа объектов
+	self.combo_typs = _ui_total.CUIComboBoxNew(50, 3, 200, parent)
+	for _, v in ipairs(combo_typs) do
+		self.combo_typs:AddItem(v[1], v[2])
+	end
+	self:AttachChild(self.combo_typs)
+	
+	--'комбобокс выбора фильтра
+	self.combo_filter = _ui_total.CUIComboBoxNew(260, 3, 200, parent)
+	self:AttachChild(self.combo_filter)
+	
+	--'комбобокс фильтрации по имеющимся именам секций в списке
+	self.combo_sections = _ui_total.CUIComboBoxNew(470, 3, 200, parent)
+	self.combo_sections:AddItem("all")
+	self:AttachChild(self.combo_sections)
+	
+	--'анимка загрузки объектов (progress_bar)
+	self.pb_load = xml:InitStatic("load_pb", self)
+	self.pb_bar  = xml:InitStatic("load_pb:bar", self.pb_load)
+	self.pb_load:Show(false)
+	
+	local txt, flt = self.combo_typs:GetSelectedItem()
+	self:ComboSelectedType(txt, flt)
+	self:InitCallBacks(parent)
+	
+	xml:InitAnimStatic("anim_contr_scan", self)
+	self.sttest = xml:InitStatic("static_test", self)
+	self.sttest:Show(false)
+end
+
+function win_contr:InitCallBacks(parent)
+	parent:AddCallback("contr_list",            ui_events.LIST_ITEM_CLICKED,       self.OnListClicked,         self)
+	parent:AddCallback("btn_contr_del_obj",     ui_events.BUTTON_CLICKED,          self.OnDeleteObject,        self)
+	parent:AddCallback("btn_contr_tel",         ui_events.BUTTON_CLICKED,          self.OnTeleportToObj,       self)
+	parent:AddCallback("btn_contr_spot",        ui_events.BUTTON_CLICKED,          self.OnSpotObject,          self)
+	parent:AddCallback("btn_del_all_spots",     ui_events.BUTTON_CLICKED,          self.OnDelAllSpots,     	   self)
+	parent:AddCallback("btn_filter_by_section", ui_events.BUTTON_CLICKED,          self.OnFilterBySectionName, self)
+	
+	parent:AddCallback("msg_box_delete_object", ui_events.MESSAGE_BOX_YES_CLICKED, self.OnMsgYesDelete,	   self)
+	
+	self.combo_typs     :ActionSelectItem(self.ComboSelectedType,    self)
+	self.combo_filter   :ActionSelectItem(self.ComboSelectedFilter,  self)
+	self.combo_sections :ActionSelectItem(self.ComboSelectedSection, self)
+end
+
+--/summary/>> метод вызываемый при смене(установке) типа объектов
+function win_contr:ComboSelectedType(_, flt)
+	self.combo_filter:RemoveAll()
+	for _, v in ipairs(combo_typs) do
+		if v[2] == flt then 
+			if type(v[3]) == "table" then
+				for _, f in ipairs(v[3]) do
+					self.combo_filter:AddItem(f[1], f[2])
+				end
+			end
+			break
+		end
+	end
+	self:InitContrList(flt)
+end
+
+--/summary/>> метод вызываемый при смене фильтра
+function win_contr:ComboSelectedFilter()
+	local _, flt = self.combo_typs:GetSelectedItem()
+	self:InitContrList(flt)
+end
+
+--/summary/>> метод вызываемый при выборе секции для фильтрации
+function win_contr:ComboSelectedSection()
+	local sec = self.combo_sections:GetSelectedItem()
+	self:OnFilterBySectionName(sec)
+end
+
+--/summary/>> метод создания списка найденых объектов
+function win_contr:InitContrList(flt)
+	if not flt then return end
+	self.contr_list:RemoveAll()
+	
+	local _, f = self.combo_filter:GetSelectedItem()
+	if not f then f = "" end
+	
+	self:EnableElements(false)
+	
+	self.id    = 1
+	self.f_tip = flt
+	self.f_f   = f
+end
+
+--/summary/>> метод(итератор) глобального создания списка объектов
+function win_contr:AddItems()
+	local min_id = self.id
+	local max_id = self.id + dis
+	if max_id > 65535 then 
+		max_id = 65535 
+		self.id = 0
+		self.start_load = false
+	else
+		self.id = max_id + 1
+	end
+	
+	self.pb_bar:SetWidth(max_id / 65535 * 256)
+	
+	for id = min_id, max_id do
+		local obj = level.object_by_id(id)
+		if obj then
+			local sec_name   = obj:section()
+			local func = _is_clsid[ self.f_tip .. self.f_f ]
+			local valid = func and func(obj)
+			if valid then
+				if not self.combo_sections.table[sec_name] then
+					self.combo_sections.table[sec_name] = true
+				end
+				if not self.tbl_all_objs[sec_name] then self.tbl_all_objs[sec_name] = {} end
+				table.insert(self.tbl_all_objs[sec_name], id)
+				self:CreateElementOfList(obj, sec_name)
+			end
+		end
+	end
+	if not self.start_load then
+		self.pb_load:Show(false)
+		for k in pairs(self.combo_sections.table) do
+			self.combo_sections:AddItem(k)
+		end
+		self.combo_sections.table = nil
+	end
+end
+
+--/summary/>> метод создания элемента списка
+function win_contr:CreateElementOfList(obj, sec_name)
+	local item  = _ui_total.list_item(145, 27)
+	item.section = sec_name
+	item.id      = obj:id()
+				
+	--'name section
+	item:SetText(sec_name)
+	self:SetColorItem(obj, item, self.f_tip)
+	--'id
+	item.win_id = self.xml:InitStatic("el_contr_stat",   item)
+	item.win_id:SetWndPos(150, 0)
+	item.win_id:SetText(tostring(item.id))
+	--'parent id
+	item.win_prnt = self.xml:InitStatic("el_contr_stat", item)
+	item.win_prnt:SetWndPos(210, 0)
+	local prnt = obj:parent()
+	local prnt_id = prnt and prnt:id() or -1
+	item.win_prnt:SetText(tostring(prnt_id))
+	--'position
+	item.win_pos = self.xml:InitStatic("el_contr_stat",  item)
+	item.win_pos:SetWndPos(270, 0)
+	item.win_pos:SetWidth(145)
+	local pos = obj:position()
+	item.win_pos:SetText(string.format("%1.1f, %1.1f, %1.1f", pos.x, pos.y, pos.z))
+	--'spot
+	item.win_spot = self.xml:InitStatic("el_contr_stat",  item)
+	item.win_spot:SetWndPos(420, 0)
+	item.win_spot:InitTexture("ui\\ui_common")
+	item.win_spot:SetTextureOffset(15, 0)
+	if level.map_has_object_spot(item.id, spot_name) > 0 then
+		item.win_spot:SetOriginalRect(753, 851, 20, 20)
+	else
+		item.win_spot:SetOriginalRect(773, 851, 20, 20)
+	end
+				
+	item.win_end = self.xml:InitStatic("el_contr_stat",  item)
+	item.win_end:SetWndPos(470, 0)
+				
+	self.contr_list:AddItem(item)
+end
+
+--/summary/>> ускореный апдейт
+function win_contr:UpdateFastCall()
+	if self.id ~= 0 then
+		if not self.start_load then
+			self.pb_load:Show(true)
+			self.pb_bar:SetWidth(0)
+			self.start_load = true
+			self.combo_sections:RemoveAll()
+			self.combo_sections:AddItem("all")
+			self.combo_sections.table = {}
+			self.tbl_all_objs = {}
+		end
+		self:AddItems()
+	end
+end
+
+--/summary/>> метод установки цвета елементам списка, по условиям
+function win_contr:SetColorItem(obj, item, flt)
+	if flt == "GetNpc" then              --'Тип объектов "сталкеры"
+		if obj:alive() then
+			if (obj:relation(db.actor) == game_object.enemy) then       --'живые враги (красный)
+				item:SetHighlightColor  (_color.GetARGBColor("Red", 255))
+				item:SetTextColor(_color.GetColor("red3", 255))
+			elseif (obj:relation(db.actor) == game_object.neutral) then --'живые нейтралы (жёлтый)
+				item:SetHighlightColor  (_color.GetARGBColor("Yellow", 255))
+				item:SetTextColor(_color.GetColor("yellow3", 255))
+			else                                                        --'живые друзья (зелёный)
+				item:SetHighlightColor(_color.GetARGBColor("Green", 255))
+				item:SetTextColor(_color.GetColor("green3", 255))
+			end
+		else                                                            --'мёртвые (белый)
+			item:SetHighlightColor(_color.GetARGBColor("White", 255))
+			item:SetTextColor(_color.GetColor("snow3", 255))
+		end
+	elseif flt == "GetMonster" then      --'Тип объектов "мутанты"
+		if obj:alive() then                                             --'живые (жёлтый)
+			item:SetHighlightColor(_color.GetARGBColor("Yellow", 255))
+			item:SetTextColor(_color.GetColor("yellow3", 255))
+		else                                                            --'мёртвые (белый)
+			item:SetHighlightColor(_color.GetARGBColor("White", 255))
+			item:SetTextColor(_color.GetColor("snow3", 255))
+		end
+	end
+end
+
+--/summary/>> метод вызываемый при выборе элемента в списке
+function win_contr:OnListClicked()
+	local item = _utils.GetSelectedItemList(self.contr_list)
+	if not item then return end
+	self:EnableElements(true)
+	self:SetTextBtnSpot(item.id)
+end
+
+--/summary/>> метод активности основных кнопок управления объектами
+function win_contr:EnableElements(bool)
+	self.del_obj:Enable(bool)
+	self.tel:Enable(bool)
+	self.spot:Enable(bool)
+end
+
+--/summary/>> методы управления удалением из игры выбранного объекта
+function win_contr:OnDeleteObject()
+	local item = _utils.GetSelectedItemList(self.contr_list)
+	if not item then return end
+	local txt = 'Вы уверены, что хотите удалить объект "'..item.section..'" с номером id = '..tostring(item.id)..'?'
+	self.message_box_delete:SetText(txt)
+	self.parent:GetHolder():start_stop_menu(self.message_box_delete, true)
+end
+function win_contr:OnMsgYesDelete()
+	local item = _utils.GetSelectedItemList(self.contr_list)
+	if not item then return end
+	local sobj = alife():object(item.id)
+	if sobj then
+		alife():release(sobj, true)
+	end
+	local ind = self.contr_list:GetItemPos(item)
+	self.contr_list:RemoveItem(ind)
+end
+
+--/summary/>> метод телепортации к объекту
+function win_contr:OnTeleportToObj()
+	local item = _utils.GetSelectedItemList(self.contr_list)
+	if not item then return end
+	local obj = level.object_by_id(item.id)
+	if obj then
+		local pos = obj:position()
+		db.actor:set_actor_position(pos)
+		self.parent:quit()
+	else
+		self.parent.message_box_error:SetText("Объект '"..item.section.."', с id = "..tostring(item.id)..", не найден!!!")
+	    self.parent:GetHolder():start_stop_menu(self.parent.message_box_error, true)
+	    local ind = self.contr_list:GetItemPos(item)
+	    self.contr_list:RemoveItem(ind)
+	end
+end
+
+--/summary/>> метод установки/удаления спота
+function win_contr:OnSpotObject()
+	local item = _utils.GetSelectedItemList(self.contr_list)
+	if not item then return end
+	local obj = level.object_by_id(item.id)
+	if obj then
+		if self.spot.has then
+			for i = 1, level.map_has_object_spot(item.id, spot_name) do
+				level.map_remove_object_spot(item.id, spot_name)
+		    end
+			item.win_spot:SetOriginalRect(773, 851, 20, 20)
+		else
+			level.map_add_object_spot_ser(item.id, spot_name, "метка Mobile Manager.\n"..item.section.." = "..item.id)
+			item.win_spot:SetOriginalRect(753, 851, 20, 20)
+		end
+		self:SetTextBtnSpot(item.id)
+	end
+end
+
+--/summary/>> метод управления оглавлением кнопки установки спота
+function win_contr:SetTextBtnSpot(id)
+	if level.map_has_object_spot(id, spot_name) > 0 then 
+		self.spot:SetText("Убрать метку")
+		self.spot.has = true
+	else 
+		self.spot:SetText("Поставить метку")
+		self.spot.has = false
+	end
+end
+
+--/summary/>> метод удаления всех спотов выбранного списка объектов
+function win_contr:OnDelAllSpots()
+	local wint = self.parent:GetStatic("static_test")
+	if wint then get_console():execute("window_name_OK") else get_console():execute("window_name_NO") end
+	local count = self.contr_list:GetSize()
+	for i=0, count -1 do
+		local item = self.contr_list:GetItem(i)
+		if item then
+			local id = item.id
+			local c_spots = id and level.map_has_object_spot(item.id, spot_name) or 0
+			if c_spots  > 0 then
+				for i = 1, c_spots do
+					level.map_remove_object_spot(id, spot_name)
+				end
+				item.win_spot:SetOriginalRect(773, 851, 20, 20)
+			end
+		end
+	end
+	self:OnListClicked()
+end
+
+--/summary/>> метод отфильтровки объектов по выбранной секции
+function win_contr:OnFilterBySectionName(sec)
+	local sec_name = sec
+	if not sec then
+		local item_sel = _utils.GetSelectedItemList(self.contr_list)
+		if not item_sel then return end
+		sec_name = item_sel.section
+	end
+	self.contr_list:RemoveAll()
+	
+	local function ce(sn, tbl)
+		for _, id in ipairs(tbl) do
+			local obj = level.object_by_id(id)
+			if obj then
+				self:CreateElementOfList(obj, sn)
+			end
+		end
+	end
+	
+	if sec_name ~= "all" then
+		local tbl = self.tbl_all_objs[sec_name]
+		if type(tbl) ~= "table" then return end
+		ce(sec_name, tbl)
+	else
+		for s, t in pairs(self.tbl_all_objs) do
+			if type(t) == "table" then
+				ce(s, t)
+			end
+		end
+	end
+end

@@ -1,0 +1,12 @@
+[logic]
+active = walker@gar_loki_stay
+
+[walker@gar_loki_stay]
+path_walk = gar_sv_guard_stay_2
+path_look = gar_sv_guard_look_2
+meet = no_meet
+on_info = {+gar_sv_vrag} %=killactor%, {+gar_sv_dialog_done} walker@gar_loki_guard_2_to_end
+
+[walker@gar_loki_guard_2_to_end]
+path_walk = gar_svoboda_away_walk
+on_actor_dist_ge_nvis = 130| %+dell_loki_guard_2%

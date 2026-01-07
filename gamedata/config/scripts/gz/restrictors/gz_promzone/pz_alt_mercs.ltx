@@ -1,0 +1,25 @@
+[logic]
+active = sr_idle@01
+
+[sr_idle@01]
+on_info = {+pz_alt_mercs_grif_dialog_done} sr_idle@02
+
+[sr_idle@02]
+on_game_timer = 100|%+pz_alt_mercs_sms1% sr_idle@03
+
+[sr_idle@03]
+on_game_timer = 70|%+pz_alt_mercs_sms2% sr_idle@1
+
+[sr_idle@1]
+on_info = {+pz_alt_mercs_volkodav_dialog_done} %=run_postprocess(agr_u_fade:01:false) =disable_ui% sr_idle@21
+
+[sr_idle@21]
+on_timer = 5000|%=teleport_actor(pz_alt_mercs_volkodav_look:pz_alt_mercs_volkodav_stay) =enable_ui% sr_idle@2
+
+[sr_idle@2]
+on_info = {+pz_alt_mercs_killer1_dead +pz_alt_mercs_killer2_dead +pz_alt_mercs_killer3_dead +pz_rob_merclager_docs_done} %+pz_alt_mercs_done% sr_idle@3
+
+[sr_idle@3]
+on_info = {+pz_rob_merclager_docs_complete} %-pz_dell_borman% sr_idle@nil
+
+[sr_idle@nil]

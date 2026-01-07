@@ -1,0 +1,24 @@
+[logic]
+active = ph_door@locked
+
+[ph_door@locked]
+locked = true
+closed = true
+on_info = {+greh_guard_key_have} %+dv_gb_prisoner_door_done =play_snd(device\metal_small_open)% ph_door@open
+
+[ph_door@close]
+locked = false
+closed = true
+snd_open_start = trader_door_locked
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_use = ph_door@open
+
+[ph_door@open]
+locked = false
+closed = false
+snd_open_start = trader_door_locked
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_use = ph_door@close
+

@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+bekas_cover_night} sr_idle, {+bekas_cover_now} sr_idle
+
+[sr_idle]
+on_actor_inside = {-dv_bekas_dead_zone} %+dv_bekas_dead_zone% sr_idle2
+on_info = {+bekas_lead_done} sr_idle@nil
+
+[sr_idle2]
+on_actor_outside = {+dv_bekas_dead_zone} %-dv_bekas_dead_zone% sr_idle
+on_info = {+bekas_lead_done} sr_idle@nil
+
+[sr_idle@nil]

@@ -1,0 +1,69 @@
+[logic]
+active = walker1
+combat_ignore = combat_ignore@pz_isk
+
+[walker1]
+path_walk = pz_otis_kamp
+path_look = pz_otis_kamp_look
+def_state_standing = sit_ass
+combat_ignore_cond = {=check_fighting(71505)}
+on_info = {+pz_otis_lab_start} remark
+
+[combat_ignore@pz_isk]
+combat_ignore_cond = {=check_fighting(71505)}
+
+[remark]
+anim = guard
+target = actor
+combat_ignore_cond = {=check_fighting(71505)}
+on_info = {+pz_otis_lab_run} walker
+
+[walker]
+path_walk = pz_otis_to_lab_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+combat_ignore_cond = {=check_fighting(71505)}
+meet = no_meet
+danger = danger_condition@scout
+on_signal = otis |  %+pz_otis_lab_enter% remark2
+
+[remark2]
+anim = guard
+target = actor
+on_info = {+pz_open_start} walker21
+
+[walker21]
+path_walk = pz_otis_lab_open_stay
+path_look = pz_otis_lab_open_look
+meet = no_meet
+on_signal = labin | remark212 
+
+[remark212]
+anim = guard
+target = pz_otis_lab_open_look, 0
+snd = otis_01
+;target = actor
+on_signal = sound_end|%+pz_open_start_sms% walker2
+
+[walker2]
+path_walk = pz_otis_lab_open_stay
+path_look = pz_otis_lab_open_look
+meet = no_meet
+def_state_standing = probe
+on_game_timer = 120 | %=play_snd(device\decoder)% remark3
+
+[remark3]
+anim = guard
+target = nil
+snd = otis_02
+meet = no_meet
+on_signal = sound_end|%+pz_otis_lab_open_done% remark4
+
+[remark4]
+anim = guard
+target = nil
+
+
+[danger_condition@scout]
+ignore_distance       = 5

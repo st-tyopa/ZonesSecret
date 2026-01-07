@@ -1,0 +1,29 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker1
+
+[walker1]
+path_walk = blokpost_lider_walk
+path_look = blokpost_lider_look
+meet = meet1
+reactions = ignore
+danger = danger_condition
+
+[remark1]
+target = actor
+anim = guard
+meet = meet1
+
+[danger_condition]
+ignore_distance = 5
+
+[meet1]
+meet_state = 50| hello@talk_hello| 20| wait@wait| 10| ward@wait
+meet_state_wpn = 50| hello@talk_hello| 20| threat@threat_weap
+victim = 50| actor
+victim_wpn = 50| actor
+use = true
+use_wpn = false
+

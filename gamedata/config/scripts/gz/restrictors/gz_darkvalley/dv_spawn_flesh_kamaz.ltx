@@ -1,0 +1,7 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {+prisoner_quest_start -prisoner_tainik_sv_done} %=spawn_item_in_box(21516:prisoners_flesh)% sr_idle@nil
+
+[sr_idle@nil]

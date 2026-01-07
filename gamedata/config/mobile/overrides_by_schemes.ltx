@@ -1,0 +1,180 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; параметры с поддержкой auto_section (автоматическое создание указанных в нём секций)
+;; в значениях указываются исключения, на которые auto_section не распространяется
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[auto_sections]
+on_info     =
+on_death    = 
+on_timer    = 
+on_use      = 
+on_hit      = 
+on_combat   = 
+danger      = 
+wounded     = 
+meet        = no_meet
+active      = 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; bases sections (abstracts)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[base_over]
+override = true
+
+[overrides]
+on_info                = string    ;если ... то ...
+on_trader              = string  ;file_name
+on_timer               = string  ;number|если ... то ...
+info               	   = string
+actor_dialogs          = string
+on_death           = + {death}
+on_use             = + {use}
+on_hit             = + {hit}
+danger             = + {danger}
+on_combat          = + {combat}
+wounded            = + {wounded}
+meet               = + {meet, no_meet}
+heli_hunter        = + {heli_hunter}
+combat_ignore      = + {combat_ignore}
+combat_ignore_cond     = string ;условие игнорирования
+
+[base_path]
+path_walk = string ;all.spawn>>way
+path_look = string ;all.spawn>>way
+
+[base_def_state_stand]
+def_state_standing = "state_lib.states"
+
+[base_def_state_move]
+def_state_moving   = "state_lib.states"
+
+[base_def_state_move_123]
+def_state_moving1 = "state_lib.states"
+def_state_moving2 = "state_lib.states"
+def_state_moving3 = "state_lib.states"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; uses schemes (юзаемые схемы)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[logic]:overrides
+active = "stypes" - {wounded, danger, heli_hunter, hit, combat, use, death, meet}
+cfg = string
+
+[walker]:base_path, base_def_state_stand, base_def_state_move_123, overrides
+team                        = string
+sound_idle              = "sound_theme.theme"
+
+[follower]:overrides
+leader                      = string
+anim_walk               = "state_lib.states"
+anim_run                = "state_lib.states"
+anim_sprint             = "state_lib.states"
+formation_line              = bool
+distance                    = number
+snd                     = "sound_theme.theme"
+state_if_leader_in_meet = "state_lib.states"
+stub_for_corpse             = bool
+dont_change_job             = bool
+
+[camper]:base_path, base_def_state_stand, base_def_state_move, overrides
+sniper                      = bool
+no_retreat                  = bool
+shoot                    = {always, none, terminal}
+radius                      = number
+def_state_moving_fire    = "state_lib.states"
+def_state_campering      = "state_lib.states"
+def_state_campering_fire = "state_lib.states"
+scantime_free               = number
+attack_sound             = "sound_theme.theme" + {false}
+enemy_idle                  = number
+
+[kamp]:base_def_state_move, overrides
+center_point                = string ;all.spawn>>way
+radius                      = number
+
+[patrol]:base_path, base_def_state_stand, base_def_state_move_123, overrides
+formation               = + {line, back, around}
+move_type               = "state_lib.states"
+animation               = "state_lib.states"
+commander                   = bool
+
+[remark]:overrides
+snd_anim_sync               = bool
+snd                     = "sound_theme.theme"
+anim                    = "state_lib.states"
+tips                    = "news_manager.news"
+tips_sender             = "news_manager.tips_icons"
+anim_reset                  = bool
+target                  = game_story_ids.ltx | story_ids + {actor, nil}
+
+[rest]:overrides
+path_rest                   = string
+
+[sleeper]:overrides
+path_main                   = string
+wakeable                    = bool
+
+[test]:base_path, overrides
+team = string
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; uses schemes by overrides (юзаемые схемы оверрайдов)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[heli_hunter]:base_over
+dist                        = number         ;расстояние на котором вертолёт может быть атакован
+actor_dist                  = number   ;расстояние на котором актор может быть атакован
+
+[hit]:base_over
+on_info                     = string   ;если ... то ... (or) то ...
+
+[combat]:base_over
+combat_type             = + {nil, camper, monolith, zombied}
+on_info                     = string
+
+[combat_ignore]:base_over
+
+[use]:base_over
+on_info = string
+
+[death]:base_over
+on_info = string   ;если ... то ... (or) то ...
+on_info2 = string  ;если ... то ... (or) то ...
+
+[wounded]:base_over
+hp_state          = string
+hp_state_see      = string
+psy_state         = string
+hp_victim         = string
+hp_cover          = string
+hp_fight          = string
+syndata           = string
+help_dialog       = string
+help_start_dialog = string
+use_medkit        = bool
+
+[meet]:base_over
+meet_state     = string
+meet_state_wpn = string
+init_meet      = string
+victim         = string
+victim_wpn     = string
+use            = bool
+use_wpn        = bool
+meet_dialog    = string
+zone           = string
+synpairs       = string
+precond        = string
+abuse          = bool
+
+[danger]:base_over
+ignore_types                  = string
+ignore_distance               = number
+ignore_distance_grenade       = number
+ignore_distance_corpse        = number
+ignore_distance_hit           = number
+ignore_distance_sound         = number
+danger_inertion_time_grenade  = number
+danger_inertion_time_corpse   = number
+danger_inertion_time_hit      = number
+danger_inertion_time_sound    = number
+danger_inertion_time_ricochet = number

@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {!is_day} sr_tip
+
+[sr_tip]
+name = gz_yan_bunker_zombie_sos
+type = tips
+single = true
+on_signal = tip_sended| sr_idle@end %+yan_bunker_scene_start%
+
+[sr_idle@end]
+

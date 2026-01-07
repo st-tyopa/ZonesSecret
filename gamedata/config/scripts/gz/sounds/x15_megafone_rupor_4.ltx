@@ -1,0 +1,18 @@
+[logic]
+active = ph_idle
+on_hit = hit
+
+[hit]
+on_info = %+x15_rupor_4_off%
+
+[ph_idle]
+on_info = {+x15_switcher_on -x15_rupor_4_off =actor_in_zone(labx15_rupor_4_zone)} ph_sound@alarm
+on_info2 = {+x15_switcher_on +x15_rupor_4_off =actor_in_zone(labx15_rupor_4_zone)} ph_idle@off
+
+[ph_sound@alarm]
+snd = x15_megafone_alarm
+looped = true
+on_info = {+x15_rupor_4_off =actor_in_zone(labx15_rupor_4_zone)} ph_idle@off
+on_info2 = {+x15_switcher_on -x15_rupor_4_off !actor_in_zone(labx15_rupor_4_zone)} ph_idle
+
+[ph_idle@off]

@@ -1,0 +1,56 @@
+[logic]
+active = walker@idle
+on_death = death
+
+[death]
+on_info = %+hunt_2_dead%
+
+[walker@idle]
+path_walk = ds_hunt_2_stay
+path_look = ds_hunt_2_look
+on_info = {+ds_hunt_dialog_1_done} walker@ds_hunt_walk, {+ds_hunt_start_alone} walker@ds_hunt_start
+
+[walker@ds_hunt_walk]
+path_walk = ds_hunt2_walk
+on_signal = end | walker@ds_hunt_2_stay_2
+meet = no_meet
+danger = danger_condition@scout
+
+[walker@ds_hunt_2_stay_2]
+path_walk = ds_hunt_2_stay_2
+path_look = ds_hunt_2_look_2
+meet = no_meet
+on_info = {+ds_hunt_dialog_2_done} walker@ds_hunt_start
+
+[walker@ds_hunt_start]
+path_walk = ds_hunt2_start
+danger = danger_condition@scout_2
+meet = no_meet
+on_signal = end| remark@wait
+on_info = {+kill_ds_krovo_1 -hunt_1_dead} kamp@ds_hunts, {+kill_ds_krovo_1 +hunt_1_dead} walker@ds_hunts
+
+[remark@wait]
+anim = hide
+target = ds_mob_home_krovo, 0
+meet = no_meet
+on_info = {+kill_ds_krovo_1 -hunt_1_dead} kamp@ds_hunts, {+kill_ds_krovo_1 +hunt_1_dead} walker@ds_hunts
+
+[walker@ds_hunts]
+path_walk = ds_hunt_nagrada_stay
+path_look = ds_hunt_nagrada_look
+on_info = {+ds_hunt_krovo_done} remark@ds_hunt_2
+
+[remark@ds_hunt_2]
+anim = guard
+target = actor
+on_timer = 17000| kamp@ds_hunts
+
+[kamp@ds_hunts]
+path_walk = ds_hunt_2_kamp
+center_point = ds_hunt_kamp_center
+
+[danger_condition@scout]
+ignore_distance       = 1
+
+[danger_condition@scout_2]
+ignore_distance       = 15

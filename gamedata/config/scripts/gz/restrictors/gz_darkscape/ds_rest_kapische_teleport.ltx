@@ -1,0 +1,21 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+kapishce_teleport_start} sr_teleport	;если есть поршень на активация - переключаемся на телепорт
+
+[sr_teleport]
+point1 = ds_kap_teleport_walk1
+look1 = ds_kap_teleport_look1
+prob1 = 20
+point2 = ds_kap_teleport_walk2
+look2 = ds_kap_teleport_look1
+prob2 = 20
+point3 = ds_kap_teleport_walk3
+look3 = ds_kap_teleport_look1
+prob3 = 20
+point4 = ds_kap_teleport_walk4
+look4 = ds_kap_teleport_look1
+prob4 = 20
+timeout = 0
+on_info = {+kapishce_teleport_cancel} nil	;если есть поршень на отключение - уходим в нил

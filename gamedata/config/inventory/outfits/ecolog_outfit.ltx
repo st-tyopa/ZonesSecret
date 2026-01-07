@@ -1,0 +1,55 @@
+[ecolog_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "outfit\ecolog_outfit"
+$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = equipments\ecolog_suit.ogf	
+actor_visual	= actors\hero\stalker_ecolog.ogf
+
+texture_arm = act_arm_ecol_o
+
+ef_equipment_type	= 2
+
+inv_name			= ecolog_outfit_name
+inv_name_short		= ecolog_outfit_name
+description			= ecolog_outfit_description
+inv_weight			= 4.0
+slot				= 6
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 18
+inv_grid_y			= 13
+full_icon_name		= npc_icon_ecolog_outfit
+;;;nightvision_sect	= effector_nightvision_good
+
+cost				= 15000
+full_scale_icon		= 14,6			;иконка сталкера в костюме в полный рост
+artefact_count = 2
+immunities_sect			= sect_ecolog_outfit_immunities
+
+
+; HIGH RESISTANCE
+burn_protection 				= 0.9
+strike_protection 				= 0.5
+shock_protection 				= 0.9
+wound_protection				= 0.15
+radiation_protection 			= 0.9
+telepatic_protection 			= 0.0
+chemical_burn_protection 		= 0.9
+explosion_protection 			= 0.4
+fire_wound_protection  			= 0.20
+
+bones_koeff_protection = kurtka_kupol_damage
+
+[sect_ecolog_outfit_immunities]
+burn_immunity				= 0.005			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.01
+shock_immunity				= 0.005
+wound_immunity				= 0.025
+radiation_immunity			= 0.00
+telepatic_immunity			= 0.00
+chemical_burn_immunity		= 0.005
+explosion_immunity			= 0.03
+fire_wound_immunity			= 0.015

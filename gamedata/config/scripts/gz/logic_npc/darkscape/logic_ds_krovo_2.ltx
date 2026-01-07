@@ -1,0 +1,11 @@
+[logic]
+active = mob_home
+on_death = mob_death
+
+[mob_home]
+path_home = ds_mob_home_krovo
+home_min_radius = 5
+home_max_radius = 40
+
+[mob_death]
+on_info = {+ds_hunt_dialog_1_done -ds_hunt_start_alone} %+kill_ds_krovo_2 =ds_bloodsucker_all_dead%, {-ds_hunt_dialog_1_done +ds_hunt_start_alone} %+kill_ds_krovo_2 =ds_bloodsucker_all_dead%, {-ds_hunt_dialog_1_done -ds_hunt_start_alone} %+kill_ds_krovo%

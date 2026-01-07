@@ -1,0 +1,7 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_inside = {+dialog_osvedomel_infa_done +go_to_scien_assist_start +have_pda_predat} %+rf_osvedomel_meet_start% sr_idle@nil
+
+[sr_idle@nil]

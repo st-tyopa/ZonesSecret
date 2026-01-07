@@ -1,0 +1,364 @@
+local ini = system_ini()
+local SiD_list = {}
+
+--//Какие костюмы могут выпасть. Цифра - ранг НПС
+local outfit_list = {
+["bandit_outfit"] = 1,
+["novice_outfit"] = 1,
+["stalker_outfit"] = 2,
+["scientific_outfit"] = 3,
+["bandit_veteran_outfit"] = 3,
+["svoboda_light_outfit"] = 2,
+["dolg_outfit"] = 2,
+["ecolog_outfit"] = 3,
+["killer_outfit"] = 3,
+["military_outfit"] = 3,
+["protection_outfit"] = 4,
+["specops_outfit"] = 3,
+["svoboda_heavy_outfit"] = 3,
+["dolg_scientific_outfit"] = 4
+}
+
+--//Какие стволы могут выпасть. Цифра - ранг НПС
+local weapon_list = {
+["wpn_val"] = 4,
+["wpn_ak74"] = 3,
+["wpn_ak74u"] = 2,
+["wpn_ak105"] = 3,
+["wpn_akm"] = 3,
+["wpn_g3"] = 3,
+["wpn_galil"] = 3,
+["wpn_pps"] = 2,
+["wpn_glock"] = 2,
+["wpn_python"] = 3,
+["wpn_bizon"] = 2,
+["wpn_g36"] = 4,
+["wpn_hk416"] = 3,
+["wpn_mp5"] = 2,
+["wpn_rpk"] = 4,
+["wpn_beretta"] = 2,
+["wpn_colt1911"] = 2,
+["wpn_desert_eagle"] = 3,
+["wpn_fort"] = 2,
+["wpn_groza"] = 3,
+["wpn_pm"] = 1,
+["wpn_sig220"] = 2,
+["wpn_tt33"] = 1,
+["wpn_mp153"] = 2,
+["wpn_mp155"] = 3,
+["wpn_bm16"] = 1,
+["wpn_saiga12c"] = 3,
+["wpn_sks"] = 2,
+["wpn_spas12"] = 3,
+["wpn_toz34"] = 2,
+["wpn_vintorez"] = 3,
+["wpn_svd"] = 4,
+["wpn_svu"] = 4,
+["wpn_detonator"] = 2
+}
+--//Какие взрывные могут выпасть. Цифра - максимальное количество в тайнике
+local explode_list = {
+["grenade_f1"] = 5,
+["grenade_rgd5"] = 5,
+["wpn_c4"] = 2
+}
+--//Какие предметы могут выпасть. Цифра - максимальное количество в тайнике
+local items_list = {
+["bread"] = 5,
+["conserva"] = 5,
+["energy_drink"] = 5,
+["kolbasa"] = 5,
+["water"] = 7,
+["vodka"] = 6,
+["antirad"] = 5,
+["bandage"] = 10,
+["drug_coagulant"] = 3,
+["drug_booster"] = 2,
+["medkit"] = 5,
+["medkit_army"] = 5,
+["medkit_scientic"] = 5,
+["drug_psy_blockade"] = 2,
+["drug_radioprotector"] = 3,
+["power_core"] = 5,
+["gazmask_helm"] = 1,
+["filter"] = 3
+}
+
+local pnv_list = {
+"pnv_bad",
+"pnv_sred",
+"pnv_good"
+}
+
+local treasure_SID = {
+ -- Нужно заполнить таблицу SID'ов образец ниже. Последняя строка без запятой в конце. Описание зарегистрировать в текстовом файле text\rus\gz_treasure_description.xml
+ --  story id     локация          описание 
+ ["10800"] = {"gz_darkscape", "description_0001"},
+ ["10801"] = {"gz_darkscape", "description_0002"},
+ ["10802"] = {"gz_darkscape", "description_0003"},
+ ["10803"] = {"gz_darkscape", "description_0004"},
+ ["10804"] = {"gz_darkscape", "description_0005"},
+ ["10805"] = {"gz_darkscape", "description_0006"}, 
+ ["10806"] = {"gz_darkscape", "description_0007"}, 
+ ["10807"] = {"gz_darkscape", "description_0008"},
+ ["10808"] = {"gz_darkscape", "description_0009"},
+ ["10809"] = {"gz_darkscape", "description_0010"},
+ ["10810"] = {"gz_darkvalley", "description_0011"},
+ ["10811"] = {"gz_darkvalley", "description_0012"},
+ ["10812"] = {"gz_darkvalley", "description_0013"},
+ ["10813"] = {"gz_darkvalley", "description_0014"},
+ ["10814"] = {"gz_darkvalley", "description_0015"},
+ ["10815"] = {"gz_darkvalley", "description_0016"},
+ ["10816"] = {"gz_darkvalley", "description_0017"},
+ ["10817"] = {"gz_darkvalley", "description_0018"},
+ ["10818"] = {"gz_darkvalley", "description_0019"},
+ ["10819"] = {"gz_darkvalley", "description_0020"},
+ ["10820"] = {"gz_darkvalley", "description_0021"},
+ ["10821"] = {"gz_darkvalley", "description_0022"},
+ ["10822"] = {"gz_darkvalley", "description_0023"},
+ ["10823"] = {"gz_darkvalley", "description_0024"},
+ ["10824"] = {"gz_darkvalley", "description_0025"},
+ ["10825"] = {"gz_garbage1935", "description_0026"},
+ ["10826"] = {"gz_garbage1935", "description_0027"},
+ ["10827"] = {"gz_garbage1935", "description_0028"},
+ ["10828"] = {"gz_garbage1935", "description_0029"},
+ ["10829"] = {"gz_garbage1935", "description_0030"},
+ ["10830"] = {"gz_garbage1935", "description_0031"},
+ ["10831"] = {"gz_garbage1935", "description_0032"},
+ ["10832"] = {"gz_garbage1935", "description_0033"},
+ ["10833"] = {"gz_garbage1935", "description_0034"},
+ ["10834"] = {"gz_garbage1935", "description_0035"},
+ ["10835"] = {"gz_garbage1935", "description_0036"},
+ ["10836"] = {"gz_garbage1935", "description_0037"},
+ ["10837"] = {"gz_garbage1935", "description_0038"},
+ ["10838"] = {"gz_garbage1935", "description_0039"},
+ ["10839"] = {"gz_garbage1935", "description_0040"},
+ ["10840"] = {"gz_agroprom", "description_0041"},
+ ["10841"] = {"gz_agroprom", "description_0042"},
+ ["10842"] = {"gz_agroprom", "description_0043"},
+ ["10843"] = {"gz_agroprom", "description_0044"},
+ ["10844"] = {"gz_agroprom", "description_0045"},
+ ["10845"] = {"gz_agroprom", "description_0046"},
+ ["10846"] = {"gz_agroprom", "description_0047"},
+ ["10847"] = {"gz_agroprom", "description_0048"},
+ ["10848"] = {"gz_agroprom", "description_0049"},
+ ["10849"] = {"gz_agroprom", "description_0050"},
+ ["10850"] = {"gz_agroprom", "description_0051"},
+ ["10851"] = {"gz_agroprom", "description_0052"},
+ ["10852"] = {"gz_agroprom", "description_0053"},
+ ["10853"] = {"gz_agroprom", "description_0054"},
+ ["10854"] = {"gz_agroprom", "description_0055"},
+ ["10855"] = {"gz_red_forest", "description_0056"},
+ ["10856"] = {"gz_red_forest", "description_0057"},
+ ["10857"] = {"gz_red_forest", "description_0058"},
+ ["10858"] = {"gz_red_forest", "description_0059"},
+ ["10859"] = {"gz_red_forest", "description_0060"},
+ ["10860"] = {"gz_red_forest", "description_0061"},
+ ["10861"] = {"gz_red_forest", "description_0062"},
+ ["10862"] = {"gz_red_forest", "description_0063"},
+ ["10863"] = {"gz_red_forest", "description_0064"},
+ ["10864"] = {"gz_red_forest", "description_0065"},
+ ["10865"] = {"gz_red_forest", "description_0066"},
+ ["10866"] = {"gz_red_forest", "description_0067"},
+ ["10867"] = {"gz_red_forest", "description_0068"},
+ ["10868"] = {"gz_red_forest", "description_0069"},
+ ["10869"] = {"gz_red_forest", "description_0070"},
+ ["10870"] = {"gz_yantar", "description_0071"},
+ ["10871"] = {"gz_yantar", "description_0072"},
+ ["10872"] = {"gz_yantar", "description_0073"},
+ ["10873"] = {"gz_yantar", "description_0074"},
+ ["10874"] = {"gz_yantar", "description_0075"},
+ ["10875"] = {"gz_yantar", "description_0076"},
+ ["10876"] = {"gz_yantar", "description_0077"},
+ ["10877"] = {"gz_yantar", "description_0078"},
+ ["10878"] = {"gz_yantar", "description_0079"},
+ ["10879"] = {"gz_yantar", "description_0080"},
+ ["10880"] = {"gz_yantar", "description_0081"},
+ ["10881"] = {"gz_yantar", "description_0082"},
+ ["10882"] = {"gz_yantar", "description_0083"},
+ ["10883"] = {"gz_yantar", "description_0084"},
+ ["10884"] = {"gz_yantar", "description_0085"},
+ ["10885"] = {"gz_promzone", "description_0086"},
+ ["10886"] = {"gz_promzone", "description_0087"},
+ ["10887"] = {"gz_promzone", "description_0088"},
+ ["10888"] = {"gz_promzone", "description_0089"},
+ ["10889"] = {"gz_promzone", "description_0090"},
+ ["10890"] = {"gz_promzone", "description_0091"},
+ ["10891"] = {"gz_promzone", "description_0092"},
+ ["10892"] = {"gz_promzone", "description_0093"},
+ ["10893"] = {"gz_promzone", "description_0094"},
+ ["10894"] = {"gz_promzone", "description_0095"},
+ ["10895"] = {"gz_promzone", "description_0096"},
+ ["10896"] = {"gz_promzone", "description_0097"},
+ ["10897"] = {"gz_promzone", "description_0098"},
+ ["10898"] = {"gz_promzone", "description_0099"},
+ ["10899"] = {"gz_promzone", "description_0100"}
+}
+
+--//Необходимый ранг владельца тайника 
+local map_to_rank_list = {
+ ["gz_darkscape"] = 1,
+ ["gz_darkvalley"] = 1,
+ ["gz_garbage1935"] = 2,
+ ["gz_agroprom"] = 2,
+ ["gz_agroprom_underground"] = 2,
+ ["gz_yantar"] = 3,
+ ["gz_red_forest"] = 3,
+ ["gz_promzone"] = 4,
+ ["gz_labx13"] = 4
+}
+
+function spawn_random_item(rank)
+  local tbl = {}
+ -- //Разбираемся с оружием, аддонами и снарядами
+ if math.random(0,100) > 60 then --//Вероятность выпадения ствола 40%
+  local weapon_true = {}
+  for key, value in pairs(weapon_list) do
+   if value == rank or value == rank - 1 then
+    table.insert(weapon_true, key)
+   end
+  end
+  local weapon = weapon_true[table.random(weapon_true)]
+  table.insert(tbl, weapon)
+  for i=1, math.random(1, rank) do
+   if ini:line_exist(weapon, "ammo_class") then --\\ Спавним патроны если надо.
+    local ammo_class = ini:r_string(weapon, "ammo_class")
+    local ammo_list = string.split(ammo_class, 1, ",")
+    local rnd_ammo = math.random(1,#ammo_list)
+    table.insert(tbl,ammo_list[table.random(ammo_list)])
+   end
+  end 
+   if rank > 2 then --//Даём аддоны на ствол:
+    if ini:line_exist(weapon, "scope_name") and ini:line_exist(weapon, "scope_status") and math.random(0,100) > 75 then
+     local scope = ini:r_string(weapon, "scope_name")
+	 local scope_status = ini:r_s32(weapon, "scope_status")
+     if scope_status == 2 then
+	  table.insert(tbl,scope)
+	 end
+    end
+	if ini:line_exist(weapon, "silencer_name") and ini:line_exist(weapon, "silencer_status") and math.random(0,100) > 75 then
+     local sil = ini:r_string(weapon, "silencer_name")
+	 local sil_status = ini:r_s32(weapon, "silencer_status")
+     if sil_status == 2 then
+	  table.insert(tbl,sil)
+	 end
+    end
+	if ini:line_exist(weapon, "grenade_launcher_name") and ini:line_exist(weapon, "grenade_launcher_status") and math.random(0,100) > 75 then
+     local grl = ini:r_string(weapon, "grenade_launcher_name")
+	 local grl_status = ini:r_s32(weapon, "grenade_launcher_status")
+     if grl_status == 2 then --//Ну раз дали подствол, то и патронов кинем:
+	  table.insert(tbl,grl)
+	   for i=1, math.random(1, 2*rank) do
+	    if ini:line_exist(weapon, "grenade_class") then --\\ Спавним патроны если надо.
+         local grenade_class = ini:r_string(weapon, "grenade_class")
+         local grenade_class_list = string.split(grenade_class, 1, ",")
+         local rnd_grenade_class_list = math.random(1,#grenade_class_list)
+         table.insert(tbl,grenade_class_list[table.random(grenade_class_list)])
+        end
+	   end
+	  end
+     end
+    end
+ end
+ -- //Разбираемся с бронежилетом
+  if math.random(0,100) > 70 then --//Вероятность выпадения ствола 30%
+  local outfit_true = {}
+   for key, value in pairs(outfit_list) do
+    if value == rank or value == rank - 1 then
+     table.insert(outfit_true, key)
+    end
+   end
+   local outfit = outfit_true[table.random(outfit_true)]
+   table.insert(tbl, outfit)
+ end 
+ -- //Разбираемся с ПНВ
+ if math.random(0,100) > 70 then --//Вероятность выпадения ствола 30%
+   local pnv = pnv_list[table.random(pnv_list)]
+   table.insert(tbl, pnv)
+ end
+ -- //Разбираемся с предметами
+ local item_count = math.random(1, 2*rank)
+ local item_last = "nice"
+ for i = 1, item_count, 1 do
+  local item = table.random(items_list)
+  if item ~= item_last then
+   local rnd_q = items_list[item]
+   local rnd_n = math.random(1,rnd_q)
+    for i = 1, rnd_n, 1 do
+     table.insert(tbl, item)
+    end
+   item_last = item
+  end
+ end
+ -- //Разбираемся с взрывоопасным
+ if rank >= 2 and math.random(0,100) > 50 then
+  local expl_count = math.random(1, rank)
+  local expl_last = "nice"
+   for i = 1, expl_count, 1 do
+    local expl = table.random(explode_list)
+	if expl ~= expl_last then
+     local rnd_q = explode_list[expl]
+     local rnd_n = math.random(1,rnd_q)
+      for i = 1, rnd_n, 1 do
+       table.insert(tbl, expl)
+      end
+	 expl_last = expl
+	end
+    end
+ end
+
+ return tbl
+end
+
+function spawn_box(rank)     
+ for key, value in pairs(treasure_SID) do
+  log1("Отладочное сообщение: "..tostring(map_to_rank_list).." ,"..tostring(value[1]).." ,"..tostring(map_to_rank_list[value[1]]).." ,"..tostring(rank).." ,"..tostring(key).." ,"..tostring(sid_used[key]))
+  if map_to_rank_list[value[1]] <= rank and not sid_used[key] then
+   table.insert(SiD_list, key) --//Создадим массив СИДОВ, которые нам доступны
+  end
+ end
+   
+ if #SiD_list > 0 then --Есть хотя бы один пустой доступный тайник.
+  local treasure
+  local sid_status = false
+   while sid_status == false do
+    treasure = SiD_list[table.random(SiD_list)]
+    if not sid_used[treasure] then sid_status = true else sid_status = false end
+   end
+  local treasure_d = game.translate_string(treasure_SID[treasure][2])
+  local obj = alife():story_object(tonumber(treasure))
+  if obj ~= nil then
+   level.map_add_object_spot_ser(obj.id, "treasure", tostring(treasure_d))
+   gz_caches_map_tip()
+   local item_list = spawn_random_item(rank)
+    for i = 1, #item_list, 1 do
+     alife():create(item_list[i], obj.position, obj.m_level_vertex_id, obj.m_game_vertex_id, obj.id)
+    end
+  else
+   log1("SID тайника некорректен! SID = "..treasure)
+  end
+  sid_used[treasure] = true
+  SiD_list = {}
+ else
+  log1("Warning: закончились тайники для НПС "..rank.." ранга")
+ end
+end
+
+--' Снимаем отметку с тайника
+function take_item_from_box(box, item)
+ level.map_remove_object_spot(box:id(), "treasure")
+end
+
+function gz_caches_map_tip()
+ news_manager.send_tip(db.actor, "%c[255,255,128,128] \\n%c[255,255,0,0] Новая отметка тайника на карте.", 0, "cache_map", 25000)
+ local snd = sound_object([[device\pda\pda_news]]) 
+ snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+end
+
+function net_spawn()
+ sid_used = gz_utils.load_table("sid_used", {})
+end
+
+function on_before_save()
+ gz_utils.save_table("sid_used", sid_used)
+end

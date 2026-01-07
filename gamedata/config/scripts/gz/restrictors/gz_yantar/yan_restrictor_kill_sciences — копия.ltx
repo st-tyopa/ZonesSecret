@@ -1,0 +1,20 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+prisoner_yan_spawn -yan_sciences_kill} sr_idle@2 %+yan_sciences_kill =yan_sniper_merc_message_1_1 =del_yan_scienlider%
+
+[sr_idle@2]
+on_timer = 4000| sr_idle@3 %=yan_sniper_merc_message_1_2%
+
+[sr_idle@3]
+on_timer = 6000| sr_idle@4 %=yan_sniper_merc_message_1_3% 
+
+[sr_idle@4]
+on_timer = 12000| %+back_to_scien_lager_fail% sr_idle@5
+
+[sr_idle@5]
+on_timer = 2000| %=yan_sniper_merc_message_1_4% sr_idle@6
+
+[sr_idle@6]
+on_timer = 10000| nil %+find_scien_in_underground_start%

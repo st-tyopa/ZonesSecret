@@ -1,0 +1,1021 @@
+;--------------------------------------------------------------------------
+;-- логика персонажей
+;--------------------------------------------------------------------------
+
+;--------------------------------------------------------------------------
+;-- Лагерь Сталкеров
+;--------------------------------------------------------------------------
+;--------------------------------------------------------------------------
+
+;-- Торговец
+;--день, вечер
+[logic@ds_neutlager_trader_walk1]
+active = walker@ds_neutlager_trader_walk1
+trade = misc\soz_traders\trade_dsneutlager_trader.ltx
+inv_max_weight = 10000
+on_hit = hit@ds_neutlager
+
+[hit@ds_neutlager]
+on_info = %+ds_neutlager_enemy%
+
+[walker@ds_neutlager_trader_walk1]
+path_walk = trader_walk1
+path_look = trader_look1
+def_state_standing = wait_trade
+meet = meet@ds_neutlager_at_trade
+on_info = {=actor_out_zone(ds_neutlager_trader_tradezone)} walker@ds_neutlager_trader_walk2
+
+[walker@ds_neutlager_trader_walk2]
+path_walk = trader_walk2
+meet = meet@ds_neutlager_at_trade
+def_state_moving = walk
+on_info = {=actor_in_zone(ds_neutlager_trader_tradezone)} walker@ds_neutlager_trader_walk1
+
+[meet@ds_neutlager_at_trade]
+meet_state = 2|wait@talk_hello
+meet_state_wpn = 2|wait@talk_hello
+victim = 2|actor
+victim_wpn = 2|actor
+use = true
+use_wpn = true
+
+;--Ночь, утро
+[logic@ds_neutlager_trader_sleep]
+active = sleeper@ds_neutlager_trader
+on_hit = hit@ds_neutlager
+
+[sleeper@ds_neutlager_trader]
+path_main = trader_sleeper
+meet = no_meet
+;-----------------------------------------
+
+;--Механик
+[logic@ds_neutlager_mehanic_walk1]
+active = walker@ds_neutlager_mehanic_walk1
+trade = misc\soz_traders\trade_dsneutlager_mehanic.ltx
+inv_max_weight = 10000
+on_hit = hit@ds_neutlager
+
+[walker@ds_neutlager_mehanic_walk1]
+path_walk = mehanic_walk1
+path_look = mehanic_look1
+def_state_standing = stul_new
+;-------------------------------------------
+
+;--Доктор
+[logic@ds_neutlager_doctor_walk1]
+active = walker@ds_neutlager_doctor_walk1
+trade = misc\soz_traders\trade_dsneutlager_doctor.ltx
+on_hit = hit@ds_neutlager
+inv_max_weight = 10000
+
+[walker@ds_neutlager_doctor_walk1]
+path_walk = doctor_walk1
+path_look = doctor_look1
+def_state_standing = stul_new
+;-------------------------------------------
+
+;--Раненный диггер
+[logic@ds_neutlager_woundeddigger_walk1]
+active = walker@ds_neutlager_woundeddigger_walk1
+on_hit = hit@ds_neutlager
+
+[walker@ds_neutlager_woundeddigger_walk1]
+path_walk = woundeddigger_walk1
+path_look = woundeddigger_look1
+def_state_standing = bar_fas
+soundgroup = bar_visitors1
+meet = meet@ds_neutlager_wounddigger
+
+[meet@ds_neutlager_wounddigger]
+use = true
+use_wpn = true
+meet_talk_enabled = true
+meet_state = guard
+
+;-------------------------------------------
+
+;--Бармен
+[logic@ds_neutlager_barmen_walk1]
+active = walker@ds_neutlager_barmen_walk1
+trade = misc\soz_traders\trade_dsneutlager_barmen.ltx
+on_hit = hit@ds_neutlager
+inv_max_weight = 10000
+
+[walker@ds_neutlager_barmen_walk1]
+path_walk = barmen_walk1
+path_look = barmen_look1
+def_state_standing = wait
+on_timer = 100| walker@ds_neutlager_barmen_walk2
+
+[walker@ds_neutlager_barmen_walk2]
+path_walk = barmen_walk2
+path_look = barmen_look2
+def_state_standing = wait
+on_info = {=actor_in_zone(ds_neutlager_barman_tradezone)} walker@ds_neutlager_barmen_walk3
+
+[walker@ds_neutlager_barmen_walk3]
+path_walk = barmen_walk1
+path_look = barmen_look1
+def_state_standing = wait
+on_info = {=actor_out_zone(ds_neutlager_barman_tradezone)} walker@ds_neutlager_barmen_walk1
+
+;-------------------------------------------
+;--Охранник №0 стоячий
+;--Утро
+[logic@ds_neutlager_guard0_walk0]
+active = sleeper2@ds_neutlager
+on_hit = hit@ds_neutlager
+;--День
+[logic@ds_neutlager_guard0_walk1]
+active = walker@ds_neutlager_guard0_walk
+on_hit = hit@ds_neutlager
+;--Вечер
+[logic@ds_neutlager_guard0_walk2]
+active = walker@ds_neutlager_guard0_walk
+on_hit = hit@ds_neutlager
+;--Ночь
+[logic@ds_neutlager_guard0_walk3]
+active = sleeper2@ds_neutlager
+on_hit = hit@ds_neutlager
+;--------------------------------------------
+;--Охранник №1 стоячий
+;--Утро
+[logic@ds_neutlager_guard1_walk0]
+active = kamp@ds_neutlager_kamp1
+on_hit = hit@ds_neutlager
+;--День
+[logic@ds_neutlager_guard1_walk1]
+active = walker@ds_neutlager_guard1_walk
+on_hit = hit@ds_neutlager
+;--Вечер
+[logic@ds_neutlager_guard1_walk2]
+active = walker@ds_neutlager_guard1_walk
+on_hit = hit@ds_neutlager
+;--Ночь
+[logic@ds_neutlager_guard1_walk3]
+active = sleeper6@ds_neutlager
+on_hit = hit@ds_neutlager
+;--------------------------------------------
+;--Охранник №2 стоячий
+;--Утро
+[logic@ds_neutlager_guard2_walk0]
+active = kamp@ds_neutlager_kamp1
+on_hit = hit@ds_neutlager
+;--День
+[logic@ds_neutlager_guard2_walk1]
+active = walker@ds_neutlager_guard2_walk
+on_hit = hit@ds_neutlager
+;--Вечер
+[logic@ds_neutlager_guard2_walk2]
+active = walker@ds_neutlager_guard2_walk
+on_hit = hit@ds_neutlager
+;--Ночь
+[logic@ds_neutlager_guard2_walk3]
+active = sleeper5@ds_neutlager
+on_hit = hit@ds_neutlager
+;--------------------------------------------
+[logic@ds_neutlager_guard3_walk]
+active = walker@ds_neutlager_guard3_walk
+on_hit = hit@ds_neutlager
+;--------------------------------------------
+;--Охранник №4 (№1) стоячий
+;--Утро
+[logic@ds_neutlager_guard4_walk0]
+active = walker@ds_neutlager_guard1_walk
+on_hit = hit@ds_neutlager
+;--День
+[logic@ds_neutlager_guard4_walk1]
+active = sleeper6@ds_neutlager
+on_hit = hit@ds_neutlager
+;--Вечер
+[logic@ds_neutlager_guard4_walk2]
+active = kamp@ds_neutlager_kamp1
+on_hit = hit@ds_neutlager
+;--Ночь
+[logic@ds_neutlager_guard4_walk3]
+active = walker@ds_neutlager_guard1_walk
+on_hit = hit@ds_neutlager
+;--------------------------------------------
+;--Охранник №5 (№2) стоячий
+;--Утро
+[logic@ds_neutlager_guard5_walk0]
+active = walker@ds_neutlager_guard2_walk
+on_hit = hit@ds_neutlager
+;--День
+[logic@ds_neutlager_guard5_walk1]
+active = kamp@ds_neutlager_kamp1
+on_hit = hit@ds_neutlager
+;--Вечер
+[logic@ds_neutlager_guard5_walk2]
+active = sleeper5@ds_neutlager
+on_hit = hit@ds_neutlager
+;--Ночь
+[logic@ds_neutlager_guard5_walk3]
+active = walker@ds_neutlager_guard2_walk
+on_hit = hit@ds_neutlager
+;-----------------------------------------
+;--Охранник №6 (№0) стоячий
+;--Утро
+[logic@ds_neutlager_guard6_walk0]
+active = walker@ds_neutlager_guard0_walk
+on_hit = hit@ds_neutlager
+;--День
+[logic@ds_neutlager_guard6_walk1]
+active = sleeper2@ds_neutlager
+on_hit = hit@ds_neutlager
+;--Вечер
+[logic@ds_neutlager_guard6_walk2]
+active = sleeper2@ds_neutlager
+on_hit = hit@ds_neutlager
+;--Ночь
+[logic@ds_neutlager_guard6_walk3]
+active = walker@ds_neutlager_guard0_walk
+on_hit = hit@ds_neutlager
+
+;--------------------------------------------
+[logic@ds_neutlager_patrol1_1_walk]
+active = patrol@ds_neutlager_patrol1_1_walk
+on_hit = hit@ds_neutlager
+
+[logic@ds_neutlager_patrol1_2_walk]
+active = patrol@ds_neutlager_patrol1_2_walk
+on_hit = hit@ds_neutlager
+
+[logic@ds_neutlager_patrol1_3_walk]
+active = patrol@ds_neutlager_patrol1_3_walk
+on_hit = hit@ds_neutlager
+;--------------------------------------------
+[logic@ds_neutlager_patrol2_walk]
+active = patrol@ds_neutlager_patrol2_walk
+on_hit = hit@ds_neutlager
+;--------------------------------------------
+
+[meet@neutrals_default]
+meet_state		= 15|guard@wait
+meet_state_wpn	= 15|backoff@threat_weap
+victim		= 15|actor
+victim_wpn		= 15|actor
+use			= true
+use_wpn		= false
+
+
+
+
+
+;--------------------------------------------------------------------------
+;--блокпост бандитов лидер блокпоста (бывшие нейтралы)
+;--------------------------------------------------------------------------
+
+;-----------------------------------
+;----- Лидер бандитов на мосту ------
+;-----------------------------------
+
+[logic@ds_neutrals_blokp_leader_walk2]
+active = walker@ds_neutrals_blokp_leader_walk2
+combat_ignore = combat_ignore@esc_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit_leader
+
+[walker@ds_neutrals_blokp_leader_walk2]
+path_walk = leader_walk2
+path_look = leader_look2
+meet = meet@bandit_zoneguard
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+on_actor_dist_le_nvis = 35 | remark@ds_neutrals_blokp_leader_walk2_1
+on_info = {+ds_bridge_pass_fire} walker3@ds_neutrals_blokp_leader_walk2
+
+[remark@ds_neutrals_blokp_leader_walk2_1]
+anim = guard
+target = actor
+on_actor_dist_le_nvis = 20 | remark@ds_neutrals_blokp_leader_walk2
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+on_info = {+ds_bridge_pass_fire} walker3@ds_neutrals_blokp_leader_walk2
+
+[remark@ds_neutrals_blokp_leader_walk2]
+anim = guard
+target = actor
+snd = esc_bridge_soldiers
+on_signal = sound_end| walker2@ds_neutrals_blokp_leader_walk2
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+
+[walker2@ds_neutrals_blokp_leader_walk2]
+path_walk = leader_walk2
+path_look = leader_look2
+meet = meet@bandit_zoneguard
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+
+[walker3@ds_neutrals_blokp_leader_walk2]
+path_walk = leader_walk2
+path_look = leader_look2
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+
+
+
+[logic@ds_neutrals_blokp_leader_walk]
+active = walker@ds_neutrals_blokp_leader_walk
+combat_ignore = combat_ignore@esc_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[walker@ds_neutrals_blokp_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+meet = meet@bandit_zoneguard
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+on_actor_dist_le = 25| remark@ds_neutrals_blokp_leader_walk2
+on_info = {+ds_bridge_pass_fire} walker3@ds_neutrals_blokp_leader_walk
+
+[remark@ds_neutrals_blokp_leader_walk]
+anim = guard
+target = actor
+snd = esc_bridge_soldiers
+on_signal = sound_end| walker2@ds_neutrals_blokp_leader_walk
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+
+[walker2@ds_neutrals_blokp_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+meet = meet@bandit_zoneguard
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+
+[walker3@ds_neutrals_blokp_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+
+
+[meet@bandit_zoneguard]
+meet_state 		= 30| {+ds_bridge_pass_on} guard, guard@ {+ds_bridge_pass_on} talk_hello, wait
+meet_state_wpn 	= 30| {+ds_bridge_pass_on} guard, guard@ {+ds_bridge_pass_on} talk_hello, wait
+victim 			= 30| actor
+victim_wpn 		= 30| actor
+use			= true
+use_wpn		= true
+;zone			= ds_bridge_kill_zone|{-ds_bridge_pass_on} true@ {-ds_bridge_pass_on} ds_bridge_bandits
+meet_dialog		= ds_bridge_bandts_start
+precond = visibility
+
+[death@bandit_leader]
+on_info = {=killed_by_actor} %+ds_bridge_pass_fire%
+
+;----------------------------------------------------------------
+;----------------------------------------------------------------
+
+
+
+
+;--------------------------------------------------------------------------
+;--часовые блокпоста
+;--------------------------------------------------------------------------
+[logic@ds_neutrals_blokp_guard1_walk]
+active = walker@ds_neutrals_blokp_guard1_walk
+combat_ignore = combat_ignore@ds_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[walker@ds_neutrals_blokp_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor =is_alive(10504)}
+on_info = {+ds_bridge_pass_fire} walker@ds_neutrals_blokp_guard1_walk_fire %=bar_arena_hit%
+
+[walker@ds_neutrals_blokp_guard1_walk_fire]
+path_walk = guard1_walk
+path_look = guard1_look
+on_info = {-ds_bridge_pass_fire} walker@ds_neutrals_blokp_guard1_walk
+
+[logic@ds_neutrals_blokp_guard2_walk]
+active = walker@ds_neutrals_blokp_guard2_walk
+combat_ignore = combat_ignore@ds_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[walker@ds_neutrals_blokp_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor =is_alive(10504)}
+on_info = {+ds_bridge_pass_fire} walker@ds_neutrals_blokp_guard2_walk_fire %=bar_arena_hit%
+
+[walker@ds_neutrals_blokp_guard2_walk_fire]
+path_walk = guard2_walk
+path_look = guard2_look
+on_info = {-ds_bridge_pass_fire} walker@ds_neutrals_blokp_guard2_walk
+
+[logic@ds_neutrals_blokp_guard3_walk]
+active = walker@ds_neutrals_blokp_guard3_walk
+combat_ignore = combat_ignore@ds_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[walker@ds_neutrals_blokp_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor =is_alive(10504)}
+on_info = {+ds_bridge_pass_fire} walker@ds_neutrals_blokp_guard3_walk_fire %=bar_arena_hit%
+
+[walker@ds_neutrals_blokp_guard3_walk_fire]
+path_walk = guard3_walk
+path_look = guard3_look
+on_info = {-ds_bridge_pass_fire} walker@ds_neutrals_blokp_guard3_walk
+
+[logic@ds_neutrals_blokp_guard4_walk]
+active = walker@ds_neutrals_blokp_guard4_walk
+combat_ignore = combat_ignore@ds_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[walker@ds_neutrals_blokp_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor =is_alive(10504)}
+on_info = {+ds_bridge_pass_fire} walker@ds_neutrals_blokp_guard4_walk_fire %=bar_arena_hit%
+
+[walker@ds_neutrals_blokp_guard4_walk_fire]
+path_walk = guard4_walk
+path_look = guard4_look
+on_info = {-ds_bridge_pass_fire} walker@ds_neutrals_blokp_guard4_walk
+
+
+;--------------------------------------------------------------------------
+;--патрули блокпоста
+;--------------------------------------------------------------------------
+[logic@ds_neutrals_blokp_patrol1_walk]
+active = walker@ds_neutrals_blokp_patrol1_walk
+combat_ignore = combat_ignore@ds_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[walker@ds_neutrals_blokp_patrol1_walk]
+path_walk = patrol1_walk
+path_look = patrol1_look
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor =is_alive(10504)}
+
+
+[logic@ds_neutrals_blokp_patrol2_walk]
+active = walker@ds_neutrals_blokp_patrol2_walk
+combat_ignore = combat_ignore@ds_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[walker@ds_neutrals_blokp_patrol2_walk]
+path_walk = patrol2_walk
+path_look = patrol2_look
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor =is_alive(10504)}
+
+
+;--------------------------------------------------------------------------
+;-- костер блокпоста
+;--------------------------------------------------------------------------
+[logic@ds_neutrals_blokp_kamp_work1]
+active = kamp@ds_neutrals_blokp_kamp1
+combat_ignore = combat_ignore@ds_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[logic@ds_neutrals_blokp_kamp_work2]
+active = kamp@ds_neutrals_blokp_kamp1
+combat_ignore = combat_ignore@ds_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[logic@ds_neutrals_blokp_kamp_work3]
+active = kamp@ds_neutrals_blokp_kamp1
+combat_ignore = combat_ignore@ds_bridge
+on_hit = hit@ds_bridge_bandit
+on_death = death@bandit
+
+[kamp@ds_neutrals_blokp_kamp1]
+center_point = kamp1
+path_walk = kamp_point1_task
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor =is_alive(10504)}
+
+;------------------
+[combat_ignore@ds_bridge]
+combat_ignore_cond = {-ds_bridge_pass_fire =fighting_actor}
+
+[hit@ds_bridge_bandit]
+on_info = {=hit_by_actor} %+ds_bridge_pass_fire%
+
+[death@bandit]
+on_info = {=killed_by_actor} %+ds_bridge_pass_fire%
+
+;--------------------------------------------------------------------------
+;-- бандиты на ферме
+;--------------------------------------------------------------------------
+[logic@ds_bandits_walker_1]
+active = walker@ds_bandits_walker_1
+
+[walker@ds_bandits_walker_1]
+path_walk = walker_1_walk
+path_look = walker_1_look
+
+[logic@ds_bandits_walker_2]
+active = walker@ds_bandits_walker_2
+
+[walker@ds_bandits_walker_2]
+path_walk = walker_2_walk
+path_look = walker_2_look
+
+[logic@ds_bandits_walker_3]
+active = walker@ds_bandits_walker_3
+
+[walker@ds_bandits_walker_3]
+path_walk = walker_3_walk
+path_look = walker_3_look
+
+[logic@ds_bandits_walker_4]
+active = walker@ds_bandits_walker_4
+
+[walker@ds_bandits_walker_4]
+path_walk = walker_4_walk
+path_look = walker_4_look
+
+[logic@ds_bandits_guard1]
+active = walker@ds_bandits_guard1
+
+[walker@ds_bandits_guard1]
+path_walk = guard1_walk
+path_look = guard1_look
+
+[logic@ds_bandits_guard2]
+active = walker@ds_bandits_guard2
+
+[walker@ds_bandits_guard2]
+path_walk = guard2_walk
+path_look = guard2_look
+
+[logic@ds_bandits_walker_5]
+active = walker@ds_bandits_walker_5
+
+[walker@ds_bandits_walker_5]
+path_walk = walker_5_walk
+path_look = walker_5_look
+
+[logic@ds_bandits_kamp_1]
+active = kamp@ds_bandits_kamp
+
+[logic@ds_bandits_kamp_2]
+active = kamp@ds_bandits_kamp
+
+[logic@ds_bandits_kamp_3]
+active = kamp@ds_bandits_kamp
+
+[kamp@ds_bandits_kamp]
+center_point = kamp_point1
+path_walk = kamp_point1_task
+
+
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+-- Блокпост Последнего Дня
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+--Лидер блокпоста
+--Утро
+[logic@ds_ld_blokp_leader_walk0]
+active = kamp@ds_ld_blokp_kamp1
+on_hit = hit@ld_blokp
+
+[hit@ld_blokp]
+on_info = %+ds_ld_blokp_enemy%
+
+--День
+[logic@ds_ld_blokp_leader_walk1]
+active = walker@ds_ld_blokp_leader_walk
+on_hit = hit@ld_blokp
+
+--Вечер
+[logic@ds_ld_blokp_leader_walk2]
+active = walker@ds_ld_blokp_leader_walk
+on_hit = hit@ld_blokp
+
+--Ночь
+[logic@ds_ld_blokp_leader_walk3]
+active = kamp@ds_ld_blokp_kamp1
+on_hit = hit@ld_blokp
+
+---------------------------------------
+--Охранник №1
+--Утро
+[logic@ds_ld_blokp_guard1_walk0]
+active = sleeper1@ds_ld_blokp
+on_hit = hit@ld_blokp
+--День
+[logic@ds_ld_blokp_guard1_walk1]
+active = walker@ds_ld_blokp_post1_walk
+on_hit = hit@ld_blokp
+--Вечер
+[logic@ds_ld_blokp_guard1_walk2]
+active = walker@ds_ld_blokp_post1_walk
+on_hit = hit@ld_blokp
+--Ночь
+[logic@ds_ld_blokp_guard1_walk3]
+active = kamp@ds_ld_blokp_kamp1
+on_hit = hit@ld_blokp
+--------------------------------------------
+--Охранник №5
+--Утро
+[logic@ds_ld_blokp_guard5_walk0]
+active = walker@ds_ld_blokp_post3_walk
+on_hit = hit@ld_blokp
+--День
+[logic@ds_ld_blokp_guard5_walk1]
+active = kamp@ds_ld_blokp_kamp1
+on_hit = hit@ld_blokp
+--Вечер
+[logic@ds_ld_blokp_guard5_walk2]
+active = kamp@ds_ld_blokp_kamp1
+on_hit = hit@ld_blokp
+--Ночь
+[logic@ds_ld_blokp_guard5_walk3]
+active = walker@ds_ld_blokp_post3_walk
+on_hit = hit@ld_blokp
+--------------------------------------------
+--Охранник №2
+--Утро
+[logic@ds_ld_blokp_guard2_walk0]
+active = walker@ds_ld_blokp_post1_walk
+on_hit = hit@ld_blokp
+--День
+[logic@ds_ld_blokp_guard2_walk1]
+active = sleeper1@ds_ld_blokp
+on_hit = hit@ld_blokp
+--Вечер
+[logic@ds_ld_blokp_guard2_walk2]
+active = kamp@ds_ld_blokp_kamp1
+on_hit = hit@ld_blokp
+--Ночь
+[logic@ds_ld_blokp_guard2_walk3]
+active = walker@ds_ld_blokp_post1_walk
+on_hit = hit@ld_blokp
+--------------------------------------------
+--Охранник №3
+--Утро
+[logic@ds_ld_blokp_guard3_walk0]
+active = kamp@ds_ld_blokp_kamp1
+on_hit = hit@ld_blokp
+--День
+[logic@ds_ld_blokp_guard3_walk1]
+active = walker@ds_ld_blokp_post2_walk
+on_hit = hit@ld_blokp
+--Вечер
+[logic@ds_ld_blokp_guard3_walk2]
+active = sleeper1@ds_ld_blokp
+on_hit = hit@ld_blokp
+--Ночь
+[logic@ds_ld_blokp_guard3_walk3]
+active = walker@ds_ld_blokp_post2_walk
+on_hit = hit@ld_blokp
+--------------------------------------------
+--Охранник №4
+--Утро
+[logic@ds_ld_blokp_guard4_walk0]
+active = walker@ds_ld_blokp_post2_walk
+on_hit = hit@ld_blokp
+--День
+[logic@ds_ld_blokp_guard4_walk1]
+active = kamp@ds_ld_blokp_kamp1
+on_hit = hit@ld_blokp
+--Вечер
+[logic@ds_ld_blokp_guard4_walk2]
+active = walker@ds_ld_blokp_post2_walk
+on_hit = hit@ld_blokp
+--Ночь
+[logic@ds_ld_blokp_guard4_walk3]
+active = sleeper1@ds_ld_blokp
+on_hit = hit@ld_blokp
+--------------------------------------------
+
+
+------------------
+--Работы--
+------------------
+--*Блокпост Последнего Дня*--
+
+--Работы лидера--
+[walker@ds_ld_blokp_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+meet = meet@ld_default
+
+--Посты охранников
+--Пост №1
+[walker@ds_ld_blokp_post1_walk]
+path_walk = post1_walk
+path_look = post1_look
+meet = meet@ld_default
+--Пост №2
+[walker@ds_ld_blokp_post2_walk]
+path_walk = post2_walk
+path_look = post2_look
+meet = meet@ld_default
+--Пост №3
+[walker@ds_ld_blokp_post3_walk]
+path_walk = post3_walk
+path_look = post3_look
+meet = meet@ld_default
+
+--Костры
+[kamp@ds_ld_blokp_kamp1]
+center_point = kamp1_center
+path_walk = kamp1_center_task
+
+--Спящие работы
+[sleeper1@ds_ld_blokp]
+path_main = sleeper1
+meet = no_meet
+
+--Meet
+[meet@ld_default]
+meet_state		= 15|guard@wait
+meet_state_wpn	= 15|backoff@threat_weap
+victim		= 15|actor
+victim_wpn		= 15|actor
+use			= true
+use_wpn		= false
+
+
+;--Работы Лагеря нейтралов
+
+;-- Валкеры стоячих охранников
+[walker@ds_neutlager_guard0_walk]
+path_walk = guard0_walk
+path_look = guard0_look
+meet = meet@neutrals_default
+
+[walker@ds_neutlager_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+meet = meet@neutrals_default
+
+[walker@ds_neutlager_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+meet = meet@neutrals_default
+
+[walker@ds_neutlager_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+meet = meet@neutrals_default
+
+;--Валкеры патрулирующих охранников (утро-день-вечер)
+[patrol@ds_neutlager_patrol1_1_walk]
+path_walk = patrol1_walk
+commander           = true
+formation           = back
+meet = meet@neutrals_default
+
+
+[patrol@ds_neutlager_patrol1_2_walk]
+path_walk = patrol1_walk
+commander           = false
+formation           = back
+meet = no_meet
+
+[patrol@ds_neutlager_patrol1_3_walk]
+path_walk = patrol1_walk
+commander           = false
+formation           = back
+meet = no_meet
+
+[patrol@ds_neutlager_patrol2_walk]
+path_walk = patrol2_walk
+commander           = true
+meet = meet@neutrals_default
+
+;--Спящие работы
+[sleeper2@ds_neutlager]
+path_main = sleeper2
+meet = no_meet
+
+[sleeper5@ds_neutlager]
+path_main = sleeper5
+meet = no_meet
+
+[sleeper6@ds_neutlager]
+path_main = sleeper6
+meet = no_meet
+
+;--Костры
+[kamp@ds_neutlager_kamp1]
+center_point = kamp1_center
+path_walk = kamp1_center_task
+
+[kamp@ds_neutlager_kamp2]
+center_point = kamp2_center
+path_walk = kamp2_center_task
+soundgroup = esc_lager
+
+
+
+
+
+;--Грабители под мостом
+
+;--Лидер
+[logic@ds_rob_leader]
+active = walker@ds_rob_leader_start
+combat_ignore = combat_ignore@ds_rob
+on_hit = hit@rob
+on_death = death@rob_leader
+
+[walker@ds_rob_leader_start]
+path_walk           = leader_walk
+path_look           = leader_look
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+on_info = {+ds_rob_actor_enter} remark@ds_rob_leader_call
+
+
+[remark@ds_rob_leader_call]
+anim                = guard
+snd                 = val_rob_leader_call
+tips                = val_rob_leader_call
+target              = actor
+on_actor_dist_ge_nvis = 35 | walker@ds_rob_leader_start
+on_actor_dist_le_nvis = 10 | remark@ds_rob_leader_talk
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+
+[remark@ds_rob_leader_talk]
+anim                = guard
+target              = actor
+on_info             = {+ds_rob_buying} walker@ds_rob_leader_buy_done
+on_actor_dist_ge    = 35 | walker@ds_rob_leader_start
+meet                = meet@ds_rob_start
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+
+[walker@ds_rob_leader_buy_done]
+path_walk           = leader_walk
+path_look           = leader_look
+combat_ignore_cond = {=fighting_actor}
+
+[remark@ds_rob_leader_wait_to_go]
+anim                = guard
+on_timer            = 4500 | walker@ds_rob_leader_to_kamp
+meet                = meet@ds_rob_start
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+
+[walker@ds_rob_leader_to_kamp]
+path_walk           = leader_kamp_walk
+path_look           = leader_kamp_look
+def_state_moving1   = run
+def_state_moving2   = run
+def_state_moving3   = run
+on_signal           = arrived | remark@ds_rob_leader_jeer
+meet                = no_meet 
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+
+[remark@ds_rob_leader_jeer]
+anim                = wait_na
+snd                 = val_rob_leader_jeer
+tips                = val_rob_leader_jeer_1
+on_signal           = sound_end | kamp@ds_rob_kamp
+meet                = no_meet
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+
+[meet@ds_rob_start]
+meet_dialog     = ds_rob_dialog
+meet_state      = 30|wait
+meet_state_wpn  = 30|threat@threat_weap
+victim          = 30|actor
+victim_wpn      = 30|actor
+use             = true
+use_wpn         = false
+
+[kamp@ds_rob_kamp]
+center_point = kamp_task
+path_walk = kamp_task
+
+
+
+
+;--Охранник 1
+[logic@ds_rob_guard1]
+active = walker@ds_rob_guard1
+combat_ignore = combat_ignore@ds_rob
+on_hit = hit@rob
+on_death = death@rob
+
+[walker@ds_rob_guard1]
+path_walk = guard1_walk
+path_look = guard1_look
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+on_info = {=actor_in_zone(ds_rob_warn_zone)} remark@ds_rob_guard1_threat
+
+[remark@ds_rob_guard1_threat]
+anim = threat
+target = actor
+meet = no_meet
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+on_info = {=actor_out_zone(ds_rob_warn_zone)} walker@ds_rob_guard1
+
+
+
+;--Охранник 2
+[logic@ds_rob_guard2]
+active = walker@ds_rob_guard2
+combat_ignore = combat_ignore@ds_rob
+on_hit = hit@rob
+on_death = death@rob
+
+[walker@ds_rob_guard2]
+path_walk = guard2_walk
+path_look = guard2_look
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+on_info = {=actor_in_zone(ds_rob_warn_zone)} remark@ds_rob_guard2_threat
+
+[remark@ds_rob_guard2_threat]
+anim = threat
+target = actor
+meet = no_meet
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+on_info = {=actor_out_zone(ds_rob_warn_zone)} walker@ds_rob_guard2
+
+
+;--Охранник 3
+[logic@ds_rob_guard3]
+active = walker@ds_rob_guard3
+combat_ignore = combat_ignore@ds_rob
+on_hit = hit@rob
+on_death = death@rob
+
+[walker@ds_rob_guard3]
+path_walk = guard3_walk
+path_look = guard3_look
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+on_info = {=actor_in_zone(ds_rob_warn_zone)} remark@ds_rob_guard3_threat
+
+[remark@ds_rob_guard3_threat]
+anim = threat
+target = actor
+meet = no_meet
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+on_info = {=actor_out_zone(ds_rob_warn_zone)} walker@ds_rob_guard3
+
+
+;--Охранник 4
+[logic@ds_rob_guard4]
+active = walker@ds_rob_guard4
+combat_ignore = combat_ignore@ds_rob
+on_hit = hit@rob
+on_death = death@rob
+
+[walker@ds_rob_guard4]
+path_walk = guard4_walk
+path_look = guard4_look
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+on_info = {=actor_in_zone(ds_rob_warn_zone)} remark@ds_rob_guard4_threat
+
+[remark@ds_rob_guard4_threat]
+anim = threat
+target = actor
+meet = no_meet
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+on_info = {=actor_out_zone(ds_rob_warn_zone)} walker@ds_rob_guard4
+
+
+[combat_ignore@ds_rob]
+combat_ignore_cond = {-ds_rob_pass_fire =fighting_actor}
+
+[hit@rob]
+on_info = {=hit_by_actor} %+ds_rob_pass_fire%
+
+[death@rob]
+on_info = {=killed_by_actor} %+ds_rob_pass_fire%
+
+[death@rob_leader]
+on_info = {=killed_by_actor} %+ds_rob_pass_fire%
+
+
+
+
+;--------------------------------------------------------------------------
+;--стая собак у камаза
+;--------------------------------------------------------------------------
+[logic@ds_kamaz_pseudodogs_dog1]
+active = mob_walker@ds_kamaz_pseudodogs_dog1
+
+[mob_walker@ds_kamaz_pseudodogs_dog1]
+path_walk = dog1_walk
+npc_friendly = true
+
+
+
+
+[logic@ds_kamaz_pseudodogs_dog2]
+active = mob_walker@ds_kamaz_pseudodogs_dog2
+
+[mob_walker@ds_kamaz_pseudodogs_dog2]
+path_walk = dog2_walk
+npc_friendly = true
+
+
+[logic@ds_kamaz_pseudodogs_dog3]
+active = mob_walker@ds_kamaz_pseudodogs_dog3
+
+[mob_walker@ds_kamaz_pseudodogs_dog3]
+path_walk = dog3_walk
+npc_friendly = true
+
+

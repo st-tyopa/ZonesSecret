@@ -1,0 +1,154 @@
+local t = {}
+
+function load_job(sj, gname, type, squad, groups)
+--------------------------------------------------------------------------
+-- главный лагерь сталкеров
+--------------------------------------------------------------------------	
+	if type == "gar_stalkers_main" then
+		t = { section = "logic@dv_svobbase_leader_walk",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "gar_neutbase_lider"
+			end
+		}
+		table.insert(sj, t)
+		t = { section = "logic@gar_stalkers_main_guard_0_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@gar_stalkers_main_guard_1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@gar_stalkers_main_guard_2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@gar_stalkers_main_guard_3_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@gar_stalkers_main_patrol_1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@gar_stalkers_main_patrol_2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+	end
+--------------------------------------------------------------------------
+-- desertir blokpost
+--------------------------------------------------------------------------	
+	if type == "gar_dezblokpost" then
+    -- часовой1
+		t = { section = "logic@gar_dezblokpost_guard1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой2
+		t = { section = "logic@gar_dezblokpost_guard2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой3
+		t = { section = "logic@gar_dezblokpost_guard3_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- часовой4
+		t = { section = "logic@gar_dezblokpost_guard4_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный1
+		t = { section = "logic@gar_dezblokpost_patrol1_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- патрульный2
+		t = { section = "logic@gar_dezblokpost_patrol2_walk",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	end
+
+
+
+end
+--------------------------------------------------------------------------
+-- состояния гулагов
+--------------------------------------------------------------------------
+
+function load_states(gname, type)	
+	if type == "gar_dezblokpost" then 
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+	if type == "gar_stalkers_main" then        
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+			
+			
+end
+
+--------------------------------------------------------------------------
+-- Dynamic ltx
+--------------------------------------------------------------------------
+function load_ltx(gname, type)
+	return nil
+end
+
+function checkStalker(npc_community, gulag_type, npc_rank, se_obj)
+	if gulag_type == "gar_dezblokpost" then
+		return npc_community == "dolg"
+	end
+	if gulag_type == "gar_stalkers_main" then
+		return npc_community == "stalker"
+	end	
+	
+	return false
+end
+
+function checkMonster(npc_community, gulag_type)
+	return false
+end

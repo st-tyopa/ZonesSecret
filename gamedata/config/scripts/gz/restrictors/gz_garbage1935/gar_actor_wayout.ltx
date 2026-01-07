@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_actor_inside = {+gar_find_dynamit_start} %+gar_crazy_bandit_phrase% sr_idle
+
+[sr_idle]
+on_actor_inside = {+gar_crazy_dialog_done} %+gar_crazy_bandit_lie% nil
+on_info = {+gar_crazy_bandit_dead} nil
+
+
+[sr_idle@nil]

@@ -1,0 +1,12 @@
+[logic] 
+active = ph_idle 
+
+[ph_idle] 
+on_info = {+gz_test_1} ph_idle2 
+
+[ph_idle2] 
+on_use = ph_idle@nil %+gz_test_2 =delete_object%
+tips = gar_mine_1 
+on_info = {+gz_test_2} ph_idle@nil
+
+[ph_idle@nil]

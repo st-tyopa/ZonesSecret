@@ -1,0 +1,452 @@
+
+	<intro_logo>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		<play_each_item>1</play_each_item>
+
+		
+		<item type="image">
+			<length_sec>0.1</length_sec>
+			<pause_state>on</pause_state>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="5"  x="0" y="0" width="1024" height="768" stretch="1">
+					<window_name>back</window_name>
+					<texture>intro\intro_back</texture>
+				</auto_static>
+			</main_wnd>
+		</item>		
+		
+<!--  TEST, DONT DELETE this block		
+		<item type="video">
+			<sound>characters_voice\scenario\video\intro_stalker</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\intro_stalker</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<sound>characters_voice\scenario\video\dream_rats</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\dream_rats</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<sound>characters_voice\scenario\video\dream_sarcofag</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\dream_sarcofag</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\dream_doctor</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_blind</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_blind</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_gold</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_gold</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_to_monolith</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_to_monolith</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_apocal</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_apocal</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_immortal</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_immortal</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\dream_doctor_2</texture>
+			</video_wnd>
+		</item>
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_peace</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_peace</texture>
+			</video_wnd>
+		</item>
+-->		
+	</intro_logo>
+	
+	<intro_game>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\soz_prologue_intro_sound</sound>
+			<pause_state>on</pause_state>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="0" width="1280" height="720">intro\soz_prologue_intro_movie</texture>
+			</video_wnd>
+		</item>
+	</intro_game>
+
+	<x18_dream>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\dream_rats</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.end_x18_dream</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\dream_rats</texture>
+			</video_wnd>
+		</item>
+	</x18_dream>
+
+	<radar_dream>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\dream_sarcofag</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.end_radar_dream</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\dream_sarcofag</texture>
+			</video_wnd>
+		</item>
+	</radar_dream>
+
+	<yantar_dream>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\dream_doctor</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.end_yantar_dream</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="800" height="358">intro\dream_doctor</texture>
+			</video_wnd>
+		</item>
+	</yantar_dream>
+
+	<mov_desire_1>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_blind</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.game_credits</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_blind</texture>
+			</video_wnd>
+		</item>
+	</mov_desire_1>
+
+	<mov_desire_2>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_gold</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.game_credits</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_gold</texture>
+			</video_wnd>
+		</item>
+	</mov_desire_2>
+
+	<mov_desire_3>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_to_monolith</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.game_credits</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_to_monolith</texture>
+			</video_wnd>
+		</item>
+	</mov_desire_3>
+
+	<mov_desire_4>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_apocal</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.game_credits</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_apocal</texture>
+			</video_wnd>
+		</item>
+	</mov_desire_4>
+
+	<mov_desire_5>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_immortal</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.game_credits</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_immortal</texture>
+			</video_wnd>
+		</item>
+	</mov_desire_5>
+
+	<mov_join_osoznanie>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\dream_doctor_2</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.game_credits</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\dream_doctor_2</texture>
+			</video_wnd>
+		</item>
+	</mov_join_osoznanie>
+	
+	<mov_refuse_osoznanie>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>characters_voice\scenario\video\final_peace</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.game_credits</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="286">intro\final_peace</texture>
+			</video_wnd>
+		</item>
+	</mov_refuse_osoznanie>
+
+       
+	<time_scale>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+ 
+		<item type="video">
+			<sound>actor\time_scale.ogg</sound>
+			<pause_state>off</pause_state>
+			<can_be_stopped>off</can_be_stopped>
+			<function_on_stop>gz_prologue.stop_time_scale</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="1024" height="768">intro\intro_back</texture>
+			</video_wnd>
+		</item>
+	</time_scale>
+	
+	<ds_kap_dream>
+        <play_each_item>1</play_each_item>
+        <global_wnd x="0" y="0" width="1024" height="768">
+            <auto_static x="0" y="0" width="1024" height="768" stretch="1">
+                <window_name>back</window_name>
+                <texture>intro\intro_back</texture>
+            </auto_static>
+        </global_wnd>
+
+        <item type="video">
+            <sound>dreams\bloodshock_dream</sound>
+            <pause_state>on</pause_state>
+			<function_on_stop>xr_effects.end_ds_kap_dream</function_on_stop>
+            <video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+                <texture x="0" y="0" width="640" height="480">dreams\bloodshock_dream</texture>
+            </video_wnd>
+        </item>
+    </ds_kap_dream>
+
+<!-- Начальный ролик -->
+   <start_soz_intro_video>
+        <play_each_item>1</play_each_item>
+        <global_wnd x="0" y="0" width="1024" height="768">
+            <auto_static x="0" y="0" width="1024" height="768" stretch="1">
+                <window_name>back</window_name>
+                <texture>intro\intro_back</texture>
+            </auto_static>
+        </global_wnd>
+       <item type="video">
+            <sound>characters_voice\scenario\video\soz_prologue_intro_sound</sound>
+            <pause_state>on</pause_state>
+			<function_on_stop>xr_effects.end_soz_intro_video</function_on_stop>
+            <video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+                <texture x="0" y="0" width="1280" height="720">intro\soz_prologue_intro_movie</texture>
+            </video_wnd>
+        </item>
+		<item type="image">
+			<length_sec>1</length_sec>
+			<pause_state>on</pause_state>
+			<main_wnd>
+				<auto_static start_time="0" length_sec="5" x="0" y="0" width="1024" height="768" stretch="1">
+					<window_name>back</window_name>
+					<texture>ui\ui_gz_mt_intro2</texture>
+				</auto_static>
+			</main_wnd>
+		</item>
+    </start_soz_intro_video>
+	
+	<without_dream>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+ 
+		<item type="video">
+			<sound>characters_voice\human_01\dolg\states\sleep\sleep_1.ogg</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>main_sleep.stopper</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="1024" height="768">intro\intro_back</texture>
+			</video_wnd>
+		</item>
+	</without_dream>
+
+	<esc_sky_01>
+		<play_each_item>1</play_each_item>
+		<global_wnd x="0" y="0" width="1024" height="768">
+			<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+				<window_name>back</window_name>
+				<texture>intro\intro_back</texture>
+			</auto_static>
+		</global_wnd>
+		
+		<item type="video">
+			<sound>heart\3.ogg</sound>
+			<pause_state>on</pause_state>
+			<function_on_stop>xr_effects.end_ds_kap_dream</function_on_stop>
+			<video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+				<texture x="0" y="1" width="512" height="245">sleep\esc_sky_01</texture>
+			</video_wnd>
+		</item>
+	</esc_sky_01>
+
+<!-- Первая концовка -->	
+	<start_soz_end_one_video>
+        <play_each_item>1</play_each_item>
+        <global_wnd x="0" y="0" width="1024" height="768">
+            <auto_static x="0" y="0" width="1024" height="768" stretch="1">
+                <window_name>back</window_name>
+                <texture>ui\intro_back</texture>
+            </auto_static>
+        </global_wnd>
+       <item type="video">
+            <sound>characters_voice\scenario\video\ui_video_end_one</sound>
+            <pause_state>on</pause_state>
+			<function_on_stop>xr_effects.game_credits</function_on_stop>
+            <video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+                <texture x="0" y="0" width="1024" height="768">ui\ui_video_end_one</texture>
+            </video_wnd>
+        </item>
+    </start_soz_end_one_video>
+
+<!-- Вторая концовка -->
+	<start_soz_end_two_video>
+        <play_each_item>1</play_each_item>
+        <global_wnd x="0" y="0" width="1024" height="768">
+            <auto_static x="0" y="0" width="1024" height="768" stretch="1">
+                <window_name>back</window_name>
+                <texture>ui\intro_back</texture>
+            </auto_static>
+        </global_wnd>
+       <item type="video">
+            <sound>characters_voice\scenario\video\ui_video_end_two</sound>
+            <pause_state>on</pause_state>
+			<function_on_stop>xr_effects.game_credits</function_on_stop>
+            <video_wnd x="0" y="0" width="1024" height="768" stretch="1">
+                <texture x="0" y="0" width="1024" height="768">ui\ui_video_end_two</texture>
+            </video_wnd>
+        </item>
+    </start_soz_end_two_video>

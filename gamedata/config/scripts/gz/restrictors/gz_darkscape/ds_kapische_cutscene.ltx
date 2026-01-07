@@ -1,0 +1,17 @@
+ [logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+ds_kapische_first_teleport_done} sr_idle2
+
+[sr_idle2]
+on_actor_inside = sr_idle3
+
+[sr_idle3]
+on_actor_inside = %+ds_kapische_cutscene_end%
+
+;[sr_cutscene]
+;point = ds_kap_teleport_walk0
+;look = ds_kap_teleport_look0
+;cam_effector = soz_ds_kapische_stand_up
+;on_signal = cameff_end | nil %+ds_kapische_cutscene_end%

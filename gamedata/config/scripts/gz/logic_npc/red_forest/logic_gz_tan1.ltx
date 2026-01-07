@@ -1,0 +1,25 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = gz_tan_1_stay
+path_look = gz_tan_1_look
+def_state_standing = dynamite
+on_actor_dist_ge_nvis = 5| remark
+on_info = {+rf_gz_tan_talk_kill} %=killactor%, {+rf_gz_tan_talk_done} walker2
+
+[remark]
+anim = guard
+target = actor
+on_info = {+rf_gz_tan_talk_kill} %=killactor%, {+rf_gz_tan_talk_done} walker2
+
+[walker2]
+path_walk = gz_rf_tan_back
+on_game_timer = 80|kamp
+
+[kamp]
+path_walk = gz_rf_kamp1
+center_point = gz_rf_kamp
+
+[meet@self_doc] 
+use = {=dist_to_actor_le(3)} self

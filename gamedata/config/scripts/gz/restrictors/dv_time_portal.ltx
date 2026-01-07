@@ -1,0 +1,8 @@
+[spawner]
+cond = {+info_time_scale}
+
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+info_time_scale} %=start_time_scale =actor_eat%

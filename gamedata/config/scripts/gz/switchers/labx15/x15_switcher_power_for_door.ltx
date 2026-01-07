@@ -1,0 +1,12 @@
+[logic]
+active = ph_button@off
+
+[ph_button@off]
+anim_blend  = true
+anim = lab_primary_switcher_idle
+tooltip = tips_labx16switcher_press
+on_press = ph_button@on %+x15_switcher_on%
+
+[ph_button@on]
+anim_blend  = true
+anim = lab_primary_switcher_off

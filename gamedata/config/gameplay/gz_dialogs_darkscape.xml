@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+
+ <dialog id="dialog_ds_neut_doctor_about_rac">
+  <dont_has_info>ds_neut_doctor_dialog_rac_done</dont_has_info>
+  <init_func>dialogs_new_system.ds_neut_doctor_about_rac</init_func>
+ </dialog>
+		
+ <dialog id="dialog_ds_intresting">
+  <dont_has_info>about_place</dont_has_info>
+  <init_func>dialogs_new_system.ds_interesing</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_ds_cap">
+  <dont_has_info>ds_sumka_ld_start</dont_has_info>
+  <dont_has_info>ds_sumka_ld_otkaz</dont_has_info>
+  <init_func>dialogs_new_system.ds_cap</init_func>
+ </dialog>
+
+ <dialog id="dialog_ds_ld_sumka_ocelot">
+  <dont_has_info>ds_sumka_ld_dialog_done</dont_has_info>
+  <dont_has_info>ds_find_shved_pda_start</dont_has_info>
+  <dont_has_info>ds_find_shved_pda_otkaz</dont_has_info>
+  <has_info>ds_sumka_ld_start</has_info>
+  <init_func>dialogs_new_system.ds_ld_sumka_ocelot</init_func>
+ </dialog>
+
+ <dialog id="dialog_ds_ld_ocelot_group">
+  <dont_has_info>ds_ocelot_ld_group_dialog_done</dont_has_info>
+  <init_func>dialogs_new_system.ds_ld_ocelot_group</init_func>
+ </dialog>
+
+ <dialog id="dialog_ds_ld_racia">
+  <dont_has_info>dialog_ds_ocelot_racia_done</dont_has_info>
+  <init_func>dialogs_new_system.ds_ld_racia</init_func>
+ </dialog>
+
+ <dialog id="dialog_ds_cap_after_sumka">
+  <dont_has_info>dialog_ds_cap_info</dont_has_info>
+  <has_info>ds_sumka_ld_dialog_done</has_info>
+  <init_func>dialogs_new_system.ds_cap_after_sumka</init_func>
+ </dialog>
+	
+ <dialog id="dialog_torg_about_shved">
+  <dont_has_info>ds_lager_talk_torg_about_shved_done</dont_has_info>
+  <dont_has_info>ds_lager_talk_doc_about_shved_done</dont_has_info>
+  <has_info>ds_find_shved_pda_start</has_info>
+  <init_func>dialogs_new_system.ds_torg_about_shved</init_func>     
+ </dialog>
+
+ <dialog id="dialog_doc_about_shved">
+  <dont_has_info>ds_lager_talk_doc_about_shved_done</dont_has_info>
+  <has_info>ds_find_shved_pda_start</has_info>
+  <init_func>dialogs_new_system.ds_doc_about_shved</init_func>      
+ </dialog>
+
+ <dialog id="dialog_ocelot_return_shved">
+  <dont_has_info>ds_return_shved_pda_done</dont_has_info>
+  <dont_has_info>ds_return_shved_pda_false</dont_has_info>
+  <has_info>ds_find_shved_pda_done</has_info>
+  <init_func>dialogs_new_system.ds_ocelot_return_saved</init_func>      
+ </dialog>
+
+ <dialog id="dialog_doc_medkit_case">
+  <dont_has_info>dialog_ds_quest_doc_medkit_case_alt</dont_has_info>
+  <dont_has_info>find_doc_medkit_case</dont_has_info>
+  <init_func>dialogs_new_system.ds_doc_medkit_case</init_func>            
+ </dialog>
+	
+ <dialog id="dialog_doc_medkit_case_2">
+  <dont_has_info>give_doc_medkit_case</dont_has_info>
+  <has_info>find_doc_medkit_case</has_info>
+  <has_info>dialog_ds_quest_doc_medkit_case_alt</has_info>
+  <init_func>dialogs_new_system.ds_doc_medkit_case_2</init_func>           
+ </dialog>	
+
+ <dialog id="dialog_doc_medkit_case_3">
+  <dont_has_info>give_doc_medkit_case</dont_has_info>
+  <has_info>find_doc_medkit_case</has_info>
+  <dont_has_info>dialog_ds_quest_doc_medkit_case_alt</dont_has_info>
+  <init_func>dialogs_new_system.ds_doc_medkit_case_2</init_func>           
+ </dialog>
+ 
+ <dialog id="dialog_meh">
+  <dont_has_info>dialog_meh</dont_has_info>
+  <init_func>dialogs_new_system.ds_dialog_meh</init_func>
+ </dialog>	
+	    	
+ <dialog id="dialog_about_dv">
+  <dont_has_info>dialog_about_dv_done</dont_has_info>
+  <has_info>find_raciya_in_dsneutlager_done</has_info>
+  <init_func>dialogs_new_system.ds_about_dv</init_func>
+ </dialog>	
+	
+ <dialog id="dialog_ds_hunt">
+  <dont_has_info>ds_hunt_dialog_1_done</dont_has_info>
+  <dont_has_info>ds_hunt_start_alone</dont_has_info>
+  <init_func>dialogs_new_system.ds_hunt</init_func>
+ </dialog>	
+
+ <dialog id="dialog_ds_hunt_2">
+  <has_info>ds_hunt_dialog_2</has_info>
+  <dont_has_info>ds_hunt_dialog_2_done</dont_has_info>
+  <dont_has_info>kill_ds_krovo_1</dont_has_info>
+  <init_func>dialogs_new_system.ds_hunt_2</init_func>
+ </dialog>	
+	
+ <dialog id="dialog_ds_hunt_3">
+  <has_info>kill_ds_krovo_1</has_info>
+  <has_info>krovo_nagr</has_info>
+  <dont_has_info>ds_hunt_krovo_done</dont_has_info>
+  <dont_has_info>ds_hunt_krovo_fail</dont_has_info>
+  <dont_has_info>hunt_2_dead</dont_has_info>
+  <init_func>dialogs_new_system.ds_hunt_3</init_func>
+ </dialog>
+
+ <dialog id="dialog_ds_hunt_alt">
+  <has_info>kill_ds_krovo_1</has_info>
+  <has_info>hunt_1_dead</has_info>
+  <has_info>krovo_nagr</has_info>
+  <dont_has_info>ds_hunt_krovo_done</dont_has_info>
+  <dont_has_info>ds_hunt_krovo_fail</dont_has_info>
+  <init_func>dialogs_new_system.ds_hunt_alt</init_func>
+ </dialog>
+
+ <dialog id="dialog_isk_doc_dialog1">
+  <dont_has_info>talk_with_iskprovod_start</dont_has_info>
+  <init_func>dialogs_new_system.isk_doc_dialog</init_func>
+ </dialog>
+ 
+ <dialog id="dialog_ds_isk_about_isk">
+  <dont_has_info>ds_dialog_about_isc</dont_has_info>
+  <init_func>dialogs_new_system.ds_isk_about_isk</init_func>    
+ </dialog>
+ 
+ <dialog id="dialog_ds_isk_doctor_pda">
+  <has_info>talk_with_iskprovod_start</has_info>
+  <init_func>dialogs_new_system.ds_isk_doctor_pda</init_func>           
+ </dialog>
+	
+ <dialog id="dialog_iskateli_trader_1">
+  <has_info>return_things_start</has_info>
+  <dont_has_info>return_things_done</dont_has_info>
+  <init_func>dialogs_new_system.ds_iskateli_trader_1</init_func>  
+</dialog>
+	
+ <dialog id="dialog_ds_neut_trader_about_rac">
+  <dont_has_info>ds_neut_trader_dialog_rac_done</dont_has_info>
+  <init_func>dialogs_new_system.ds_neut_trader_about_rac</init_func>       
+ </dialog>
+ 
+ <dialog id="dialog_wounded_digger_1">
+  <dont_has_info>ds_lost_diggers_start</dont_has_info>
+  <dont_has_info>ds_ugr_diggers_otkaz</dont_has_info>
+  <init_func>dialogs_new_system.ds_wounded_digger_1</init_func>       
+ </dialog>
+ 
+ <dialog id="dialog_wounded_digger_2">
+  <has_info>ds_lost_diggers_start</has_info>
+  <has_info>find_all_diaryes_have</has_info>
+  <dont_has_info>all_diaryes_transfer</dont_has_info>
+  <init_func>dialogs_new_system.ds_wounded_digger_2</init_func>       		
+ </dialog>
+	
+ <dialog id="dialog_ds_neut_mehanik_about_rac">
+  <dont_has_info>ds_neut_mehanik_dialog_rac_done</dont_has_info>
+  <init_func>dialogs_new_system.ds_neut_mehanik_about_rac</init_func>   
+ </dialog>
+ 
+ <dialog id="dialog_isk_provodnik1">
+  <dont_has_info>return_things_start</dont_has_info>
+  <init_func>dialogs_new_system.ds_isk_provodnik1</init_func>    
+ </dialog>
+	
+ <dialog id="dialog_isk_provodnik2">
+  <dont_has_info>ds_tepa_remark_povyazka</dont_has_info>
+  <init_func>dialogs_new_system.ds_isk_provodnik2</init_func>          
+ </dialog>
+ 
+ <dialog id="ds_rob_dialog">
+       <phrase_list>
+            <phrase id="0">
+                <text>ds_rob_dialog_00</text>
+                <next>1</next>
+                <next>10</next>
+                <next>13</next>
+            </phrase>
+            <phrase id="1">
+                <text>ds_rob_dialog_01</text>
+                <dont_has_info>ds_bandlider_need_money_start</dont_has_info>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>ds_rob_dialog_03</text>
+                <give_info>ds_goto_bandlider_done</give_info>
+                <next>4</next>
+                <next>7</next>
+            </phrase>
+            <phrase id="4">
+                <text>ds_rob_dialog_04</text>
+                <precondition>gz_prologue.rob_have_not_money</precondition>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>ds_rob_dialog_05</text>
+                <give_info>ds_bandlider_need_money_start</give_info>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>ds_rob_dialog_06</text>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="7">
+                <text>ds_rob_dialog_07</text>
+                <precondition>gz_prologue.rob_have_money</precondition>
+                <next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>ds_rob_dialog_08</text>
+                <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>ds_rob_dialog_09</text>
+                <give_info>ds_rob_buying</give_info>
+                <action>gz_prologue.give_bandits_money</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="10">
+                <text>ds_rob_dialog_10</text>
+                <has_info>ds_bandlider_need_money_start</has_info>
+                <precondition>gz_prologue.rob_have_money</precondition>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>ds_rob_dialog_08</text>
+                <next>12</next>
+            </phrase>
+            <phrase id="12">
+                <text>ds_rob_dialog_09</text>
+                <give_info>ds_bandlider_need_money_done</give_info>
+                <give_info>ds_rob_buying</give_info>
+                <action>gz_prologue.give_bandits_money</action>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="13">
+                <text>ds_rob_dialog_13</text>
+                <has_info>ds_bandlider_need_money_start</has_info>
+                <precondition>gz_prologue.rob_have_not_money</precondition>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+			</phrase_list>
+ </dialog>
+ 
+ <dialog id="ds_rob_dialog2">
+    <has_info>ds_bandlider_need_money_start</has_info>
+  <init_func>dialogs_new_system.ds_rob_dialog2</init_func>    
+ </dialog>
+
+ <dialog id="dialog_ds_kap_stalker_meet">
+  <dont_has_info>ds_kap_stalker_meet_done</dont_has_info>
+  <init_func>dialogs_new_system.ds_kap_stalker_meet</init_func>    	
+ </dialog>
+	
+ <dialog id="dialog_ds_kamaz_stalker_meet_1">
+  <dont_has_info>ds_stalker_save_thanks</dont_has_info>
+  <init_func>dialogs_new_system.ds_kamaz_stalker_meet_1</init_func>			
+ </dialog>
+	
+</game_dialogs>

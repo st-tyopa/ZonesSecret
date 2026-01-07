@@ -1,0 +1,42 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = rf_enter_guard_com_stay
+path_look = rf_enter_guard_com_look
+;on_actor_dist_le = 20| remark
+on_info = {+rf_ld_blockp_threat} remark
+
+[remark]
+anim = threat
+target = actor
+on_info = {+rf_lead_scien_blockp_start} %+rf_ld_blockp_ph1% remark2
+
+[remark2]
+anim = threat
+target = actor
+snd = ld_blockp_1
+on_signal = sound_end| %+rf_ld_blockp_ph1_end% remark3
+
+[remark3]
+anim = threat
+target = actor
+on_info = {+rf_ld_blockp_ph3} remark4
+
+[remark4]
+anim = guard
+target = actor
+snd = ld_blockp_2
+on_signal = sound_end| %+rf_ld_blockp_ph3_end =enable_ui% remark5
+
+[remark5]
+anim = guard_rac
+target = actor
+meet = no_meet
+snd = ld_blockp_racia
+on_signal = sound_end|%+rf_ld_blockp_ph4_racia_end%
+on_info = {+rf_ld_blockp_ok_racia_end} walker2
+
+[walker2]
+path_walk = rf_enter_guard_com_stay
+path_look = rf_enter_guard_com_look

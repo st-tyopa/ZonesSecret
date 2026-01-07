@@ -1,0 +1,32 @@
+[logic]
+active = walker@1
+combat_ignore = combat_ignore@pz_isk
+
+[walker@1]
+path_walk = pz_iskateli_group_leader_walk_1
+path_look = pz_iskateli_group_leader_look_2
+combat_ignore_cond = {=check_fighting(71505)}
+def_state_standing = guard
+on_info = {+pz_phone_isk_call_start} remark@1 %=disable_ui%
+
+[remark@1]
+anim = guard_rac
+target = actor
+combat_ignore_cond = {=check_fighting(71505)}
+meet = no_meet
+on_timer = 6000| remark@2 %=enable_ui%
+
+[remark@2]
+anim = wait
+target = actor
+combat_ignore_cond = {=check_fighting(71505)}
+on_info = {+pz_talk_isk_done} walker@2
+
+[walker@2]
+path_walk = pz_iskateli_group_leader_walk_1
+path_look = pz_iskateli_group_leader_look_2
+combat_ignore_cond = {=check_fighting(71505)}
+def_state_standing = guard
+
+[combat_ignore@pz_isk]
+combat_ignore_cond = {=check_fighting(71505)}

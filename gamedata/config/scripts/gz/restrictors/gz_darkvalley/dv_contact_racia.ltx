@@ -1,0 +1,31 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+pda_coordinats_start_1 -no_racia_zone} %+dv_rac_gg_1% sr_idle2
+on_info2 = {+pda_coordinats_start_1 +no_racia_zone} %-pda_coordinats_start_1 +dv_gg_about_contact_base% sr_idle11
+
+[sr_idle11]
+on_info = {-pda_coordinats_start_1} sr_idle1
+
+[sr_idle2]
+on_timer = 8000|%+dv_base_racia_1% sr_idle3
+
+[sr_idle3]
+on_info = {+find_team_done} sr_idle41
+on_info2 = {-find_team_done} sr_idle42
+
+[sr_idle41]
+on_timer = 8500|%+dv_rac_gg_2% sr_idle5
+
+[sr_idle42]
+on_timer = 7000|%+dv_rac_gg_3% sr_idle5
+
+[sr_idle5]
+on_timer = 11000|%+dv_base_racia_2% sr_idle6
+
+[sr_idle6]
+on_timer = 13000|%+dv_base_racia_2% sr_idle7
+
+[sr_idle7]
+on_timer = 1000|%+dv_rac_gg_4 +pda_coordinats_start% nil

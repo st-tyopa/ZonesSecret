@@ -1,0 +1,220 @@
+[wpn_bizon]:identity_immunities
+GroupControlSection				= spawn_group
+discovery_dependency 				= 
+$spawn                  			= "weapons\bizon"	
+$npc			 			= on				
+$prefetch 		 			= 8
+scheduled               			= off              
+cform                   			= skeleton
+class                   			= WP_LR300
+min_radius              			= 0
+max_radius              			= 50
+description					= arsenal_mod-bizon
+
+
+chamber_status          = true
+ef_main_weapon_type				= 2
+ef_weapon_type					= 6
+
+zoom_dof             = 0.5, 1.0, 180
+reload_dof           = 0.0, 0.5, 5, 1.7
+
+;-----------------------------------------------------------------------------------
+holder_range_modifier				= 1.0		       
+holder_fov_modifier				= 0.7              
+;-----------------------------------------------------------------------------------
+
+weapon_class					= assault_rifle
+
+cost						= 5500
+
+ammo_limit		 			= 256
+ammo_current					= 64
+ammo_elapsed		 			= 64
+
+ammo_mag_size		 			= 64
+ammo_class		 			= ammo_9x18_fmj, ammo_9x18_pmm, ammo_9x18_pbp
+fire_modes					= 1, -1
+
+hand_dependence		 			= 1
+single_handed					= 0
+
+inv_name					= ars-bizon
+inv_name_short					= ars-bizon
+inv_weight					= 2.7
+
+inv_grid_width     				= 4
+inv_grid_height    				= 2
+inv_grid_x         				= 6
+inv_grid_y         				= 24
+
+kill_msg_x					= 72
+kill_msg_y					= 82
+kill_msg_width					= 56
+kill_msg_height					= 23
+
+slot 						= 1,2		
+animation_slot					= 2		
+
+;-----------------------------------------------------------------------------------
+fire_dispersion_base				= 0.18 	;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor				= 1.07f
+
+;отдача
+cam_relax_speed         			= 5;3.5; 0.15	;скорость возврата в исходное положение
+cam_dispersion          			= 0.2		;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc				= 0.15		;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac				= 0.9		;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle					= 10.0	    	;максимальный угол отдачи
+cam_max_angle_horz				= 20.0		;(degree) maximum shot horizontal degree 
+cam_step_angle_horz				= 1.1;1	
+
+fire_dispersion_condition_factor 		= 5	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 				= 0.003	;вероятность осечки при максимальном износе 
+misfire_condition_k				= 0.05
+condition_shot_dec 				= 0.0001 ;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+direction               			= 0, 0, 1
+fire_point             				= 0,0.180,0.36
+
+flame_particles					= weapons\generic_weapon05
+smoke_particles         			= amik\weapons\smoke_particles\smoke_particles_02
+
+shell_point		 			= 0,02.195,0.1
+shell_dir		 			= 0.0, 0.0, 0.4
+shell_particles	 				= amik\weapons\9x19_shells_r
+
+rpm_empty_click 	 			= 200
+
+PDM_disp_base 					= 1.0
+PDM_disp_vel_factor 				= 0.8
+PDM_disp_accel_factor 				= 0.8
+PDM_crouch	 				= 1.0
+PDM_crouch_no_acc 				= 1.0
+
+; ttc
+hit_power        				= 0.34
+hit_impulse		 			= 50
+hit_type 					= fire_wound
+
+fire_distance          				= 100
+bullet_speed					= 340
+rpm                     			= 700
+; end ttc
+
+silencer_hit_power       			= 0.25
+silencer_hit_impulse	 			= 40
+silencer_fire_distance   			= 75
+silencer_bullet_speed	 			= 270
+
+use_aim_bullet					= true
+time_to_aim					= 1.0	
+
+
+
+
+hud                     			= wpn_bizon_hud
+normal                  			= 0, 1, 0
+position         	        		= -0.026,-0.13,0
+orientation      	        		= 0,0,0	
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+strap_position         				= -0.14,-0.30,0.10
+strap_orientation      				= -10,-5,10				
+strap_bone0					= bip01_spine2
+strap_bone1					= bip01_spine1
+
+startup_ammo            			= 1000
+visual                  			= weapons\bizon\wpn_bizon.ogf
+
+light_color		 			= 0.6,0.5,0.3
+light_range		 			= 5
+light_var_color		 			= 0.05
+light_var_range		 			= 0.1
+light_time 		 			= 0.2
+
+ph_mass			 			= 3
+
+;addons
+scope_status					= 0
+silencer_status					= 2
+grenade_launcher_status				= 0
+
+scope_name 					= wpn_addon_scope_acog
+silencer_name  					= wpn_sil_9p
+
+scope_x                     			= 68
+scope_y                     			= 11
+silencer_x                  			= 158
+silencer_y                  			= 18
+
+;silencer_flame_particles 			= weapons\generic_weapon01
+silencer_smoke_particles 			= amik\weapons\smoke_particles\silencer_smoke_particles_00
+
+
+silencer_light_color				= 0.6,0.5,0.3
+silencer_light_range				= 0.01
+silencer_light_var_color			= 0.05
+silencer_light_var_range			= 0.5
+silencer_light_time 				= 0.2
+
+zoom_enabled					= true
+scope_zoom_factor	    			= 70
+
+snd_draw					= weapons\bizon\bizon_draw
+snd_holster					= weapons\bizon\bizon_holster
+snd_shoot					= weapons\bizon\bizon_shoot
+snd_shoot1					= weapons\bizon\bizon_shoot_1
+snd_shoot2					= weapons\bizon\bizon_shoot_2
+snd_shoot3					= weapons\bizon\bizon_shoot_3
+snd_empty					= weapons\bizon\bizon_empty, 0.5
+snd_reload					= weapons\bizon\bizon_reload
+snd_silncer_shot				= weapons\bizon\bizon_shot_sil
+
+
+;params when silencer is attached 
+;similar to corresponding params without prefix silencer_
+
+;silencer_flame_particles 			= weapons\generic_weapon01
+silencer_smoke_particles 			= amik\weapons\smoke_particles\p_smoke_particles_02
+
+
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+
+[wpn_bizon_hud]
+shell_point          				= 0.005,0.04,-0.095
+shell_dir		 			= 0.0, 1.0, 0.0
+
+
+fire_point					= 0,0,-0.5
+fire_bone            	   			= wpn_body
+
+orientation             			= 0,0,0
+position                			= -0.042000,-0.139900,0.150000
+
+visual                  			= weapons\bizon\wpn_bizon_hud.ogf
+
+anim_idle					= idle
+anim_idle_aim					= idle_aim
+anim_reload					= reload
+anim_draw					= draw
+anim_holster					= holster
+anim_shoot					= shoot
+anim_idle_sprint				= idle_sprint
+anim_idle_moving				= idle_moving
+
+zoom_offset					= -0.128400,0.032300,-0.140000
+zoom_rotate_x					= -0.016700
+zoom_rotate_y					= 0.021600
+
+scope_zoom_offset				= -0.128400,0.033300,-0.147000
+scope_zoom_rotate_x				= 0.010300
+scope_zoom_rotate_y				= 0.018600
+
+zoom_hide_crosshair				= true
+
+zoom_rotate_time				= 0.2
+rotate_time					= 0.2

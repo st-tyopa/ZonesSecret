@@ -1,0 +1,23 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = redfor_bridge_ld_bridge_guard_walk
+path_look = redfor_bridge_ld_bridge_guard_look
+def_state_standing = ward
+meet = meet@1
+on_info = {+rf_bridge_dialog_legion_done} walker2
+
+[walker2]
+path_walk = rf_bridge_guard_stay_2
+path_look = rf_bridge_guard_look_2
+def_state_standing = ward
+
+[meet@1]
+meet_state 		= 2 | ward@bar_guard_stop  
+meet_state_wpn 	        = 2 | ward@bar_guard_stop  
+victim 			= nil
+victim_wpn 		= nil
+use			= false
+use_wpn		= false
+abuse       = false

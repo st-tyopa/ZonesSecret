@@ -1,0 +1,134 @@
+; Пустышки
+
+[af_dummy_spring]:af_base   ; Пружина
+$spawn 			            = "artifacts\dummy spring"
+visual				        = physics\anomaly\artefact_pustishka.ogf
+description			        = enc_zone_artifact_af-dummy-spring
+inv_name			        = af-dummy-spring
+inv_weight			        = 0.5
+inv_grid_x			        = 14
+inv_grid_y			        = 1
+cost				        = 5000
+jump_height			        = .2
+lights_enabled              = false
+hit_absorbation_sect        = af_dummy_spring_absorbation
+
+[af_dummy_spring_absorbation]:af_base_absorbation
+strike_immunity             = 0.7
+
+[af_dummy_dummy]:af_base    ; Батарейка? Почему dummy_dummy? Поправь или удали секцию
+$spawn 			            = "artifacts\dummy dummy"
+visual				        = physics\anomaly\artefact_pustishka1.ogf
+description			        = enc_zone_artifact_af-dummy-dummy
+inv_name			        = af-dummy-battery
+inv_weight			        = 0.5
+inv_grid_x			        = 19
+inv_grid_y			        = 6
+cost				        = 5000
+jump_height			        = .0
+lights_enabled              = false
+hit_absorbation_sect        = af_dummy_dummy_absorbation
+
+[af_dummy_dummy_absorbation]:af_base_absorbation
+burn_immunity               = 0.7
+
+[af_dummy_battery]:af_base  ; Батарейка
+$spawn 			            = "artifacts\dummy battery"
+visual				        = physics\anomaly\artefact_battery.ogf
+description			        = enc_zone_artifact_af-dummy-battery
+inv_name			        = af-dummy-battery
+inv_weight			        = 0.5
+inv_grid_x			        = 8
+inv_grid_y			        = 4
+jump_height			        = .2
+cost				        = 5000
+particles			        = ;
+lights_enabled              = false
+;hit_absorbation_sect        = af_dummy_battery_absorbation
+
+health_restore_speed_min        = 0.01
+health_restore_speed_max        = 0.05
+power_restore_speed_min         = 0.01
+power_restore_speed_max         = 0.05
+thirst_restore_speed_min        = -0.05
+thirst_restore_speed_max        = -0.01
+condition_loss_speed            = 0.00001
+
+;[af_dummy_battery_absorbation]:af_base_absorbation
+;shock_immunity              = 0.7
+
+[af_dummy_pellicle]:af_base ; Пленка
+$spawn 			            = "artifacts\dummy pellicle"
+visual				        = physics\anomaly\artefact_plenka.ogf
+description			        = enc_zone_artifact_af-dummy-pellicle
+inv_name			        = af-dummy-pellicle
+inv_weight			        = 0.5
+inv_grid_x			        = 4
+inv_grid_y			        = 9
+jump_height			        = .2
+cost				        = 5000	;200
+particles			        = ;
+lights_enabled              = false
+hit_absorbation_sect        = af_dummy_pellicle_absorbation
+
+[af_dummy_pellicle_absorbation]:af_base_absorbation
+chemical_burn_immunity      = 0.7
+
+[af_ds_art]:af_base
+$spawn				        = "artifacts\mincer soul"
+visual				        = physics\anomaly\sap\sandstown.ogf  
+description			        = enc_zone_artif_gubka
+inv_name			        = art_gubka_name
+inv_weight			        = 0.5
+inv_grid_x			        = 10
+inv_grid_y			        = 8
+cost				        = 5000
+jump_height			        = .1
+particles			        = ;
+lights_enabled              = false
+artefact_activation_seq		= af_activation_mincer
+health_restore_speed        = 0.0006
+hit_absorbation_sect        = af_ds_art_absorbation
+
+[af_ds_art_absorbation]:af_base_absorbation
+strike_immunity             = 1.1
+wound_immunity              = 1.1		
+fire_wound_immunity         = 1.1
+
+[af_gar_gubka]:af_base      ; Снова губка? Видимо не настроено. Если секция не используется - удали
+$spawn				        = "artifacts\mincer soul"
+visual				        = physics\anomaly\sap\sandstown.ogf  
+description			        = enc_zone_artif_gubka
+inv_name			        = art_gubka_name
+inv_weight			        = 0.5
+inv_grid_x			        = 10
+inv_grid_y			        = 8
+cost				        = 5000
+jump_height			        = .1
+particles			        = ;
+lights_enabled              = false
+artefact_activation_seq		= af_activation_mincer 
+health_restore_speed        = 0.0006
+hit_absorbation_sect        = af_gar_gubka_absorbation
+
+[af_gar_gubka_absorbation]:af_base_absorbation
+strike_immunity             = 1.1
+wound_immunity              = 1.1		
+fire_wound_immunity         = 1.1
+
+[af_dummy_glassbeads]:af_base ; Мамины бусы
+$spawn 			            = "artifacts\dummy glassbeads"
+visual				        = physics\anomaly\artefact_spiral.ogf
+description			        = enc_zone_artifact_af-dummy-glassbeads
+inv_name			        = af-dummy-glassbeads
+inv_weight			        = 0.5
+inv_grid_x			        = 16
+inv_grid_y			        = 1
+cost				        = 5000
+jump_height			        = .2
+particles			        = ;
+lights_enabled              = false
+hit_absorbation_sect        = af_dummy_glassbeads_absorbation
+
+[af_dummy_glassbeads_absorbation]:af_base_absorbation
+fire_wound_immunity         = 0.95

@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+dv_contergreh_dead} %=run_postprocess(deadcity_wake)%sr_idle221
+
+[sr_idle221]
+on_timer = 5000|%=teleport_actor(dv_controler_teleport_2:dv_controler_teleport_2_look)% sr_idle22
+
+[sr_idle22]
+on_info = {+dv_dolg_group_rush_start -kuprian_dead} sr_idle2
+
+[sr_idle2]
+on_game_timer = 50|%=play_snd(characters_voice\soz\gz_darkvalley\dolg8% sr_idle3
+
+[sr_idle3]
+on_game_timer = 45|%=play_snd(characters_voice\soz\gz_darkvalley\dolg9% nil

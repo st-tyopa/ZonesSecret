@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+help_scien_lager_start} sr_tip
+
+[sr_tip]
+name = gz_zal_scien_phone
+type = tips
+single = true
+on_signal = tip_sended| %+kill_zal_merc_start% sr_idle@end
+
+[sr_idle@end]
+

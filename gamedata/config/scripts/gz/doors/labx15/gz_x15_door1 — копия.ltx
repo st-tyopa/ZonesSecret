@@ -1,0 +1,51 @@
+[logic]
+active = ph_door@locked
+
+;-- Дверь заблочена пока игрок сверху
+[ph_door@locked]
+locked = true
+closed = true
+on_info = {+x15_codedoor2_open_start} ph_door@locked2
+
+[ph_door@locked2]
+locked = true
+closed = true
+on_use = {-x15_door1_on_done} ph_door@locked3 %=x15_scien_message_5% ;-- Если не включил рубильник получаем квест на включение и переходим в вариант 1
+on_info = {+x15_door1_on_done} ph_door@closed1						 ;-- Если рубильник включили до того,как попытались открыть дверь
+
+[ph_door@locked3]
+locked = true
+closed = true
+on_info = {+x15_door1_on_done} ph_door@closed1						;-- Квест на включение взят, включили рубильник, дверь в состоянии закрыто
+
+[ph_door@closed1]
+locked = false
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_use = ph_door@open1 %=x15_scien_message_7% 
+
+[ph_door@open1]
+locked = false
+closed = false
+on_use = {+x15_escape_to_exit_done} ph_door@closed
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+
+[ph_door@closed]
+locked = false
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_use = ph_door@open
+
+[ph_door@open]
+locked = false
+closed = false
+on_use = ph_door@closed
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop

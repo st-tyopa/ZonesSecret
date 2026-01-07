@@ -1,0 +1,28 @@
+--Модуль задержки дыхания при прицеливании.
+--Автор: Вампир35
+
+function update()
+ 
+ if db.hold_key_by_id[42] and db.actor.power > 0.1 then
+  local ezi = find_effector_zi()
+  if ezi then 
+   ezi.zoom_aim_disp_k = 0.01
+   db.actor.power = - 0.003
+  end
+ else
+  local ezi = find_effector_zi()
+  if ezi then 
+   if db.actor.power > 0.8 then
+    ezi.zoom_aim_disp_k = 0.1
+   elseif db.actor.power < 0.8 and db.actor.power > 0.6 then
+    ezi.zoom_aim_disp_k = 0.15
+   elseif db.actor.power < 0.6 and db.actor.power > 0.4 then
+    ezi.zoom_aim_disp_k = 0.25 
+   elseif db.actor.power < 0.4 and db.actor.power > 0.2 then
+    ezi.zoom_aim_disp_k = 0.35
+   elseif db.actor.power < 0.2 then
+    ezi.zoom_aim_disp_k = 0.45
+   end 	
+  end
+end
+end

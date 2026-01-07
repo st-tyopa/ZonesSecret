@@ -1,0 +1,559 @@
+local t = {}
+
+function load_job(sj, gname, type, squad, groups)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+-- лагерь Нейтралов
+--------------------------------------------------------------------------	
+	if type == "ds_neutlager" then
+    -- механик Нейтралов
+		t = { section = "logic@ds_neutlager_mehanic_walk1",
+			idle = 0,
+			prior = 30, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_neutlager_mehanic"
+			end
+		}
+		table.insert(sj, t)
+		---------------------------------------
+   -- доктор Нейтралов
+		t = { section = "logic@ds_neutlager_doctor_walk1",
+			idle = 0,
+			prior = 30, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_neutlager_doctor"
+			end
+		}
+		table.insert(sj, t)
+		---------------------------------------
+   -- раненный диггер
+		t = { section = "logic@ds_neutlager_woundeddigger_walk1",
+			idle = 0,
+			prior = 30, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_neutlager_woundeddigger"
+			end
+		}
+		table.insert(sj, t)
+		---------------------------------------
+	-- 	торговец Нейтралов
+		t = { section = "logic@ds_neutlager_trader_walk1",
+			idle = 0,
+			prior = 30, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_neutlager_trader"
+			end
+		}
+		table.insert(sj, t)
+		-----------------------------------------
+	-- 	бармен Нейтралов
+		t = { section = "logic@ds_neutlager_barmen_walk1",
+			idle = 0,
+			prior = 30, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_neutlager_barmen"
+			end
+		}
+		table.insert(sj, t)
+		-----------------------------------------
+		-- Охранник 0
+		t = { section = "logic@ds_neutlager_guard0_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard0_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard0_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard0_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		--------------------------------------------------
+		t = { section = "logic@ds_neutlager_guard1_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard1_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard1_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard1_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		-------------------------------------------------------
+		t = { section = "logic@ds_neutlager_guard2_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard2_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard2_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard2_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		--------------------------------------------------------
+		t = { section = "logic@ds_neutlager_guard3_walk",
+			idle = 0,
+			prior = 10, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		----------------------------------------------------------
+				t = { section = "logic@ds_neutlager_guard4_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard4_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard4_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard4_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		--------------------------------------------------------
+				t = { section = "logic@ds_neutlager_guard5_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard5_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard5_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard5_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		--------------------------------------------------------
+			t = { section = "logic@ds_neutlager_guard6_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard6_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard6_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_guard6_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		--------------------------------------------------------
+		t = { section = "logic@ds_neutlager_patrol1_1_walk",
+			idle = 0,
+			prior = 10, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_patrol1_2_walk",
+			idle = 0,
+			prior = 10, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_neutlager_patrol1_3_walk",
+			idle = 0,
+			prior = 10, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)	
+		t = { section = "logic@ds_neutlager_patrol2_walk",
+			idle = 0,
+			prior = 10, state = {0,1,2,3},
+			in_rest = "", out_rest = "", 
+		}
+		table.insert(sj, t)	
+	end
+
+--------------------------------------------------------------------------
+-- блокпост Последнего Дня
+--------------------------------------------------------------------------	
+	if type == "ds_ld_blokp" then
+	
+    -- лидер блокпоста  (утро)
+		t = { section = "logic@ds_ld_blokp_leader_walk0",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_ld_blokp_leader"
+			end
+		} 
+		table.insert(sj, t)
+    -- лидер блокпоста  (день)
+		t = { section = "logic@ds_ld_blokp_leader_walk1",
+			idle = 0,
+			prior = 30, state = {1},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_ld_blokp_leader"
+			end
+		} 
+		table.insert(sj, t)
+    -- лидер блокпоста  (вечер)
+		t = { section = "logic@ds_ld_blokp_leader_walk2",
+			idle = 0,
+			prior = 30, state = {2},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_ld_blokp_leader"
+			end
+		} 
+		table.insert(sj, t)
+    -- лидер блокпоста  (ночь)
+		t = { section = "logic@ds_ld_blokp_leader_walk3",
+			idle = 0,
+			prior = 30, state = {3},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_ld_blokp_leader"
+			end
+		} 
+		table.insert(sj, t)
+		--------------------------------------------------------------------
+    -- часовой 1
+		t = { section = "logic@ds_ld_blokp_guard1_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard1_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard1_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard1_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		--------------------------------------------------------
+    -- часовой 2
+		t = { section = "logic@ds_ld_blokp_guard2_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+			t = { section = "logic@ds_ld_blokp_guard2_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+			t = { section = "logic@ds_ld_blokp_guard2_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+			t = { section = "logic@ds_ld_blokp_guard2_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		--------------------------------------------------------
+    -- часовой 3
+		t = { section = "logic@ds_ld_blokp_guard3_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard3_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard3_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard3_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		------------------------------------------------------
+    -- часовой 4
+		t = { section = "logic@ds_ld_blokp_guard4_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard4_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard4_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard4_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		--------------------------------------------------------
+    -- часовой 5
+		t = { section = "logic@ds_ld_blokp_guard5_walk0",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard5_walk1",
+			idle = 0,
+			prior = 10, state = {1},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard5_walk2",
+			idle = 0,
+			prior = 10, state = {2},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		t = { section = "logic@ds_ld_blokp_guard5_walk3",
+			idle = 0,
+			prior = 10, state = {3},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+		end
+		
+--------------------------------------------------------------------------
+-- Грабители под мостом
+--------------------------------------------------------------------------	
+	if type == "ds_rob" then
+	
+    -- лидер блокпоста 
+		t = { section = "logic@ds_rob_leader",
+			idle = 0,
+			prior = 30, state = {0},
+			in_rest = "", out_rest = "", 
+			predicate = function(obj_info)
+        		return obj_info.profile_name == "ds_bridge_stalker_lider"
+			end
+		} 
+		table.insert(sj, t)
+    -- охранник 1
+		t = { section = "logic@ds_rob_guard1",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- охранник 2
+		t = { section = "logic@ds_rob_guard2",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- охранник 3
+		t = { section = "logic@ds_rob_guard3",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+    -- охранник 4
+		t = { section = "logic@ds_rob_guard4",
+			idle = 0,
+			prior = 10, state = {0},
+			in_rest = "", out_rest = "",
+		}
+		table.insert(sj, t)
+	end
+
+
+end
+--------------------------------------------------------------------------
+-- состояния гулагов
+--------------------------------------------------------------------------
+
+function load_states(gname, type)
+	
+	if type == "ds_rob" then 
+		return function(gulag)
+			local actor = db.actor
+			if actor ~= nil then
+				return 0
+			else	
+				return gulag.state
+			end		
+		end
+	end
+	
+	
+	
+	if type == "ds_neutlager" then        
+	return function(gulag)
+		if not db.actor then
+			return gulag.state
+		end
+		   if  level.get_time_hours() >= 6 and level.get_time_hours() <= 12  then
+				return 0  -- утро
+			else
+		   if  level.get_time_hours() >= 12 and level.get_time_hours() <= 18  then
+				return 1  -- день
+			else
+		   if  level.get_time_hours() >= 18 and level.get_time_hours() <= 23  then
+				return 2  -- вечер
+			else
+				return 3  -- ночь
+					end
+				end
+			end
+		end
+	end	
+
+	if type == "ds_ld_blokp" then        
+	return function(gulag)
+		if not db.actor then
+			return gulag.state
+		end
+		   if  level.get_time_hours() >= 6 and level.get_time_hours() <= 12  then
+				return 0  -- утро
+			else
+		   if  level.get_time_hours() >= 12 and level.get_time_hours() <= 18  then
+				return 1  -- день
+			else
+		   if  level.get_time_hours() >= 18 and level.get_time_hours() <= 23  then
+				return 2  -- вечер
+			else
+				return 3  -- ночь
+					end
+				end
+			end
+		end
+	end
+
+
+end
+
+--------------------------------------------------------------------------
+-- Dynamic ltx
+--------------------------------------------------------------------------
+function load_ltx(gname, type)
+	return nil
+end
+
+function checkStalker(npc_community, gulag_type, npc_rank, se_obj)
+
+	if gulag_type == "ds_ld_blokp" then
+		return npc_community == "last_day"
+	end	
+	if gulag_type == "ds_rob" then
+		return npc_community == "bandit"
+	end	
+	if gulag_type == "ds_neutlager" then
+		return npc_community == "stalker"
+	end			
+	return false
+end
+
+function checkMonster(npc_community, gulag_type)
+	return false
+end

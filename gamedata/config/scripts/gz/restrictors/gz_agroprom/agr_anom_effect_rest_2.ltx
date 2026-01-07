@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+agr_anomaly_razradka_start} %=play_snd(soz\characters_voice\scenario\blowout_lightning_02) =run_cam_effector(earthquake:999:false)% sr_idle21
+
+[sr_idle21]
+on_timer = 3000|%+agr_scien_down% sr_idle2
+
+[sr_idle2]
+on_timer = 7000|%+agr_anomaly_razradka_end =run_postprocess(deadcity_wake) =disable_ui =play_snd(actor\pain_3)% sr_idle4
+
+[sr_idle4]
+on_timer = 2000|%=play_snd(soz\characters_voice\scenario\heartbeat_blood) +agr_anomaly_scien_tele =stop_cam_effector(1001)% sr_idle5
+
+[sr_idle5]
+on_timer = 8000| nil %=enable_ui% 

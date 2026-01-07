@@ -1,0 +1,213 @@
+[svoboda_heavy_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "outfit\svoboda_heavy_outfit"
+;$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = equipments\svoboda_heavy_suit
+actor_visual	= actors\hero\stalker_svoboda_light.ogf
+
+ef_equipment_type	= 3
+
+texture_arm = act_arm_free
+
+icon_in_repair = ui_inGame2_Armor_8
+icon_in_repair_scale_x = 303
+icon_in_repair_scale_y = 127
+upgrades = frdm_h_upg_one,frdm_h_upg_one_1,frdm_h_upg_one_2,frdm_h_upg_one_3,frdm_h_upg_two,frdm_h_upg_two_1,frdm_h_upg_two_2,frdm_h_upg_two_3,frdm_h_upg_two_4,frdm_h_upg_three,frdm_h_upg_three_1,frdm_h_upg_three_2,frdm_h_upg_three_3
+
+inv_name			= svoboda_heavy_outfit_name
+inv_name_short		= svoboda_heavy_outfit_name
+description			= svoboda_heavy_outfit_description
+inv_weight			= 6.0
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 8
+inv_grid_y			= 15
+full_icon_name		= npc_icon_svoboda_heavy_outfit
+
+cost				= 12500
+slot				= 6
+full_scale_icon		= 2,6			;иконка сталкера в костюме в полный рост
+artefact_count = 2
+immunities_sect			= sect_svoboda_heavy_outfit_immunities
+
+; MEDIUM RESISTANCE
+burn_protection 				= 0.5
+strike_protection 				= 0.6
+shock_protection 				= 0.5
+wound_protection				= 0.5
+radiation_protection 			= 0.5
+telepatic_protection 			= 0.0
+chemical_burn_protection 		= 0.5
+explosion_protection 			= 0.45
+fire_wound_protection  			= 0.4
+
+bones_koeff_protection = kombez_antigas_damage
+
+[sect_svoboda_heavy_outfit_immunities]
+burn_immunity				= 0.03			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.01
+shock_immunity				= 0.03
+wound_immunity				= 0.015
+radiation_immunity			= 0.00
+telepatic_immunity			= 0.00
+chemical_burn_immunity		= 0.03
+explosion_immunity			= 0.03
+fire_wound_immunity			= 0.01
+
+[sect_svoboda_heavy_outfit_immunities_new]:sect_svoboda_heavy_outfit_immunities
+burn_immunity				= 0.0255
+strike_immunity				= 0.085
+shock_immunity				= 0.01275
+wound_immunity				= 0.015
+chemical_burn_immunity		= 0.0255	
+explosion_immunity			= 0.0255	
+fire_wound_immunity			= 0.085
+
+[frdm_h_upg_one]
+name                    = st_up_arm_a3_name
+description             = st_up_arm_a3_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_1
+position_x	     		= 0
+position_y		    	= 27
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 600
+fire_wound_protection	= 0.1
+
+[frdm_h_upg_one_1]
+name                    = st_up_arm_b4_name
+description             = st_up_arm_b4_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_2
+position_x	     		= 100
+position_y		    	= 27
+precondition_upg        = frdm_h_upg_one
+precondition_ban        = no
+cost 		            = 1200
+immunities_sect			= sect_svoboda_heavy_outfit_immunities_new
+
+[frdm_h_upg_one_2]
+name                    = st_up_arm_c7_name
+description             = st_up_arm_c7_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_3
+position_x	     		= 200
+position_y		    	= 0
+precondition_upg        = frdm_h_upg_one_1
+precondition_ban        = frdm_h_upg_one_3
+cost 		            = 1800
+fire_wound_protection	= 0.3
+
+[frdm_h_upg_one_3]
+name                    = st_up_arm_b1_name
+description             = st_up_arm_b1_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_4
+position_x	     		= 200
+position_y		    	= 54
+precondition_upg        = frdm_h_upg_one_1
+precondition_ban        = frdm_h_upg_one_2
+cost 		            = 1800
+strike_protection 				= 0.3
+explosion_protection 			= 0.3
+wound_protection				= 0.3
+
+[frdm_h_upg_two]
+name                    = st_up_kom_a7_name
+description             = st_up_kom_a7_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_5
+position_x	     		= 0
+position_y		    	= 135
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 600
+chemical_burn_protection = 0.1
+radiation_protection     = 0.1
+shock_protection = 0.1
+
+[frdm_h_upg_two_1]
+name                    = st_up_kom_b6_name
+description             = st_up_kom_b6_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_6
+position_x	     		= 100
+position_y		    	= 108
+precondition_upg        = frdm_h_upg_two
+precondition_ban        = frdm_h_upg_two_2
+cost 		            = 1200
+radiation_protection         = 0.2
+
+[frdm_h_upg_two_2]
+name                    = st_up_uti_b6_name
+description             = st_up_uti_b6_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_8
+position_x	     		= 100
+position_y		    	= 162
+precondition_upg        = frdm_h_upg_two
+precondition_ban        = frdm_h_upg_two_1
+cost 		            = 1200
+chemical_burn_protection = 0.2
+
+[frdm_h_upg_two_3]
+name                    = st_up_kom_c4_name
+description             = st_up_kom_c4_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_7
+position_x	     		= 200
+position_y		    	= 108
+precondition_upg        = frdm_h_upg_two_1,frdm_h_upg_two_2
+precondition_ban        = frdm_h_upg_two_4
+cost 		            = 1800
+burn_protection = 0.3
+
+[frdm_h_upg_two_4]
+name                    = st_up_kom_c5_name
+description             = st_up_kom_c5_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_9
+position_x	     		= 200
+position_y		    	= 162
+precondition_upg        = frdm_h_upg_two_1,frdm_h_upg_two_2
+precondition_ban        = frdm_h_upg_two_3
+cost 		            = 1800
+shock_protection = 0.3
+
+[frdm_h_upg_three]
+name                    = st_up_uti_b7_name
+description             = st_up_uti_b7_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_10
+position_x	     		= 0
+position_y		    	= 243
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 850
+power_restore_speed					= 0.001
+
+[frdm_h_upg_three_1]
+name                    = st_up_uti_b5_name
+description             = st_up_uti_b5_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_11
+position_x	     		= 100
+position_y		    	= 216
+precondition_upg        = frdm_h_upg_three
+precondition_ban        = frdm_h_upg_three_2
+cost 		            = 1200
+shock_protection = 0.2
+
+[frdm_h_upg_three_2]
+name                    = st_up_uti_b1_name
+description             = st_up_uti_b1_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_12
+position_x	     		= 100
+position_y		    	= 270
+precondition_upg        = frdm_h_upg_three
+precondition_ban        = frdm_h_upg_three_1
+cost 		            = 4000
+artefact_count = 2
+[frdm_h_upg_three_3]
+name                    = st_up_uti_c1_name
+description             = st_up_uti_c1_descr
+icon                    = ui_inGame2_upgrade_svoboda_heavy_outfit_13
+position_x	     		= 200
+position_y		    	= 243
+precondition_upg        = frdm_h_upg_three_1,frdm_h_upg_three_2
+precondition_ban        = no
+cost 		            = 7000
+artefact_count = 4

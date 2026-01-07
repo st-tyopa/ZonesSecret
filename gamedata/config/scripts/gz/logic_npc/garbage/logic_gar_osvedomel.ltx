@@ -1,0 +1,17 @@
+[logic]
+active = walker@gar_osvedomel_stay
+
+[walker@gar_osvedomel_stay]
+path_walk = gar_osvedomel_stay
+path_look = gar_osvedomel_look
+danger = danger_condition@scout
+on_info = {+rf_osvedomel_meet_start -dell_rf_osvedomel} walker@gar_osvedomel_stay2
+
+[walker@gar_osvedomel_stay2]
+path_walk = gar_osvedomel_stay
+path_look = gar_osvedomel_look
+danger = danger_condition@scout
+on_actor_dist_ge = 120|%+dell_rf_osvedomel%
+
+[danger_condition@scout]
+ignore_distance       = 5

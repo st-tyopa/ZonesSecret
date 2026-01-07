@@ -1,0 +1,106 @@
+[logic]
+active = ph_door@close_0
+
+[ph_door@open_1]
+locked = false
+closed = false
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_info = {+yan_semenov_zamena} ph_door@locked11
+
+[ph_door@open_11]
+locked = false
+closed = false
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_info = {+close_bunker_door} ph_door@locked1
+
+[ph_door@locked1]
+locked = true
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+
+[ph_door@locked11]
+locked = true
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_info = {+yan_hit_bunker_door} %=play_snd(device\door_stop) =hit_npc(yan_hit_bunker_door:door:0:1500)% ph_door@locked12
+
+[ph_door@locked12]
+locked = true
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_info = {+yan_hit_bunker_door2} %=play_snd(device\door_stop) =hit_npc(yan_hit_bunker_door:door:0:1500)% ph_door@locked13
+
+[ph_door@locked13]
+locked = true
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop 
+on_info = {+yan_hit_bunker_door3} %=play_snd(device\door_stop) =hit_npc(yan_hit_bunker_door:door:0:1500)% ph_door@locked14
+
+[ph_door@locked14]
+locked = true
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_info = {+yan_bunker_escape_sms} ph_door@open_11
+
+[ph_door@close]
+locked = false
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_use = {-yan_find_noyt_sms} ph_door@open_1 
+
+[ph_door@close_1]
+locked = false
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_use = ph_door@open
+
+[ph_door@open]
+locked = false
+closed = false
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_use = ph_door@close_1
+
+[ph_door@close_0]
+locked = false
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_use = {-yan_bunker_door_blocked} %+yan_bunker_door_blocked% ph_door@close_0_1
+
+[ph_door@close_0_1]
+locked = false
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_timer = 6000|%+yan_bunker_door_blocked_1% ph_door@close_01
+
+[ph_door@close_01]
+locked = false
+closed = true
+snd_open_start = trader_door_open_start
+snd_close_start = trader_door_close_start
+snd_close_stop = trader_door_close_stop
+on_timer = 10000|%+yan_bunker_door_blocked_open% ph_door@open_1
+on_use = {-yan_bunker_door_blocked_open} ph_door@close_01

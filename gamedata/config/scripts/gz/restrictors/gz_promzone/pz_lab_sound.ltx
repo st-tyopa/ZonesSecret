@@ -1,0 +1,42 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+pz_otis_lab_go_to_zomb} %=play_snd_from_obj(84132:monsters\zombie\zombie_die_0) =play_snd_from_obj(84133:monsters\zombie\zombie_panic) +pz_otis_lab_go_to_zomb_done =play_snd_from_obj(84134:device\door_stop)% sr_idle1
+on_info = {+pz_otis_lab_anom} sr_idle8
+
+[sr_idle1]
+on_game_timer = 17|%=play_snd_from_obj(84134:monsters\zombie\zombie_eat_1)% sr_idle2
+on_info = {+pz_otis_lab_anom} sr_idle8
+
+[sr_idle2]
+on_game_timer = 30|%=play_snd_from_obj(84133:monsters\zombie\zombie_attack_2) =play_snd_from_obj(84132:monsters\zombie\zombie_take_damage_1)  =play_snd_from_obj(84133:device\door_stop)  =play_snd_from_obj(84132:device\door_locked)% sr_idle3
+on_info = {+pz_otis_lab_anom} sr_idle8
+
+[sr_idle3]
+on_game_timer = 25|%=play_snd_from_obj(84133:monsters\zombie\zombie_attack_3) =play_snd_from_obj(84132:monsters\zombie\zombie_attack_6) =play_snd_from_obj(84134:monsters\zombie\zombie_idle_17) =play_snd_from_obj(84134:device\metal_small_close_stop)% sr_idle4
+on_info = {+pz_otis_lab_anom} sr_idle8
+
+[sr_idle4]
+on_game_timer = 35|%=play_snd_from_obj(84134:monsters\zombie\zombie_eat_1)% sr_idle5 
+on_info = {+pz_otis_lab_anom} sr_idle8
+
+[sr_idle5]
+on_actor_inside = {+pz_otis_lab_go_to_zomb} %=play_snd_from_obj(84132:monsters\bloodsucker\distant_growl_1) =play_snd_from_obj(84133:monsters\zombie\zombie_panic) +pz_otis_lab_go_to_zomb_done =play_snd_from_obj(84134:device\door_stop)% sr_idle6
+on_info = {+pz_otis_lab_anom} sr_idle8
+
+[sr_idle6]
+on_game_timer = 35|%=play_snd_from_obj(84132:soz\characters_voice\scenario\rnd_horror24)% sr_idle7
+on_info = {+pz_otis_lab_anom} sr_idle8
+
+[sr_idle7]
+on_game_timer = 35|%=play_snd_from_obj(84134:soz\characters_voice\scenario\rnd_horror5)% sr_idle
+on_info = {+pz_otis_lab_anom} sr_idle8
+
+[sr_idle8]
+on_info = {+pz_lab_return_base_done} %=run_postprocess(agr_u_fade:01:false) =disable_ui% sr_idle81
+
+[sr_idle81]
+on_timer = 5000|%=teleport_actor(pz_lager_tel:pz_lager_tel_look) =enable_ui% sr_idle@nil
+
+[sr_idle@nil]

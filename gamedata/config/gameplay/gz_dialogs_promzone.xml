@@ -1,0 +1,251 @@
+ <?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+
+ <dialog id="dialog_pz_otis_start_to_lab">
+  <has_info>pz_otis_lab_start</has_info>
+  <dont_has_info>pz_otis_lab_run</dont_has_info>
+  <dont_has_info>pz_info_time_scale</dont_has_info>
+  <dont_has_info>pz_isc_return_night</dont_has_info>
+  <init_func>dialogs_new_system.pz_otis_start_to_lab</init_func>
+ </dialog>
+
+ <dialog id="dialog_pz_otis_start_to_lab2">
+  <has_info>pz_night_dell_mercs</has_info>
+  <has_info>pz_otis_dialog2</has_info>
+  <dont_has_info>pz_otis_lab_run</dont_has_info>
+  <init_func>dialogs_new_system.pz_otis_start_to_lab2</init_func>
+ </dialog>
+
+ <dialog id="dialog_pz_wanderer">
+  <dont_has_info>pz_wanderer_dialog_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_wanderer</init_func>      
+ </dialog>
+
+ <dialog id="dialog_pz_otis_open_lab">
+  <has_info>pz_otis_lab_enter</has_info>
+  <dont_has_info>pz_open_start</dont_has_info>
+  <init_func>dialogs_new_system.pz_otis_open_lab</init_func>      
+ </dialog>
+
+ <dialog id="dialog_pz_otis_open_lab_done">
+  <has_info>pz_otis_lab_open_done</has_info>
+  <dont_has_info>pz_otis_lab_teleport</dont_has_info>
+  <init_func>dialogs_new_system.pz_otis_open_lab_done</init_func>          
+ </dialog>
+
+ <dialog id="dialog_pz_otis_lab_to_zomb">
+  <has_info>pz_otis_lab_teleport</has_info>
+  <dont_has_info>pz_otis_lab_go_to_zomb</dont_has_info>
+  <init_func>dialogs_new_system.pz_otis_lab_to_zomb</init_func>      
+ </dialog>
+
+ <dialog id="dialog_pz_otis_electricity">
+  <has_info>pz_otis_lab_anom</has_info>
+  <dont_has_info>pz_lab_electrisity_start</dont_has_info>
+  <init_func>dialogs_new_system.pz_otis_electricity</init_func>        
+ </dialog>
+
+ <dialog id="dialog_pz_lab_scien" force_reload="1">
+  <dont_has_info>pz_lab_scien_dialog_done1</dont_has_info>
+  <init_func>dialogs_new_system.pz_lab_scien</init_func> 
+ </dialog>
+
+
+
+ <dialog id="dialog_pz_scien_1_return">
+  <has_info>pz_otis_lab_death</has_info>
+  <has_info>pz_lab_all_zombies_dead</has_info>
+  <dont_has_info>pz_lab_return_base_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_scien_1_return</init_func>    
+ </dialog>
+
+ <dialog id="dialog_pz_scien_2_return">
+  <has_info>pz_otis_lab_death</has_info>
+  <has_info>pz_lab_all_zombies_dead</has_info>
+  <has_info>pz_scien1_lab_death</has_info>
+  <dont_has_info>pz_lab_return_base_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_scien_2_return</init_func>      
+ </dialog>
+
+ <dialog id="dialog_pz_scien_3_return">
+  <has_info>pz_otis_lab_death</has_info>
+  <has_info>pz_lab_all_zombies_dead</has_info>
+  <has_info>pz_scien1_lab_death</has_info>
+  <has_info>pz_scien2_lab_death</has_info>
+  <dont_has_info>pz_lab_return_base_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_scien_3_return</init_func>       
+ </dialog>
+  
+ <dialog id="dialog_pz_tepa">
+  <has_info>pz_meet_tyopa</has_info>
+  <dont_has_info>pz_to_heli_start</dont_has_info>
+  <init_func>dialogs_new_system.pz_tepa</init_func>      
+ </dialog>
+
+ <dialog id="dialog_pz_ghost">
+  <dont_has_info>pz_lab_return_base_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_ghost</init_func>
+ </dialog>
+
+ <dialog id="dialog_pz_borman">
+  <has_info>borman_fail</has_info>
+  <dont_has_info>pz_borman_help</dont_has_info>
+  <dont_has_info>pz_borman_fuck</dont_has_info>
+  <init_func>dialogs_new_system.pz_borman</init_func>      
+ </dialog>
+
+ <dialog id="dialog_alt_mrcs">
+  <has_info>actor_is_killer</has_info>
+  <has_info>pz_rob_merclager_on_base_done</has_info>
+  <dont_has_info>pz_alt_mercs_grif_dialog_done</dont_has_info>
+  <dont_has_info>pz_alt_mercs_grif_dialog_fail</dont_has_info>
+  <init_func>dialogs_new_system.pz_alt_mrcs</init_func>            
+ </dialog>
+
+ <dialog id="dialog_alt_mrcs_volkodav">
+  <has_info>pz_alt_mercs_grif_dialog_done</has_info>
+  <dont_has_info>pz_alt_mercs_volkodav_dialog_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_alt_mrcs_volkodav</init_func>     
+ </dialog>
+
+ <dialog id="dialog_alt_mrcs_volkodav_2">
+  <has_info>pz_alt_mercs_volkodav_dialog_done</has_info>
+  <dont_has_info>pz_alt_mercs_build_come</dont_has_info>
+  <init_func>dialogs_new_system.pz_alt_mrcs_volkodav_2</init_func>       
+ </dialog>
+ 
+  <dialog id="dialog_pz_isk_after_lab_dialog">
+  <has_info>pz_lab_case_have</has_info>
+  <dont_has_info>pz_lab_case_dialog_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_isk_after_lab_dialog</init_func>      
+ </dialog>
+
+ <dialog id="dialog_scien_after_lab">
+  <has_info>pz_lab_return_base_done</has_info>
+  <dont_has_info>pz_scien2_lab_death</dont_has_info>
+  <dont_has_info>pz_scien3_lab_death</dont_has_info>
+  <dont_has_info>pz_scien_after_lab_dialog_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_scien_after_lab</init_func>     
+ </dialog>
+
+ <dialog id="dialog_scien_after_lab_alt">
+  <has_info>pz_lab_return_base_done</has_info>
+  <has_info>pz_scien2_lab_death</has_info>
+  <has_info>pz_scien3_lab_death</has_info>
+  <dont_has_info>pz_scien_after_lab_dialog_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_scien_after_lab_alt</init_func>        
+ </dialog>
+
+ <dialog id="dialog_merc_leader_guard">
+  <has_info>pz_merclager_leader_seif_stay</has_info>
+  <has_info>pz_merc_leader_in_zone</has_info>
+  <dont_has_info>pz_leader_guard_bad</dont_has_info>
+  <dont_has_info>pz_leader_guard_propusk</dont_has_info>
+  <init_func>dialogs_new_system.pz_merc_leader_guard</init_func>     
+ </dialog>
+
+ <dialog id="dialog_pz_isk_leader_dialog1">
+  <has_info>pz_iskateli_group_start</has_info>
+  <dont_has_info>pz_rob_merclager_docs_start</dont_has_info>
+  <dont_has_info>pz_otis_lab_start</dont_has_info>
+  <init_func>dialogs_new_system.pz_isk_leader_dialog1</init_func>      
+ </dialog>
+
+ <dialog id="dialog_pz_isk_leader_hitman_dialog">
+  <has_info>pz_lab_case_dialog_done</has_info>
+  <dont_has_info>pz_rob_merclager_docs_start</dont_has_info>
+  <init_func>dialogs_new_system.pz_isk_leader_hitman_dialog</init_func>      
+ </dialog>
+	
+ <dialog id="dialog_pz_isk_leader_dialog2">
+  <has_info>pz_rob_merclager_docs_done</has_info>
+  <dont_has_info>pz_rob_merclager_docs_complete</dont_has_info>
+  <init_func>dialogs_new_system.pz_isk_leader_dialog2</init_func> 
+ </dialog>
+
+ <dialog id="dialog_pz_isk_leader_dialog3">
+  <has_info>pz_phone_isk_call_start</has_info>
+  <dont_has_info>help_scien_lager</dont_has_info>
+  <dont_has_info>pz_meet_tyopa</dont_has_info>
+  <init_func>dialogs_new_system.pz_isk_leader_dialog3</init_func>       
+ </dialog>
+
+ <dialog id="dialog_pz_hata_guard_talk">
+  <dont_has_info>pz_hata_guard_talk</dont_has_info>
+  <init_func>dialogs_new_system.pz_hata_guard_talk</init_func>     
+ </dialog>
+
+ <dialog id="dialog_pz_hata_zomb_talk">
+  <dont_has_info>pz_hata_zomb_talk_false</dont_has_info>
+  <dont_has_info>pz_hata_zomb_free_start</dont_has_info>
+  <dont_has_info>pz_hata_zomb_free_start_1</dont_has_info>
+  <init_func>dialogs_new_system.pz_hata_zomb_talk</init_func>        
+ </dialog>
+	
+ <dialog id="dialog_pz_merclager_fc_2_dialog_1">
+  <has_info>actor_is_killer</has_info>
+  <dont_has_info>pz_rob_merclager_on_base_done</dont_has_info>
+  <init_func>dialogs_new_system.pz_merclager_fc_2_dialog_1</init_func>      
+ </dialog>
+	
+ <dialog id="dialog_pz_merclager_fc_1_dialog_1">
+  <has_info>actor_is_killer</has_info>
+  <dont_has_info>pz_rob_merclager_on_base_done</dont_has_info>
+  <dont_has_info>pz_rob_merclager_docs_fail</dont_has_info>
+  <init_func>dialogs_new_system.pz_merclager_fc_1_dialog_1</init_func>     
+ </dialog>
+ 
+ 
+ 
+ 
+ 
+ <!-- <dialog id="dialog_pz_scien_after_lab_dialog">
+  <has_info>pz_lab_case_have</has_info>
+  <dont_has_info>pz_lab_case_dialog_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>pz_scien_after_lab_text_00</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>pz_scien_after_lab_text_01</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>pz_scien_after_lab_text_02</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>pz_scien_after_lab_text_03</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>pz_scien_after_lab_text_04</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>pz_scien_after_lab_text_05</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>pz_scien_after_lab_text_06</text>
+                    <give_info>pz_scien_after_lab_dialog_done</give_info>
+            </phrase>
+	</phrase_list>
+ </dialog> -->
+ 
+ 
+  <dialog id="dialog_pz_otis_return">
+  <has_info>pz_lab_all_zombies_dead</has_info>
+  <dont_has_info>pz_lab_return_base_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>pz_otis_return_text_00</text>
+                    <give_info>pz_lab_return_base_done</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+ </dialog>
+
+	
+</game_dialogs>

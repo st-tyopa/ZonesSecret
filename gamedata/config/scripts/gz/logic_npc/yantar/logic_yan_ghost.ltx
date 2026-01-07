@@ -1,0 +1,23 @@
+[logic]
+active = walker@stay
+combat_ignore = combat_ignore
+
+[walker@stay]
+path_walk = yan_ghost_stay
+path_look = yan_ghost_stay_look
+on_timer = 4000|walker@go
+
+[walker@go]
+path_walk = yan_ghost_go_1
+path_look = yan_ghost_stay_look
+meet = no_meet
+on_signal = ghostend|remark@sit
+
+[remark@sit]
+anim = sit
+target = 65014
+meet = no_meet
+on_timer = 200|nil%+start_true_ending%
+
+[combat_ignore]
+combat_ignore_cond = always

@@ -1,0 +1,8 @@
+[logic]
+active = sr_idle1
+
+[sr_idle1]
+on_info = {+find_details_for_yar_done} sr_idle2
+
+[sr_idle2]
+on_game_timer = 800| nil %+make_raciya_done%

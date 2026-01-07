@@ -1,0 +1,104 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SoZ. Prologue
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Физические объекты
+[gz_door_physic]:identity_immunities
+GroupControlSection	= spawn_group
+$spawn 				= "physics\object"
+$prefetch 			= 8
+$editor                         = idle
+fixed_bones                     = link
+class				= O_PHYS_S
+remove_time			= 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
+cform				= skeleton
+visual				= physics\door\door_trader.ogf
+radius				= 2
+ph_mass = 10000
+
+
+[agr_dolg_dat_physic]:identity_immunities
+GroupControlSection	= spawn_group
+$spawn 				= "physics\object"
+$prefetch 			= 8
+$editor                         = idle
+fixed_bones                     = link
+class				= O_PHYS_S
+remove_time			= 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
+cform				= skeleton
+visual				= physics\technica\pribor_1c.ogf
+radius				= 2
+ph_mass = 10000
+
+[pz_mercs_dinamit_physic]:identity_immunities
+GroupControlSection	= spawn_group
+$spawn 				= "physics\object"
+$prefetch 			= 8
+$editor                         = idle
+fixed_bones                     = link
+class				= O_PHYS_S
+remove_time			= 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
+cform				= skeleton
+visual				= physics\box\expl_dinamit.ogf
+radius				= 2
+ph_mass = 10000
+
+[gz_mine_physic]:identity_immunities
+GroupControlSection	= spawn_group
+$spawn 				= "physics\object"
+$prefetch 			= 8
+$editor                         = idle
+fixed_bones                     = link
+class				= O_PHYS_S
+remove_time			= 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
+cform				= skeleton
+visual				= equipments\mine.ogf
+radius				= 2
+ph_mass = 10000
+
+
+
+[skeleton_physic]:identity_immunities
+GroupControlSection	= spawn_group
+$spawn 				= "physics\object"
+$prefetch 			= 8
+$editor                         = idle
+
+class				= O_PHYS_S
+remove_time			= 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
+cform				= skeleton
+visual				= physics\dead_body\skelet_combine_pose_06.ogf
+radius				= 2
+
+[quest_datchik_physic]:identity_immunities
+GroupControlSection	= spawn_group
+$spawn 				= "physics\object"
+$prefetch 			= 8
+$editor                         = idle
+class				= O_PHYS_S
+fixed_bones                     = link
+remove_time			= 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
+cform				= skeleton
+visual				= equipments\item_scaner.ogf
+radius				= 2
+ph_mass = 10000
+
+[x15_rupor_alarm]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "physics\x15_rupor_alarm"
+class				= O_PHYS_S
+cform				= skeleton
+visual				= physics\decor\rupor.ogf
+custom_data         = scripts\gz\sounds\x15_megafone_rupor.ltx
+script_binding      = bind_physic_object.init
+fixed_bones         = link
+radius				= 2
+ph_mass = 10000
+auto_attach = false
+remove_time = 60

@@ -1,0 +1,16 @@
+
+
+--//---------------------------------------------------------------
+function GetColor(name, alfa)
+	local ini = INIF.ini_file_m("mobile\\shades_of_colors.ltx")
+	--'reader
+	if alfa then
+		return alfa, ini:r_color("colors_rgb", name)
+	else
+		return ini:r_color("colors_rgb", name)
+	end
+end
+
+function GetARGBColor(name, alfa)
+	return GetARGB(GetColor(name, alfa))
+end

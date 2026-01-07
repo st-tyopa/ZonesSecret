@@ -1,0 +1,73 @@
+[logic]
+active = walker@agr_filin_wounded
+on_death = death@agr_filin
+
+[walker@agr_filin_wounded]
+path_walk = agr_filin_wounded_walk
+path_look = agr_filin_wounded_look
+combat_ignore_cond = always
+on_info = {+agr_quest_guide_start} walker@agr_filin_walk1
+
+[walker@agr_filin_walk1]
+path_walk = agr_filin_walk_1
+meet = no_meet
+danger = danger_condition@agr_filin
+on_signal = filinwalk1end| remark@agr_filin_sitdown1 %+agr_filin_spawn_pseudodogs%
+
+[remark@agr_filin_sitdown1]
+anim = hide
+meet = no_meet
+combat_ignore_cond = always
+danger = danger_condition@agr_filin
+on_info = {+agr_filin_pseudodog_1_dead +agr_filin_pseudodog_2_dead +agr_filin_pseudodog_3_dead} walker@agr_filin_walk2
+
+[walker@agr_filin_walk2]
+path_walk = agr_filin_walk_2
+meet = no_meet
+danger = danger_condition@agr_filin
+on_signal = filinwalk2end| remark@agr_filin_sitdown2 %+agr_filin_spawn_boars%
+
+[remark@agr_filin_sitdown2]
+anim = hide
+meet = no_meet
+combat_ignore_cond = always
+danger = danger_condition@agr_filin
+on_info = {+agr_filin_boar_1_dead +agr_filin_boar_2_dead +agr_filin_boar_3_dead +agr_filin_boar_4_dead +agr_filin_boar_5_dead} walker@agr_filin_walk3
+
+[walker@agr_filin_walk3]
+path_walk = agr_filin_walk_3
+meet = no_meet
+danger = danger_condition@agr_filin
+on_signal = filinwalk3end| remark@agr_filin_sitdown3 %+agr_filin_spawn_dogs%
+
+[remark@agr_filin_sitdown3]
+anim = hide
+meet = no_meet
+combat_ignore_cond = always
+danger = danger_condition@agr_filin
+on_info = {+agr_filin_dog_1_dead +agr_filin_dog_2_dead +agr_filin_dog_3_dead +agr_filin_dog_4_dead} walker@agr_filin_walk4
+
+[walker@agr_filin_walk4]
+path_walk = agr_filin_walk_4
+meet = no_meet
+danger = danger_condition@agr_filin
+on_signal = filinwalk4end|walker@agr_filin_cave_stay %+agr_quest_guide_complete%
+
+[walker@agr_filin_cave_stay]
+path_walk = filin_cave_stay
+path_look = filin_cave_look
+on_info = {+dialog_agr_filin_thanks_done} kamp@agr_filin
+
+
+[kamp@agr_filin]
+path_walk = agr_filin_kamp
+center_point = agr_filin_kamp_center
+
+
+
+
+[death@agr_filin]
+on_info = %+agr_filin_dead%
+
+[danger_condition@agr_filin]
+ignore_distance = 0

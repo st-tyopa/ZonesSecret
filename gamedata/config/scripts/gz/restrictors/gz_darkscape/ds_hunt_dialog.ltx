@@ -1,0 +1,7 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+find_raciya_in_dsneutlager_done -ds_spawn_krovos_alt} %=on_talk_ds_hunt_1 +ds_hunt_dialog_start% sr_idle@nil
+
+[sr_idle@nil]

@@ -1,0 +1,151 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Главный интерфейс мобильника.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 20.05.2011
+--]]
+
+local winds =
+{
+    _win_info.win_info,
+    _win_teleporter.win_tel,
+	_win_spawner.win_spawner,
+	_win_contr.win_contr
+}
+
+local win_x = 67
+local win_y = 128
+local win_width = 780
+local win_height = 426
+
+class "Mobile" (CUIScriptWnd)
+
+function Mobile:__init(owner) super()
+    self.owner = owner
+    self.win_active = nil
+	self:InitControls()
+end
+
+--/summary/>> Инициализация компонентов
+function Mobile:InitControls()
+	self:Init(62,64,900,640)			  
+    local xml = CScriptXmlInit()
+    xml:ParseFile("mobile\\_ui_mobile.xml")
+	
+	self.message_box_error = CUIMessageBoxEx()
+	self.message_box_error:Init("message_box_error")
+	
+	xml:InitStatic("background", self)
+    self.title = xml:InitStatic("title", self)
+	
+	self.check_fix_win = xml:InitCheck("check_fix_window", self)
+	self:Register(self.check_fix_win,"check_fix_win")
+	self:AddCallback("check_fix_win", ui_events.BUTTON_CLICKED,	self.Check_Fix, self)
+	xml:InitButton("check_fix_window:hint", self.check_fix_win)
+	
+	local win_frect = Frect():set(win_x, win_y, win_x + win_width, win_y + win_height)
+	
+	local frame_tab_wins = xml:InitFrameLine("frame_tab_wins", self)
+	self.tab_wins = xml:InitTab("tab_wins", frame_tab_wins)
+	self.tab_wins:SetNewActiveTab(self.owner.index_menu)
+	self:Register(self.tab_wins,"tab_wins")
+	self:AddCallback("tab_wins",      ui_events.TAB_CHANGED,	self.Tab_Changed, self)
+	
+	xml:InitAnimStatic("frame_tab_wins:anim", frame_tab_wins)
+	
+	for k,v in pairs (winds) do
+	    if v ~= nil then
+		    local win = v()
+			win:InitControls(win_frect, xml, self)
+			win:Show(false)
+			self:AttachChild(win)
+			self["win"..tostring(k)] = win
+		end
+	end
+	
+	self:Tab_Changed()
+end
+
+--/summary/>> Метод событий ввода (override)
+function Mobile:OnKeyboard(dik, keyboard_action)
+	CUIScriptWnd.OnKeyboard(self, dik, keyboard_action)
+	
+	if (self.win_active and self.win_active.OnKeyboard) then
+	    self.win_active:OnKeyboard(dik, keyboard_action)
+	end
+	
+	if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+		if dik == DIK_keys.DIK_ESCAPE then
+			self:save()
+			self.owner:close_menu()
+		end
+	end
+end
+
+--/summary/>> CUI-апдейт (override)
+function Mobile:Update()
+    CUIScriptWnd.Update(self)
+    if (self.win_active and self.win_active.Update) then
+	    self.win_active:Update()
+	end
+	local index = self.tab_wins:GetActiveIndex()
+	if self.owner.index_menu == index then
+	    if not self.check_fix_win:GetCheck() then
+		    self.check_fix_win:SetCheck(true)
+		end
+	else
+	    if self.check_fix_win:GetCheck() then
+		    self.check_fix_win:SetCheck(false)
+		end
+	end
+end
+
+--/summary/>> Fast-апдейт
+function Mobile:UpdateFastCall()
+	if (self.win_active and self.win_active.UpdateFastCall) then
+	    self.win_active:UpdateFastCall()
+	end
+end
+
+--/summary/>> Метод переключения между вкладками
+function Mobile:Tab_Changed()
+    local index = self.tab_wins:GetActiveIndex()
+	for k,v in pairs(winds) do
+	    local win = self["win"..tostring(k)]
+		if win then
+	        if k == (index + 1) then 
+			    win:Show(true)
+				self.win_active = win
+				self.title:SetText(win.title or "no_name")
+	        else win:Show(false)
+			end
+		end
+	end
+end
+
+--/summary/>> Метод фиксации/дефиксации активной вкладки
+function Mobile:Check_Fix()
+    local value = self.check_fix_win:GetCheck()
+	if value then
+	    self.owner.index_menu = self.tab_wins:GetActiveIndex()
+	else
+	    self.owner.index_menu = 0
+	end
+end
+
+--/summary/>> Сохранение данных при закрытии ММ
+function Mobile:save()
+    for k,v in pairs(winds) do
+	    local win = self["win"..tostring(k)]
+		if win and win.save then
+	        win:save(self.owner)
+		end
+	end
+end
+
+--/summary/>> Выход.
+function Mobile:quit()
+    self:save()
+    self:GetHolder():start_stop_menu(self, true)
+	self.owner:close_menu()
+end

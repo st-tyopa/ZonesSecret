@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle@night
+
+[sr_idle@night]
+on_actor_inside = {!is_day +find_bekas_box_fail} %+dv_bekas_actor_cover_1% sr_idle@night2
+on_info = {+bekas_lead_done} sr_idle@nil
+
+[sr_idle@night2]
+on_actor_outside = {+find_bekas_box_fail} %-dv_bekas_actor_cover_1% sr_idle@night
+on_info = {+bekas_lead_done} sr_idle@nil
+
+[sr_idle@nil]

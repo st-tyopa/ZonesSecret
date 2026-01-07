@@ -1,0 +1,70 @@
+[gazmask]:helmet_base
+$spawn 				            = "helmets\gazmask"
+visual				            = equipments\gazmask\gazmask_item.ogf
+description			            = enc_gazmask_descr
+inv_name			            = enc_gazmask
+inv_name_short		            = enc_gazmask
+inv_weight			            = 1
+inv_grid_width                  = 2
+inv_grid_height                 = 2
+inv_grid_x                      = 15
+inv_grid_y                      = 32
+cost				            = 2500
+night_vision_device	            = device_nightvision_bad ;для тестов
+hud                             = gazmask_hud
+immunities_sect			        = sect_gazmask_immunities
+burn_protection 				= 0.0
+strike_protection 				= 0.05
+shock_protection 				= 0.03
+wound_protection				= 0.05
+radiation_protection 			= 0.25
+telepatic_protection 			= 0.1
+chemical_burn_protection 		= 0.25
+explosion_protection 			= 0.02
+fire_wound_protection  			= 1.05
+bones_koeff_protection		    = kurtka_antigas_damage
+
+filter_is_used                  = true
+filter_section                  = gazmask_filter
+filter_life                     = 35
+change_filter		            = item_sounds\inv_change_filter
+
+[gazmask_hud]
+allow_inertion                  = false
+visual                          = equipments\gazmask\gazmask_hud.ogf
+position                        = -0.001000,-0.170000,0.156000
+orientation                     = -1.260304,0.343771,0.000000
+anim_filtr                      = filtr
+anim_hide                       = hide
+anim_show                       = draw
+
+[sect_gazmask_immunities]
+burn_immunity			        = 0.04
+strike_immunity			        = 0.0
+shock_immunity			        = 0.04
+wound_immunity			        = 0.0
+radiation_immunity		        = 0.0
+telepatic_immunity		        = 0.0
+chemical_burn_immunity	        = 0.04
+explosion_immunity		        = 0.04
+fire_wound_immunity		        = 0.00
+
+[gazmask_filter]
+GroupControlSection	            = spawn_group
+discovery_dependency            = 
+$spawn                          = "devices\gazmask_filter"
+class                           = II_ATTCH
+cform                           = skeleton
+visual                          = equipments\gazmask\gazmask_item_filtr.ogf
+radius                          = 1
+quest_item                      = false
+belt                            = true
+description                     = gazmask_filter_descr
+inv_name                        = gazmask_filter_name
+inv_name_short                  = gazmask_filter_name
+inv_weight                      = 0.35
+inv_grid_width                  = 1
+inv_grid_height                 = 1
+inv_grid_x                      = 19
+inv_grid_y                      = 4
+cost                            = 1500

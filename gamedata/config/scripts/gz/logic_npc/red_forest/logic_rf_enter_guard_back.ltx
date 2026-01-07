@@ -1,0 +1,17 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = rf_guard_back_stay1
+path_look = rf_guard_back_look1
+on_actor_dist_le = 20| remark
+
+[remark]
+anim = threat
+target = actor
+on_info = {+rf_ld_guards_back_enter} walker2
+
+[walker2]
+path_walk = rf_guard_back_stay2
+path_look = rf_guard_back_look2
+meet = no_meet

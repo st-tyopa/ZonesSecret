@@ -1,0 +1,12 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+find_noyt_in_lab_done} %+yan_semenov_zamena =play_snd(anomaly\anomaly_body_tear_1)% sr_particle ;%+yan_find_noyt_done_sms%
+
+[sr_particle]
+name = anomaly2\body_tear_00
+path = yan_scien_lead_stay_lager_death
+mode = 2 		
+looped = false
+on_timer = 1000|nil            

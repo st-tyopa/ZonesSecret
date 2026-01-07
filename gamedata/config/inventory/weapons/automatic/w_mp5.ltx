@@ -1,0 +1,275 @@
+[wpn_mp5]:identity_immunities
+GroupControlSection				= spawn_group
+discovery_dependency 				= 
+$spawn                  			= "weapons\mp5a2"	
+$npc			 			= on				
+$prefetch 		 			= 8
+scheduled               			= off              
+cform                   			= skeleton
+class                   			= WP_LR300
+min_radius              			= 0
+max_radius              			= 50
+description					= enc_weapons1_wpn-mp5
+
+
+chamber_status          = true
+ef_main_weapon_type				= 2
+ef_weapon_type					= 6
+
+reload_dof           = 0.0, 0.5, 5, 1.7
+
+;-----------------------------------------------------------------------------------
+holder_range_modifier				= 1.0		       
+holder_fov_modifier				= 0.7              
+;-----------------------------------------------------------------------------------
+
+weapon_class					= assault_rifle
+
+cost						= 5500
+
+ammo_limit		 			= 210
+ammo_current					= 30
+ammo_elapsed		 			= 30
+
+ammo_mag_size		 			= 30
+ammo_class		 			= ammo_9x19_fmj, ammo_9x19_pbp 
+fire_modes					= 1, 2, -1
+
+hand_dependence		 			= 1
+single_handed					= 0
+
+inv_name					= wpn-mp5
+inv_name_short					= wpn-mp5
+inv_weight					= 2.5
+
+inv_grid_width     				= 4
+inv_grid_height    				= 2
+inv_grid_x         				= 5
+inv_grid_y         				= 9
+
+kill_msg_x					= 72
+kill_msg_y					= 82
+kill_msg_width					= 56
+kill_msg_height					= 23
+
+slot 						= 1,2		
+animation_slot					= 2		
+
+;-----------------------------------------------------------------------------------
+fire_dispersion_base				= 0.18 	;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor				= 1.07f
+
+;отдача
+cam_relax_speed        				= 6.5	;скорость возврата в исходное положение
+cam_dispersion         				= 0.2	;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc				= 0.1	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac				= 0.4	;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle					= 6.0	;максимальный угол отдачи
+cam_max_angle_horz				= 9.0	;(degree) maximum shot horizontal degree 
+cam_step_angle_horz				= 0.5	;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor 		= 5	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 				= 0.003	;вероятность осечки при максимальном износе 
+misfire_condition_k				= 0.05
+condition_shot_dec 				= 0.0001 ;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+direction               			= 0, 0, 1
+
+fire_point              			= 0.0, 0.188, 0.392
+
+flame_particles					= weapons\generic_weapon05
+smoke_particles         			= amik\weapons\smoke_particles\smoke_particles_02
+
+shell_point		 			= 0.0, 0.188, 0.082
+shell_dir		 			= 0.0, 1.0, 0.0
+shell_particles	 				= amik\weapons\9x19_shells_r
+
+rpm_empty_click 	 			= 200
+
+PDM_disp_base 					= 1.0
+PDM_disp_vel_factor 				= 0.8
+PDM_disp_accel_factor 				= 0.8
+PDM_crouch	 				= 1.0
+PDM_crouch_no_acc 				= 1.0
+
+; ttc
+hit_power        				= 0.4
+hit_impulse		 			= 50
+hit_type 					= fire_wound
+
+fire_distance          				= 100
+bullet_speed					= 400 	
+rpm                     			= 800
+; end ttc
+
+silencer_hit_power       			= 0.35
+silencer_hit_impulse	 			= 40
+silencer_fire_distance   			= 100
+silencer_bullet_speed	 			= 350
+
+use_aim_bullet					= true		
+time_to_aim					= 1.0
+
+
+hud                     			= wpn_mp5_hud
+normal                  			= 0, 1, 0
+position         	    			= -0.026, -0.125, -0.03
+orientation             			= 0, -10, 0
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+strap_position         				= -0.16,-0.36,0.15			
+strap_orientation      				= -10,-5,10					
+strap_bone0					= bip01_spine2
+strap_bone1					= bip01_spine1
+
+startup_ammo            			= 1000
+visual                  			= weapons\mp5\wpn_mp5.ogf
+
+light_color		 			= 0.6,0.5,0.3
+light_range		 			= 5
+light_var_color		 			= 0.05
+light_var_range		 			= 0.1
+light_time 		 			= 0.2
+
+ph_mass			 			= 3
+
+;addons
+scope_status					= 0
+silencer_status					= 2
+grenade_launcher_status				= 0
+
+scope_name 					= wpn_addon_scope_acog
+silencer_name  					= wpn_sil_9p
+
+scope_x                     			= 74
+scope_y                     			= -4
+silencer_x                  			= 188
+silencer_y                  			= 18
+
+;silencer_flame_particles 			= weapons\generic_weapon01
+silencer_smoke_particles 			= amik\weapons\smoke_particles\silencer_smoke_particles_00
+
+
+silencer_light_color				= 0.6,0.5,0.3
+silencer_light_range				= 0.01
+silencer_light_var_color			= 0.05
+silencer_light_var_range			= 0.5
+silencer_light_time 				= 0.2
+
+zoom_enabled					= true
+scope_zoom_factor	    			= 70
+
+snd_draw					= weapons\mp5\mp5_draw
+snd_holster					= weapons\mp5\mp5_holster
+snd_shoot					= weapons\mp5\mp5______9
+snd_shoot1					= weapons\mp5\mp5______4
+snd_shoot2					= weapons\mp5\mp5______8
+snd_shoot3					= weapons\mp5\mp5______2
+snd_shoot4					= weapons\mp5\mp5______7
+snd_shoot5					= weapons\mp5\mp5______1
+snd_shoot6					= weapons\mp5\mp5______6
+snd_shoot7					= weapons\mp5\mp5______x
+snd_shoot8					= weapons\mp5\mp5______5     
+snd_empty					= weapons\mp5\mp5_empty, 0.5
+snd_reload					= weapons\mp5\mp5_reload
+snd_silncer_shot				= weapons\mp5\mp5_shot_sil
+
+
+;params when silencer is attached 
+;similar to corresponding params without prefix silencer_
+
+
+
+;silencer_flame_particles 			= weapons\generic_weapon01
+silencer_smoke_particles 			= amik\weapons\smoke_particles\p_smoke_particles_02
+
+
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+
+[wpn_mp5_hud]
+shell_point          				= 0.1,-0.01,-0.55
+shell_dir		 			= 0.0, 1.0, 0.0
+
+fire_point					= 0,0,-0.5
+fire_bone            	   			= muzzle
+
+position					= 0.08,-0.03,0.3
+orientation					= 0,0,0
+
+visual                  			= weapons\mp5\wpn_mp5_hud.ogf
+
+anim_idle					= idle
+anim_idle_aim					= aim
+anim_reload					= reload
+anim_draw					= draw
+anim_holster					= holster
+anim_shoot					= shoot
+anim_idle_sprint				= sprint
+anim_idle_moving				= moving
+
+zoom_hide_crosshair				= true
+
+zoom_offset					= -0.148800,0.045900,-0.162000
+zoom_rotate_x					= -0.002400
+zoom_rotate_y					= 0.000600
+
+zoom_rotate_time				= 0.25
+rotate_time					= 0.25
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+[wpn_mp5_m1]:wpn_mp5
+$spawn             				= "weapons\uniq\wpn_mp5_m1"
+class                   			= WP_VAL
+description					= enc_weapons1_wpn-mp5_m2
+
+inv_name	        			= wpn-mp5_m2
+inv_name_short					= wpn-mp5_m2
+
+fire_modes					= 1, 3, -1
+fire_dispersion_base				= 0.15
+
+
+inv_grid_width     				= 4
+inv_grid_height    				= 2
+inv_grid_x         				= 0
+inv_grid_y         				= 22
+
+cam_dispersion          			= 0.10
+cam_dispersion_inc				= 0.10
+
+flame_particles					= 
+light_disabled					= true
+
+hud                 				= wpn_mp5_m1_hud
+visual                  			= weapons\mp5\wpn_mp5_m2.ogf
+
+scope_status					= 0
+silencer_status					= 0
+
+scope_x                     			= 60
+scope_y                     			= -8
+
+snd_shoot					= weapons\mp5\mp5sd_shot
+snd_shoot1					= weapons\mp5\mp5sd_shot1
+snd_shoot2					= weapons\mp5\mp5sd_shot2
+snd_shoot3					= weapons\mp5\mp5sd_shot3
+snd_shoot4					= weapons\mp5\mp5sd_shot1
+snd_shoot5					= weapons\mp5\mp5sd_shot2
+snd_shoot6					= weapons\mp5\mp5sd_shot3
+snd_shoot7					= weapons\mp5\mp5sd_shot1
+snd_shoot8					= weapons\mp5\mp5sd_shot2
+;snd_reload					= weapons\mp5\mp5sd_reload
+
+
+[wpn_mp5_m1_hud]:wpn_mp5_hud
+
+visual                  			= weapons\mp5\wpn_mp5_m2_hud.ogf
+
+zoom_offset					= -0.153800,0.021900,-0.162000
+zoom_rotate_x					= -0.002400
+zoom_rotate_y					= 0.000600

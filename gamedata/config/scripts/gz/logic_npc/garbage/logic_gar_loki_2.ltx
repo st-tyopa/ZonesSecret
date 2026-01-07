@@ -1,0 +1,12 @@
+[logic]
+active = walker@gar_loki_stay
+
+[walker@gar_loki_stay]
+path_walk = gar_lukash_2_stay
+path_look = gar_lukash_2_look
+on_info = {+dialog_varag_prisoner_flesh_nagr_done} walker@gar_loki_stay2
+
+[walker@gar_loki_stay2]
+path_walk = gar_lukash_2_stay
+path_look = gar_lukash_2_look
+on_actor_dist_ge_nvis = 130| %+dell_loki%

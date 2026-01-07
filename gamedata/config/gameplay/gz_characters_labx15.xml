@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding="windows-1251"?>
+
+<xml>
+
+	<!--------------------------------------- - Лаборатория Х-15 - ---------------------------------------->
+	<!----------------------------------------------------------------------------------------------->
+	<!--------------------------------------- - Наемники - ---------------------------------------->
+	<specific_character id="labx15_mercgroup_merc1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>labx15_mercgroup_merc</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_mask</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g36 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	
+	<specific_character id="labx15_mercgroup_merc2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>labx15_mercgroup_merc</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_antigas</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="labx15_mercgroup_merc3" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>labx15_mercgroup_merc</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\killer_elite</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416_m1 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="labx15_mercgroup_merc4" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>labx15_mercgroup_merc</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\stalker_ki_antigas</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_hk416_m2 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="labx15_mercgroup_merc5" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_stalker_ki_antigas</icon>
+		<map_icon x="2" y="0"></map_icon>
+		<bio>sim_killer_general_bio</bio>
+		
+		<class>labx15_mercgroup_merc</class>
+		<community>killer</community> <terrain_sect>stalker_killer_terrain</terrain_sect>
+		<money min="600" max="2000" infinitive="0"></money>
+					
+		<rank>434</rank>
+		<reputation>-30</reputation>
+
+		<visual>gz\npc\killers\killer_elite</visual>
+		<snd_config>characters_voice\human_03\killer\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_g36 \n
+			ammo_5.56x45_ap = 2 \n
+			device_torch \n
+			hand_radio\n
+#include "gameplay\character_food.xml" \n
+#include "gameplay\character_drugs.xml"
+		</supplies>
+					
+#include "gameplay\character_criticals_4.xml"
+#include "gameplay\character_dialogs.xml"
+		
+	</specific_character>
+	
+	<specific_character id="labx15_scien_professor" team_default = "1">
+		<name>Проффесор Жиглов</name>
+		<icon>ui_npc_u_stalker_ecolog</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>labx15_scien_professor</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>gz\npc\scientists\ecolog_white</visual>
+		<snd_config>characters_voice\human_01\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_pm \n
+			ammo_9x18_fmj = 1 \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+
+		<start_dialog>x15_professor_last_dialog</start_dialog>
+</specific_character>
+
+	<specific_character id="x15_scien_random1" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>yan_scien_guard_6</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\neytral\stalker_neytral_rukzak_2</visual>
+		<snd_config>characters_voice\human_01\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+
+					
+	</specific_character>
+	
+	<specific_character id="x15_scien_random2" team_default = "1">
+		<name>GENERATE_NAME_stalker</name>
+		<icon>ui_npc_u_green_stalker_7</icon>
+		<map_icon x="0" y="0"></map_icon>
+		<bio>sim_stalker_novice_bio</bio>
+
+		<class>yan_scien_guard_6</class>
+		<community>ecolog</community> <terrain_sect>stalker_ecolog_terrain</terrain_sect>
+		<money min="200" max="600" infinitive="0"></money>
+
+		<rank>40</rank>
+		<reputation>0</reputation>
+
+		<visual>actors\neytral\stalker_neytral_balon_8</visual>
+		<snd_config>characters_voice\human_01\newbie\</snd_config>
+		<crouch_type>-1</crouch_type>
+		<supplies>
+			[spawn] \n
+			wpn_ak74 \n
+			ammo_5.45x39_fmj \n
+		</supplies>
+		
+#include "gameplay\character_criticals_3.xml"
+
+					
+	</specific_character>
+
+</xml>

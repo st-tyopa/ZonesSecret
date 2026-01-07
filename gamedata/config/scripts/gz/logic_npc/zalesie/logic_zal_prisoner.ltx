@@ -1,0 +1,81 @@
+[logic]
+active = camper@zal_prison
+combat_ignore = combat_ignore
+
+[camper@zal_prison]
+path_walk = zal_prison_prisoner_walk
+path_look = zal_prison_prisoner_look
+combat_ignore_cond = always
+on_info = {+kill_zal_merc_start} remark@zal_prisonner_sit
+
+[remark@zal_prisonner_sit]
+anim = prisoner
+meet = no_meet
+target = zal_prison_prisoner_look, 0
+combat_ignore_cond = always
+danger = danger_condition@shustryi
+on_info = {+kill_merc_complete} remark@zal_prison_help
+
+[remark@zal_prison_help]
+snd = esc_shustryi_help
+anim = prisoner
+meet = no_meet
+target = zal_prison_prisoner_look, 0
+on_actor_dist_le = 5| remark@zal_wounded_prisoner
+combat_ignore_cond = always
+danger = danger_condition@shustryi
+on_signal = sound_end| remark@zal_prisonner_wait
+on_info = {+back_to_scien_lager_start} walker@zal_prisoner_walk
+
+[remark@zal_prisonner_wait]
+anim = prisoner
+meet = no_meet
+target = zal_prison_prisoner_look, 0
+combat_ignore_cond = always
+danger = danger_condition@shustryi
+on_actor_dist_le = 5| remark@zal_wounded_prisoner
+on_timer = 10000| remark@zal_prison_help
+on_info = {+back_to_scien_lager_start} walker@zal_prisoner_walk
+
+
+[remark@zal_wounded_prisoner]
+anim = wait
+anim_reset = false
+target = zal_prison_prisoner_look, 0
+snd = esc_shustryi_thanks
+on_info = {+back_to_scien_lager_start} walker@zal_prisoner_walk
+combat_ignore_cond = always
+danger = danger_condition@shustryi
+
+[walker@zal_prisoner_walk]
+path_walk = zal_prison_prisoner_walk2
+path_look = zal_prison_prisoner_look
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = zalprisstop| remark@zal_prisoner_stop
+meet = no_meet
+danger = danger_condition@prisoner_walk
+
+
+[remark@zal_prisoner_stop]
+anim = claim
+target = actor
+meet = no_meet
+on_timer = 5000| walker@zal_prisoner_walk3
+danger = danger_condition@prisoner_walk
+
+[walker@zal_prisoner_walk3]
+path_walk = zal_prison_prisoner_walk3
+path_look = zal_prison_prisoner_look3
+danger = danger_condition@prisoner_walk
+
+[danger_condition@prisoner_walk]
+ignore_distance       = 0
+ignore_distance_grenade = 0
+ignore_distance_corpse  = 0
+ignore_distance_danger_hit     = 0
+ignore_distance_sound   = 0 
+
+[danger_condition@shustryi]
+ignore_distance = 0

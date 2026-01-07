@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle@day
+
+[sr_idle@day]
+on_info = {!is_day -pz_night_spawn_zone} %+pz_night_spawn -pz_night_del% sr_idle@night
+
+[sr_idle@night]
+on_info = {=is_day -pz_night_spawn_zone} %+pz_night_del -pz_night_spawn% sr_idle@day
+on_info2 = {+pz_ghost_dialog_done_pered} %=run_postprocess(agr_u_fade:01:false) =disable_ui +pz_ghost_dialog_done% sr_idle1
+
+[sr_idle1]
+on_timer = 5000|%+pz_night_del =travel_in_time_6 =teleport_actor(pz_hata_kamp_sit_2:pz_hata_kamp)% sr_idle2
+
+[sr_idle2]
+on_timer = 2000|%=enable_ui% sr_idle@nil
+
+[sr_idle@nil]

@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle
+ 
+[sr_idle]
+on_info = %=play_snd_from_obj(19001:nature\new_flies1)% sr_idle1
+
+[sr_idle1]
+on_timer = 5800| sr_idle2
+
+[sr_idle2]
+on_info = %=play_snd_from_obj(19001:nature\new_flies2)% sr_idle21
+
+[sr_idle21]
+on_timer = 3000| sr_idle
+
+[sr_idle@nil]

@@ -1,0 +1,22 @@
+[logic]
+active = walker@sos_bandit
+
+[walker@sos_bandit]
+path_walk = yan_sos_bandit_stay_1
+path_look = yan_sos_bandit_look_1
+danger = danger_condition@scout
+meet = default_meet
+on_info = {+dialog_sos_bandit_done} %=disable_ui% remark@yan_punch_in_face
+
+[remark@yan_punch_in_face]
+anim = punch
+target = actor
+on_signal = anim_end | %=run_cam_effector(fusker:999:false) =punch_dark =teleport_actor(yan_actor_teleport:yan_actor_teleport_look)% walker@sos_bandit_2
+
+[walker@sos_bandit_2]
+path_walk = yan_sos_bandit_stay_1
+path_look = yan_sos_bandit_look_1
+danger = danger_condition@scout
+
+[danger_condition@scout]
+ignore_distance       = 0

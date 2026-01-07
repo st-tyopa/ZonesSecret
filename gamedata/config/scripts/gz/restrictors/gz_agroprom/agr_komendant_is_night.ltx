@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle@day
+
+[sr_idle]
+on_info = {+agr_pass_to_dolgbase_have -dv_dolg_grehbase_rush_done} sr_idle@day
+
+[sr_idle@day]
+on_info = {!is_day} %+agr_komendant_night% sr_idle@night
+on_info2 = {+agr_marsh_monsters_start} sr_idle1
+
+[sr_idle@night]
+on_info = {=is_day} %-agr_komendant_night% sr_idle@night
+on_info2 = {+agr_marsh_monsters_start} sr_idle1
+
+[sr_idle1]
+on_info = {+agr_marsh_monsters_contr_dead -dv_dolg_grehbase_rush_done} sr_idle2, {+agr_marsh_monsters_contr_dead +dv_dolg_grehbase_rush_done} nil
+
+[sr_idle2]
+on_timer = 10000|%+agr_komendant_zombie_done_sms +agr_marsh_monsters_complete +agr_krylov_wait% nil

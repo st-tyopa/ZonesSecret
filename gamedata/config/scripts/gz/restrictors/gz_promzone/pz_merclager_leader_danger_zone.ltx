@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+pz_merclager_leader_seif_stay} sr_idle@nil
+
+[sr_idle@2]
+;on_npc_in_zone = 71512|pz_merclager_leader_danger_zone|sr_idle@21
+on_npc_out_zone = 71512|pz_merclager_leader_danger_zone|%+pz_merc_leader_in_zone% sr_idle@nil
+
+[sr_idle@21]
+on_npc_out_zone = 71512|pz_merclager_leader_danger_zone|%+pz_merc_leader_in_zone%  sr_idle@nil
+
+[sr_idle@nil]

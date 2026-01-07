@@ -1,0 +1,7 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_actor_outside = {+pz_end_dialog} %+kill_pz_prisoner =play_snd(weapons\colt\colt_shoot)% sr_idle@nil
+
+[sr_idle@nil]

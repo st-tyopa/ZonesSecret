@@ -1,0 +1,19 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+pz_fire_second} sr_particle
+
+[sr_particle]
+name = explosions\expl_car_smoke_big
+path = pz_smoke_barrel
+mode = 2 		
+looped = true            
+on_info = {+pz_fire_end} sr_particle1
+
+[sr_particle1]
+name = explosions\expl_car_smoke_big
+path = pz_smoke_barrel
+mode = 2 		
+looped = false
+on_timer = 3000|nil  

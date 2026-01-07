@@ -1,0 +1,136 @@
+--[[
+///* Проект: "Mobile_Manager"
+///* Описание файла: Набор функций отвечающих за настройку и установку свойств объектов.
+///* Автор: Singapur22 
+///* Дата последнего изменения: 27.05.2011
+--]]
+
+function set_value(item_prop, value)
+	item_prop.value = value
+	item_prop.win_value:SetText(value)
+end
+
+--//-------------------------------------------------------
+--// Функции настройки свойств
+--//-------------------------------------------------------
+
+--'--------------------------------------------------------
+--/summary/>> управление свойством индекса группировки
+function get_community_index(index)
+    if (index < 3) then index = 3 end
+	local comm = _utils.get_community_by_index(index)
+	return "community", comm
+end
+
+function set_community_index(item_prop)
+	local title = "Выберите группировку."
+	local communities = _utils.get_communities()
+	for i=1, 3 do
+	    table.remove(communities, 1)
+	end
+	local function set_value_comm(item_prop, comm, comm_index)
+	    item_prop.value = comm_index + 2
+	    item_prop.win_value:SetText(comm)
+    end
+	local focused = tonumber(item_prop.value) and (item_prop.value > 2) and item_prop.value - 2 or 1
+	level.start_stop_menu(_ui_total.choice_string(item_prop, set_value_comm, communities, title, focused), false)
+end
+
+--'--------------------------------------------------------
+--/summary/>> управление свойством установки модели объекта
+function get_visual_name(file_name_Full)
+    local file_name = ""
+	for w in string.gmatch(file_name_Full, "%s*([^\\]+)%s*") do
+	    file_name = w
+	end
+    return "visual", file_name
+end
+
+function set_visual_name(item_prop)
+    level.start_stop_menu(_ui_total.choice_visual(item_prop), false)
+end
+
+--'--------------------------------------------------------
+--/summary/>> управление свойством установки отношения к актору
+local rlts = {"friend", "neutral", "enemy"}
+
+function get_relation(relation)
+    return "relation", rlts[relation + 1]
+end
+
+function set_relation(item_prop)
+	local title = "Отношение к Актору."
+	function set_rlt(item, val, ind)
+		item.s_value = val
+		item.value = ind - 1
+		item_prop.win_value:SetText(val)
+	end
+    level.start_stop_menu(_ui_total.choice_string(item_prop, set_rlt, rlts, title, item_prop.value + 1), false)
+end
+
+--'--------------------------------------------------------
+--/summary/>> управление свойством установки световой анимации
+function get_main_color_animator(value)
+    return "color_anim", value
+end
+
+function set_main_color_animator(item_prop)
+	local title = "выберите анимацию света"
+	local tbl = {}
+	local ini = ini_file("mobile\\lanims.ltx")
+	for i=0, ini:line_count("light_anims") do
+	    local valid, _, value = ini:r_line("light_anims", i, "", "")
+		if (valid and value ~= "") then
+		    table.insert(tbl, value)
+		end
+	end
+    level.start_stop_menu(_ui_total.choice_string(item_prop, set_value, tbl, title), false)
+end
+
+
+--'--------------------------------------------------------
+--/summary/>> управление свойством установки custom_data
+function get_custom_data(value)
+    local ini = create_ini_file(value)
+	local val = (ini:section_exist("logic") and 
+	                (
+	                    (ini:line_exist("logic", "active") and ini:r_string("logic", "active")) or 
+					    (ini:line_exist("logic", "cfg") and ini:r_string("logic", "cfg"))
+					)
+				) 
+				or (value:match(".ltx") and value)
+				or "no_data"
+    return "custom_data", val
+end
+
+function set_custom_data(item_prop)
+	local function set_value_cd(item_prop, value)
+		local _, txt = get_custom_data(value)
+	    item_prop.win_value:SetText(txt)
+		item_prop.value = (txt ~= "no_data" and value) or ""
+    end
+	level.start_stop_menu(_ui_total.setting_custom_data(item_prop, set_value_cd), false)
+end
+
+--//-------------------------------------------------------
+--// Функции установки свойств через онлайновые методы
+--//-------------------------------------------------------
+
+function online_set_wounded(obj, val)
+    obj:wounded(val)
+end
+
+function online_set_relation(obj, val)
+    obj:set_relation(val, db.actor)
+	db.actor:set_relation(val, obj)
+end
+
+--//--------------------------------------------
+--// Функции установки свойств через оффлайновые методы
+--//--------------------------------------------
+
+function offline_set_death(sobj, val)
+    if val then
+        sobj:on_death()
+	end
+end

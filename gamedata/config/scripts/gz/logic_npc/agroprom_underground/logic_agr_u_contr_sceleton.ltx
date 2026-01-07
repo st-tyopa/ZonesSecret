@@ -1,0 +1,25 @@
+[logic]
+active = mob_fake_death
+on_death = death
+on_hit = hit
+
+[mob_fake_death]
+on_actor_dist_le = 5 | %+und_whispers%  mob_home
+
+[mob_home]
+path_home = mob_zombie_home
+home_min_radius = 0
+home_max_radius = 5
+aggressive_home
+
+[mob_camp]
+path_home = und_zombie_test
+path_look = und_sceleton_look
+home_min_radius  = 0
+home_max_radius = 0
+
+[hit]
+on_info = nil %=kill_phantoms%
+
+[death]
+on_info = nil %=kill_phantoms%

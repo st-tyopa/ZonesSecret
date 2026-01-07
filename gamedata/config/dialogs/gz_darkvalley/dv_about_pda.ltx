@@ -1,0 +1,52 @@
+[dv_about_pda]
+
+params_sequence = npc
+
+x0 = dv_about_pda_text_0000
+link0 = 1
+
+x1 = dv_about_pda_text_0001
+link1 = 2
+
+x2 = dv_about_pda_text_0002
+link2 = 3, 4
+
+x3 = dv_about_pda_text_0003
+a3 = dialogs.break_dialog
+
+x4 = dv_about_pda_text_0004
+link4 = 5
+p4 = dialogs.actor_have_medkit
+
+x5 = dv_about_pda_text_0005
+link5 = 6
+
+x6 = dv_about_pda_text_0006
+link6 = 7
+
+x7 = dv_about_pda_text_0007
+link7 = 8
+
+x8 = dv_about_pda_text_00071
+link8 = 9
+
+x9 = dv_about_pda_text_0008
+link9 = 10
+
+x10 = dv_about_pda_text_0009
+a10 = gz_prologue.transfer_medkit_out
+gi11 = gar_go_to_trader_start
+link10 = 11,12,13
+
+x11 = dv_about_pda_text_0010
+d11 = dv_sv_greshbase_rush_start, dv_dolg_group_sbor
+gi11 = dv_prisoner_dialog_end, greh_shturm_alone, gar_dell_mutants
+
+x12 = dv_about_pda_text_0010
+h12 = dv_sv_greshbase_rush_start
+gi12 = dv_prisoner_dialog_end, sv_sturm, gar_dell_mutants
+
+x13 = dv_about_pda_text_0010
+h13 = dv_dolg_group_sbor
+gi13 = dv_prisoner_dialog_end, dolg_sturm, gar_dell_mutants
+

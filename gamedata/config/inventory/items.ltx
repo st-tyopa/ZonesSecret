@@ -1,0 +1,164 @@
+;;	FOOD
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[bread_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "food and drugs\bread_a"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = weapons\bred\bred.ogf
+cost					= 20
+inv_name				= "bread"
+inv_name_short			= "bread"
+inv_weight				= 0.3
+inv_grid_width			= 1
+inv_grid_height			= 1
+inv_grid_x				= 11
+inv_grid_y				= 9
+;slot = 12, 13, 14, 15
+attach_angle_offset		= -0.287979, 1.560923, 1.544060
+attach_position_offset	= 0.096910, -0.013594, 0.107925
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			 = 0.0,0.0,0.0
+angle_offset			 = 1.570790,1.570790,3.92699
+
+[kolbasa_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "food and drugs\kolbasa_a"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = weapons\kolbasa\kolbasa.ogf
+cost					= 50
+inv_name				= "kolbasa"
+inv_name_short			= "kolbasa"
+inv_weight				= 0.5
+inv_grid_width			= 1
+inv_grid_height			= 1
+inv_grid_x				= 19
+inv_grid_y				= 12
+;slot = 12, 13, 14, 15
+attach_angle_offset		= 0.440521, 1.378287, -0.644026
+attach_position_offset	= 0.104196, -0.010821, 0.076969
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			 = 0.0,0.0,0.0
+angle_offset			 = 1.570790,1.570790,3.92699
+
+[vodka_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "food and drugs\vodka_a"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = weapons\vodka\vodka
+cost					= 100
+inv_name				= "vodka"
+inv_name_short			= "vodka"
+inv_weight				= 0.5
+inv_grid_width			= 1
+inv_grid_height			= 2
+inv_grid_x				= 5
+inv_grid_y				= 2
+;slot = 12, 13, 14, 15
+attach_angle_offset		= 0.000000, 0.000000, 0.000000
+attach_position_offset	= 0.087266, -0.078540, 0.052360
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+// should be deleted after update
+bone_name				= bip01_r_hand
+position_offset			 = 0.0,0.0,0.0
+angle_offset			 = 1.570790,1.570790,3.92699
+
+[guitar_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "food and drugs\guitar_a"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = Equipments\item_guitar.ogf
+cost					= 35
+description         	= guitar_descr
+inv_name				= guitar
+inv_name_short			= guitar
+inv_weight				= 1.5
+inv_grid_width			= 4
+inv_grid_height			= 2
+inv_grid_x				= 10
+inv_grid_y				= 19
+attach_angle_offset		= -1.651084, -1.341824, 1.200789
+attach_position_offset	= 0.077492, -0.030020, 0.090059
+attach_bone_name		= bip01_l_hand
+auto_attach				= false
+
+[harmonica_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "food and drugs\harmonica_a"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = Equipments\item_harmonica.ogf
+cost					= 35
+description         	= harmonica_descr
+inv_name				= harmonica
+inv_name_short			= harmonica
+inv_weight				= 0.35
+inv_grid_width			= 1
+inv_grid_height			= 1
+inv_grid_x				= 11
+inv_grid_y				= 2
+attach_angle_offset		= 0.000000, -1.204452, -1.262921
+attach_position_offset	= 0.081856, -0.035081, 0.011694
+attach_bone_name		= bip01_l_hand
+auto_attach				= false
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;	DEVICES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[binocular_a]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	=
+$spawn					= "devices\binocular_a"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = weapons\binoculars\wpn_binoculars.ogf
+cost					= 0
+inv_name				= "binocular"
+inv_name_short			= "binocular"
+inv_weight				= 0.5
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 16
+inv_grid_y				= 12
+attach_angle_offset		= 3.080506,-1.493053,-1.202040   ;устанавливается в радианах Angle*PI/180
+attach_position_offset	= 0.080000,0.021273,0.100000
+attach_bone_name		= bip01_r_hand
+auto_attach				= false
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;	OTHERS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[wpn_vodka_hud]:identity_immunities
+fire_point               = 0.0, 0.0, 0.06
+fire_bone                = bip01_head
+orientation              = 0, 0, 0
+position                 = 0, 0, 0
+visual                   = weapons\vodka\vodka_hud.ogf
+
+anim_idle			= vodka_2
+anim_show			= vodka_1
+anim_hide			= vodka_4
+anim_play			= vodka_5
+anim_prepare		= vodka_5
+anim_eat			= vodka_3
+
+#include "tainiki.ltx"
+#include "prologue_physic_objects.ltx"

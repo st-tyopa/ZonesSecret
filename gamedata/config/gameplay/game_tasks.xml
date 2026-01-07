@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding="windows-1251"?>
+<game_tasks_data>
+#include "gameplay\tasks_my_mod.xml"
+#include "gameplay\game_tasks_by_vendor.xml"
+#include "gameplay\prologue_storyline_tasks.xml"
+#include "gameplay\prologue_tasks.xml"
+</game_tasks_data>

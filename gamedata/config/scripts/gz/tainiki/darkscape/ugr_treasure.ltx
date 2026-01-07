@@ -1,0 +1,20 @@
+[logic]
+active = ph_code1
+
+[ph_code1]
+code = 1991
+on_code = ph_idle1
+on_info = {+ds_lost_diggers_start} ph_code2
+
+[ph_idle1]
+on_use = %+ds_lost_diggers_find_gas =broke_gasmask%
+nonscript_usable = true
+tips = st_search_treasure
+
+[ph_code2]
+code = 1991
+on_code = ph_idle2
+
+[ph_idle2]
+nonscript_usable = true
+tips = st_search_treasure

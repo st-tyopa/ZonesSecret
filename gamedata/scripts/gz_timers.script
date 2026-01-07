@@ -1,0 +1,64 @@
+local iTimer
+local last
+function start_timer_minutes_test(seconds) 
+    if last~= nil  then
+        iTimer = get_game_time() + last  --/ взводим таймер на остаток времени last
+    else 
+        iTimer = get_game_time() + 60*1000 --/ взводим таймер например 7 сек.
+    end 
+end
+
+function timer_n_minutes_test() --/ вызываетс€ из ':update' сталкер-биндера
+    if iTimer then
+        last = iTimer - get_game_time() -- присваиваем переменной остаток времени до конца работы таймера
+        if iTimer < get_game_time() then 
+            iTimer = nil --/ выключаем таймер
+            last=nil
+            news_manager.send_tip(db.actor, "Стоп таймер")
+        end
+    end
+end 
+
+-- выводим  значение таймера в обратном отсчете  на худ
+function hud_static()  --/ вызываетс€ из ':update' сталкер-биндера
+local hud = get_hud()
+local st
+    if iTimer then 
+    st = hud:GetCustomStatic("hud_timer")
+        if st==nil then 
+            hud:AddCustomStatic("hud_timer", true) 
+            st = hud:GetCustomStatic("hud_timer")
+        end
+        if last~=nil then
+            local hours = math.floor(last/3600000)
+            local minutes = math.floor(last/60000 - hours*60)
+            local seconds = math.floor(last/1000 - hours*3600 - minutes*60)
+            local text = string.format("%02d:%02d:%02d",hours,minutes,seconds) -- выводим время в формате 00:00:00
+            --local text=string.format("%.f",last/1000)
+            st:wnd():SetTextST(text)  
+        end 
+    else 
+        if hud:GetCustomStatic("hud_timer")~=nil then 
+            hud:RemoveCustomStatic("hud_timer")
+        end
+    end
+end
+
+
+
+
+
+
+
+
+
+--[[
+Вызов функции после окончания:
+local funcCall = Timers.timerName.funcCall
+local funcFile = funcCall:sub(1, (funcCall:find("%.")) - 1)
+local funcName = funcCall:sub((funcCall:find("%.")) + 1)
+_G[funcFile][funcName]()
+[13:52:19] Лёня ака ColR_iT: Т.е. если в ключе funcCall будет строка вида: "xr_effects.disable_ui_elements"
+[13:52:37 | Изменены 13:52:58] Лёня ака ColR_iT: То код выше - разобьёт строку на подстроки и вызовет функцию уже по имени файла и имени функции.
+[13:54:21] Лёня ака ColR_iT: Но здесь условие - путь к функции должен быть полным, т.е. с именем файла, как в примере.
+]]

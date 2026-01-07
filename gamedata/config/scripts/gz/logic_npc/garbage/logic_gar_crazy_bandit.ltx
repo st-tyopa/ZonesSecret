@@ -1,0 +1,55 @@
+[logic]
+active = walker
+on_death = death
+
+[walker]
+path_walk = gar_crazy_bandit_sit
+path_look = gar_crazy_bandit_look
+on_actor_dist_le_nvis = 130|%=actor_neutral%
+on_info = {+gar_crazy_bandit_phrase} remark
+combat_ignore_cond = combat_ignore@esc_bridge
+
+
+[remark]
+anim = psycho_pain
+target = gar_crazy_bandit_look, 0
+snd = crazy_stalk_1
+on_actor_dist_le_nvis = 3| remark2
+;meet = meet@sold_zoneguard
+combat_ignore_cond = combat_ignore@esc_bridge
+
+[remark2]
+anim = psycho_pain
+target = gar_crazy_bandit_look, 0
+;meet = meet@sold_zoneguard
+on_info = {+gar_crazy_bandit_lie} %=killactor =play_snd_from_obj(21513:characters_voice\soz\gz_garbage\crazy_stalk_3)%
+combat_ignore_cond = combat_ignore@esc_bridge
+on_info = {+gar_crazy_dialog_done} remark3
+
+[remark3]
+anim = psycho_pain
+target = gar_crazy_bandit_look, 0
+snd = crazy_stalk_2
+meet = no_meet
+on_info = {+gar_crazy_bandit_lie} %=killactor =play_snd_from_obj(21513:characters_voice\soz\gz_garbage\crazy_stalk_3)%
+combat_ignore_cond = combat_ignore@esc_bridge
+
+[death]
+on_info = %+gar_crazy_bandit_dead%
+
+[combat_ignore@esc_bridge]
+combat_ignore_cond = {-esc_bridge_pass_fire =fighting_actor}
+
+[meet@sold_zoneguard]
+meet_state 		= 30| {+gar_find_dynamit_start} talk_hello
+meet_state_wpn 	= 30|{+gar_find_dynamit_start} talk_hello
+victim 			= 30| actor
+victim_wpn 		= 30| actor
+use			= true
+use_wpn		= true
+abuse           = false
+meet_dialog		= gar_crazy_bandit
+precond = visibility
+
+[hit@soldier]
+on_info = {=hit_by_actor} %+gar_crazy_dialog_hit%

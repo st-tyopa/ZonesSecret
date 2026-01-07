@@ -1,0 +1,1294 @@
+;--------------------------------------------------------------------------
+;--главный лагерь свободы,эксклюзивные работы
+;--------------------------------------------------------------------------
+;--------------------------------------------------------------------------
+;--Лидер Свободы (Миклуха)
+;--Утро
+[logic@dv_svobbase_leader_walk]
+active = walker@dv_svobbase_leader_walk
+
+[walker@dv_svobbase_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+on_info = {+dv_sv_greshbase_rush_start} remark@dv_svobbase_leader_raciya
+
+[remark@dv_svobbase_leader_raciya]
+anim = guard_rac
+snd = esc_wolf_radio
+target = actor
+meet = no_meet
+on_signal = sound_end| walker@dv_svobbase_leader_walk2 %+dv_talk_with_chehov_start%
+
+[walker@dv_svobbase_leader_walk2]
+path_walk = leader_walk
+path_look = leader_look
+
+;--День
+
+;--Вечер
+
+;--Ночь
+
+
+;;--------------------------------------------------------------------------
+;--Торговец
+[logic@dv_svobbase_trader_walk]
+active = walker@dv_svobbase_trader_walk
+trade = misc\soz_traders\trade_varag_trader.ltx
+inv_max_weight = 10000
+
+[walker@dv_svobbase_trader_walk]
+path_walk = trader_walk
+path_look = trader_look
+def_state_standing = ward
+meet = meet@dv_svobbase_trader_meet
+
+[meet@dv_svobbase_trader_meet]
+zone = dv_rest_svobbase_trader_meet_zone|wait@talk_hello
+use = true
+use_wpn = true
+
+;;--------------------------------------------------------------------------
+;--Механик
+[logic@dv_svobbase_mehanik_walk]
+active = walker@dv_svobbase_mehanik_walk
+trade = misc\soz_traders\trade_dsneutlager_mehanic.ltx
+inv_max_weight = 10000
+
+[walker@dv_svobbase_mehanik_walk]
+path_walk = mehanik_walk
+path_look = mehanik_look
+def_state_standing = stul_new
+
+;;--------------------------------------------------------------------------
+;;--Охранники базы
+;;--------------------------------------------------------------------------
+;;--Часовой №1
+[logic@dv_svobbase_guard1_walk]
+active = walker@dv_svobbase_guard1_walk
+;--------------------------------------------------
+;;--Часовой №2
+[logic@dv_svobbase_guard2_walk]
+active = walker@dv_svobbase_guard2_walk
+;--------------------------------------------------
+;;--Часовой №3
+[logic@dv_svobbase_guard3_walk]
+active = walker@dv_svobbase_guard3_walk
+;--------------------------------------------------
+;;--Часовой №4
+[logic@dv_svobbase_guard4_walk]
+active = walker@dv_svobbase_guard4_walk
+;--------------------------------------------------
+;;--Часовой №5
+[logic@dv_svobbase_guard5_walk]
+active = walker@dv_svobbase_guard5_walk
+;--------------------------------------------------
+;;--Часовой №6
+[logic@dv_svobbase_guard6_walk]
+active = walker@dv_svobbase_guard6_walk
+-------------------------------------------------
+;--Патрулирующий №1
+[logic@dv_svobbase_patrol1_walk]
+active = walker@dv_svobbase_patrol1_walk
+-------------------------------------------------
+;--Патрулирующий №1
+[logic@dv_svobbase_patrol2_walk]
+active = walker@dv_svobbase_patrol2_walk
+;--------------------------------------------------
+;;--Часовой на вышке
+[logic@dv_svobbase_watchtower]
+active = walker@dv_svobbase_watchtower_walk
+
+[walker@dv_svobbase_watchtower_walk]
+path_walk = watchtower_walk
+path_look = watchtower_look
+;--------------------------------
+
+;;--Охранник на входе к чеху
+
+[logic@dv_svobbase_guard_cheh_walker]
+active = walker@dv_svobbase_guard_cheh_walker1
+
+[walker@dv_svobbase_guard_cheh_walker1]
+path_walk = guard_cheh_walker1_walk
+path_look = guard_cheh_walker1_look
+on_info = {+dv_cheh_wait} walker@dv_svobbase_guard_cheh_walker2
+
+[walker@dv_svobbase_guard_cheh_walker2]
+path_walk = guard_cheh_walker1_walk
+path_look = guard_cheh_walker1_look
+meet = no_meet
+on_info = {=actor_in_zone(dv_guard_cheh_restrictor)} walker@dv_svobbase_guard_cheh_walker3
+
+[walker@dv_svobbase_guard_cheh_walker3]
+path_walk = guard_cheh_walker3_walk
+path_look = guard_cheh_walker3_look
+meet = no_meet
+on_info = {=actor_out_zone(dv_guard_cheh_restrictor)} walker@dv_svobbase_guard_cheh_walker2
+;-----------------------------------------------------------------------
+;---------------Атака на базу греха----------
+
+
+;---------Лидер----------------
+[logic@dv_sv_attack_grehbase_lider1]
+active = walker@dv_sv_attack_grehbase_lider_walk1
+on_death = death@cheh
+
+[death@cheh]
+on_info = %+cheh_dead%
+
+[walker@dv_sv_attack_grehbase_lider_walk1]
+path_walk = sva_lider_walk1
+path_look = sva_lider_look1
+on_info = {+dv_sv_greshbase_rush_start} walker@dv_sv_attack_grehbase_lider_walk2
+
+[remark@dv_sv_attack_grehbase_lider_raciya]
+anim = guard_rac
+snd = dv_chehov_2
+target = actor
+meet = no_meet
+on_signal = sound_end| walker@dv_sv_attack_grehbase_lider_walk2
+
+
+[walker@dv_sv_attack_grehbase_lider_walk2]
+path_walk = sva_lider_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = svar| {+dv_talk_with_chehov_start} %+dv_sv_greshbase_assault_lider_on_pos =dv_sv_grehbase_on_positions% walker@dv_sv_attack_grehbase_lider_walk3
+meet = no_meet
+
+[walker@dv_sv_attack_grehbase_lider_walk3]
+path_walk = sva_lider_walk3
+path_look = sva_lider_look3
+meet = no_meet
+on_info = {+dv_sv_ghehbase_all_sv_on_pos} walker@dv_sv_attack_grehbase_lider_walk3_2
+
+[walker@dv_sv_attack_grehbase_lider_walk3_2]
+path_walk = sva_lider_walk3
+path_look = sva_lider_look3
+on_info = {+dv_sv_grehbase_group_ready_to_go} remark@dv_sv_attack_grehbase_lider_ready3
+
+[remark@dv_sv_attack_grehbase_lider_ready3]
+target = dv_svobbase_sva_lider_look3, 0
+snd = dv_chehov_2
+meet = no_meet
+on_signal = sound_end| walker@dv_sv_attack_grehbase_lider_attack %+dv_sv_greshbase_group_go%
+
+[walker@dv_sv_attack_grehbase_lider_attack]
+path_walk = sva_attack7_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = sv_lider_sitdown|  %+dv_sv_greshbase_assault_lider_on_pos_2 =dv_sv_grehbase_on_positions_2% remark@sv_lider_sitdown
+
+[remark@sv_lider_sitdown]
+anim = hide
+meet = no_meet
+target = dv_svobbase_sva_attack_sitdown_look, 0
+on_timer = 1000| {+dv_sv_ghehbase_all_sv_on_pos_2} %+dv_sv_regroup% walker@sva_attack_lider_assault
+
+[walker@sva_attack_lider_assault]
+path_walk = sva_svobod_camp_assault
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+combat_type = monolith
+meet = no_meet
+on_signal = campassend| walker@sva_attack_lider_patrol
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack_lider_crazy
+
+[walker@sva_attack_lider_patrol]
+path_walk = dv_svobbase_sva_attack_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack_lider_crazy
+
+[remark@sva_attack_lider_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+
+[danger_condition@sva_attack_crazy]
+ignore_distance = 0
+
+
+
+[danger_condition@sva_attack_relax]
+ignore_distance_corpse = 1
+danger_inertion_time_corpse = 10
+
+
+;;----------Штурмовик1--------------------
+
+[logic@dv_sv_attack_grehbase_svobod1]
+active = sleeper@dv_sv_attack_grehbase_svobod1_sleeper
+
+[sleeper@dv_sv_attack_grehbase_svobod1_sleeper]
+path_main = sva_svobod1_sleeper
+meet = no_meet
+on_info = {+dv_sv_greshbase_rush_start} walker@dv_sv_attack_grehbase_svobod1_walk2
+
+[remark@dv_sv_attack_grehbase_svobod1_ready1]
+anim = threat
+target = actor
+on_signal = anim_end| walker@dv_sv_attack_grehbase_svobod1_walk2
+
+[walker@dv_sv_attack_grehbase_svobod1_walk2]
+path_walk = sva_svobod1_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = sva01| {+dv_talk_with_chehov_start} %+dv_sv_greshbase_assault_att1_on_pos =dv_sv_grehbase_on_positions% walker@dv_sv_attack_grehbase_svobod1_walk3
+meet = no_meet
+
+[walker@dv_sv_attack_grehbase_svobod1_walk3]
+path_walk = sva_svobod1_walk3
+path_look = sva_svobod_look3
+on_info = {+dv_sv_greshbase_group_go} walker@dv_sv_attack_grehbase_svobod1_attack
+meet = no_meet
+
+[walker@dv_sv_attack_grehbase_svobod1_attack]
+path_walk = sva_attack1_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = sv_att1_sitdown|  %+dv_sv_greshbase_assault_att1_on_pos_2 =dv_sv_grehbase_on_positions_2% remark@sv_svobod1_sitdown
+
+[remark@sv_svobod1_sitdown]
+anim = hide
+meet = no_meet
+target = dv_svobbase_sva_attack_sitdown_look, 0
+on_info = {+dv_sv_regroup} walker@sva_attack1_assault
+
+[walker@sva_attack1_assault]
+path_walk = sva_svobod_camp_assault
+combat_type = monolith
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = campassend| walker@sva_attack1_patrol
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack1_crazy
+
+[walker@sva_attack1_patrol]
+path_walk = dv_svobbase_sva_attack_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack1_crazy
+
+[remark@sva_attack1_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+;----------Штурмовик2--------------------
+
+[logic@dv_sv_attack_grehbase_svobod2]
+active = sleeper@dv_sv_attack_grehbase_svobod2_sleeper
+
+[sleeper@dv_sv_attack_grehbase_svobod2_sleeper]
+path_main = sva_svobod2_sleeper
+meet = no_meet
+on_info = {+dv_sv_greshbase_rush_start} walker@dv_sv_attack_grehbase_svobod2_walk2
+
+[remark@dv_sv_attack_grehbase_svobod2_ready1]
+anim = threat
+target = actor
+on_signal = anim_end| walker@dv_sv_attack_grehbase_svobod2_walk2
+
+[walker@dv_sv_attack_grehbase_svobod2_walk2]
+path_walk = sva_svobod2_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = sva02| {+dv_talk_with_chehov_start} %+dv_sv_greshbase_assault_att2_on_pos =dv_sv_grehbase_on_positions% walker@dv_sv_attack_grehbase_svobod2_walk3
+meet = no_meet
+
+[walker@dv_sv_attack_grehbase_svobod2_walk3]
+path_walk = sva_svobod2_walk3
+path_look = sva_svobod_look3
+on_info = {+dv_sv_greshbase_group_go} walker@dv_sv_attack_grehbase_svobod2_attack
+meet = no_meet
+
+
+[walker@dv_sv_attack_grehbase_svobod2_attack]
+path_walk = sva_attack2_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = sv_att2_sitdown|  %+dv_sv_greshbase_assault_att2_on_pos_2 =dv_sv_grehbase_on_positions_2% remark@sv_svobod2_sitdown
+
+[remark@sv_svobod2_sitdown]
+anim = hide
+meet = no_meet
+target = dv_svobbase_sva_attack_sitdown_look, 0
+on_info = {+dv_sv_regroup} walker@sva_attack2_assault
+
+[walker@sva_attack2_assault]
+path_walk = sva_svobod_camp_assault
+combat_type = monolith
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = campassend| walker@sva_attack2_patrol
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack2_crazy
+
+[walker@sva_attack2_patrol]
+path_walk = dv_svobbase_sva_attack_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack2_crazy
+
+[remark@sva_attack2_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+
+;----------Штурмовик3--------------------
+
+[logic@dv_sv_attack_grehbase_svobod3]
+active = sleeper@dv_sv_attack_grehbase_svobod3_sleeper
+
+[sleeper@dv_sv_attack_grehbase_svobod3_sleeper]
+path_main = sva_svobod3_sleeper
+meet = no_meet
+on_info = {+dv_sv_greshbase_rush_start} walker@dv_sv_attack_grehbase_svobod3_walk2
+
+[remark@dv_sv_attack_grehbase_svobod3_ready1]
+anim = threat
+target = actor
+on_signal = anim_end| walker@dv_sv_attack_grehbase_svobod3_walk2
+
+[walker@dv_sv_attack_grehbase_svobod3_walk2]
+path_walk = sva_svobod3_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = sva03| {+dv_talk_with_chehov_start} %+dv_sv_greshbase_assault_att3_on_pos =dv_sv_grehbase_on_positions% walker@dv_sv_attack_grehbase_svobod3_walk3
+meet = no_meet
+
+[walker@dv_sv_attack_grehbase_svobod3_walk3]
+path_walk = sva_svobod3_walk3
+path_look = sva_svobod_look3
+on_info = {+dv_sv_greshbase_group_go} walker@dv_sv_attack_grehbase_svobod3_attack
+meet = no_meet
+
+
+[walker@dv_sv_attack_grehbase_svobod3_attack]
+path_walk = sva_attack3_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = sv_att3_sitdown|  %+dv_sv_greshbase_assault_att3_on_pos_2 =dv_sv_grehbase_on_positions_2% remark@sv_svobod3_sitdown
+
+[remark@sv_svobod3_sitdown]
+anim = hide
+meet = no_meet
+target = dv_svobbase_sva_attack_sitdown_look, 0
+on_info = {+dv_sv_regroup} walker@sva_attack3_assault
+
+[walker@sva_attack3_assault]
+path_walk = sva_svobod_camp_assault
+combat_type = monolith
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = campassend| walker@sva_attack3_patrol
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack3_crazy
+
+[walker@sva_attack3_patrol]
+path_walk = dv_svobbase_sva_attack_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack3_crazy
+
+[remark@sva_attack3_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+
+;----------Штурмовик4--------------------
+
+[logic@dv_sv_attack_grehbase_svobod4]
+active = walker@dv_sv_attack_grehbase_svobod4_walk1
+
+[walker@dv_sv_attack_grehbase_svobod4_walk1]
+path_walk = sva_svobod4_walk1
+path_look = sva_svobod4_look1
+on_info = {+dv_sv_greshbase_rush_start} walker@dv_sv_attack_grehbase_svobod4_walk2
+
+[walker@dv_sv_attack_grehbase_svobod4_walk2]
+path_walk = sva_svobod4_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = sva04| {+dv_talk_with_chehov_start} %+dv_sv_greshbase_assault_att4_on_pos =dv_sv_grehbase_on_positions% walker@dv_sv_attack_grehbase_svobod4_walk3
+meet = no_meet
+
+[walker@dv_sv_attack_grehbase_svobod4_walk3]
+path_walk = sva_svobod4_walk3
+path_look = sva_svobod_look3
+on_info = {+dv_sv_greshbase_group_go} walker@dv_sv_attack_grehbase_svobod4_attack
+meet = no_meet
+
+
+[walker@dv_sv_attack_grehbase_svobod4_attack]
+path_walk = sva_attack4_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = sv_att4_sitdown|  %+dv_sv_greshbase_assault_att4_on_pos_2 =dv_sv_grehbase_on_positions_2% remark@sv_svobod4_sitdown
+
+[remark@sv_svobod4_sitdown]
+anim = hide
+meet = no_meet
+target = dv_svobbase_sva_attack_sitdown_look, 0
+on_info = {+dv_sv_regroup} walker@sva_attack4_assault
+
+[walker@sva_attack4_assault]
+path_walk = sva_svobod_camp_assault
+combat_type = monolith
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = campassend| walker@sva_attack4_patrol
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack4_crazy
+
+[walker@sva_attack4_patrol]
+path_walk = dv_svobbase_sva_attack_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack4_crazy
+
+[remark@sva_attack4_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+
+
+;----------Штурмовик5--------------------
+
+[logic@dv_sv_attack_grehbase_svobod5]
+active = walker@dv_sv_attack_grehbase_svobod5_walk1
+
+[walker@dv_sv_attack_grehbase_svobod5_walk1]
+path_walk = sva_svobod5_walk1
+path_look = sva_svobod4_look1
+on_info = {+dv_sv_greshbase_rush_start} walker@dv_sv_attack_grehbase_svobod5_walk2
+
+[walker@dv_sv_attack_grehbase_svobod5_walk2]
+path_walk = sva_svobod5_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = sva05| {+dv_talk_with_chehov_start} %+dv_sv_greshbase_assault_att5_on_pos =dv_sv_grehbase_on_positions% walker@dv_sv_attack_grehbase_svobod5_walk3
+meet = no_meet
+
+[walker@dv_sv_attack_grehbase_svobod5_walk3]
+path_walk = sva_svobod5_walk3
+path_look = sva_svobod_look3
+on_info = {+dv_sv_greshbase_group_go} walker@dv_sv_attack_grehbase_svobod5_attack
+meet = no_meet
+
+
+[walker@dv_sv_attack_grehbase_svobod5_attack]
+path_walk = sva_attack5_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = sv_att5_sitdown| %+dv_sv_greshbase_assault_att5_on_pos_2 =dv_sv_grehbase_on_positions_2% remark@sv_svobod5_sitdown
+
+[remark@sv_svobod5_sitdown]
+anim = hide
+meet = no_meet
+target = dv_svobbase_sva_attack_sitdown_look, 0
+on_info = {+dv_sv_regroup} walker@sva_attack5_assault
+
+[walker@sva_attack5_assault]
+path_walk = sva_svobod_camp_assault
+combat_type = monolith
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = campassend| walker@sva_attack5_patrol
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack5_crazy
+
+[walker@sva_attack5_patrol]
+path_walk = dv_svobbase_sva_attack_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack5_crazy
+
+[remark@sva_attack5_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+
+
+;----------Штурмовик6--------------------
+
+[logic@dv_sv_attack_grehbase_svobod6]
+active = sleeper@dv_sv_attack_grehbase_svobod6_sleeper
+
+[sleeper@dv_sv_attack_grehbase_svobod6_sleeper]
+path_main = sva_svobod6_sleeper
+meet = no_meet
+on_info = {+dv_sv_greshbase_rush_start} walker@dv_sv_attack_grehbase_svobod6_walk2
+
+[remark@dv_sv_attack_grehbase_svobod6_ready1]
+anim = threat
+target = actor
+on_signal = anim_end| walker@dv_sv_attack_grehbase_svobod6_walk2
+
+[walker@dv_sv_attack_grehbase_svobod6_walk2]
+path_walk = sva_svobod6_walk2
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+on_signal = sva06| {+dv_talk_with_chehov_start} %+dv_sv_greshbase_assault_att6_on_pos =dv_sv_grehbase_on_positions% walker@dv_sv_attack_grehbase_svobod6_walk3
+meet = no_meet
+
+[walker@dv_sv_attack_grehbase_svobod6_walk3]
+path_walk = sva_svobod6_walk3
+path_look = sva_svobod_look3
+on_info = {+dv_sv_greshbase_group_go} walker@dv_sv_attack_grehbase_svobod6_attack
+meet = no_meet
+
+
+[walker@dv_sv_attack_grehbase_svobod6_attack]
+path_walk = sva_attack6_walk
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = sv_att6_sitdown| %+dv_sv_greshbase_assault_att6_on_pos_2 =dv_sv_grehbase_on_positions_2% remark@sv_svobod6_sitdown
+
+[remark@sv_svobod6_sitdown]
+anim = hide
+meet = no_meet
+target = dv_svobbase_sva_attack_sitdown_look, 0
+on_info = {+dv_sv_regroup} walker@sva_attack6_assault
+
+[walker@sva_attack6_assault]
+path_walk = sva_svobod_camp_assault
+combat_type = monolith
+def_state_moving1 = assault
+def_state_moving2 = assault
+def_state_moving3 = assault
+meet = no_meet
+on_signal = campassend| walker@sva_attack6_patrol
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack6_crazy
+
+[walker@sva_attack6_patrol]
+path_walk = dv_svobbase_sva_attack_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_contrgreh_spawn_controller_start} remark@sva_attack6_crazy
+
+[remark@sva_attack6_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+
+
+
+
+
+;------ Новая база для отряда свободы ---------
+[logic@dv_svobbase_nb_leader]
+active = walker@dv_svobbase_nb_leader_walk
+
+[walker@dv_svobbase_nb_leader_walk]
+path_walk = leader_walk
+path_look = leader_look
+
+;--Пост 1
+[logic@dv_svobbase_nb_post1]
+active = walker@dv_svobbase_nb_svobod1
+
+[walker@dv_svobbase_nb_svobod1]
+path_walk = watchtower1_walk
+path_look = watchtower1_look
+
+;--Post 2
+[logic@dv_svobbase_nb_post2]
+active = walker@dv_svobbase_nb_svobod2
+
+[walker@dv_svobbase_nb_svobod2]
+path_walk = patrol2_walk
+
+;--Post 3
+[logic@dv_svobbase_nb_post3]
+active = walker@dv_svobbase_nb_svobod3
+
+[walker@dv_svobbase_nb_svobod3]
+path_walk = watchtower2_walk
+path_look = watchtower2_look
+
+;--Post 4
+[logic@dv_svobbase_nb_post4]
+active = walker@dv_svobbase_nb_svobod4
+
+[walker@dv_svobbase_nb_svobod4]
+path_walk = guard1_walk
+path_look = guard1_look
+
+;--Post 5
+[logic@dv_svobbase_nb_post5]
+active = walker@dv_svobbase_nb_svobod5
+
+[walker@dv_svobbase_nb_svobod5]
+path_walk = guard2_walk
+path_look = guard2_look
+
+;--Post 6
+[logic@dv_svobbase_nb_post6]
+active = walker@dv_svobbase_nb_svobod6
+
+[walker@dv_svobbase_nb_svobod6]
+path_walk = guard3_walk
+path_look = guard3_look
+
+;--Post 7
+[logic@dv_svobbase_nb_post7]
+active = walker@dv_svobbase_nb_svobod7
+
+[walker@dv_svobbase_nb_svobod7]
+path_walk = guard4_walk
+path_look = guard4_look
+
+;--Post 8
+[logic@dv_svobbase_nb_post8]
+active = kamp@dv_svobbase_nb_kamp1
+
+[kamp@dv_svobbase_nb_kamp1]
+center_point = kamp1
+path_walk = kamp_point1_task
+
+;--Post 9
+[logic@dv_svobbase_nb_post9]
+active = kamp@dv_svobbase_nb_kamp2
+
+[kamp@dv_svobbase_nb_kamp2]
+center_point = kamp1
+path_walk = kamp_point1_task
+
+;--Post 10
+[logic@dv_svobbase_nb_post10]
+active = kamp@dv_svobbase_nb_kamp3
+
+[kamp@dv_svobbase_nb_kamp3]
+center_point = kamp1
+path_walk = kamp_point1_task
+
+
+;------------------------------------------------------------------------------
+;------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+;--------------------------------------------------------------------------
+--блокпост свободы лидер блокпоста
+;--------------------------------------------------------------------------
+
+[logic@dark_svob_blokp_leader]
+active = walker@dark_svob_blokp_leader_walk_default
+
+[walker@dark_svob_blokp_leader_walk_default]
+path_walk = leader_walk3
+path_look = leader_look3
+on_info = {+dv_lukash_blokp_remark_claim} remark@dark_svob_blokp_leader_claim
+
+[remark@dark_svob_blokp_leader_claim]
+anim = threat
+no_move = true
+target = actor
+meet = meet@self
+on_info = {+lukash_pogovorili} walker@dark_svob_blokp_leader_walk_good, {=actor_has_weapon} %+svoboda_war%
+
+[walker@dark_svob_blokp_leader_walk_good]
+path_walk = leader_walk4
+path_look = leader_look4
+
+[meet@self] 
+meet_state		= 2|threat@wait
+use = {=dist_to_actor_le(3)} self
+
+;;--------------------------------------------------------------------------
+;--Охранники блокпоста
+;;--------------------------------------------------------------------------
+;--Часовой №1
+[logic@dark_svob_blokp_guard1_walk]
+active = walker@dark_svob_blokp_guard1_walk
+
+[walker@dark_svob_blokp_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+on_info = {+dv_lukash_blokp_remark_claim} remark@dark_svob_blokp_guard1_threat
+
+[remark@dark_svob_blokp_guard1_threat]
+anim = threat
+no_move = true
+target = actor
+on_info = {+lukash_pogovorili} walker@dark_svob_blokp_guard1_walk2
+
+[walker@dark_svob_blokp_guard1_walk2]
+path_walk = guard1_walk
+path_look = guard1_look
+;---------------------------------------------
+;--Часовой №2
+[logic@dark_svob_blokp_guard2_walk]
+active = walker@dark_svob_blokp_guard2_walk
+;---------------------------------------------
+;--Часовой №3
+[logic@dark_svob_blokp_guard3_walk]
+active = walker@dark_svob_blokp_guard3_walk
+;---------------------------------------------
+;--Часовой №4
+[logic@dark_svob_blokp_guard4_walk]
+active = walker@dark_svob_blokp_guard4_walk
+
+[walker@dark_svob_blokp_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+on_info = {+dv_lukash_blokp_remark_claim} remark@dark_svob_blokp_guard4_threat
+
+[remark@dark_svob_blokp_guard4_threat]
+anim = threat
+no_move = true
+target = actor
+on_info = {+lukash_pogovorili} walker@dark_svob_blokp_guard4_walk2
+
+[walker@dark_svob_blokp_guard4_walk2]
+path_walk = guard4_walk
+path_look = guard4_look
+;----------------------------------------------
+
+;;--------------------------------------------------------------------------
+;--Патрули блокпоста
+;;--------------------------------------------------------------------------
+;--Патрулирующий №1
+[logic@dark_svob_blokp_patrol1_walk]
+active = walker@dark_svob_blokp_patrol1_walk
+;------------------------------------------------
+;--Патрулирующий №2
+[logic@dark_svob_blokp_patrol2_walk]
+active = walker@dark_svob_blokp_patrol2_walk
+;-------------------------------------------------
+
+
+;;--------------------------------------------------------------------------
+;--главный лагерь греха,эксклюзивные работы
+;;--------------------------------------------------------------------------
+;;--------------------------------------------------------------------------
+;--Часовые базы
+;;--------------------------------------------------------------------------
+[logic@dv_grehbase_guard1_walk]
+active = walker@dv_grehbase_guard1_walk
+
+[walker@dv_grehbase_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+[logic@dv_grehbase_guard2_walk]
+active = walker@dv_grehbase_guard2_walk
+
+[walker@dv_grehbase_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+[logic@dv_grehbase_guard3_walk]
+active = walker@dv_grehbase_guard3_walk
+
+[walker@dv_grehbase_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+[logic@dv_grehbase_guard4_walk]
+active = walker@dv_grehbase_guard4_walk
+
+[walker@dv_grehbase_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+[logic@dv_grehbase_guard5]
+active = walker@dv_grehbase_guard5_walk
+
+[walker@dv_grehbase_guard5_walk]
+path_walk = guard5_walk
+path_look = guard5_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+;;--------------------------------------------------------------------------
+;--Часовые базы на вышках
+;;--------------------------------------------------------------------------
+[logic@dv_grehbase_watchtower1]
+active = walker@dv_grehbase_watchtower1_walk
+
+[walker@dv_grehbase_watchtower1_walk]
+path_walk = watchtower1_walk
+path_look = watchtower1_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+
+[logic@dv_grehbase_watchtower2]
+active = walker@dv_grehbase_watchtower2_walk
+
+[walker@dv_grehbase_watchtower2_walk]
+path_walk = watchtower2_walk
+path_look = watchtower2_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+
+[logic@dv_grehbase_watchtower3]
+active = walker@dv_grehbase_watchtower3_walk
+
+[walker@dv_grehbase_watchtower3_walk]
+path_walk = watchtower3_walk
+path_look = watchtower3_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+;--------------------------------------------------------------------------
+;--патрули базы
+;--------------------------------------------------------------------------
+[logic@dv_grehbase_patrol1_walk]
+active = walker@dv_grehbase_patrol1_walk
+
+[walker@dv_grehbase_patrol1_walk]
+path_walk = patrol1_walk
+path_look = patrol1_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+[logic@dv_grehbase_patrol2_walk]
+active = walker@dv_grehbase_patrol2_walk
+
+[walker@dv_grehbase_patrol2_walk]
+path_walk = patrol2_walk
+path_look = patrol2_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+[logic@dv_grehbase_patrol3_walk]
+active = walker@dv_grehbase_patrol3_walk
+
+[walker@dv_grehbase_patrol3_walk]
+path_walk = patrol3_walk
+path_look = patrol3_look
+combat_ignore = combat_ignore@grehbase_greshniki
+
+
+[combat_ignore@grehbase_greshniki]
+combat_ignore_cond = {=check_fighting(11522)}
+
+[combat_ignore]
+;--------------------------------------------------------------------------
+;--блокпост греха
+;--------------------------------------------------------------------------
+
+[logic@dv_grehblokpost_guard1_walk]
+active = walker@dv_grehblokpost_guard1_walk
+
+[walker@dv_grehblokpost_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+combat_ignore_cond = {=check_fighting(14000)}
+
+[logic@dv_grehblokpost_guard2_walk]
+active = walker@dv_grehblokpost_guard2_walk
+
+[walker@dv_grehblokpost_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+combat_ignore_cond = {=check_fighting(14000)}
+
+[logic@dv_grehblokpost_guard3_walk]
+active = walker@dv_grehblokpost_guard3_walk
+
+[walker@dv_grehblokpost_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+combat_ignore_cond = {=check_fighting(14000)}
+
+[logic@dv_grehblokpost_guard4_walk]
+active = walker@dv_grehblokpost_guard4_walk
+
+[walker@dv_grehblokpost_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+combat_ignore_cond = {=check_fighting(14000)}
+
+[logic@dv_grehblokpost_patrol1_walk]
+active = walker@dv_grehblokpost_patrol1_walk
+
+[walker@dv_grehblokpost_patrol1_walk]
+path_walk = patrol1_walk
+path_look = patrol1_look
+combat_ignore_cond = {=check_fighting(14000)}
+
+[logic@dv_grehblokpost_patrol2_walk]
+active = walker@dv_grehblokpost_patrol2_walk
+
+[walker@dv_grehblokpost_patrol2_walk]
+path_walk = patrol2_walk
+path_look = patrol2_look
+combat_ignore_cond = {=check_fighting(14000)}
+
+[combat_ignore@grehbase_greshniki2]
+combat_ignore_cond = {=check_fighting(14000)}
+;--------------------------------------------------------------------------
+
+------------------
+--Работы--
+------------------
+--*База Свободы*--
+
+--Валкеры стоячих охранников
+[walker@dv_svobbase_guard1_walk]
+path_walk = guard1_walk
+path_look = guard1_look
+
+[walker@dv_svobbase_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+
+[walker@dv_svobbase_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+
+[walker@dv_svobbase_guard4_walk]
+path_walk = guard4_walk
+path_look = guard4_look
+
+[walker@dv_svobbase_guard5_walk]
+path_walk = guard5_walk
+path_look = guard5_look
+
+[walker@dv_svobbase_guard6_walk]
+path_walk = guard6_walk
+path_look = guard6_look
+
+
+--Валкеры патрулирующих охранников
+[walker@dv_svobbase_patrol1_walk]
+path_walk = patrol1_walk
+path_look = patrol1_look
+
+[walker@dv_svobbase_patrol2_walk]
+path_walk = patrol2_walk
+path_look = patrol2_look
+
+--Костры базы
+[logic@dv_svobbase_kamp_work1]
+active = kamp@dv_svobbase_kamp1
+
+[logic@dv_svobbase_kamp_work2]
+active = kamp@dv_svobbase_kamp1
+
+[logic@dv_svobbase_kamp_work3]
+active = kamp@dv_svobbase_kamp1
+
+[kamp@dv_svobbase_kamp1]
+center_point = kamp1
+path_walk = kamp_point1_task
+
+
+--*Блокпост Свободы*--
+
+--Работы лидера
+
+--Валкеры стоячих охранников
+
+[walker@dark_svob_blokp_guard2_walk]
+path_walk = guard2_walk
+path_look = guard2_look
+
+[walker@dark_svob_blokp_guard3_walk]
+path_walk = guard3_walk
+path_look = guard3_look
+---------------------------
+
+--Валкеры патрулирующих охранников
+
+[walker@dark_svob_blokp_patrol1_walk]
+path_walk = patrol1_walk
+path_look = patrol1_look
+
+[walker@dark_svob_blokp_patrol2_walk]
+path_walk = patrol2_walk
+path_look = patrol2_look
+
+--Костры базы
+[logic@dark_svob_blokp_kamp_work1]
+active = kamp@dark_svob_blokp_kamp1
+
+[logic@dark_svob_blokp_kamp_work2]
+active = kamp@dark_svob_blokp_kamp1
+
+[logic@dark_svob_blokp_kamp_work3]
+active = kamp@dark_svob_blokp_kamp1
+
+[kamp@dark_svob_blokp_kamp1]
+center_point = kamp1
+path_walk = kamp_point1_task
+
+;-- Костер на новой базе
+[logic@dv_nsvobbase_kamp_work1]
+active = kamp@dv_nsvobbase_kamp1
+
+[logic@dv_nsvobbase_kamp_work2]
+active = kamp@dv_nsvobbase_kamp1
+
+[logic@dv_nsvobbase_kamp_work3]
+active = kamp@dv_nsvobbase_kamp1
+
+[logic@dv_nsvobbase_kamp_work4]
+active = kamp@dv_nsvobbase_kamp1
+
+[kamp@dv_nsvobbase_kamp1]
+center_point = nb_kamp1
+path_walk = nb_kamp_point1_task
+danger = danger_condition@dv_sv_gb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------долговцы---------------
+
+----------------лидер----------------
+
+[logic@dv_dolg_group_lider]
+active = walker@dv_dolg_group_lider_walk1
+on_death = death@kup
+combat_ignore = combat_ignore
+
+[death@kup]
+on_info = %+kuprian_dead%
+
+[walker@dv_dolg_group_lider_walk1]
+path_walk = lider_walk1
+path_look = lider_look1
+on_info = {+dv_dolg_group_sbor} walker@dv_dolg_group_lider_walk2
+
+[walker@dv_dolg_group_lider_walk2]
+path_walk = lider_walk1
+path_look = lider_look1
+on_timer = 15000 | remark@dv_dolg_group_lider_remark
+
+[remark@dv_dolg_group_lider_remark]
+target = dv_dolg_group_guard2_walk2
+snd = dolg2
+anim = ward
+meet = no_meet
+on_signal = sound_end | patrol@dv_dolg_group_lider_rush %+dv_dolg_group_rush_start%
+
+[patrol@dv_dolg_group_lider_rush]
+path_walk = gb_assault_way
+formation = back
+commander = true
+move_type = raid
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_lider_crazy
+on_signal = dolgrush| %+dv_dolg_grehbase_rush_all_on_pos%, dolgcampassend| walker@dv_dolg_group_lider_patrol_on_gb
+meet = no_meet
+
+[walker@dv_dolg_group_lider_patrol_on_gb]
+path_walk = gb_assault_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_lider_crazy
+
+[remark@dolg_a_attack_lider_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+-----------патрульный-------------------
+
+[logic@dv_dolg_group_patrol]
+active = walker@dv_dolg_group_patrol
+combat_ignore = combat_ignore
+
+[walker@dv_dolg_group_patrol]
+path_walk = patrol_walk
+on_info = {+dv_dolg_group_sbor} walker@dv_dolg_group_patrol_walk
+
+[walker@dv_dolg_group_patrol_walk]
+path_walk = patrol_walk
+meet = no_meet
+on_info = {+dv_dolg_group_rush_start} walker@dv_dolg_group_att1_rush
+
+[patrol@dv_dolg_group_att1_rush]
+path_walk = gb_assault_way
+formation = back
+move_type = raid
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_att1_crazy
+on_signal = dolgcampassend| walker@dv_dolg_group_att1_patrol_on_gb
+meet = no_meet
+
+[walker@dv_dolg_group_att1_patrol_on_gb]
+path_walk = gb_assault_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_att1_crazy
+
+[remark@dolg_a_attack_att1_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+-----------сторожевой 1-------------------
+
+[logic@dv_dolg_group_guard1]
+active = walker@dv_dolg_group_guard1
+combat_ignore = combat_ignore
+
+[walker@dv_dolg_group_guard1]
+path_walk = guard1_walk
+path_look = guard1_look
+on_info = {+dv_dolg_group_sbor} walker@dv_dolg_group_guard1_walk2
+
+[walker@dv_dolg_group_guard1_walk2]
+path_walk = guard1_walk2
+path_look = lider_walk1
+meet = no_meet
+on_info = {+dv_dolg_group_rush_start} walker@dv_dolg_group_att2_rush
+
+[patrol@dv_dolg_group_att2_rush]
+path_walk = gb_assault_way
+formation = back
+move_type = raid
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_att2_crazy
+on_signal = dolgcampassend| walker@dv_dolg_group_att2_patrol_on_gb
+meet = no_meet
+
+[walker@dv_dolg_group_att2_patrol_on_gb]
+path_walk = gb_assault_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_att2_crazy
+
+[remark@dolg_a_attack_att2_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+-----------сторожевой 2-------------------
+
+[logic@dv_dolg_group_guard2]
+active = walker@dv_dolg_group_guard2
+combat_ignore = combat_ignore
+
+[walker@dv_dolg_group_guard2]
+path_walk = guard2_walk
+path_look = guard2_look
+on_info = {+dv_dolg_group_sbor} walker@dv_dolg_group_guard2_walk2
+
+[walker@dv_dolg_group_guard2_walk2]
+path_walk = guard2_walk2
+path_look = lider_walk1
+meet = no_meet
+on_info = {+dv_dolg_group_rush_start} walker@dv_dolg_group_att3_rush
+
+[patrol@dv_dolg_group_att3_rush]
+path_walk = gb_assault_way
+formation = back
+move_type = raid
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_att3_crazy
+on_signal = dolgcampassend| walker@dv_dolg_group_att3_patrol_on_gb
+meet = no_meet
+
+[walker@dv_dolg_group_att3_patrol_on_gb]
+path_walk = gb_assault_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_att3_crazy
+
+[remark@dolg_a_attack_att3_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+
+-----------сторожевой 3-------------------
+
+[logic@dv_dolg_group_guard3]
+active = walker@dv_dolg_group_guard3
+combat_ignore = combat_ignore
+
+[walker@dv_dolg_group_guard3]
+path_walk = guard3_walk
+path_look = guard3_look
+on_info = {+dv_dolg_group_sbor} walker@dv_dolg_group_guard3_walk2
+
+[walker@dv_dolg_group_guard3_walk2]
+path_walk = guard3_walk2
+path_look = lider_walk1
+meet = no_meet
+on_info = {+dv_dolg_group_rush_start} walker@dv_dolg_group_att4_rush
+
+[patrol@dv_dolg_group_att4_rush]
+path_walk = gb_assault_way
+formation = back
+move_type = raid
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_att4_crazy
+on_signal = dolgcampassend| walker@dv_dolg_group_att4_patrol_on_gb
+meet = no_meet
+
+[walker@dv_dolg_group_att4_patrol_on_gb]
+path_walk = gb_assault_patrol_on_gb
+combat_type = monolith
+meet = no_meet
+on_info = {+dv_dolg_contrgreh_spawn_controller_start} remark@dolg_a_attack_att4_crazy
+
+[remark@dolg_a_attack_att4_crazy]
+anim = wounded_heavy_3
+combat_ignore_cond = always
+danger = danger_condition@sva_attack_crazy
+meet = no_meet
+

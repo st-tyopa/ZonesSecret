@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+dv_sv_greshbase_group_go} sr_idle2
+
+[sr_idle2]
+on_actor_inside = %+dv_sv_greshbase_group_actor_on_pos =dv_sv_grehbase_on_positions_2% sr_idle3
+
+[sr_idle3]
+on_actor_outside = sr_idle2
+on_info = {+dv_sv_ghehbase_all_sv_on_pos_2} sr_idle@nil
+
+[sr_idle@nil]

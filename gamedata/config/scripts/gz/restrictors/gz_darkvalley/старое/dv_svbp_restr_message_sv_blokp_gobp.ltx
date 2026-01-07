@@ -1,0 +1,13 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-lukash_pogovorili} sr_tip
+
+[sr_tip]
+name = gz_dv_freedom_blokp_meet
+type = tips
+single = true
+on_signal = tip_sended| %+dv_go_to_svobpb% sr_idle@end 
+
+[sr_idle@end]

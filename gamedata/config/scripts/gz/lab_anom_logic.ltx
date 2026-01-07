@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle@start
+
+[sr_idle@start]
+on_actor_inside = sr_idle@wait %+gg_was_in_anomal%
+
+[sr_idle@wait]
+on_actor_inside = sr_idle@bum %+lab_gg_force%
+
+[sr_idle@bum]
+on_actor_outside = sr_idle@wait %-lab_gg_force%

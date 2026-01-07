@@ -1,0 +1,229 @@
+[wpn_pps]:identity_immunities
+GroupControlSection				= spawn_group
+discovery_dependency 				= 
+$spawn                  			= "weapons\ppsh41"					
+$npc			 			= on				
+$prefetch 		 			= 8
+scheduled               			= off              
+cform                   			= skeleton
+class                   			= WP_LR300
+min_radius              			= 0
+max_radius              			= 50
+description					= enc_arsenal_ppsh41
+
+chamber_status          = true
+ef_main_weapon_type				= 2
+ef_weapon_type					= 6
+
+
+zoom_dof             = 0.5, 1.0, 180
+reload_dof           = 0.0, 0.5, 5, 1.7
+
+;-----------------------------------------------------------------------------------
+holder_range_modifier				= 1.0		       
+holder_fov_modifier				= 0.7              
+;-----------------------------------------------------------------------------------
+
+
+weapon_class					= assault_rifle
+
+cost						= 4000
+
+ammo_limit		 			= 210
+ammo_current					= 30
+ammo_elapsed		 			= 30
+
+ammo_mag_size		 			= 71
+ammo_class		 			= ammo_7.62x25_p, ammo_7.62x25_ps
+fire_modes					= 1, -1
+
+launch_speed					= 0
+
+hand_dependence		 			= 1
+single_handed					= 0
+
+inv_name					= ars-ppsh41
+inv_name_short					= ars-ppsh41
+inv_weight					= 3.6
+
+inv_grid_width     				= 5
+inv_grid_height    				= 2
+inv_grid_x         				= 0
+inv_grid_y         				= 12
+
+kill_msg_x					= 72
+kill_msg_y					= 82
+kill_msg_width					= 56
+kill_msg_height					= 23
+
+slot 						= 1,2		
+animation_slot					= 2		
+
+;-----------------------------------------------------------------------------------
+;params of weapon recoil
+fire_dispersion_base				= 0.17		;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor				= 1.15f
+
+;отдача
+cam_relax_speed        				= 6.5;0.2	;скорость возврата в исходное положение
+cam_dispersion         				= 0.2		;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc				= 0.1		;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac				= 0.4		;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle					= 6.0		;максимальный угол отдачи
+cam_max_angle_horz				= 9.0		;(degree) maximum shot horizontal degree 
+cam_step_angle_horz				= 0.5;0.3	;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor 		= 5	    	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 				= 0.002		;вероятность осечки при максимальном износе 
+misfire_condition_k				= 0.05
+condition_shot_dec 				= 0.0001	;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+direction               			= 0, 0, 1
+
+fire_point             				= 0,0.24,0.524
+
+flame_particles					= weapons\generic_weapon05
+smoke_particles         			= amik\weapons\smoke_particles\smoke_particles_02
+
+shell_particles	 				= amik\weapons\7.62x25_shells_ppsh
+
+shell_point		 			= 0,0.256,0.192
+shell_dir		 			= 0.0, 1.0, 0.0
+
+rpm_empty_click 	 			= 200
+
+PDM_disp_base 					= 1.0
+PDM_disp_vel_factor 				= 0.8
+PDM_disp_accel_factor 				= 0.8
+PDM_crouch	 				= 1.0
+PDM_crouch_no_acc 				= 1.0
+
+; ttc
+hit_power        				= 0.5
+hit_impulse		 			= 50
+hit_type 					= fire_wound
+
+fire_distance          				= 200
+bullet_speed					= 500 
+rpm                     			= 1000
+; end ttc
+
+use_aim_bullet					= true		
+time_to_aim					= 1.0
+
+silencer_hit_power       			= 0.45
+silencer_hit_impulse	 			= 50
+silencer_fire_distance   			= 400
+silencer_bullet_speed	 			= 450
+
+hud                     			= wpn_pps_hud
+normal                  			= 0, 1, 0
+position         	    			= -0.026,-0.172,0
+orientation             			= 0, 0, 0
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+strap_position         				= -0.1,-0.45,0.2			
+strap_orientation      				= 1.57,0,0					
+strap_bone0					= bip01_spine2
+strap_bone1					= bip01_spine1
+
+startup_ammo            			= 1000
+visual                  			= weapons\ppsh41\wpn_ppsh41.ogf
+
+light_color		 			= 0.6,0.5,0.3
+light_range		 			= 5
+light_var_color		 			= 0.05
+light_var_range		 			= 0.1
+light_time 		 			= 0.2
+
+ph_mass			 			= 5
+
+;addons
+scope_status					= 0
+silencer_status					= 0
+grenade_launcher_status				= 0
+
+scope_name 					= wpn_addon_scope_ekp
+silencer_name  					= wpn_addon_sil_762_ar
+scope_x                     			= 72
+scope_y                     			= 12
+silencer_x                  			= 186
+silencer_y                  			= 17
+
+
+;silencer_flame_particles 			= weapons\generic_weapon01
+silencer_smoke_particles 			= amik\weapons\smoke_particles\p_smoke_particles_02
+
+silencer_light_color				= 1.0, 0.1, 0.0
+silencer_light_range				= 0.01
+silencer_light_var_color			= 0.05
+silencer_light_var_range			= 0.5
+silencer_light_time 				= 0.2
+
+zoom_enabled					= true
+scope_zoom_factor	    			= 70
+
+new_scope_zoom					= true
+
+;звуки
+snd_draw					= weapons\pps41\ppsh_draw
+snd_holster					= weapons\pps41\ppsh_holster
+snd_shoot					= weapons\pps41\ppsh41_00
+snd_shoot1					= weapons\pps41\ppsh41_01
+snd_shoot2					= weapons\pps41\ppsh41_02
+snd_shoot3					= weapons\pps41\ppsh41_03
+snd_shoot4					= weapons\pps41\ppsh41_04
+snd_shoot5					= weapons\pps41\ppsh41_05
+snd_shoot6					= weapons\pps41\ppsh41_06
+snd_shoot7					= weapons\pps41\ppsh41_07
+snd_shoot8					= weapons\pps41\ppsh41_08
+snd_shoot9					= weapons\pps41\ppsh41_09
+snd_shoot10					= weapons\pps41\ppsh41_10
+snd_empty					= weapons\pps41\ppsh_empty, 0.7
+snd_reload					= weapons\pps41\ppsh_reload
+snd_close					= weapons\pps41\ppsh_close
+snd_silncer_shot				= weapons\akm\ak_silencer_type2_00
+snd_silncer_shot1				= weapons\akm\ak_silencer_type2_01
+snd_silncer_shot2				= weapons\akm\ak_silencer_type2_02
+snd_silncer_shot3				= weapons\akm\ak_silencer_type2_03
+snd_silncer_shot4				= weapons\akm\ak_silencer_type2_04
+snd_silncer_shot5				= weapons\akm\ak_silencer_type2_05
+snd_silncer_shot6				= weapons\akm\ak_silencer_type2_06
+snd_silncer_shot7				= weapons\akm\ak_silencer_type2_07
+snd_silncer_shot8				= weapons\akm\ak_silencer_type2_08
+snd_silncer_shot9				= weapons\akm\ak_silencer_type2_09
+snd_silncer_shot10				= weapons\akm\ak_silencer_type2_10
+snd_silncer_shot11				= weapons\akm\ak_silencer_type2_11
+
+
+
+[wpn_pps_hud]
+shell_point          				= 0.00, 0.00, -0.6
+shell_dir		 			= 0.0, 0.0, 0.0
+
+fire_point               			= 0,0,-0.5
+fire_bone                			= muzzle
+orientation              			= 0, 0, 0
+position            				= -0.11,-0.13,0.05
+visual                   			= weapons\ppsh41\wpn_ppsh41_hud.ogf
+
+anim_idle					= idle
+anim_idle_aim					= aim
+anim_reload					= reload
+anim_draw					= draw
+anim_holster					= holster
+anim_shoot					= shoot
+anim_idle_sprint				= sprint
+anim_idle_moving				= moving
+
+zoom_hide_crosshair				= true
+zoom_rotate_time				= 0.25
+
+zoom_offset					= -0.116400,0.026100,-0.050000
+zoom_rotate_x					= -0.000700
+zoom_rotate_y					= 0.000100
+
+scope_zoom_offset				= -0.114400,-0.000600,-0.050000
+scope_zoom_rotate_x				= -0.008700
+scope_zoom_rotate_y				= -0.001300

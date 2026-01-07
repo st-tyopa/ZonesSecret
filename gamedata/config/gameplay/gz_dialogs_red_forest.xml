@@ -1,0 +1,1396 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+
+ <dialog id="rf_scien_bef_meet">
+  <dont_has_info>rf_scien_going_conf</dont_has_info>
+  <has_info>rf_ld_blockp_ph4_racia_end</has_info>
+  <init_func>dialogs_new_system.rf_scien_bef_meet</init_func>    
+ </dialog>
+
+ <dialog id="rf_ld_blockp_back">
+  <dont_has_info>rf_ld_guards1_enter</dont_has_info>
+  <dont_has_info>rf_ld_guards_back_enter</dont_has_info>
+  <has_info>kill_scien_done</has_info>
+  <init_func>dialogs_new_system.rf_ld_blockp_back</init_func>    
+ </dialog>
+
+ <dialog id="rf_ld_blockp">
+  <dont_has_info>rf_ld_guards1_enter</dont_has_info>
+  <dont_has_info>rf_ld_guards_back_enter</dont_has_info>
+  <has_info>kill_scien_done</has_info>
+  <init_func>dialogs_new_system.rf_ld_blockp</init_func>    
+ </dialog>
+
+ <dialog id="dialog_rf_pd_lead">
+        <dont_has_info>dialog_rf_pd_lead_done</dont_has_info>
+        <has_info>rf_scien_stay_done</has_info>
+  <init_func>dialogs_new_system.dialog_rf_pd_lead</init_func>    
+ </dialog>
+
+ <dialog id="dialog_scien_rf_done">
+                <dont_has_info>rf_scien_stay_done</dont_has_info>
+                <has_info>rf_scien_going_conf</has_info>
+  <init_func>dialogs_new_system.dialog_scien_rf_done</init_func>    
+ </dialog>
+
+ <dialog id="dialog_rf_bridge_legion">
+                <dont_has_info>rf_bridge_dialog_legion_done</dont_has_info>
+                <has_info>rf_bridge_scien_find</has_info>
+  <init_func>dialogs_new_system.dialog_rf_bridge_legion</init_func>    
+ </dialog>
+
+ <dialog id="dialog_rf_docs">
+                <dont_has_info>go_to_scien_assist_start</dont_has_info>
+                <has_info>rf_bridge_dialog_legion_done</has_info>
+  <init_func>dialogs_new_system.dialog_rf_docs</init_func>    
+ </dialog>
+
+ <dialog id="rf_scien_list">
+                <dont_has_info>rf_scien_about_list</dont_has_info>
+                <has_info>open_agr_merc_pda_done</has_info>
+                <has_info>go_to_scien_assist_start</has_info>
+  <init_func>dialogs_new_system.rf_scien_list</init_func>    
+ </dialog>
+
+
+	<dialog id="rf_repair_dialog">
+	    <phrase_list>
+            <phrase id="0">
+                <text>Мне нужно кое-что отремонтировать.</text>
+				<action>dialogs.break_dialog</action>
+				<action>repair_mod_functions.used_test_item</action>
+            </phrase>		    
+		</phrase_list>
+	</dialog>
+
+   <dialog id="dialog_scien_rf_done_old">
+                <dont_has_info>rf_scien_stay_done</dont_has_info>
+                <has_info>rf_scien_stay</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Мы пришли?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Да, это те самые сталкеры, именующие себя группировкой "Последний День". Поговори с их командиром, а потом возвращайся сюда, и обсудим, что дальше делать.</text>
+                <give_info>rf_scien_stay_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_rf_pd_lead_old">
+        <dont_has_info>dialog_rf_pd_lead_done</dont_has_info>
+        <has_info>rf_scien_stay_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>А ты кто?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Я?.. Я... пришел к вам с ученым, потому что хочу понять, что тут происходит.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Вот как. Очередной, пытающийся разобраться. Жаль, только живете вы в среднем, недолго.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Что ты хочешь сказать?</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Ты сам подумай. А вообще - есть у меня кое-что для вас. Пока профессор занят, я введу тебя в курс дела. Это ведь и ваше дело, верно?</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Ну, попробуй...</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>dialog_rf_pd_lead_0</text>
+                <next>7</next>
+            </phrase>
+                   <phrase id="7">
+                <text>Ну, значит, он как-то выжил в этом лесу. </text>
+                <next>8</next>
+            </phrase>
+                     <phrase id="8">
+                <text>dialog_rf_pd_lead_1</text>
+                <next>95</next>
+            </phrase>
+                     <phrase id="95">
+                <text>И что там было?</text>
+                <next>9</next>
+            </phrase>
+                <phrase id="9">
+                <text>Да, я не особо разбирался.</text>
+                <next>10</next>
+            </phrase>
+             <phrase id="10">
+                <text>Откуда-то ж знаешь, что это нужно вашему командиру?</text>
+                <next>11</next>
+            </phrase>
+                <phrase id="11">
+                <text>dialog_rf_pd_lead_2</text>
+                <next>12</next>
+            </phrase>
+              <phrase id="12">
+                <text>Охренеть! Профукали человека, а мне отдуваться теперь и шукать его в этом чертовом лесу, где, как ты говоришь, куча опасностей.</text>
+                <next>125</next>
+            </phrase>
+                <phrase id="125">
+                <text>dialog_rf_pd_lead_3</text>
+                <next>135</next>
+            </phrase>
+               <phrase id="135">
+                <text>Надеюсь, что хоть он мне поможет.</text>
+                <next>13</next>
+            </phrase>
+             <phrase id="13">
+                <text>И будет просьба у меня... на нем был какой-то кулон или амулет. Приглянулся он мне. Если он мертвым будет, так принеси его мне. В накладе не останешься.</text>
+                <next>14</next>
+            </phrase>
+              <phrase id="14">
+                <text>Я не курьер, посмотрим.</text>
+                <give_info>dialog_rf_pd_lead_done</give_info>
+                <action>dialogs.break_dialog</action>
+            </phrase>
+        </phrase_list>
+    </dialog>
+
+   <dialog id="scien_rf_find_npc">
+                <dont_has_info>dialog_rf_scien_find_npc</dont_has_info>
+                <has_info>dialog_rf_pd_lead_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Поговорил я с этим Легионом.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Ну и что?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Говорит, что человека они какого-то тут нашли. А он сбежал от них в лес, а бумаги у него. Вот такая ситуация.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Плохо. Они нам нужны. Судя по предыдущим...</text>
+                <next>45</next>
+            </phrase>
+                <phrase id="45">
+                <text>А что было в предыдущих?</text>
+                <next>5</next>
+            </phrase>
+                  <phrase id="5">
+                <text>Увидишь... сам... позже... Сейчас тебе надо выяснить, где находится этот... беглец.</text>
+                <next>6</next>
+            </phrase>
+                  <phrase id="6">
+                <text>Мне? Вы предлагаете тащиться туда в одиночку?</text>
+                <next>7</next>
+            </phrase>
+              <phrase id="7">
+                <text>dialog_agr_scien_6</text>
+                <next>8</next>
+            </phrase>
+                   <phrase id="8">
+                <text>Да, в этом месте мне без помощи не обойтись.</text>
+                <give_info>dialog_rf_scien_find_npc</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_beglec">
+                <dont_has_info>dialog_rf_beglec_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>...</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Ого! Это как же тебя так-то... кошмар. Судя по вони, ты явно не живой.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Не стре... ре..ляй.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Ты-то мне нужен. Не думал тебя живым уже увидеть. Ты меня понимаешь вообще?</text>
+                <next>45</next>
+            </phrase>
+                <phrase id="45">
+                <text>dialog_rf_beglec_0</text>
+                <next>5</next>
+            </phrase>
+                  <phrase id="5">
+                <text>Хорошо, но мне нужны твои бумаги и документы, они у тебя? Или ты их где-то спрятал?</text>
+                <next>6</next>
+            </phrase>
+                  <phrase id="6">
+                <text>П-п-...омоги... я... ска..ж-жу... г..де они..</text>
+                <next>7</next>
+            </phrase>
+                   <phrase id="7">
+                <text>Хорошо, поговорю с Лесником насчёт тебя.</text>
+                <give_info>dialog_rf_beglec_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_lesnik">
+                <has_info>dialog_rf_beglec_done</has_info>
+                <dont_has_info>find_rf_art_start</dont_has_info>
+        <phrase_list>
+ <phrase id="0">
+                <text>Здравствуйте.</text>
+                <next>01</next>
+            </phrase>
+            <phrase id="01">
+                <text>Приветствую, сынок. Не видел тебя здесь раньше. Ты кто таков и зачем пожаловал?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Да я, отец, за помощью к тебе пришел. Очень помощь нужна и быстро.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>dialog_rf_lesnik_0</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Нет, я не из этих. Я просто... обычный одиночка я.</text>
+                <next>45</next>
+            </phrase>
+                <phrase id="45">
+                <text>Эти проходимцы из Последнего дня уже присылали мне переодетых своих бойцов. А название-то какое у вас противное.</text>
+                <next>5</next>
+            </phrase>
+                  <phrase id="5">
+                <text>dialog_rf_lesnik_1</text>
+                <next>6</next>
+            </phrase>
+                  <phrase id="6">
+                <text>Он еще разговаривает?</text>
+                <next>7</next>
+            </phrase>
+                <phrase id="7">
+                <text>Это он сказал мне, что ты поможешь...</text>
+                <next>8</next>
+            </phrase>
+                <phrase id="8">
+                <text>dialog_rf_lesnik_2</text>
+                <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>Отец, говори быстрее - время же на исходе! Если не успею, то...</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>Успокойся. Тот артефакт можно найти лишь ночью, так что... все равно сейчас твоему другу не помочь.</text>
+                <next>11</next>
+            </phrase>
+                  <phrase id="11">
+                <text>Почему именно ночью?</text>
+                <next>12</next>
+            </phrase>
+                  <phrase id="12">
+                <text>dialog_rf_lesnik_3</text>
+                <next>13</next>
+            </phrase>
+                 <phrase id="13">
+                <text>Понял. Темное это дело. Тогда где этот артефакт лежит?</text>
+                <next>14</next>
+            </phrase>
+                 <phrase id="14">
+                <text>dialog_rf_lesnik_4</text>
+                <next>15</next>
+            </phrase>
+                   <phrase id="15">
+                <text>Хорошо. Спасибо, отец, за подсказку. </text>
+                <give_info>find_rf_art_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_beglec_2">
+                <dont_has_info>give_rf_art_done</dont_has_info>
+                <has_info>rf_art_have</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вот, пришлось побегать за артом.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>К-к-к-то ... ты?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Ты что, меня не помнишь? Ты просил принести тебе артефакт от Лесника, а взамен обещал рассказать где спрятал свои документы.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Арт..е..факт... что.. это... та-а..кое.</text>
+                <next>45</next>
+            </phrase>
+                <phrase id="45">
+                <text>Ты что, совсем ничего не помнишь? Артефакт, он должен тебе помочь, ты сам так сказал и отправил меня к Леснику, помнишь?</text>
+                <next>46</next>
+            </phrase>
+             <phrase id="46">
+                <text>Они... они... уже.. тут... </text>
+                <next>47</next>
+            </phrase>
+             <phrase id="47">
+                <text>Что ж с тобой делать то... Вот, держи артефакт, не зря же я за ним столько бегал. Можешь сказать где ты спрятал свои бумаги, документы, пропуск в лабораторию? Понимаешь меня?</text>
+                <next>48</next>
+            </phrase>
+             <phrase id="48">
+                <text>Твоя... цель... здесь. Иди ко мне.</text>
+                <next>49</next>
+            </phrase>
+             <phrase id="49">
+                <text>Вашу ж... Документы, бумаги где ты их спрятал, ты меня понимаешь?</text>
+                <next>5</next>
+            </phrase>
+                  <phrase id="5">
+                <text>Пе...щера... не б-б-б...ольшая... их... две.</text>
+                <next>6</next>
+            </phrase>
+                  <phrase id="6">
+                <text>Это где-то в лесу?</text>
+                <next>7</next>
+            </phrase>
+                   <phrase id="7">
+                <text>Л-л-лес б-б-б...ольшой... пе...щера... м-м-ма...ленькая.</text>
+            <action>gz_prologue.transfer_rf_art</action>
+                <next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Две небольшие пещеры в лесу... Где бы это могло быть? Надо подумать...</text>
+                <next>9</next>
+            </phrase>
+                   <phrase id="9">
+                <text>Б-б-б...роня... к-к-реп..ка.. </text>
+                <next>10</next>
+            </phrase>
+                   <phrase id="10">
+                <text>Всё с тобой ясно, бывай.</text>
+                        <give_info>give_rf_art_done</give_info>
+                                        <give_info>find_rf_docs_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_kom_pd">
+                <dont_has_info>dialog_give_talisman_done</dont_has_info>
+                 <has_info>quest_talisman_have</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Раздобыл я, талисман твой.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text> О... вот и ты. Долго тебя не было. Профессор весь извелся уже. Мы думали, что и ты... того, вслед за беглецом нашим.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Испугались, что самим придется туда переться? Да уж. Пришлось побегать тут... ночью. Я нашел, что было нужно.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Он был мертв?</text>
+                <next>45</next>
+                <next>46</next>
+            </phrase>
+                <phrase id="45">
+                <text>Да, его кто-то загрыз.</text>
+                <next>5</next>
+            </phrase>
+                  <phrase id="46">
+                <text>Был жив, а после... умер.</text>
+                <next>5</next>
+            </phrase>
+             <phrase id="5">
+                <text>Понятно. Оу... значит ты взял у него амулет, как я просил?</text>
+                <next>6</next>
+            </phrase>
+                  <phrase id="6">
+                <text>Зачем он тебе? Что в нем особенного?</text>
+                <next>7</next>
+            </phrase>
+             <phrase id="7">
+                <text>Сколько ты хочешь за него?</text>
+                <next>8</next>
+            </phrase> 
+             <phrase id="8">
+                <text>Я смотрю он слишком ценен, чтобы просто продать его. </text>
+                <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>dialog_rf_pd_kap</text>
+                <next>10</next>
+            </phrase>
+            <phrase id="10">
+                <text>И что ты с ним будешь делать?</text>
+                <next>11</next>
+            </phrase>
+            <phrase id="11">
+                <text>Хех, посмотрим. Ну так что?</text>
+                <next>12</next>
+            </phrase>
+              <phrase id="12">
+                <text>Держи. И в каком же не накладе я останусь?</text>
+                <next>13</next>
+            </phrase>
+                   <phrase id="13">
+                <text>Вот. Ученые тебе больше не дадут, поверь.</text>
+                <give_info>dialog_give_talisman_done</give_info>
+                <action>gz_prologue.transfer_rf_talisman</action>
+                <action>gz_prologue.transfer_rf_talisman_nagr</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+    <dialog id="dialog_rf_docs_old">
+                <dont_has_info>rf_docs_give</dont_has_info>
+                 <has_info>rf_docs_have</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Фух, пришлось погоняться за документами.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Вот и ты. Ну хорошо, что живой. Долго тебя не было, я уж грешным делом подумал, что и ты погиб.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Да, мог я и погибнуть там. Все же не понимаю, как ему удалось выжить в лесу без оружия. Он был жив, когда я его нашёл.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Удивительно! Мне сказали, что был он в таком состоянии... мягко говоря, съехавшим с катушек. И как он умудрился выжить? Что вообще случилось - почему вас не было так долго?</text>
+                <next>45</next>
+            </phrase>
+                <phrase id="45">
+                <text>dialog_rf_docs</text>
+                <next>5</next>
+            </phrase>
+             <phrase id="5">
+                <text>И что было в этих бумагах? </text>
+                <next>6</next>
+            </phrase>
+                  <phrase id="6">
+                <text>У меня не было времени и желания выпускать из рук оружие в этом чертовом лесу, чтобы почитать потертые бумажки. Но там какие то... записи. Что-то вроде дневника.</text>
+                <next>7</next>
+            </phrase>
+             <phrase id="7">
+                <text>Это все очень интересно, возможно ключ к разгадке Тайны Зоны кроется именно тут.</text>
+                <next>8</next>
+            </phrase> 
+             <phrase id="8">
+                <text>Знаете, профессор, я подумал и решил уйти из Зоны. Пусть даже я никогда и не узнаю правды про свою операцию. Уже слишком меного людей погибло из-за этого и я не хочу стать следующим.</text>
+ <give_info>escape_zone_start</give_info>
+                <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>dialog_rf_docs_1</text>
+                <next>105</next>
+            </phrase>
+               <phrase id="105">
+                <text>Именно так.</text>
+                <next>106</next>
+            </phrase>
+               <phrase id="106">
+                <text>dialog_rf_docs_2</text>
+                <next>12</next>
+            </phrase>
+              <phrase id="12">
+                <text>На Янтаре?</text>
+                <next>135</next>
+            </phrase>
+            <phrase id="135">
+                <text>Пересыхающее озеро с таким названием, там еще есть заводской комплекс. Но там опасно. Не только из-за мутантов и аномалий... Там еще с ума сходят.</text>
+                <next>13</next>
+            </phrase>
+             <phrase id="13">
+                <text>А как мне попасть на янтарь?</text>
+                <next>14</next>
+            </phrase>
+             <phrase id="14">
+                <text>Туда ведёт дорога возле капера. Я приду в лагерь на янтарь, но позже. Сейчас мне надо на некоторое время залечь на дно. Потому как военные и наёмники мечтают заполучить мою голову.</text>
+                <action>gz_prologue.transfer_rf_docs</action>
+                <give_info>go_to_scien_assist_start</give_info>
+                <give_info>rf_docs_give</give_info>
+                <next>15</next>
+            </phrase>
+                   <phrase id="15">
+                <text>Спасибо за помощь, и удачи вам, профессор.</text>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+
+<dialog id="dialog_rf_lesnik_quest">
+                <dont_has_info>rf_lesnik_quest_start</dont_has_info>
+                <dont_has_info>rf_lesnik_talk_otkaz</dont_has_info>
+                <dont_has_info>rf_lesnik_quest_start_alt</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Дедушка, а чего ж вы в Зоне остались? Не лучше ли вам было бы на Большой земле? Извините, что с распросами пристаю, просто интересно.</text>
+                <next>1</next>
+            </phrase>
+    <phrase id="1">
+                <text>dialog_rf_lesnik_signal</text>
+                <next>2</next>
+            </phrase>
+   <phrase id="2">
+                <text>А как же семья? У вас есть родные на Большой земле?</text>
+                <next>3</next>
+            </phrase>
+   <phrase id="3">
+                <text>dialog_rf_lesnik_signal_2</text>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+   <phrase id="4">
+                <text>Ну может я смогу что-нибудь сделать?</text>
+                <next>6</next>
+            </phrase>
+   <phrase id="6">
+                <text>dialog_rf_lesnik_signal_3</text>
+                <next>7</next>
+                <next>8</next>
+            </phrase>
+   <phrase id="7">
+                <precondition>gz_tasks.have_racia</precondition>
+                <text>Да, рация есть, сейчас попробую подняться и проверить сигнал.</text>
+                <give_info>rf_lesnik_quest_start</give_info>
+            </phrase>
+  <phrase id="5">
+                <text>Вы уж извините, но я не смогу ничем помочь.</text>
+                <next>55</next>
+            </phrase>
+  <phrase id="55">
+                <text>Да ладно, я всё понимаю, это я тут сижу, порой по долгу ничего не делаю. У тебя есть дела.</text>
+                <give_info>rf_lesnik_talk_otkaz</give_info>
+            </phrase>
+            <phrase id="8">
+                <text>Вот рации к сожелению нет, но я постараюсь найти её. И тогда смогу прослушать радиосигнал.</text>
+                <give_info>rf_lesnik_quest_start_alt</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_lesnik_quest_alt">
+                <has_info>rf_lesnik_talk_otkaz</has_info>
+                <dont_has_info>rf_lesnik_quest_start</dont_has_info>
+                <dont_has_info>rf_lesnik_quest_start_alt</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я по поводу странного радиосигнала. Я всё-таки решился помочь вам.</text>
+                <next>1</next>
+            </phrase>
+    <phrase id="1">
+                <text>dialog_rf_lesnik_signal_4</text>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+   <phrase id="2">
+                <precondition>gz_tasks.have_racia</precondition>
+                <text>Да, рация есть, сейчас попробую подняться и проверить сигнал.</text>
+                <give_info>rf_lesnik_quest_start</give_info>
+            </phrase>
+            <phrase id="3">
+                <text>Вот рации к сожелению нет, но я постараюсь найти её. И тогда смогу прослушать радиосигнал.</text>
+                <give_info>rf_lesnik_quest_start_alt</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_lesnik_quest_2">
+                <has_info>rf_lesnik_quest_radio_done</has_info>
+                <dont_has_info>rf_lesnik_quest_talk_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Прослушал я этот радиосигнал.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Да, ну и что же там?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>dialog_rf_lesnik_signal_5</text>
+                <next>3</next>
+            </phrase>
+   <phrase id="3">
+                <text>Эээ нет, этот лес коварная штука. Кажется я знаю, что это. Один знакомый рассказывал мне о пространнственных аномалиях. По описанию очень похоже.</text>
+                <next>4</next>
+            </phrase>
+ <phrase id="4">
+                <text>И как же высвободить этих людей от туда?</text>
+                <next>5</next>
+            </phrase>
+<phrase id="5">
+                <text>А вот этого, братец, я уже не знаю. Думаю тебе стоит наведать Отшельника на Янтаре. Это он мне про эти штуки рассказывал, думаю он сможет помочь.</text>
+                <next>6</next>
+            </phrase>
+<phrase id="6">
+                <text>Ну ладно, а где ж его искать?</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Отшельник живёт в деревянном домике на сваях, на краю озера. Тот, что ближе к заводскому комплексу.</text>
+                <next>8</next>
+            </phrase>
+<phrase id="8">
+                <text>Ну я пошёл тогда.</text>
+                <next>9</next>
+            </phrase>
+<phrase id="9">
+                <text>Давай, а я попробую отыскать место где теряется их след.</text>
+                <give_info>rf_lesnik_quest_talk_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_ld_find_group">
+                <dont_has_info>rf_ld_find_group_start</dont_has_info>
+                <has_info>lead_agr_scien_start</has_info>
+                <dont_has_info>dialog_rf_pd_lead_done</dont_has_info>
+                <dont_has_info>rf_iron_otkaz</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Может быть у вас есть какая-нибудь работа?</text>
+                <next>1</next>
+            </phrase>
+          <phrase id="1">
+                <text>dialog_rf_iron_quest</text>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+            <phrase id="2">
+                <text>Лес то не маленький, где именно их искать?</text>
+                <next>4</next>
+            </phrase>
+     <phrase id="3">
+                <text>Не, извините ребят, я пас. Не до того сейчас.</text>
+                <give_info>rf_iron_otkaz</give_info>
+            </phrase>
+            <phrase id="4">
+                <text>Последний раз они выходили на связь в районе большой аномалии на поляне.</text>
+                <give_info>rf_ld_find_group_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+<dialog id="dialog_ld_find_group_2">
+                <dont_has_info>rf_ld_find_group_start</dont_has_info>
+                <dont_has_info>lead_agr_scien_start</dont_has_info>
+                <dont_has_info>dialog_rf_pd_lead_done</dont_has_info>
+                <dont_has_info>rf_iron_otkaz</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Сталкер, есть предложение, не желаешь подзаработать?</text>
+                <next>1</next>
+            </phrase>
+     <phrase id="1">
+                <text>Ну а как именно?</text>
+                <next>1</next>
+            </phrase>
+     <phrase id="1">
+                <text>dialog_rf_iron_quest_1</text>
+                <next>2</next>
+                <next>3</next>
+            </phrase>
+     <phrase id="2">
+                <text>Лес то не маленький, где именно их искать?</text>
+                <next>4</next>
+            </phrase>
+     <phrase id="3">
+                <text>Не, извините ребят, я пас. Не до того сейчас.</text>
+                <give_info>rf_iron_otkaz</give_info>
+            </phrase>
+            <phrase id="4">
+                <text>Последний раз они выходили на связь в районе большой аномалии на поляне.</text>
+                <give_info>rf_ld_find_group_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_ld_find_group_done">
+                <dont_has_info>ld_group_thanks</dont_has_info>
+                <dont_has_info>rf_ld_find_group_start</dont_has_info>
+                <has_info>ld_find_group_done</has_info>
+                <has_info>rf_ocelot_talk_done_2</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я связывался с вашими по рации. Оцелот живой и здоровый доставлен на базу. Ещё чуть-чуть и не успели бы спасти бедолагу.</text>
+                <next>1</next>
+            </phrase>
+         <phrase id="1">
+                <text>dialog_rf_iron_quest_3</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Спасибо. Ну ладно, я к Оцелоту, он хотел ещё о чём-то поговорить. </text>
+                <give_info>ld_group_thanks</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_ld_find_group_done_2">
+                <dont_has_info>ld_group_thanks</dont_has_info>
+                <has_info>rf_ld_find_group_start</has_info>
+                <has_info>ld_find_group_done</has_info>
+                <has_info>rf_ocelot_talk_done_2</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Оцелот живой и здоровый доставлен на базу. Ещё чуть-чуть и не успели бы спасти бедолагу.</text>
+                <next>1</next>
+            </phrase>
+       <phrase id="1">
+                <text>dialog_rf_iron_quest_2</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Спасибо. Ну ладно, я к Оцелоту, он хотел ещё о чём-то поговорить. </text>
+                <give_info>ld_group_thanks</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_lesnik_tank">
+                <dont_has_info>rf_meet_lesnik_with_art_1</dont_has_info>
+                <has_info>lesnik_sms</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну как успехи, повидался с Отшельником?</text>
+                <next>15</next>
+            </phrase>
+      <phrase id="15">
+                <text>Да, и мне удалось узнать как "открыть пузырь". Это делается с помощью вот этого артефакта "Зеркальце", необхадимо только его выложить из рюкзака, вблизи аномалии.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>dialog_rf_lesnik_tank</text>
+                <next>2</next>
+            </phrase>
+      <phrase id="2">
+                <text>В таком случае надо быстрее открывать аномалию, я пошёл.</text>
+                <next>3</next>
+            </phrase>
+      <phrase id="3">
+                <text>Ни пуха ни пера нам!</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>К Чёрту!</text>
+                <give_info>rf_meet_lesnik_with_art_1</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_ocelot">
+                <dont_has_info>rf_ocelot_talk_water</dont_has_info>
+                <dont_has_info>rf_ocelot_talk_done</dont_has_info>
+                <has_info>rf_spawn_puzir</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Мужик... Дай воды, помираю...</text>
+                <next>1</next>
+                <next>2</next>
+            </phrase>
+            <phrase id="1">
+                <precondition>gz_tasks.have_water</precondition>
+                <text>Конечно, вот. Держись дружище, только не вырубайся.</text>
+                <next>3</next>
+            </phrase>
+    <phrase id="3">
+                <text>Фух, спасибо... я уже думал каюк мне.</text>
+                <action>gz_tasks.transfer_rf_water</action>
+                <next>4</next>
+            </phrase>
+    <phrase id="4">
+                <text>dialog_rf_ocelot_water</text>
+                <give_info>rf_ocelot_talk_done</give_info>
+                <give_info>ld_find_group_done</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+            <phrase id="2">
+                <text>У меня она кажется закончилась. Сейчас, я у Лесника возьму. Держись дружище, только не вырубайся.</text>
+                <give_info>rf_ocelot_talk_water</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_lesnik_tank_2">
+                <dont_has_info>rf_ocelot_talk_water_done</dont_has_info>
+                <has_info>rf_ocelot_talk_water</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Я их нашёл!</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Ну вот хорошо, что успели.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Но живой остался только один, у него обезвоживание, нужна вода. Я пустой, у вас есть?</text>
+                <next>3</next>
+            </phrase>
+<phrase id="3">
+                <text>Да, конечно, держи.</text>
+                <action>gz_tasks.transfer_rf_water_2</action>
+                <give_info>ld_find_group_done</give_info>
+                <give_info>rf_ocelot_talk_water_done</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_ocelot_2">
+                <dont_has_info>rf_ocelot_talk_done</dont_has_info>
+                <precondition>gz_tasks.have_water</precondition>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вот, держи.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Фух, спасибо... я уже думал каюк мне.</text>
+                <action>gz_tasks.transfer_rf_water</action>
+                <next>3</next>
+            </phrase>
+    <phrase id="3">
+                <text>Идти сможешь? Давай подойдём к леснику, он пришёл со мной, и у него есть провизия. Тут недалеко, метров десять пройти. А потом мы вызовем по рации твоих.</text>
+                <give_info>ld_find_group_done</give_info>
+                <give_info>rf_ocelot_talk_done</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_lesnik_tel">
+                <has_info>rf_ocelot_talk_done</has_info>
+                <dont_has_info>rf_lesnik_tel</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вот, это Оцелот, он единственный остался в живых.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>В рубашке парнишка родился. Ну, что теперь? Не думаю, что он сам сможет дойти до базы.</text>
+                <next>3</next>
+            </phrase>
+    <phrase id="3">
+                <text>Да, а с ним идти по лесу опасно, но не кидать же его. Я предлагаю вызвать по рации его людей и дождаться их. А потом уже вместе с ними добраться до базы.</text>
+               <next>4</next>
+ </phrase>
+            <phrase id="4">
+                <text>dialog_rf_lesnik_tel</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Спасибо, ладно, надо связываться с Последним днём.</text>
+                <give_info>rf_lesnik_tel</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_ocelot_3_come">
+                <dont_has_info>rf_ocelot_talk_done_2</dont_has_info>
+                <has_info>ld_rf_tel_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну вот мы и пришли к твоим.</text>
+                <next>1</next>
+                <next>11</next>
+            </phrase>
+            <phrase id="1">
+                <dont_has_info>ds_sumka_ld_dialog_done</dont_has_info>
+                <text>Спасибо тебе огромное! Если бы не ты, и не Лесник, подох бы я в этой чёртовой аномалии.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="11">
+                <has_info>ds_sumka_ld_dialog_done</has_info>
+                <text>Спасибо тебе огромное! Если бы не ты, и не Лесник, подох бы я в этой чёртовой аномалии. Кстати, по-моему мы с тобой как-то пересекались уже?</text>
+                <next>31</next>
+            </phrase>
+    <phrase id="31">
+                <text>Да, было дело, в Тёмной Лощине. Слушай, может конечно тебе не очень хочеться об этом говорить... Можешь рассказать, что с вами случилось, как вы угодили в аномалию?</text>
+                <next>4</next>
+            </phrase>
+    <phrase id="3">
+                <text>Слушай, может конечно тебе не очень хочеться об этом говорить... Можешь рассказать, что с вами случилось, как вы угодили в аномалию?</text>
+                <next>4</next>
+            </phrase>
+    <phrase id="4">
+                <text>Легион вроде хотел с тобой побеседовать. Сходи сначала к нему, а потом я всё расскажу.</text>
+                <give_info>rf_ocelot_talk_done_2</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_ocelot_4_come">
+                <dont_has_info>rf_ocelot_talk_done_3</dont_has_info>
+                <has_info>ld_group_thanks</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Ну, рассказывай.</text>
+                <next>1</next>
+            </phrase>
+       <phrase id="1">
+                <text>dialog_rf_ocelot_1</text>
+                <next>2</next>
+            </phrase>
+   <phrase id="2">
+                <text>То есть вы даже не заметили в какой момент оказались в аномалии?</text>
+                <next>3</next>
+            </phrase>
+   <phrase id="3">
+                <text>dialog_rf_ocelot_2</text>
+                <next>4</next>
+            </phrase>
+   <phrase id="4">
+                <text>Но всё же, мы с Лесником споймали ваш сигнал, хоть и не целиком.</text>
+                <next>5</next>
+            </phrase>
+  <phrase id="5">
+                <text>dialog_rf_ocelot_4</text>
+                <next>6</next>
+            </phrase>
+  <phrase id="6">
+                <text>А сколько дней вы там пробыли?</text>
+                <next>7</next>
+            </phrase>
+  <phrase id="7">
+                <text>dialog_rf_ocelot_5</text>
+                <next>8</next>
+            </phrase>
+  <phrase id="8">
+                <text>Твоей судьбе не позавидуешь... </text>
+                <next>9</next>
+            </phrase>
+  <phrase id="9">
+                <text>Давай за мной, кое-что покажу.</text>
+                <next>10</next>
+            </phrase>
+    <phrase id="10">
+                <text>Что ж, пошли.</text>
+                <give_info>rf_ocelot_talk_done_3</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_ocelot_5">
+                <dont_has_info>rf_ld_ocelot_talk_cross_done</dont_has_info>
+                <has_info>rf_ld_ocelot_talk_cross</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Кто тут похоронен?</text>
+                <next>1</next>
+            </phrase>
+    <phrase id="1">
+                <text>dialog_rf_ocelot_cross</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Ты хочешь уйти из Зоны?</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>dialog_rf_ocelot_grab1</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Разве вступление и выход из группировки это дело не добровольное?</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>dialog_rf_ocelot_grab2</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>И как же тогда быть?</text>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>dialog_rf_ocelot_grab3</text>
+                <next>8</next>
+            </phrase>
+            <phrase id="8">
+                <text>Хотелось бы знать, во что я ввязываюсь.</text>
+                <next>9</next>
+            </phrase>
+            <phrase id="9">
+                <text>dialog_rf_ocelot_grab</text>
+                <next>10</next>
+                <next>11</next>
+            </phrase>
+            <phrase id="10">
+                <text>Ну давай так, куда идти то?</text>
+                <next>101</next>
+            </phrase>
+            <phrase id="11">
+                <text>Я наверное пас, сейчас есть дела и поважнее.</text>
+                <give_info>rf_ld_ocelot_talk_cross_done</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+ <phrase id="101">
+                <text>dialog_rf_ocelot_grab4</text>
+                <give_info>rf_ld_ocelot_talk_cross_done</give_info>
+                <give_info>yan_zmeelov_quest_start</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+<dialog id="dialog_rf_gz_tan">
+                <dont_has_info>rf_gz_tan_talk_done</dont_has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Здарова братец, что тебе тут надо?</text>
+                <next>1</next>
+            </phrase>
+    <phrase id="1">
+                <text>Тут это, тайник мой, пришёл проверить.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>А случаем это не тот что в трубе?</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Да, там мой тайник.</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Что ж, мы его первые нашли, он наш. Неписанные законы Зоны: "Кто первый встал, того и тапки." Хе-хе.</text>
+                <next>5</next>
+                <next>6</next>
+            </phrase>
+ <phrase id="5">
+                <text>Там мой хабар лежал, верните вещи.</text>
+                <next>7</next>
+            </phrase>
+ <phrase id="7">
+                <text>Давай так, заплатишь нам 7 тысяч, и я отдаю тебе содержимое тайника.</text>
+                <next>8</next>
+                <next>9</next>
+                <next>10</next>
+            </phrase>
+ <phrase id="8">
+                <precondition>gz_prologue.has_money_rf_tan</precondition>
+                <text>Ладно, держи деньги.</text>
+                <next>11</next>
+            </phrase>
+ <phrase id="11">
+                <text>Хорошо, держи свой ствол.</text>
+				<action>gz_prologue.give_rf_tan_money</action>
+				<action>gz_prologue.give_rf_tan_vss</action>
+                <give_info>rf_gz_tan_talk_done</give_info>
+            </phrase>
+ <phrase id="9">
+                <text>Нет сейчас таких денег.</text>
+                <next>95</next>
+            </phrase>
+ <phrase id="95">
+                <text>Нет так нет, значит ты в пролёте братец.</text>
+            </phrase>
+ <phrase id="10">
+                <text>Пошёл на хер!</text>
+                <give_info>rf_gz_tan_talk_kill</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+ <phrase id="6">
+                <text>Хрен с вами, забирайте. Там всё равно ничего ценного не было.</text>
+                <give_info>rf_gz_tan_talk_done</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_osvedomel">
+                <dont_has_info>rf_osvedomel_meet_done</dont_has_info>
+                <dont_has_info>rf_osvedomel_meet_otkaz</dont_has_info>
+                <has_info>rf_osvedomel_meet_start</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Привет, ты говорил, что у тебя есть какая-то информация по моей операции?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Тут всплыли новые данные которые могут тебя заинтересовать, конечно, если тебе это ещё нужно.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>dialog_rf_osvedomel</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>dialog_rf_osvedomel_2</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Постой, постой, откуда ты знаешь про профессора Маниковского?</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>dialog_rf_osvedomel_3</text>
+                <next>6</next>
+                <next>61</next>
+            </phrase>
+            <phrase id="6">
+                <text>"Чем дальше в лес, тем больше дров". Что ж, спасибо за информацию, постараюсь наведаться к Последнему дню, они тут как раз не далеко.</text>
+                <give_info>rf_osvedomel_meet_done</give_info>
+            </phrase>
+            <phrase id="61">
+                <text>Нет, не хочу лезть в это "осиное гнездо". Я твёрдо решил уйти из Зоны.</text>
+                <next>62</next>
+            </phrase>
+            <phrase id="62">
+                <text>Ну, это твой выбор. Наверное тебе сейчас действительно лучше залечь на дно и покинуть Зону.</text>
+                 <give_info>rf_osvedomel_meet_otkaz</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+
+<dialog id="dialog_rf_iron_borman">
+                <dont_has_info>ds_sine_no</dont_has_info>
+                <dont_has_info>start_quest_borman</dont_has_info>
+                <has_info>rf_osvedomel_meet_done</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>dialog_rf_about_borman</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>В опасную игру ты лезешь, мужик. Но дело твоё, я готов помочь тебе. Но сначала от тебя потребуется помощь нашей группировке.</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Что надо сделать?</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>dialog_rf_about_borman1</text>
+                <next>4</next>
+                <next>5</next>
+            </phrase>
+            <phrase id="4">
+                <text>Хорошо, постараюсь найти Бормана.</text>
+                <give_info>start_quest_borman</give_info>
+            </phrase>
+            <phrase id="5">
+                <text>Это всё равно, что искать иголку в стоге сена. Я тут вам не смогу помочь, может я заплачу за информацию деньгами?</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Деньги нас не интересуют.</text>
+                <next>4</next>
+                <next>7</next>
+            </phrase>
+            <phrase id="7">
+                <text>Ну тогда мы ничем не можем друг другу помочь.</text>
+                <give_info>ds_sine_no</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+<dialog id="dialog_rf_noyt">
+                <dont_has_info>kill_borman_done</dont_has_info>
+                <dont_has_info>iron_give_noyt</dont_has_info>
+                 <has_info>kill_borman</has_info>
+                 <has_info>pda_borman_have</has_info>
+        <phrase_list>
+            <phrase id="0">
+                <text>Вот, я раздобыл ноутбук.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Отлично, так, что тебя интересовало? Исследования профессора Маниковсого?</text>
+                <action>gz_prologue.transfer_noyt</action>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Да, в чём они заключались и что же вы такое нашли.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>dialog_rf_ld_about_manic</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>Что ж спасибо за информацию.</text>
+                <give_info>kill_borman_done</give_info>
+                <give_info>iron_give_noyt</give_info>
+            </phrase>
+	</phrase_list>
+    </dialog>
+
+	<dialog id="dialog_rf_hunters_kill_gigant_start">
+			<dont_has_info>rf_leader_remark_ready</dont_has_info>
+			<has_info>rf_hunters_actor_ready_to_help</has_info>
+			<phrase_list>
+            <phrase id="0">
+				<text>Ну, что сталкер, поможешь нам одну зверюгу завалить?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Что за зверь?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Я его называю "псевдогигант королевский". Здоровый зараза. За него хорошие бабки нам дадут, тебя в обиде не оставим.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Хорошо, я согласен. Что нужно делать?</text>
+			<give_info>rf_hunters_join_to_hunters_done</give_info>
+                <next>4</next>
+				</phrase>
+            <phrase id="4">
+                <text>Иди займи позицию у того дерева и жди.</text>
+			<give_info>rf_hunters_kill_gigant_start</give_info>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>Понял.</text>
+			<give_info>rf_leader_remark_ready</give_info>
+			<give_info>rf_small_giant_dell</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+			</phrase_list>
+    </dialog>
+
+        <dialog id="dialog_rf_hunters_kill_gigant_done">
+			<has_info>rf_hunters_have_trophey</has_info>
+                        <dont_has_info>dialog_rf_hunters_kill_gigant_done</dont_has_info>
+			<phrase_list>
+            <phrase id="0">
+				<text>Вот трофей, тяжеленный падла.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Ну, как тебе, впечатлился размером мутанта?</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Да уж, большая хреновина. И динамитов, честно говоря, не ожидал, а вы молодцы, подготовились.</text>
+                <next>3</next>
+            </phrase>
+            <phrase id="3">
+                <text>Ага, только этой гадине взрывчатка мало, что сделала. Как бежал мутант, так и бежит дальше.</text>
+                <give_info>rf_hunters_transfer_trophey</give_info>
+                <action>gz_prologue.transfer_king_gigant_hand</action>
+                <action>gz_prologue.transfer_saiga</action>
+                <next>4</next>
+				</phrase>
+            <phrase id="4">
+                <text>Не хотел бы я встретиться с ним в одиночку... ночью.</text>
+			<give_info>dialog_rf_hunters_kill_gigant_done</give_info>
+            </phrase>
+			</phrase_list>
+    </dialog>
+	
+	<dialog id="dialog_rf_maior_meet">
+                        <dont_has_info>rf_cave_documents_start</dont_has_info>
+			<has_info>go_to_evacuation_zone_start</has_info>
+			<phrase_list>
+            <phrase id="0">
+                <text>Здравия желаю, товарищ майор! Младший лейтенант Зорин, по приказу из штаба, прибыл!</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>dialog_rf_maior</text>
+                <next>2</next>
+				</phrase>
+            <phrase id="2">
+                <text>Рад стараться!</text>
+                <next>3</next>
+            </phrase>
+             <phrase id="3">
+                <text>Наверняка не терпится поскорее домой, к семье?</text>
+                <next>4</next>
+            </phrase>
+            <phrase id="4">
+                <text>У меня ещё нет семьи…</text>
+                <next>5</next>
+            </phrase>
+            <phrase id="5">
+                <text>dialog_rf_maior_2</text>
+                <next>6</next>
+            </phrase>
+            <phrase id="6">
+                <text>Так точно, товарищ майор!</text>
+                <next>7</next>
+            </phrase>
+              <phrase id="7">
+                <text>dialog_rf_maior_3</text>
+                <next>8</next>
+            </phrase>
+             <phrase id="8">
+                <text>Приказ ясен, товарищ майор!</text>
+                <action>dialogs.break_dialog</action>
+                <give_info>rf_cave_documents_start</give_info>
+            </phrase>
+			</phrase_list>
+    </dialog>
+	
+   <dialog id="dialog_rf_maior_cave">
+            <dont_has_info>rf_predat_scene_start</dont_has_info>
+			<has_info>rf_cave_docs_find_done</has_info>
+			<phrase_list>
+            <phrase id="0">
+                <text>Я достал документы.</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Молодец. Теперь осталось ещё кое-что сделать.</text>
+                <give_info>rf_cave_documents_complete</give_info>
+                <next>2</next>
+				</phrase>
+            <phrase id="2">
+                <text>Что?</text>
+                <give_info>rf_predat_scene_start</give_info>
+                <give_info>rf_predat_scene_remark_start</give_info>
+            </phrase>
+			</phrase_list>
+    </dialog>
+	
+	<dialog id="dialog_rf_hunter1_meet">
+			<dont_has_info>rf_hunters_actor_ready_to_help</dont_has_info>
+			<phrase_list>
+            <phrase id="0">
+				<text>Мужик, не хочешь весело провести время и заработать денег?</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Чего-чего?!</text>
+                <next>2</next>
+            </phrase>
+            <phrase id="2">
+                <text>Да, ты не подумай ничего плохого. Мы тут мутантов хотим пострелять, не желаешь с нами? В долгу не останемся.</text>
+                <next>31</next>
+                <next>32</next>
+				</phrase>
+            <phrase id="31">
+                <text>Ну, давай постреляем.</text>
+			<give_info>rf_hunters_actor_ready_to_help</give_info>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+          <phrase id="32">
+                <text>Нет, не хочу.</text>
+				<action>dialogs.break_dialog</action>
+            </phrase>
+			</phrase_list>
+    </dialog>
+	
+</game_dialogs>

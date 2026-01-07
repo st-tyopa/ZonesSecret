@@ -1,0 +1,134 @@
+local actor = db.actor
+
+function about_byurrer()
+	local proff = alife():story_object(81508)
+	if proff:alive() then
+		news_manager.send_tip(actor, "Зорин, немогли бы вы поторопиться? Кажется я слышу двух бюрреров... как они только тут оказались?!", nil, "ecolog", 4500,81508)
+		news_manager.send_tip(actor, "Я почти на месте...скоро буду, держитесь.", 5, "stalker", 5000)
+	end
+	local obj = level_object_by_sid(81508) -- получаем объект по story_id. 
+	obj:kill(actor) -- здесь актор - убийца.
+end
+
+function gzGameOver()
+	news_manager.send_tip(actor, "Game Over ребята....дальше можно не лезть :), выводим интро", nil, nil, 5000)
+	xr_effects.game_over(actor, nil)
+end
+
+function put_50()
+	news_manager.send_tip(actor, "Программа по улучшениу труда активна на 50%", nil, nil, 5000)
+end
+--[[
+local PsyTimer = nil
+
+function start_PsyTimer()
+	if PsyTimer == nil then
+		PsyTimer = time_global()+60000
+	end
+end
+
+function psy_timer()
+	--вывод картинки на худ
+	if PsyTimer ~= nil then
+		local hud = get_hud()
+		local ts = hud:GetCustomStatic("hud_timer")
+		if ts == nil then
+			hud:AddCustomStatic("hud_timer", true)
+			hud:AddCustomStatic("hud_timer_text", true)
+			ts = hud:GetCustomStatic("hud_timer")
+		end
+		local msg,msgY = math.modf((PsyTimer - time_global())/1000)
+		if ts~=nil then
+			ts:wnd():SetText(msg)
+		end
+		if time_global() >= PsyTimer then 
+			PsyTimer = nil 
+			hud:RemoveCustomStatic("hud_timer")
+			hud:RemoveCustomStatic("hud_timer_text")
+			xr_effects.game_over(actor, nil)
+		end
+	end
+end]]
+
+function LiftDoorDelete()
+	local door = alife():story_object(81503)
+	if door~=nil then 
+		alife():release(door,0)
+	end
+	door = alife():story_object(81504)
+	if door~=nil then
+		alife():release(door,0)
+	end
+	door = nil
+	
+	local wpn = alife():create("wpn_pm",vector():set(-19.07, -22.95, -35.46),actor:level_vertex_id(),actor:game_vertex_id())
+	--wpn:set_condition(0.1)
+	--wpn:set_ammo_elapsed(1)
+	wpn = alife():create("wpn_spas12",vector():set(45.93, 0.43, -17.19),actor:level_vertex_id(),actor:game_vertex_id())
+end
+
+local snd  = xr_sound.get_safe_sound_object([[device\bridge_start]])
+
+function GermoDoorDelete()
+	local door = alife():story_object(81501)
+	if door~=nil then 
+		alife():release(door,0)
+	end
+	door = alife():story_object(81502)
+	if door~=nil then
+		alife():release(door,0)
+	end
+	door = nil
+	news_manager.send_tip(actor, "Программа по улучшениу труда активна на 80%", nil, nil, 5000)
+	level.add_pp_effector("psy_antenna_indoor.ppe", 6002, true)
+	snd:play_at_pos(actor, vector ():set (0, 0, 0), 0, sound_object.s2d)
+	--gz_laba.start_PsyTimer()
+end
+
+function force_actor()
+    db.actor:give_info_portion("nooo_lab_sms")
+	level.add_cam_effector2("lab_anom_force.anm", 6000, false, "")
+	level.add_pp_effector("snd_shock.ppe", 6001, false)
+	actor:set_actor_position(vector():set(-11.86,-22.99,-34.18))
+	local hit = hit() 
+	hit.direction = vector():set(1,0,0) -- направление хита. 
+	hit.draftsman = actor -- онлайновый объект того, кто будет считаться убийцей. 
+	hit.power = 0.1 -- сила хита. 
+	hit.type = 2 -- тип хита, выстрел. 
+	hit:bone("bip01_head") -- кость в которую пришёлся хит. 
+	hit.impulse = 10  
+	actor:hit(hit) -- наносим хит объекту.
+end
+
+function give_torch()
+	alife():create("device_torch",actor:position(),actor:level_vertex_id(),actor:game_vertex_id(),actor:id())
+	local phy_torch = alife():story_object(81507)
+	if phy_torch ~= nil then
+		alife():release(phy_torch,0)
+	end
+end
+
+function drop_items()
+	--news_manager.send_tip(actor, "Функция дропа работает", nil, nil, 5000)
+	actor:iterate_inventory(function (dummy, item)
+	if item:section() ~= "device_pda" then
+		actor:drop_item(item)
+	end
+	end, nil)
+end
+
+function LiftDoorForce()
+end
+
+function fuck_scien_trup_1()
+    db.actor:give_info_portion("fuck_racia_lab_start")
+	local snd = sound_object([[characters_voice\soz\gz_lab_x13\gg_can_you_hear_me]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Кайзановский, вы меня слышите?!", 0, "default", 25000)
+end
+
+function fuck_scien_trup_2()
+	local snd = sound_object([[characters_voice\soz\gz_lab_x13\racia_bad]]) 
+snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0) 
+	news_manager.send_tip(db.actor, "%c[255,255,128,128] \n%c[default] Твою ж мать... Надеюсь, что это просто рация барахлит.", 0, "default", 25000)
+end

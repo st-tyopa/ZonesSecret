@@ -1,0 +1,102 @@
+function gui_start()
+ if has_alife_info("objeb_barygy_done") and has_alife_info("objeb_barygy_fail") then
+  return
+ else
+  level.start_stop_menu(this.sejf_gui(),true)
+ end
+end
+
+class "sejf_gui" (CUIScriptWnd)
+function sejf_gui:__init() super()
+    self:Init(150,100,543,552)
+	self.OpenEs = function() level.start_stop_menu(self,true) level.start_stop_menu(this.sejf_gui_soderj(),true) end
+    -- фон
+    self.back = CUIStatic()
+    self.back:Init(0,0,543,552)
+    self.back:InitTexture("ui\\gz_gui\\gui_sejf_jad")
+    self.back:SetOriginalRect(578,5,543,555)
+	self:AttachChild(self.back)
+		
+    -- кнопка открытия сейфа
+    self.btn_open = CUIButton()
+    self.btn_open:SetAutoDelete(true)
+    self.btn_open:Init(30,72,481,246)
+	self.btn_open:InitTexture("ui\\gz_gui\\gui_sejf_jad")
+	self.btn_open:SetOriginalRect(605,76,481,246)
+	self.btn_open:SetStretchTexture(true)
+    self:Register(self.btn_open,"btn_open")
+	self.back:AttachChild(self.btn_open)
+    self:AddCallback("btn_open",ui_events.BUTTON_DOWN,self.OpenEs,self)
+	
+end
+
+class "sejf_gui_soderj" (CUIScriptWnd)
+function sejf_gui_soderj:__init() super()
+    self:Init(150,100,543,552)
+	
+	if db.actor:object("quest_yad") and not db.actor:object("quest_lecarstvo") then
+	self.Podmena = function() self.yad = CUIStatic() self.yad:Init(209,61,130,130) self.yad:InitTexture("ui\\gz_gui\\gui_sejf_jad") self.yad:SetOriginalRect(145,565,130,130) self.back:AttachChild(self.yad) pomenjat() end
+	elseif db.actor:object("quest_lecarstvo") and not db.actor:object("quest_yad") then
+	self.Podmena = function() self.lec = CUIStatic() self.lec:Init(209,61,130,130) self.lec:InitTexture("ui\\gz_gui\\gui_sejf_jad") self.lec:SetOriginalRect(5,565,130,130)	self.back:AttachChild(self.lec) pomenjat_obratno() end
+	else return
+	end
+	
+	
+	self.exit = function() level.start_stop_menu(self,true) end
+    -- фон
+    self.back = CUIStatic()
+    self.back:Init(0,0,543,552)
+    self.back:InitTexture("ui\\gz_gui\\gui_sejf_jad")
+    self.back:SetOriginalRect(12,5,543,555)
+	self:AttachChild(self.back)
+	
+  if db.actor:object("quest_lecarstvo") and not db.actor:object("quest_yad") then	
+	self.yad = CUIStatic()
+	self.yad:Init(209,61,130,130)
+	self.yad:InitTexture("ui\\gz_gui\\gui_sejf_jad")
+	self.yad:SetOriginalRect(145,565,130,130)
+	self.back:AttachChild(self.yad)	
+  end
+    
+   if db.actor:object("quest_yad") and not db.actor:object("quest_lecarstvo") then
+	self.lec = CUIStatic()
+    self.lec:Init(209,61,130,130)
+    self.lec:InitTexture("ui\\gz_gui\\gui_sejf_jad")
+    self.lec:SetOriginalRect(5,565,130,130)
+	self.back:AttachChild(self.lec)
+   end
+   
+    -- кнопка подмены лекарства
+    self.podmen = CUIButton()
+    self.podmen:SetAutoDelete(true)
+    self.podmen:Init(219,66,131,131)
+    self:Register(self.podmen,"podmen")
+	self.back:AttachChild(self.podmen)
+    self:AddCallback("podmen",ui_events.BUTTON_DOWN,self.Podmena,self)
+	
+	-- кнопка выхода
+    self.btn_exit = CUIButton()
+    self.btn_exit:SetAutoDelete(true)
+    self.btn_exit:Init(217,527,133,25)
+	self.btn_exit:InitTexture("ui\\ui_gz_gui")
+	self.btn_exit:SetOriginalRect(6,296,133,25)
+	self.btn_exit:SetStretchTexture(true)
+	self.btn_exit:SetText("Выход")
+	self.btn_exit:SetFont(GetFontGraffiti22Russian())
+	self.btn_exit:SetTextColor(255,255,255,0)
+    self:Register(self.btn_exit,"btn_exit")
+	self.back:AttachChild(self.btn_exit)
+    self:AddCallback("btn_exit",ui_events.BUTTON_DOWN,self.exit,self)
+	
+end
+
+function pomenjat()
+ gz_utils.spawn_item_in_inv("quest_lecarstvo", 1)
+ gz_utils.remove_item(db.actor:object("quest_yad"))
+ gz_utils.give_info("objeb_barygy_done")
+end
+function pomenjat_obratno()
+ gz_utils.spawn_item_in_inv("quest_yad", 1)
+ gz_utils.remove_item(db.actor:object("quest_lecarstvo"))
+ gz_utils.give_info("objeb_barygy_fail")
+end

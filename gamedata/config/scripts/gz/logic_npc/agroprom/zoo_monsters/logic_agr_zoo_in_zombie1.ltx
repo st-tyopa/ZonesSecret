@@ -1,0 +1,20 @@
+[logic]
+active = mob_walker@1
+
+[mob_walker@1]
+path_walk = agr_dolgbase_zoo_zombies_patrol_1
+path_look = agr_dolgbase_zoo_zombies_patrol_look
+friendly = true
+on_game_timer = 60|mob_walker@2
+
+[mob_walker@2]
+path_walk = agr_dolgbase_zoo_zombies_patrol_2
+path_look = agr_dolgbase_zoo_zombies_patrol_look
+friendly = true
+on_game_timer = 60|mob_walker@3
+
+[mob_walker@3]
+path_walk = agr_dolgbase_zoo_zombies_patrol_3
+path_look = agr_dolgbase_zoo_zombies_patrol_look
+friendly = true
+on_game_timer = 60|mob_walker@1

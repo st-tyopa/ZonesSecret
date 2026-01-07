@@ -1,0 +1,6 @@
+[logic]
+active = sr_idle
+ 
+[sr_idle]
+on_actor_inside = {+dscol_mystic_activate} %=run_postprocess(blink:01:false) +dscol_zombies_awake% nil
+

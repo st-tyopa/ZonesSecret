@@ -1,0 +1,106 @@
+; Артефакты для аномалии "Электра"
+
+[af_electra_sparkler]:af_base ; Бенгальский огонь
+$spawn				          = "artifacts\electra sparkler"
+visual				          = physics\anomaly\artefact_electra4.ogf
+description			          = enc_zone_artifact_af-electra-sparkler 
+inv_name			          = af-electra-sparkler
+inv_weight			          = 0.5
+inv_grid_x			          = 8
+inv_grid_y			          = 11
+cost				          = 1000
+jump_height			          = .5
+particles			          = anomaly2\artefact\artefact_electra
+lights_enabled                = true
+trail_light_color             = 0.5,0.5,0.9
+trail_light_range             = 0.50
+artefact_activation_seq		  = af_activation_electra
+power_restore_speed           = 0.002
+hit_absorbation_sect          = af_electra_sparkler_absorbation
+
+[af_electra_sparkler_absorbation]:af_base_absorbation
+shock_immunity                = 1.1
+
+[af_electra_flash]:af_base    ; Вспышка
+$spawn				          = "artifacts\electra flash"
+visual				          = physics\anomaly\artefact_electra3.ogf
+description			          = enc_zone_artifact_af-electra-flash
+inv_name			          = af-electra-flash
+inv_weight			          = 0.5
+inv_grid_x			          = 4
+inv_grid_y			          = 8
+cost				          = 2500
+jump_height			          = .1
+particles			          = anomaly2\artefact\artefact_electra
+lights_enabled                = true
+trail_light_color             = 0.6,0.7,0.9
+trail_light_range             = 2.5
+artefact_activation_seq		  = af_activation_electra
+power_restore_speed           = 0.004
+hit_absorbation_sect          = af_electra_flash_absorbation
+
+[af_electra_flash_absorbation]:af_base_absorbation
+shock_immunity                = 1.1
+
+[af_electra_moonlight]:af_base ; Лунный свет
+$spawn				          = "artifacts\electra moonlight"
+visual				          = physics\anomaly\artefact_electra1.ogf 
+description			          = enc_zone_artifact_af-electra-moonlight
+inv_name			          = af-electra-moonlight
+inv_weight			          = 0.5
+inv_grid_x			          = 10
+inv_grid_y			          = 10
+cost				          = 5000
+jump_height			          = .1
+particles			          = anomaly2\artefact\artefact_electra
+lights_enabled                = true
+trail_light_color             = 0.6,0.7,0.9
+trail_light_range             = 1.0
+artefact_activation_seq		  = af_activation_electra
+power_restore_speed           = 0.006
+hit_absorbation_sect          = af_electra_moonlight_absorbation
+
+[af_electra_moonlight_absorbation]:af_base_absorbation
+shock_immunity                = 1.1
+
+[af_super_moonlight]:af_base  ; Супер лунный свет? Че квестовый что ли? Короче название тут напиши)
+$spawn				          = "artifacts\super_moonlight"
+visual				          = physics\anomaly\artefact_electra1.ogf 
+description			          = enc_zone_artifact_af-electra-super-moonlight
+inv_name			          = af-electra-super-moonlight
+inv_weight			          = 0.5
+inv_grid_x			          = 10
+inv_grid_y			          = 10
+cost				          = 10000
+jump_height			          = .1
+particles			          = anomaly2\artefact\artefact_electra
+lights_enabled                = true
+trail_light_color             = 0.6,0.7,0.9
+trail_light_range             = 1.0
+artefact_activation_seq		  = af_activation_electra
+power_restore_speed           = 0.006
+hit_absorbation_sect          = af_electra_super_moonlight_absorbation
+
+[af_super_moonlight_absorbation]:af_base_absorbation
+shock_immunity                = 1.1
+
+[quest_rf_art]:af_base       ; Тюльпан
+$spawn				          = "artifacts\quest_rf_art"
+visual				          = physics\anomaly\sap\serafim.ogf 
+description			          = af_tulpan_descr
+inv_name			          = af_tulpan_name
+inv_weight			          = 0.5
+inv_grid_x			          = 10
+inv_grid_y			          = 0
+cost				          = 10000
+jump_height			          = .1
+particles			          = ;
+lights_enabled                = true
+trail_light_color             = 0.6,0.7,0.9
+trail_light_range             = 1.0
+artefact_activation_seq		  = af_activation_electra
+power_restore_speed           = 0.006
+hit_absorbation_sect          = quest_rf_art_absorbation
+
+[quest_rf_art_absorbation]:af_base_absorbation
+shock_immunity                = 1.1

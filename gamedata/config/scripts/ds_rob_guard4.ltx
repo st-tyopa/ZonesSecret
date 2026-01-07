@@ -1,0 +1,16 @@
+[logic]
+active = walker
+
+[meet]
+meet_state 	   = 30| {+ds_rob_buying} threat, wait@ {+ds_rob_buying} ds_rob_guard_jeer, weather
+meet_state_wpn = 30| threat@threat_back 
+;victim        = 30| actor
+;victim_wpn    = 30| actor
+;use           = true
+use_wpn	       = true
+zone           = ds_rob_warn_zone| threat@ {+ds_rob_buying} ds_rob_guard_jeer, threat_back | ds_rob_kill_zone| true@talk_abuse
+
+[walker]
+path_walk = ds_rob_guard4_walk
+path_look = ds_rob_guard4_look
+meet      = meet

@@ -1,0 +1,10 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = %=play_snd(soz\characters_voice\scenario\gz_darkvalley\parquet_1)% sr_idle2
+
+[sr_idle2]
+on_actor_outside = sr_idle
+
+[sr_idle@nil]

@@ -1,0 +1,44 @@
+[logic]
+active = camper
+;on_hit = hit
+on_death = death
+
+[camper]
+path_walk = gar_sniper_1_stay
+path_look = promz_bandit_smart_kran_kamp_1
+radius = 50
+no_retreat = true
+def_state_moving = assault
+def_state_campering = hide_na
+shoot = always
+on_info = %=killactor%
+wounded = wounded
+ 
+[wounded]
+hp_state = 99|wounded_heavy@help_heavy|50|wounded_heavy@help_heavy
+hp_state_see = 99|wounded_heavy@help_heavy|50|wounded_heavy@help_heavy
+hp_victim = 50|nil
+hp_cover = 99|false
+hp_fight = 99|false
+combat_ignore = combat_ignore
+on_info = {+gar_messenger_dead} %+gar_sniper_wounded =actor_neutral%
+on_info2 = {+gar_sniper_wounded_dialog_done} %=kill%
+help_dialog = gar_sniper_wounded
+meet = meet_sniper
+help_start_dialog = gar_sniper_wounded
+
+[remark]
+anim = wounded_heavy_3
+target = actor
+combat_ignore = combat_ignore
+
+[hit]
+on_info = %+gar_sniper_wounded =actor_neutral% remark
+
+[death]
+on_info = %+gar_sniper_1_dead%
+
+[meet_sniper]
+abuse = false
+use = true
+use_wpn = true

@@ -1,0 +1,12 @@
+[logic]
+active = walker@yan_slepoi
+
+[walker@yan_slepoi]
+path_walk = yan_slepoi_stay
+path_look = yan_slepoi_look
+on_info = {+yan_slepoi_dialog_done} walker@yan_slepoi2
+
+[walker@yan_slepoi2]
+path_walk = yan_slepoi_stay
+path_look = yan_slepoi_look
+on_actor_dist_ge_nvis = 130| %+dell_yan_slepoi%

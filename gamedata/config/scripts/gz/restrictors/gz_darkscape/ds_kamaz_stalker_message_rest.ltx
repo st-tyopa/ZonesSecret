@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {-ds_kamaz_stalker_dead} sr_tip
+
+[sr_tip]
+name = gz_ds_kamaz_stalker_help
+type = tips
+single = true
+on_signal = tip_sended| nil %+ds_kamaz_stalker_spawn%

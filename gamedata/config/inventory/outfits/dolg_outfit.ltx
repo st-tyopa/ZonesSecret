@@ -1,0 +1,197 @@
+[dolg_outfit]:outfit_base
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 			= "outfit\dolg_outfit"
+;$prefetch 		= 32
+class			= E_STLK
+cform           = skeleton
+visual          = equipments\dolg_suit
+actor_visual	= actors\hero\stalker_dolg.ogf
+
+ef_equipment_type	= 3
+
+texture_arm = act_arm_dolg
+
+upgrades = upg_dlg_l_one,upg_dlg_l_one_1,upg_dlg_l_one_2,upg_dlg_l_one_3,upg_dlg_l_two,upg_dlg_l_two_1,upg_dlg_l_two_2,upg_dlg_l_two_3,upg_dlg_l_three,upg_dlg_l_three_1,upg_dlg_l_three_2
+
+icon_in_repair = ui_inGame2_Armor_4
+icon_in_repair_scale_x = 302
+icon_in_repair_scale_y = 130
+
+inv_name			= dolg_outfit_name
+inv_name_short		= dolg_outfit_name
+description			= dolg_outfit_description
+inv_weight			= 5.0
+inv_grid_width		= 2
+inv_grid_height		= 3
+inv_grid_x			= 12
+inv_grid_y			= 16
+full_icon_name		= npc_icon_dolg_outfit
+
+cost				= 14000
+slot				= 6
+full_scale_icon		= 8,11			;иконка сталкера в костюме в полный рост
+;;;nightvision_sect	= effector_nightvision_bad
+
+immunities_sect			= sect_dolg_outfit_immunities
+
+; LOW RESISTANCE
+burn_protection 				= 0.5
+strike_protection 				= 0.5
+shock_protection 				= 0.5
+wound_protection				= 0.5
+radiation_protection 			= 0.5
+telepatic_protection 			= 0.0
+chemical_burn_protection 		= 0.5
+explosion_protection 			= 0.4
+fire_wound_protection  			= 0.4
+
+bones_koeff_protection = kombez_antigas_damage
+
+[sect_dolg_outfit_immunities]
+burn_immunity				= 0.03			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.01
+shock_immunity				= 0.03
+wound_immunity				= 0.015
+radiation_immunity			= 0.00
+telepatic_immunity			= 0.00
+chemical_burn_immunity		= 0.03
+explosion_immunity			= 0.03
+fire_wound_immunity			= 0.01
+
+[sect_dolg_outfit_immunities_new]:sect_dolg_outfit_immunities
+burn_immunity				= 0.0225			;коэффициенты иммунитета самого костюма
+strike_immunity				= 0.0075
+shock_immunity				= 0.0225
+wound_immunity				= 0.01125
+chemical_burn_immunity		= 0.0225
+explosion_immunity			= 0.0225
+fire_wound_immunity			= 0.0075
+
+[upg_dlg_l_one]
+name                    = st_up_arm_a6_name
+description             = st_up_arm_a6_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_1
+position_x	     		= 0
+position_y		    	= 27
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 400
+fire_wound_protection	= 0.1
+
+[upg_dlg_l_one_1]
+name                    = st_up_arm_b2_name
+description             = st_up_arm_b2_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_2
+position_x	     		= 100
+position_y		    	= 27
+precondition_upg        = upg_dlg_l_one
+precondition_ban        = no
+cost 		            = 800
+immunities_sect			= sect_dolg_outfit_immunities_new
+
+[upg_dlg_l_one_2]
+name                    = st_up_arm_c2_name
+description             = st_up_arm_c2_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_3
+position_x	     		= 200
+position_y		    	= 0
+precondition_upg        = upg_dlg_l_one_1
+precondition_ban        = upg_dlg_l_one_3
+cost 		            = 1200
+fire_wound_protection	= 0.1
+
+[upg_dlg_l_one_3]
+name                    = st_up_arm_c6_name
+description             = st_up_arm_c6_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_4
+position_x	     		= 200
+position_y		    	= 54
+precondition_upg        = upg_dlg_l_one_1
+precondition_ban        = upg_dlg_l_one_2
+cost 		            = 1200
+strike_protection       = 0.3
+explosion_protection    = 0.3
+wound_protection        = 0.3
+
+[upg_dlg_l_two]
+name                    = st_up_kom_a1_name
+description             = st_up_kom_a1_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_5
+position_x	     		= 0
+position_y		    	= 135
+precondition_upg        = no
+precondition_ban        = no
+cost 		            = 400
+strike_protection       = 0.1
+explosion_protection    = 0.1
+wound_protection        = 0.1
+
+[upg_dlg_l_two_1]
+name                    = st_up_kom_b5_name
+description             = st_up_kom_b5_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_6
+position_x	     		= 100
+position_y		    	= 108
+precondition_upg        = upg_dlg_l_two
+precondition_ban        = upg_dlg_l_two_2
+cost 		            = 800
+inv_weight		     	= -3.5
+
+[upg_dlg_l_two_2]
+name                    = st_up_kom_b10_name
+description             = st_up_kom_b10_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_8
+position_x	     		= 100
+position_y		    	= 162
+precondition_upg        = upg_dlg_l_two
+precondition_ban        = upg_dlg_l_two_1
+cost 		            = 800
+power_restore_speed     = 0.002
+
+[upg_dlg_l_two_3]
+name                    = st_up_kom_c3_name
+description             = st_up_kom_c3_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_7
+position_x	     		= 200
+position_y		    	= 135
+precondition_upg        = upg_dlg_l_two_1,upg_dlg_l_two_2
+precondition_ban        = no
+cost 		            = 1200
+power_restore_speed     = 0.002
+
+[upg_dlg_l_three]
+name                            = st_up_uti_a4_name
+description                     = st_up_uti_a4_descr
+icon                            = ui_inGame2_upgrade_dolg_outfit_9
+position_x	     		        = 0
+position_y		    	        = 226
+precondition_upg                = no
+precondition_ban                = no
+cost 		                    = 400
+additional_inventory_weight 	= 5
+additional_inventory_weight2 	= 5
+
+[upg_dlg_l_three_1]
+name                    = st_up_uti_b4_name
+description             = st_up_uti_b4_1_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_10
+position_x	     		= 100
+position_y		    	= 226
+precondition_upg        = upg_dlg_l_three
+precondition_ban        = no
+cost 		            = 1000
+health_restore_speed    = 0.00045
+
+[upg_dlg_l_three_2]
+name                    = st_up_uti_c2_name
+description             = st_up_uti_c2_descr
+icon                    = ui_inGame2_upgrade_dolg_outfit_11
+position_x	     		= 200
+position_y		    	= 226
+precondition_upg        = upg_dlg_l_three_1
+precondition_ban        = no
+cost 		            = 2000
+bleeding_restore_speed  = 0.003
+power_restore_speed     = 0.003
+

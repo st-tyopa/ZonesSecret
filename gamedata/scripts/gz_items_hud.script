@@ -1,0 +1,198 @@
+-----------------------------------------------------------------------
+--- gz_items_hud.script                                       
+--- Худы вещей, газовые зоны
+--- Автор: Kondr48                                
+--- Последнее редактирование: 11.07.2016              
+-----------------------------------------------------------------------
+local actor = db.actor
+local ini = system_ini()
+--local variables = get_stored_vars() 
+local actor_obj = get_actor_obj()
+local immunitets = actor_obj.immunities
+local condition = actor_obj.condition
+local hud = get_hud()
+
+-- Ќа самом деле нужны:
+
+function delete_filter(section) -- …б@ный костыль...
+ local filter = actor:object(section)
+ gz_utils.remove_item(filter)
+end
+
+
+function on_item_take(obj)
+ clock_take(obj)  
+ flashlight_take(obj)  
+end
+
+--//*** ФОНАРЬ
+function flashlight_key()
+ if not has_alife_info("slot_zanyat") then
+  if actor:item_in_slot(9) then
+   if actor:active_slot() ~= 18 then 
+    last_active_slot = actor:active_slot()
+   end
+   gz_utils.clear_slot(18)
+   gz_utils.spawn_item_in_inv("flashlight")
+   huds_block()
+   start_quick_timer(1, "gz_items_hud.delete_flashlight")
+  end
+ end
+end
+
+function flashlight_take(obj)
+ if obj:section() == 'flashlight' then
+  actor:activate_slot(18)
+ end
+end
+
+function delete_flashlight()
+ gz_utils.s_play([[interface\flashlight1]])
+ actor:item_in_slot(9):get_torch():switch()
+ gz_utils.clear_slot(18)
+ huds_unblock()
+ start_quick_timer(0.1, "gz_items_hud.restore_weapon")
+end
+
+--//*** ЧАСЫ НА РУКЕ
+function clock_key() -- вызывается из движка при нажатии кнопки часов
+ if not has_alife_info("slot_zanyat") then
+  if actor:active_slot() ~= 18 then 
+   last_active_slot = actor:active_slot()
+  end
+  gz_utils.clear_slot(18)
+  gz_utils.spawn_item_in_inv("chasy")
+  huds_block()
+  start_quick_timer(1.7, "gz_items_hud.delete_clock")
+ end
+end
+
+function clock_take(obj)
+ if obj:section() == 'chasy' then
+  actor:activate_slot(18) 
+  show_time()
+  show_filter()
+ end
+end
+
+function show_filter()
+  if timer_exists("filter_timer_name") then
+     se_rest = get_timer("filter_timer_name"):get_time_rest()
+	 hours = math.floor(tonumber(se_rest)/3600)
+	 minutes = math.floor((tonumber(se_rest)/60)-(hours*60))
+   else
+     hours = 0
+     minutes = 0
+   end    
+   clock_update(hours, minutes, "small") 
+end
+
+function show_time() -- считаем игровое время
+   local hours = level.get_time_hours()
+   local minutes = level.get_time_minutes()
+   clock_update(hours, minutes, "big")   
+end
+
+function clock_update(hours, minutes, screen)
+   local string_time = string.format("%02d%02d", hours, minutes)
+   local ekran = {
+   ["clock\\clock_"..screen.."_1"] = "clock\\numbers\\num_"..string_time:sub(1, 1),
+   ["clock\\clock_"..screen.."_2"] = "clock\\numbers\\num_"..string_time:sub(2, 2),
+   ["clock\\clock_"..screen.."_3"] = "clock\\numbers\\num_"..string_time:sub(3, 3),
+   ["clock\\clock_"..screen.."_4"] = "clock\\numbers\\num_"..string_time:sub(-1)
+   }
+    for key, value in pairs(ekran) do
+     local t = texture_find(key)
+      if t then
+       t:set_name(value)
+       t:reload()
+      end
+    end
+ end
+ 
+function delete_clock()
+   gz_utils.clear_slot(18)
+   huds_unblock()
+   start_quick_timer(0.1, "gz_items_hud.restore_weapon")
+end
+ 
+--//*** СХЕМА 6: РАЦИЯ
+function racija_key(key)
+ if key == 337 and actor:active_item() and actor:active_item():section() == 'racya_b' then
+  --Квест 1. Условие на наличие квеста бесполезно - рация появится впервые - квест уже зачтется.
+if not has_alife_info("ds_kamaz_stalker_dead") then
+actor:give_info_portion ("pda_coordinats_start_1") 
+end
+   if has_alife_info("ds_stalker_save_thanks") and not has_alife_info("ds_kamaz_stalker_dead") then 
+    actor:give_info_portion("dv_kamaz_done") 
+   else 
+    actor:give_info_portion("alt_wounded_stalk")
+   end
+  --Квест 2.
+  if has_alife_info("kill_scien_done") and not has_alife_info("go_to_evacuation_zone_start_1") then  -- Если квест 2 у нас уже есть, но еще не выполнен
+   actor:give_info_portion("go_to_evacuation_zone_start_1") -- даем поршень, который запустит всё, что надо для квеста, 
+  end -- хотя надо будет посмотреть что на него повешено, может напрямую отсюда запускать будел лучше
+  --Квест 3 и далее - аналогично, хотя здесь уже поинтереснее, нам надо "нащупать" нужный канал, то есть пихаем всякий бесполезный бред пока не найдем все что нужно
+  if has_alife_info("rf_racia_start") and not has_alife_info("rf_racia_connect") then
+   if kolvo == nil then kolvo = 1 end
+      if kolvo == 1 then	
+	   gz_utils.s_play([[characters_voice\scenario\radio\radio_voice_3]])
+	   kolvo = 2
+      elseif kolvo == 2 then
+	   gz_utils.s_play([[characters_voice\scenario\aes\aes_monsters]])
+	   kolvo = 3
+	  elseif kolvo == 3 then
+	   gz_utils.s_play([[characters_voice\scenario\aes\aes2\aes_sniper_talk]])
+	   kolvo = 4
+	  elseif kolvo == 4 then
+	   gz_utils.s_play([[characters_voice\scenario\radio\talk_1\radio_1]])  
+	   kolvo = nil
+	   news_manager.send_tip(actor, "Найдена правильня частота ^_^ ")
+       actor:give_info_portion("rf_racia_connect")
+   	  end
+	end
+ end
+end
+
+--//*** ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ДЛЯ СХЕМ
+function restore_weapon()
+ if last_active_slot then
+  actor:activate_slot(last_active_slot)
+  last_active_slot = nil
+ end
+end
+
+
+
+local key_to_block_table = {
+"kCLOCK",
+"kGAZMASK",
+"kDET1",
+"kDET2",
+"kWPN_1",
+"kWPN_2",
+"kWPN_3",
+"kWPN_4",
+"kWPN_5",
+"kWPN_6",
+"kWPN_NEXT",
+"kDROP",
+"kUSE_SLOT_QUICK_ACCESS_0",
+"kUSE_SLOT_QUICK_ACCESS_1",
+"kUSE_SLOT_QUICK_ACCESS_2",
+"kUSE_SLOT_QUICK_ACCESS_3"
+}
+
+function huds_block()
+ gz_utils.give_info("slot_zanyat")
+ for i=1, #key_to_block_table, 1 do
+  actor_obj:block_action(key_bindings[key_to_block_table[i]])
+ end 
+end
+
+function huds_unblock()
+ gz_utils.del_info("slot_zanyat")
+ for i=1, #key_to_block_table, 1 do
+  actor_obj:unblock_action(key_bindings[key_to_block_table[i]])
+ end
+end

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+
+	<dialog id="dm_dialog_guider_script">
+		  <init_func>guiders.init_guiders_dialog</init_func> 
+    </dialog>	
+	
+    <dialog id="dialog_guider_2">
+        <phrase_list>
+            <phrase id="0">
+                <text>Спасибо, что воспользовался моей услугой.Устал я что-то в дороге с тобой.Присяду, отдохну...</text>
+                <next>1</next>
+            </phrase>
+            <phrase id="1">
+                <text>Удачи.</text>
+            </phrase>
+        </phrase_list>
+     </dialog>
+</game_dialogs>

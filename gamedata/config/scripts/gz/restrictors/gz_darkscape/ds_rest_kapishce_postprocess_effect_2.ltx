@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_inside = {+kapishce_teleport_start} sr_idle2
+
+[sr_idle2]
+on_timer = 40000| %=run_postprocess(deadcity_wake:02:loop)% sr_idle21
+
+[sr_idle21]
+on_timer = 1000| %=disable_ui =teleport_actor(ds_kapish_teleport_walk:ds_kapish_teleport_look) =play_snd(ambient\mine\wind_mine_1) =travel_in_time_2 +ds_kapische_first_teleport_done% sr_idle3
+
+[sr_idle3]
+on_timer = 5000| %=play_snd(characters_voice\soz\gz_darkscape\kapishe_anom) =stop_cam_effector(1001)%  sr_idle4
+
+[sr_idle4]
+on_timer = 1000|%=enable_ui% nil

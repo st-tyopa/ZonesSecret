@@ -1,0 +1,164 @@
+local actor = db.actor
+local actor_obj = get_actor_obj()
+local immunitets = actor_obj.immunities
+local condition = actor_obj.condition
+local ini = system_ini()
+local snd_obj = xr_sound.get_safe_sound_object([[$no_sound]])
+
+-- удаляем объект из игры
+function remove_item(remove_item)
+  if remove_item~=nil then
+    alife():release(alife():object(remove_item:id(), true))
+    return true
+  end
+  return false
+end
+
+--записываем переменную
+function save_variable(variable_name, value)
+ xvars[variable_name] = value
+end
+
+--загружаем переменную
+function load_variable(variable_name, value_if_not_found)
+  local var = xvars[variable_name]
+  if var ~= nil then
+   return var
+  end
+  return value_if_not_found or nil
+end
+
+--удаляем переменную
+function del_variable(variable_name)
+  xvars[variable_name] = nil
+end
+
+--сохраняем таблицу
+function save_table(table_name, value)
+ value = table.compress(value) --/ пакуем таблицу в строку
+ xvars[table_name] = value
+end
+
+--загружаем таблицу
+function load_table(sVarName, DefValue)
+ local Value = xvars[sVarName]
+  if Value ~= nil then
+    if DefValue and type(DefValue) == 'table' and type(Value) == 'string' then
+     return table.decompress(Value)
+    end
+   return Value
+  end
+ return DefValue or nil
+end
+
+function HideInvWnd() --// закроем окно инвентаря
+ local InvWnd = level.main_input_receiver()
+ if InvWnd then
+  InvWnd:GetHolder():start_stop_menu(InvWnd, true)
+ end
+end
+
+function give_info(info) -- выдача инфопоршня
+ actor:give_info_portion(info)
+end
+
+function del_info(info) -- удаление инфопошня
+ if has_alife_info(info) then
+  actor:disable_info_portion(info)
+ end
+end
+
+function spawn_item_in_inv(item, num) -- спавн предмета в инвентарь
+ if num == nil then num = 1 end
+ for i = 1, num do
+  alife():create(item, actor:position(), actor:level_vertex_id(), actor:game_vertex_id(), actor:id())
+ end
+end
+
+function clear_slot(num) -- очистка слота
+ if actor:item_in_slot(num) ~= nil then
+  remove_item(actor:item_in_slot(num)) --очиситили слот
+ end
+end
+
+function cheat() -- Спавн при старте игры
+
+end
+
+
+
+-- Удаляем предмет из инвентаря
+function remove_item_from_inventory_by_name(remove_item_name,npc)
+	return remove_item_from_inventory(npc:object(remove_item_name),npc)
+end
+function remove_item_from_inventory(remove_item,npc)
+	if npc==nil then npc=actor end
+	if remove_item~=nil then
+	    npc:mark_item_dropped(remove_item)
+		local sobj = alife():object(remove_item:id())
+		if sobj then
+			alife():release(sobj, true)
+			news_manager.send_tip(actor, "Удален предмет: "..remove_item:section())
+			return true
+		else
+			return false
+		end
+	end
+	return false
+end
+
+function quest_actor_teleport(black, hours) --//перемещаем ГГ в заданную точку в пределах уровня с потемнением экрана и перемоткой времени
+  if black == true then
+	s_play([[anomaly\teleport_work_1]])
+    level.add_pp_effector("peace_fade.ppe", 1973, false)
+  end
+  time_travel(hours)
+  level.change_game_time(0,hours,0)
+  level_weathers.get_weather_manager():forced_weather_change()
+end
+
+function s_stop()
+	if snd_obj:playing() then snd_obj:stop() end
+end
+
+function s_play(path)
+	s_stop()
+	snd_obj = xr_sound.get_safe_sound_object(path)
+	if snd_obj then
+		snd_obj:play_at_pos(db.actor, vector():set(0, 0, 0), 0, sound_object.s2d)
+	end
+end
+
+function s_play_no_feedback(path, volume, game_object)
+	local snd_obj = xr_sound.get_safe_sound_object(path)
+	if snd_obj then
+		local vlm = volume or 1.0
+		local npc = game_object or db.actor
+		snd_obj:play_no_feedback(npc, sound_object.s2d, 0, vector():set(0, 0, 0), vlm)
+	end
+end
+
+-- Узнаем отношение одного непися к другому
+function get_npc_relation(obj,target)
+	local rel = obj:relation(target)
+	if rel ~= nil then
+		return (rel==game_object.neutral and "neutral" or rel==game_object.friend and "friend" or rel==game_object.enemy and "enemy") or false
+	end
+    return false
+end
+
+-- Задаем отношение одного непися к другому
+function set_npc_relation(obj,target,relation)
+	--ASSERT(relation, "[ogse.set_npc_relation] variable relation == nil!")
+	if relation=="neutral" then
+		rel=game_object.neutral
+	elseif relation=="friend" then
+		rel=game_object.friend
+	elseif relation=="enemy" then
+		rel=game_object.enemy
+	else
+		return false
+	end
+	obj:set_relation(rel,target)
+	return true
+end

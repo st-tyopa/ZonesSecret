@@ -1,0 +1,2078 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SoZ. Prologue
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Уникальные квестовые предметы
+[dscol_af_prelest]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\rf_lab_card"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= physics\anomaly\sap\serafim.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+description         = gz_rf_mil_pda_description
+inv_name			= gz_rf_mil_pda_name
+inv_name_short		= gz_rf_mil_pda_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 10
+inv_grid_y			= 0
+cost				= 10000
+
+
+[rf_mil_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\rf_lab_card"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+description         = gz_rf_mil_pda_description
+inv_name			= gz_rf_mil_pda_name
+inv_name_short		= gz_rf_mil_pda_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+
+[rf_lab_card]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\rf_lab_card"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_zapiska.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= greh_guard_key_have
+description         = gz_rf_lab_card_description
+inv_name			= gz_rf_lab_card_name
+inv_name_short		= gz_rf_lab_card_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 10
+inv_grid_y			= 21
+cost				= 0
+
+[ds_bandits_zapiska]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\ds_bandits_zapiska"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_zapiska.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= greh_guard_key_have
+description         = gz_bandit_zap_desc
+inv_name			= gz_pda_bandit_zap
+inv_name_short		= gz_pda_bandit_zap
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 39
+cost				= 50
+
+[dolg_base_shkaf_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\dolg_base_shkaf_key"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\key.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= greh_guard_key_have
+description         = gz_agr_dolgbase_und_key_description
+inv_name			= gz_agr_dolgbase_und_key_name
+inv_name_short		= gz_agr_dolgbase_und_key_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 11
+inv_grid_y			= 22
+cost				= 50
+
+[agr_dolgbase_und_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\agr_dolgbase_und_key"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\key.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= greh_guard_key_have
+description         = gz_agr_dolgbase_und_key_description
+inv_name			= gz_agr_dolgbase_und_key_name
+inv_name_short		= gz_agr_dolgbase_und_key_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 11
+inv_grid_y			= 22
+cost				= 50
+
+[merc_racia]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\bezpamatnii_diary"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_zapiska.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_prisoners_flesh_have
+description         = merc_racia_description
+inv_name			= merc_racia_name
+inv_name_short		= merc_racia_name
+inv_weight			= 0.3
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 20
+inv_grid_y			= 27
+cost				= 0
+
+[pz_flair]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\bezpamatnii_diary"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_zapiska.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_prisoners_flesh_have
+description         = gz_pz_flair_description
+inv_name			= gz_pz_flair_name
+inv_name_short		= gz_pz_flair_name
+inv_weight			= 0.6
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 20
+inv_grid_y			= 29
+cost				= 0
+
+[yan_zapiska_trup]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\bezpamatnii_diary"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_zapiska.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_prisoners_flesh_have
+description         = gz_yan_zapiska_trup_description
+inv_name			= gz_yan_zapiska_trup_name
+inv_name_short		= gz_yan_zapiska_trup_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 8
+inv_grid_y			= 39
+cost				= 0
+
+[ds_sumka]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\ds_sumka"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_minipda.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = gz_ds_sumka_description
+inv_name			= gz_ds_sumka_name
+inv_name_short		= gz_ds_sumka_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 18
+inv_grid_y			= 34
+cost				= 0
+
+[bezpamatnii_diary]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\bezpamatnii_diary"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= find_prisoners_flesh_have
+description         = gz_bezpamatnii_diary_name_description
+inv_name			= gz_bezpamatnii_diary_name
+inv_name_short		= gz_bezpamatnii_diary_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 28
+cost				= 0
+
+[agr_dolg_datchik]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\agr_dolg_datchik"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= physics\technica\pribor_1c.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = gz_agr_dolg_datchik_description
+inv_name			= gz_agr_dolg_datchik_name
+inv_name_short		= gz_agr_dolg_datchik_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 21
+inv_grid_y			= 10
+cost				= 500
+
+[tainik_pismo]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\gar_proslushka"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_zapiska.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = gz_tainik_pismo_description
+inv_name			= gz_tainik_pismo_name
+inv_name_short		= gz_tainik_pismo_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 0
+inv_grid_y			= 38
+cost				= 0
+
+[pz_lab_yell_case]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pz_lab_yell_case"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\yell_cont.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= pz_lab_case_have
+description         = gz_pz_lab_yell_case_description
+inv_name			= gz_pz_lab_yell_case_name
+inv_name_short		= gz_pz_lab_yell_case_name
+inv_weight			= 0.6
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 22
+inv_grid_y			= 25
+cost				= 0
+
+[und_paper]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\und_paper"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_zapiska.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+description         = gz_und_paper_description
+inv_name			= gz_und_paper_name
+inv_name_short		= gz_und_paper_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 0
+inv_grid_y			= 38
+cost				= 0
+
+[rf_pismo]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\gar_proslushka"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_document_01.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+description         = gz_rf_pismo_description
+inv_name			= gz_rf_pismo_name
+inv_name_short		= gz_rf_pismo_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 0
+inv_grid_y			= 38
+cost				= 0
+
+[dv_fomka_diary]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\dv_fomka_diary"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= dv_fomka_diary_info
+description         = gz_dv_fomka_diary_description
+inv_name			= gz_dv_fomka_diary_name
+inv_name_short		= gz_dv_fomka_diary_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 29
+cost				= 0
+
+[pz_lab_blue_case]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pz_lab_blue_case"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\blue_cont.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= pz_lab_case_have
+description         = gz_pz_lab_blue_case_description
+inv_name			= gz_pz_lab_blue_case_name
+inv_name_short		= gz_pz_lab_blue_case_name
+inv_weight			= 0.6
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 20
+inv_grid_y			= 25
+cost				= 0
+
+[pz_scien_diary]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_pills_true"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= pz_scien_diary_find
+description         = gz_pz_scien_diary_description
+inv_name			= gz_pz_scien_diary_name
+inv_name_short		= gz_pz_scien_diary_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 29
+cost				= 0
+
+[und_agr_cap_cross]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\und_agr_cap_cross"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_minipda.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = gz_und_agr_cap_cross_description
+inv_name			= gz_und_agr_cap_cross_name
+inv_name_short		= gz_und_agr_cap_cross_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 17
+inv_grid_y			= 34
+cost				= 0
+
+[und_agr_cap_jeton]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\und_agr_cap_jeton"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_minipda.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = gz_und_agr_cap_jeton_description
+inv_name			= gz_und_agr_cap_jeton_name
+inv_name_short		= gz_und_agr_cap_jeton_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 21
+inv_grid_y			= 12
+cost				= 0
+
+[shpion_papka]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_pills_true"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_03.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_tainik_done
+description         = gz_shpion_papka_description
+inv_name			= gz_shpion_papka_name
+inv_name_short		= gz_shpion_papka_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 12
+inv_grid_y			= 28
+cost				= 0
+
+[dv_black_diger_diary]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_pills_true"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_03.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= dv_black_digger_diary_have
+description         = gz_dv_black_diger_diary_description
+inv_name			= gz_dv_black_diger_diary_name
+inv_name_short		= gz_dv_black_diger_diary_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 27
+cost				= 0
+
+[dv_greh_diary]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_pills_true"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= dv_greh_have
+description         = gz_dv_black_diger_diary_description
+inv_name			= gz_dv_black_diger_diary_name
+inv_name_short		= gz_dv_black_diger_diary_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 29
+cost				= 0
+
+[ds_geed_diary]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_pills_true"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+description         = gz_ds_geed_diary_description
+inv_name			= gz_ds_geed_diary_name
+inv_name_short		= gz_ds_geed_diary_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 28
+cost				= 0
+
+[ds_money]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_pills_true"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = gz_ds_money_desc
+inv_name			= gz_ds_money_name
+inv_name_short		= gz_ds_money_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 15
+inv_grid_y			= 4
+cost				= 0
+
+[quest_datchik]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_datchik"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_minipda.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = gz_quest_datchik_description
+inv_name			= gz_quest_datchik_name
+inv_name_short		= gz_quest_datchik_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 20
+inv_grid_y			= 8
+cost				= 0
+
+[pz_merclager_documents]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\pz_merclager_documents"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\container_artefacts.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= pz_rob_merclager_docs_done
+description         = gz_pz_merclager_documents_description
+inv_name			= gz_pz_merclager_documents_name
+inv_name_short		= gz_pz_merclager_documents_name
+inv_weight			= 0.6
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 23
+inv_grid_y			= 25
+cost				= 0
+
+; Бомба для лагеря наемников
+[storyline_pz_bomb]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_storyline_items\storyline_pz_bomb"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= physics\box\expl_dinamit.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = gz_storyline_pz_bomb_description
+inv_name			= gz_storyline_pz_bomb_name
+inv_name_short		= gz_storyline_pz_bomb_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 4
+inv_grid_y			= 18
+cost				= 50
+
+[rf_docs]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\rf_docs"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= physics\anomaly\artefact_blackdrip.ogf  
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= rf_docs_have
+description         = gz_rf_docs_description
+inv_name			= gz_rf_docs_name
+inv_name_short		= gz_rf_docs_name
+inv_weight			= 0.5
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 18
+cost				= 5000
+
+[quest_rf_art_old]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_rf_art"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= physics\anomaly\artefact_blackdrip.ogf  
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = quest_rf_art_old_desc
+inv_name			= quest_rf_art_old_name
+inv_name_short		= quest_rf_art_old_name
+inv_weight			= 0.5
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 9
+inv_grid_y			= 4
+cost				= 5000
+
+[quest_talisman]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\quest_talisman"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\item_gps.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= quest_talisman_have
+description         = gz_quest_talisman_desc
+inv_name			= gz_quest_talisman_name
+inv_name_short		= gz_quest_talisman_name
+inv_weight			= 0.7
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 15
+inv_grid_y			= 23
+cost				= 500
+
+[diggers_maps]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\diggers_maps"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_document_2.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_tainik_maps_black_digger
+description         = gz_diggers_maps_description
+inv_name			= gz_diggers_maps_name
+inv_name_short		= gz_diggers_maps_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 22
+inv_grid_y			= 29
+cost				= 0
+
+[bekas_money]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_petro"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\green_cont.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_bekas_money_done
+description         = gz_bekas_money_description
+inv_name			= gz_bekas_money_name
+inv_name_short		= gz_bekas_money_name
+inv_weight			= 0.6
+inv_grid_width		= 1
+inv_grid_height		= 2
+inv_grid_x			= 21
+inv_grid_y			= 25
+cost				= 0
+
+[team_diary]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\team_diary"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_team_done
+description         = gz_team_diary_description
+inv_name			= gz_team_diary_name
+inv_name_short		= gz_team_diary_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 10
+inv_grid_y			= 25
+cost				= 0
+
+[quest_case_instruments]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_case_instruments"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\box_toolkit_2.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= find_yar_instruments_have
+description         = gz_quest_case_instruments_description
+inv_name			= gz_quest_case_instruments_name
+inv_name_short		= gz_quest_case_instruments_name
+inv_weight			= 3.5
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 12
+inv_grid_y			= 27
+cost				= 250
+
+[quest_gps]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_gps"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\item_gps.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+description         = gz_quest_gps_description
+inv_name			= gz_quest_gps_name
+inv_name_short		= gz_quest_gps_name
+inv_weight			= 0.7
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 15
+inv_grid_y			= 23
+cost				= 500
+
+[quest_medkit_case_doc]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_medkit_case_doc"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\item_aptechka.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_doc_medkit_case
+description         = gz_quest_medkit_case_doc_description
+inv_name			= gz_quest_medkit_case_doc_name
+inv_name_short		= gz_quest_medkit_case_doc_name
+inv_weight			= 0.9
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 18
+inv_grid_y			= 30
+cost				= 250
+
+[quest_guitar]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_guitar"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_document_01.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_guitar_have
+description         = gz_quest_guitar_description
+inv_name			= gz_quest_guitar_name
+inv_name_short		= gz_quest_guitar_name
+inv_weight			= 0.2
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 22
+inv_grid_y			= 28
+cost				= 150
+
+[quest_weapons_case]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_weapons_case"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= physics\equipment_cache\equipment_instrument_case_01_case.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= quest_weapons_case
+description         = gz_quest_weapons_case_description
+inv_name			= gz_quest_weapons_case_name
+inv_name_short		= gz_quest_weapons_case_name
+inv_weight			= 5
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 10
+inv_grid_y			= 26
+cost				= 50
+
+[quest_raciya]:identity_immunities
+GroupControlSection		= spawn_group
+discovery_dependency	= 
+$spawn					= "equipment\quest_raciya"
+cform                   = skeleton
+class					= II_ATTCH
+visual                  = equipments\item_fmradio.ogf
+cost					= 0
+description         	= gz_quest_raciya_desc
+inv_name				= gz_quest_raciya_name
+inv_name_short			= gz_quest_raciya_name
+inv_weight				= 0.5
+inv_grid_width			= 2
+inv_grid_height			= 1
+inv_grid_x				= 16
+inv_grid_y				= 12
+attach_angle_offset		= -1.5708,0.1919,3.1416    ;устанавливается в радианах Angle*PI/180
+attach_position_offset	= 0.075, 0.066, 0.023
+attach_bone_name		= bip01_l_hand
+auto_attach				= false
+quest_item				= true
+
+[svoboda_radiostanciya]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\svoboda_radiostanciya"
+;$prefetch 			= II_ATTCH
+cform				= skeleton
+visual				= physics\box\expl_dinamit.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = svoboda_radiostanciya_desc
+inv_name			= svoboda_radiostanciya_name
+inv_name_short		= svoboda_radiostanciya_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 8
+inv_grid_y			= 18
+cost				= 50
+
+;;; Детали для рации ;;;
+; Батарея
+[quest_raciya_detail_1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_raciya_detail_1"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_battery_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_details_battery_have
+description         = gz_quest_raciya_detail_1_description
+inv_name			= gz_quest_raciya_detail_1_name
+inv_name_short		= gz_quest_raciya_detail_1_name
+inv_weight			= 0.05
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 12
+inv_grid_y			= 34
+cost				= 50
+
+; Коробка с транзисторами, резисторами и д.р. элементами
+[quest_raciya_detail_2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_raciya_detail_2"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\box_transistors.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_details_tranzistor_have
+description         = gz_quest_raciya_detail_2_description
+inv_name			= gz_quest_raciya_detail_2_name
+inv_name_short		= gz_quest_raciya_detail_2_name
+inv_weight			= 0.05
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 10
+inv_grid_y			= 31
+cost				= 100
+
+; Моток соединительной проволоки
+[quest_raciya_detail_3]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_raciya_detail_3"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\materials_wire.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= find_details_provoloka_have
+description         = gz_quest_raciya_detail_3_description
+inv_name			= gz_quest_raciya_detail_3_name
+inv_name_short		= gz_quest_raciya_detail_3_name
+inv_weight			= 0.05
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 9
+inv_grid_y			= 30
+cost				= 50
+
+; Плата текстолита
+[quest_raciya_detail_4]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_raciya_detail_4"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\materials_textolite.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= find_details_plata_have
+description         = gz_quest_raciya_detail_4_description
+inv_name			= gz_quest_raciya_detail_4_name
+inv_name_short		= gz_quest_raciya_detail_4_name
+inv_weight			= 0.05
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 12
+inv_grid_y			= 23
+cost				= 50
+
+; Ящик динамита
+[storyline_gar_dynamite]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_storyline_items\storyline_gar_dynamite"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= physics\box\expl_dinamit.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+document_info 		= gar_find_dynamit_done
+description         = gz_storyline_gar_dynamite_description
+inv_name			= gz_storyline_gar_dynamite_name
+inv_name_short		= gz_storyline_gar_dynamite_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 4
+inv_grid_y			= 18
+cost				= 2500
+
+; Дневник раненого диггера
+[quest_diary_wounded_digger]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\quest_diary_wounded_digger"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= quest_diary_wounded_digger_have
+description         = gz_quest_diary_wounded_digger_description
+inv_name			= gz_quest_diary_wounded_digger_name
+inv_name_short		= gz_quest_diary_wounded_digger_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 29
+cost				= 50
+
+; Дневник первого мертвого диггера
+[quest_diary_dead_digger1]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\quest_diary_dead_digger1"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= quest_diary_dead_digger1_have
+description         = gz_quest_diary_dead_digger1_description
+inv_name			= gz_quest_diary_dead_digger1_name
+inv_name_short		= gz_quest_diary_dead_digger1_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 23
+inv_grid_y			= 38
+cost				= 50
+
+;Дневник второго мертвого диггера
+[quest_diary_dead_digger2]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\quest_diary_dead_digger2"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_03.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= quest_diary_dead_digger2_have
+description         = gz_quest_diary_dead_digger2_description
+inv_name			= gz_quest_diary_dead_digger2_name
+inv_name_short		= gz_quest_diary_dead_digger2_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 27
+inv_grid_y			= 39
+cost				= 50
+
+;Дневник диггера самоубийцы
+[quest_diary_suicide_digger]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\quest_diary_suicide_digger"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_book_03.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= quest_diary_suicide_digger_have
+description         = gz_quest_diary_suicide_digger_description
+inv_name			= gz_quest_diary_suicide_digger_name
+inv_name_short		= gz_quest_diary_suicide_digger_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 28
+inv_grid_y			= 38
+cost				= 50
+
+[king_gigant_hand]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\king_gigant_hand"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_burer_hand.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+description         = king_gigant_hand_desc
+inv_name			= king_gigant_hand_name
+inv_name_short		= king_gigant_hand_name
+inv_weight			= 0.2
+can_trade			= on
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 9
+inv_grid_y			= 0
+cost				= 3000
+
+;Ключ охранника сталкера на ТД
+[quest_key_greh_guard]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\quest_key_greh_guard"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\key.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= greh_guard_key_have
+description         = gz_quest_key_greh_guard_description
+inv_name			= gz_quest_key_greh_guard_name
+inv_name_short		= gz_quest_key_greh_guard_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 10
+inv_grid_y			= 22
+cost				= 50
+
+;Артефакт колокол
+[quest_art_kolokol_old]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\quest_art_kolokol"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= physics\anomaly\artefact_gravy3.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+description         = quest_art_kolokol_desc
+inv_name			= quest_art_kolokol_name
+inv_name_short		= quest_art_kolokol_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 16
+inv_grid_y			= 4
+cost				= 25000
+
+; Жетон контроллера-военного
+[quest_jeton_military_controller]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\quest_jeton_military_controller"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\items\item_gps.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= false
+description         = gz_quest_jeton_military_controller_description
+inv_name			= gz_quest_jeton_military_controller_name
+inv_name_short		= gz_quest_jeton_military_controller_name
+inv_weight			= 0.7
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 21
+inv_grid_y			= 12
+cost				= 500
+
+[rf_documents]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\rf_documents"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= gz\objects\item_book_02.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= rf_cave_docs_find_done
+description         = gz_quest_rf_docs_description
+inv_name			= gz_quest_rf_docs_name
+inv_name_short		= gz_quest_rf_docs_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 10
+inv_grid_y			= 25
+cost				= 0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;NEW DEVICE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[device_torch_lab]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency =
+$spawn				= "devices\torch_lab"
+$prefetch 			= 32
+class				= TORCH_S
+cform				= skeleton
+visual				= equipments\light_night_lab.ogf
+description			= device-torch_lab_desc
+inv_name			= device-torch_lab_name
+inv_name_short		= device-torch_lab_name
+cost				= 100
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 16
+inv_grid_y			= 12
+
+;вещью нельзя торговать
+can_trade			= true
+
+position			= 0.35,0.25,0.0
+light_trace_bone	= cone_bone
+attach_angle_offset		= 0, -3.14, 1.6
+attach_position_offset	= 0.115, 0.00, 0.07
+attach_bone_name		= bip01_head
+auto_attach				= false
+
+night_vision				= on
+night_vision_texture		= wpn\wpn_night
+night_vision_effector		= postprocess_night
+
+snd_night_vision_on			= weapons\nv_start
+snd_night_vision_off		= weapons\nv_off
+snd_night_vision_idle		= weapons\nv_loop
+snd_night_vision_broken		= weapons\nv_off
+
+night_vision_recharge_time			= 6		;(c) время зарядки аккамулятора
+night_vision_recharge_time_min		= 2		;(c) мин. время зарядки аккамулятора, после которого уст-во уже может работать
+night_vision_discharge_time			= 20	;(c) время разрядки (работы) устройства после полной зарядки
+slot								= 9
+disabled_maps						= ai_test,ai_test2, andy_test_
+
+[gz_tainik_case]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\gz_tainik_case"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_merger.ogf
+radius				= 1
+;script_binding		= stalker.object_init
+quest_item			= true
+document_info 		= gz_tainik_case_have
+description         = gz_tainik_case_description
+inv_name			= gz_tainik_case_name
+inv_name_short		= gz_tainik_case_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 8
+inv_grid_y			= 18
+cost				= 1000
+
+[stroyka_key]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\stroyka_key"
+;$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\key.ogf
+radius				= 1
+quest_item			= true
+description         = gz_stroyka_key_description
+inv_name			= gz_stroyka_key_name
+inv_name_short		= gz_stroyka_key_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 10
+inv_grid_y			= 23
+cost				= 0
+
+[kruglov_flash]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\kruglov_flash"
+$prefetch 			= 32
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_datchik3.ogf
+radius				= 10	;15
+buzzer_radius		= 1.5
+noise				= zone_mosquito_bald       ;detectors\geiger_noise_loop 
+buzzer				= zone_mosquito_bald       ;detectors\DA-2_alarm_loop
+quest_item			= true
+animation_slot      = 11
+ef_detector_type	= 1
+description			= item_detector_yantar_desc
+inv_name			= item_detector_yantar_name
+inv_name_short		= item_detector_yantar_name
+inv_weight			= 0
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 5
+inv_grid_y			= 14
+cost				= 1500	;30
+default_to_ruck		= false
+attach_angle_offset		= -0.160570,-1.425061,-0.361283
+attach_position_offset	= 0.160570,-0.060214,0.020071
+attach_bone_name		= bip01_l_hand
+auto_attach				= false
+
+;Девайсы: пда, ноутбуки, флешки и т. п. Все, с которых можно расшифровать что-либо
+;Не квестовые, падают с большей части трупов.
+
+[pda_stalker_novice]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\rf_docs"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda_novice.ogf
+radius				= 1
+quest_item			= false
+description         = descr_pda_stalker_novice
+cost				= 0
+inv_name			= pda_stalker_novice_name
+inv_name_short		= pda_stalker_novice_name
+inv_weight			= 0.15
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 34
+inv_grid_y			= 38
+can_be_hacked       = true
+encryption_level    = el_weak
+
+[pda_stalker_regular]:pda_stalker_novice
+inv_name			= pda_stalker_regular_name
+inv_name_short		= pda_stalker_regular_name
+description			= descr_pda_stalker_regular
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 36
+inv_grid_y			= 39
+visual				= equipments\item_pda_2.ogf
+encryption_level    = el_average
+
+[pda_stalker_veteran]:pda_stalker_novice
+inv_name			= pda_stalker_veteran_name
+inv_name_short		= pda_stalker_veteran_name
+description			= descr_pda_stalker_veteran
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 34
+inv_grid_y			= 39
+visual				= equipments\item_minipda_3.ogf
+encryption_level    = el_strong
+
+[pda_stalker_master]:pda_stalker_novice
+inv_name			= pda_stalker_master_name
+inv_name_short		= pda_stalker_master_name
+description			= descr_pda_stalker_master
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 36
+inv_grid_y			= 38
+visual				= equipments\item_minipda_4.ogf
+encryption_level    = el_very_strong
+
+[pda_stalker_broken]:pda_stalker_novice ;сломанный ПДА, единственный, который взламывать нельзя
+inv_name			= pda_stalker_broken_name
+inv_name_short		= pda_stalker_broken_name
+description			= pda_stalker_broken_desc
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 34
+inv_grid_y			= 40
+can_be_hacked       = false
+
+;Квестовые, содержать уникальную информацию, помимо стандартного набора.
+
+[pda_gorb]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\rf_docs"
+class				= II_ATTCH
+cform				= skeleton
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_gorb_description
+cost				= 0
+inv_name			= gz_pda_gorb_name
+inv_name_short		= gz_pda_gorb_name
+inv_weight			= 0.15
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+can_be_hacked       = true
+encryption_level    = el_strong
+
+[pda_hunt]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\rf_docs"
+class				= II_ATTCH
+cform				= skeleton
+cform				= skeleton
+visual				= equipments\item_pda.ogf 
+radius				= 1
+quest_item			= true
+description         = gz_pda_hunt_description
+inv_name			= gz_pda_hunt_name
+inv_name_short		= gz_pda_hunt_name
+inv_weight			= 0.5
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_very_strong
+
+[pda_bandit_leshui]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\bandit_leshui"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_bandit_leshui_description
+inv_name			= gz_pda_bandit_leshui_name
+inv_name_short		= gz_pda_bandit_leshui_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_very_strong
+
+[pda_sv_loki]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\pda_sv_loki"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_sv_loki_description
+inv_name			= gz_pda_sv_loki_name
+inv_name_short		= gz_pda_sv_loki_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_strong
+
+[pda_sv_cheh]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\pda_sv_cheh"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+inv_name			= gz_pda_sv_cheh_name
+inv_name_short		= gz_pda_sv_cheh_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+description         = gz_pda_sv_cheh_description
+can_be_hacked       = true
+encryption_level    = el_very_strong
+
+[quest_pda_otshel]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_pda_otshel"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_quest_pda_otshel_description
+inv_name			= gz_quest_pda_otshel_name
+inv_name_short		= gz_quest_pda_otshel_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_strong
+
+[pda_maps_band]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_maps_band"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_maps_band_description
+inv_name			= gz_pda_maps_band_name
+inv_name_short		= gz_pda_maps_band_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_strong
+
+[pda_depo_dead_stalker]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\pda_depo_dead_stalker"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_depo_dead_stalker_description
+inv_name			= gz_pda_depo_dead_stalker_name
+inv_name_short		= gz_pda_depo_dead_stalker_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_strong
+
+[pda_dolg_kuprianov]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\pda_dolg_kuprianov"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_dolg_kuprianov_description
+inv_name			= gz_pda_dolg_kuprianov_name
+inv_name_short		= gz_pda_dolg_kuprianov_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_very_strong
+
+[ds_pda_bool]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_pda_otshel"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_ds_pda_bool_description
+inv_name			= gz_ds_pda_bool_name
+inv_name_short		= gz_ds_pda_bool_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_very_strong
+
+[pda_cap_dv]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_cap_dv"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_cap_dv_description
+inv_name			= gz_pda_cap_dv
+inv_name_short		= gz_pda_cap_dv
+inv_weight			= 0.3	;0.2
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 20
+can_be_hacked       = true
+encryption_level    = el_very_strong
+
+[pda_cap_dv_destr]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_cap_dv_destr"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = pda_cap_dv_destr_description
+inv_name			= pda_cap_dv_destr
+inv_name_short		= pda_cap_dv_destr
+inv_weight			= 0.3	;0.2
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 20
+can_be_hacked       = true
+encryption_level    = el_very_strong
+
+[pda_predat]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_predat"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_predat_description
+inv_name			= gz_pda_predat_name
+inv_name_short		= gz_pda_predat_name
+inv_weight			= 0.3	;0.2
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 30
+inv_grid_y			= 38
+cost				= 20
+can_be_hacked       = true
+encryption_level    = el_very_strong
+
+[pda_predateley]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_predateley"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_guitar.ogf
+radius				= 1
+quest_item			= true
+description         = pda_predateley_desc
+inv_name			= pda_predateley_name
+inv_name_short		= pda_predateley_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 27
+inv_grid_y			= 39
+cost				= 50
+can_be_hacked       = true
+encryption_level    = el_very_strong
+
+[pda_torgash]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_torgash"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_torgash_description
+inv_name			= gz_pda_torgash_name
+inv_name_short		= gz_pda_torgash_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_strong
+
+[pda_maps]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_maps"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_maps_description
+inv_name			= gz_pda_maps_name
+inv_name_short		= gz_pda_maps_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_strong
+
+[pda_ld_code]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_ld_code"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_ld_code_description
+inv_name			= gz_pda_ld_code_name
+inv_name_short		= gz_pda_ld_code_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+
+[prisoners_flesh]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\prisoners_flesh"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_prisoners_flesh_description
+inv_name			= gz_prisoners_flesh_name
+inv_name_short		= gz_prisoners_flesh_name
+inv_weight			= 0.6
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 11
+inv_grid_y			= 23
+cost				= 0
+unical_info         = gz_tainik_2_spawn
+can_be_hacked       = true
+encryption_level    = el_weak
+
+[pda_petro]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_petro"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_petro_description
+inv_name			= gz_pda_petro_name
+inv_name_short		= gz_pda_petro_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+
+[pda_bekas]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_petro"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_pda_bekas_description
+inv_name			= gz_pda_bekas_name
+inv_name_short		= gz_pda_bekas_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+
+[lab_noyt]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\lab_noyt"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_notebook.ogf
+radius				= 1
+quest_item			= true
+description         = gz_lab_noyt_description
+inv_name			= gz_lab_noyt_name
+inv_name_short		= gz_lab_noyt_name
+inv_weight			= 0.6
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 18
+inv_grid_y			= 27
+cost				= 1000
+can_be_hacked       = true
+encryption_level    = el_average
+
+[pda_borman]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\pda_borman"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf 
+radius				= 1
+quest_item			= true
+description         = gz_pda_borman_description
+inv_name			= gz_pda_borman_name
+inv_name_short		= gz_pda_borman_name
+inv_weight			= 0.7
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+;quest_device        = true
+
+[noyt_borman_old]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\noyt_borman"
+class				= II_ATTCH
+cform				= skeleton
+visual				= physics\anomaly\artefact_blackdrip.ogf  
+radius				= 1
+quest_item			= true
+description         = gz_noyt_borman_description
+inv_name			= gz_noyt_borman_name
+inv_name_short		= gz_noyt_borman_name
+inv_weight			= 0.7
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 10
+inv_grid_y			= 32
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+
+[noyt_borman]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\noyt_borman"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_notebook.ogf
+radius				= 1
+quest_item			= true
+description         = gz_noyt_borman_description
+inv_name			= gz_noyt_borman_name
+inv_name_short		= gz_noyt_borman_name
+inv_weight			= 0.7
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 10
+inv_grid_y			= 32
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+
+[yan_guard_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\yan_guard_pda"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= false
+description         = gz_yan_guard_pda_description
+inv_name			= gz_yan_guard_pda_name
+inv_name_short		= gz_yan_guard_pda_name
+inv_weight			= 0.5
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+
+[scien_flash]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\scien_flash"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_minipda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_scien_flash_description
+inv_name			= gz_scien_flash_name
+inv_name_short		= gz_scien_flash_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 2
+inv_grid_y			= 38
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+
+[quest_pda_zombie]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_pda_zombie"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_quest_pda_zombie_description
+inv_name			= gz_quest_pda_zombie_name
+inv_name_short		= gz_quest_pda_zombie_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+
+[quest_agr_merc_pda]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\quest_agr_merc_pda"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_notebook.ogf
+radius				= 1
+quest_item			= true
+description         = gz_quest_agr_merc_pda_description
+can_be_hacked       = true
+inv_name			= gz_quest_agr_merc_pda_name
+inv_name_short		= gz_quest_agr_merc_pda_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 8
+inv_grid_y			= 31
+cost				= 0
+ph_mass             = 10000
+can_be_hacked       = true
+encryption_level    = el_average
+
+[loki_case_flesh]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\loki_case_flesh"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_loki_case_flesh_description
+can_be_hacked       = true
+inv_name			= gz_loki_case_flesh_name
+inv_name_short		= gz_loki_case_flesh_name
+inv_weight			= 0.6
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 11
+inv_grid_y			= 23
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average
+
+[pda_messenger]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\soz_quest_items\pda_messenger"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_pda.ogf
+radius				= 1
+quest_item			= false
+document_info       = greh_guard_key_have
+description         = gz_pda_messenger_description
+can_be_hacked       = true
+inv_name			= gz_pda_messenger
+inv_name_short		= gz_pda_messenger
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 6
+inv_grid_y			= 13
+cost				= 50
+can_be_hacked       = true
+encryption_level    = el_average
+
+[x15_scien_flash]:identity_immunities
+GroupControlSection	= spawn_group
+discovery_dependency = 
+$spawn 				= "devices\quest_items\x15_scien_flash"
+class				= II_ATTCH
+cform				= skeleton
+visual				= equipments\item_minipda.ogf
+radius				= 1
+quest_item			= true
+description         = gz_scien_flash_description
+inv_name			= gz_scien_flash_name
+inv_name_short		= gz_scien_flash_name
+inv_weight			= 0
+inv_grid_width		= 2
+inv_grid_height		= 2
+inv_grid_x			= 2
+inv_grid_y			= 38
+cost				= 0
+can_be_hacked       = true
+encryption_level    = el_average

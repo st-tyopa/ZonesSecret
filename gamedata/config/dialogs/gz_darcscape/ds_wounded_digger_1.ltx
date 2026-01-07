@@ -1,0 +1,31 @@
+[ds_wounded_digger_1]
+params_sequence = npc
+x0 = dialog_wounded_digger_1_1
+link0 = 1
+
+x1 = dialog_wounded_digger_1_3
+link1 = 2
+
+x2 = dialog_wounded_digger_1_4
+link2 = 3, 4, 5
+
+x3 = dialog_wounded_digger_1_5
+d3 = find_all_diaryes_have
+gi3 = ds_lost_diggers_start
+a3 = dialogs.break_dialog
+
+x4 = dialog_wounded_digger_1_6
+p4 = gz_prologue.find_all_diaryes_have
+link4 = 6
+
+x5 = dialog_wounded_digger_1_9
+gi5 = ds_ugr_diggers_otkaz
+a5 = dialogs.break_dialog
+
+x6 = dialog_wounded_digger_1_7
+a6 = gz_prologue.transfer_all_diaryes, gz_prologue.transfer_deneg
+gi6 = all_diaryes_transfer
+link6 = 7
+
+x7 = dialog_wounded_digger_1_8
+a7 = dialogs.break_dialog

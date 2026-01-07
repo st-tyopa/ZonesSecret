@@ -1,0 +1,260 @@
+[wpn_saiga12c]:identity_immunities
+GroupControlSection				= spawn_group
+discovery_dependency 				= 
+$spawn                  			= "weapons\saiga"					
+$npc			 			= on				
+$prefetch 		 			= 8
+scheduled                			= off             
+cform                    			= skeleton
+class               				= WP_AK74
+min_radius               			= 0
+max_radius               			= 50
+description					= enc_weapons1_wpn-saiga
+
+chamber_status          = true
+
+ef_main_weapon_type				= 1
+ef_weapon_type					= 7
+
+zoom_dof             = 0.5, 1.0, 180
+reload_dof           = 0.0, 0.5, 5, 1.7
+
+;-----------------------------------------------------------------------------------
+holder_range_modifier				= 1.0               
+holder_fov_modifier				= 1.2 			
+;-----------------------------------------------------------------------------------
+
+tri_state_reload				= on
+
+cost					 	= 7500	;1000
+weapon_class			 		= shotgun
+
+
+ammo_limit		 			= 60
+ammo_current		 			= 10
+ammo_elapsed		 			= 0
+
+ammo_mag_size		 			= 5
+ammo_class		 			= ammo_12x70_buck, ammo_12x76_zhekan, ammo_12x76_dart 
+grenade_class					= ammo_vog-25, ammo_vog-25p			
+launch_speed					= 0
+fire_modes					= 1
+;-----------------------------------------------------------------------------------
+;
+fire_dispersion_base				= 0.25 	;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor				= 1.2f
+
+cam_relax_speed         			= 5.0	;скорость возврата в исходное положение
+cam_relax_speed_ai         			= 120.75
+cam_dispersion          			= 3.0	;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc				= 0.0	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac				= 1.0   
+cam_max_angle					= 12	;максимальный угол отдачи
+cam_max_angle_horz				= 9.0	;(degree) maximum shot horizontal degree 
+cam_step_angle_horz				= 1.5	;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor 		= 5	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 				= 0.004	;вероятность осечки при максимальном износе 
+misfire_condition_k				= 0.05
+condition_shot_dec 				= 0.0001 ;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+hand_dependence 	 			= 2
+single_handed					= 0
+
+slot 				 		= 1,2		
+animation_slot					= 2			
+
+inv_name					= wpn-saiga
+inv_name_short					= wpn-saiga
+inv_weight					= 3.6
+
+inv_grid_width     				= 5
+inv_grid_height    				= 2
+inv_grid_x         				= 29
+inv_grid_y         				= 5
+
+kill_msg_x					= 91
+kill_msg_y					= 104
+kill_msg_width					= 80
+kill_msg_height					= 20
+
+direction                			= 0, 0, 1
+shell_point		 			= 0.02,0.228,0.150
+shell_dir		 			= 0.0, 1.0, 0.0
+fire_point             				= 0,0.228,0.743
+fire_point2              			= 0.0, 0.103, 0.686
+
+flame_particles					= amik\weapons\flame_particles\flame_particles_00
+smoke_particles					= amik\weapons\smoke_particles\smoke_particles_pump_01
+grenade_flame_particles				= amik\weapons\grenade_flame_particles\grenade_flame_particles_02
+shell_particles	 				= amik\weapons\12x70_r
+
+rpm_empty_click 	   			= 200
+
+PDM_disp_base 					= 1.0
+PDM_disp_vel_factor 				= 1.7
+PDM_disp_accel_factor 				= 1.7
+PDM_crouch	 				= 1.0
+PDM_crouch_no_acc 				= 1.0
+
+; ttc
+hit_power        				= 0.99
+hit_impulse      				= 200
+hit_type 					= fire_wound
+
+fire_distance           			= 50
+bullet_speed					= 440	
+rpm                     			= 250
+; end ttc
+
+hud                      			= wpn_saiga12c_hud
+normal                   			= 0, 1, 0
+position         	    			= -0.026,-0.172,0
+orientation              			= 0, 0, 0      
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+strap_position         				= -0.16,-0.36,0.15			
+strap_orientation      				= -10,-5,10					
+strap_bone0					= bip01_spine2
+strap_bone1					= bip01_spine1
+
+startup_ammo             			= 10
+visual                   			= weapons\saiga\wpn_saiga.ogf
+
+light_color		 			= 0.6,0.5,0.3
+light_range		 			= 6.0
+light_var_color		 			= 0.05
+light_var_range		 			= 0.5
+light_time 		 			= 0.2
+
+ph_mass			 			= 4
+
+;addons
+scope_status					= 2
+silencer_status					= 0
+grenade_launcher_status				= 0
+
+zoom_enabled					= true
+ironsight_zoom_factor				= 1
+scope_zoom_factor	    			= 70
+
+new_scope_zoom					= true
+
+scope_name 					= wpn_addon_scope
+scope_x                     			= 75
+scope_y                     			= 10
+
+silencer_name  					= wpn_addon_sil_762_ar
+silencer_x 					= 206
+silencer_y 					= 19
+
+grenade_launcher_name 				= wpn_addon_grenade_launcher_saiga
+grenade_launcher_x          			= 130
+grenade_launcher_y          			= 36
+
+;sounds (name of the sound, volume (0.0 - 1.0), delay (sec))
+snd_draw					= weapons\saiga\draw
+snd_holster					= weapons\saiga\holster
+snd_shoot					= weapons\saiga\saiga_shot
+snd_shoot1					= weapons\saiga\saiga_shot1
+snd_empty					= weapons\ak_empty, 0.7
+snd_reload					= weapons\akm\akm_reload
+snd_shoot_grenade				= weapons\gen_grenshoot
+snd_reload_grenade				= weapons\gen_grenload
+snd_switch					= weapons\groza_switch
+snd_silncer_shot				= weapons\akm\ak_silencer_type1_00
+snd_silncer_shot1				= weapons\akm\ak_silencer_type1_01
+snd_silncer_shot2				= weapons\akm\ak_silencer_type1_02
+
+silencer_smoke_particles 			= amik\weapons\smoke_particles\smoke_particles_pump_01
+
+silencer_hit_power       			= 1
+silencer_hit_impulse	 			= 90
+silencer_fire_distance   			= 80
+silencer_bullet_speed	 			= 400
+
+silencer_light_color				= 0.6,0.5,0.3
+silencer_light_range				= 0.01
+silencer_light_var_color			= 0.05
+silencer_light_var_range			= 0.5
+silencer_light_time 				= 0.2
+
+;-----------------------------------------------------------------------------
+;-- HUD DESCRIPTION
+;-----------------------------------------------------------------------------
+[wpn_saiga12c_hud]
+allow_inertion					= true
+
+shell_point     	   	 		= 0.023000,0.023000,-0.020000
+shell_dir			     		= 0.0, 1.0, 0.0
+
+fire_point					= 0,0.05,0
+fire_point2              			= 0.05,-0.08,-0.5
+fire_bone               			= wpn_body
+
+position					= -0.025,-0.14,0.13
+orientation					= 0,0,0
+
+visual                  			= weapons\saiga\wpn_saiga_hud.ogf
+
+grenade_bone            			= joint12
+
+anim_idle					= idle
+anim_idle_aim					= aim
+anim_reload					= reload
+anim_draw					= draw
+anim_holster					= holster
+anim_shoot					= shoot
+anim_idle_sprint				= sprint
+anim_idle_moving				= moving
+	
+anim_idle_g					= idle_w_gl
+anim_idle_g_aim					= aim_w_gl
+anim_reload_g					= reload_g
+anim_shoot_g					= shoot_g
+anim_switch_grenade_on				= aim_w_gl
+anim_switch_grenade_off				= aim_w_gl
+anim_draw_g					= draw_w_gl
+anim_holster_g					= holster_w_gl
+anim_idle_sprint_g				= sprint_w_gl
+anim_idle_moving_g				= moving_w_gl
+
+anim_idle_gl					= idle_w_gl
+anim_idle_gl_aim				= aim_w_gl
+anim_reload_gl					= reload_w_gl
+anim_draw_gl					= draw_w_gl
+anim_holster_gl					= holster_w_gl
+anim_shoot_gl					= shoot_w_gl
+anim_idle_sprint_gl				= sprint_w_gl
+anim_idle_moving_gl				= moving_w_gl
+
+zoom_offset					= -0.128100,0.036200,-0.130000
+zoom_rotate_x					= -0.002400
+zoom_rotate_y					= -0.000300
+
+grenade_normal_zoom_offset			= -0.132100,0.041200,-0.125000
+grenade_normal_zoom_rotate_x			= 0.031600
+grenade_normal_zoom_rotate_y			= 0.033700
+
+grenade_zoom_offset				= -0.093300,-0.014200,0.000000
+grenade_zoom_rotate_x				= -0.080800
+grenade_zoom_rotate_y				= 0.028500
+
+scope_zoom_offset				= -0.132100,-0.005400,-0.125000
+scope_zoom_rotate_x				= 0.003200
+scope_zoom_rotate_y				= 0.038200
+
+scope_grenade_normal_zoom_offset		= -0.132100,-0.005400,-0.125000
+scope_grenade_normal_zoom_rotate_x		= 0.003200
+scope_grenade_normal_zoom_rotate_y		= 0.038200
+
+zoom_hide_crosshair				= false
+
+zoom_rotate_time				= 0.3
+rotate_time					= 0.3
+
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------

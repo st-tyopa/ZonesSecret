@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+dv_contrgreh_spawn_controller_start} %+dv_wtf_greh_contr =run_postprocess(yantar_underground_psi:01:false)% sr_idle11
+
+[sr_idle11]
+on_timer = 6000|%=run_postprocess(agr_u_fade:01:false) =play_snd(soz\characters_voice\scenario\fan1)% sr_idle1
+
+[sr_idle1]
+on_timer = 5000|%=teleport_actor(dv_actor_teleport:dv_actor_teleport_look)% nil

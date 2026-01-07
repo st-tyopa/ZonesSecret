@@ -1,0 +1,12 @@
+[logic]
+active = walker
+
+[walker]
+path_walk = dv_greh_guard_wound_stalker_walk
+path_look = dv_greh_guard_wound_stalker_look
+combat_ignore_cond = {=check_fighting(11505)}
+danger = danger_condition@dv_greh_guard_wound_stalker
+
+[danger_condition@dv_greh_guard_wound_stalker]
+ignore_distance = 3
+

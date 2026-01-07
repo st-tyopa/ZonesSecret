@@ -1,0 +1,14 @@
+[logic]
+active = sr_idle
+ 
+[sr_idle]
+on_actor_inside = {-dscol_cutscene_1_start} %+dscol_cutscene_1_start% sr_idle@2
+
+[sr_idle@2]
+on_game_timer = 10| %+dscol_cutscene_1_2_start% sr_cutscene 
+ 
+[sr_cutscene]
+point = way1
+look = way2
+cam_effector = ds_collector_cutscene1
+on_signal = cameff_end | nil

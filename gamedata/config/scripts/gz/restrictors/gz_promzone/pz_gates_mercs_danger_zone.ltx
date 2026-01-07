@@ -1,0 +1,15 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_info = {+pz_rob_merclager_docs_done} sr_idle@2
+
+[sr_idle@2]
+on_info = {-pz_rob_merclager_escape_done} sr_idle@3
+
+[sr_idle@3]
+on_npc_in_zone = 72111|gates_mercs_in_zone_space_restrictor|%+pz_actor_enemy_merclager%
+on_npc_out_zone = 72111|gates_mercs_in_zone_space_restrictor|%-pz_actor_enemy_merclager%
+on_info = {+pz_rob_merclager_escape_done} sr_idle@nil
+
+[sr_idle@nil]

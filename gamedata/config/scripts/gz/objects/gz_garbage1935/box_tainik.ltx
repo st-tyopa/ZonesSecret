@@ -1,0 +1,14 @@
+[logic]
+active = ph_idle
+
+[ph_idle]
+tips = force_box_tips
+on_use = ph_force
+ 
+[ph_force]
+force = 3500
+time = 500
+delay = 0
+point = gar_box_point
+point_index = 0
+on_timer = 500|ph_idle

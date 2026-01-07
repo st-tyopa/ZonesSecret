@@ -1,0 +1,102 @@
+; Артефакты для аномалии "Комариная плешь"
+
+[af_medusa]:af_base         ; Медуза
+$spawn				        = "artifacts\moscito medusa"
+visual				        = physics\anomaly\artefact_blackdrip.ogf  
+description			        = enc_zone_artifact_af-medusa
+inv_name			        = af-medusa
+inv_weight			        = 0.5
+inv_grid_x			        = 9
+inv_grid_y			        = 4
+cost				        = 1000
+jump_height			        = 0
+particles			        = ;
+lights_enabled              = false
+health_restore_speed		= 0.0			
+artefact_activation_seq		= af_activation_bold
+health_restore_speed_min    = 0.01
+health_restore_speed_max    = 0.04
+
+
+[af_cristall_flower]:af_base; Кристальная колючка
+$spawn				        = "artifacts\moscito flower"
+visual				        = physics\anomaly\artefact_blackdrip_2.ogf  
+description			        = enc_zone_artifact_af-cristall-flower
+inv_name			        = af-cristall-flower
+inv_weight			        = 0.5
+inv_grid_x			        = 11
+inv_grid_y			        = 4
+cost				        = 2500
+jump_height			        = 0
+particles			        = ;
+lights_enabled              = true
+trail_light_color           = 0.6,0.7,0.5
+trail_light_range           = 0.5
+artefact_activation_seq		= af_activation_bold
+radiation_restore_speed     = 0.0005
+hit_absorbation_sect        = af_cristall_flower_absorbation
+
+[af_cristall_flower_absorbation]:af_base_absorbation
+fire_wound_immunity         = 0.97
+
+[quest_art_kolokol]:af_base ; Колокол
+$spawn				        = "artifacts\quest_art_kolokol"
+visual				        = physics\anomaly\art_test.ogf  
+description			        = enc_zone_artifact_af_kolokol
+inv_name			        = af_kolokol_name
+inv_weight			        = 0.5
+inv_grid_x			        = 16
+inv_grid_y			        = 4
+cost				        = 10000
+jump_height			        = 0
+particles			        = ;
+lights_enabled              = false
+trail_light_color           = 0.6,0.7,0.5
+trail_light_range           = 0.5
+artefact_activation_seq		= af_activation_bold		
+radiation_restore_speed     = 0.0005
+hit_absorbation_sect        = quest_art_kolokol_absorbation
+
+[quest_art_kolokol_absorbation]:af_base_absorbation
+fire_wound_immunity         = 0.97
+
+[af_night_star]:af_base     ; Ночная звезда
+$spawn				        = "artifacts\moscito star"
+visual				        = physics\anomaly\artefact_blackdrip_1.ogf  
+description			        = enc_zone_artifact_af-night-star
+inv_name			        = af-night-star
+inv_weight			        = 0.5
+inv_grid_x			        = 10
+inv_grid_y			        = 4
+cost				        = 5000
+jump_height			        = 0
+particles			        = ;
+lights_enabled              = true
+trail_light_color           = 0.6,0.7,0.5
+trail_light_range           = 3.0
+artefact_activation_seq		= af_activation_bold		
+radiation_restore_speed     = 0.0005
+hit_absorbation_sect        = af_night_star_absorbation
+
+[af_night_star_absorbation]:af_base_absorbation
+fire_wound_immunity         = 0.95
+
+
+
+
+[af_head]:af_base         ; Череп
+$spawn				        = "artifacts\head"
+visual				        = physics\dead_body\skelet_head.ogf  
+description			        = enc_zone_artifact_af-head
+inv_name			        = af-head
+inv_weight			        = 0.5
+inv_grid_x			        = 21
+inv_grid_y			        = 18
+cost				        = 1000
+jump_height			        = 0
+particles			        = ;
+lights_enabled              = false
+health_restore_speed		= 0.0			
+artefact_activation_seq		= af_activation_bold
+health_restore_speed_min    = 0.01
+health_restore_speed_max    = 0.04

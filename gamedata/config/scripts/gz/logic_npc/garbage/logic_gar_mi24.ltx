@@ -1,0 +1,42 @@
+[logic]
+active = heli_move@idle_1
+
+[heli_move@idle_1]
+path_move = gar_helicopter_idle_1
+invulnerable = true
+default_velocity = 35
+engine_sound = false
+on_game_timer = 1000| heli_move@raid_1
+
+[heli_move@raid_1]
+path_move = gar_helicopter_raid_1
+invulnerable = true
+default_velocity = 35
+combat_velocity = 25
+combat_safe_altitude = -10
+combat_use_rocket = false
+on_signal = stop| heli_move@idle_2
+
+[heli_move@idle_2]
+path_move = gar_helicopter_idle_2
+invulnerable = true
+default_velocity = 35
+engine_sound = false
+
+
+
+[heli_move@patrol]
+path_move = gar_vertolet_patrol
+invulnerable = true
+default_velocity = 35
+invulnerable = true
+on_hit = heli_move@patrol2
+
+[heli_move@patrol2]
+path_move = gar_vertolet_patrol
+invulnerable = true
+default_velocity = 35
+combat_enemy = actor
+combat_velocity = 25
+combat_safe_altitude = -10
+combat_use_rocket = false

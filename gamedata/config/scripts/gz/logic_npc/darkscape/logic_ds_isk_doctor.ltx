@@ -1,0 +1,15 @@
+[logic]
+active = walker@stay
+
+[walker@stay]
+path_walk = ds_iskatlager_doctor_walk
+path_look = ds_iskatlager_doctor_look
+meet = meet@self_doc
+on_info = {+ds_lider_dialog_done} walker@stay2
+
+[meet@self_doc] 
+use = {=dist_to_actor_le(2)} self
+
+[walker@stay2]
+path_walk = ds_iskatlager_doctor_walk
+path_look = ds_iskatlager_doctor_look

@@ -1,0 +1,16 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_info = {+ds_kamaz_pseudodogs_all_dead} %=run_postprocess(agr_u_fade:01:false)% sr_idle1
+
+[sr_idle1]
+on_timer = 2000|%=disable_ui% sr_idle23
+
+[sr_idle23]
+on_timer = 1000|%+ds_slepoi_after_dogs =del_ds_slepoi% sr_idle2
+
+[sr_idle2]
+on_timer = 2000|%=teleport_actor(ds_slepoi_down_look:ds_slepoi_down) =enable_ui% sr_idle@nil
+
+[sr_idle@nil]

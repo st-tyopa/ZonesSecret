@@ -1,0 +1,21 @@
+[smart_terrains]
+none = true
+
+[logic]
+active = walker
+
+[walker]
+path_walk = agr_bar_visitor1_walk
+path_look = agr_bar_visitor1_look
+soundgroup = bar_visitors1
+meet = meet
+danger = danger_ignore
+
+[danger_ignore]
+ignore_distance = 0
+
+[meet]
+use = true
+use_wpn = true
+meet_talk_enabled = true
+meet_state = ward

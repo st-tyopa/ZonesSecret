@@ -1,0 +1,24 @@
+[logic]
+active = walker
+on_death = death
+
+[death]
+on_info = %+ds_suiddigger_dead%
+
+[walker]
+path_walk = ds_suiddigger_stay_walk
+path_look = ds_suiddigger_stay_look
+on_actor_dist_le = 15| remark@ds_suiddigger_kill
+
+[camper2]
+path_walk = ds_suiddigger_stay_walk
+path_look = ds_suiddigger_stay_walk
+radius = 10
+no_retreat = true
+on_info = {+suiddigger_kill_youself} remark@ds_suiddigger_kill
+
+[remark@ds_suiddigger_kill]
+anim = psy_shoot
+snd = ds_diger_suicide
+tagret = ds_suiddigger_look2, 0
+on_signal = anim_end |  %=play_snd(weapons\colt\colt_shoot) =kill%

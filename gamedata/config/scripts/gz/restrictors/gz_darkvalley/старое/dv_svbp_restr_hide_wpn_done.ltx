@@ -1,0 +1,17 @@
+[logic]
+active = sr_idle@1
+
+[sr_idle@1]
+on_game_timer = 1| sr_idle@2
+on_info = {+dv_go_to_svobpb_hide_wpn_done} sr_idle@end
+
+[sr_idle@2]
+on_actor_inside = {+dv_go_to_svobpb !check_slot} %+dv_go_to_svobpb_hide_wpn_done% sr_idle@1
+on_game_timer = 1| sr_idle@3
+
+[sr_idle@3]
+on_actor_inside = {+dv_go_to_svobpb_hide_wpn_done =check_slot} %+svoboda_war% sr_idle@end
+on_info = {+lukash_pogovorili} sr_idle@end
+
+[sr_idle@end]
+

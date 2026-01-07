@@ -1,0 +1,32 @@
+[logic]
+active = sr_idle@12
+
+[sr_idle@12]
+on_info = {+dv_shpion_govor} sr_idle@21
+
+[sr_idle@21]
+on_game_timer = 35|%+dv_shpion_govor2% sr_idle@15
+
+[sr_idle@15]
+on_game_timer = 45|%+dv_shpion_govor3% sr_idle@1
+
+[sr_idle@1]
+on_info = {+dv_shpion_atack} %=disable_ui% sr_idle@2
+
+[sr_idle@2]
+on_game_timer = 3|%=play_snd_from_obj(11604:soz\characters_voice\scenario\gz_darkvalley\parquet_1)%sr_idle@25
+
+[sr_idle@25] 
+on_game_timer = 7| %+dv_shpion_ahtung +dv_greh_sh_spawn% sr_idle@3
+
+[sr_idle@3]
+on_info = {+dv_shpion_ahtung2} sr_idle@4
+
+[sr_idle@4]
+on_game_timer = 17| %=enable_ui% sr_idle@5
+
+[sr_idle@5]
+on_info = {+dv_shpion_hide} %=play_snd_from_obj(11605:characters_voice\soz\gz_darkvalley\dv_krivoy_05)% nil
+
+[sr_idle@51212]
+on_game_timer = 40| %+dv_shpion_hide =play_snd_from_obj(11605:soz\characters_voice\soz\gz_darkvalley\dv_krivoy_05)% nil

@@ -1,0 +1,11 @@
+[logic]
+active = sr_idle
+
+[sr_idle]
+on_actor_outside = {+art_get_away} %-art_get_away% 
+on_actor_inside = {+art_get_away} %-art_get_away% sr_idle2
+
+[sr_idle2]
+on_game_timer = 25|%+dv_spawn_black_diger=play_snd(anomaly\teleport_incoming)% sr_idle@nil
+
+[sr_idle@nil]

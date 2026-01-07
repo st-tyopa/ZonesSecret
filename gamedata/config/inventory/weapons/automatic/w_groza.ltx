@@ -1,0 +1,317 @@
+[wpn_groza]:identity_immunities
+GroupControlSection				= spawn_group
+discovery_dependency 				= 
+$spawn                   			= "weapons\groza"					
+$npc						= on				
+$prefetch 					= 16
+scheduled					= off              
+cform                   			= skeleton
+class                   			= WP_GROZA
+min_radius              			= 30
+max_radius              			= 100
+description					= enc_weapons1_wpn-groza
+
+chamber_status          = true
+
+ef_main_weapon_type				= 2
+ef_weapon_type					= 6
+
+zoom_dof				= 0.5, 1.0, 180
+reload_dof				= 0.0, 0.5, 5, 1.7
+
+;-----------------------------------------------------------------------------------
+holder_range_modifier				= 1.0		       
+holder_fov_modifier				= 0.7              
+;-----------------------------------------------------------------------------------
+
+cost						= 10000
+weapon_class					= assault_rifle
+
+ammo_limit					= 210
+ammo_current					= 180
+ammo_elapsed					= 20
+
+ammo_mag_size		 			= 20
+ammo_class		 			= ammo_9x39_pab9, ammo_9x39_sp5, ammo_9x39_ap
+fire_modes					= 1, -1
+launch_speed					= 0
+
+grenade_class					= ammo_vog-25, ammo_vog-25p
+
+hand_dependence		 			= 1
+single_handed					= 0
+
+slot 						= 1,2		
+animation_slot					= 8		
+
+inv_name	         			= wpn-groza
+inv_name_short		 			= wpn-groza
+inv_weight		 			= 3.2
+
+inv_grid_width					= 4
+inv_grid_height					= 2
+inv_grid_x					= 0
+inv_grid_y					= 14
+
+kill_msg_x					= 67
+kill_msg_y					= 123
+kill_msg_width					= 64
+kill_msg_height					= 30
+
+;-----------------------------------------------------------------------------------
+;
+fire_dispersion_base				= 0.14	;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+control_inertion_factor				= 1.05f
+
+;отдача
+cam_relax_speed         			= 1.2;0.3	;скорость возврата в исходное положение
+cam_dispersion          			= 0.3	;увеличения угла (в градусах) с каждым выстрелом
+cam_dispersion_inc				= 0.12	;увеличениe cam_dispersion с каждым выстрелом
+cam_dispertion_frac				= 0.75	;ствол будет подыматься на cam_dispersion*cam_dispertion_frac +- cam_dispersion*(1-cam_dispertion_frac)
+cam_max_angle					= 8.5	;максимальный угол отдачи
+cam_max_angle_horz				= 9.0	;(degree) maximum shot horizontal degree 
+cam_step_angle_horz				= 0.85	;(degree) size of step camera moved in horizontal position while shooting
+
+fire_dispersion_condition_factor 		= 5	;увеличение дисперсии в процентах при максимальном износе 
+misfire_probability 				= 0.003	;вероятность осечки при максимальном износе 
+misfire_condition_k				= 0.05
+condition_shot_dec 				= 0.0001 ;увеличение износа при каждом выстреле
+;-----------------------------------------------------------------------------------
+
+direction               			= 0, 0, 1
+
+fire_point              			= 0.0,0.194,0.274
+fire_point2              			= 0.0, 0.156, 0.285
+flame_particles		    			= weapons\generic_weapon05
+smoke_particles					= amik\weapons\smoke_particles\smoke_particles_01
+grenade_flame_particles 			= weapons\generic_weapon01
+
+
+shell_point 					= 0.0, 0.194, 0.04
+shell_dir					= 0.0, 0.0, 0.4
+shell_particles					= amik\weapons\9x39_shells_r
+rpm_empty_click 				= 200
+
+PDM_disp_base 					= 1.0
+PDM_disp_vel_factor 				= 1.1
+PDM_disp_accel_factor 				= 1.1
+PDM_crouch	 				= 1.0
+PDM_crouch_no_acc 				= 1.0
+
+; ttc
+hit_power           				= 0.68
+hit_impulse		 			= 150
+hit_type 					= fire_wound
+
+fire_distance           			= 400
+bullet_speed					= 310
+rpm                    				= 750
+
+use_aim_bullet					= true	
+time_to_aim					= 1.0	
+
+grenade_vel					= 76
+; end ttc
+
+silencer_hit_power       			= 1.0
+silencer_hit_impulse	 			= 120
+silencer_fire_distance   			= 250
+silencer_bullet_speed	 			= 280
+
+hud                     			= wpn_groza_hud
+normal                  			= 0, 1, 0
+
+;----------------------------------------------------------
+position 					= -0.026, -0.144, 0.0
+orientation      	    			= 0, 0, 0
+
+;--STRAP PARAMETERS-----------------------------------------------------------------
+strap_position         				= -0.15,-0.38,0.35			
+strap_orientation      				= -10,-5,10					
+strap_bone0					= bip01_spine2
+strap_bone1					= bip01_spine1
+
+startup_ammo            			= 90
+visual                  			= weapons\groza\wpn_groza.ogf
+
+light_color		 			= 0.6,0.5,0.3
+light_range		 			= 5
+light_var_color		 			= 0.05
+light_var_range		 			= 0.5
+light_time 		 			= 0.2
+
+ph_mass			 			= 5
+;cost			 			= 2100
+
+;addons
+scope_status					= 0
+silencer_status					= 0
+grenade_launcher_status				= 1
+
+zoom_enabled					= true
+scope_zoom_factor	    			= 70
+
+scope_name 					= wpn_addon_scope_po4x34
+scope_x                     			= 59
+scope_y                     			= -16
+
+silencer_name  					= wpn_addon_sil_939_ar		
+silencer_x                  			= 162
+silencer_y                  			= 15			
+
+;звуки
+
+snd_draw					= weapons\groza\groza_draw
+snd_holster					= weapons\groza\groza_holster
+snd_shoot					= weapons\groza\groza-4_shot__0
+snd_shoot1					= weapons\groza\groza-4_shot__1
+snd_shoot2					= weapons\groza\groza-4_shot__2
+snd_shoot3					= weapons\groza\groza-4_shot__3
+snd_empty					= weapons\groza\groza-4_empty, 0.5
+
+snd_reload					= weapons\groza\groza_reload
+snd_shoot_grenade				= weapons\groza\groza-4_grenshoot__0
+snd_shoot_grenade1				= weapons\groza\groza-4_grenshoot__1
+snd_shoot_grenade2				= weapons\groza\groza-4_grenshoot__2
+snd_shoot_grenade3				= weapons\groza\groza-4_grenshoot__3
+snd_shoot_grenade4				= weapons\groza\groza-4_grenshoot__4
+snd_reload_grenade				= weapons\groza\groza-4_grenload, 1.0, 1.0
+snd_switch					= weapons\groza\groza-4_switch
+snd_silncer_shot				= weapons\groza\groza-4_sil__0 
+snd_silncer_shot1				= weapons\groza\groza-4_sil__1 
+snd_silncer_shot2				= weapons\groza\groza-4_sil__2
+snd_silncer_shot3				= weapons\groza\groza-4_sil__3
+
+;params when silencer is attached 
+;similar to corresponding params without prefix silencer_
+
+;silencer_flame_particles 			= weapons\generic_weapon01
+silencer_smoke_particles 			= amik\weapons\smoke_particles\p_smoke_particles_02
+
+
+
+silencer_light_color				= 0.6,0.5,0.3
+silencer_light_range				= 0.01
+silencer_light_var_color			= 0.05
+silencer_light_var_range			= 0.5
+silencer_light_time 				= 0.2
+
+ 
+
+[wpn_groza_hud]
+
+shell_point     	   	 		= 0.1,0,-0.7 
+shell_dir			     		= 0.0, 1.0, 0.0
+
+fire_point					= 0,0,-0.5
+fire_point2              			= 0.05,-0.09,-0.5
+fire_bone               			= muzzle
+
+grenade_bone           				= grenade
+
+position					= -0.042,-0.16,0.3
+orientation					= 0,0,0
+
+visual                  			= weapons\groza\wpn_groza_hud.ogf
+
+anim_idle					= idle
+anim_idle_aim					= aim
+anim_reload					= reload
+anim_draw					= draw
+anim_holster					= holster
+anim_shoot					= shoot
+anim_idle_sprint				= sprint
+anim_idle_moving				= moving
+
+anim_idle_g					= idle_g
+anim_idle_g_aim         			= aim_g
+anim_reload_g					= reload_g
+anim_shoot_g					= shoot_g
+anim_switch_grenade_on				= switch_on
+anim_switch_grenade_off				= switch_off
+anim_draw_g					= draw_g
+anim_holster_g					= holster_g
+anim_idle_sprint_g				= sprint_g
+anim_idle_moving_g				= moving_g
+
+anim_idle_gl					= idle
+anim_reload_gl					= reload
+anim_draw_gl					= draw
+anim_holster_gl					= holster
+anim_shoot_gl					= shoot
+anim_idle_gl_aim        			= aim
+anim_idle_sprint_gl				= sprint
+anim_idle_moving_gl				= moving
+
+zoom_offset					= -0.110250,0.011050,-0.242000
+zoom_rotate_x					= -0.013000
+zoom_rotate_y					= 0.000900
+
+grenade_zoom_offset				= -0.106250,-0.196000,0.050000
+grenade_zoom_rotate_x				= -0.273000
+grenade_zoom_rotate_y				= -0.004100
+
+zoom_hide_crosshair				= true
+
+;--------------------------------------------------------------------------------------
+;----------------------------------------------------
+;----------------------------------------------------
+[wpn_groza_m1]:wpn_groza
+description					= enc_weapons1_wpn-groza_m2	
+cost						= 9000
+
+inv_name	        			= wpn-groza_m2
+inv_name_short					= wpn-groza_m2
+
+ammo_class					= ammo_7.62x39_fmj, ammo_7.62x39_ap
+ammo_mag_size		 			= 30
+
+inv_grid_x         				= 5
+inv_grid_y         				= 22
+inv_grid_width					= 5
+inv_grid_height					= 2
+
+
+
+shell_particles	 				= amik\weapons\7.62x39_shells_r
+
+fire_dispersion_base				= 0.14
+cam_dispersion          			= 0.2
+cam_dispersion_inc				= 0.1
+cam_max_angle					= 8.0
+cam_max_angle_horz				= 8.0
+cam_step_angle_horz				= 0.8
+
+flame_particles		    			= 
+
+fire_distance           			= 600
+hit_power        				= 0.72
+bullet_speed					= 720
+rpm	                    			= 750
+
+hud                     			= wpn_groza_m1_hud
+visual              				= weapons\groza\wpn_groza_m2.ogf
+scope_dynamic_zoom 			= true
+
+scope_texture		= wpn\wpn_crosshair
+
+scope_status					= 1
+silencer_status					= 1
+
+scope_zoom_factor	    			= 15
+;--------------- New sound of etRussk ---------------
+snd_shoot					= weapons\akm\ak_silencer_type1_00
+snd_shoot1					= weapons\akm\ak_silencer_type1_01
+snd_shoot2					= weapons\akm\ak_silencer_type1_02
+snd_shoot3					= weapons\akm\ak_silencer_type1_03
+snd_shoot4					= weapons\akm\ak_silencer_type1_04
+snd_shoot5					= weapons\akm\ak_silencer_type1_05
+snd_shoot6					= weapons\akm\ak_silencer_type1_06
+snd_shoot7					= weapons\akm\ak_silencer_type1_07
+snd_shoot8					= weapons\akm\ak_silencer_type1_08
+snd_shoot9					= weapons\akm\ak_silencer_type1_09
+;----------------------------------------------------
+
+[wpn_groza_m1_hud]:wpn_groza_hud
+
+visual 						= weapons\groza\wpn_groza_m2_hud.ogf
