@@ -201,14 +201,31 @@
       </phrase>
       <phrase id="17">
         <text>dialog_isk_doc_dialog1_13</text>
-        <action>dialogs.break_dialog</action>
+        <!--action>dialogs.break_dialog</action-->
       </phrase>
     </phrase_list>
  </dialog>
  
  <dialog id="dialog_ds_isk_about_isk">
   <dont_has_info>ds_dialog_about_isc</dont_has_info>
-  <init_func>dialogs_new_system.ds_isk_about_isk</init_func>    
+	<phrase_list>
+      <phrase id="0">
+        <text>dialog_ds_about_isc</text>
+        <next>1</next>
+      </phrase>
+      <phrase id="1">
+        <text>dialog_ds_about_isc_1</text>
+        <next>2</next>
+      </phrase>
+      <phrase id="2">
+        <text>dialog_ds_about_isc_2</text>
+        <next>3</next>
+      </phrase>
+      <phrase id="3">
+        <text>dialog_ds_about_isc_3</text>
+        <give_info>ds_dialog_about_isc</give_info>
+      </phrase>
+    </phrase_list>   
  </dialog>
  
  <dialog id="dialog_ds_isk_doctor_pda">
@@ -252,7 +269,30 @@
 	
  <dialog id="dialog_isk_provodnik2">
   <dont_has_info>ds_tepa_remark_povyazka</dont_has_info>
-  <init_func>dialogs_new_system.ds_isk_provodnik2</init_func>          
+  <phrase_list>
+      <phrase id="0">
+        <text>dialog_isk_provodnik2_1</text>
+        <next>1</next>
+      </phrase>
+      <phrase id="1">
+        <text>dialog_isk_provodnik2_2</text>
+        <next>2</next>
+      </phrase>
+      <phrase id="2">
+        <text>dialog_isk_provodnik2_3</text>
+        <next>3</next>
+      </phrase>
+      <phrase id="3">
+        <text>dialog_isk_provodnik2_4</text>
+        <next>4</next>
+      </phrase>
+      <phrase id="4">
+        <text>dialog_isk_provodnik2_5</text>
+        <action>gz_prologue.transfer_actors_isk_weapons</action>
+        <give_info>ds_tepa_remark_povyazka</give_info>
+        <action>dialogs.break_dialog</action>
+      </phrase>
+    </phrase_list>         
  </dialog>
  
  <dialog id="ds_rob_dialog">

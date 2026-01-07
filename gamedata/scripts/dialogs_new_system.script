@@ -123,9 +123,6 @@ end
 function ds_hunt_alt(dlg)
  assembly_dialogs.construct_dialog("ds_hunt_alt",dlg)
 end
-function ds_isk_about_isk(dlg)
- assembly_dialogs.construct_dialog("ds_isk_about_isk",dlg)
-end
 function ds_isk_doctor_pda(dlg)
  assembly_dialogs.construct_dialog("ds_isk_doctor_pda",dlg)
 end
@@ -146,9 +143,6 @@ function ds_neut_mehanik_about_rac(dlg)
 end
 function ds_isk_provodnik1(dlg)
  assembly_dialogs.construct_dialog("ds_isk_provodnik1",dlg)
-end
-function ds_isk_provodnik2(dlg)
- assembly_dialogs.construct_dialog("ds_isk_provodnik2",dlg)
 end
 
 function ds_rob_dialog(dlg)
