@@ -1,0 +1,86 @@
+<ui_texture>
+	<file_name>ui\ui_iconstotal_new</file_name>
+	<texture id="ui_icons_quest_yar_instruments" x="0" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_gar_digger_meet" x="83" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_alt_enter" x="166" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_black_digger" x="249" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_gar_find_dynamit" x="332" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_dv_sv_greshbase_rush" x="415" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_kep" x="498" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_group" x="581" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_talk_with_iskprovod" x="664" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_return_things" x="747" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_go_to_neutlager_in_ds" x="830" y="0" width="83" height="47"/>
+	<texture id="ui_icons_storyline_go_to_svobbase_in_dv" x="913" y="0" width="83" height="47"/>
+
+	<texture id="ui_icons_storyline_talk_with_baseleader" x="0" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_details_for_yar" x="83" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_raciya" x="166" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_city_maps" x="249" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_pda_coordinats" x="332" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_greh_base" x="415" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_go_to_garneutlager" x="498" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_art_depo" x="581" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_go_to_agroprom" x="664" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_agr_mutants" x="747" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_cap_in_underground" x="830" y="47" width="83" height="47"/>
+	<texture id="ui_icons_storyline_kep_speak" x="913" y="47" width="83" height="47"/>
+
+	<texture id="ui_icons_storyline_kill_scien_start" x="0" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_go_to_evacuation_zone" x="83" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_kill_predateli" x="166" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_go_to_scien_assist" x="249" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_help_scien_lager" x="332" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_kill_zal_merc" x="415" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_scien_in_underground" x="498" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_exit_from_underground" x="581" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_help_dolg_group" x="664" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_ten_medkit" x="747" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_tainik" x="830" y="94" width="83" height="47"/>
+	<texture id="ui_icons_storyline_return_night" x="913" y="94" width="83" height="47"/>
+
+	<texture id="ui_icons_storyline_talk_with_general" x="0" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_activate_gener" x="83" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_zabr_bunker" x="166" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_scien_lead" x="249" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_lead_manic" x="332" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_crazy_stalk" x="415" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_escape_zone" x="498" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_talk_with_isk" x="581" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_red_cont" x="664" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_blue_cont" x="747" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_green_cont" x="830" y="141" width="83" height="47"/>
+	<texture id="ui_icons_storyline_esc_with_tyopa" x="913" y="141" width="83" height="47"/>
+
+	<texture id="ui_icons_storyline_find_alive" x="0" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_take_info" x="83" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_help_dolg_greh" x="166" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_help_svob_greh" x="249" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_dolg_vs_svob" x="332" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_pz_lab" x="415" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_lab_elec" x="498" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_esc_heli" x="581" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_borm" x="664" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_med_nabor" x="747" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_sv_gps" x="830" y="188" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_wpn" x="913" y="188" width="83" height="47"/>
+
+	<texture id="ui_icons_storyline_talk_cheh" x="0" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_kill_giant" x="83" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_mursh_zomb" x="166" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_sos_signal" x="249" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_zapr_bino" x="332" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_zapr_krovo" x="415" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_stalk" x="498" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_scien_dat" x="581" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_meet_lesnik" x="664" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_find_ld" x="747" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_nagr" x="830" y="235" width="83" height="47"/>
+	<texture id="ui_icons_storyline_osved" x="913" y="235" width="83" height="47"/>
+
+	<texture id="ui_icons_storyline_merc" x="0" y="282" width="83" height="47"/>
+	<texture id="ui_icons_storyline_ds_sumka" x="83" y="282" width="83" height="47"/>
+	<texture id="ui_icons_storyline_pda" x="166" y="282" width="83" height="47"/>
+	<texture id="ui_icons_storyline_snipers" x="249" y="282" width="83" height="47"/>
+	<texture id="ui_icons_storyline_cave" x="332" y="282" width="83" height="47"/>
+</ui_texture>

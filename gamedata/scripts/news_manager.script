@@ -105,36 +105,39 @@ pda_tips = xr_sound.get_safe_sound_object([[device\pda\pda_tip]])
 pda_task = xr_sound.get_safe_sound_object([[device\pda\pda_objective]])
 
 tips_icons = {
-	default  = { 0, 658},
-	trader	 = { 332, 893},
-	dolg     = { 332, 1222},
-	freedom  = { 332, 1269},
-	ecolog   = { 498, 0},
-	arena    = { 332, 141},
-	stalker  = { 0, 658},
-	krot     = { 332, 47},
-	barman   = { 332, 235},
-	wolf	 = { 332, 940},
-	o_soznanie = { 498, 893},
-	monolith = { 0, 658},
-    saharov  = { 332, 470},
-    prizrak  = { 0, 658},
-    killer   = { 0, 658},
-	max   = { 415, 282},
-	luka   = { 415, 235},
-	varag   = { 415, 329},
-	anohin   = { 332, 329},
-	kalash   = { 332, 376},
-	semenov   = { 913, 1128},
+	default		= { "ui\\ui_iconsTotal", 0, 658},
+	trader	 	= { "ui\\ui_iconsTotal", 332, 893},
+	dolg     	= { "ui\\ui_iconsTotal", 0, 658},
+	freedom  	= { "ui\\ui_iconsTotal", 0, 658},
+	ecolog   	= { "ui\\ui_iconsTotal", 498, 0},
+	arena    	= { "ui\\ui_iconsTotal", 332, 141},
+	stalker  	= { "ui\\ui_iconsTotal", 0, 658},
+	krot     	= { "ui\\ui_iconsTotal", 332, 47},
+	barman   	= { "ui\\ui_iconsTotal", 332, 235},
+	wolf	 	= { "ui\\ui_iconsTotal", 332, 940},
+	o_soznanie 	= { "ui\\ui_iconsTotal", 498, 893},
+	monolith 	= { "ui\\ui_iconsTotal", 0, 658},
+    saharov  	= { "ui\\ui_iconsTotal", 332, 470},
+    prizrak  	= { "ui\\ui_iconsTotal", 0, 658},
+    killer   	= { "ui\\ui_iconsTotal", 0, 658},
+	
+	diary_tip   = { "ui\\ui_iconstotal_new", 166, 282}
+	--[[
+	max   		= { "ui\\ui_iconsTotal", 415, 282},
+	luka   		= { "ui\\ui_iconsTotal", 415, 235},
+	varag   	= { "ui\\ui_iconsTotal", 415, 329},
+	anohin   	= { "ui\\ui_iconsTotal", 332, 329},
+	kalash   	= { "ui\\ui_iconsTotal", 332, 376},
+	semenov   	= { "ui\\ui_iconsTotal", 166, 799},
 
 	
 -- soz --
-	rf_military_pda   = { 664, 1128},
-	rf_military_com   = { 581, 1128},
-	agr_scien   = { 747, 1128},
+	rf_military_pda		= { "ui\\ui_iconstotal_new", 498, 0},
+	rf_military_com   	= { "ui\\ui_iconstotal_new", 498, 0},
+	agr_scien   		= { 747, 1128},
 	agr_merc_com   = { 830, 1128},
 	oka   = { 581, 1175},
-	ds_iskateli_tepa   = { 664, 1175},
+	ds_iskateli_tepa	= { 664, 1175},
 	ds_bridge_rob   = { 747, 1175},
 	ds_kamaz_stalker   = { 830, 1175},
 	dv_lukash   = { 913, 1175},
@@ -150,8 +153,7 @@ tips_icons = {
 	seryi   = { 415, 141},
 	osved   = { 498, 987},
 	karavai   = { 332, 94},
-	mil   = { 415, 987},
-	diary_tip   = { 0, 1222}
+	mil   = { 415, 987},]]
 }
 
 
@@ -199,8 +201,8 @@ function send_tip(actor, news_id, timeout, sender, showtime, sender_id, tips_typ
 	if sender == nil then
 		sender = "default"
 	end
-	local x = tips_icons[sender][1]
-	local y = tips_icons[sender][2]
+	local x = tips_icons[sender][2]
+	local y = tips_icons[sender][3]
 	
 	local st_tips_type = tips_type or "st_tip"
 	local news_text
@@ -211,7 +213,7 @@ function send_tip(actor, news_id, timeout, sender, showtime, sender_id, tips_typ
 	 news_text = "%c[255,160,160,160]"..game.translate_string(st_tips_type).."\\n".."%c[default]"..game.translate_string(news_id)
 	end
 	
-	actor:give_game_news(news_text, "ui\\ui_iconsTotal", Frect():set(x,y,83,47), timeout*1000, showtime)
+	actor:give_game_news(news_text, tips_icons[sender][1], Frect():set(x,y,83,47), timeout*1000, showtime)
 	
 	return true
 end

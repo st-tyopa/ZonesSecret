@@ -11,6 +11,7 @@
 		<team>Actor</team>
 		<supplies>
 			[spawn] \n
+			wpn_binoc \n
 		</supplies>
 		
 		<class>actor</class>

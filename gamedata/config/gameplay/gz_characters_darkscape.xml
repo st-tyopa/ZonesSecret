@@ -311,7 +311,7 @@
 <!---------------------------doctor---------------------->
 	<specific_character id="ds_iskateli_doctor" team_default = "1">
 		<name>makar</name>
-		<icon>ui_npc_u_iskateli_ignat</icon>
+        <icon>ui_npc_u_iskateli_ignat</icon>
 		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_bio</bio>
 
@@ -333,10 +333,10 @@
 		</supplies>
 		<start_dialog>dialog_isk_doc_dialog1</start_dialog>
 		<actor_dialog>dialog_ds_isk_about_isk</actor_dialog>
-		<actor_dialog>dialog_gz_hacker_otkaz</actor_dialog>
+		<!--actor_dialog>dialog_gz_hacker_otkaz</actor_dialog-->
 		
-#include "gameplay\character_criticals_4.xml"
 #include "gameplay\character_dialogs.xml"
+#include "gameplay\character_criticals_4.xml"
 
 	</specific_character>
 
@@ -373,14 +373,13 @@
 		
 		<money min="200" max="600" infinitive="0" />
 					
-#include "gameplay\character_dialogs.xml"
 	</specific_character>	
 	
 	
 <!---------------------------default---------------------->
 	<specific_character id="ds_iskateli_default1" team_default="1">
 		<name>GENERATE_NAME_stalker</name>
-		<icon>ui_npc_u_green_stalker_3</icon>
+		<icon>ui_npc_u_iskateli_ignat</icon>
 		<map_icon x="0" y="0"></map_icon>
 		<bio>val_stalker_novice_bio</bio>
 

@@ -1406,7 +1406,7 @@ end
 function diary_tip()
 	local snd = sound_object([[device\pda\pda_tip_2]]) 
 snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0)
-	news_manager.send_tip(db.actor, "%c[255,255,0,0] Новая запись в ПДА.", 0, "diary_tip", 25000) 
+	news_manager.send_tip(db.actor, "%c[255,128,255,128] Новая запись в ПДА.", 0, "diary_tip", 10000) 
 end
 
 function use_alco()
@@ -1486,23 +1486,25 @@ function give_bandits_money(actor, npc)
 	end
 	
 	
-	function transfer_actors_isk_weapons (first_speaker, second_speaker)
-    dialogs.relocate_item_section(first_speaker, "wpn_tt33", "in")
-	dialogs.relocate_item_section(first_speaker, "ammo_7.62x25_p", "in")
-	dialogs.relocate_item_section(first_speaker, "ammo_7.62x25_p", "in")
-	dialogs.relocate_item_section(first_speaker, "ammo_7.62x25_p", "in")
-    dialogs.relocate_item_section(first_speaker, "novice_outfit", "in")
-    dialogs.relocate_money(first_speaker, 460, "in")
-	dialogs.relocate_item_section(first_speaker, "medkit", "in")
-	dialogs.relocate_item_section(first_speaker, "device_torch", "in")
-	dialogs.relocate_item_section(first_speaker, "wpn_binoc", "in")
-	dialogs.relocate_item_section(first_speaker, "wpn_knife", "in")
-			dialogs.relocate_item_section(first_speaker, "conserva", "in")
-	dialogs.relocate_item_section(first_speaker, "bandage", "in")
-	dialogs.relocate_item_section(first_speaker, "bandage", "in")
-	dialogs.relocate_item_section(first_speaker, "water", "in")
-	dialogs.relocate_item_section(first_speaker, "power_core", "in")
-	--dialogs.relocate_item_section(first_speaker, "pnv_bad", "in")	
+function transfer_actors_isk_weapons (first_speaker, second_speaker)
+	local tbl = {
+		'wpn_tt33',
+		'ammo_7.62x25_p',
+		'ammo_7.62x25_p',
+		'ammo_7.62x25_p',
+		'novice_outfit',
+		'medkit',
+		'conserva',
+		'bandage',
+		'bandage',
+		'water',
+		'device_torch',
+		--'wpn_binoc',
+		'wpn_knife'
+	}
+	xr_effects.give_items(db.actor, db.actor, tbl)
+	dialogs.relocate_money(first_speaker, 460, "in")
+    
 end
 
 

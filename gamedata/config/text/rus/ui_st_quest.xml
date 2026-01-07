@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="find_team_text_name">
+		<text>Найти выживших членов отряда</text>
+	</string>	
+	<string id="find_team_text_subtask1">
+		<text>Найти Соболева и Захарова</text>
+	</string>
+
+	<string id="find_kep_text_name">
+		<text>Найти командира группы</text>
+	</string>		
+	<string id="find_raciya_text_name">
+		<text>Найти рацию</text>
+	</string>
+	<string id="find_raciya_text_subtask1">
+		<text>Проверить наличие рации в вертолете</text>
+	</string>
+	<string id="find_raciya_text_subtask2">
+		<text>Спросить про рацию в лагере сталкеров</text>
+	</string>
+	<string id="find_raciya_text_subtask3">
+		<text>Спросить про рацию у сталкеров в Тёмной Долине</text>
+	</string>
+
+	
+	<string id="find_raciya_alt_text_name">
+		<text>Найти рацию в Темной долине</text>
+	</string>
+
+	<string id="find_raciya_alt_text_subtask1">
+		<text>Найти рацию на территории Темной долины</text>
+	</string>
+	
+	
+		<string id="find_kep_text_descr">
+		<text>В своём послании Капитан сказал, что для местных будет представляться кличкой "Клим", образованной от его фамилии "Клименко". Для того чтобы найти командира отряда, надо поспрашивать у местных не встречался ли им сталкер по прозвищу "Клим"</text>
+	</string>
+		<string id="find_raciya_alt_text_descr">
+		<text>Похоже что ребята из Свободы очень серьезно обиделись на меня, что я не пошел через их блокпост. Прийдется искать в другом месте.</text>
+	</string>
+		<string id="find_team_text_descr">
+		<text>Из сообщения от командира, я узнал, что кроме нас выжило ещё два члена нашей группы. Чтобы продолжить выполнение нашей операции, мне необходимо их найти</text>
+	</string>
+		<string id="find_raciya_text_descr">
+		<text>Для того чтобы попытаться выйти на связь, нужна рация. Чтобы её найти, нужно пройтись по тем местам, где она может быть.</text>
+	</string>
+		<string id="ds_lost_diggers_descr">
+		<text>Один сталкер-диггер попросил узнать что случилось с его друзьями, которые скорее всего спустились в заброшенный коллектор.</text>
+	</string>
+		<string id="ds_goto_bandlider_descr">
+		<text>Бандиты под мостом хотят поговорить. Ну что же, давайте поговорим.</text>
+	</string>
+		<string id="ds_bandlider_need_money_descr">
+		<text>Гопота хочет денег за проход. Может и стоило бы им преподать урок, но не буду этого делать - ни к чему сейчас лишний шум.</text>
+	</string>
+		<string id="pz_meet_tyopa_descr">
+		<text>Искатели согласились вытащить меня из зоны. Нужно встретиться с группой Тёпы и добраться до места эвакуации.</text>
+	</string>
+		<string id="pz_heli_descr">
+		<text>Ну вот и всё. Осталось зажечь сигнальный огонь, указанный на карте...</text>
+	</string>
+	
+</string_table>
