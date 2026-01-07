@@ -125,7 +125,85 @@
 
  <dialog id="dialog_isk_doc_dialog1">
   <dont_has_info>talk_with_iskprovod_start</dont_has_info>
-  <init_func>dialogs_new_system.isk_doc_dialog</init_func>
+  <phrase_list>
+      <phrase id="0">
+        <text>dialog_isk_doc_dialog1_0</text>
+        <next>1</next>
+      </phrase>
+      <phrase id="1">
+        <text>dialog_isk_doc_dialog1_1</text>
+        <next>2</next>
+      </phrase>
+      <phrase id="2">
+        <text>dialog_isk_doc_dialog1_2</text>
+        <next>3</next>
+      </phrase>
+      <phrase id="3">
+        <text>dialog_isk_doc_dialog1_3</text>
+        <next>4</next>
+      </phrase>
+      <phrase id="4">
+        <text>dialog_isk_doc_dialog1_4</text>
+        <next>5</next>
+      </phrase>
+      <phrase id="5">
+        <text>dialog_isk_doc_dialog1_5</text>
+        <next>6</next>
+      </phrase>
+      <phrase id="6">
+        <text>dialog_isk_doc_dialog1_6</text>
+        <next>7</next>
+      </phrase>
+      <phrase id="7">
+        <text>dialog_isk_doc_dialog1_7</text>
+        <next>8</next>
+      </phrase>
+      <phrase id="8">
+        <text>dialog_isk_doc_dialog1_71</text>
+        <next>9</next>
+      </phrase>
+      <phrase id="9">
+        <text>dialog_isk_doc_dialog1_72</text>
+        <next>10</next>
+      </phrase>
+      <phrase id="10">
+        <text>dialog_isk_doc_dialog1_73</text>
+        <next>11</next>
+      </phrase>
+      <phrase id="11">
+        <text>dialog_isk_doc_dialog1_74</text>
+        <next>12</next>
+      </phrase>
+      <phrase id="12">
+        <text>dialog_isk_doc_dialog1_8</text>
+        <next>13</next>
+      </phrase>
+      <phrase id="13">
+        <text>dialog_isk_doc_dialog1_9</text>
+        <next>14</next>
+      </phrase>
+      <phrase id="14">
+        <text>dialog_isk_doc_dialog1_10</text>
+        <next>15</next>
+      </phrase>
+      <phrase id="15">
+        <text>dialog_isk_doc_dialog1_11</text>
+        <next>16</next>
+      </phrase>
+      <phrase id="16">
+        <text>dialog_isk_doc_dialog1_12</text>
+        <give_info>talk_with_iskprovod_start</give_info>
+        <give_info>ds_lider_dialog_done</give_info>
+        <give_info>start_find_kep</give_info>
+        <give_info>start_find_team</give_info>
+        <give_info>find_raciya_start</give_info>
+        <next>17</next>
+      </phrase>
+      <phrase id="17">
+        <text>dialog_isk_doc_dialog1_13</text>
+        <action>dialogs.break_dialog</action>
+      </phrase>
+    </phrase_list>
  </dialog>
  
  <dialog id="dialog_ds_isk_about_isk">

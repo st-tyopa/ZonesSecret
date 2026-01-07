@@ -93,9 +93,6 @@ end
 function dv_dolg_raciya_apt(dlg)
  assembly_dialogs.construct_dialog("dv_dolg_raciya_apt",dlg)
 end
-function isk_doc_dialog(dlg)
- assembly_dialogs.construct_dialog("isk_doc_dialog",dlg)
-end
 function ds_torg_about_shved(dlg)
  assembly_dialogs.construct_dialog("ds_torg_about_shved",dlg)
 end

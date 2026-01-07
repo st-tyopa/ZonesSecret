@@ -1406,7 +1406,7 @@ end
 function diary_tip()
 	local snd = sound_object([[device\pda\pda_tip_2]]) 
 snd:play_no_feedback(db.actor,sound_object.s2d, 0, vector():set(0, 0, 0), 2.0)
-	news_manager.send_tip(db.actor, "%c[255,255,0,0] Новая запись в ПДА.", 0, "diary_tip", 25000) 
+	news_manager.send_tip(db.actor, "%c[255,128,255,128] Новая запись в ПДА.", 0, "diary_tip", 10000) 
 end
 
 function use_alco()

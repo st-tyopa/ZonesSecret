@@ -311,7 +311,7 @@
 <!---------------------------doctor---------------------->
 	<specific_character id="ds_iskateli_doctor" team_default = "1">
 		<name>makar</name>
-		<icon>ui_npc_u_iskateli_ignat</icon>
+		<icon>ui_npc_u_stalker_neytral_balon_1</icon>
 		<map_icon x="1" y="0"></map_icon>
 		<bio>sim_stalker_veteran_bio</bio>
 
@@ -332,11 +332,11 @@
 #include "gameplay\character_drugs.xml"
 		</supplies>
 		<start_dialog>dialog_isk_doc_dialog1</start_dialog>
-		<actor_dialog>dialog_ds_isk_about_isk</actor_dialog>
-		<actor_dialog>dialog_gz_hacker_otkaz</actor_dialog>
+		<!--actor_dialog>dialog_ds_isk_about_isk</actor_dialog>
+		<actor_dialog>dialog_gz_hacker_otkaz</actor_dialog-->
 		
+<!--#include "gameplay\character_dialogs.xml"-->
 #include "gameplay\character_criticals_4.xml"
-#include "gameplay\character_dialogs.xml"
 
 	</specific_character>
 
