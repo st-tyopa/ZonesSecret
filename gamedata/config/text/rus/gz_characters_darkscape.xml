@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	
+	<string id="ded_mazaj">
+		<text>Дед Мазай</text>
+	</string>
+	<string id="vaska_kosoj">
+		<text>Васька Косой</text>
+	</string>
+	<string id="slepoj">
+		<text>Слепой</text>
+	</string>
+	<string id="grek">
+		<text>Грек</text>
+	</string>
+	<string id="gimli">
+		<text>Гимли</text>
+	</string>
+	<string id="sutulij">
+		<text>Сутулый</text>
+	</string>
+	<string id="ugrum">
+		<text>Угрюмый</text>
+	</string>
+	<string id="doc">
+		<text>Док</text>
+	</string>
+	<string id="scarab">
+		<text>Скарабей</text>
+	</string>
+	<string id="puma">
+		<text>Пума</text>
+	</string>
+    <string id="azrael">
+		<text>Азраель</text>
+	</string>
+    <string id="sine">
+		<text>Сайн</text>
+	</string>
+	<string id="tyopa">
+		<text>Тёпа</text>
+	</string>
+	<string id="makar">
+		<text>Макар</text>
+	</string>
+	<string id="ignat">
+		<text>Игнат</text>
+	</string>
+	<string id="byk">
+		<text>Бык</text>
+	</string>
+		<string id="sobol">
+		<text>Ефрейтор Соболев</text>
+	</string>
+		<string id="zahar">
+		<text>Сержант Захаров</text>
+	</string>
+		<string id="byk">
+		<text>Бык</text>
+	</string>
+		
+</string_table>
