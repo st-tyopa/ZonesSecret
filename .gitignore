@@ -4498,3 +4498,4 @@ _appdata_/logs/
 _appdata_/screenshots/
 _appdata_/savedgames/
 bin/
+*.mdmp
