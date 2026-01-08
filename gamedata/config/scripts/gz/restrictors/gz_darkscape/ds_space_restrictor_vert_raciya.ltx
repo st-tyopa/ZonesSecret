@@ -2,16 +2,16 @@
 active = sr_idle1
 
 [sr_idle1]
-on_info = {+ds_expl} sr_particle
+on_timer = 4150 | sr_particle
 
 [sr_particle]
 name = explosions\explosion_01
 path = ds_heli_expl
 mode = 2 		
-looped = false            
-on_info = {+ds_start_iscateli_awake} sr_idle
+looped = false
+on_signal = particle_end | sr_idle@raciya
 
-[sr_idle]
+[sr_idle@raciya]
 on_info = {+find_raciya_in_vertolet_done} sr_tip
 
 [sr_tip]
