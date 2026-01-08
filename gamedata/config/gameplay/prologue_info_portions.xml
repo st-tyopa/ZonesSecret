@@ -465,6 +465,9 @@
         <article>storyline_soz_team_info</article>
         </info_portion>
 
+        <info_portion id="find_team_donz">
+        </info_portion>
+        
         <info_portion id="find_team_fail"></info_portion>
 
 <!------------------------------------------------------------------------------------>
