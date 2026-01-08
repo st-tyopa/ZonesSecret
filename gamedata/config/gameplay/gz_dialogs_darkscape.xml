@@ -124,7 +124,7 @@
  </dialog>
 
  <dialog id="dialog_isk_doc_dialog1">
-  <dont_has_info>talk_with_iskprovod_start</dont_has_info>
+  <dont_has_info>dlg_ds_iskateli_doctor_about_actor</dont_has_info>
   <phrase_list>
       <phrase id="0">
         <text>dialog_isk_doc_dialog1_0</text>
@@ -192,22 +192,18 @@
       </phrase>
       <phrase id="16">
         <text>dialog_isk_doc_dialog1_12</text>
-        <give_info>talk_with_iskprovod_start</give_info>
-        <give_info>ds_lider_dialog_done</give_info>
-        <give_info>start_find_kep</give_info>
-        <give_info>start_find_team</give_info>
-        <give_info>find_raciya_start</give_info>
+        <give_info>dlg_ds_iskateli_doctor_about_actor</give_info>
+        <give_info>dlg_actor_need_raciya</give_info>
         <next>17</next>
       </phrase>
       <phrase id="17">
         <text>dialog_isk_doc_dialog1_13</text>
-        <!--action>dialogs.break_dialog</action-->
       </phrase>
     </phrase_list>
  </dialog>
  
  <dialog id="dialog_ds_isk_about_isk">
-  <dont_has_info>ds_dialog_about_isc</dont_has_info>
+  <dont_has_info>dlg_ds_iskateli_doctor_about_iskateli</dont_has_info>
 	<phrase_list>
       <phrase id="0">
         <text>dialog_ds_about_isc</text>
@@ -223,7 +219,7 @@
       </phrase>
       <phrase id="3">
         <text>dialog_ds_about_isc_3</text>
-        <give_info>ds_dialog_about_isc</give_info>
+        <give_info>dlg_ds_iskateli_doctor_about_iskateli</give_info>
       </phrase>
     </phrase_list>   
  </dialog>
@@ -268,7 +264,7 @@
  </dialog>
 	
  <dialog id="dialog_isk_provodnik2">
-  <dont_has_info>ds_tepa_remark_povyazka</dont_has_info>
+  <dont_has_info>dlg_ds_iskateli_provodnik_go_to_world</dont_has_info>
   <phrase_list>
       <phrase id="0">
         <text>dialog_isk_provodnik2_1</text>
@@ -289,7 +285,7 @@
       <phrase id="4">
         <text>dialog_isk_provodnik2_5</text>
         <action>gz_prologue.transfer_actors_isk_weapons</action>
-        <give_info>ds_tepa_remark_povyazka</give_info>
+        <give_info>dlg_ds_iskateli_provodnik_go_to_world</give_info>
         <action>dialogs.break_dialog</action>
       </phrase>
     </phrase_list>         

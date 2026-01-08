@@ -1,336 +1,308 @@
 <?xml version='1.0' encoding="windows-1251"?>
-
 <game_information_portions>
+	<!-- STABLE CHECKED -->
+	<info_portion id="gz_ds_heli_cutscene"></info_portion>
+	<info_portion id="gz_ds_iskateli_cutscene"></info_portion>
+	<info_portion id="gz_ds_teleport_to_world_">
+		<action>gz_provodnik.iskatel_to_world</action>
+	</info_portion>
+
+	<info_portion id="gz_task_find_raciya_heli_checked">
+		<action>gz_prologue.diary_tip</action>
+		<article>storyline_soz_heli_info</article>
+	</info_portion>
+
+	<!-- DIALOG STABLE CHECKED -->
+	<info_portion id="dlg_ds_iskateli_doctor_about_actor">
+		<task>find_kep</task>
+		<task>find_team</task>
+		<action>gz_prologue.diary_tip</action>
+		<article>storyline_soz_kep_info</article>
+		<article>storyline_soz_isk_info</article>
+		<article>storyline_soz_oper_info</article>
+	</info_portion>
+	<info_portion id="dlg_actor_need_raciya">
+		<task>find_raciya</task>
+	</info_portion>
+	<info_portion id="dlg_ds_iskateli_doctor_about_iskateli"></info_portion>
+	<info_portion id="dlg_ds_iskateli_provodnik_go_to_world"></info_portion>
+
+
 
 	<info_portion id="ds_test_teleport">
-	<action>gz_provodnik.test_teleport</action></info_portion>
-	
-	
-<!-- - Инфопорции для квестов -  -->
-
-<!------------------------------------------------------------------------>	
-<!---------------------------	Темная Лощина  --------------------------->
-<!------------------------------------------------------------------------>
-
-<!-------- Сюжетные квесты ---------->
-<!----------------------------------->
-
-<!-- "Добраться до лагеря сталкеров" -->
+		<action>gz_provodnik.test_teleport</action>
+	</info_portion>
+	<!-- - Инфопорции для квестов -  -->
+	<!-- -->
+	<!--	Темная Лощина  -->
+	<!-- -->
+	<!-- Сюжетные квесты -->
+	<!-- -->
+	<!-- "Добраться до лагеря сталкеров" -->
 	<info_portion id="go_to_neutlager_in_ds_start">
-	<task>go_to_neutlager_in_ds</task></info_portion>
+		<task>go_to_neutlager_in_ds</task>
+	</info_portion>
 	<info_portion id="go_to_neutlager_in_ds_done"></info_portion>
 	<info_portion id="info_in_neutlager_found"></info_portion>
 	<info_portion id="ds_neut_trader_dialog_done"></info_portion>
-	
-<!-- "Поговорить с бандитом"  -->
+	<!-- "Поговорить с бандитом"  -->
 	<info_portion id="ds_goto_bandlider_start">
-	<task>ds_goto_bandlider</task></info_portion>
+		<task>ds_goto_bandlider</task>
+	</info_portion>
 	<info_portion id="ds_goto_bandlider_done"></info_portion>
-
-<!-- "Деньги для гопников"  -->
+	<!-- "Деньги для гопников"  -->
 	<info_portion id="ds_bandlider_need_money_start">
-	<task>ds_bandlider_need_money</task></info_portion>
+		<task>ds_bandlider_need_money</task>
+	</info_portion>
 	<info_portion id="ds_bandlider_need_money_done"></info_portion>
-
-
-	
-<!------------------------------------------------------------------------>	
-<!---------------------------	Темная Долина  --------------------------->
-<!------------------------------------------------------------------------>
-
-<!-------- Сюжетные квесты ---------->
-<!----------------------------------->
-
-<!-- "Безоружным подойти и поговорить с командиром блокпоста свободы"  -->
+	<!-- -->
+	<!--	Темная Долина  -->
+	<!-- -->
+	<!-- Сюжетные квесты -->
+	<!-- -->
+	<!-- "Безоружным подойти и поговорить с командиром блокпоста свободы"  -->
 	<info_portion id="dv_go_to_svobpb_start">
-	<task>dv_go_to_svobpb</task></info_portion>
+		<task>dv_go_to_svobpb</task>
+	</info_portion>
 	<info_portion id="lukash_pogovorili"></info_portion>
 	<info_portion id="dv_lukash_blokp_remark_claim"></info_portion>
-	
-<!-- "Найти рацию. Если игрок провалил первое задание."  -->
+	<!-- "Найти рацию. Если игрок провалил первое задание."  -->
 	<info_portion id="find_raciya_alt_start">
-	<task>find_raciya_alt</task></info_portion>
+		<task>find_raciya_alt</task>
+	</info_portion>
 	<info_portion id="find_raciya_alt_done"></info_portion>
-	
-<!-- "Ответить на сигнал SOS от долговцев"  -->
+	<!-- "Ответить на сигнал SOS от долговцев"  -->
 	<info_portion id="dv_help_dolg_group">
-	<task>help_dolg_group</task></info_portion>
+		<task>help_dolg_group</task>
+	</info_portion>
 	<info_portion id="go_to_signal_sos_done"></info_portion>
 	<info_portion id="dv_sos_talk_with_dolg_done"></info_portion>
-	
 	<info_portion id="dv_play_dolg_sos_message"></info_portion>
-	
-<!-- "Найти медикаменты долговцам"  -->
+	<!-- "Найти медикаменты долговцам"  -->
 	<info_portion id="find_ten_medkit_start">
-	<task>find_ten_medkit</task></info_portion>
+		<task>find_ten_medkit</task>
+	</info_portion>
 	<info_portion id="find_ten_medkit_done"></info_portion>
-	
-<!-- "Найти медикаменты долговцам (новое)"  -->
+	<!-- "Найти медикаменты долговцам (новое)"  -->
 	<info_portion id="dv_dolggroup_find_five_medkit_start">
-	<task>dv_dolggroup_find_five_medkit</task></info_portion>
+		<task>dv_dolggroup_find_five_medkit</task>
+	</info_portion>
 	<info_portion id="dv_dolggroup_find_five_medkit_done"></info_portion>
-	
-
-<!-- "Забрать собранные сведения у информатора Долга"  -->
-    <info_portion id="find_tainik_quest">
-	<task>find_tainik</task></info_portion>
-    <info_portion id="find_tainik_done"></info_portion>
-    <info_portion id="find_tainik_done_have"></info_portion>
-    <info_portion id="find_tainik_fail"></info_portion>
-<!--Шпион долга-->
-<info_portion id="dv_shpion_atack"></info_portion>
-<info_portion id="dv_greh_sh_spawn"></info_portion>
-<info_portion id="dv_greh_sh1_dead"></info_portion>
-<info_portion id="dv_greh_sh2_dead"></info_portion>
-<info_portion id="dv_greh_sh3_dead"></info_portion>
-<info_portion id="dv_sh_greh_dead"></info_portion>
-<info_portion id="dv_shpion_dead"></info_portion>
-<info_portion id="dv_shpion_ahtung2"><action>gz_sms.dv_shpion_ahtung2</action></info_portion>
-<info_portion id="dv_shpion_hide"><action>gz_sms.dv_shpion_govor5</action></info_portion>
-<info_portion id="dv_shpion_talk2"></info_portion>
-<info_portion id="dv_shpion_govor"><action>gz_sms.dv_shpion_govor</action></info_portion>
-<info_portion id="dv_shpion_govor2"><action>gz_sms.dv_shpion_govor2</action></info_portion>
-<info_portion id="dv_shpion_govor3"><action>gz_sms.dv_shpion_govor3</action></info_portion>
-<info_portion id="dv_shpion_ahtung"><action>gz_sms.dv_shpion_ahtung</action></info_portion>
-<info_portion id="dv_shpion_test"></info_portion>
-	
-
-<!------------------------------------------------------------------------>	
-<!------------------------------	Свалка   ----------------------------->
-<!------------------------------------------------------------------------>
-	
-<!-------- Сюжетные квесты ---------->
-<!----------------------------------->
-
-<!-- квест добраться до лагеря сталкеров на свалке (вырезать) -->
-<info_portion id="go_to_garneutlager_start">
-<task>go_to_garneutlager</task></info_portion>
-<info_portion id="go_to_garneutlager_done"></info_portion>
-<info_portion id="dialog_osvedomel_about_teams"></info_portion>
-
-<!-- квест с редким артом (вырезать) -->
+	<!-- "Забрать собранные сведения у информатора Долга"  -->
+	<info_portion id="find_tainik_quest">
+		<task>find_tainik</task>
+	</info_portion>
+	<info_portion id="find_tainik_done"></info_portion>
+	<info_portion id="find_tainik_done_have"></info_portion>
+	<info_portion id="find_tainik_fail"></info_portion>
+	<!--Шпион долга-->
+	<info_portion id="dv_shpion_atack"></info_portion>
+	<info_portion id="dv_greh_sh_spawn"></info_portion>
+	<info_portion id="dv_greh_sh1_dead"></info_portion>
+	<info_portion id="dv_greh_sh2_dead"></info_portion>
+	<info_portion id="dv_greh_sh3_dead"></info_portion>
+	<info_portion id="dv_sh_greh_dead"></info_portion>
+	<info_portion id="dv_shpion_dead"></info_portion>
+	<info_portion id="dv_shpion_ahtung2">
+		<action>gz_sms.dv_shpion_ahtung2</action>
+	</info_portion>
+	<info_portion id="dv_shpion_hide">
+		<action>gz_sms.dv_shpion_govor5</action>
+	</info_portion>
+	<info_portion id="dv_shpion_talk2"></info_portion>
+	<info_portion id="dv_shpion_govor">
+		<action>gz_sms.dv_shpion_govor</action>
+	</info_portion>
+	<info_portion id="dv_shpion_govor2">
+		<action>gz_sms.dv_shpion_govor2</action>
+	</info_portion>
+	<info_portion id="dv_shpion_govor3">
+		<action>gz_sms.dv_shpion_govor3</action>
+	</info_portion>
+	<info_portion id="dv_shpion_ahtung">
+		<action>gz_sms.dv_shpion_ahtung</action>
+	</info_portion>
+	<info_portion id="dv_shpion_test"></info_portion>
+	<!-- -->
+	<!--	Свалка   -->
+	<!-- -->
+	<!-- Сюжетные квесты -->
+	<!-- -->
+	<!-- квест добраться до лагеря сталкеров на свалке (вырезать) -->
+	<info_portion id="go_to_garneutlager_start">
+		<task>go_to_garneutlager</task>
+	</info_portion>
+	<info_portion id="go_to_garneutlager_done"></info_portion>
+	<info_portion id="dialog_osvedomel_about_teams"></info_portion>
+	<!-- квест с редким артом (вырезать) -->
 	<info_portion id="find_art_depo_start">
-	<task>find_art_depo</task></info_portion>
-
-<info_portion id="find_enter_in_depo_complete"></info_portion>
-<info_portion id="find_art_depo"></info_portion>
-<info_portion id="gar_depo_find_art_have"></info_portion>
-<info_portion id="find_art_have"></info_portion>
-<info_portion id="find_art_depo_done"><article>infa_depo</article><action>gz_prologue.diary_tip</action></info_portion>
-<info_portion id="seryi_dialog_end"><article>infa_about_dolg</article><action>gz_prologue.diary_tip</action></info_portion>
-
-<!-- квест добраться до лагеря сталкеров на свалке (новый) -->
-<info_portion id="gar_follow_to_garneutlager_start">
-<task>gar_follow_to_garneutlager</task>
-<action>gz_prologue.diary_tip</action>
-<article>infa_about_war_dogs</article></info_portion>
-<info_portion id="gar_follow_to_garneutlager_done"></info_portion>
-
-<!-- квест "Осиное гнездо" (новый) 
+		<task>find_art_depo</task>
+	</info_portion>
+	<info_portion id="find_enter_in_depo_complete"></info_portion>
+	<info_portion id="find_art_depo"></info_portion>
+	<info_portion id="gar_depo_find_art_have"></info_portion>
+	<info_portion id="find_art_have"></info_portion>
+	<info_portion id="find_art_depo_done">
+		<article>infa_depo</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="seryi_dialog_end">
+		<article>infa_about_dolg</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<!-- квест добраться до лагеря сталкеров на свалке (новый) -->
+	<info_portion id="gar_follow_to_garneutlager_start">
+		<task>gar_follow_to_garneutlager</task>
+		<action>gz_prologue.diary_tip</action>
+		<article>infa_about_war_dogs</article>
+	</info_portion>
+	<info_portion id="gar_follow_to_garneutlager_done"></info_portion>
+	<!-- квест "Осиное гнездо" (новый) 
 - Встретиться с отрядом сталкеров
 - Зачистить территорию депо
 - Доложить Серому					-->
-<info_portion id="gar_hornets_nest_start">
-<task>gar_hornets_nest</task></info_portion>
-<info_portion id="gar_hornets_nest_done"></info_portion>
-<info_portion id="gar_go_to_depo_neutrals_done"></info_portion>
-<info_portion id="gar_depo_all_mutants_dead"></info_portion>
-
-<info_portion id="gar_neutdepo_stalkers_go_to_depo"></info_portion>
-<info_portion id="gar_neutdepo_stalkers_depo_on_pos"></info_portion>
-
-<info_portion id="gar_depo_pseudodogsdogs_dog_1_dead"></info_portion>
-<info_portion id="gar_depo_pseudodogsdogs_dog_2_dead"></info_portion>
-<info_portion id="gar_depo_pseudodogsdogs_dog_3_dead"></info_portion>
-<info_portion id="gar_depo_pseudodogsdogs_dog_4_dead"></info_portion>
-<info_portion id="gar_depo_pseudodogsdogs_dog_5_dead"></info_portion>
-<info_portion id="gar_depo_pseudodogsdogs_dog_6_dead"></info_portion>
-<info_portion id="gar_depo_pseudodogsdogs_dog_7_dead"></info_portion>
-<info_portion id="gar_depo_pseudodogs_dead_all"></info_portion>
-
-
-
-	
-<!------------------------------------------------------------------------>
-<!------------------------------   Янтарь   ------------------------------>
-<!------------------------------------------------------------------------>
-
-<!-------- Сюжетные квесты ---------->
-<!----------------------------------->
-
-<!-- "Добраться до помощника ученого" -->
-<info_portion id="go_to_scien_assist_start">
-<task>go_to_scien_assist</task></info_portion>
-<info_portion id="go_to_scien_assist_complete"><article>infa_about_teams_dead</article><action>gz_prologue.diary_tip</action></info_portion>
-
-<!-- "Напарник учёный на Янтаре" -->
-<info_portion id="yan_scien_dogs_off"></info_portion>
-<info_portion id="yan_scien_lead_to_lager_start"><task>follow_semenov_to_bunker</task></info_portion>
-<info_portion id="yan_scien_lead_tel_dialog"></info_portion>
-<info_portion id="yan_scien_on_pos"></info_portion>
-<info_portion id="yan_scien_lead_come_in_lager"></info_portion>
-<info_portion id="yan_scien_lead_stay_outdoor"><action>gz_sms.dv_semenov_stay</action></info_portion>
-<info_portion id="yan_semenov_zamena"></info_portion>
-<info_portion id="yan_kill_semenov"></info_portion>
-<info_portion id="close_bunker_door_hit"></info_portion>
-<info_portion id="yan_hit_bunker_door"></info_portion>
-<info_portion id="yan_hit_bunker_door2"></info_portion>
-<info_portion id="yan_hit_bunker_door3"></info_portion>
-<info_portion id="yan_bunker_escape_sms"><action>gz_sms.yan_find_noyt_done_sms</action></info_portion>
-
-<!-- "Вернуться в лагерь ученых" (выдается на ПЗ в диалоге с лидером искателей) -->
+	<info_portion id="gar_hornets_nest_start">
+		<task>gar_hornets_nest</task>
+	</info_portion>
+	<info_portion id="gar_hornets_nest_done"></info_portion>
+	<info_portion id="gar_go_to_depo_neutrals_done"></info_portion>
+	<info_portion id="gar_depo_all_mutants_dead"></info_portion>
+	<info_portion id="gar_neutdepo_stalkers_go_to_depo"></info_portion>
+	<info_portion id="gar_neutdepo_stalkers_depo_on_pos"></info_portion>
+	<info_portion id="gar_depo_pseudodogsdogs_dog_1_dead"></info_portion>
+	<info_portion id="gar_depo_pseudodogsdogs_dog_2_dead"></info_portion>
+	<info_portion id="gar_depo_pseudodogsdogs_dog_3_dead"></info_portion>
+	<info_portion id="gar_depo_pseudodogsdogs_dog_4_dead"></info_portion>
+	<info_portion id="gar_depo_pseudodogsdogs_dog_5_dead"></info_portion>
+	<info_portion id="gar_depo_pseudodogsdogs_dog_6_dead"></info_portion>
+	<info_portion id="gar_depo_pseudodogsdogs_dog_7_dead"></info_portion>
+	<info_portion id="gar_depo_pseudodogs_dead_all"></info_portion>
+	<!-- -->
+	<!--   Янтарь   -->
+	<!-- -->
+	<!-- Сюжетные квесты -->
+	<!-- -->
+	<!-- "Добраться до помощника ученого" -->
+	<info_portion id="go_to_scien_assist_start">
+		<task>go_to_scien_assist</task>
+	</info_portion>
+	<info_portion id="go_to_scien_assist_complete">
+		<article>infa_about_teams_dead</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<!-- "Напарник учёный на Янтаре" -->
+	<info_portion id="yan_scien_dogs_off"></info_portion>
+	<info_portion id="yan_scien_lead_to_lager_start">
+		<task>follow_semenov_to_bunker</task>
+	</info_portion>
+	<info_portion id="yan_scien_lead_tel_dialog"></info_portion>
+	<info_portion id="yan_scien_on_pos"></info_portion>
+	<info_portion id="yan_scien_lead_come_in_lager"></info_portion>
+	<info_portion id="yan_scien_lead_stay_outdoor">
+		<action>gz_sms.dv_semenov_stay</action>
+	</info_portion>
+	<info_portion id="yan_semenov_zamena"></info_portion>
+	<info_portion id="yan_kill_semenov"></info_portion>
+	<info_portion id="close_bunker_door_hit"></info_portion>
+	<info_portion id="yan_hit_bunker_door"></info_portion>
+	<info_portion id="yan_hit_bunker_door2"></info_portion>
+	<info_portion id="yan_hit_bunker_door3"></info_portion>
+	<info_portion id="yan_bunker_escape_sms">
+		<action>gz_sms.yan_find_noyt_done_sms</action>
+	</info_portion>
+	<!-- "Вернуться в лагерь ученых" (выдается на ПЗ в диалоге с лидером искателей) -->
 	<info_portion id="back_to_scien_lager_start">
-	<task>back_to_scien_lager</task></info_portion>
+		<task>back_to_scien_lager</task>
+	</info_portion>
 	<info_portion id="back_to_scien_lager_done"></info_portion>
 	<info_portion id="back_to_scien_lager_fail"></info_portion>
-
 	<info_portion id="prisoner_yan_spawn"></info_portion>
-
 	<info_portion id="yan_start_go_to_scienlager"></info_portion>
-
 	<info_portion id="go_to_yan_have"></info_portion>
-
 	<info_portion id="yan_sciences_kill"></info_portion>
-
 	<info_portion id="prisoner_yan_remark"></info_portion>
-	
 	<info_portion id="yan_sniper_position_2"></info_portion>
-	
-<!-- "Спуститься в подземелье и найти ученого" -->
-	<info_portion id="find_scien_in_underground_start"><task>find_scien_in_underground</task><article>infa_about_scien_lager</article><action>gz_prologue.diary_tip</action></info_portion>
+	<!-- "Спуститься в подземелье и найти ученого" -->
+	<info_portion id="find_scien_in_underground_start">
+		<task>find_scien_in_underground</task>
+		<article>infa_about_scien_lager</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="find_enter_in_yan_underground_done"></info_portion>
 	<info_portion id="find_scien_in_underground_done"></info_portion>
-
 	<info_portion id="go_to_underground_yan_complete"></info_portion>
-
 	<info_portion id="kill_manik_start"></info_portion>
-	
-<!---- Янтарь после X-15 ---->
-<info_portion id="gz_yan_endgame_mine_activate"></info_portion>
-<info_portion id="yan_kill_fake_guns"><action>gz_prologue.kill_guns</action></info_portion>
-<info_portion id="yan_killers_go"></info_portion>
-<info_portion id="yan_delete_killers"></info_portion>
-<info_portion id="yan_endgame_spawn_ghost"></info_portion>
-
-
-
-<!------------------------------------------------------------------------>
-<!--------------------------- Лаборатория X-15 --------------------------->
-<!------------------------------------------------------------------------>
-
-<info_portion id="x15_kill_merc3_start"><task>x15task_kill_merc3</task></info_portion>
-<info_portion id="x15_goto_x15_done"></info_portion>
-<info_portion id="x15_kill_merc3_done"></info_portion>
-
-<info_portion id="x15_find_flash_start"><task>x15task_find_flash</task></info_portion>
-<info_portion id="x15_codedoor3_open_done"></info_portion>
-<info_portion id="x15_find_flash_done"></info_portion>
-
-<info_portion id="x15_codedoor2_open_start"><task>x15task_codedoor2_open</task></info_portion>
-<info_portion id="x15_escape_to_exit_done"></info_portion>
-<info_portion id="x15_codedoor2_open_done"></info_portion>
-
-<info_portion id="x15_door1_on_start"><task>x15task_door1_on</task></info_portion>
-<info_portion id="x15_door1_on_done"></info_portion>
-
-
-<info_portion id="x15_door3_closed"></info_portion>
-<info_portion id="x15_merc_message_start"></info_portion>
-<info_portion id="x15_door2_closed"></info_portion>
-<info_portion id="x15_burers_spawn"></info_portion>
-
-<info_portion id="x15_merc3_dead1"></info_portion>
-<info_portion id="x15_merc3_dead2"></info_portion>
-<info_portion id="x15_merc3_dead3"></info_portion>
-<info_portion id="x15_merc3_dead4"></info_portion>
-
-<info_portion id="x15_merc_message_end"></info_portion>
-
-<info_portion id="x15_bloodsucker1_spawn"></info_portion>
-<info_portion id="x15_bloodsucker2_spawn"></info_portion>
-
-<info_portion id="x15_scien_infoportion_give"></info_portion>
-<info_portion id="x15_yan_gameover_quest_start"><task>x15_yan_gameover_quest</task><action>gz_prologue.kill_guns</action></info_portion>
-<info_portion id="x15_yan_gameover_quest_done"></info_portion>
-<info_portion id="x15_find_exit_done"></info_portion>
-<info_portion id="x15_escape_from_lab_done"></info_portion>
-
-<info_portion id="x15_professor_sr_no_wpn_on"></info_portion>
-<info_portion id="x15_professor_sr_no_wpn_off"></info_portion>
-<info_portion id="x15_professor_spawn_start"></info_portion>
-
-<info_portion id="x15_professor_start_message"></info_portion>
-
-<info_portion id="x15_talk_with_professor_done"><action>gz_prologue.give_x15_prof_flash</action></info_portion>
-<info_portion id="x15_professor_kill"><action>gz_prologue.kill_x15_professor</action></info_portion>
-<info_portion id="x15_professor_end_scene"></info_portion>
-
-<info_portion id="x15_switcher_on"></info_portion>
-<info_portion id="x15_rupor_1_off"></info_portion>
-<info_portion id="x15_rupor_2_off"></info_portion>
-<info_portion id="x15_rupor_3_off"></info_portion>
-<info_portion id="x15_rupor_4_off"></info_portion>
-
-<info_portion id="x15_spawn_zombies"></info_portion>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <info_portion id="spawn_scien_assist"></info_portion>
-
-	
-
+	<!-- Янтарь после X-15 -->
+	<info_portion id="gz_yan_endgame_mine_activate"></info_portion>
+	<info_portion id="yan_kill_fake_guns">
+		<action>gz_prologue.kill_guns</action>
+	</info_portion>
+	<info_portion id="yan_killers_go"></info_portion>
+	<info_portion id="yan_delete_killers"></info_portion>
+	<info_portion id="yan_endgame_spawn_ghost"></info_portion>
+	<!-- -->
+	<!-- Лаборатория X-15 -->
+	<!-- -->
+	<info_portion id="x15_kill_merc3_start">
+		<task>x15task_kill_merc3</task>
+	</info_portion>
+	<info_portion id="x15_goto_x15_done"></info_portion>
+	<info_portion id="x15_kill_merc3_done"></info_portion>
+	<info_portion id="x15_find_flash_start">
+		<task>x15task_find_flash</task>
+	</info_portion>
+	<info_portion id="x15_codedoor3_open_done"></info_portion>
+	<info_portion id="x15_find_flash_done"></info_portion>
+	<info_portion id="x15_codedoor2_open_start">
+		<task>x15task_codedoor2_open</task>
+	</info_portion>
+	<info_portion id="x15_escape_to_exit_done"></info_portion>
+	<info_portion id="x15_codedoor2_open_done"></info_portion>
+	<info_portion id="x15_door1_on_start">
+		<task>x15task_door1_on</task>
+	</info_portion>
+	<info_portion id="x15_door1_on_done"></info_portion>
+	<info_portion id="x15_door3_closed"></info_portion>
+	<info_portion id="x15_merc_message_start"></info_portion>
+	<info_portion id="x15_door2_closed"></info_portion>
+	<info_portion id="x15_burers_spawn"></info_portion>
+	<info_portion id="x15_merc3_dead1"></info_portion>
+	<info_portion id="x15_merc3_dead2"></info_portion>
+	<info_portion id="x15_merc3_dead3"></info_portion>
+	<info_portion id="x15_merc3_dead4"></info_portion>
+	<info_portion id="x15_merc_message_end"></info_portion>
+	<info_portion id="x15_bloodsucker1_spawn"></info_portion>
+	<info_portion id="x15_bloodsucker2_spawn"></info_portion>
+	<info_portion id="x15_scien_infoportion_give"></info_portion>
+	<info_portion id="x15_yan_gameover_quest_start">
+		<task>x15_yan_gameover_quest</task>
+		<action>gz_prologue.kill_guns</action>
+	</info_portion>
+	<info_portion id="x15_yan_gameover_quest_done"></info_portion>
+	<info_portion id="x15_find_exit_done"></info_portion>
+	<info_portion id="x15_escape_from_lab_done"></info_portion>
+	<info_portion id="x15_professor_sr_no_wpn_on"></info_portion>
+	<info_portion id="x15_professor_sr_no_wpn_off"></info_portion>
+	<info_portion id="x15_professor_spawn_start"></info_portion>
+	<info_portion id="x15_professor_start_message"></info_portion>
+	<info_portion id="x15_talk_with_professor_done">
+		<action>gz_prologue.give_x15_prof_flash</action>
+	</info_portion>
+	<info_portion id="x15_professor_kill">
+		<action>gz_prologue.kill_x15_professor</action>
+	</info_portion>
+	<info_portion id="x15_professor_end_scene"></info_portion>
+	<info_portion id="x15_switcher_on"></info_portion>
+	<info_portion id="x15_rupor_1_off"></info_portion>
+	<info_portion id="x15_rupor_2_off"></info_portion>
+	<info_portion id="x15_rupor_3_off"></info_portion>
+	<info_portion id="x15_rupor_4_off"></info_portion>
+	<info_portion id="x15_spawn_zombies"></info_portion>
+	<info_portion id="spawn_scien_assist"></info_portion>
 	<info_portion id="talk_scien_assist_done"></info_portion>
-
 	<info_portion id="play_sound_phone_assist"></info_portion>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	<info_portion id="ds_ld_blokp_enemy"></info_portion>
 	<info_portion id="ds_neutlager_enemy"></info_portion>
-	
 	<info_portion id="dv_fc_start"></info_portion>
 	<info_portion id="dv_fc_sv_camera"></info_portion>
 	<info_portion id="dv_fc_sv_remark"></info_portion>
@@ -338,2410 +310,2031 @@
 	<info_portion id="dv_fc_actor_punch"></info_portion>
 	<info_portion id="dv_fc_give_punch"></info_portion>
 	<info_portion id="dv_fc_cs_camera"></info_portion>
-	
 	<info_portion id="dv_test_info1"></info_portion>
-		<info_portion id="dv_test_info2"></info_portion>
-
-
-<!-- - BEGIN - S.T.A.L.K.E.R Prologue - BEGIN -  -->
-
+	<info_portion id="dv_test_info2"></info_portion>
+	<!-- - BEGIN - S.T.A.L.K.E.R Prologue - BEGIN -  -->
 	<info_portion id="start_the_game"></info_portion>
-
-	<info_portion id="soz_intro_video_stop"></info_portion>
-
-	<info_portion id="isk_cutscene_start"></info_portion>
-
-
+	<!-- DEPRECATED info_portion id="soz_intro_video_stop"></info_portion -->
+	<!-- DEPRECATED info_portion id="isk_cutscene_start"></info_portion -->
 	<info_portion id="ds_start_sound_1">
-	<action>gz_prologue.play_sound_ds1</action></info_portion>
-
+		<action>gz_prologue.play_sound_ds1</action>
+	</info_portion>
 	<info_portion id="ds_start_sound_2">
-	<action>gz_prologue.play_sound_ds2</action></info_portion>
-
+		<action>gz_prologue.play_sound_ds2</action>
+	</info_portion>
 	<info_portion id="dv_start_message_1">
-	<action>gz_sms.dv_mikluha_hello</action></info_portion>
-
+		<action>gz_sms.dv_mikluha_hello</action>
+	</info_portion>
 	<info_portion id="chehov_dialog_raciya_done"></info_portion>
-
 	<info_portion id="dv_start_soundtrack_1">
-	<action>gz_prologue.play_music_dv1</action></info_portion>
-
-
-
-
-<!-- Доктор Искателей -->
-
-		<info_portion id="ds_isk_doc"></info_portion>
-
-		<info_portion id="isk_doc_scene_start"></info_portion>
-
-		<info_portion id="isk_cutscene_end"></info_portion>
-
-		<info_portion id="ds_rest_doc_walk2"></info_portion>
-
-		<info_portion id="ds_isk_doc_spawn"></info_portion>
-
-<!-- - Разговор с Скарабеем -  -->
+		<action>gz_prologue.play_music_dv1</action>
+	</info_portion>
+	<!-- Доктор Искателей -->
+	<info_portion id="ds_isk_doc"></info_portion>
+	<info_portion id="isk_doc_scene_start"></info_portion>
+	<info_portion id="isk_cutscene_end"></info_portion>
+	<info_portion id="ds_rest_doc_walk2"></info_portion>
+	<info_portion id="ds_isk_doc_spawn"></info_portion>
+	<!-- - Разговор с Скарабеем -  -->
 	<info_portion id="about_last_day"></info_portion>
-
-        <info_portion id="about_capish"></info_portion>
-
-        <info_portion id="about_place"></info_portion>
-
-
-<!-- - Разговор с проводником -  -->
-	<info_portion id="talk_with_iskprovod_start"></info_portion>
-	
-	<info_portion id="talk_with_iskprovod_done"></info_portion>
-
-
-
-	<info_portion id="ds_tepa_remark_povyazka"></info_portion>
-
-	<info_portion id="ds_tepa_teleport">
-	<action>gz_provodnik.iskatel_to_world</action></info_portion>
-
-<!-- Сообщение о вертолете от Тепы-->
-
+	<info_portion id="about_capish"></info_portion>
+	<info_portion id="about_place"></info_portion>
+	<!-- - Разговор с проводником -  -->
+	<!-- DEPRECATED info_portion id="talk_with_iskprovod_start"></info_portion -->
+	<!-- DEPRECATED info_portion id="talk_with_iskprovod_done"></info_portion -->
+	<!-- DEPRECATED info_portion id="ds_tepa_remark_povyazka"></info_portion -->
+	<!-- DEPRECATED info_portion id="ds_tepa_teleport">
+		<action>gz_provodnik.iskatel_to_world</action>
+	</info_portion -->
+	<!-- Сообщение о вертолете от Тепы-->
 	<info_portion id="isk_message_about_vertolet">
-	<action>gz_prologue.isk_message_about_vertolet</action></info_portion>
-
-		<info_portion id="isk_message_about_vertolet_have"></info_portion>
-
-
-
-<!-- -  Мед.набор для Дока - -->
+		<action>gz_prologue.isk_message_about_vertolet</action>
+	</info_portion>
+	<info_portion id="isk_message_about_vertolet_have"></info_portion>
+	<!-- -  Мед.набор для Дока - -->
 	<info_portion id="dialog_ds_quest_doc_medkit_case">
-	<task>find_doc_medkit_case</task></info_portion>
-
-	<info_portion id="dialog_ds_quest_doc_medkit_case_alt"><task>find_doc_medkit_case</task></info_portion>
-
+		<task>find_doc_medkit_case</task>
+	</info_portion>
+	<info_portion id="dialog_ds_quest_doc_medkit_case_alt">
+		<task>find_doc_medkit_case</task>
+	</info_portion>
 	<info_portion id="find_doc_medkit_case"></info_portion>
-
 	<info_portion id="give_doc_medkit_case"></info_portion>
-
-        <info_portion id="dialog_meh"></info_portion>
-
-
-<!------- - квест с вещами -  -------->
+	<info_portion id="dialog_meh"></info_portion>
+	<!-- - квест с вещами -  -->
 	<info_portion id="return_things_start">
-	<task>return_things</task></info_portion>
-
+		<task>return_things</task>
+	</info_portion>
 	<info_portion id="return_things_done"></info_portion>
-
 	<info_portion id="isk_trader_given_odegda"></info_portion>
-
 	<info_portion id="isk_trader_given_pistolet"></info_portion>
-
 	<info_portion id="isk_trader_given_pm"></info_portion>
-
 	<info_portion id="isk_trader_given_tt"></info_portion>
-
 	<info_portion id="isk_trader_given_things"></info_portion>
-
 	<info_portion id="isk_trader_given_pistol"></info_portion>
-
-
-
-<!-------------------------------- - квест с кэпом -  -------------------------->
-	<info_portion id="start_find_kep">
-              <task>find_kep</task>
-              <action>gz_prologue.diary_tip</action>
-              <article>storyline_soz_kep_info</article>
-              <article>storyline_soz_isk_info</article>
-              <article>storyline_soz_oper_info</article>
-        </info_portion>
-
-
+	<!-- - квест с кэпом -  -->
+	<!-- DEPRECATED info_portion id="start_find_kep">
+		<task>find_kep</task>
+		<action>gz_prologue.diary_tip</action>
+		<article>storyline_soz_kep_info</article>
+		<article>storyline_soz_isk_info</article>
+		<article>storyline_soz_oper_info</article>
+	</info_portion -->
 	<info_portion id="dialog_ds_cap_info"></info_portion>
-
-        <info_portion id="find_commander_done"></info_portion>
-
-        <info_portion id="start_find_team"><task>find_team</task></info_portion>
-
-        <info_portion id="find_team_done">
-        <action>gz_prologue.diary_tip</action>
-        <article>storyline_soz_zah_info</article>
-        <article>storyline_soz_team_info</article>
-        </info_portion>
-
-        <info_portion id="find_team_donz">
-        </info_portion>
-        
-        <info_portion id="find_team_fail"></info_portion>
-
-<!------------------------------------------------------------------------------------>
-
-<!-------------------------------- - бандиты на мосту -  -------------------------->
+	<info_portion id="find_commander_done"></info_portion>
+	<!-- DEPRECATED info_portion id="start_find_team">
+		<task>find_team</task>
+	</info_portion -->
+	<info_portion id="find_team_done">
+		<action>gz_prologue.diary_tip</action>
+		<article>storyline_soz_zah_info</article>
+		<article>storyline_soz_team_info</article>
+	</info_portion>
+	<info_portion id="find_team_donz"></info_portion>
+	<info_portion id="find_team_fail"></info_portion>
+	<!-- -->
+	<!-- - бандиты на мосту -  -->
 	<info_portion id="ds_bridge_pass_fire"></info_portion>
-
 	<info_portion id="ds_bridge_pass_on"></info_portion>
-
-	<info_portion id="ds_lider_dialog_done"></info_portion>
-<!------------------------------------------------------------------------------------>
-
-
-<!-------------------------------- - квест добраться до базы свободы -  -------------------------->
+	<!-- DEPRECATED info_portion id="ds_lider_dialog_done"></info_portion -->
+	<!-- -->
+	<!-- - квест добраться до базы свободы -  -->
 	<info_portion id="go_to_lager_dv">
-	<task>go_to_svobbase_in_dv</task></info_portion>
-
+		<task>go_to_svobbase_in_dv</task>
+	</info_portion>
 	<info_portion id="svoboda_war">
-	<action>gz_prologue.svoboda_war</action></info_portion>
-
-	<info_portion id="go_to_lager_dv_done"><action>gz_sms.dv_mikluha_hello</action></info_portion>
-
-<!--------------------------------------------------------------------------------------------------------------->
-
-<!-------------------------------- - квест с инструментами -  -------------------------->
+		<action>gz_prologue.svoboda_war</action>
+	</info_portion>
+	<info_portion id="go_to_lager_dv_done">
+		<action>gz_sms.dv_mikluha_hello</action>
+	</info_portion>
+	<!-- -->
+	<!-- - квест с инструментами -  -->
 	<info_portion id="start_find_yar_instruments">
-	<task>find_instuments_for_yar</task></info_portion>
-
+		<task>find_instuments_for_yar</task>
+	</info_portion>
 	<info_portion id="find_yar_instruments_have"></info_portion>
-
 	<info_portion id="find_yar_instruments_done"></info_portion>
-<!----------------------------------------------------------------------------------------------------->
-
-<!----------------------------------------------------------------------------------------------------->
-<!-------------------------------- - квест "поговорить с лидером базы" -  ------------------------------------------->
+	<!-- -->
+	<!-- -->
+	<!-- - квест "поговорить с лидером базы" -  -->
 	<info_portion id="dv_start_sound_1">
-		<action>gz_prologue.dv_mikluha_hello</action></info_portion>
-
+		<action>gz_prologue.dv_mikluha_hello</action>
+	</info_portion>
 	<info_portion id="talk_with_baseleader_start">
-	<task>talk_with_baseleader</task></info_portion>
-
+		<task>talk_with_baseleader</task>
+	</info_portion>
 	<info_portion id="talk_with_baseleader_done"></info_portion>
-
-<!-------------------------------- - квест с рацией -  ------------------------------------------->
-
-
-	<info_portion id="find_raciya_start">
-	<task>find_raciya</task></info_portion>
-
+	<!-- - квест с рацией -  -->
+	<!-- DEPRECATED info_portion id="find_raciya_start">
+		<task>find_raciya</task>
+	</info_portion -->
 	<info_portion id="find_raciya_have"></info_portion>
-
-	<info_portion id="find_raciya_in_vertolet_done">
-<action>gz_prologue.diary_tip</action>
-        <article>storyline_soz_heli_info</article>
-        </info_portion>
-
+	<!-- DEPRECATED info_portion id="find_raciya_in_vertolet_done">
+		<action>gz_prologue.diary_tip</action>
+		<article>storyline_soz_heli_info</article>
+	</info_portion -->
 	<info_portion id="find_raciya_in_dsneutlager_done">
-<action>gz_prologue.diary_tip</action>
-        <article>storyline_soz_stalk_info</article>
-        </info_portion>
-
+		<action>gz_prologue.diary_tip</action>
+		<article>storyline_soz_stalk_info</article>
+	</info_portion>
 	<info_portion id="find_raciya_done"></info_portion>
-
 	<info_portion id="oka_dialog1_start">
-        <task>gz_prologue.oka_dialog1</task>
-        </info_portion>
-
+		<task>gz_prologue.oka_dialog1</task>
+	</info_portion>
 	<info_portion id="ds_neut_mehanik_dialog_rac_done"></info_portion>
-
 	<info_portion id="ds_neut_trader_dialog_rac_done"></info_portion>
-
 	<info_portion id="ds_neut_doctor_dialog_rac_done"></info_portion>
-
-<!-------------------------------- - квест с деталями для Яра -  ------------------------------------------->
+	<!-- - квест с деталями для Яра -  -->
 	<info_portion id="find_details_for_yar_start">
-	<task>find_details_for_yar</task></info_portion>
-
-        <info_portion id="find_details_for_yar_alt_start">
-	<task>find_details_for_yar_alt</task></info_portion>
-
+		<task>find_details_for_yar</task>
+	</info_portion>
+	<info_portion id="find_details_for_yar_alt_start">
+		<task>find_details_for_yar_alt</task>
+	</info_portion>
 	<info_portion id="find_details_battery_have"></info_portion>
-
 	<info_portion id="find_details_tranzistor_have"></info_portion>
-
 	<info_portion id="find_details_provoloka_have"></info_portion>
-
 	<info_portion id="find_details_plata_have"></info_portion>
-
 	<info_portion id="find_all_details_have"></info_portion>
-
 	<info_portion id="find_details_for_yar_done"></info_portion>
-
 	<info_portion id="make_raciya_done"></info_portion>
-
 	<info_portion id="yar_idi_pogulyai"></info_portion>
-
 	<info_portion id="yar_est_raciya"></info_portion>
-        <info_portion id="yar_all_done"></info_portion>
-        <info_portion id="find_details_for_yar_done_alt"></info_portion>
-        <info_portion id="find_details_for_yar_cancel"></info_portion>
-        <info_portion id="yar_no_job"></info_portion>
-
-
-
+	<info_portion id="yar_all_done"></info_portion>
+	<info_portion id="find_details_for_yar_done_alt"></info_portion>
+	<info_portion id="find_details_for_yar_cancel"></info_portion>
+	<info_portion id="yar_no_job"></info_portion>
 	<info_portion id="find_raciya_in_svobbase_done"></info_portion>
-<!------------------------------------------------------------------------------------------------------->
-
-<!------------------------------------------------------------------------------------------------------->
-
-<!-------------------------------- - квест с гитарой -  ------------------------------------------->
+	<!-- -->
+	<!-- -->
+	<!-- - квест с гитарой -  -->
 	<info_portion id="find_guitar_start">
-	<task>back_guitar</task>
-        </info_portion>
-
+		<task>back_guitar</task>
+	</info_portion>
 	<info_portion id="find_guitar_have"></info_portion>
-
 	<info_portion id="find_guitar_done"></info_portion>
-<!------------------------------------------------------------------------------------------------------->
-<!-------------------------------- - квест "поговорить с чехом" -  ------------------------------------------->
-	<info_portion id="mikluha_message2">
-	</info_portion>
-
+	<!-- -->
+	<!-- - квест "поговорить с чехом" -  -->
+	<info_portion id="mikluha_message2"></info_portion>
 	<info_portion id="talk_with_chehov_start">
-        <task>talk_with_chehov</task>
-    </info_portion>
-
-	<info_portion id="talk_with_chehov_done"><task>dv_sv_sms_zavod_task</task></info_portion>
-
-	<info_portion id="mikluha_to_message2"></info_portion>
-<!-------------------------------- - квест с оружием -  ------------------------------------------->
-	<info_portion id="chehov_pda_message1">
-	<action>gz_prologue.chehov_pda_mess1</action></info_portion>
-
-	<info_portion id="find_weapons_case_start_2">
-	<task>find_weapons_case</task>
-<action>gz_prologue.diary_tip</action>
-        <article>storyline_soz_freedom_info</article>
-        </info_portion>
-
-        <info_portion id="find_pda_torgash">
-	<task>find_weapons_tainik</task></info_portion>
-
-        <info_portion id="find_weapons_case_start"></info_portion>
-
-	<info_portion id="find_weapons_case_have"><action>xr_effects.del_dv_max</action></info_portion>
-
-        <info_portion id="find_weapons_case_dialog"></info_portion>
-
-        <info_portion id="find_weapons_case_dialog_2"></info_portion>
-
-        <info_portion id="find_weapons_case_dialog_3"></info_portion>
-
-        <info_portion id="find_weapons_case_gone"></info_portion>
-
-	<info_portion id="find_weapons_case_done"></info_portion>
-
-        <info_portion id="find_weapons_case_zasada">
-<action>gz_prologue.diary_tip</action>
-        <article>storyline_soz_sdelka_info</article>
-        <action>gz_sms.dv_zasada_sms</action>
-        </info_portion>
-
-        <info_portion id="find_weapons_case_give"></info_portion>
-
-        <info_portion id="rush_bandits_done"></info_portion>
-
-        <info_portion id="dv_bandit_1_death"></info_portion>
-
-        <info_portion id="dv_bandit_2_death"></info_portion>
-
-        <info_portion id="dv_bandit_3_death"></info_portion>
-
-        <info_portion id="dv_bandit_4_death"></info_portion>
-
-        <info_portion id="dv_bandit_5_death"></info_portion>
-
-        <info_portion id="dv_torgash_death"></info_portion>
-
-        <info_portion id="dv_all_bandits_death"></info_portion>
-
-        <info_portion id="max_dead"></info_portion>
-
-        <info_portion id="find_weapons_bandits_dead"></info_portion>
-
-<!--------------------Квест Помочь свободе захватить базу греха--------------------------->
-    <info_portion id="dv_sv_grehbase_group_ready_to_go"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_group_go"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_rush_start"></info_portion>
-
-
-	<info_portion id="dv_sv_greshbase_assault">
-	<task>dv_sv_greshbase_rush</task></info_portion>
-
-	<info_portion id="dv_sv_greshbase_rush_done"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_lider_talk_done"></info_portion>
-
-	<info_portion id="dv_sv_regroup"></info_portion>
-
-	<info_portion id="kill_grehbase_complete"></info_portion>
-
-	<info_portion id="dv_sv_grehbase_rush_ready"></info_portion>
-
-
-
-	<info_portion id="dv_sv_greshbase_assault_lider_on_pos"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att1_on_pos"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att2_on_pos"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att3_on_pos"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att4_on_pos"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att5_on_pos"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att6_on_pos"></info_portion>
-
-	<info_portion id="dv_sv_ghehbase_all_sv_on_pos"></info_portion>
-
-
-	<info_portion id="dv_sv_greshbase_assault_lider_on_pos_2"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att1_on_pos_2"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att2_on_pos_2"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att3_on_pos_2"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att4_on_pos_2"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att5_on_pos_2"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_assault_att6_on_pos_2"></info_portion>
-
-	<info_portion id="dv_sv_greshbase_group_actor_on_pos"></info_portion>
-
-	<info_portion id="dv_sv_ghehbase_all_sv_on_pos_2"></info_portion>
-
-       <info_portion id="dialog_sv_attack_greh_done"></info_portion>
-
-               <info_portion id="dialog_sv_attack_greh_done_2"></info_portion>
-
-        <info_portion id="dialog_sv_attack_greh_done_2_alt"></info_portion>
-
-        <info_portion id="cheh_dead"></info_portion>
-
-        <info_portion id="varag_sms">
-        </info_portion>
-
-
-<!--------------------Сценка с контроллером Греховцем--------------------------->
-
-<!--------------------Выдаем поршень об активации функции спавна контра--------------------------->
-    <info_portion id="dv_contrgreh_spawn_controller_ready"></info_portion>
-
-<!--------------------Спавним контроллера и выдаем Квест убить главаря Греха--------------------------->
-	<info_portion id="dv_contrgreh_spawn_controller_start"></info_portion>
-
-    <info_portion id="kill_contrgreh_done"></info_portion>
-
-    <info_portion id="contrgreh_live"></info_portion>
-
-<!--------------------------------------------- Сценка на блокпосте свободы ---------------------------------------------------------->
-
-	<info_portion id="info"></info_portion>
-
-	<info_portion id="info2"></info_portion>
-
-
-
-	<info_portion id="lukash_pogovorili2"></info_portion>
-
-	<info_portion id="lukash_go"></info_portion>
-
-	<info_portion id="dv_lukash_timer_start"></info_portion>
-
-
-
-<!-------------------------------- - квест с квадратом 065 -  ------------------------------------------->
-	<info_portion id="pda_coordinats_start">
-        <task>pda_coordinats</task>
-        <task>greh_base_shturm</task>
-<action>gz_prologue.diary_tip</action>
-        <article>storyline_soz_racia_info</article>
-        <action>gz_tasks.greh_key_spawns_in_box</action>
-        </info_portion>
-
-	<info_portion id="pda_coordinats_done"></info_portion>
-
-	<info_portion id="greh_shturm_alone"></info_portion>
-
-	<info_portion id="greh_sturm_done"></info_portion>
-
-	<info_portion id="dv_need_key_sms"><action>gz_sms.dv_need_key_sms</action></info_portion>
-<!-------------------------------- - квест с раненным сталкером -  ------------------------------------------->
-	<info_portion id="wounded_stalker_grehbase_start">
-	 <task>wounded_stalker_grehbase</task>
+		<task>talk_with_chehov</task>
 	</info_portion>
-
+	<info_portion id="talk_with_chehov_done">
+		<task>dv_sv_sms_zavod_task</task>
+	</info_portion>
+	<info_portion id="mikluha_to_message2"></info_portion>
+	<!-- - квест с оружием -  -->
+	<info_portion id="chehov_pda_message1">
+		<action>gz_prologue.chehov_pda_mess1</action>
+	</info_portion>
+	<info_portion id="find_weapons_case_start_2">
+		<task>find_weapons_case</task>
+		<action>gz_prologue.diary_tip</action>
+		<article>storyline_soz_freedom_info</article>
+	</info_portion>
+	<info_portion id="find_pda_torgash">
+		<task>find_weapons_tainik</task>
+	</info_portion>
+	<info_portion id="find_weapons_case_start"></info_portion>
+	<info_portion id="find_weapons_case_have">
+		<action>xr_effects.del_dv_max</action>
+	</info_portion>
+	<info_portion id="find_weapons_case_dialog"></info_portion>
+	<info_portion id="find_weapons_case_dialog_2"></info_portion>
+	<info_portion id="find_weapons_case_dialog_3"></info_portion>
+	<info_portion id="find_weapons_case_gone"></info_portion>
+	<info_portion id="find_weapons_case_done"></info_portion>
+	<info_portion id="find_weapons_case_zasada">
+		<action>gz_prologue.diary_tip</action>
+		<article>storyline_soz_sdelka_info</article>
+		<action>gz_sms.dv_zasada_sms</action>
+	</info_portion>
+	<info_portion id="find_weapons_case_give"></info_portion>
+	<info_portion id="rush_bandits_done"></info_portion>
+	<info_portion id="dv_bandit_1_death"></info_portion>
+	<info_portion id="dv_bandit_2_death"></info_portion>
+	<info_portion id="dv_bandit_3_death"></info_portion>
+	<info_portion id="dv_bandit_4_death"></info_portion>
+	<info_portion id="dv_bandit_5_death"></info_portion>
+	<info_portion id="dv_torgash_death"></info_portion>
+	<info_portion id="dv_all_bandits_death"></info_portion>
+	<info_portion id="max_dead"></info_portion>
+	<info_portion id="find_weapons_bandits_dead"></info_portion>
+	<!--Квест Помочь свободе захватить базу греха-->
+	<info_portion id="dv_sv_grehbase_group_ready_to_go"></info_portion>
+	<info_portion id="dv_sv_greshbase_group_go"></info_portion>
+	<info_portion id="dv_sv_greshbase_rush_start"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault">
+		<task>dv_sv_greshbase_rush</task>
+	</info_portion>
+	<info_portion id="dv_sv_greshbase_rush_done"></info_portion>
+	<info_portion id="dv_sv_greshbase_lider_talk_done"></info_portion>
+	<info_portion id="dv_sv_regroup"></info_portion>
+	<info_portion id="kill_grehbase_complete"></info_portion>
+	<info_portion id="dv_sv_grehbase_rush_ready"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_lider_on_pos"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att1_on_pos"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att2_on_pos"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att3_on_pos"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att4_on_pos"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att5_on_pos"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att6_on_pos"></info_portion>
+	<info_portion id="dv_sv_ghehbase_all_sv_on_pos"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_lider_on_pos_2"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att1_on_pos_2"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att2_on_pos_2"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att3_on_pos_2"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att4_on_pos_2"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att5_on_pos_2"></info_portion>
+	<info_portion id="dv_sv_greshbase_assault_att6_on_pos_2"></info_portion>
+	<info_portion id="dv_sv_greshbase_group_actor_on_pos"></info_portion>
+	<info_portion id="dv_sv_ghehbase_all_sv_on_pos_2"></info_portion>
+	<info_portion id="dialog_sv_attack_greh_done"></info_portion>
+	<info_portion id="dialog_sv_attack_greh_done_2"></info_portion>
+	<info_portion id="dialog_sv_attack_greh_done_2_alt"></info_portion>
+	<info_portion id="cheh_dead"></info_portion>
+	<info_portion id="varag_sms"></info_portion>
+	<!--Сценка с контроллером Греховцем-->
+	<!--Выдаем поршень об активации функции спавна контра-->
+	<info_portion id="dv_contrgreh_spawn_controller_ready"></info_portion>
+	<!--Спавним контроллера и выдаем Квест убить главаря Греха-->
+	<info_portion id="dv_contrgreh_spawn_controller_start"></info_portion>
+	<info_portion id="kill_contrgreh_done"></info_portion>
+	<info_portion id="contrgreh_live"></info_portion>
+	<!-- Сценка на блокпосте свободы -->
+	<info_portion id="info"></info_portion>
+	<info_portion id="info2"></info_portion>
+	<info_portion id="lukash_pogovorili2"></info_portion>
+	<info_portion id="lukash_go"></info_portion>
+	<info_portion id="dv_lukash_timer_start"></info_portion>
+	<!-- - квест с квадратом 065 -  -->
+	<info_portion id="pda_coordinats_start">
+		<task>pda_coordinats</task>
+		<task>greh_base_shturm</task>
+		<action>gz_prologue.diary_tip</action>
+		<article>storyline_soz_racia_info</article>
+		<action>gz_tasks.greh_key_spawns_in_box</action>
+	</info_portion>
+	<info_portion id="pda_coordinats_done"></info_portion>
+	<info_portion id="greh_shturm_alone"></info_portion>
+	<info_portion id="greh_sturm_done"></info_portion>
+	<info_portion id="dv_need_key_sms">
+		<action>gz_sms.dv_need_key_sms</action>
+	</info_portion>
+	<!-- - квест с раненным сталкером -  -->
+	<info_portion id="wounded_stalker_grehbase_start">
+		<task>wounded_stalker_grehbase</task>
+	</info_portion>
 	<info_portion id="dv_gb_prisoner_door_done"></info_portion>
-
 	<info_portion id="greh_guard_key_have"></info_portion>
-
 	<info_portion id="wounded_stalker_grehbase_done"></info_portion>
-
-
-
-
-<!-------------------------------- - квест с агропромом -  ------------------------------------------->
-
-
-<!------------------------------------------------------------------------------------------------------------------------------>
-
-<!---Псианомалия--->
+	<!-- - квест с агропромом -  -->
+	<!-- -->
+	<!--Псианомалия-->
 	<info_portion id="agr_psyanom_kill"></info_portion>
-
 	<info_portion id="go_to_underground_done"></info_portion>
-
-	<info_portion id="find_enter_in_underground_complete"><article>infa_about_north</article><action>gz_prologue.diary_tip</action></info_portion>
-
+	<info_portion id="find_enter_in_underground_complete">
+		<article>infa_about_north</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="find_cap_in_underground_complete"></info_portion>
-
 	<info_portion id="cap_mayachok_find"></info_portion>
-
 	<info_portion id="cap_dead"></info_portion>
-
 	<info_portion id="und_spawn_cap"></info_portion>
-
 	<info_portion id="krylov_pogovorili"></info_portion>
-
 	<info_portion id="kep_speak_start">
-	<task>kep_speak</task></info_portion>
-
-	<info_portion id="kep_speak_done"><article>infa_kap_dead</article><action>gz_prologue.diary_tip</action></info_portion>
-
+		<task>kep_speak</task>
+	</info_portion>
+	<info_portion id="kep_speak_done">
+		<article>infa_kap_dead</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="dolg_war">
-	<action>gz_prologue.dolg_war</action></info_portion>
-
-<!-------------------------------- - квест с ученым -  ------------------------------------------->
+		<action>gz_prologue.dolg_war</action>
+	</info_portion>
+	<!-- - квест с ученым -  -->
 	<info_portion id="kill_scien_start">
-	<task>kill_scien_start</task></info_portion>
-
-	<info_portion id="kill_scien_done"><article>infa_scien_Dead</article><task>agr_racia_about_manic</task><action>gz_prologue.diary_tip</action></info_portion>
-
+		<task>kill_scien_start</task>
+	</info_portion>
+	<info_portion id="kill_scien_done">
+		<article>infa_scien_Dead</article>
+		<task>agr_racia_about_manic</task>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="agr_scien_del"></info_portion>
-
 	<info_portion id="agr_scien_perehod"></info_portion>
-
 	<info_portion id="agr_scien_perehod_done"></info_portion>
-
 	<info_portion id="agr_merc_1_dead"></info_portion>
-
 	<info_portion id="agr_merc_2_dead"></info_portion>
-
 	<info_portion id="agr_merc_3_dead"></info_portion>
-
 	<info_portion id="agr_merc_4_dead"></info_portion>
-
 	<info_portion id="agr_merc_5_dead"></info_portion>
-
 	<info_portion id="agr_merc_6_dead"></info_portion>
-
 	<info_portion id="agr_merc_7_dead"></info_portion>
-
 	<info_portion id="agr_merc_8_dead"></info_portion>
-
 	<info_portion id="agr_merc_9_dead"></info_portion>
-
 	<info_portion id="agr_merc_10_dead"></info_portion>
-
 	<info_portion id="agr_merc_11_dead"></info_portion>
-
 	<info_portion id="agr_merc_kap_dead"></info_portion>
-
 	<info_portion id="agr_all_mercs_dead"></info_portion>
-<!-------------------------------- - Спасение учёного(в рыжем лесу) -  ------------------------------------------->
+	<!-- - Спасение учёного(в рыжем лесу) -  -->
 	<info_portion id="rf_scien_stay"></info_portion>
-
-	<info_portion id="rf_scien_stay_done"><article>infa_scien_alive</article><action>gz_prologue.diary_tip</action></info_portion>
-
+	<info_portion id="rf_scien_stay_done">
+		<article>infa_scien_alive</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="dialog_rf_pd_lead_done"></info_portion>
-
 	<info_portion id="dialog_rf_scien_find_npc">
-        <task>find_crazy_stalk</task>
-        </info_portion>
-<!-------------------------------- - Квест с беглецом -  ------------------------------------------->
-	<info_portion id="find_rf_art_start"><task>find_rf_art</task></info_portion>
-
-	<info_portion id="dialog_rf_beglec_done"><task>help_crazy_stalk</task></info_portion>
-
+		<task>find_crazy_stalk</task>
+	</info_portion>
+	<!-- - Квест с беглецом -  -->
+	<info_portion id="find_rf_art_start">
+		<task>find_rf_art</task>
+	</info_portion>
+	<info_portion id="dialog_rf_beglec_done">
+		<task>help_crazy_stalk</task>
+	</info_portion>
 	<info_portion id="rf_art_have"></info_portion>
-
 	<info_portion id="info_art_spawn"></info_portion>
-
 	<info_portion id="rf_art_spawn"></info_portion>
-
 	<info_portion id="give_rf_art_done"></info_portion>
-
 	<info_portion id="docs_rf_done"></info_portion>
-
 	<info_portion id="quest_talisman_have"></info_portion>
-
 	<info_portion id="dialog_give_talisman_done"></info_portion>
-
-	<info_portion id="find_rf_docs_start"><task>find_rf_docs</task><action>gz_prologue.rf_docs_spawns_in_box</action><article>infa_about_beglec</article><action>gz_prologue.diary_tip</action></info_portion>
-
+	<info_portion id="find_rf_docs_start">
+		<task>find_rf_docs</task>
+		<action>gz_prologue.rf_docs_spawns_in_box</action>
+		<article>infa_about_beglec</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="rf_docs_have">
-                <article>infa_pda_crazy_memuars</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
+		<article>infa_pda_crazy_memuars</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="rf_docs_give"></info_portion>
-<!-------------------------------- - квест с военными в рыжем лесу -  ------------------------------------------->
-
+	<!-- - квест с военными в рыжем лесу -  -->
 	<info_portion id="dv_kamaz_stalker_spawn"></info_portion>
 	<info_portion id="go_to_evacuation_zone_start">
-	<task>go_to_evacuation_zone</task></info_portion>
-
+		<task>go_to_evacuation_zone</task>
+	</info_portion>
 	<info_portion id="go_to_evacuation_zone_done"></info_portion>
-
 	<info_portion id="rf_talk_with_military_commander_complete"></info_portion>
-
 	<info_portion id="predatelstvo">
-	<task>kill_predateli</task><action>xr_effects.military_war</action></info_portion>
-
+		<task>kill_predateli</task>
+		<action>xr_effects.military_war</action>
+	</info_portion>
 	<info_portion id="predatelstvo_alt">
-	<task>kill_predateli_1</task><action>xr_effects.military_war</action></info_portion>
-
-	<info_portion id="predatelstvo_sms"><action>gz_sms.rf_mil_com_dead_sms</action></info_portion>
-
-	<info_portion id="predatelstvo_sms_gg"><action>gz_sms.rf_mil_com_dead_sms_gg</action></info_portion>
-
-	<info_portion id="kill_predateli_complete"><disable>predatel_commander_dead</disable><disable>predatel_dead_1</disable><disable>predatel_dead_2</disable><disable>predatel_dead_3</disable><disable>predatel_dead_4</disable></info_portion>
-
+		<task>kill_predateli_1</task>
+		<action>xr_effects.military_war</action>
+	</info_portion>
+	<info_portion id="predatelstvo_sms">
+		<action>gz_sms.rf_mil_com_dead_sms</action>
+	</info_portion>
+	<info_portion id="predatelstvo_sms_gg">
+		<action>gz_sms.rf_mil_com_dead_sms_gg</action>
+	</info_portion>
+	<info_portion id="kill_predateli_complete">
+		<disable>predatel_commander_dead</disable>
+		<disable>predatel_dead_1</disable>
+		<disable>predatel_dead_2</disable>
+		<disable>predatel_dead_3</disable>
+		<disable>predatel_dead_4</disable>
+	</info_portion>
 	<info_portion id="predatel_dead_1"></info_portion>
-
 	<info_portion id="predatel_commander_dead"></info_portion>
-
 	<info_portion id="predatel_dead_2"></info_portion>
-
 	<info_portion id="predatel_dead_3"></info_portion>
-
 	<info_portion id="predatel_dead_4"></info_portion>
-
 	<info_portion id="kill_predateli_done"></info_portion>
-
 	<info_portion id="find_pda_complete">
-	<action>gz_prologue.play_sound_pred_pda</action></info_portion>
-
+		<action>gz_prologue.play_sound_pred_pda</action>
+	</info_portion>
 	<info_portion id="have_pda_predat">
-        <article>infa_pda_major</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
-
+		<article>infa_pda_major</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="rf_cave_documents_start">
-	<task>rf_cave_documents</task><action>gz_sms.rf_mil_com_start_dung</action></info_portion>
-
+		<task>rf_cave_documents</task>
+		<action>gz_sms.rf_mil_com_start_dung</action>
+	</info_portion>
 	<info_portion id="rf_cave_documents_complete"></info_portion>
-
 	<info_portion id="rf_cave_docs_find_done"></info_portion>
-
-	<info_portion id="rf_cave_docs_find_sms"><action>gz_sms.rf_mil_find_docs_sms</action></info_portion>
-
-	<info_portion id="rf_cave_docs_find_com_sms"><action>gz_sms.rf_mil_com_docs_sms</action></info_portion>
-
+	<info_portion id="rf_cave_docs_find_sms">
+		<action>gz_sms.rf_mil_find_docs_sms</action>
+	</info_portion>
+	<info_portion id="rf_cave_docs_find_com_sms">
+		<action>gz_sms.rf_mil_com_docs_sms</action>
+	</info_portion>
 	<info_portion id="redfor_military_group_in_cave_1"></info_portion>
-
 	<info_portion id="redfor_military_group_in_cave"></info_portion>
-
-	<info_portion id="redfor_military_group_in_cave_sms"><action>gz_sms.rf_mil_com_find_sms</action></info_portion>
-
-
+	<info_portion id="redfor_military_group_in_cave_sms">
+		<action>gz_sms.rf_mil_com_find_sms</action>
+	</info_portion>
 	<info_portion id="rf_predat_scene_start"></info_portion>
-
 	<info_portion id="rf_predat_scene_remark_start"></info_portion>
-
 	<info_portion id="rf_predat_scene_end">
-	<action>xr_effects.military_war</action></info_portion>
-
+		<action>xr_effects.military_war</action>
+	</info_portion>
 	<info_portion id="rf_predat_scene_second">
-	<action>xr_effects.military_war</action><task>kill_predateli_2</task></info_portion>
-
+		<action>xr_effects.military_war</action>
+		<task>kill_predateli_2</task>
+	</info_portion>
 	<info_portion id="rf_military_group_to_cave"></info_portion>
-<!------------------------------------------------------------------>
-
-
-
-
-
-
-
-
-
-<!---------------------------- -Разное - -------------------------------------->
-
+	<!-- -->
+	<!-- -Разное - -->
 	<info_portion id="ds_doc_intro"></info_portion>
-
 	<info_portion id="yan_blokp_gate_open"></info_portion>
-
 	<info_portion id="dv_can_go_to_cheh"></info_portion>
-
 	<info_portion id="phone_kain_call_start"></info_portion>
-
 	<info_portion id="kain_test"></info_portion>
-
 	<info_portion id="kill_zal_sciens"></info_portion>
-
 	<info_portion id="ds_blokp_gate_open"></info_portion>
-
 	<info_portion id="enter_to_dolgbase_is_open"></info_portion>
-<!------------------------------------------------------------------>
+	<!-- -->
 	<info_portion id="dv_cheh_wait"></info_portion>
-
 	<info_portion id="dv_cheh_guard_way_open"></info_portion>
-
 	<info_portion id="dialog_luk_end"></info_portion>
-
 	<info_portion id="agr_krylov_wait"></info_portion>
-
-<!-------------------------------- - Ветка сюжета с альтернативным входом -  -------------------------->
-<!-- Диггер на агропроме --->
+	<!-- - Ветка сюжета с альтернативным входом -  -->
+	<!-- Диггер на агропроме -->
 	<info_portion id="agr_talk_with_ds_digger_start">
-	<task>agr_ds_digger_meet</task></info_portion>
-
+		<task>agr_ds_digger_meet</task>
+	</info_portion>
 	<info_portion id="agr_talk_with_ds_digger_done"></info_portion>
-
 	<info_portion id="actor_enemy_dolgbase"></info_portion>
-
-
-<!-- Альтернативный вход -->
+	<!-- Альтернативный вход -->
 	<info_portion id="alt_enter_in_agr_underground_start">
-		<task>alt_enter_in_agr_underground</task><action>gz_sms.agr_dolg_guards_stop</action>
+		<task>alt_enter_in_agr_underground</task>
+		<action>gz_sms.agr_dolg_guards_stop</action>
 	</info_portion>
-
-	<info_portion id="alt_enter_in_agr_underground_done">
-	</info_portion>
-
-<!-- Диггер -->
+	<info_portion id="alt_enter_in_agr_underground_done"></info_portion>
+	<!-- Диггер -->
 	<info_portion id="gar_digger_meet_start">
-	<task>gar_digger_meet</task></info_portion>
-
+		<task>gar_digger_meet</task>
+	</info_portion>
 	<info_portion id="gar_digger_meet_done"></info_portion>
-
 	<info_portion id="gar_digger_talk_done"></info_portion>
-
-        <info_portion id="find_tainik_black_digger_done"></info_portion>
-
-        <info_portion id="find_tainik_maps_black_digger">
-        <action>gz_caches.gz_map_gar_dig_1_dell</action>
-        <action>gz_caches.gz_map_gar_dig_2_dell</action>
-        <action>gz_caches.gz_map_gar_dig_3_dell</action>
-        </info_portion>
-
-        <info_portion id="give_maps_otello"></info_portion>
-
-        <info_portion id="gar_find_black_digger_start">
-        <task>find_nigger_digger_tainik</task>
-        </info_portion>
-
-<!-- Динамит -->
+	<info_portion id="find_tainik_black_digger_done"></info_portion>
+	<info_portion id="find_tainik_maps_black_digger">
+		<action>gz_caches.gz_map_gar_dig_1_dell</action>
+		<action>gz_caches.gz_map_gar_dig_2_dell</action>
+		<action>gz_caches.gz_map_gar_dig_3_dell</action>
+	</info_portion>
+	<info_portion id="give_maps_otello"></info_portion>
+	<info_portion id="gar_find_black_digger_start">
+		<task>find_nigger_digger_tainik</task>
+	</info_portion>
+	<!-- Динамит -->
 	<info_portion id="gar_find_dynamit_start"></info_portion>
-	<info_portion id="gar_find_dynamit_true"><task>gar_find_dynamit</task></info_portion>
-
+	<info_portion id="gar_find_dynamit_true">
+		<task>gar_find_dynamit</task>
+	</info_portion>
 	<info_portion id="gar_find_dynamit_done"></info_portion>
-
 	<info_portion id="gar_transfer_dynamit_done"></info_portion>
-
-<!-- Вспомогательные поршни -->
-
-	<info_portion id="dynamit_blowup"><action>xr_effects.blowup_sound</action></info_portion>
-
-	<info_portion id="dynamit_timer_start"><action>gz_prologue.dell_gar_dinamit</action></info_portion>
-
+	<!-- Вспомогательные поршни -->
+	<info_portion id="dynamit_blowup">
+		<action>xr_effects.blowup_sound</action>
+	</info_portion>
+	<info_portion id="dynamit_timer_start">
+		<action>gz_prologue.dell_gar_dinamit</action>
+	</info_portion>
 	<info_portion id="gar_digger_dead"></info_portion>
-<!------------------------------------------------------------------------------------------------------------>
-<!-------------------------------- - Несюжетные квесты -  -------------------------->
-<!-- Группа диггеров -->
+	<!-- -->
+	<!-- - Несюжетные квесты -  -->
+	<!-- Группа диггеров -->
 	<info_portion id="ds_lost_diggers_start">
-	<task>ds_lost_diggers</task></info_portion>
-
+		<task>ds_lost_diggers</task>
+	</info_portion>
 	<info_portion id="ds_lost_diggers_find_gas"></info_portion>
-
 	<info_portion id="ds_ugr_diggers_otkaz"></info_portion>
-
 	<info_portion id="ds_lost_diggers_done"></info_portion>
-
 	<info_portion id="dialog_woundig1_end"></info_portion>
-
 	<info_portion id="dialog_woundig2_end"></info_portion>
-
 	<info_portion id="dialog_woundig3_end"></info_portion>
-
 	<info_portion id="diary_wounded_digger_have"></info_portion>
-
 	<info_portion id="diary_dead_digger1_have"></info_portion>
-
 	<info_portion id="diary_dead_digger2_have"></info_portion>
-
 	<info_portion id="diary_suicide_digger_have"></info_portion>
-
 	<info_portion id="suiddigger_kill_youself"></info_portion>
-
 	<info_portion id="ds_suiddigger_dead"></info_portion>
-
 	<info_portion id="quest_diary_wounded_digger_have">
-        <article>storyline_soz_ugr_info</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
+		<article>storyline_soz_ugr_info</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="quest_diary_dead_digger1_have">
-        <article>storyline_soz_syt_info</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
+		<article>storyline_soz_syt_info</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="quest_diary_dead_digger2_have">
-        <article>storyline_soz_gimli_info</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
+		<article>storyline_soz_gimli_info</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="quest_diary_suicide_digger_have">
-        <article>storyline_soz_grek_info</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
+		<article>storyline_soz_grek_info</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="find_all_diaryes_have"></info_portion>
-
 	<info_portion id="all_diaryes_transfer">
-        <article>storyline_soz_cave_info</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
-
-
-<!---------------------------- -Янтарь - -------------------------------------->
-
+		<article>storyline_soz_cave_info</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<!-- -Янтарь - -->
 	<info_portion id="yan_controller_spawn"></info_portion>
-
-<!---------------------------- -Капище - -------------------------------------->
-
+	<!-- -Капище - -->
 	<info_portion id="kapishce_teleport_start"></info_portion>
-
 	<info_portion id="kapishce_teleport_cancel"></info_portion>
-
 	<info_portion id="ds_kapische_first_teleport_done"></info_portion>
-
 	<info_portion id="ds_kapische_cutscene_end">
-        <article>storyline_soz_capish_info</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
+		<article>storyline_soz_capish_info</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="isk_kap_stalker_remark"></info_portion>
-
 	<info_portion id="ds_kap_stalker_meet_done"></info_portion>
-
 	<info_portion id="ds_kap_video_stop"></info_portion>
-
-
-<!--------------------------------------------------------------------------------->
-
-<!---------------------------- - для бандитов под мостом на дс - -------------------------------------->
-
+	<!-- -->
+	<!-- - для бандитов под мостом на дс - -->
 	<info_portion id="ds_rob_actor_enter"></info_portion>
-
 	<info_portion id="ds_rob_buying">
-        <article>storyline_soz_most_info</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
+		<article>storyline_soz_most_info</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="ds_rob_no_money"></info_portion>
-
 	<info_portion id="ds_rob_spawn_money"></info_portion>
-
 	<info_portion id="ds_rob_pass_fire"></info_portion>
-
-<!---------------------------- - для сценки у камаза - -------------------------------------->
-
+	<!-- - для сценки у камаза - -->
 	<info_portion id="ds_stalker_save_thanks"></info_portion>
-	
 	<info_portion id="ds_kamaz_dogs_dog1_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_dogs_dog2_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_dogs_dog3_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_dogs_dog4_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_dogs_dog5_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_dogs_dog6_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog1_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog2_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog3_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog4_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog5_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog6_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog7_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog8_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog9_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_dog10_dead"></info_portion>
-
 	<info_portion id="ds_kamaz_pseudodogs_all_dead"></info_portion>
-
 	<info_portion id="dv_kamaz_stalker_ready_to_spawn"></info_portion>
-
 	<info_portion id="ds_kamaz_stalker_spawn"></info_portion>
-
 	<info_portion id="ds_kamaz_stalker_dead"></info_portion>
-
-
-
-<!---------------------------- - охотники в рыжем лесу - -------------------------------------->
-	<info_portion id="rf_hunters_actor_ready_to_help"><task>rf_hunters_join_to_hunters</task></info_portion>
-
-	<info_portion id="rf_hunters_kill_gigant_start"><task>rf_hunters_kill_gigant</task></info_portion>
-
-	<info_portion id="rf_hunters_kill_gigant_done"><action>gz_sms.rf_hunt_sms_3</action></info_portion>
-
+	<!-- - охотники в рыжем лесу - -->
+	<info_portion id="rf_hunters_actor_ready_to_help">
+		<task>rf_hunters_join_to_hunters</task>
+	</info_portion>
+	<info_portion id="rf_hunters_kill_gigant_start">
+		<task>rf_hunters_kill_gigant</task>
+	</info_portion>
+	<info_portion id="rf_hunters_kill_gigant_done">
+		<action>gz_sms.rf_hunt_sms_3</action>
+	</info_portion>
 	<info_portion id="rf_hunters_actor_dialog_done"></info_portion>
-
-	<info_portion id="rf_hunters_actor_dialog_start"><action>gz_sms.rf_hunt_sms</action><task>rf_hunters_talk</task></info_portion>
-
+	<info_portion id="rf_hunters_actor_dialog_start">
+		<action>gz_sms.rf_hunt_sms</action>
+		<task>rf_hunters_talk</task>
+	</info_portion>
 	<info_portion id="rf_dynamites_timer_start"></info_portion>
-
 	<info_portion id="rf_dynamit_1_blowup"></info_portion>
-
 	<info_portion id="rf_dynamit_2_blowup"></info_portion>
-
 	<info_portion id="rf_dynamit_3_blowup"></info_portion>
-
-
 	<info_portion id="rf_go_to_hunters_done"></info_portion>
-
 	<info_portion id="rf_hunters_join_to_hunters_done"></info_portion>
-
-	<info_portion id="rf_hunters_go_to_positions"><action>gz_sms.rf_hunt_sms_2</action></info_portion>
-
+	<info_portion id="rf_hunters_go_to_positions">
+		<action>gz_sms.rf_hunt_sms_2</action>
+	</info_portion>
 	<info_portion id="rf_hunters_actor_on_position"></info_portion>
-
 	<info_portion id="rf_hunter_leader_on_pos"></info_portion>
-
 	<info_portion id="rf_hunter1_on_pos"></info_portion>
-
 	<info_portion id="rf_hunter2_on_pos"></info_portion>
-
 	<info_portion id="rf_small_giant_dell"></info_portion>
-
 	<info_portion id="rf_hunter3_on_pos"></info_portion>
-
 	<info_portion id="rf_all_hunters_on_pos"></info_portion>
-
 	<info_portion id="rf_leader_remark_ready"></info_portion>
-
 	<info_portion id="rf_gigant_spawn"></info_portion>
-
 	<info_portion id="rf_gigant_attack"></info_portion>
-
 	<info_portion id="rf_gigant_to_home"></info_portion>
-
 	<info_portion id="rf_hunters_have_trophey"></info_portion>
-
 	<info_portion id="rf_hunters_transfer_trophey"></info_portion>
-
 	<info_portion id="rf_hunters_open_fire"></info_portion>
-
-
-
-<!---- Поршни новое --->
-
-	<info_portion id="dv_talk_with_chehov_start"><task>dv_talk_with_chehov</task></info_portion>
-
+	<!-- Поршни новое -->
+	<info_portion id="dv_talk_with_chehov_start">
+		<task>dv_talk_with_chehov</task>
+	</info_portion>
 	<info_portion id="dv_talk_with_chehov_done"></info_portion>
-
-<!-------------------------------- - квест с маячками-  -------------------------->
+	<!-- - квест с маячками-  -->
 	<info_portion id="start_find_dolgs_t">
-<action>gz_caches.dv_dolg_t1</action>
-<action>gz_caches.dv_dolg_t2</action>
-<action>gz_caches.dv_dolg_t3</action>
-	 <task>find_dolgs_t</task>
+		<action>gz_caches.dv_dolg_t1</action>
+		<action>gz_caches.dv_dolg_t2</action>
+		<action>gz_caches.dv_dolg_t3</action>
+		<task>find_dolgs_t</task>
 	</info_portion>
 	<info_portion id="dialog_dolgs_2"></info_portion>
-    <info_portion id="dolgs_t_1"><action>gz_caches.dv_dolg_t1_dell</action></info_portion>
-    <info_portion id="dolgs_t_1_have"></info_portion>
-    <info_portion id="dolgs_t_2"><action>gz_caches.dv_dolg_t2_dell</action></info_portion>
-    <info_portion id="dolgs_t_2_have"></info_portion>
-    <info_portion id="dolgs_t_3"><action>gz_caches.dv_dolg_t3_dell</action></info_portion>
-    <info_portion id="dolgs_t_3_have"></info_portion>
-
-<!-------------------квест с Долгом на ДВ---------------------------------->
-
-
-
-
-	<info_portion id="return_night_start">
-	<task>return_night</task></info_portion>
-
-        <info_portion id="find_tainik_dialog"></info_portion>
-
-	<info_portion id="help_dv_dolg_failed"></info_portion>
-
-
-
-
-
-        <info_portion id="dv_dolg_time_true"></info_portion>
-
-	<info_portion id="dv_dolg_group_sbor"><task>dv_dolg_sms_zavod_task</task></info_portion>
-
-	<info_portion id="racia_dolg_fail"></info_portion>
-
-
-
-        <info_portion id="info_time_scale"></info_portion>
-
-
-
-	<info_portion id="dv_talk_dolggroup_done"></info_portion>
-
-        <info_portion id="dv_talk_vernutsia">
-        <article>storyline_soz_dolg_info</article>
-<action>gz_prologue.diary_tip</action>
-        </info_portion>
-
-
-
-        <info_portion id="dialog_dv_dolg_rush_done"></info_portion>
-	<!--------------------------------Рация от Долга------------------------------------------>
-        <info_portion id="contact_with_base_start">
-        <task>contact_with_base</task>
-        </info_portion>
-
-
-<!-- - Атака долга на грех -  -->
-
-	<info_portion id="dv_dolg_group_rush_start"><task>dv_dolg_grehbase_rush</task></info_portion>
-
-	<info_portion id="dv_dolg_grehbase_rush_done"></info_portion>
-
-
-	<info_portion id="dv_help_dolg_group_give">
-	 <task>help_dolg_group</task>
+	<info_portion id="dolgs_t_1">
+		<action>gz_caches.dv_dolg_t1_dell</action>
 	</info_portion>
-
+	<info_portion id="dolgs_t_1_have"></info_portion>
+	<info_portion id="dolgs_t_2">
+		<action>gz_caches.dv_dolg_t2_dell</action>
+	</info_portion>
+	<info_portion id="dolgs_t_2_have"></info_portion>
+	<info_portion id="dolgs_t_3">
+		<action>gz_caches.dv_dolg_t3_dell</action>
+	</info_portion>
+	<info_portion id="dolgs_t_3_have"></info_portion>
+	<!--квест с Долгом на ДВ-->
+	<info_portion id="return_night_start">
+		<task>return_night</task>
+	</info_portion>
+	<info_portion id="find_tainik_dialog"></info_portion>
+	<info_portion id="help_dv_dolg_failed"></info_portion>
+	<info_portion id="dv_dolg_time_true"></info_portion>
+	<info_portion id="dv_dolg_group_sbor">
+		<task>dv_dolg_sms_zavod_task</task>
+	</info_portion>
+	<info_portion id="racia_dolg_fail"></info_portion>
+	<info_portion id="info_time_scale"></info_portion>
+	<info_portion id="dv_talk_dolggroup_done"></info_portion>
+	<info_portion id="dv_talk_vernutsia">
+		<article>storyline_soz_dolg_info</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="dialog_dv_dolg_rush_done"></info_portion>
+	<!--Рация от Долга-->
+	<info_portion id="contact_with_base_start">
+		<task>contact_with_base</task>
+	</info_portion>
+	<!-- - Атака долга на грех -  -->
+	<info_portion id="dv_dolg_group_rush_start">
+		<task>dv_dolg_grehbase_rush</task>
+	</info_portion>
+	<info_portion id="dv_dolg_grehbase_rush_done"></info_portion>
+	<info_portion id="dv_help_dolg_group_give">
+		<task>help_dolg_group</task>
+	</info_portion>
 	<info_portion id="dv_dolg_contrgreh_spawn_controller_start"></info_portion>
-
 	<info_portion id="dv_dolg_grehbase_rush_all_on_pos"></info_portion>
-
-
 	<info_portion id="dv_dolg_group_all_ready_to_rush"></info_portion>
-
 	<info_portion id="dv_dolg_group_dolg1_ready_to_rush"></info_portion>
-
 	<info_portion id="dv_dolg_group_dolg2_ready_to_rush"></info_portion>
-
 	<info_portion id="dv_dolg_group_dolg3_ready_to_rush"></info_portion>
-
 	<info_portion id="dv_dolg_group_dolg4_ready_to_rush"></info_portion>
-
-        <info_portion id="kuprian_dead"></info_portion>
-
-        <info_portion id="kalash_sms"></info_portion>
-
+	<info_portion id="kuprian_dead"></info_portion>
+	<info_portion id="kalash_sms"></info_portion>
 	<info_portion id="find_art_depo_fail"></info_portion>
-
-
-<!-- Основной сюжет с Долгом на Агропроме (новая версия)  -->
-
-<!--- --->
+	<!-- Основной сюжет с Долгом на Агропроме (новая версия)  -->
+	<!-- -->
 	<info_portion id="go_to_agroprom_start">
-	<task>gar_go_to_agroprom</task></info_portion>
-
+		<task>gar_go_to_agroprom</task>
+	</info_portion>
 	<info_portion id="agr_go_to_agroprom_done"></info_portion>
-
-        <info_portion id="agr_dolg_guards_stop"></info_portion>
-
+	<info_portion id="agr_dolg_guards_stop"></info_portion>
 	<info_portion id="agr_dolgbase_information_have"></info_portion>
-<!--- --->
+	<!-- -->
 	<info_portion id="agr_pass_to_dolgbase_start">
-	<task>agr_pass_to_dolgbase</task></info_portion>
-
+		<task>agr_pass_to_dolgbase</task>
+	</info_portion>
 	<info_portion id="agr_talk_with_blokpost_commander_done"></info_portion>
-
 	<info_portion id="agr_pass_to_dolgbase_have"></info_portion>
-
 	<info_portion id="agr_pass_to_dolgbase_fail"></info_portion>
-
-<!--- --->
+	<!-- -->
 	<info_portion id="agr_kill_flock_of_mutants_start">
-	<task>agr_kill_flock_of_mutants</task></info_portion>
-
+		<task>agr_kill_flock_of_mutants</task>
+	</info_portion>
 	<info_portion id="agr_flock_of_mutants_dead_1"></info_portion>
-
 	<info_portion id="agr_flock_of_mutants_dead_2"></info_portion>
-
 	<info_portion id="agr_flock_of_mutants_dead_3"></info_portion>
-
 	<info_portion id="agr_flock_of_mutants_dead_4"></info_portion>
-
 	<info_portion id="agr_kill_flock_of_mutants_done"></info_portion>
-
 	<info_portion id="agr_report_about_result_to_blokpost_commander_done"></info_portion>
-
-<!--- --->
+	<!-- -->
 	<info_portion id="agr_conversation_with_dolg_general_start">
-	<task>agr_conversation_with_dolg_general</task></info_portion>
-
+		<task>agr_conversation_with_dolg_general</task>
+	</info_portion>
 	<info_portion id="agr_talk_with_security_chief_done"></info_portion>
-
 	<info_portion id="agr_security_chief_pass_have"></info_portion>
-
 	<info_portion id="agr_go_to_dolg_general_done"></info_portion>
-
 	<info_portion id="agr_conversation_with_dolg_general_done"></info_portion>
-
-<!--- --->
+	<!-- -->
 	<info_portion id="agr_general_sent_to_underground">
-	<task>cap_in_underground</task></info_portion>
-<!--- --->
+		<task>cap_in_underground</task>
+	</info_portion>
+	<!-- -->
 	<info_portion id="agr_digger_need_way"></info_portion>
-
 	<info_portion id="agr_digger_need_way_done"></info_portion>
-<!--- --->
+	<!-- -->
 	<info_portion id="agr_third_branch_storyline_on_agr"></info_portion>
-
 	<info_portion id="agr_pass_to_dolgbase_message">
-	<action>gz_sms.agr_pass_to_dolgbase_message</action></info_portion>
-
-
-<!--- --->
+		<action>gz_sms.agr_pass_to_dolgbase_message</action>
+	</info_portion>
+	<!-- -->
 	<info_portion id="agr_cat_hunt_1_dead"></info_portion>
-
 	<info_portion id="agr_cat_hunt_cutscene_start"></info_portion>
-
 	<info_portion id="agr_cat_hunt_cutscene_end"></info_portion>
-
 	<info_portion id="agr_cat_hunt_quest_start">
-		<task>agr_cat_hunt</task></info_portion>
-
-
-
-
-
-
-
-
-
+		<task>agr_cat_hunt</task>
+	</info_portion>
 	<info_portion id="enter_to_dolglider_complete"></info_portion>
-
 	<info_portion id="talk_with_dolglider_about_cap_complete"></info_portion>
-
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-<!--------------------------------------------------*** Сюжетная линия ***--------------------------------------------------------------->
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-<!--------------------------------------------------*** Агропром ***------------------------------------------------------------------------>
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-
+	<!-- -->
+	<!-- -->
+	<!--*** Сюжетная линия ***-->
+	<!-- -->
+	<!-- -->
+	<!-- -->
+	<!--*** Агропром ***-->
+	<!-- -->
 	<info_portion id="agr_kalash_dialog_about_general_end"></info_portion>
-
 	<info_portion id="agr_kalash_message_to_guards_commander"></info_portion>
-
 	<info_portion id="agr_kalash_raciya_end"></info_portion>
-
-
-
-
-
-
-
-
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-<!-----------------------------------------------------** Янтарь **----------------------------------------------------------------------------->
-<!----------------------------------------------------------* Квесты в ожидании учёного *---------------------------------------------------------------------------------------->
-         <info_portion id="find_noyt_in_old_lab_start">
-	<task>find_noyt_in_old_lab</task></info_portion>
-
-        <info_portion id="open_door_in_lab_done"></info_portion>
-
-        <info_portion id="find_noyt_in_lab_done">
-		 <action>gz_tasks.give_info_noyt</action>
-		</info_portion>
-
-        <info_portion id="close_door"></info_portion>
-
-        <info_portion id="close_bunker_door"></info_portion>
-
-        <info_portion id="give_noyt_from_lab_done"></info_portion>
-
-                <info_portion id="give_helm_gaz"></info_portion>
-
-<!--------------------------------------------------* смс-ки ученого *----------------------------------------------------------------------------->
-        <info_portion id="kill_fracture"></info_portion>
-
-        <info_portion id="yan_find_noyt_sms">
-        <action>gz_sms.yan_find_noyt_sms</action>
-        </info_portion>
-
-        <info_portion id="yan_find_noyt_done_sms">
-        </info_portion>
-
-        <info_portion id="yan_fuck_the_doors_sms">
-        <action>gz_sms.yan_fuck_the_doors_sms</action>
-        </info_portion>
-
-        <info_portion id="open_door">
-        <action>gz_sms.yan_open_door_sms</action>
-        </info_portion>
-
-        <info_portion id="open_door_done"></info_portion>
-<!--------------------------------------------------* гоп-стоп *----------------------------------------------------------------------------->
-        <info_portion id="yan_spawn_bandit">
-        <action>gz_sms.yan_sos_bandits_sms</action>
-        <task>yan_sos_signal</task>
-        </info_portion>
-
-        <info_portion id="sos_bandit_lead"></info_portion>
-
-        <info_portion id="yan_zombi_off"></info_portion>
-
-        <info_portion id="yan_sos_bandit_otshili"></info_portion>
-
-        <info_portion id="dell_yan_sos_bandit"></info_portion>
-
-        <info_portion id="punch_in_face"></info_portion>
-
-        <info_portion id="talk_with_sos_bandit"></info_portion>
-
-        <info_portion id="dialog_sos_bandit_done"></info_portion>
-
-        <info_portion id="dialog_sos_bandit_test"></info_portion>
-
-        <info_portion id="find_your_loot_done"></info_portion>
-
-        <info_portion id="yan_grab_bandit"></info_portion>
-
-        <info_portion id="find_your_loot_test"><action>gz_tasks.v_mordu</action></info_portion>
-
-        <info_portion id="yan_sos_bandit_in_rest"></info_portion>
-
-        <info_portion id="yan_sos_bandit_player_in_house"></info_portion>
-
-        <info_portion id="yan_sos_actor_vrag"></info_portion>
-
-        <info_portion id="yan_sos_in_house_spawn_bandit"></info_portion>
-        <info_portion id="yan_sos_in_house_popal_sms"><action>gz_sms.yan_sos_in_house_popal_sms</action></info_portion>
-
-        <info_portion id="yan_sos_in_house"><action>gz_sms.yan_sos_in_house_sms</action></info_portion>
-
-        <info_portion id="find_your_loot">
-        <task>yan_find_loot</task>
-        <action>xr_effects.yan_grab_bandit_talk</action>
-        </info_portion>
-
-        <info_portion id="find_your_loot_sms">
-        <action>xr_effects.yan_grab_bandit_talk</action>
-        </info_portion>
-
-
-
-
-<!--------------------------------------------------* Спасаем учёного *----------------------------------------------------------------------------->
-
-	<info_portion id="lead_agr_scien_start"><task>lead_agr_scien</task></info_portion>
-
-
-
-
-
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-<!--------------------------------------------------*** Залесие ***-------------------------------------------------------------------------->
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
+	<!-- -->
+	<!--** Янтарь **-->
+	<!--* Квесты в ожидании учёного *-->
+	<info_portion id="find_noyt_in_old_lab_start">
+		<task>find_noyt_in_old_lab</task>
+	</info_portion>
+	<info_portion id="open_door_in_lab_done"></info_portion>
+	<info_portion id="find_noyt_in_lab_done">
+		<action>gz_tasks.give_info_noyt</action>
+	</info_portion>
+	<info_portion id="close_door"></info_portion>
+	<info_portion id="close_bunker_door"></info_portion>
+	<info_portion id="give_noyt_from_lab_done"></info_portion>
+	<info_portion id="give_helm_gaz"></info_portion>
+	<!--* смс-ки ученого *-->
+	<info_portion id="kill_fracture"></info_portion>
+	<info_portion id="yan_find_noyt_sms">
+		<action>gz_sms.yan_find_noyt_sms</action>
+	</info_portion>
+	<info_portion id="yan_find_noyt_done_sms"></info_portion>
+	<info_portion id="yan_fuck_the_doors_sms">
+		<action>gz_sms.yan_fuck_the_doors_sms</action>
+	</info_portion>
+	<info_portion id="open_door">
+		<action>gz_sms.yan_open_door_sms</action>
+	</info_portion>
+	<info_portion id="open_door_done"></info_portion>
+	<!--* гоп-стоп *-->
+	<info_portion id="yan_spawn_bandit">
+		<action>gz_sms.yan_sos_bandits_sms</action>
+		<task>yan_sos_signal</task>
+	</info_portion>
+	<info_portion id="sos_bandit_lead"></info_portion>
+	<info_portion id="yan_zombi_off"></info_portion>
+	<info_portion id="yan_sos_bandit_otshili"></info_portion>
+	<info_portion id="dell_yan_sos_bandit"></info_portion>
+	<info_portion id="punch_in_face"></info_portion>
+	<info_portion id="talk_with_sos_bandit"></info_portion>
+	<info_portion id="dialog_sos_bandit_done"></info_portion>
+	<info_portion id="dialog_sos_bandit_test"></info_portion>
+	<info_portion id="find_your_loot_done"></info_portion>
+	<info_portion id="yan_grab_bandit"></info_portion>
+	<info_portion id="find_your_loot_test">
+		<action>gz_tasks.v_mordu</action>
+	</info_portion>
+	<info_portion id="yan_sos_bandit_in_rest"></info_portion>
+	<info_portion id="yan_sos_bandit_player_in_house"></info_portion>
+	<info_portion id="yan_sos_actor_vrag"></info_portion>
+	<info_portion id="yan_sos_in_house_spawn_bandit"></info_portion>
+	<info_portion id="yan_sos_in_house_popal_sms">
+		<action>gz_sms.yan_sos_in_house_popal_sms</action>
+	</info_portion>
+	<info_portion id="yan_sos_in_house">
+		<action>gz_sms.yan_sos_in_house_sms</action>
+	</info_portion>
+	<info_portion id="find_your_loot">
+		<task>yan_find_loot</task>
+		<action>xr_effects.yan_grab_bandit_talk</action>
+	</info_portion>
+	<info_portion id="find_your_loot_sms">
+		<action>xr_effects.yan_grab_bandit_talk</action>
+	</info_portion>
+	<!--* Спасаем учёного *-->
+	<info_portion id="lead_agr_scien_start">
+		<task>lead_agr_scien</task>
+	</info_portion>
+	<!-- -->
+	<!--*** Залесие ***-->
+	<!-- -->
 	<info_portion id="zal_puncher_spawn"></info_portion>
-
-
-
-
-
-
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-<!--------------------------------------------------*** Лаба Х-13 ***------------------------------------------------------------------------>
-<!-------------------------------------------------------------------------------------------------------------------------------------------------->
-
-	<info_portion id="activate_gener_start"><task>activate_gener</task><action>gz_laba.LiftDoorDelete</action></info_portion>
-
-	<info_portion id="activate_gener_done"><task>open_germodoor</task><action>gz_laba.put_50</action></info_portion>
-
+	<!-- -->
+	<!--*** Лаба Х-13 ***-->
+	<!-- -->
+	<info_portion id="activate_gener_start">
+		<task>activate_gener</task>
+		<action>gz_laba.LiftDoorDelete</action>
+	</info_portion>
+	<info_portion id="activate_gener_done">
+		<task>open_germodoor</task>
+		<action>gz_laba.put_50</action>
+	</info_portion>
 	<info_portion id="activate_psy_zone_done"></info_portion>
-
 	<info_portion id="find_gener_done"></info_portion>
-
-	<info_portion id="open_germodoor_done"><action>gz_laba.GermoDoorDelete</action><task>lab_find_flash</task></info_portion>
-
-	<info_portion id="gg_was_in_anomal"><action>gz_laba.drop_items</action></info_portion>
-
-	<info_portion id="lab_gg_force"><action>gz_laba.force_actor</action></info_portion>
-
+	<info_portion id="open_germodoor_done">
+		<action>gz_laba.GermoDoorDelete</action>
+		<task>lab_find_flash</task>
+	</info_portion>
+	<info_portion id="gg_was_in_anomal">
+		<action>gz_laba.drop_items</action>
+	</info_portion>
+	<info_portion id="lab_gg_force">
+		<action>gz_laba.force_actor</action>
+	</info_portion>
 	<info_portion id="lab_keng_attack"></info_portion>
-
-	<info_portion id="lab_torch_spawn"><action>gz_laba.give_torch</action></info_portion>
-
+	<info_portion id="lab_torch_spawn">
+		<action>gz_laba.give_torch</action>
+	</info_portion>
 	<info_portion id="lab_stroyka_key_have"></info_portion>
-
 	<info_portion id="lift_door_force"></info_portion>
-
-	<info_portion id="gz_game_over"><action>gz_laba.gzGameOver</action></info_portion>
-
+	<info_portion id="gz_game_over">
+		<action>gz_laba.gzGameOver</action>
+	</info_portion>
 	<info_portion id="gg_about_anomaly"></info_portion>
-
 	<info_portion id="spawn_zombies_1"></info_portion>
-
 	<info_portion id="spawn_zombies_2"></info_portion>
-
-
-
-	<info_portion id="lab_scien_trup"><task>lab_find_flash</task></info_portion>
-
-	<info_portion id="find_lab_flash_done"><action>gz_prologue.diary_tip</action></info_portion>
-
-	<info_portion id="the_last_diary"><article>infa_about_destiny</article></info_portion>
-
+	<info_portion id="lab_scien_trup">
+		<task>lab_find_flash</task>
+	</info_portion>
+	<info_portion id="find_lab_flash_done">
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="the_last_diary">
+		<article>infa_about_destiny</article>
+	</info_portion>
 	<info_portion id="fuck_scien_trup"></info_portion>
-	<info_portion id="fuck_scien_trup_sms_1"><action>gz_laba.fuck_scien_trup_1</action></info_portion>
-	<info_portion id="fuck_scien_trup_sms_2"><action>gz_laba.fuck_scien_trup_1</action></info_portion>
-
-	<info_portion id="gg_about_byurrer"><action>gz_laba.fuck_scien_trup_1</action></info_portion>
-
-
-<!------------------------------------------------------------------>
-
-
-
-
-<!------------------------------------------------------------------>
-	<info_portion id="exit_from_underground_start"><task>exit_from_underground</task></info_portion>
-
-	<info_portion id="exit_from_underground_complete"><action>xr_effects.game_end</action></info_portion>
-
-    <info_portion id="dialog_about_dv_done"></info_portion>
-
-    <info_portion id="dv_kamaz_done"></info_portion>
-
-    <info_portion id="alt_wounded_stalk"></info_portion>
-
-    <info_portion id="lukash_pogovorili_2"></info_portion>
-
-
-
-
-<!--------------------------------------------------* Квест с Филином *----------------------------------------------------------------------------->
-	<info_portion id="agr_quest_guide_start"><task>agr_quest_guide</task></info_portion>
-
+	<info_portion id="fuck_scien_trup_sms_1">
+		<action>gz_laba.fuck_scien_trup_1</action>
+	</info_portion>
+	<info_portion id="fuck_scien_trup_sms_2">
+		<action>gz_laba.fuck_scien_trup_1</action>
+	</info_portion>
+	<info_portion id="gg_about_byurrer">
+		<action>gz_laba.fuck_scien_trup_1</action>
+	</info_portion>
+	<!-- -->
+	<!-- -->
+	<info_portion id="exit_from_underground_start">
+		<task>exit_from_underground</task>
+	</info_portion>
+	<info_portion id="exit_from_underground_complete">
+		<action>xr_effects.game_end</action>
+	</info_portion>
+	<info_portion id="dialog_about_dv_done"></info_portion>
+	<info_portion id="dv_kamaz_done"></info_portion>
+	<info_portion id="alt_wounded_stalk"></info_portion>
+	<info_portion id="lukash_pogovorili_2"></info_portion>
+	<!--* Квест с Филином *-->
+	<info_portion id="agr_quest_guide_start">
+		<task>agr_quest_guide</task>
+	</info_portion>
 	<info_portion id="agr_quest_guide_complete"></info_portion>
-
 	<info_portion id="agr_filin_dead"></info_portion>
-
 	<info_portion id="agr_filin_spawn_pseudodogs"></info_portion>
-
 	<info_portion id="agr_filin_pseudodog_1_dead"></info_portion>
-
 	<info_portion id="agr_filin_pseudodog_2_dead"></info_portion>
-
 	<info_portion id="agr_filin_pseudodog_3_dead"></info_portion>
-
 	<info_portion id="agr_filin_spawn_boars"></info_portion>
-
 	<info_portion id="agr_filin_boar_1_dead"></info_portion>
-
 	<info_portion id="agr_filin_boar_2_dead"></info_portion>
-
 	<info_portion id="agr_filin_boar_3_dead"></info_portion>
-
 	<info_portion id="agr_filin_boar_4_dead"></info_portion>
-
 	<info_portion id="agr_filin_boar_5_dead"></info_portion>
-
 	<info_portion id="agr_filin_spawn_dogs"></info_portion>
-
 	<info_portion id="agr_filin_dog_1_dead"></info_portion>
-
 	<info_portion id="agr_filin_dog_2_dead"></info_portion>
-
 	<info_portion id="agr_filin_dog_3_dead"></info_portion>
-
 	<info_portion id="agr_filin_dog_4_dead"></info_portion>
-
 	<info_portion id="agr_filin_dog_5_dead"></info_portion>
-
 	<info_portion id="agr_filin_dog_6_dead"></info_portion>
-
 	<info_portion id="agr_filin_dog_7_dead"></info_portion>
-
 	<info_portion id="dialog_agr_filin_thanks_done"></info_portion>
-
-
-<!--------------------------------------------------* Квест "Болотные твари" *----------------------------------------------------------------------------->
-	<info_portion id="agr_marsh_monsters_start"><task>agr_quest_marsh_monsters</task></info_portion>
-
+	<!--* Квест "Болотные твари" *-->
+	<info_portion id="agr_marsh_monsters_start">
+		<task>agr_quest_marsh_monsters</task>
+	</info_portion>
 	<info_portion id="agr_marsh_monsters_complete"></info_portion>
-
 	<info_portion id="agr_marsh_monsters_sniperka_complete"></info_portion>
-
 	<info_portion id="agr_marsh_monsters_position_complete"></info_portion>
-
 	<info_portion id="agr_marsh_monsters_wait_complete"></info_portion>
-
-	<info_portion id="agr_marsh_monsters_contr_spawn"><action>gz_sms.agr_swamp_zomsie_sms</action></info_portion>
-
-	<info_portion id="agr_marsh_monsters_all_dead"><action>gz_sms.agr_swamp_zomsie_sms2</action></info_portion>
-
+	<info_portion id="agr_marsh_monsters_contr_spawn">
+		<action>gz_sms.agr_swamp_zomsie_sms</action>
+	</info_portion>
+	<info_portion id="agr_marsh_monsters_all_dead">
+		<action>gz_sms.agr_swamp_zomsie_sms2</action>
+	</info_portion>
 	<info_portion id="agr_marsh_monsters_burer_dead"></info_portion>
-
 	<info_portion id="agr_marsh_monsters_contr_dead"></info_portion>
-
 	<info_portion id="agr_marsh_monsters_pdog1_dead"></info_portion>
-
 	<info_portion id="agr_marsh_monsters_pdog2_dead"></info_portion>
-
-
-
-<!-- Бандиты, бегущие к вертолету -->
-		<info_portion id="ds_bandits_goto_vert_start"></info_portion>
-
-		<info_portion id="ds_bandits_goto_vert_start_2"></info_portion>
-
+	<!-- Бандиты, бегущие к вертолету -->
+	<info_portion id="ds_bandits_goto_vert_start"></info_portion>
+	<info_portion id="ds_bandits_goto_vert_start_2"></info_portion>
 	<info_portion id="ds_bandits_ostanovka"></info_portion>
-
 	<info_portion id="ds_bandonvert"></info_portion>
-
-<!-- - Квест с картами -  -->
-
-         <info_portion id="find_pda_in_box"><task>find_pda_in_box_quest</task></info_portion>
-
-         <info_portion id="find_pda_in_box_done">
-         </info_portion>
-
-         <info_portion id="infa_pda_about_depo"><article>infa_pda_about_depo_1</article><action>gz_prologue.diary_tip</action></info_portion>
-
-
-<!-- - Квест с флешкой пленника -  -->
-
-         <info_portion id="prisoner_quest_start"><task>find_prisoners_flesh</task></info_portion>
-
-         <info_portion id="dialog_prisoner_quest_done"><article>infa_infa</article><action>gz_prologue.diary_tip</action></info_portion>
-
-         <info_portion id="find_prisoners_flesh_have"></info_portion>
-
-         <info_portion id="gar_sv_dialog_done"></info_portion>
-
-         <info_portion id="gar_sv_vrag"></info_portion>
-
-         <info_portion id="dialog_cezar_quest_done"></info_portion>
-
-         <info_portion id="dell_loki"></info_portion>
-
-         <info_portion id="dell_loki_guard_1"></info_portion>
-
-         <info_portion id="dell_loki_guard_2"></info_portion>
-
-         <info_portion id="dv_prisoner_call"></info_portion>
-
-<!-- - Квест с тайником диггера на свалке -  -->
-
-         <info_portion id="dialog_osvedomel_digger_dialog_done"></info_portion>
-
-         <info_portion id="dialog_osvedomel_digger_otkaz"></info_portion>
-
-         <info_portion id="dialog_osvedomel_infa_done"><article>infa_pda_osved_oper</article><action>gz_prologue.diary_tip</action></info_portion>
-
-         <info_portion id="quest_digger_tainik_find_money"></info_portion>
-
-         <info_portion id="quest_digger_tainik_start">
-         <task>find_digger_tainik</task>
-         </info_portion>
-
-         <info_portion id="find_bekas_at_td_start"></info_portion>
-
-         <info_portion id="find_bekas_in_vagon"></info_portion>
-
-         <info_portion id="dell_dv_putnik"></info_portion>
-
-         <info_portion id="petro_dead"></info_portion>
-
-         <info_portion id="kill_petro"></info_portion>
-
-         <info_portion id="find_bekas_box_fail_new"></info_portion>
-
-         <info_portion id="find_petro_done"></info_portion>
-
-         <info_portion id="petro_pogovoril"></info_portion>
-
-          <info_portion id="find_bakas_done"><task>talk_to_bekas</task></info_portion>
-
-          <info_portion id="bekas_vrag"></info_portion>
-
-          <info_portion id="find_bekas_box"></info_portion>
-
-          <info_portion id="find_bekas_money_done"></info_portion>
-
-          <info_portion id="find_bekas_box_done">
-          </info_portion>
-
-
-          <info_portion id="bekas_midnight"></info_portion>
-          <info_portion id="bekas_lead_done"></info_portion>
-          <info_portion id="bekas_dead"></info_portion>
-          <info_portion id="dell_bekas"></info_portion>
-          <info_portion id="dv_bekas_actor_cover">
-		   <action>gz_sms.bekas_cover_right</action>
-		  </info_portion>
-          <info_portion id="dv_bekas_actor_cover_f"></info_portion>
-          <info_portion id="bekas_slow_1"><action>gz_sms.bekas_slow_1</action></info_portion>
-          <info_portion id="find_bekas_box_fail"><task>lead_to_bekas</task></info_portion>
-          <info_portion id="bekas_cover_now"><action>gz_sms.bekas_cover_now</action></info_portion>
-          <info_portion id="bekas_cover_night"><action>gz_sms.bekas_cover_night</action></info_portion>
-          <info_portion id="bekas_osmotr"></info_portion>
-
-<!-- - Информатор -  -->
-
-           <info_portion id="dialog_osvedomel_teams"></info_portion>
-           <info_portion id="dialog_osvedomel_teams_done"></info_portion>
-           <info_portion id="dialog_start_osvedomel_done"></info_portion>
-
-
-<!-- - Зомби в бункере Янтаря -  -->
-
-         <info_portion id="yan_bunker_scene_start"></info_portion>
-
-         <info_portion id="yan_bunker_door_close"></info_portion>
-
-         <info_portion id="yan_bunker_zombi_spawn"></info_portion>
-
-         <info_portion id="yan_bunker_zombie_phrase"></info_portion>
-
-         <info_portion id="yan_bunker_scene_end"></info_portion>
-
-         <info_portion id="petro_vrag"></info_portion>
-
-         <info_portion id="petro_on_rest"></info_portion>
-
-        <info_portion id="petro_dialog_end"></info_portion>
-<!-- - Покинуть зону -  -->
-        <info_portion id="escape_zone_start">
-        <article>infa_pda_about_escape_zone</article>
-<action>gz_prologue.diary_tip</action>
-        <task>escape_zone</task>
-        </info_portion>
-
-<info_portion id="escape_zone_done"></info_portion>
-         <info_portion id="spawn_petro"></info_portion>
-
-<!-- - охота на дс -  -->
-
-         <info_portion id="ds_krovo_hunt_start">
-         <task>ds_krovo_hunt</task>
-         </info_portion>
-         <info_portion id="ds_krovo_hunt_start2">
-         <task>ds_krovo_hunt_2</task>
-         </info_portion>
-         <info_portion id="hunt_1_dead"></info_portion>
-
-         <info_portion id="hunt_2_dead"></info_portion>
-
-         <info_portion id="kill_ds_krovo"></info_portion>
-
-         <info_portion id="ds_hunt_dialog_1_done"></info_portion>
-
-         <info_portion id="ds_hunt_dialog_start"></info_portion>
-
-         <info_portion id="ds_hunt_dialog_2"></info_portion>
-
-         <info_portion id="ds_hunt_dialog_2_done"></info_portion>
-
-         <info_portion id="ds_hunt_krovo_done"></info_portion>
-
-         <info_portion id="ds_hunt_krovo_fail"></info_portion>
-
-         <info_portion id="ds_hunt_start_alone"></info_portion>
-
-        <info_portion id="kill_ds_krovo_1"></info_portion>
-
-        <info_portion id="kill_ds_krovo_2"></info_portion>
-
-        <info_portion id="kill_ds_krovo_11"></info_portion>
-
-        <info_portion id="krovo_nagr"></info_portion>
-
-        <info_portion id="ds_hunt_bino"></info_portion>
-
-        <info_portion id="spawn_test_npc"></info_portion>
-
-
-
-        <info_portion id="borman_fail"><action>gz_prologue.agr_borman_box</action></info_portion>
-
-        <info_portion id="borman_enemy"></info_portion>
-
-        <info_portion id="dell_borman"></info_portion>
-
-        <info_portion id="iron_give_noyt"></info_portion>
-
-        <info_portion id="borman_use_box"><action>gz_sms.agr_use_box</action></info_portion>
-
-        <info_portion id="kill_borman_done"></info_portion>
-
-        <info_portion id="noyt_borman_have"></info_portion>
-
-        <info_portion id="cezar_noyt_fail"></info_portion>
-
-        <info_portion id="kill_borman_done_other"></info_portion>
-
-        <info_portion id="pz_borman_help"></info_portion>
-        <info_portion id="pz_borman_alive"></info_portion>
-
-        <info_portion id="pz_borman_fuck"></info_portion>
-
-
-
-
-        <info_portion id="kill_phanom_1"></info_portion>
-        <info_portion id="kill_phanom_2"></info_portion>
-        <info_portion id="kill_phanom_3"></info_portion>
-        <info_portion id="kill_phanom_4"></info_portion>
-        <info_portion id="kill_phanom_5"></info_portion>
-        <info_portion id="dv_phantoms_die"></info_portion>
-        <info_portion id="dv_contergreh_dead"><article>infa_about_mind_control</article><action>gz_prologue.diary_tip</action></info_portion>
-
+	<!-- - Квест с картами -  -->
+	<info_portion id="find_pda_in_box">
+		<task>find_pda_in_box_quest</task>
+	</info_portion>
+	<info_portion id="find_pda_in_box_done"></info_portion>
+	<info_portion id="infa_pda_about_depo">
+		<article>infa_pda_about_depo_1</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<!-- - Квест с флешкой пленника -  -->
+	<info_portion id="prisoner_quest_start">
+		<task>find_prisoners_flesh</task>
+	</info_portion>
+	<info_portion id="dialog_prisoner_quest_done">
+		<article>infa_infa</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="find_prisoners_flesh_have"></info_portion>
+	<info_portion id="gar_sv_dialog_done"></info_portion>
+	<info_portion id="gar_sv_vrag"></info_portion>
+	<info_portion id="dialog_cezar_quest_done"></info_portion>
+	<info_portion id="dell_loki"></info_portion>
+	<info_portion id="dell_loki_guard_1"></info_portion>
+	<info_portion id="dell_loki_guard_2"></info_portion>
+	<info_portion id="dv_prisoner_call"></info_portion>
+	<!-- - Квест с тайником диггера на свалке -  -->
+	<info_portion id="dialog_osvedomel_digger_dialog_done"></info_portion>
+	<info_portion id="dialog_osvedomel_digger_otkaz"></info_portion>
+	<info_portion id="dialog_osvedomel_infa_done">
+		<article>infa_pda_osved_oper</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="quest_digger_tainik_find_money"></info_portion>
+	<info_portion id="quest_digger_tainik_start">
+		<task>find_digger_tainik</task>
+	</info_portion>
+	<info_portion id="find_bekas_at_td_start"></info_portion>
+	<info_portion id="find_bekas_in_vagon"></info_portion>
+	<info_portion id="dell_dv_putnik"></info_portion>
+	<info_portion id="petro_dead"></info_portion>
+	<info_portion id="kill_petro"></info_portion>
+	<info_portion id="find_bekas_box_fail_new"></info_portion>
+	<info_portion id="find_petro_done"></info_portion>
+	<info_portion id="petro_pogovoril"></info_portion>
+	<info_portion id="find_bakas_done">
+		<task>talk_to_bekas</task>
+	</info_portion>
+	<info_portion id="bekas_vrag"></info_portion>
+	<info_portion id="find_bekas_box"></info_portion>
+	<info_portion id="find_bekas_money_done"></info_portion>
+	<info_portion id="find_bekas_box_done"></info_portion>
+	<info_portion id="bekas_midnight"></info_portion>
+	<info_portion id="bekas_lead_done"></info_portion>
+	<info_portion id="bekas_dead"></info_portion>
+	<info_portion id="dell_bekas"></info_portion>
+	<info_portion id="dv_bekas_actor_cover">
+		<action>gz_sms.bekas_cover_right</action>
+	</info_portion>
+	<info_portion id="dv_bekas_actor_cover_f"></info_portion>
+	<info_portion id="bekas_slow_1">
+		<action>gz_sms.bekas_slow_1</action>
+	</info_portion>
+	<info_portion id="find_bekas_box_fail">
+		<task>lead_to_bekas</task>
+	</info_portion>
+	<info_portion id="bekas_cover_now">
+		<action>gz_sms.bekas_cover_now</action>
+	</info_portion>
+	<info_portion id="bekas_cover_night">
+		<action>gz_sms.bekas_cover_night</action>
+	</info_portion>
+	<info_portion id="bekas_osmotr"></info_portion>
+	<!-- - Информатор -  -->
+	<info_portion id="dialog_osvedomel_teams"></info_portion>
+	<info_portion id="dialog_osvedomel_teams_done"></info_portion>
+	<info_portion id="dialog_start_osvedomel_done"></info_portion>
+	<!-- - Зомби в бункере Янтаря -  -->
+	<info_portion id="yan_bunker_scene_start"></info_portion>
+	<info_portion id="yan_bunker_door_close"></info_portion>
+	<info_portion id="yan_bunker_zombi_spawn"></info_portion>
+	<info_portion id="yan_bunker_zombie_phrase"></info_portion>
+	<info_portion id="yan_bunker_scene_end"></info_portion>
+	<info_portion id="petro_vrag"></info_portion>
+	<info_portion id="petro_on_rest"></info_portion>
+	<info_portion id="petro_dialog_end"></info_portion>
+	<!-- - Покинуть зону -  -->
+	<info_portion id="escape_zone_start">
+		<article>infa_pda_about_escape_zone</article>
+		<action>gz_prologue.diary_tip</action>
+		<task>escape_zone</task>
+	</info_portion>
+	<info_portion id="escape_zone_done"></info_portion>
+	<info_portion id="spawn_petro"></info_portion>
+	<!-- - охота на дс -  -->
+	<info_portion id="ds_krovo_hunt_start">
+		<task>ds_krovo_hunt</task>
+	</info_portion>
+	<info_portion id="ds_krovo_hunt_start2">
+		<task>ds_krovo_hunt_2</task>
+	</info_portion>
+	<info_portion id="hunt_1_dead"></info_portion>
+	<info_portion id="hunt_2_dead"></info_portion>
+	<info_portion id="kill_ds_krovo"></info_portion>
+	<info_portion id="ds_hunt_dialog_1_done"></info_portion>
+	<info_portion id="ds_hunt_dialog_start"></info_portion>
+	<info_portion id="ds_hunt_dialog_2"></info_portion>
+	<info_portion id="ds_hunt_dialog_2_done"></info_portion>
+	<info_portion id="ds_hunt_krovo_done"></info_portion>
+	<info_portion id="ds_hunt_krovo_fail"></info_portion>
+	<info_portion id="ds_hunt_start_alone"></info_portion>
+	<info_portion id="kill_ds_krovo_1"></info_portion>
+	<info_portion id="kill_ds_krovo_2"></info_portion>
+	<info_portion id="kill_ds_krovo_11"></info_portion>
+	<info_portion id="krovo_nagr"></info_portion>
+	<info_portion id="ds_hunt_bino"></info_portion>
+	<info_portion id="spawn_test_npc"></info_portion>
+	<info_portion id="borman_fail">
+		<action>gz_prologue.agr_borman_box</action>
+	</info_portion>
+	<info_portion id="borman_enemy"></info_portion>
+	<info_portion id="dell_borman"></info_portion>
+	<info_portion id="iron_give_noyt"></info_portion>
+	<info_portion id="borman_use_box">
+		<action>gz_sms.agr_use_box</action>
+	</info_portion>
+	<info_portion id="kill_borman_done"></info_portion>
+	<info_portion id="noyt_borman_have"></info_portion>
+	<info_portion id="cezar_noyt_fail"></info_portion>
+	<info_portion id="kill_borman_done_other"></info_portion>
+	<info_portion id="pz_borman_help"></info_portion>
+	<info_portion id="pz_borman_alive"></info_portion>
+	<info_portion id="pz_borman_fuck"></info_portion>
+	<info_portion id="kill_phanom_1"></info_portion>
+	<info_portion id="kill_phanom_2"></info_portion>
+	<info_portion id="kill_phanom_3"></info_portion>
+	<info_portion id="kill_phanom_4"></info_portion>
+	<info_portion id="kill_phanom_5"></info_portion>
+	<info_portion id="dv_phantoms_die"></info_portion>
+	<info_portion id="dv_contergreh_dead">
+		<article>infa_about_mind_control</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<!-- - Промзона -  -->
-
-         <info_portion id="pz_iskateli_group_start"><task>pz_iskateli_group</task></info_portion>
-
-         <info_portion id="pz_goto_iskateli_group_done"></info_portion>
-
-         <info_portion id="pz_iskateli_group_done"></info_portion>
-
-
-
-
-         <info_portion id="pz_rob_merclager_docs_start">
-		  <task>pz_rob_merclager_docs</task><article>infa_about_mercs_base</article>
-		 </info_portion>
-
-         <info_portion id="pz_rob_merclager_docs_complete">
-		 </info_portion>
-
-         <info_portion id="pz_rob_merclager_have_outfit_done"></info_portion>
-
-         <info_portion id="pz_rob_merclager_have_outfit"></info_portion>
-
-         <info_portion id="actor_is_killer"></info_portion>
-
-         <info_portion id="pz_rob_merclager_on_base_done"></info_portion>
-
-         <info_portion id="pz_rob_merclager_on_3_floor_done"></info_portion>
-
-         <info_portion id="pz_rob_merclager_on_position_done"></info_portion>
-
-         <info_portion id="pz_rob_merclager_wait_done"></info_portion>
-
-         <info_portion id="pz_rob_merclager_docs_done"></info_portion>
-
-         <info_portion id="pz_rob_merclager_escape_done"></info_portion>
-
-
-         <info_portion id="pz_actor_enemy_merclager"><action>gz_sms.pz_merc_fire_sms</action></info_portion>
-
-         <info_portion id="pz_actor_attack_merclager"></info_portion>
-
-         <info_portion id="pz_stolguards_scene_start"></info_portion>
-
-         <info_portion id="pz_stolguard1_raciya_end"></info_portion>
-
-         <info_portion id="pz_actor_messaged"></info_portion>
-
-
-         <info_portion id="pz_second_mercguard_back"></info_portion>
-
-         <info_portion id="pz_rob_merclager_docs_fail"></info_portion>
-
-
-         <info_portion id="pz_phone_isk_call_start"></info_portion>
-
-         <info_portion id="pz_talk_isk_done"></info_portion>
-
-
-         <info_portion id="pz_isk_prisoner_go"></info_portion>
-
-         <info_portion id="pz_isk_prisoner_dead"></info_portion>
-
-       <info_portion id="pz_boss_merc_alarm"><action>gz_sms.pz_gates_sms</action></info_portion>
-
-       <info_portion id="pz_mrec_gates_defence"></info_portion>
-
-       <info_portion id="pz_actor_in_danger_zone"></info_portion>
-
-
-
-         <info_portion id="pz_merclager_fc_com1_dialog_about_password"></info_portion>
-
-         <info_portion id="pz_rob_merclager_fc1_merc_remark_1"></info_portion>
-
-         <info_portion id="pz_rob_merclager_fc1_merc_remark_2"></info_portion>
-
-         <info_portion id="kill_pz_prisoner"></info_portion>
-
-         <info_portion id="pz_end_dialog"></info_portion>
-
-         <info_portion id="pz_merclager_bomb_blowup"><action>gz_sms.pz_blowup_sms</action></info_portion> <!---бомба взрывается--->
-
-         <info_portion id="pz_merclager_back_to_positions"></info_portion>
-
-         <info_portion id="pz_merclager_have_bomb"></info_portion> <!-- наличие бомбы у гг -->
-
-         <info_portion id="pz_merclager_bomb_spawn"></info_portion> <!-- спавним бомбу в рестрикторе -->
-
-         <info_portion id="pz_merclager_leader_dont_go"></info_portion> <!-- лидер наймов еще в рестрикторе -->
-
-
+	<info_portion id="pz_iskateli_group_start">
+		<task>pz_iskateli_group</task>
+	</info_portion>
+	<info_portion id="pz_goto_iskateli_group_done"></info_portion>
+	<info_portion id="pz_iskateli_group_done"></info_portion>
+	<info_portion id="pz_rob_merclager_docs_start">
+		<task>pz_rob_merclager_docs</task>
+		<article>infa_about_mercs_base</article>
+	</info_portion>
+	<info_portion id="pz_rob_merclager_docs_complete"></info_portion>
+	<info_portion id="pz_rob_merclager_have_outfit_done"></info_portion>
+	<info_portion id="pz_rob_merclager_have_outfit"></info_portion>
+	<info_portion id="actor_is_killer"></info_portion>
+	<info_portion id="pz_rob_merclager_on_base_done"></info_portion>
+	<info_portion id="pz_rob_merclager_on_3_floor_done"></info_portion>
+	<info_portion id="pz_rob_merclager_on_position_done"></info_portion>
+	<info_portion id="pz_rob_merclager_wait_done"></info_portion>
+	<info_portion id="pz_rob_merclager_docs_done"></info_portion>
+	<info_portion id="pz_rob_merclager_escape_done"></info_portion>
+	<info_portion id="pz_actor_enemy_merclager">
+		<action>gz_sms.pz_merc_fire_sms</action>
+	</info_portion>
+	<info_portion id="pz_actor_attack_merclager"></info_portion>
+	<info_portion id="pz_stolguards_scene_start"></info_portion>
+	<info_portion id="pz_stolguard1_raciya_end"></info_portion>
+	<info_portion id="pz_actor_messaged"></info_portion>
+	<info_portion id="pz_second_mercguard_back"></info_portion>
+	<info_portion id="pz_rob_merclager_docs_fail"></info_portion>
+	<info_portion id="pz_phone_isk_call_start"></info_portion>
+	<info_portion id="pz_talk_isk_done"></info_portion>
+	<info_portion id="pz_isk_prisoner_go"></info_portion>
+	<info_portion id="pz_isk_prisoner_dead"></info_portion>
+	<info_portion id="pz_boss_merc_alarm">
+		<action>gz_sms.pz_gates_sms</action>
+	</info_portion>
+	<info_portion id="pz_mrec_gates_defence"></info_portion>
+	<info_portion id="pz_actor_in_danger_zone"></info_portion>
+	<info_portion id="pz_merclager_fc_com1_dialog_about_password"></info_portion>
+	<info_portion id="pz_rob_merclager_fc1_merc_remark_1"></info_portion>
+	<info_portion id="pz_rob_merclager_fc1_merc_remark_2"></info_portion>
+	<info_portion id="kill_pz_prisoner"></info_portion>
+	<info_portion id="pz_end_dialog"></info_portion>
+	<info_portion id="pz_merclager_bomb_blowup">
+		<action>gz_sms.pz_blowup_sms</action>
+	</info_portion>
+	<!--бомба взрывается-->
+	<info_portion id="pz_merclager_back_to_positions"></info_portion>
+	<info_portion id="pz_merclager_have_bomb"></info_portion>
+	<!-- наличие бомбы у гг -->
+	<info_portion id="pz_merclager_bomb_spawn"></info_portion>
+	<!-- спавним бомбу в рестрикторе -->
+	<info_portion id="pz_merclager_leader_dont_go"></info_portion>
+	<!-- лидер наймов еще в рестрикторе -->
 	<info_portion id="yan_teleport_actor"></info_portion>
-
-	<info_portion id="test_func"><action>xr_effects.yan_grab</action></info_portion>
-
+	<info_portion id="test_func">
+		<action>xr_effects.yan_grab</action>
+	</info_portion>
 	<!-- - Квест с отравлением  -  -->
 	<info_portion id="gar_trav_start"></info_portion>
 	<info_portion id="objeb_barygy_done"></info_portion>
-
-
-
-
 	<!-- - Подземка агро. Новое -  -->
-
-         <info_portion id="agr_u_zombies_group_1_go"></info_portion>
-
-         <info_portion id="agr_u_zombies_group_2_go"></info_portion>
-
-         <info_portion id="agr_u_zombies_group_3_go"></info_portion>
-
-         <info_portion id="agr_u_zombies_group_4_go"></info_portion>
-
-
-
+	<info_portion id="agr_u_zombies_group_1_go"></info_portion>
+	<info_portion id="agr_u_zombies_group_2_go"></info_portion>
+	<info_portion id="agr_u_zombies_group_3_go"></info_portion>
+	<info_portion id="agr_u_zombies_group_4_go"></info_portion>
 	<!-- - Промзона. Война группировок -  -->
-
-         <info_portion id="pz_fraction_war_start"></info_portion>
-
-         <info_portion id="pz_fractions_respawn"></info_portion>
-
+	<info_portion id="pz_fraction_war_start"></info_portion>
+	<info_portion id="pz_fractions_respawn"></info_portion>
 	<!-- - Промзона. Квест со сделкой на Промзоне -  -->
-
-         <info_portion id="pz_quest_sdelka_done"></info_portion>
-
-         <info_portion id="pz_meet_tyopa_done"></info_portion>
-
-
-         <info_portion id="pz_tyopa_run_done"></info_portion>
-
-         <info_portion id="del_base"></info_portion>
-
-
-         <info_portion id="find_alives_on_base"><task>find_alives_on_base</task></info_portion>
-
-         <info_portion id="find_alives_on_base_done"></info_portion>
-
-
-         <info_portion id="pz_meet_tyopa"><task>pz_meet_tyopa</task></info_portion>
-
-
+	<info_portion id="pz_quest_sdelka_done"></info_portion>
+	<info_portion id="pz_meet_tyopa_done"></info_portion>
+	<info_portion id="pz_tyopa_run_done"></info_portion>
+	<info_portion id="del_base"></info_portion>
+	<info_portion id="find_alives_on_base">
+		<task>find_alives_on_base</task>
+	</info_portion>
+	<info_portion id="find_alives_on_base_done"></info_portion>
+	<info_portion id="pz_meet_tyopa">
+		<task>pz_meet_tyopa</task>
+	</info_portion>
 	<!-- - Янтарь. Сценка с аномальным разломом -  -->
-
-         <info_portion id="yan_biganomaly_scene_start"></info_portion>
-
-         <info_portion id="yan_biganomaly_scene_end"></info_portion>
-
-         <info_portion id="yan_biganomaly_scene_actor_on_sektor_1"></info_portion>
-
-         <info_portion id="yan_biganomaly_scene_actor_on_sektor_2"></info_portion>
-
-         <info_portion id="yan_biganomaly_scene_actor_on_sektor_3"></info_portion>
-
+	<info_portion id="yan_biganomaly_scene_start"></info_portion>
+	<info_portion id="yan_biganomaly_scene_end"></info_portion>
+	<info_portion id="yan_biganomaly_scene_actor_on_sektor_1"></info_portion>
+	<info_portion id="yan_biganomaly_scene_actor_on_sektor_2"></info_portion>
+	<info_portion id="yan_biganomaly_scene_actor_on_sektor_3"></info_portion>
 	<!-- - Янтарь.-  -->
-         <info_portion id="yan_bunker_door_blocked"><action>gz_sms.yan_block_door_me</action></info_portion>
-         <info_portion id="yan_bunker_door_blocked_open"><action>gz_sms.yan_block_door_shpil_1</action></info_portion>
-
-         <info_portion id="yan_bunker_door_blocked_1"><action>gz_sms.yan_block_door_shpil</action></info_portion>
-
-         <info_portion id="lab_end_door_open"></info_portion>
-
-         <info_portion id="lab_end_door_open_sms"><action>gz_sms.lab_end_door_sms</action></info_portion>
-
-         <info_portion id="lab_door_end_open"></info_portion>
+	<info_portion id="yan_bunker_door_blocked">
+		<action>gz_sms.yan_block_door_me</action>
+	</info_portion>
+	<info_portion id="yan_bunker_door_blocked_open">
+		<action>gz_sms.yan_block_door_shpil_1</action>
+	</info_portion>
+	<info_portion id="yan_bunker_door_blocked_1">
+		<action>gz_sms.yan_block_door_shpil</action>
+	</info_portion>
+	<info_portion id="lab_end_door_open"></info_portion>
+	<info_portion id="lab_end_door_open_sms">
+		<action>gz_sms.lab_end_door_sms</action>
+	</info_portion>
+	<info_portion id="lab_door_end_open"></info_portion>
 	<!-- - Зомби.-  -->
-
-        <info_portion id="quest_pda_zombie_find"><article>infa_pda_quest_zombie</article><action>gz_prologue.diary_tip</action></info_portion>
-
-         <info_portion id="find_quest_zombie_start"><task>yan_find_quest_zombie</task></info_portion>
-
-         <info_portion id="find_quest_zombie_done"></info_portion>
-
-         <info_portion id="find_quest_zombie_fail"></info_portion>
-
+	<info_portion id="quest_pda_zombie_find">
+		<article>infa_pda_quest_zombie</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="find_quest_zombie_start">
+		<task>yan_find_quest_zombie</task>
+	</info_portion>
+	<info_portion id="find_quest_zombie_done"></info_portion>
+	<info_portion id="find_quest_zombie_fail"></info_portion>
 	<!-- - Датчики.-  -->
-         <info_portion id="setup_dat_start"><task>yan_dats_setup</task></info_portion>
-         <info_portion id="setup_dat_start_otkaz"></info_portion>
-         <info_portion id="setup_dat_1_done"><action>xr_effects.dell_yan_dat</action></info_portion>
-         <info_portion id="setup_dat_2_done"><action>xr_effects.dell_yan_dat</action></info_portion>
-         <info_portion id="setup_dat_3_done"><action>xr_effects.dell_yan_dat</action></info_portion>
-         <info_portion id="setup_dat_done"></info_portion>
-
-<!-- - Линейка в рыжем лесу -  -->
-         <info_portion id="rf_lesnik_quest_start"><task>rf_signal_sos</task></info_portion>
-         <info_portion id="rf_racia_on"></info_portion>
-         <info_portion id="rf_racia_start"></info_portion>
-         <info_portion id="rf_racia_connect"><action>gz_tasks.rf_radio</action></info_portion>
-         <info_portion id="rf_lesnik_quest_roof_done"></info_portion>
-         <info_portion id="rf_lesnik_quest_radio_done"></info_portion>
-         <info_portion id="rf_lesnik_quest_talk_done"><task>yan_otshel</task></info_portion>
-         <info_portion id="yan_find_zerkalo_done"></info_portion>
-         <info_portion id="yan_find_zerkalo_start">
-		 <task>yan_art_razlom</task>
-		 </info_portion>
-        <info_portion id="rf_meet_lesnik_with_art"></info_portion>
-        <info_portion id="yan_find_otshel"></info_portion>
-        <info_portion id="yan_otshel_quest_done"></info_portion>
-        <info_portion id="yan_chimera_spawn"></info_portion>
-        <info_portion id="yan_otshel_walk_start"><task>yan_otshel_help</task></info_portion>
-        <info_portion id="yan_othsel_chimera_roar"></info_portion>
-        <info_portion id="lesnik_sms"><action>xr_effects.lesnik_sms</action><task>rf_meet_lesnik</task></info_portion>
-        <info_portion id="yan_roar_sms"><action>xr_effects.otshel_sms</action></info_portion>
-        <info_portion id="yan_roar_sms_2"><action>xr_effects.otshel_sms_2</action></info_portion>
-        <info_portion id="yan_chimera_death"></info_portion>
-        <info_portion id="yan_chimera_death_2"></info_portion>
-        <info_portion id="lesnik_quest_off"></info_portion>
-        <info_portion id="rf_ld_find_group_start"><task>rf_ld_find_group</task></info_portion>
-        <info_portion id="ld_find_group_done"></info_portion>
-        <info_portion id="ld_group_thanks"></info_portion>
-        <info_portion id="ld_find_group_done_2"></info_portion>
-        <info_portion id="yan_otshel_dialog_done"><action>xr_effects.spawn_zerkalo</action></info_portion>
-        <info_portion id="rf_spawn_puzir"></info_portion>
-        <info_portion id="rf_ocelot_talk_water"></info_portion>
-        <info_portion id="rf_ocelot_talk_done"></info_portion>
-        <info_portion id="rf_ocelot_talk_water_done"></info_portion>
-        <info_portion id="ld_rf_tel_done"></info_portion>
-        <info_portion id="rf_ocelot_talk_done_2"></info_portion>
-        <info_portion id="rf_ld_ocelot_talk_cross"><action>xr_effects.rf_sms_cross</action></info_portion>
-        <info_portion id="rf_ld_ocelot_talk_cross_done"><article>infa_about_ocelot</article><action>gz_prologue.diary_tip</action></info_portion>
-        <info_portion id="rf_meet_lesnik_with_art_1"></info_portion>
-	        <info_portion id="rf_ocelot_talk_done_3"></info_portion>
-	        <info_portion id="rf_lesnik_talk_otkaz"></info_portion>
-	        <info_portion id="rf_lesnik_quest_start_alt"><task>rf_signal_sos_alt</task></info_portion>
-	        <info_portion id="yan_othsel_otkaz"></info_portion>
-	        <info_portion id="yan_death_trop"><action>xr_effects.death_vall_sms</action></info_portion>
-	        <info_portion id="yan_othsel_chimera_roar_done"></info_portion>
-	        <info_portion id="rf_lesnik_tel"></info_portion>
-	        <info_portion id="rf_art_can_use"></info_portion>
-	        <info_portion id="rf_iron_otkaz"></info_portion>
-	        <info_portion id="yan_otshel_dialog_done_2"></info_portion>
+	<info_portion id="setup_dat_start">
+		<task>yan_dats_setup</task>
+	</info_portion>
+	<info_portion id="setup_dat_start_otkaz"></info_portion>
+	<info_portion id="setup_dat_1_done">
+		<action>xr_effects.dell_yan_dat</action>
+	</info_portion>
+	<info_portion id="setup_dat_2_done">
+		<action>xr_effects.dell_yan_dat</action>
+	</info_portion>
+	<info_portion id="setup_dat_3_done">
+		<action>xr_effects.dell_yan_dat</action>
+	</info_portion>
+	<info_portion id="setup_dat_done"></info_portion>
+	<!-- - Линейка в рыжем лесу -  -->
+	<info_portion id="rf_lesnik_quest_start">
+		<task>rf_signal_sos</task>
+	</info_portion>
+	<info_portion id="rf_racia_on"></info_portion>
+	<info_portion id="rf_racia_start"></info_portion>
+	<info_portion id="rf_racia_connect">
+		<action>gz_tasks.rf_radio</action>
+	</info_portion>
+	<info_portion id="rf_lesnik_quest_roof_done"></info_portion>
+	<info_portion id="rf_lesnik_quest_radio_done"></info_portion>
+	<info_portion id="rf_lesnik_quest_talk_done">
+		<task>yan_otshel</task>
+	</info_portion>
+	<info_portion id="yan_find_zerkalo_done"></info_portion>
+	<info_portion id="yan_find_zerkalo_start">
+		<task>yan_art_razlom</task>
+	</info_portion>
+	<info_portion id="rf_meet_lesnik_with_art"></info_portion>
+	<info_portion id="yan_find_otshel"></info_portion>
+	<info_portion id="yan_otshel_quest_done"></info_portion>
+	<info_portion id="yan_chimera_spawn"></info_portion>
+	<info_portion id="yan_otshel_walk_start">
+		<task>yan_otshel_help</task>
+	</info_portion>
+	<info_portion id="yan_othsel_chimera_roar"></info_portion>
+	<info_portion id="lesnik_sms">
+		<action>xr_effects.lesnik_sms</action>
+		<task>rf_meet_lesnik</task>
+	</info_portion>
+	<info_portion id="yan_roar_sms">
+		<action>xr_effects.otshel_sms</action>
+	</info_portion>
+	<info_portion id="yan_roar_sms_2">
+		<action>xr_effects.otshel_sms_2</action>
+	</info_portion>
+	<info_portion id="yan_chimera_death"></info_portion>
+	<info_portion id="yan_chimera_death_2"></info_portion>
+	<info_portion id="lesnik_quest_off"></info_portion>
+	<info_portion id="rf_ld_find_group_start">
+		<task>rf_ld_find_group</task>
+	</info_portion>
+	<info_portion id="ld_find_group_done"></info_portion>
+	<info_portion id="ld_group_thanks"></info_portion>
+	<info_portion id="ld_find_group_done_2"></info_portion>
+	<info_portion id="yan_otshel_dialog_done">
+		<action>xr_effects.spawn_zerkalo</action>
+	</info_portion>
+	<info_portion id="rf_spawn_puzir"></info_portion>
+	<info_portion id="rf_ocelot_talk_water"></info_portion>
+	<info_portion id="rf_ocelot_talk_done"></info_portion>
+	<info_portion id="rf_ocelot_talk_water_done"></info_portion>
+	<info_portion id="ld_rf_tel_done"></info_portion>
+	<info_portion id="rf_ocelot_talk_done_2"></info_portion>
+	<info_portion id="rf_ld_ocelot_talk_cross">
+		<action>xr_effects.rf_sms_cross</action>
+	</info_portion>
+	<info_portion id="rf_ld_ocelot_talk_cross_done">
+		<article>infa_about_ocelot</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="rf_meet_lesnik_with_art_1"></info_portion>
+	<info_portion id="rf_ocelot_talk_done_3"></info_portion>
+	<info_portion id="rf_lesnik_talk_otkaz"></info_portion>
+	<info_portion id="rf_lesnik_quest_start_alt">
+		<task>rf_signal_sos_alt</task>
+	</info_portion>
+	<info_portion id="yan_othsel_otkaz"></info_portion>
+	<info_portion id="yan_death_trop">
+		<action>xr_effects.death_vall_sms</action>
+	</info_portion>
+	<info_portion id="yan_othsel_chimera_roar_done"></info_portion>
+	<info_portion id="rf_lesnik_tel"></info_portion>
+	<info_portion id="rf_art_can_use"></info_portion>
+	<info_portion id="rf_iron_otkaz"></info_portion>
+	<info_portion id="yan_otshel_dialog_done_2"></info_portion>
 	<info_portion id="art_get_away"></info_portion>
-	        <info_portion id="yan_othsel_pda_infa"><article>infa_yan_othsel_pda</article><action>gz_prologue.diary_tip</action></info_portion>
-<!-- - Отравление на свалке -  -->
-	        <info_portion id="gar_otrava_start"><task>gar_otrava</task></info_portion>
-	        <info_portion id="enter_the_vagon"></info_portion>
-	        <info_portion id="change_pills_done"></info_portion>
-	        <info_portion id="find_diary_done"></info_portion>
-	        <info_portion id="gar_otrva_quest_done"></info_portion>
-
-	<info_portion id="ds_geed_diary_have"><article>infa_ds_geed_diary</article><action>gz_prologue.diary_tip</action></info_portion>
-	<info_portion id="dv_greh_have"><article>infa_greh_diary</article><action>gz_prologue.diary_tip</action></info_portion>
-
+	<info_portion id="yan_othsel_pda_infa">
+		<article>infa_yan_othsel_pda</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<!-- - Отравление на свалке -  -->
+	<info_portion id="gar_otrava_start">
+		<task>gar_otrava</task>
+	</info_portion>
+	<info_portion id="enter_the_vagon"></info_portion>
+	<info_portion id="change_pills_done"></info_portion>
+	<info_portion id="find_diary_done"></info_portion>
+	<info_portion id="gar_otrva_quest_done"></info_portion>
+	<info_portion id="ds_geed_diary_have">
+		<article>infa_ds_geed_diary</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="dv_greh_have">
+		<article>infa_greh_diary</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="kuprian_alive"></info_portion>
 	<info_portion id="kuprian_dv_dell"></info_portion>
 	<info_portion id="kuprian_agr_dialog_done"></info_portion>
-
-
 	<info_portion id="af_ds_quest_art_have"></info_portion>
-
 	<info_portion id="ds_art_quest_start">
-	 <article>infa_pda_about_grab</article>
-	 <task>gar_bed_art</task>
-	 <action>gz_prologue.diary_tip</action>
+		<article>infa_pda_about_grab</article>
+		<task>gar_bed_art</task>
+		<action>gz_prologue.diary_tip</action>
 	</info_portion>
-
 	<info_portion id="ds_art_quest_have"></info_portion>
 	<info_portion id="ds_art_quest_back"></info_portion>
 	<info_portion id="ds_art_quest_nehoch"></info_portion>
-	<info_portion id="ds_art_quest_osved_done"><task>gar_art_osved</task></info_portion>
-	<info_portion id="ds_art_quest_dialog_done"><article>infa_pda_about_grab</article><action>gz_prologue.diary_tip</action></info_portion>
-	<info_portion id="dv_black_digger_diary_have"><article>infa_black_diger_diary</article><action>gz_prologue.diary_tip</action></info_portion>
-
+	<info_portion id="ds_art_quest_osved_done">
+		<task>gar_art_osved</task>
+	</info_portion>
+	<info_portion id="ds_art_quest_dialog_done">
+		<article>infa_pda_about_grab</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="dv_black_digger_diary_have">
+		<article>infa_black_diger_diary</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
 	<info_portion id="dv_max_buh_done"></info_portion>
 	<info_portion id="yan_spawn_heli_puz"></info_portion>
 	<info_portion id="dv_spawn_black_diger"></info_portion>
-<info_portion id="pda_depo_dead_stalker_have"></info_portion>
-<info_portion id="gz_und_contr_dead"></info_portion>
-<info_portion id="agr_obhod"></info_portion>
-<info_portion id="agr_und_spawn_contr"><action>gz_prologue.und_contr_spawn</action></info_portion>
-
-<info_portion id="dv_kill_traitor"></info_portion>
-<info_portion id="dv_kill_traitor_dialog"></info_portion>
-<info_portion id="dv_kill_traitor_dialog_1"></info_portion>
-
-
-
-<info_portion id="gar_doggy_start"></info_portion>
-<info_portion id="gar_doggy_1"></info_portion>
-<info_portion id="gar_doggy_2"></info_portion>
-<info_portion id="gar_doggy_3"></info_portion>
-<info_portion id="gar_doggy_1_run"></info_portion>
-<info_portion id="gar_doggy_2_run"></info_portion>
-<info_portion id="gar_doggy_3_run"></info_portion>
-
-
-
-
-<info_portion id="pz_lab_sos"><action>xr_effects.lab_sos_sms</action></info_portion>
-<info_portion id="zombie_door_open"></info_portion>
-
-<!-- - Вертолёт на промзоне -  -->
-<info_portion id="start_pz_spawn_test_vert"></info_portion>
-<info_portion id="pz_heli_cutscene_end"></info_portion>
-<info_portion id="pz_heli_endgame"><action>xr_effects.start_end_one</action></info_portion>
-<info_portion id="pz_to_heli_start"><task>pz_heli</task></info_portion>
-<info_portion id="pz_heli_start_fly"></info_portion>
-<info_portion id="pz_heli_sms"><action>gz_sms.pz_pilot_sms</action></info_portion>
-
-
-
-
-
-
-
-<info_portion id="und_find_art"></info_portion>
-<info_portion id="und_deact_sceletones"></info_portion>
-<info_portion id="und_whispers"><action>gz_prologue.und_whispers</action></info_portion>
-
-
-<info_portion id="dialog_miklih_prisoner_done"></info_portion>
-<info_portion id="prisoner_tainik_sv_done"></info_portion>
-<info_portion id="dialog_varag_prisoner_flesh_nagr_done"></info_portion>
-<info_portion id="tainik_mikluha_done"></info_portion>
-<info_portion id="dv_mikluh_sms_to_varag"><action>gz_sms.dv_mikluh_pris_flesh</action></info_portion>
-<info_portion id="gar_mikluh_tainik"><action>gz_sms.gar_mikluh</action><task>gar_mikluh_tainik</task></info_portion>
-
-<!-- - Хата на ПЗ -  -->
-<info_portion id="pz_hata_stalk_1_dead"></info_portion>
-<info_portion id="pz_hata_stalk_2_dead"></info_portion>
-<info_portion id="pz_hata_guard_dead"></info_portion>
-<info_portion id="pz_hata_door_open"></info_portion>
-<info_portion id="pz_hata_zomb_call"></info_portion>
-<info_portion id="pz_hata_zomb_call_2"></info_portion>
-<info_portion id="pz_hata_guard_talk"></info_portion>
-<info_portion id="pz_hata_zomb_talk_false"></info_portion>
-<info_portion id="pz_hata_zomb_free_start_1"></info_portion>
-<info_portion id="pz_hata_zomb_free_done"></info_portion>
-<info_portion id="pz_hata_zomb_free_start"></info_portion>
-<info_portion id="pz_hata_find_hypn_done"></info_portion>
-<info_portion id="pz_hata_hypn_guard_done"></info_portion>
-<info_portion id="pz_hata_where_key_done"></info_portion>
-<info_portion id="pz_hata_find_key_done"></info_portion>
-
-
-
-<info_portion id="pz_spawn_puzir_zombie"></info_portion>
-
-<info_portion id="antigas_zone"></info_portion>
-<info_portion id="dolg_sturm"></info_portion>
-<info_portion id="sv_sturm"></info_portion>
-
-
-
-
-<info_portion id="pz_scien_diary_find"><article>infa_pda_pz_lab</article><action>gz_prologue.diary_tip</action></info_portion>
-
-<!-- - Новый выбор на тд -  -->
-<info_portion id="dv_dolg_sms_zavod"><action>gz_sms.dv_dolg_vibor_sms</action></info_portion>
-<info_portion id="dv_sv_sms_zavod"><action>gz_sms.dv_sv_vibor_sms</action></info_portion>
-<info_portion id="dv_zavod_vibor"><task>dv_vibor_zavod_task</task></info_portion>
-
-<!-- - Новая охота на агро-  -->
-<info_portion id="agr_hunts_on_positions"></info_portion>
-<info_portion id="dell_hunts"></info_portion>
-<info_portion id="agr_dolg_kom_dead"></info_portion>
-<info_portion id="agr_dolg_hunt_1_dead"></info_portion>
-<info_portion id="agr_dolg_hunt_2_dead"></info_portion>
-<info_portion id="agr_swamp_zomb_dead"></info_portion>
-<info_portion id="agr_swamp_zomb2_dead"></info_portion>
-<info_portion id="agr_swamp_zomb3_dead"></info_portion>
-<info_portion id="agr_swamp_zomb4_dead"></info_portion>
-<info_portion id="agr_swamp_zomb5_dead"></info_portion>
-<info_portion id="agr_swamp_zomb6_dead"></info_portion>
-<info_portion id="agr_swamp_zomb7_dead"></info_portion>
-<info_portion id="agr_swamp_zomb8_dead"></info_portion>
-<info_portion id="agr_swamp_zomb9_dead"></info_portion>
-<info_portion id="agr_swamp_zomb10_dead"></info_portion>
-<info_portion id="agr_swamp_hunt_done"></info_portion>
-<info_portion id="agr_swamp_sms_done_1"><action>gz_sms.agr_swamp_sms_done_1</action></info_portion>
-<info_portion id="agr_swamp_sms_done_2"><action>gz_sms.agr_swamp_sms_done_2</action></info_portion>
-<info_portion id="agr_swamp_sms_done_3"><action>gz_sms.agr_swamp_sms_done_3</action></info_portion>
-<info_portion id="agr_swamp_sms_done_4"><action>gz_sms.agr_swamp_sms_done_4</action></info_portion>
-
-<!-- - Квест со Змееловом-  -->
-<info_portion id="yan_zmeelov_quest_start"><task>yan_zmeelov_meet</task></info_portion>
-<info_portion id="yan_zmeelov_dialog_done"></info_portion>
-<info_portion id="yan_zmeelov_dialog_done1"></info_portion>
-<info_portion id="yan_zmeelov_dialog_rob_done"><task>yan_zmeelov_rob</task></info_portion>
-<info_portion id="yan_rob_on_position"></info_portion>
-<info_portion id="ocelot_rob_start"><action>gz_sms.yan_rob_start</action></info_portion>
-<info_portion id="ocelot_group_enemy"></info_portion>
-<info_portion id="actor_is_bandit"></info_portion>
-<info_portion id="yan_rob_ocelot_shot"></info_portion>
-<info_portion id="yan_rob_ocelot_dead"></info_portion>
-<info_portion id="yan_zmeelov_quest_done"></info_portion>
-<info_portion id="yan_zmeelov_rob1_on_pos"></info_portion>
-<info_portion id="yan_zmeelov_rob2_on_pos"></info_portion>
-<info_portion id="yan_zmeelov_rob_on_pos"></info_portion>
-<info_portion id="yan_ocelot_guard_hit"></info_portion>
-<info_portion id="yan_ocelot_guard1_dead"></info_portion>
-<info_portion id="yan_ocelot_guard2_dead"></info_portion>
-<info_portion id="yan_rob_ocelot_guard_shot"></info_portion>
-<info_portion id="yan_rob_outside_zone_fail"></info_portion>
-<info_portion id="yan_ocelot_rob_good"></info_portion>
-<info_portion id="yan_ocelot_rob_bad"></info_portion>
-<info_portion id="yan_zmeelov_rob_dead"></info_portion>
-<info_portion id="yan_zmeelov_rob_guard1_dead"></info_portion>
-<info_portion id="yan_zmeelov_rob_guard2_dead"></info_portion>
-<info_portion id="yan_ocelot_hands_up_talk"><action>gz_sms.yan_ocelot_rob_talk</action></info_portion>
-<info_portion id="yan_ocelot_rob_done_pre"></info_portion>
-<info_portion id="yan_ocelot_rob_done"></info_portion>
-<info_portion id="yan_rob_on_position_return"><action>gz_sms.yan_rob_return</action></info_portion>
-<info_portion id="yan_rob_hands_up2"><action>gz_sms.ocelot_rob_start</action></info_portion>
-<info_portion id="yan_rob_rano"><action>gz_sms.yan_rob_rano_sms</action></info_portion>
-<info_portion id="ld_code_box1_spawn"><action>gz_prologue.ld_code_box_1</action><article>gz_caches_last_day1</article></info_portion>
-<info_portion id="ld_code_box2_spawn"><action>gz_prologue.ld_code_box_2</action><article>gz_caches_last_day2</article></info_portion>
-<info_portion id="yan_zmeelov_about_prizrak_done"></info_portion>
-<info_portion id="yan_zmeelov_rob_zombi_off"></info_portion>
-<info_portion id="yan_zmeelov_rob_dell_npc"></info_portion>
-
-
-
-<!-- - Квест с подземкой ПЗ-  -->
-<info_portion id="pz_otis_lab_start"><task>pz_lab_diggers</task></info_portion>
-<info_portion id="pz_otis_lab_run"></info_portion>
-<info_portion id="pz_otis_lab_wait_dialog"></info_portion>
-<info_portion id="pz_otis_lab_enter"></info_portion>
-<info_portion id="pz_open_start"></info_portion>
-<info_portion id="pz_lab_scien_dialog_done"></info_portion>
-<info_portion id="pz_lab_scien_dialog_done1"></info_portion>
-<info_portion id="pz_otis_lab_scream_sms"><action>gz_sms.otis_lab_scream_sms</action></info_portion>
-<info_portion id="pz_open_start_sms"><action>gz_sms.otis_lab_open_start</action></info_portion>
-<info_portion id="pz_otis_lab_open_done"><action>gz_sms.otis_lab_open_done</action></info_portion>
-<info_portion id="pz_otis_lab_teleport"></info_portion>
-<info_portion id="pz_otis_lab_go_to_zomb"></info_portion>
-<info_portion id="pz_otis_lab_go_to_zomb_done"></info_portion>
-<info_portion id="pz_otis_lab_zomb_sms"><action>gz_sms.otis_lab_sms_zomb</action></info_portion>
-<info_portion id="pz_otis_lab_zomb_sms2"><action>gz_sms.otis_lab_sms_zomb2</action></info_portion>
-<info_portion id="pz_otis_lab_anom"><action>gz_sms.otis_lab_anom</action></info_portion>
-<info_portion id="pz_otis_lab_anom2"><action>gz_sms.otis_lab_anom2</action></info_portion>
-<info_portion id="pz_lab_electrisity_start"><task>pz_lab_electrisity</task></info_portion>
-<info_portion id="pz_lab_electrisity_done"></info_portion>
-<info_portion id="pz_lab_electrisity_sms"><action>gz_sms.otis_lab_sms_electr</action><task>pz_lab_case</task></info_portion>
-<info_portion id="pz_lab_sms_zomb_attack"><action>gz_sms.lab_sms_zomb_attack</action></info_portion>
-<info_portion id="pz_otis_lab_sms_zomb_attack_sms"><action>gz_sms.otis_lab_sms_zomb_attack</action></info_portion>
-<info_portion id="pz_lab_anom_kill"></info_portion>
-<info_portion id="pz_otis_lab_death"></info_portion>
-<info_portion id="pz_scien1_lab_death"></info_portion>
-<info_portion id="pz_scien2_lab_death"></info_portion>
-<info_portion id="pz_scien3_lab_death"></info_portion>
-<info_portion id="pz_test_lab_eff"></info_portion>
-<info_portion id="pz_lab_outside"></info_portion>
-<info_portion id="pz_lab_return_base_done"></info_portion>
-<info_portion id="pz_lab_return_otis_on_pos"></info_portion>
-<info_portion id="pz_lab_return_scien1_on_pos"></info_portion>
-<info_portion id="pz_lab_return_scien2_on_pos"></info_portion>
-<info_portion id="pz_lab_return_scien3_on_pos"></info_portion>
-<info_portion id="pz_lab_case_have"></info_portion>
-<info_portion id="pz_lab_case_dialog_done"></info_portion>
-<info_portion id="pz_lab_spawn_zombies"></info_portion>
-<info_portion id="pz_lab_zombie_1_dead"></info_portion>
-<info_portion id="pz_lab_zombie_2_dead"></info_portion>
-<info_portion id="pz_lab_zombie_3_dead"></info_portion>
-<info_portion id="pz_lab_zombie_4_dead"></info_portion>
-<info_portion id="pz_lab_zombie_5_dead"></info_portion>
-<info_portion id="pz_lab_zombie_6_dead"></info_portion>
-<info_portion id="pz_lab_zombie_7_dead"></info_portion>
-<info_portion id="pz_lab_zombie_8_dead"></info_portion>
-<info_portion id="pz_lab_zombie_9_dead"></info_portion>
-<info_portion id="pz_lab_zombie_10_dead"></info_portion>
-<info_portion id="pz_lab_zombie_11_dead"></info_portion>
-<info_portion id="pz_lab_zombie_12_dead"></info_portion>
-<info_portion id="pz_del_old_otis"></info_portion>
-<info_portion id="pz_scien_after_lab_dialog_done"></info_portion>
-<info_portion id="pz_info_time_scale"></info_portion>
-<info_portion id="pz_info_time_scale2"></info_portion>
-<info_portion id="pz_info_time_scale_test"></info_portion>
-<info_portion id="pz_night_dell_mercs"></info_portion>
-<info_portion id="pz_otis_dialog2"></info_portion>
-<info_portion id="pz_isc_return_night"><task>pz_isc_return_night</task></info_portion>
-<info_portion id="pz_lab_all_zombies_dead"></info_portion>
-<info_portion id="pz_dell_all_npc"></info_portion>
-
-
-
-<!-- - Странник ПЗ-  -->
-<info_portion id="pz_night_spawn"></info_portion>
-<info_portion id="pz_night_spawn_zone"></info_portion>
-<info_portion id="pz_night_del"></info_portion>
-<info_portion id="pz_ghost_dialog_done"></info_portion>
-<info_portion id="pz_ghost_dialog_done_pered"></info_portion>
-
-
-
-<info_portion id="dv_fomka_diary_info"><article>infa_fomka_diary</article></info_portion>
-
-<!-- - Мины на базе учёных -  -->
-<info_portion id="gz_yan_ambush_mine_spawn"></info_portion>
-<info_portion id="gz_yan_ambush_mine_activate"></info_portion>
-<info_portion id="gz_yan_ambush_mine_stop"></info_portion>
-<info_portion id="gz_yan_ambush_mine_dell"></info_portion>
-<info_portion id="gz_yan_ambush_mine2_activate"></info_portion>
-<info_portion id="gz_yan_ambush_mine2_stop"></info_portion>
-<info_portion id="gz_yan_ambush_mine2_dell"></info_portion>
-
-<!-- - ПДА командира наймов -  -->
-<info_portion id="open_agr_merc_pda_start"><task>agr_merc_pda_open</task></info_portion>
-<info_portion id="open_agr_merc_pda_done"><article>infa_pda_agr_merc_kom</article><article>infa_about_questions</article><action>gz_prologue.diary_tip</action></info_portion>
-<info_portion id="infa_about_heli_have"></info_portion>
-<info_portion id="open_agr_merc_pda_otkaz"></info_portion>
-<info_portion id="proslushka_start"><task>gar_proslushka</task></info_portion>
-<info_portion id="proslushka_done"></info_portion>
-<info_portion id="proslushka_ushel"></info_portion>
-<info_portion id="prosl_cezar_dialog_done"></info_portion>
-
-<!-- - Новая ветка с Осведомителем в Рыжем лесу -  -->
-<info_portion id="rf_osvedomel_meet_start"><task>rf_osvedomel</task><action>gz_sms.rf_osvedomel_sms</action></info_portion>
-<info_portion id="rf_osvedomel_meet_done"><task>rf_iron_about_manic</task></info_portion>
-<info_portion id="rf_osvedomel_meet_otkaz"></info_portion>
-<info_portion id="kill_borman"><task>give_borman_noyt</task></info_portion>
-<info_portion id="borman_talk"></info_portion>
-<info_portion id="ds_sine_no"></info_portion>
-<info_portion id="dialog_rf_hunters_kill_gigant_done"></info_portion>
-<info_portion id="start_quest_borman"><task>find_kill_borman</task></info_portion>
-
-<info_portion id="dialog_sv_about_dv_done"></info_portion>
-
-
-<!-- - Доделываем Военных в Рыжем лесу -  -->
-<info_portion id="start_obisk_komandir"><task>rf_loot_com_start</task></info_portion>
-<info_portion id="rf_mil_horror_sound_start"></info_portion>
-<info_portion id="rf_mil_horror_sold_talk"><action>gz_sms.rf_mil_hor_sold_sms</action></info_portion>
-<info_portion id="rf_mil_horror_cap_talk"><action>gz_sms.rf_mil_hor_cap_sms</action></info_portion>
-
-<!-- - Ещё база наймов на промзоне -  -->
-<info_portion id="dialog_pz_killer_vrag_done"></info_portion>
-<info_portion id="pz_killer_vrag_enemy"></info_portion>
-<info_portion id="pz_killers_secret_noyt"><article>infa_pandora</article></info_portion>
-<info_portion id="pz_alt_mercs_grif_dialog_done"><task>pz_mercs_alt</task></info_portion>
-<info_portion id="pz_alt_mercs_grif_dialog_fail"></info_portion>
-<info_portion id="pz_alt_mercs_volkodav_dialog_done"></info_portion>
-<info_portion id="pz_alt_mercs_build_come"></info_portion>
-<info_portion id="pz_dell_borman"></info_portion>
-<info_portion id="pz_alt_mercs_killer1_dead"></info_portion>
-<info_portion id="pz_alt_mercs_killer2_dead"></info_portion>
-<info_portion id="pz_alt_mercs_killer3_dead"></info_portion>
-<info_portion id="pz_alt_mercs_done"></info_portion>
-<info_portion id="pz_mercs_seif_key_have"></info_portion>
-<info_portion id="pz_alt_mercs_sms1"><action>gz_sms.pz_alt_mercs_sms1</action></info_portion>
-<info_portion id="pz_alt_mercs_sms2"><action>gz_sms.pz_alt_mercs_sms2</action></info_portion>
-<info_portion id="pz_leader_guard_smena"></info_portion>
-<info_portion id="pz_leader_wtf_sms"><action>gz_sms.pz_leader_wtf_sms</action></info_portion>
-<info_portion id="pz_leader_wtf_sms_2"><action>gz_sms.pz_leader_wtf_sms_2</action></info_portion>
-<info_portion id="pz_leader_wtf_sms_3"><action>gz_sms.pz_leader_wtf_sms_3</action></info_portion>
-<info_portion id="pz_leader_wtf_sms_4"><action>gz_sms.pz_leader_wtf_sms_4</action></info_portion>
-<info_portion id="pz_gg_talk_about_leader_away"><action>gz_sms.gg_talk_about_leader_away</action></info_portion>
-<info_portion id="pz_gg_talk_about_leader_away_1"></info_portion>
-<info_portion id="pz_merclager_leader_seif_stay"></info_portion>
-<info_portion id="pz_merc_blowup_sms"><action>gz_sms.pz_merc_blowup_sms</action></info_portion>
-<info_portion id="pz_leader_guard_bad"></info_portion>
-<info_portion id="pz_leader_guard_propusk"></info_portion>
-<info_portion id="pz_leader_guard_on_bomb"></info_portion>
-<info_portion id="pz_merc_leader_in_zone"></info_portion>
-<info_portion id="pz_leader_guard_talk"></info_portion>
-<info_portion id="pz_mercs_distance"></info_portion>
-<info_portion id="pz_merclager_have_some_time"><action>gz_sms.have_some_time_sms</action></info_portion>
-
-<info_portion id="pz_first_btr_destr"></info_portion>
-<info_portion id="pz_second_btr_destr"></info_portion>
-<info_portion id="pz_first_btr_sms"><action>gz_sms.pz_mercs_first_btr_lost_sms</action></info_portion>
-<info_portion id="pz_second_btr_sms"><action>gz_sms.pz_mercs_second_btr_lost_sms</action></info_portion>
-
-<info_portion id="pz_grif_propaja_sms"><action>gz_sms.pz_grif_propaja_sms</action></info_portion>
-<info_portion id="pz_grif_chastota_sms"><action>gz_sms.pz_grif_chastota_sms</action></info_portion>
-<info_portion id="pz_grif_dead"></info_portion>
-
-<info_portion id="pz_first_barrel_expl"></info_portion>
-<info_portion id="pz_second_barrel_expl"></info_portion>
-<info_portion id="pz_fire_end"></info_portion>
-<info_portion id="pz_fire_second"></info_portion>
-<info_portion id="pz_fire_third"></info_portion>
-
-<info_portion id="yell_case_have"></info_portion>
-<info_portion id="yell_case_osvedomel_sell"></info_portion>
-
-
-<info_portion id="spawn_gar_ugr"></info_portion>
-
-<info_portion id="dv_slepoi_dialog"></info_portion>
-
-<info_portion id="dv_sv_sturm_otkaz"></info_portion>
-
-<info_portion id="gar_ugr_about_guards"></info_portion>
-<info_portion id="dell_ds_ugr"></info_portion>
-
-<info_portion id="spawn_yan_ghost"></info_portion>
-
-<info_portion id="hacker_start_dialog_done"></info_portion>
-
-<info_portion id="osvedomel_mercs_infa_done"></info_portion>
-<info_portion id="dell_rf_osvedomel"></info_portion>
-
-<info_portion id="yan_slepoi_dialog_done"></info_portion>
-<info_portion id="dell_yan_slepoi"></info_portion>
-
-<info_portion id="gar_felix_dialog_done"></info_portion>
-<info_portion id="dell_felixs_group"></info_portion>
-
-<info_portion id="agr_dolgbase_und_key_have"></info_portion>
-
-<info_portion id="red_for_mil_kontakt"><action>gz_sms.red_for_mil_kontakt_sms</action></info_portion>
-<info_portion id="red_for_mil_kontakt_yes"><action>gz_sms.red_for_mil_kontakt_yes_sms</action></info_portion>
-
-
-<!-- - Датчики для Долга -  -->
-<info_portion id="setup_agr_dat_start"><task>agr_dolg_dats_task</task></info_portion>
-<info_portion id="setup_agr_dat_1_done"><action>xr_effects.dell_agr_dolg_dat</action></info_portion>
-<info_portion id="setup_agr_dat_2_done"><action>xr_effects.dell_agr_dolg_dat</action></info_portion>
-<info_portion id="setup_agr_dat_3_done"><action>xr_effects.dell_agr_dolg_dat</action></info_portion>
-<info_portion id="setup_agr_dat_otkaz"></info_portion>
-<info_portion id="setup_agr_dat_dialog_done"></info_portion>
-
-<info_portion id="secret_perepiska_infa_done"><article>infa_perepiska</article></info_portion>
-<info_portion id="loki_case_open_done"></info_portion>
-
-<info_portion id="bezpamatnii_diary_have"><article>infa_bezpamatnii_diary</article></info_portion>
-<info_portion id="have_rf_pismo"><article>infa_rf_pismo</article></info_portion>
-
-<!-- - Сумка со снаряжением для ПД -  -->
-<info_portion id="ds_sumka_ld_start"><task>ds_sumka</task></info_portion>
-<info_portion id="ds_sumka_ld_done"></info_portion>
-<info_portion id="ds_sumka_ld_otkaz"></info_portion>
-<info_portion id="ds_sumka_ld_dialog_done"></info_portion>
-<info_portion id="ds_ocelot_dead"></info_portion>
-<info_portion id="dialog_ds_ocelot_racia_done"></info_portion>
-<info_portion id="ds_find_shved_pda_start"><task>ds_ld_find_shved</task></info_portion>
-<info_portion id="ds_find_shved_pda_otkaz"></info_portion>
-<info_portion id="ds_find_shved_pda_done"><task>ds_ld_return_shved_pda</task></info_portion>
-<info_portion id="ds_lager_talk_scarabey_about_shved_done"></info_portion>
-<info_portion id="ds_lager_talk_doc_about_shved_done"></info_portion>
-<info_portion id="ds_lager_talk_torg_about_shved_done"></info_portion>
-<info_portion id="ds_return_shved_pda_done"></info_portion>
-<info_portion id="ds_return_shved_pda_false"><article>ds_pda_shved_info</article></info_portion>
-
-<info_portion id="ds_dialog_about_isc"></info_portion>
-
-<!-- - Сценка у вертолёта на ДС -  -->
-<info_portion id="ds_helifire_start"></info_portion>
-<info_portion id="ds_start_iscateli_awake"></info_portion>
-<info_portion id="ds_start_doc_talk"></info_portion>
-<info_portion id="ds_expl"></info_portion>
-
-
-
-<info_portion id="infa_about_agro"></info_portion>
-
-<info_portion id="pz_merc_pat1_dead"></info_portion>
-<info_portion id="pz_merc_pat2_dead"></info_portion>
-<info_portion id="pz_merc_pat3_dead"></info_portion>
-
-<info_portion id="yan_ghost_talk_sms"><action>gz_sms.yan_ghost_talk_sms</action></info_portion>
-<info_portion id="yan_ghost_talk_strelok_sms"><action>gz_sms.yan_ghost_talk_strelok_sms</action></info_portion>
-
-<info_portion id="pz_scien_sos"><action>gz_sms.pz_scien_sos</action></info_portion>
-
-<info_portion id="yan_otshel_rac_1"><action>gz_sms.yan_otshel_rac_1</action></info_portion>
-<info_portion id="yan_otshel_rac_2"><action>gz_sms.yan_otshel_rac_2</action></info_portion>
-<info_portion id="yan_otshel_rac_3"><action>gz_sms.yan_otshel_rac_3</action></info_portion>
-
-<info_portion id="rf_karavaev_rac_1"><action>gz_sms.rf_karavaev_rac_1</action></info_portion>
-<info_portion id="rf_karavaev_rac_2"><action>gz_sms.rf_karavaev_rac_2</action></info_portion>
-<info_portion id="rf_karavaev_rac_3"><action>gz_sms.rf_karavaev_rac_3</action></info_portion>
-
-
-
-<info_portion id="agr_dolg_sms_about_anom"><action>gz_sms.agr_dolg_sms_about_anom</action></info_portion>
-
-<info_portion id="nooo_lab_sms"><action>gz_sms.nooo_lab_sms</action></info_portion>
-
-<info_portion id="fuck_racia_lab_start"></info_portion>
-
-<info_portion id="fuck_racia_lab_sms"><action>gz_sms.fuck_racia_lab_sms</action></info_portion>
-
-<info_portion id="ds_slepoi_after_dogs"></info_portion>
-<info_portion id="dell_ds_slepoi"></info_portion>
-
-<info_portion id="pda_cap_dv_have"><article>storyline_soz_pda_cap_dv_info</article><article>storyline_soz_plen_info</article><task>gar_meet_with_messenger</task></info_portion>
-<info_portion id="gar_snipers_shoots"></info_portion>
-<info_portion id="gar_messenger_dead"><task>gar_snipers</task></info_portion>
-<info_portion id="gar_sniper_1_dead"></info_portion>
-<info_portion id="gar_sniper_2_dead"></info_portion>
-<info_portion id="gar_find_messenger_trup"><task>gar_messenger_trup</task></info_portion>
-<info_portion id="gar_sniper_wounded"><task>gar_sniper_wounded</task></info_portion>
-<info_portion id="gar_sniper_wounded_dialog_done"></info_portion>
-
-
-
-
-
-<info_portion id="dv_mikl_think_about_rush"></info_portion>
-
-
-
-<info_portion id="lab_scien_kill"></info_portion>
-
-<info_portion id="gz_tainik_dig_stop"></info_portion>
-<info_portion id="gz_tainik_dig_activate"></info_portion>
-<info_portion id="gz_tainik_dig_dell"></info_portion>
-
-<info_portion id="tainik_pismo_have"></info_portion>
-
-<info_portion id="no_racia_zone"></info_portion>
-<info_portion id="pda_coordinats_start_1"></info_portion>
-<info_portion id="dv_rac_gg_1"><action>gz_sms.dv_rac_gg_1</action></info_portion>
-<info_portion id="dv_rac_gg_2"><action>gz_sms.dv_rac_gg_2</action></info_portion>
-<info_portion id="dv_rac_gg_3"><action>gz_sms.dv_rac_gg_3</action></info_portion>
-<info_portion id="dv_rac_gg_4"><action>gz_sms.dv_rac_gg_4</action></info_portion>
-<info_portion id="dv_base_racia_1"><action>gz_sms.dv_base_racia_1</action></info_portion>
-<info_portion id="dv_base_racia_2"><action>gz_sms.dv_base_racia_2</action></info_portion>
-
-<info_portion id="agr_rac_gg_1"><action>gz_sms.agr_rac_gg_1</action></info_portion>
-<info_portion id="agr_rac_gg_2"><action>gz_sms.agr_rac_gg_2</action></info_portion>
-<info_portion id="agr_rac_gg_3"><action>gz_sms.agr_rac_gg_3</action></info_portion>
-<info_portion id="agr_base_racia_1"><action>gz_sms.agr_base_racia_1</action></info_portion>
-<info_portion id="agr_base_racia_2"><action>gz_sms.agr_base_racia_2</action></info_portion>
-<info_portion id="go_to_evacuation_zone_start_1"></info_portion>
-
-<info_portion id="borman_noyt_done"></info_portion>
-
-<info_portion id="agr_sms_sv_seryi"><action>gz_sms.agr_sms_sv_seryi</action></info_portion>
-<info_portion id="gar_osved_infa_about_cap"></info_portion>
-<info_portion id="agr_sms_sv_osved"><action>gz_sms.agr_sms_sv_osved</action></info_portion>
-
-<info_portion id="gar_dell_wall"></info_portion>
-<info_portion id="gar_self_destroy_the_wall"><task>gar_self_destroy_the_wall</task></info_portion>
-
-<info_portion id="dv_gg_about_contact_base"><action>gz_sms.dv_gg_about_contact_base_sms</action></info_portion>
-
-<info_portion id="dolg_about_cap_before_general"></info_portion>
-<info_portion id="dolg_commendant_quest_otkaz"></info_portion>
-<info_portion id="agr_komendant_night"></info_portion>
-<info_portion id="agr_komendant_zombie_done_sms"><action>gz_sms.agr_komendant_zombie_done_sms</action></info_portion>
-<info_portion id="talk_with_dolg_leader"><task>agr_dolg_leader</task></info_portion>
-<info_portion id="agr_lab_guard_propusk"></info_portion>
-<info_portion id="agr_prikaznik_activate"></info_portion>
-<info_portion id="agr_anomaly_razradka_start"></info_portion>
-<info_portion id="agr_anomaly_razradka_end"></info_portion>
-<info_portion id="agr_anomaly_scien_tele"></info_portion>
-<info_portion id="agr_anomaly_scien_dialog_2_done"></info_portion>
-<info_portion id="agr_anomaly_scien_dialog_done"></info_portion>
-<info_portion id="agr_anomaly_talk_with_scien"><task>agr_talk_with_scien</task></info_portion>
-<info_portion id="agr_scien_down"></info_portion>
-<info_portion id="agr_scien_wakeup"></info_portion>
-
-<info_portion id="dv_bekas_dead_zone"></info_portion>
-<info_portion id="dv_bekas_actor_cover_1"></info_portion>
-
-<info_portion id="dv_dell_petro"></info_portion>
-<info_portion id="agr_ds_digger_hello"><action>gz_sms.agr_digger_ds_sms</action></info_portion>
-
-<info_portion id="spawn_art_test"></info_portion>
-<info_portion id="dell_art_test"></info_portion>
-
-<info_portion id="dv_prisoner_dialog_end"></info_portion>
-
-<info_portion id="gar_dell_mutants"></info_portion>
-
-<info_portion id="gar_crazy_bandit_dead"></info_portion>
-<info_portion id="gar_crazy_bandit_phrase"></info_portion>
-<info_portion id="gar_crazy_dialog_done"></info_portion>
-<info_portion id="gar_crazy_bandit_lie"><action>gz_sms.gar_crazy_bandit</action></info_portion>
-<info_portion id="gar_crazy_dialog_hit"></info_portion>
-
-
-<info_portion id="agr_dolg_sport_start"></info_portion>
-<info_portion id="agr_sport_actor_in_zone"></info_portion>
-<info_portion id="agr_sport_end"></info_portion>
-
-<info_portion id="rf_lead_scien_blockp_start"></info_portion>
-<info_portion id="rf_lead_scien_hands_up"></info_portion>
-<info_portion id="rf_ld_blockp_threat"></info_portion>
-<info_portion id="rf_ld_blockp_ph1"><action>gz_sms.rf_ld_blockp_ph1</action></info_portion>
-<info_portion id="rf_ld_blockp_ph1_end"></info_portion>
-<info_portion id="rf_ld_blockp_ph2_actor"><action>gz_sms.rf_ld_blockp_ph2_actor</action></info_portion>
-<info_portion id="rf_ld_blockp_ph3"><action>gz_sms.rf_ld_blockp_ph3</action></info_portion>
-<info_portion id="rf_ld_blockp_ph3_end"></info_portion>
-<info_portion id="rf_ld_blockp_ph4_racia"><action>gz_sms.rf_ld_blockp_ph4_racia</action></info_portion>
-<info_portion id="rf_ld_blockp_ph4_racia_end"></info_portion>
-<info_portion id="rf_ld_blockp_ok_racia_end"></info_portion>
-
-<info_portion id="rf_scien_going_conf"></info_portion>
-<info_portion id="rf_scien_going_conf_done"></info_portion>
-<info_portion id="rf_scien_going_conf_end"></info_portion>
-
-<info_portion id="rf_ld_guards1_enter"></info_portion>
-<info_portion id="rf_ld_guards_back_enter"></info_portion>
-
-<info_portion id="last_day_war"><action>xr_effects.last_day_war</action></info_portion>
-
-<info_portion id="gar_find_black_digger_diary"><task>find_black_digger_diary</task></info_portion>
-<info_portion id="gar_find_black_digger_diary_done"></info_portion>
-
-
-
-
-<info_portion id="rf_find_cave_gun"><action>gz_sms.rf_cave_gun_sms</action></info_portion>
-<info_portion id="rf_find_cave_gun_sms_done"></info_portion>
-<info_portion id="rf_cave_zasada_sms_1"><action>gz_sms.rf_cave_zasada_sms_1</action></info_portion>
-<info_portion id="rf_cave_zasada_sms_2_sms"><action>gz_sms.rf_cave_zasada_sms_2</action><action>xr_effects.mil_rf_war</action></info_portion>
-<info_portion id="rf_cave_zasada_sms_2"></info_portion>
-<info_portion id="rf_mil_pda_cave_have"><article>infa_about_going_back</article><article>infa_rf_mil_pda</article><action>gz_prologue.diary_tip</action></info_portion>
-<info_portion id="rf_cave_zasada_mobs_off"></info_portion>
-<info_portion id="rf_lab_card_have"></info_portion>
-<info_portion id="rf_papers_have"></info_portion>
-<info_portion id="rf_bridge_scien"></info_portion>
-<info_portion id="rf_bridge_scien_find"><task>rf_scien_bridge</task></info_portion>
-<info_portion id="rf_cave_zasada_com_dead"></info_portion>
-<info_portion id="rf_cave_zasada_mil1_dead"></info_portion>
-<info_portion id="rf_cave_zasada_mil2_dead"></info_portion>
-<info_portion id="rf_cave_zasada_mil3_dead"></info_portion>
-<info_portion id="rf_cave_zasada_find_mil_pda"><task>rf_cave_zasada_find_mil_pda</task></info_portion>
-<info_portion id="rf_bridge_dialog_legion_done"></info_portion>
-<info_portion id="rf_bridge_dialog_scien_done"></info_portion>
-<info_portion id="rf_scien_about_list"></info_portion>
-
-<info_portion id="del_kap_stalker"></info_portion>
-<info_portion id="ds_spawn_krovos"></info_portion>
-<info_portion id="ds_spawn_krovos_alt"></info_portion>
-
-<info_portion id="dscol_af_prelest_have"></info_portion>
-<info_portion id="dscol_mystic_activate"></info_portion>
-<info_portion id="dscol_job_is_done"><action>gz_sms.job_is_done</action></info_portion>
-<info_portion id="dscol_find_diggers_wthout_task"></info_portion>
-<info_portion id="dscol_phantoms_switch_off"></info_portion>
-<info_portion id="dscol_zombies_awake"></info_portion>
-<info_portion id="dscol_ghost_spawn"></info_portion>
-<info_portion id="dscol_ghost_disappear"></info_portion>
-
-
-<!-- - END - S.T.A.L.K.E.R Prologue  - END -  -->
+	<info_portion id="pda_depo_dead_stalker_have"></info_portion>
+	<info_portion id="gz_und_contr_dead"></info_portion>
+	<info_portion id="agr_obhod"></info_portion>
+	<info_portion id="agr_und_spawn_contr">
+		<action>gz_prologue.und_contr_spawn</action>
+	</info_portion>
+	<info_portion id="dv_kill_traitor"></info_portion>
+	<info_portion id="dv_kill_traitor_dialog"></info_portion>
+	<info_portion id="dv_kill_traitor_dialog_1"></info_portion>
+	<info_portion id="gar_doggy_start"></info_portion>
+	<info_portion id="gar_doggy_1"></info_portion>
+	<info_portion id="gar_doggy_2"></info_portion>
+	<info_portion id="gar_doggy_3"></info_portion>
+	<info_portion id="gar_doggy_1_run"></info_portion>
+	<info_portion id="gar_doggy_2_run"></info_portion>
+	<info_portion id="gar_doggy_3_run"></info_portion>
+	<info_portion id="pz_lab_sos">
+		<action>xr_effects.lab_sos_sms</action>
+	</info_portion>
+	<info_portion id="zombie_door_open"></info_portion>
+	<!-- - Вертолёт на промзоне -  -->
+	<info_portion id="start_pz_spawn_test_vert"></info_portion>
+	<info_portion id="pz_heli_cutscene_end"></info_portion>
+	<info_portion id="pz_heli_endgame">
+		<action>xr_effects.start_end_one</action>
+	</info_portion>
+	<info_portion id="pz_to_heli_start">
+		<task>pz_heli</task>
+	</info_portion>
+	<info_portion id="pz_heli_start_fly"></info_portion>
+	<info_portion id="pz_heli_sms">
+		<action>gz_sms.pz_pilot_sms</action>
+	</info_portion>
+	<info_portion id="und_find_art"></info_portion>
+	<info_portion id="und_deact_sceletones"></info_portion>
+	<info_portion id="und_whispers">
+		<action>gz_prologue.und_whispers</action>
+	</info_portion>
+	<info_portion id="dialog_miklih_prisoner_done"></info_portion>
+	<info_portion id="prisoner_tainik_sv_done"></info_portion>
+	<info_portion id="dialog_varag_prisoner_flesh_nagr_done"></info_portion>
+	<info_portion id="tainik_mikluha_done"></info_portion>
+	<info_portion id="dv_mikluh_sms_to_varag">
+		<action>gz_sms.dv_mikluh_pris_flesh</action>
+	</info_portion>
+	<info_portion id="gar_mikluh_tainik">
+		<action>gz_sms.gar_mikluh</action>
+		<task>gar_mikluh_tainik</task>
+	</info_portion>
+	<!-- - Хата на ПЗ -  -->
+	<info_portion id="pz_hata_stalk_1_dead"></info_portion>
+	<info_portion id="pz_hata_stalk_2_dead"></info_portion>
+	<info_portion id="pz_hata_guard_dead"></info_portion>
+	<info_portion id="pz_hata_door_open"></info_portion>
+	<info_portion id="pz_hata_zomb_call"></info_portion>
+	<info_portion id="pz_hata_zomb_call_2"></info_portion>
+	<info_portion id="pz_hata_guard_talk"></info_portion>
+	<info_portion id="pz_hata_zomb_talk_false"></info_portion>
+	<info_portion id="pz_hata_zomb_free_start_1"></info_portion>
+	<info_portion id="pz_hata_zomb_free_done"></info_portion>
+	<info_portion id="pz_hata_zomb_free_start"></info_portion>
+	<info_portion id="pz_hata_find_hypn_done"></info_portion>
+	<info_portion id="pz_hata_hypn_guard_done"></info_portion>
+	<info_portion id="pz_hata_where_key_done"></info_portion>
+	<info_portion id="pz_hata_find_key_done"></info_portion>
+	<info_portion id="pz_spawn_puzir_zombie"></info_portion>
+	<info_portion id="antigas_zone"></info_portion>
+	<info_portion id="dolg_sturm"></info_portion>
+	<info_portion id="sv_sturm"></info_portion>
+	<info_portion id="pz_scien_diary_find">
+		<article>infa_pda_pz_lab</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<!-- - Новый выбор на тд -  -->
+	<info_portion id="dv_dolg_sms_zavod">
+		<action>gz_sms.dv_dolg_vibor_sms</action>
+	</info_portion>
+	<info_portion id="dv_sv_sms_zavod">
+		<action>gz_sms.dv_sv_vibor_sms</action>
+	</info_portion>
+	<info_portion id="dv_zavod_vibor">
+		<task>dv_vibor_zavod_task</task>
+	</info_portion>
+	<!-- - Новая охота на агро-  -->
+	<info_portion id="agr_hunts_on_positions"></info_portion>
+	<info_portion id="dell_hunts"></info_portion>
+	<info_portion id="agr_dolg_kom_dead"></info_portion>
+	<info_portion id="agr_dolg_hunt_1_dead"></info_portion>
+	<info_portion id="agr_dolg_hunt_2_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb2_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb3_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb4_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb5_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb6_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb7_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb8_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb9_dead"></info_portion>
+	<info_portion id="agr_swamp_zomb10_dead"></info_portion>
+	<info_portion id="agr_swamp_hunt_done"></info_portion>
+	<info_portion id="agr_swamp_sms_done_1">
+		<action>gz_sms.agr_swamp_sms_done_1</action>
+	</info_portion>
+	<info_portion id="agr_swamp_sms_done_2">
+		<action>gz_sms.agr_swamp_sms_done_2</action>
+	</info_portion>
+	<info_portion id="agr_swamp_sms_done_3">
+		<action>gz_sms.agr_swamp_sms_done_3</action>
+	</info_portion>
+	<info_portion id="agr_swamp_sms_done_4">
+		<action>gz_sms.agr_swamp_sms_done_4</action>
+	</info_portion>
+	<!-- - Квест со Змееловом-  -->
+	<info_portion id="yan_zmeelov_quest_start">
+		<task>yan_zmeelov_meet</task>
+	</info_portion>
+	<info_portion id="yan_zmeelov_dialog_done"></info_portion>
+	<info_portion id="yan_zmeelov_dialog_done1"></info_portion>
+	<info_portion id="yan_zmeelov_dialog_rob_done">
+		<task>yan_zmeelov_rob</task>
+	</info_portion>
+	<info_portion id="yan_rob_on_position"></info_portion>
+	<info_portion id="ocelot_rob_start">
+		<action>gz_sms.yan_rob_start</action>
+	</info_portion>
+	<info_portion id="ocelot_group_enemy"></info_portion>
+	<info_portion id="actor_is_bandit"></info_portion>
+	<info_portion id="yan_rob_ocelot_shot"></info_portion>
+	<info_portion id="yan_rob_ocelot_dead"></info_portion>
+	<info_portion id="yan_zmeelov_quest_done"></info_portion>
+	<info_portion id="yan_zmeelov_rob1_on_pos"></info_portion>
+	<info_portion id="yan_zmeelov_rob2_on_pos"></info_portion>
+	<info_portion id="yan_zmeelov_rob_on_pos"></info_portion>
+	<info_portion id="yan_ocelot_guard_hit"></info_portion>
+	<info_portion id="yan_ocelot_guard1_dead"></info_portion>
+	<info_portion id="yan_ocelot_guard2_dead"></info_portion>
+	<info_portion id="yan_rob_ocelot_guard_shot"></info_portion>
+	<info_portion id="yan_rob_outside_zone_fail"></info_portion>
+	<info_portion id="yan_ocelot_rob_good"></info_portion>
+	<info_portion id="yan_ocelot_rob_bad"></info_portion>
+	<info_portion id="yan_zmeelov_rob_dead"></info_portion>
+	<info_portion id="yan_zmeelov_rob_guard1_dead"></info_portion>
+	<info_portion id="yan_zmeelov_rob_guard2_dead"></info_portion>
+	<info_portion id="yan_ocelot_hands_up_talk">
+		<action>gz_sms.yan_ocelot_rob_talk</action>
+	</info_portion>
+	<info_portion id="yan_ocelot_rob_done_pre"></info_portion>
+	<info_portion id="yan_ocelot_rob_done"></info_portion>
+	<info_portion id="yan_rob_on_position_return">
+		<action>gz_sms.yan_rob_return</action>
+	</info_portion>
+	<info_portion id="yan_rob_hands_up2">
+		<action>gz_sms.ocelot_rob_start</action>
+	</info_portion>
+	<info_portion id="yan_rob_rano">
+		<action>gz_sms.yan_rob_rano_sms</action>
+	</info_portion>
+	<info_portion id="ld_code_box1_spawn">
+		<action>gz_prologue.ld_code_box_1</action>
+		<article>gz_caches_last_day1</article>
+	</info_portion>
+	<info_portion id="ld_code_box2_spawn">
+		<action>gz_prologue.ld_code_box_2</action>
+		<article>gz_caches_last_day2</article>
+	</info_portion>
+	<info_portion id="yan_zmeelov_about_prizrak_done"></info_portion>
+	<info_portion id="yan_zmeelov_rob_zombi_off"></info_portion>
+	<info_portion id="yan_zmeelov_rob_dell_npc"></info_portion>
+	<!-- - Квест с подземкой ПЗ-  -->
+	<info_portion id="pz_otis_lab_start">
+		<task>pz_lab_diggers</task>
+	</info_portion>
+	<info_portion id="pz_otis_lab_run"></info_portion>
+	<info_portion id="pz_otis_lab_wait_dialog"></info_portion>
+	<info_portion id="pz_otis_lab_enter"></info_portion>
+	<info_portion id="pz_open_start"></info_portion>
+	<info_portion id="pz_lab_scien_dialog_done"></info_portion>
+	<info_portion id="pz_lab_scien_dialog_done1"></info_portion>
+	<info_portion id="pz_otis_lab_scream_sms">
+		<action>gz_sms.otis_lab_scream_sms</action>
+	</info_portion>
+	<info_portion id="pz_open_start_sms">
+		<action>gz_sms.otis_lab_open_start</action>
+	</info_portion>
+	<info_portion id="pz_otis_lab_open_done">
+		<action>gz_sms.otis_lab_open_done</action>
+	</info_portion>
+	<info_portion id="pz_otis_lab_teleport"></info_portion>
+	<info_portion id="pz_otis_lab_go_to_zomb"></info_portion>
+	<info_portion id="pz_otis_lab_go_to_zomb_done"></info_portion>
+	<info_portion id="pz_otis_lab_zomb_sms">
+		<action>gz_sms.otis_lab_sms_zomb</action>
+	</info_portion>
+	<info_portion id="pz_otis_lab_zomb_sms2">
+		<action>gz_sms.otis_lab_sms_zomb2</action>
+	</info_portion>
+	<info_portion id="pz_otis_lab_anom">
+		<action>gz_sms.otis_lab_anom</action>
+	</info_portion>
+	<info_portion id="pz_otis_lab_anom2">
+		<action>gz_sms.otis_lab_anom2</action>
+	</info_portion>
+	<info_portion id="pz_lab_electrisity_start">
+		<task>pz_lab_electrisity</task>
+	</info_portion>
+	<info_portion id="pz_lab_electrisity_done"></info_portion>
+	<info_portion id="pz_lab_electrisity_sms">
+		<action>gz_sms.otis_lab_sms_electr</action>
+		<task>pz_lab_case</task>
+	</info_portion>
+	<info_portion id="pz_lab_sms_zomb_attack">
+		<action>gz_sms.lab_sms_zomb_attack</action>
+	</info_portion>
+	<info_portion id="pz_otis_lab_sms_zomb_attack_sms">
+		<action>gz_sms.otis_lab_sms_zomb_attack</action>
+	</info_portion>
+	<info_portion id="pz_lab_anom_kill"></info_portion>
+	<info_portion id="pz_otis_lab_death"></info_portion>
+	<info_portion id="pz_scien1_lab_death"></info_portion>
+	<info_portion id="pz_scien2_lab_death"></info_portion>
+	<info_portion id="pz_scien3_lab_death"></info_portion>
+	<info_portion id="pz_test_lab_eff"></info_portion>
+	<info_portion id="pz_lab_outside"></info_portion>
+	<info_portion id="pz_lab_return_base_done"></info_portion>
+	<info_portion id="pz_lab_return_otis_on_pos"></info_portion>
+	<info_portion id="pz_lab_return_scien1_on_pos"></info_portion>
+	<info_portion id="pz_lab_return_scien2_on_pos"></info_portion>
+	<info_portion id="pz_lab_return_scien3_on_pos"></info_portion>
+	<info_portion id="pz_lab_case_have"></info_portion>
+	<info_portion id="pz_lab_case_dialog_done"></info_portion>
+	<info_portion id="pz_lab_spawn_zombies"></info_portion>
+	<info_portion id="pz_lab_zombie_1_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_2_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_3_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_4_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_5_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_6_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_7_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_8_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_9_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_10_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_11_dead"></info_portion>
+	<info_portion id="pz_lab_zombie_12_dead"></info_portion>
+	<info_portion id="pz_del_old_otis"></info_portion>
+	<info_portion id="pz_scien_after_lab_dialog_done"></info_portion>
+	<info_portion id="pz_info_time_scale"></info_portion>
+	<info_portion id="pz_info_time_scale2"></info_portion>
+	<info_portion id="pz_info_time_scale_test"></info_portion>
+	<info_portion id="pz_night_dell_mercs"></info_portion>
+	<info_portion id="pz_otis_dialog2"></info_portion>
+	<info_portion id="pz_isc_return_night">
+		<task>pz_isc_return_night</task>
+	</info_portion>
+	<info_portion id="pz_lab_all_zombies_dead"></info_portion>
+	<info_portion id="pz_dell_all_npc"></info_portion>
+	<!-- - Странник ПЗ-  -->
+	<info_portion id="pz_night_spawn"></info_portion>
+	<info_portion id="pz_night_spawn_zone"></info_portion>
+	<info_portion id="pz_night_del"></info_portion>
+	<info_portion id="pz_ghost_dialog_done"></info_portion>
+	<info_portion id="pz_ghost_dialog_done_pered"></info_portion>
+	<info_portion id="dv_fomka_diary_info">
+		<article>infa_fomka_diary</article>
+	</info_portion>
+	<!-- - Мины на базе учёных -  -->
+	<info_portion id="gz_yan_ambush_mine_spawn"></info_portion>
+	<info_portion id="gz_yan_ambush_mine_activate"></info_portion>
+	<info_portion id="gz_yan_ambush_mine_stop"></info_portion>
+	<info_portion id="gz_yan_ambush_mine_dell"></info_portion>
+	<info_portion id="gz_yan_ambush_mine2_activate"></info_portion>
+	<info_portion id="gz_yan_ambush_mine2_stop"></info_portion>
+	<info_portion id="gz_yan_ambush_mine2_dell"></info_portion>
+	<!-- - ПДА командира наймов -  -->
+	<info_portion id="open_agr_merc_pda_start">
+		<task>agr_merc_pda_open</task>
+	</info_portion>
+	<info_portion id="open_agr_merc_pda_done">
+		<article>infa_pda_agr_merc_kom</article>
+		<article>infa_about_questions</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="infa_about_heli_have"></info_portion>
+	<info_portion id="open_agr_merc_pda_otkaz"></info_portion>
+	<info_portion id="proslushka_start">
+		<task>gar_proslushka</task>
+	</info_portion>
+	<info_portion id="proslushka_done"></info_portion>
+	<info_portion id="proslushka_ushel"></info_portion>
+	<info_portion id="prosl_cezar_dialog_done"></info_portion>
+	<!-- - Новая ветка с Осведомителем в Рыжем лесу -  -->
+	<info_portion id="rf_osvedomel_meet_start">
+		<task>rf_osvedomel</task>
+		<action>gz_sms.rf_osvedomel_sms</action>
+	</info_portion>
+	<info_portion id="rf_osvedomel_meet_done">
+		<task>rf_iron_about_manic</task>
+	</info_portion>
+	<info_portion id="rf_osvedomel_meet_otkaz"></info_portion>
+	<info_portion id="kill_borman">
+		<task>give_borman_noyt</task>
+	</info_portion>
+	<info_portion id="borman_talk"></info_portion>
+	<info_portion id="ds_sine_no"></info_portion>
+	<info_portion id="dialog_rf_hunters_kill_gigant_done"></info_portion>
+	<info_portion id="start_quest_borman">
+		<task>find_kill_borman</task>
+	</info_portion>
+	<info_portion id="dialog_sv_about_dv_done"></info_portion>
+	<!-- - Доделываем Военных в Рыжем лесу -  -->
+	<info_portion id="start_obisk_komandir">
+		<task>rf_loot_com_start</task>
+	</info_portion>
+	<info_portion id="rf_mil_horror_sound_start"></info_portion>
+	<info_portion id="rf_mil_horror_sold_talk">
+		<action>gz_sms.rf_mil_hor_sold_sms</action>
+	</info_portion>
+	<info_portion id="rf_mil_horror_cap_talk">
+		<action>gz_sms.rf_mil_hor_cap_sms</action>
+	</info_portion>
+	<!-- - Ещё база наймов на промзоне -  -->
+	<info_portion id="dialog_pz_killer_vrag_done"></info_portion>
+	<info_portion id="pz_killer_vrag_enemy"></info_portion>
+	<info_portion id="pz_killers_secret_noyt">
+		<article>infa_pandora</article>
+	</info_portion>
+	<info_portion id="pz_alt_mercs_grif_dialog_done">
+		<task>pz_mercs_alt</task>
+	</info_portion>
+	<info_portion id="pz_alt_mercs_grif_dialog_fail"></info_portion>
+	<info_portion id="pz_alt_mercs_volkodav_dialog_done"></info_portion>
+	<info_portion id="pz_alt_mercs_build_come"></info_portion>
+	<info_portion id="pz_dell_borman"></info_portion>
+	<info_portion id="pz_alt_mercs_killer1_dead"></info_portion>
+	<info_portion id="pz_alt_mercs_killer2_dead"></info_portion>
+	<info_portion id="pz_alt_mercs_killer3_dead"></info_portion>
+	<info_portion id="pz_alt_mercs_done"></info_portion>
+	<info_portion id="pz_mercs_seif_key_have"></info_portion>
+	<info_portion id="pz_alt_mercs_sms1">
+		<action>gz_sms.pz_alt_mercs_sms1</action>
+	</info_portion>
+	<info_portion id="pz_alt_mercs_sms2">
+		<action>gz_sms.pz_alt_mercs_sms2</action>
+	</info_portion>
+	<info_portion id="pz_leader_guard_smena"></info_portion>
+	<info_portion id="pz_leader_wtf_sms">
+		<action>gz_sms.pz_leader_wtf_sms</action>
+	</info_portion>
+	<info_portion id="pz_leader_wtf_sms_2">
+		<action>gz_sms.pz_leader_wtf_sms_2</action>
+	</info_portion>
+	<info_portion id="pz_leader_wtf_sms_3">
+		<action>gz_sms.pz_leader_wtf_sms_3</action>
+	</info_portion>
+	<info_portion id="pz_leader_wtf_sms_4">
+		<action>gz_sms.pz_leader_wtf_sms_4</action>
+	</info_portion>
+	<info_portion id="pz_gg_talk_about_leader_away">
+		<action>gz_sms.gg_talk_about_leader_away</action>
+	</info_portion>
+	<info_portion id="pz_gg_talk_about_leader_away_1"></info_portion>
+	<info_portion id="pz_merclager_leader_seif_stay"></info_portion>
+	<info_portion id="pz_merc_blowup_sms">
+		<action>gz_sms.pz_merc_blowup_sms</action>
+	</info_portion>
+	<info_portion id="pz_leader_guard_bad"></info_portion>
+	<info_portion id="pz_leader_guard_propusk"></info_portion>
+	<info_portion id="pz_leader_guard_on_bomb"></info_portion>
+	<info_portion id="pz_merc_leader_in_zone"></info_portion>
+	<info_portion id="pz_leader_guard_talk"></info_portion>
+	<info_portion id="pz_mercs_distance"></info_portion>
+	<info_portion id="pz_merclager_have_some_time">
+		<action>gz_sms.have_some_time_sms</action>
+	</info_portion>
+	<info_portion id="pz_first_btr_destr"></info_portion>
+	<info_portion id="pz_second_btr_destr"></info_portion>
+	<info_portion id="pz_first_btr_sms">
+		<action>gz_sms.pz_mercs_first_btr_lost_sms</action>
+	</info_portion>
+	<info_portion id="pz_second_btr_sms">
+		<action>gz_sms.pz_mercs_second_btr_lost_sms</action>
+	</info_portion>
+	<info_portion id="pz_grif_propaja_sms">
+		<action>gz_sms.pz_grif_propaja_sms</action>
+	</info_portion>
+	<info_portion id="pz_grif_chastota_sms">
+		<action>gz_sms.pz_grif_chastota_sms</action>
+	</info_portion>
+	<info_portion id="pz_grif_dead"></info_portion>
+	<info_portion id="pz_first_barrel_expl"></info_portion>
+	<info_portion id="pz_second_barrel_expl"></info_portion>
+	<info_portion id="pz_fire_end"></info_portion>
+	<info_portion id="pz_fire_second"></info_portion>
+	<info_portion id="pz_fire_third"></info_portion>
+	<info_portion id="yell_case_have"></info_portion>
+	<info_portion id="yell_case_osvedomel_sell"></info_portion>
+	<info_portion id="spawn_gar_ugr"></info_portion>
+	<info_portion id="dv_slepoi_dialog"></info_portion>
+	<info_portion id="dv_sv_sturm_otkaz"></info_portion>
+	<info_portion id="gar_ugr_about_guards"></info_portion>
+	<info_portion id="dell_ds_ugr"></info_portion>
+	<info_portion id="spawn_yan_ghost"></info_portion>
+	<info_portion id="hacker_start_dialog_done"></info_portion>
+	<info_portion id="osvedomel_mercs_infa_done"></info_portion>
+	<info_portion id="dell_rf_osvedomel"></info_portion>
+	<info_portion id="yan_slepoi_dialog_done"></info_portion>
+	<info_portion id="dell_yan_slepoi"></info_portion>
+	<info_portion id="gar_felix_dialog_done"></info_portion>
+	<info_portion id="dell_felixs_group"></info_portion>
+	<info_portion id="agr_dolgbase_und_key_have"></info_portion>
+	<info_portion id="red_for_mil_kontakt">
+		<action>gz_sms.red_for_mil_kontakt_sms</action>
+	</info_portion>
+	<info_portion id="red_for_mil_kontakt_yes">
+		<action>gz_sms.red_for_mil_kontakt_yes_sms</action>
+	</info_portion>
+	<!-- - Датчики для Долга -  -->
+	<info_portion id="setup_agr_dat_start">
+		<task>agr_dolg_dats_task</task>
+	</info_portion>
+	<info_portion id="setup_agr_dat_1_done">
+		<action>xr_effects.dell_agr_dolg_dat</action>
+	</info_portion>
+	<info_portion id="setup_agr_dat_2_done">
+		<action>xr_effects.dell_agr_dolg_dat</action>
+	</info_portion>
+	<info_portion id="setup_agr_dat_3_done">
+		<action>xr_effects.dell_agr_dolg_dat</action>
+	</info_portion>
+	<info_portion id="setup_agr_dat_otkaz"></info_portion>
+	<info_portion id="setup_agr_dat_dialog_done"></info_portion>
+	<info_portion id="secret_perepiska_infa_done">
+		<article>infa_perepiska</article>
+	</info_portion>
+	<info_portion id="loki_case_open_done"></info_portion>
+	<info_portion id="bezpamatnii_diary_have">
+		<article>infa_bezpamatnii_diary</article>
+	</info_portion>
+	<info_portion id="have_rf_pismo">
+		<article>infa_rf_pismo</article>
+	</info_portion>
+	<!-- - Сумка со снаряжением для ПД -  -->
+	<info_portion id="ds_sumka_ld_start">
+		<task>ds_sumka</task>
+	</info_portion>
+	<info_portion id="ds_sumka_ld_done"></info_portion>
+	<info_portion id="ds_sumka_ld_otkaz"></info_portion>
+	<info_portion id="ds_sumka_ld_dialog_done"></info_portion>
+	<info_portion id="ds_ocelot_dead"></info_portion>
+	<info_portion id="dialog_ds_ocelot_racia_done"></info_portion>
+	<info_portion id="ds_find_shved_pda_start">
+		<task>ds_ld_find_shved</task>
+	</info_portion>
+	<info_portion id="ds_find_shved_pda_otkaz"></info_portion>
+	<info_portion id="ds_find_shved_pda_done">
+		<task>ds_ld_return_shved_pda</task>
+	</info_portion>
+	<info_portion id="ds_lager_talk_scarabey_about_shved_done"></info_portion>
+	<info_portion id="ds_lager_talk_doc_about_shved_done"></info_portion>
+	<info_portion id="ds_lager_talk_torg_about_shved_done"></info_portion>
+	<info_portion id="ds_return_shved_pda_done"></info_portion>
+	<info_portion id="ds_return_shved_pda_false">
+		<article>ds_pda_shved_info</article>
+	</info_portion>
+	<!-- DEPRECATED info_portion id="ds_dialog_about_isc"></info_portion -->
+	<!-- - Сценка у вертолёта на ДС -  -->
+	<info_portion id="ds_helifire_start"></info_portion>
+	<info_portion id="ds_start_iscateli_awake"></info_portion>
+	<info_portion id="ds_start_doc_talk"></info_portion>
+	<info_portion id="ds_expl"></info_portion>
+	<info_portion id="infa_about_agro"></info_portion>
+	<info_portion id="pz_merc_pat1_dead"></info_portion>
+	<info_portion id="pz_merc_pat2_dead"></info_portion>
+	<info_portion id="pz_merc_pat3_dead"></info_portion>
+	<info_portion id="yan_ghost_talk_sms">
+		<action>gz_sms.yan_ghost_talk_sms</action>
+	</info_portion>
+	<info_portion id="yan_ghost_talk_strelok_sms">
+		<action>gz_sms.yan_ghost_talk_strelok_sms</action>
+	</info_portion>
+	<info_portion id="pz_scien_sos">
+		<action>gz_sms.pz_scien_sos</action>
+	</info_portion>
+	<info_portion id="yan_otshel_rac_1">
+		<action>gz_sms.yan_otshel_rac_1</action>
+	</info_portion>
+	<info_portion id="yan_otshel_rac_2">
+		<action>gz_sms.yan_otshel_rac_2</action>
+	</info_portion>
+	<info_portion id="yan_otshel_rac_3">
+		<action>gz_sms.yan_otshel_rac_3</action>
+	</info_portion>
+	<info_portion id="rf_karavaev_rac_1">
+		<action>gz_sms.rf_karavaev_rac_1</action>
+	</info_portion>
+	<info_portion id="rf_karavaev_rac_2">
+		<action>gz_sms.rf_karavaev_rac_2</action>
+	</info_portion>
+	<info_portion id="rf_karavaev_rac_3">
+		<action>gz_sms.rf_karavaev_rac_3</action>
+	</info_portion>
+	<info_portion id="agr_dolg_sms_about_anom">
+		<action>gz_sms.agr_dolg_sms_about_anom</action>
+	</info_portion>
+	<info_portion id="nooo_lab_sms">
+		<action>gz_sms.nooo_lab_sms</action>
+	</info_portion>
+	<info_portion id="fuck_racia_lab_start"></info_portion>
+	<info_portion id="fuck_racia_lab_sms">
+		<action>gz_sms.fuck_racia_lab_sms</action>
+	</info_portion>
+	<info_portion id="ds_slepoi_after_dogs"></info_portion>
+	<info_portion id="dell_ds_slepoi"></info_portion>
+	<info_portion id="pda_cap_dv_have">
+		<article>storyline_soz_pda_cap_dv_info</article>
+		<article>storyline_soz_plen_info</article>
+		<task>gar_meet_with_messenger</task>
+	</info_portion>
+	<info_portion id="gar_snipers_shoots"></info_portion>
+	<info_portion id="gar_messenger_dead">
+		<task>gar_snipers</task>
+	</info_portion>
+	<info_portion id="gar_sniper_1_dead"></info_portion>
+	<info_portion id="gar_sniper_2_dead"></info_portion>
+	<info_portion id="gar_find_messenger_trup">
+		<task>gar_messenger_trup</task>
+	</info_portion>
+	<info_portion id="gar_sniper_wounded">
+		<task>gar_sniper_wounded</task>
+	</info_portion>
+	<info_portion id="gar_sniper_wounded_dialog_done"></info_portion>
+	<info_portion id="dv_mikl_think_about_rush"></info_portion>
+	<info_portion id="lab_scien_kill"></info_portion>
+	<info_portion id="gz_tainik_dig_stop"></info_portion>
+	<info_portion id="gz_tainik_dig_activate"></info_portion>
+	<info_portion id="gz_tainik_dig_dell"></info_portion>
+	<info_portion id="tainik_pismo_have"></info_portion>
+	<info_portion id="no_racia_zone"></info_portion>
+	<info_portion id="pda_coordinats_start_1"></info_portion>
+	<info_portion id="dv_rac_gg_1">
+		<action>gz_sms.dv_rac_gg_1</action>
+	</info_portion>
+	<info_portion id="dv_rac_gg_2">
+		<action>gz_sms.dv_rac_gg_2</action>
+	</info_portion>
+	<info_portion id="dv_rac_gg_3">
+		<action>gz_sms.dv_rac_gg_3</action>
+	</info_portion>
+	<info_portion id="dv_rac_gg_4">
+		<action>gz_sms.dv_rac_gg_4</action>
+	</info_portion>
+	<info_portion id="dv_base_racia_1">
+		<action>gz_sms.dv_base_racia_1</action>
+	</info_portion>
+	<info_portion id="dv_base_racia_2">
+		<action>gz_sms.dv_base_racia_2</action>
+	</info_portion>
+	<info_portion id="agr_rac_gg_1">
+		<action>gz_sms.agr_rac_gg_1</action>
+	</info_portion>
+	<info_portion id="agr_rac_gg_2">
+		<action>gz_sms.agr_rac_gg_2</action>
+	</info_portion>
+	<info_portion id="agr_rac_gg_3">
+		<action>gz_sms.agr_rac_gg_3</action>
+	</info_portion>
+	<info_portion id="agr_base_racia_1">
+		<action>gz_sms.agr_base_racia_1</action>
+	</info_portion>
+	<info_portion id="agr_base_racia_2">
+		<action>gz_sms.agr_base_racia_2</action>
+	</info_portion>
+	<info_portion id="go_to_evacuation_zone_start_1"></info_portion>
+	<info_portion id="borman_noyt_done"></info_portion>
+	<info_portion id="agr_sms_sv_seryi">
+		<action>gz_sms.agr_sms_sv_seryi</action>
+	</info_portion>
+	<info_portion id="gar_osved_infa_about_cap"></info_portion>
+	<info_portion id="agr_sms_sv_osved">
+		<action>gz_sms.agr_sms_sv_osved</action>
+	</info_portion>
+	<info_portion id="gar_dell_wall"></info_portion>
+	<info_portion id="gar_self_destroy_the_wall">
+		<task>gar_self_destroy_the_wall</task>
+	</info_portion>
+	<info_portion id="dv_gg_about_contact_base">
+		<action>gz_sms.dv_gg_about_contact_base_sms</action>
+	</info_portion>
+	<info_portion id="dolg_about_cap_before_general"></info_portion>
+	<info_portion id="dolg_commendant_quest_otkaz"></info_portion>
+	<info_portion id="agr_komendant_night"></info_portion>
+	<info_portion id="agr_komendant_zombie_done_sms">
+		<action>gz_sms.agr_komendant_zombie_done_sms</action>
+	</info_portion>
+	<info_portion id="talk_with_dolg_leader">
+		<task>agr_dolg_leader</task>
+	</info_portion>
+	<info_portion id="agr_lab_guard_propusk"></info_portion>
+	<info_portion id="agr_prikaznik_activate"></info_portion>
+	<info_portion id="agr_anomaly_razradka_start"></info_portion>
+	<info_portion id="agr_anomaly_razradka_end"></info_portion>
+	<info_portion id="agr_anomaly_scien_tele"></info_portion>
+	<info_portion id="agr_anomaly_scien_dialog_2_done"></info_portion>
+	<info_portion id="agr_anomaly_scien_dialog_done"></info_portion>
+	<info_portion id="agr_anomaly_talk_with_scien">
+		<task>agr_talk_with_scien</task>
+	</info_portion>
+	<info_portion id="agr_scien_down"></info_portion>
+	<info_portion id="agr_scien_wakeup"></info_portion>
+	<info_portion id="dv_bekas_dead_zone"></info_portion>
+	<info_portion id="dv_bekas_actor_cover_1"></info_portion>
+	<info_portion id="dv_dell_petro"></info_portion>
+	<info_portion id="agr_ds_digger_hello">
+		<action>gz_sms.agr_digger_ds_sms</action>
+	</info_portion>
+	<info_portion id="spawn_art_test"></info_portion>
+	<info_portion id="dell_art_test"></info_portion>
+	<info_portion id="dv_prisoner_dialog_end"></info_portion>
+	<info_portion id="gar_dell_mutants"></info_portion>
+	<info_portion id="gar_crazy_bandit_dead"></info_portion>
+	<info_portion id="gar_crazy_bandit_phrase"></info_portion>
+	<info_portion id="gar_crazy_dialog_done"></info_portion>
+	<info_portion id="gar_crazy_bandit_lie">
+		<action>gz_sms.gar_crazy_bandit</action>
+	</info_portion>
+	<info_portion id="gar_crazy_dialog_hit"></info_portion>
+	<info_portion id="agr_dolg_sport_start"></info_portion>
+	<info_portion id="agr_sport_actor_in_zone"></info_portion>
+	<info_portion id="agr_sport_end"></info_portion>
+	<info_portion id="rf_lead_scien_blockp_start"></info_portion>
+	<info_portion id="rf_lead_scien_hands_up"></info_portion>
+	<info_portion id="rf_ld_blockp_threat"></info_portion>
+	<info_portion id="rf_ld_blockp_ph1">
+		<action>gz_sms.rf_ld_blockp_ph1</action>
+	</info_portion>
+	<info_portion id="rf_ld_blockp_ph1_end"></info_portion>
+	<info_portion id="rf_ld_blockp_ph2_actor">
+		<action>gz_sms.rf_ld_blockp_ph2_actor</action>
+	</info_portion>
+	<info_portion id="rf_ld_blockp_ph3">
+		<action>gz_sms.rf_ld_blockp_ph3</action>
+	</info_portion>
+	<info_portion id="rf_ld_blockp_ph3_end"></info_portion>
+	<info_portion id="rf_ld_blockp_ph4_racia">
+		<action>gz_sms.rf_ld_blockp_ph4_racia</action>
+	</info_portion>
+	<info_portion id="rf_ld_blockp_ph4_racia_end"></info_portion>
+	<info_portion id="rf_ld_blockp_ok_racia_end"></info_portion>
+	<info_portion id="rf_scien_going_conf"></info_portion>
+	<info_portion id="rf_scien_going_conf_done"></info_portion>
+	<info_portion id="rf_scien_going_conf_end"></info_portion>
+	<info_portion id="rf_ld_guards1_enter"></info_portion>
+	<info_portion id="rf_ld_guards_back_enter"></info_portion>
+	<info_portion id="last_day_war">
+		<action>xr_effects.last_day_war</action>
+	</info_portion>
+	<info_portion id="gar_find_black_digger_diary">
+		<task>find_black_digger_diary</task>
+	</info_portion>
+	<info_portion id="gar_find_black_digger_diary_done"></info_portion>
+	<info_portion id="rf_find_cave_gun">
+		<action>gz_sms.rf_cave_gun_sms</action>
+	</info_portion>
+	<info_portion id="rf_find_cave_gun_sms_done"></info_portion>
+	<info_portion id="rf_cave_zasada_sms_1">
+		<action>gz_sms.rf_cave_zasada_sms_1</action>
+	</info_portion>
+	<info_portion id="rf_cave_zasada_sms_2_sms">
+		<action>gz_sms.rf_cave_zasada_sms_2</action>
+		<action>xr_effects.mil_rf_war</action>
+	</info_portion>
+	<info_portion id="rf_cave_zasada_sms_2"></info_portion>
+	<info_portion id="rf_mil_pda_cave_have">
+		<article>infa_about_going_back</article>
+		<article>infa_rf_mil_pda</article>
+		<action>gz_prologue.diary_tip</action>
+	</info_portion>
+	<info_portion id="rf_cave_zasada_mobs_off"></info_portion>
+	<info_portion id="rf_lab_card_have"></info_portion>
+	<info_portion id="rf_papers_have"></info_portion>
+	<info_portion id="rf_bridge_scien"></info_portion>
+	<info_portion id="rf_bridge_scien_find">
+		<task>rf_scien_bridge</task>
+	</info_portion>
+	<info_portion id="rf_cave_zasada_com_dead"></info_portion>
+	<info_portion id="rf_cave_zasada_mil1_dead"></info_portion>
+	<info_portion id="rf_cave_zasada_mil2_dead"></info_portion>
+	<info_portion id="rf_cave_zasada_mil3_dead"></info_portion>
+	<info_portion id="rf_cave_zasada_find_mil_pda">
+		<task>rf_cave_zasada_find_mil_pda</task>
+	</info_portion>
+	<info_portion id="rf_bridge_dialog_legion_done"></info_portion>
+	<info_portion id="rf_bridge_dialog_scien_done"></info_portion>
+	<info_portion id="rf_scien_about_list"></info_portion>
+	<info_portion id="del_kap_stalker"></info_portion>
+	<info_portion id="ds_spawn_krovos"></info_portion>
+	<info_portion id="ds_spawn_krovos_alt"></info_portion>
+	<info_portion id="dscol_af_prelest_have"></info_portion>
+	<info_portion id="dscol_mystic_activate"></info_portion>
+	<info_portion id="dscol_job_is_done">
+		<action>gz_sms.job_is_done</action>
+	</info_portion>
+	<info_portion id="dscol_find_diggers_wthout_task"></info_portion>
+	<info_portion id="dscol_phantoms_switch_off"></info_portion>
+	<info_portion id="dscol_zombies_awake"></info_portion>
+	<info_portion id="dscol_ghost_spawn"></info_portion>
+	<info_portion id="dscol_ghost_disappear"></info_portion>
+	<!-- - END - S.T.A.L.K.E.R Prologue  - END -  -->
 	<info_portion id="yan_final"></info_portion>
 	<info_portion id="yan_kobold_dialog"></info_portion>
 	<info_portion id="yan_fin_dalog_end"></info_portion>
@@ -2752,73 +2345,43 @@
 	<info_portion id="yan_kill_kill_2"></info_portion>
 	<info_portion id="yan_kill_kill_1"></info_portion>
 	<info_portion id="yan_final_weapon_off"></info_portion>
-	<info_portion id="on_talk_kobold"><action>gz_prologue.on_talk_kobold</action></info_portion>
+	<info_portion id="on_talk_kobold">
+		<action>gz_prologue.on_talk_kobold</action>
+	</info_portion>
 	<info_portion id="start_scene"></info_portion>
-	
-
-	<info_portion id="dv_wtf_greh_contr"><action>gz_sms.dv_wtf_greh_contr</action></info_portion>
-
-	<info_portion id="ds_pda_info_last_day"><article>infa_about_last_day</article></info_portion>
-        <info_portion id="ds_ocelot_ld_group_dialog_done"></info_portion>
-
-        <info_portion id="start_true_ending"><action>xr_effects.start_end_two</action></info_portion>
-
-
-<info_portion id="gz_test_1"></info_portion>
-<info_portion id="gz_test_2"></info_portion>
-
-
-
-
-
-<!-- ДС коллектор -->
-<info_portion id="dscol_cutscene_1_start"></info_portion>
-<info_portion id="dscol_cutscene_1_2_start"></info_portion>
-
-
-
-
-<info_portion id="ds_kamaz_spawn_dog1"></info_portion>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<info_portion id="play_snd_cheka"><action>gz_prologue.play_snd_cheka</action></info_portion>
-<info_portion id="play_snd_rgd5_explode"><action>gz_prologue.play_snd_rgd5_explode</action></info_portion>
-<info_portion id="yan_endgame_spawn_predately"></info_portion>
-<info_portion id="yan_kobold_remark_sit"></info_portion>
-<info_portion id="yan_endgame_spawn_fakeguns"></info_portion>
-
-
-
-
-
-
-
-
-
-
-<!--------------------------------------------------* ВЫРЕЗАННОЕ!! *----------------------------------------------------------------------------->
-	<info_portion id="help_scien_lager_start"><task>help_scien_lager</task></info_portion>
-
+	<info_portion id="dv_wtf_greh_contr">
+		<action>gz_sms.dv_wtf_greh_contr</action>
+	</info_portion>
+	<info_portion id="ds_pda_info_last_day">
+		<article>infa_about_last_day</article>
+	</info_portion>
+	<info_portion id="ds_ocelot_ld_group_dialog_done"></info_portion>
+	<info_portion id="start_true_ending">
+		<action>xr_effects.start_end_two</action>
+	</info_portion>
+	<info_portion id="gz_test_1"></info_portion>
+	<info_portion id="gz_test_2"></info_portion>
+	<!-- ДС коллектор -->
+	<info_portion id="dscol_cutscene_1_start"></info_portion>
+	<info_portion id="dscol_cutscene_1_2_start"></info_portion>
+	<info_portion id="ds_kamaz_spawn_dog1"></info_portion>
+	<info_portion id="play_snd_cheka">
+		<action>gz_prologue.play_snd_cheka</action>
+	</info_portion>
+	<info_portion id="play_snd_rgd5_explode">
+		<action>gz_prologue.play_snd_rgd5_explode</action>
+	</info_portion>
+	<info_portion id="yan_endgame_spawn_predately"></info_portion>
+	<info_portion id="yan_kobold_remark_sit"></info_portion>
+	<info_portion id="yan_endgame_spawn_fakeguns"></info_portion>
+	<!--* ВЫРЕЗАННОЕ!! *-->
+	<info_portion id="help_scien_lager_start">
+		<task>help_scien_lager</task>
+	</info_portion>
 	<info_portion id="go_to_zallager_done"></info_portion>
-
-	<info_portion id="kill_zal_merc_start"><task>kill_zal_merc</task></info_portion>
-
+	<info_portion id="kill_zal_merc_start">
+		<task>kill_zal_merc</task>
+	</info_portion>
 	<info_portion id="help_scien_lager_complete"></info_portion>
-
 	<info_portion id="kill_merc_complete"></info_portion>
-
-
-
-
 </game_information_portions>

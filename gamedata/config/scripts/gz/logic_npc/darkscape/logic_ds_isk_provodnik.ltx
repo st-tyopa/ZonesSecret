@@ -1,18 +1,17 @@
-;--Проводник
 [logic]
 active = walker1
 
 [walker1]
 path_walk = ds_isk_provodnik_stay
 path_look = ds_isk_provodnik_look
-on_info = {+ds_tepa_remark_povyazka} remark
+on_info = {+dlg_ds_iskateli_provodnik_go_to_world} remark %=disable_ui%
 
 [remark]
 anim = guard
 target = actor
 meet = no_meet
 snd = tyopa_1
-on_signal = sound_end| %+ds_tepa_teleport% walker2
+on_signal = sound_end | walker2 %+gz_ds_teleport_to_world_ =enable_ui%
 
 [walker2]
 path_walk = ds_isk_provodnik_stay

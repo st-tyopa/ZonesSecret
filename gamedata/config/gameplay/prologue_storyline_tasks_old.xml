@@ -41,7 +41,7 @@
 			<text>Проверить наличие рации в вертолете</text>
 			<map_location_type hint="Упавший вертолет">green_location</map_location_type>
 			<object_story_id>ds_vertolet</object_story_id>
-			<infoportion_complete>find_raciya_in_vertolet_done</infoportion_complete>
+			<infoportion_complete>gz_task_find_raciya_heli_checked</infoportion_complete>
 		</objective>
 		<objective>
 			<text>Спросить про рацию в лагере сталкеров</text>

@@ -1,25 +1,3 @@
+; not actual
 [logic]
-active = ph_door@locked
-
-[ph_door@locked]
-locked = true
-closed = true
-snd_open_start = trader_door_open_start
-snd_close_start = trader_door_close_start
-snd_close_stop = trader_door_close_stop
-on_info = {+ds_lider_dialog_done -return_things_done} ph_door@open
-
-[ph_door@open]
-locked = false
-closed = false
-snd_open_start = trader_door_open_start
-snd_close_start = trader_door_close_start
-snd_close_stop = trader_door_close_stop
-on_info = {+return_things_done} ph_door@locked2
-
-[ph_door@locked2]
-locked = true
-closed = true
-snd_open_start = trader_door_open_start
-snd_close_start = trader_door_close_start
-snd_close_stop = trader_door_close_stop
+active = nil

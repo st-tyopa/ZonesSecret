@@ -2,12 +2,10 @@
 active = sr_idle
 
 [sr_idle]
-on_actor_inside = {+ds_tepa_remark_povyazka} %+talk_with_iskprovod_done% sr_tip
+on_actor_inside = {+dlg_ds_iskateli_provodnik_go_to_world} sr_tip
 
 [sr_tip]
 name = gz_ds_tepa_to_world
 type = tips
 single = true
-on_signal = tip_sended| sr_idle@end
-
-[sr_idle@end]
+on_signal = tip_sended | nil
