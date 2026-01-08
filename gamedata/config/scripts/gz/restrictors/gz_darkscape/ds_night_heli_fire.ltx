@@ -2,7 +2,7 @@
 active = sr_idle
 
 [sr_idle]
-on_info = {+ds_helifire_start} sr_particle
+on_info = {+gz_ds_heli_cutscene} sr_particle
 
 [sr_particle]
 ;name = explosions\campfire_blowout
@@ -10,4 +10,4 @@ name = damage_fx\heli_burn_01
 path = ds_heli_fire
 mode = 2 		
 looped = true            
-on_info = {+ds_start_iscateli_awake} nil
+on_info = {-gz_ds_heli_cutscene} nil

@@ -2,11 +2,11 @@
 active = sr_idle
 
 [sr_idle]
-on_info = {+ds_start_iscateli_awake} %+isk_cutscene_start% sr_cutscene
+on_info = {+gz_ds_iskateli_cutscene} sr_cutscene
 
 [sr_cutscene]
 point = ds_camera_start_game_walk
 look = ds_camera_start_game_look
 pp_effector = escape
 cam_effector = ds_wake_up
-on_signal = cameff_end| nil %+isk_cutscene_end%
+on_signal = cameff_end| nil %-gz_ds_iskateli_cutscene =enable_ui%

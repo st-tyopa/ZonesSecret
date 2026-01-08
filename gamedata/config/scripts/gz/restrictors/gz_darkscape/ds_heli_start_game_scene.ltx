@@ -1,10 +1,9 @@
 [logic]
-active = sr_cutscene %+soz_intro_video_stop +intro_rolik%
+;soz_intro_video_stop intro_rolik
+active = sr_cutscene %+gz_ds_heli_cutscene%
 
 [sr_cutscene]
 point = ds_heli_startgame
 look = ds_heli_startgame_look
 cam_effector = test_camera   ;start_game_hilcrash
-on_timer = 10000|sr_idle@nil
-
-[sr_idle@nil]
+on_timer = 10000| nil
